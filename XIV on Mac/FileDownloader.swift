@@ -9,17 +9,19 @@ import Foundation
 
 class FileDownloader {
 
-    static func loadFileAsync(url: URL)
+    static func loadFileAsync(url: String, onFinish: @escaping (_: String) -> Void)
     {
         let downloadUrl = Util.cache
-        let destinationUrl = downloadUrl.appendingPathComponent(url.lastPathComponent)
+        let _url = URL(string: url)!
+        let destinationUrl = downloadUrl.appendingPathComponent(_url.lastPathComponent)
 
         if FileManager().fileExists(atPath: destinationUrl.path)
         {
             print("File already exists [\(destinationUrl.path)]")
+            onFinish(url)
         }
         else {
-            let downloadTask = URLSession.shared.downloadTask(with: url) {
+            let downloadTask = URLSession.shared.downloadTask(with: _url) {
                 urlOrNil, responseOrNil, errorOrNil in
                 // check for and handle errors:
                 // * errorOrNil should be nil
@@ -28,6 +30,7 @@ class FileDownloader {
                 guard let fileURL = urlOrNil else { return }
                 do {
                     try FileManager.default.moveItem(at: fileURL, to: destinationUrl)
+                    onFinish(url)
                 } catch {
                     print ("file error: \(error)")
                 }

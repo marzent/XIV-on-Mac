@@ -15,6 +15,32 @@ struct Util {
     static let wineserver = Bundle.main.url(forResource: "wineserver", withExtension: nil, subdirectory: "wine/bin")!
     static let prefix = applicationSupport.appendingPathComponent("game")
     static let cache = applicationSupport.appendingPathComponent("cache")
+    static let localSettings = prefix.path + "/drive_c/users/emet-selch/Local Settings/"
+    
+    class Log: TextOutputStream {
+        var logName: String
+        
+        init(name: String) {
+            logName = name
+        }
+        
+        func write(_ string: String) {
+            if (string == "\n" || string == "") {
+                return
+            }
+            let log = applicationSupport.appendingPathComponent(logName)
+            if let handle = try? FileHandle(forWritingTo: log) {
+                handle.seekToEndOfFile()
+                handle.write(string.data(using: .utf8)!)
+                handle.closeFile()
+            } else {
+                try? string.data(using: .utf8)?.write(to: log)
+            }
+        }
+    }
+
+    static var logger = Log(name: "app.log")
+    static var wineLogger = Log(name: "wine.log")
     
     static func make(dir : String) {
         if !FileManager.default.fileExists(atPath: dir) {
@@ -27,7 +53,7 @@ struct Util {
         }
     }
     
-    static func launch(exec: URL, args: [String], logger: NSTextView?) {
+    static func launch(exec: URL, args: [String], blocking: Bool = false) {
         let task = Process()
         task.environment = enviroment
         task.executableURL = exec
@@ -38,30 +64,32 @@ struct Util {
         let outHandle = pipe.fileHandleForReading
         outHandle.readabilityHandler = { pipe in
             if let line = String(data: pipe.availableData, encoding: String.Encoding.utf8) {
-                logger?.append(string: line)
-                print(line)
+                print(line, to: &wineLogger)
             } else {
-                print("Error decoding data: \(pipe.availableData)")
+                print("Error decoding data: \(pipe.availableData)", to: &logger)
             }
         }
         do {
             try task.run()
+            if blocking {
+                task.waitUntilExit()
+            }
         }
         catch {
                 print("Error starting subprocess")
         }
     }
     
-    static func launchWine(args: [String], logger: NSTextView?) {
-        launch(exec: wine, args : args, logger : logger)
+    static func launchWine(args: [String], blocking: Bool = false) {
+        launch(exec: wine, args : args, blocking: blocking)
     }
     
-    static func launchXL(logger: NSTextView?) {
-        launchWine(args: [prefix.path + "/drive_c/users/emet-selch/Local Settings/XIVLauncher/XIVLauncher.exe"], logger: logger)
+    static func launchXL() {
+        launchWine(args: [localSettings + "XIVLauncher/XIVLauncher.exe"])
     }
     
     static func killWine(logger: NSTextView?) {
-        launch(exec: wineserver, args: ["-k"], logger : logger)
+        launch(exec: wineserver, args: ["-k"])
     }
     
     static var enviroment : [String : String] {

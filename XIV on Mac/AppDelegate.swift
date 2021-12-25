@@ -36,14 +36,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @IBAction func winLicense(_ sender: Any) {
-        Util.launchWine(args: ["reg", "add", "HKEY_CURRENT_USER\\Software\\Wine", "/v", "HideWineExports", "/d", "1", "/f"], logger: nil)
+        Util.launchWine(args: ["reg", "add", "HKEY_CURRENT_USER\\Software\\Wine", "/v", "HideWineExports", "/d", "1", "/f"])
         macButton.state = .off
         winButton.state = .on
         UserDefaults.standard.set("Win", forKey: licenseSettingKey)
     }
     
     @IBAction func macLicense(_ sender: Any) {
-        Util.launchWine(args: ["reg", "add", "HKEY_CURRENT_USER\\Software\\Wine", "/v", "HideWineExports", "/d", "0", "/f"], logger: nil)
+        Util.launchWine(args: ["reg", "add", "HKEY_CURRENT_USER\\Software\\Wine", "/v", "HideWineExports", "/d", "0", "/f"])
         macButton.state = .on
         winButton.state = .off
         UserDefaults.standard.set("Mac", forKey: licenseSettingKey)

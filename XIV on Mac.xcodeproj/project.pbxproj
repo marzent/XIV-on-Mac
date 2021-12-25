@@ -13,6 +13,8 @@
 		50511EC92770E087003A1E9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50511EC82770E087003A1E9F /* Assets.xcassets */; };
 		50511ECC2770E087003A1E9F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50511ECA2770E087003A1E9F /* Main.storyboard */; };
 		505C0D9B277333920008A344 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505C0D9A277333920008A344 /* Util.swift */; };
+		507D8F2127766F52000F0CB0 /* dxvk in Resources */ = {isa = PBXBuildFile; fileRef = 507D8F2027766F52000F0CB0 /* dxvk */; };
+		507D8F2327770E99000F0CB0 /* XIVLauncher in Resources */ = {isa = PBXBuildFile; fileRef = 507D8F2227770E99000F0CB0 /* XIVLauncher */; };
 		50ED0DB32773C619002E9854 /* Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ED0DB22773C619002E9854 /* Setup.swift */; };
 		50ED0DB52773CA8C002E9854 /* FileDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ED0DB42773CA8C002E9854 /* FileDownloader.swift */; };
 /* End PBXBuildFile section */
@@ -26,6 +28,8 @@
 		50511ECB2770E087003A1E9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		50511ECD2770E087003A1E9F /* XIV_on_Mac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = XIV_on_Mac.entitlements; sourceTree = "<group>"; };
 		505C0D9A277333920008A344 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		507D8F2027766F52000F0CB0 /* dxvk */ = {isa = PBXFileReference; lastKnownFileType = folder; path = dxvk; sourceTree = "<group>"; };
+		507D8F2227770E99000F0CB0 /* XIVLauncher */ = {isa = PBXFileReference; lastKnownFileType = folder; path = XIVLauncher; sourceTree = "<group>"; };
 		50ED0DB22773C619002E9854 /* Setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setup.swift; sourceTree = "<group>"; };
 		50ED0DB42773CA8C002E9854 /* FileDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDownloader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -68,7 +72,9 @@
 				50511EC82770E087003A1E9F /* Assets.xcassets */,
 				50511ECA2770E087003A1E9F /* Main.storyboard */,
 				50511ECD2770E087003A1E9F /* XIV_on_Mac.entitlements */,
+				507D8F2027766F52000F0CB0 /* dxvk */,
 				5043E36B27728BA300E59127 /* wine */,
+				507D8F2227770E99000F0CB0 /* XIVLauncher */,
 			);
 			path = "XIV on Mac";
 			sourceTree = "<group>";
@@ -132,8 +138,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				50511EC92770E087003A1E9F /* Assets.xcassets in Resources */,
+				507D8F2127766F52000F0CB0 /* dxvk in Resources */,
 				50511ECC2770E087003A1E9F /* Main.storyboard in Resources */,
 				5043E36C27728BA300E59127 /* wine in Resources */,
+				507D8F2327770E99000F0CB0 /* XIVLauncher in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,9 +297,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "XIV on Mac/XIV_on_Mac.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TQJJTJ6364;
+				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
@@ -357,9 +368,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "XIV on Mac/XIV_on_Mac.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TQJJTJ6364;
+				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
