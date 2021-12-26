@@ -92,6 +92,7 @@
 				50511EBD2770E085003A1E9F /* Sources */,
 				50511EBE2770E085003A1E9F /* Frameworks */,
 				50511EBF2770E085003A1E9F /* Resources */,
+				5592FEB42778D3CB00FA304B /* Fix Codesign (Runtime) */,
 			);
 			buildRules = (
 			);
@@ -149,6 +150,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5592FEB42778D3CB00FA304B /* Fix Codesign (Runtime) */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Fix Codesign (Runtime)";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/sh\n\nif [ -z \"${CODE_SIGN_IDENTITY}\" ] ; then\n    echo \"CODE_SIGN_IDENTITY needs to be set!\"\n\n    if [ \"${CONFIGURATION}\" = \"Release\" ] ; then\n        exit 1\n    else\n        # Code-signing is optional for non-release builds.\n        exit 0\n    fi\nfi\n\nif [ -z \"${CODE_SIGN_ENTITLEMENTS}\" ] ; then\n    echo \"CODE_SIGN_ENTITLEMENTS needs to be set!\"\n\n    if [ \"${CONFIGURATION}\" = \"Release\" ] ; then\n        exit 1\n    else\n        exit 0\n    fi\nfi\n\nITEMS=\"\"\nWINE_DIR=\"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH_SHALLOW_BUNDLE_NO}/wine/bin\"\n\nif [ -d \"$WINE_DIR\" ] ; then\n    WINE_ITEMS=$(find \"${WINE_DIR}\" -type f)\n    RESULT=$?\n    if [[ $RESULT != 0 ]] ; then\n        exit 1\n    fi\n\n    ITEMS=\"${WINE_ITEMS}\"\nfi\n\nCODE_SIGN_IDENTITY_FOR_ITEMS=\"${EXPANDED_CODE_SIGN_IDENTITY_NAME}\"\nif [ \"${CODE_SIGN_IDENTITY_FOR_ITEMS}\" = \"\" ] ; then\n    CODE_SIGN_IDENTITY_FOR_ITEMS=\"${CODE_SIGN_IDENTITY}\"\nfi\n\necho \"Found:\"\necho \"${ITEMS}\"\n\nOIFS=\"$IFS\"\nIFS=$'\\n'\n\nfor ITEM in $ITEMS;\ndo\n    echo \"Signing '${ITEM}'\"\n    codesign --force --verbose --sign \"${CODE_SIGN_IDENTITY_FOR_ITEMS}\" --entitlements \"${CODE_SIGN_ENTITLEMENTS}\" --options=runtime \"${ITEM}\"\n    RESULT=$?\n    if [[ $RESULT != 0 ]] ; then\n        echo \"Failure: '${ITEM}'.\"\n        IFS=$SAVED_IFS\n        exit 1\n    fi\ndone\n\nIFS=\"$OIFS\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		50511EBD2770E085003A1E9F /* Sources */ = {
