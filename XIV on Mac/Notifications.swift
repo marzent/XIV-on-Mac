@@ -8,5 +8,13 @@
 import Foundation
 
 extension Notification.Name {
-    static let depInstallDone = Notification.Name("DepInstallDonerNotification")
+    static let depInstall = Notification.Name("DepInstallNotification")
+    static let depInstallDone = Notification.Name("DepInstallDoneNotification")
+    static let depDownloadDone = Notification.Name("DepDownloadDoneNotification")
+}
+
+extension Notification {
+    enum dep: String {
+        case name
+    }
 }

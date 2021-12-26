@@ -17,7 +17,7 @@ struct Setup {
                 "https://download.visualstudio.microsoft.com/download/pr/1f5af042-d0e4-4002-9c59-9ba66bcf15f6/089f837de42708daacaae7c04b7494db/NDP472-KB4054530-x86-x64-AllOS-ENU.exe" : false,
                 "https://download.visualstudio.microsoft.com/download/pr/7afca223-55d2-470a-8edc-6a1739ae3252/abd170b4b0ec15ad0222a809b761a036/ndp48-x86-x64-allos-enu.exe" : false,]
     
-    static func dependencies() {
+    static func downloadDeps() {
         for (url, _) in dep_urls {
             FileDownloader.loadFileAsync(url: url, onFinish: downloadDone)
         }
@@ -26,7 +26,7 @@ struct Setup {
     static func downloadDone(url: String) {
         dep_urls[url] = true
         if dep_urls.allSatisfy({$0.value}) {
-            installDeps()
+            NotificationCenter.default.post(name: .depDownloadDone, object: nil)
         }
     }
     
@@ -42,6 +42,8 @@ struct Setup {
         Util.launchWine(args: [Util.cache.appendingPathComponent("NDP472-KB4054530-x86-x64-AllOS-ENU.exe").path, "/norestart"], blocking: true)
         setWine(version: "win10")
         Util.launchWine(args: [Util.cache.appendingPathComponent("ndp48-x86-x64-allos-enu.exe").path, "/norestart"], blocking: true)
+        Setup.DXVK()
+        Setup.XL()
         NotificationCenter.default.post(name: .depInstallDone, object: nil)
         
     }

@@ -14,12 +14,12 @@ class XIVController: NSViewController {
     
     override func viewDidAppear() {
         super.viewDidAppear()
+        NotificationCenter.default.addObserver(self,selector: #selector(downloadDone(_:)),name: .depDownloadDone, object: nil)
+        NotificationCenter.default.addObserver(self,selector: #selector(depsDone(_:)),name: .depInstallDone, object: nil)
         if !FileManager.default.fileExists(atPath: Util.localSettings + "XIVLauncher") {
-            NotificationCenter.default.addObserver(self,selector: #selector(depsDone(_:)),name: .depInstallDone, object: nil)
             button.isHidden = true
             DispatchQueue.main.async {
-                Setup.dependencies()
-                Setup.DXVK()
+                Setup.downloadDeps()
             }
         }
         else {
@@ -29,11 +29,20 @@ class XIVController: NSViewController {
     }
     
     @objc
+    func downloadDone(_ notif: Notification) {
+        DispatchQueue.main.async {
+            self.status.stringValue = "Installing dependencies...."
+            Setup.installDeps()
+        }
+    }
+    
+    @objc
     func depsDone(_ notif: Notification) {
-        Setup.XL()
-        button.isHidden = false
-        self.view.window?.title = "XIV on Mac"
-        self.status.stringValue = "Click Play to start the game"
+        DispatchQueue.main.async {
+            self.button.isHidden = false
+            self.view.window?.title = "XIV on Mac"
+            self.status.stringValue = "Click Play to start the game"
+        }
     }
     
     @IBAction func play(_ sender: Any) {
@@ -42,7 +51,7 @@ class XIVController: NSViewController {
     }
     
     @IBAction func installDeps(_ sender: Any) {
-        Setup.dependencies()
+        Setup.downloadDeps()
     }
     
     @IBAction func installDXVK(_ sender: Any) {

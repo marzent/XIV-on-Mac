@@ -465,7 +465,7 @@
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Npe-xH-VEe">
                                         <rect key="frame" x="-2" y="0.0" width="635" height="133"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Installing dependencies...." id="lcD-hh-CeT">
+                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Downloading dependencies...." id="lcD-hh-CeT">
                                             <font key="font" metaFont="system" size="24"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
