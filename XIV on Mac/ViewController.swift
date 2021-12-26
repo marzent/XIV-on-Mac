@@ -15,21 +15,25 @@ class XIVController: NSViewController {
     override func viewDidAppear() {
         super.viewDidAppear()
         if !FileManager.default.fileExists(atPath: Util.localSettings + "XIVLauncher") {
+            NotificationCenter.default.addObserver(self,selector: #selector(depsDone(_:)),name: .depInstallDone, object: nil)
             button.isHidden = true
             DispatchQueue.main.async {
                 Setup.dependencies()
-                self.status.stringValue = "Installing DXVK"
                 Setup.DXVK()
-                self.status.stringValue = "Installing XIVLauncher"
-                Setup.XL()
-                self.status.stringValue = "Done! Click Play to start the game"
-                self.button.isHidden = false
             }
         }
         else {
             self.view.window?.title = "XIV on Mac"
             self.status.stringValue = "Click Play to start the game"
         }
+    }
+    
+    @objc
+    func depsDone(_ notif: Notification) {
+        Setup.XL()
+        button.isHidden = false
+        self.view.window?.title = "XIV on Mac"
+        self.status.stringValue = "Click Play to start the game"
     }
     
     @IBAction func play(_ sender: Any) {

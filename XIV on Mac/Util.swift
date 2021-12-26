@@ -96,7 +96,10 @@ struct Util {
         var env = ProcessInfo.processInfo.environment
         env["WINEESYNC"] = "1"
         env["WINEPREFIX"] = prefix.path
-        env["DXVK_HUD"] = "compiler"
+        env["WINEDEBUG"] = ""
+        if env["DXVK_HUD"] == nil {
+            env["DXVK_HUD"] = "compiler"
+        }
         env["DXVK_ASYNC"] = "1"
         env["XL_WINEONLINUX"] = "true"
         env["XL_WINEONMAC"] = "true"

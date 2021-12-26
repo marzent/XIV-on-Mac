@@ -42,6 +42,7 @@ struct Setup {
         Util.launchWine(args: [Util.cache.appendingPathComponent("NDP472-KB4054530-x86-x64-AllOS-ENU.exe").path, "/norestart"], blocking: true)
         setWine(version: "win10")
         Util.launchWine(args: [Util.cache.appendingPathComponent("ndp48-x86-x64-allos-enu.exe").path, "/norestart"], blocking: true)
+        NotificationCenter.default.post(name: .depInstallDone, object: nil)
         
     }
     
