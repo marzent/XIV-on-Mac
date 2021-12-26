@@ -488,7 +488,6 @@
                     </view>
                     <connections>
                         <outlet property="button" destination="Uou-zN-pSd" id="kU9-lu-NI8"/>
-                        <outlet property="logger" destination="Npe-xH-VEe" id="gJE-tv-iJI"/>
                         <outlet property="status" destination="Npe-xH-VEe" id="att-D8-0zS"/>
                     </connections>
                 </viewController>
