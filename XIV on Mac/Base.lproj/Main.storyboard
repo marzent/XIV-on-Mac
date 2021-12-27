@@ -324,6 +324,69 @@
                                     </items>
                                 </menu>
                             </menuItem>
+                            <menuItem title="DXVK options" id="PgV-pL-ptb">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="DXVK options" id="hQc-bZ-PXl">
+                                    <items>
+                                        <menuItem title="Frame Rate Limits" id="bsG-Kg-B12">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <menu key="submenu" title="Frame Rate Limits" id="QF3-8N-SwY">
+                                                <items>
+                                                    <menuItem title="30" id="cSv-Va-e4o">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="fps30:" target="Voe-Tx-rLC" id="mDL-MN-6nk"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="60" id="Kbr-na-UWe">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="fps60:" target="Voe-Tx-rLC" id="W56-Z9-BFJ"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="120" id="inb-ZO-880">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="fps120:" target="Voe-Tx-rLC" id="Dxk-9D-fC0"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="Uncapped" id="vAC-WQ-qSz">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="fpsUncapped:" target="Voe-Tx-rLC" id="e7g-7G-rk4"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                </items>
+                                            </menu>
+                                        </menuItem>
+                                        <menuItem title="Hud Options" id="hFb-BG-459">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <menu key="submenu" title="Hud Options" id="uYi-ho-Lga">
+                                                <items>
+                                                    <menuItem title="FPS" id="odg-ef-bNc">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="fpsHud:" target="Voe-Tx-rLC" id="aFb-hv-duE"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="Frametime" id="sq5-af-dnb">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="frametimesHud:" target="Voe-Tx-rLC" id="18e-Fy-Noj"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="Full" id="GD9-cp-Frd">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="fullHud:" target="Voe-Tx-rLC" id="swR-az-vTg"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                </items>
+                                            </menu>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
                             <menuItem title="License" id="jxT-CU-nIS">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="License" id="GEO-Iw-cKr">
@@ -420,6 +483,17 @@
                 </application>
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="XIV_on_Mac" customModuleProvider="target">
                     <connections>
+                        <outlet property="fps120" destination="inb-ZO-880" id="FuZ-H6-1JY"/>
+                        <outlet property="fps120Button" destination="inb-ZO-880" id="meJ-jN-h90"/>
+                        <outlet property="fps30" destination="cSv-Va-e4o" id="QWX-Ds-aj9"/>
+                        <outlet property="fps30Button" destination="cSv-Va-e4o" id="EWf-OF-n6Z"/>
+                        <outlet property="fps60" destination="Kbr-na-UWe" id="JAn-1B-b5d"/>
+                        <outlet property="fps60Button" destination="Kbr-na-UWe" id="2S3-Di-iB1"/>
+                        <outlet property="fpsButton" destination="odg-ef-bNc" id="zky-Z6-MWv"/>
+                        <outlet property="fpsUncapped" destination="vAC-WQ-qSz" id="dpW-6a-AiM"/>
+                        <outlet property="fpsUncappedButton" destination="vAC-WQ-qSz" id="VNM-yM-bHl"/>
+                        <outlet property="frametimeButton" destination="sq5-af-dnb" id="dvo-vB-Ych"/>
+                        <outlet property="fullButton" destination="GD9-cp-Frd" id="mVQ-QY-ikf"/>
                         <outlet property="macButton" destination="Gi5-1S-RQB" id="VLe-4L-BCD"/>
                         <outlet property="winButton" destination="Fal-I4-PZk" id="yN0-XA-4uw"/>
                     </connections>

@@ -78,7 +78,31 @@ class XIVController: NSViewController {
         Util.launchWine(args: ["cmd"]) //fixme
     }
     
-
+	@IBAction func fps(_ sender: Any) {
+		Util.launchWine(args: ["reg", "add", "HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\Session Manager\\Environment", "/v", "dxvk_hud", "/d", "fps", "/f"])
+	}
+	
+	@IBAction func full(_sender: Any) {
+		Util.launchWine(args: ["reg", "add", "HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\Session Manager\\Environment", "/v", "dxvk_hud", "/d", "full", "/f"])
+	}
+	@IBAction func frametimes(_sender: Any) {
+		Util.launchWine(args: ["reg", "add", "HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\Session Manager\\Environment", "/v", "dxvk_hud", "/d", "frametimes", "/f"])
+	}
+	
+	@IBAction func fps30(_ sender: Any) {
+		Util.launchWine(args: ["reg", "add", "HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\Session Manager\\Environment", "/v", "DXVK_FRAME_RATE", "/d", "30", "/f"])
+	}
+	
+	@IBAction func fps60(_sender: Any) {
+		Util.launchWine(args: ["reg", "add", "HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\Session Manager\\Environment", "/v", "DXVK_FRAME_RATE", "/d", "60", "/f"])
+	}
+	@IBAction func fps120(_sender: Any) {
+		Util.launchWine(args: ["reg", "add", "HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\Session Manager\\Environment", "/v", "DXVK_FRAME_RATE", "/d", "120", "/f"])
+	}
+	
+	@IBAction func fpsUncapped(_sender: Any) {
+		Util.launchWine(args: ["reg", "add", "HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\Session Manager\\Environment", "/v", "DXVK_FRAME_RATE", "/d", "0", "/f"])
+	}
 
 }
 
