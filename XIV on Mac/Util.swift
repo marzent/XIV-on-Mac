@@ -92,15 +92,71 @@ struct Util {
         launch(exec: wineserver, args: ["-k"])
     }
     
+    class DXVK: Codable {
+        static let settingKey = "DXVK_OPTIONS"
+        var async = true
+        var maxFramerate = 0
+        var hud = ["devinfo": false, //Displays the name of the GPU and the driver version.
+                   "fps": false, //Shows the current frame rate.
+                   "frametimes": false, //Shows a frame time graph.
+                   "submissions": false, //Shows the number of command buffers submitted per frame.
+                   "drawcalls": false, //Shows the number of draw calls and render passes per frame.
+                   "pipelines": false, //Shows the total number of graphics and compute pipelines.
+                   "memory": false, //Shows the amount of device memory allocated and used.
+                   "gpuload": false, //Shows estimated GPU load. May be inaccurate.
+                   "version": false, //Shows DXVK version.
+                   "api": false, //Shows the D3D feature level used by the application.
+                   "compiler": true] //Shows shader compiler activity
+        var hudScale = 1.0
+        
+        
+        init() {
+            if let data = UserDefaults.standard.value(forKey: Util.DXVK.settingKey) as? Data {
+                let s = try? PropertyListDecoder().decode(Util.DXVK.self, from: data)
+                async = s!.async
+                maxFramerate = s!.maxFramerate
+                hud = s!.hud
+                hudScale = s!.hudScale
+                
+            } else {
+                save()
+            }
+        }
+        
+        func getAsync() -> String {
+            return self.async ? "1": "0"
+        }
+        
+        func getMaxFramerate() -> String {
+            return String(self.maxFramerate)
+        }
+        
+        func getHud() -> String {
+            var params = ["scale=\(hudScale)"]
+            for (option, enabled) in hud {
+                if enabled {
+                    params.append(option)
+                }
+            }
+            return params.joined(separator: ",")
+        }
+        
+        func save() {
+            UserDefaults.standard.set(try? PropertyListEncoder().encode(self), forKey: Util.DXVK.settingKey)
+        }
+    }
+    
+    
+    static var dxvkOptions = DXVK()
+    
     static var enviroment : [String : String] {
         var env = ProcessInfo.processInfo.environment
         env["WINEESYNC"] = "1"
         env["WINEPREFIX"] = prefix.path
         env["WINEDEBUG"] = "-fixme"
-        if env["DXVK_HUD"] == nil {
-            env["DXVK_HUD"] = "compiler"
-        }
-        env["DXVK_ASYNC"] = "1"
+        env["DXVK_HUD"] = dxvkOptions.getHud()
+        env["DXVK_ASYNC"] = dxvkOptions.getAsync()
+        env["DXVK_FRAME_RATE"] = dxvkOptions.getMaxFramerate()
         env["XL_WINEONLINUX"] = "true"
         env["XL_WINEONMAC"] = "true"
         env["MVK_CONFIG_FAST_MATH_ENABLED"] = "1"

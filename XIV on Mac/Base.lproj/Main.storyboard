@@ -23,7 +23,11 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
-                                        <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW"/>
+                                        <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW">
+                                            <connections>
+                                                <action selector="dvkSettings:" target="Ady-hI-5gd" id="eqq-hB-fcz"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="wFC-TO-SCJ"/>
                                         <menuItem title="Services" id="NMo-om-nkz">
                                             <modifierMask key="keyEquivalentModifierMask"/>
@@ -324,69 +328,6 @@
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="DXVK options" id="PgV-pL-ptb">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="DXVK options" id="hQc-bZ-PXl">
-                                    <items>
-                                        <menuItem title="Frame Rate Limits" id="bsG-Kg-B12">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <menu key="submenu" title="Frame Rate Limits" id="QF3-8N-SwY">
-                                                <items>
-                                                    <menuItem title="30" id="cSv-Va-e4o">
-                                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                                        <connections>
-                                                            <action selector="fps30:" target="Voe-Tx-rLC" id="mDL-MN-6nk"/>
-                                                        </connections>
-                                                    </menuItem>
-                                                    <menuItem title="60" id="Kbr-na-UWe">
-                                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                                        <connections>
-                                                            <action selector="fps60:" target="Voe-Tx-rLC" id="W56-Z9-BFJ"/>
-                                                        </connections>
-                                                    </menuItem>
-                                                    <menuItem title="120" id="inb-ZO-880">
-                                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                                        <connections>
-                                                            <action selector="fps120:" target="Voe-Tx-rLC" id="Dxk-9D-fC0"/>
-                                                        </connections>
-                                                    </menuItem>
-                                                    <menuItem title="Uncapped" id="vAC-WQ-qSz">
-                                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                                        <connections>
-                                                            <action selector="fpsUncapped:" target="Voe-Tx-rLC" id="e7g-7G-rk4"/>
-                                                        </connections>
-                                                    </menuItem>
-                                                </items>
-                                            </menu>
-                                        </menuItem>
-                                        <menuItem title="Hud Options" id="hFb-BG-459">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <menu key="submenu" title="Hud Options" id="uYi-ho-Lga">
-                                                <items>
-                                                    <menuItem title="FPS" id="odg-ef-bNc">
-                                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                                        <connections>
-                                                            <action selector="fpsHud:" target="Voe-Tx-rLC" id="aFb-hv-duE"/>
-                                                        </connections>
-                                                    </menuItem>
-                                                    <menuItem title="Frametime" id="sq5-af-dnb">
-                                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                                        <connections>
-                                                            <action selector="frametimesHud:" target="Voe-Tx-rLC" id="18e-Fy-Noj"/>
-                                                        </connections>
-                                                    </menuItem>
-                                                    <menuItem title="Full" id="GD9-cp-Frd">
-                                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                                        <connections>
-                                                            <action selector="fullHud:" target="Voe-Tx-rLC" id="swR-az-vTg"/>
-                                                        </connections>
-                                                    </menuItem>
-                                                </items>
-                                            </menu>
-                                        </menuItem>
-                                    </items>
-                                </menu>
-                            </menuItem>
                             <menuItem title="License" id="jxT-CU-nIS">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="License" id="GEO-Iw-cKr">
@@ -483,17 +424,6 @@
                 </application>
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="XIV_on_Mac" customModuleProvider="target">
                     <connections>
-                        <outlet property="fps120" destination="inb-ZO-880" id="FuZ-H6-1JY"/>
-                        <outlet property="fps120Button" destination="inb-ZO-880" id="meJ-jN-h90"/>
-                        <outlet property="fps30" destination="cSv-Va-e4o" id="QWX-Ds-aj9"/>
-                        <outlet property="fps30Button" destination="cSv-Va-e4o" id="EWf-OF-n6Z"/>
-                        <outlet property="fps60" destination="Kbr-na-UWe" id="JAn-1B-b5d"/>
-                        <outlet property="fps60Button" destination="Kbr-na-UWe" id="2S3-Di-iB1"/>
-                        <outlet property="fpsButton" destination="odg-ef-bNc" id="zky-Z6-MWv"/>
-                        <outlet property="fpsUncapped" destination="vAC-WQ-qSz" id="dpW-6a-AiM"/>
-                        <outlet property="fpsUncappedButton" destination="vAC-WQ-qSz" id="VNM-yM-bHl"/>
-                        <outlet property="frametimeButton" destination="sq5-af-dnb" id="dvo-vB-Ych"/>
-                        <outlet property="fullButton" destination="GD9-cp-Frd" id="mVQ-QY-ikf"/>
                         <outlet property="macButton" destination="Gi5-1S-RQB" id="VLe-4L-BCD"/>
                         <outlet property="winButton" destination="Fal-I4-PZk" id="yN0-XA-4uw"/>
                     </connections>
@@ -567,7 +497,298 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="150.5" y="596.5"/>
+            <point key="canvasLocation" x="76" y="596"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="Bjo-br-hCC">
+            <objects>
+                <windowController storyboardIdentifier="SettingsWindow" id="gQL-ir-uY1" sceneMemberID="viewController">
+                    <window key="window" title="Settings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="2hl-BH-elL">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="425" y="462" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
+                        <view key="contentView" id="fdK-HV-ayH">
+                            <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </view>
+                        <connections>
+                            <outlet property="delegate" destination="gQL-ir-uY1" id="ZNk-q2-XKi"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="GIg-v3-M8h" kind="relationship" relationship="window.shadowedContentViewController" id="TAL-1o-0CM"/>
+                    </connections>
+                </windowController>
+                <customObject id="gt0-lc-YaY" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="896" y="-29"/>
+        </scene>
+        <!--Settings Controller-->
+        <scene sceneID="XL5-1S-wKF">
+            <objects>
+                <viewController id="GIg-v3-M8h" customClass="SettingsController" customModule="XIV_on_Mac" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="Uy2-An-Xxz">
+                        <rect key="frame" x="0.0" y="0.0" width="668" height="387"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <box fixedFrame="YES" title="DXVK" translatesAutoresizingMaskIntoConstraints="NO" id="sgA-bR-Hht">
+                                <rect key="frame" x="17" y="16" width="634" height="351"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <view key="contentView" id="l3b-VZ-Zad">
+                                    <rect key="frame" x="3" y="3" width="628" height="333"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Ej-Kx-qaB">
+                                            <rect key="frame" x="18" y="272" width="63" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="check" title="Async" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="4l9-XH-Dbl">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="saveState:" target="GIg-v3-M8h" id="94b-9d-GgQ"/>
+                                            </connections>
+                                        </button>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0PH-1i-0UA">
+                                            <rect key="frame" x="18" y="296" width="150" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="check" title="Maximum Framerate" bezelStyle="regularSquare" imagePosition="left" inset="2" id="qVB-Tz-GDg">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="updateMaxFPS:" target="GIg-v3-M8h" id="Gqp-5l-IiK"/>
+                                            </connections>
+                                        </button>
+                                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uQd-FB-xmH">
+                                            <rect key="frame" x="208" y="294" width="96" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" enabled="NO" allowsUndo="NO" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="SbM-3l-Oaw">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <connections>
+                                                <action selector="saveState:" target="GIg-v3-M8h" id="atM-5P-PCd"/>
+                                            </connections>
+                                        </textField>
+                                        <box fixedFrame="YES" title="HUD" translatesAutoresizingMaskIntoConstraints="NO" id="Fq2-37-Vx7">
+                                            <rect key="frame" x="17" y="16" width="594" height="249"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <view key="contentView" id="qig-jS-TfQ">
+                                                <rect key="frame" x="3" y="3" width="588" height="231"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pdF-ZL-8kZ">
+                                                        <rect key="frame" x="18" y="193" width="41" height="16"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Scale:" id="vsK-LN-gvZ">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bvv-yo-MZ0">
+                                                        <rect key="frame" x="86" y="185" width="417" height="28"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <sliderCell key="cell" state="on" alignment="left" maxValue="4" doubleValue="1" tickMarkPosition="above" numberOfTickMarks="5" sliderType="linear" id="Ya9-RG-5gd"/>
+                                                        <connections>
+                                                            <action selector="saveState:" target="GIg-v3-M8h" id="MZ7-TA-dyd"/>
+                                                        </connections>
+                                                    </slider>
+                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c5y-dB-OzW">
+                                                        <rect key="frame" x="510" y="184" width="70" height="32"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <buttonCell key="cell" type="push" title="Reset" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BHo-QR-6f8">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="resetScale:" target="GIg-v3-M8h" id="Krh-lR-7Ms"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jgR-xu-GBS">
+                                                        <rect key="frame" x="18" y="154" width="94" height="18"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <buttonCell key="cell" type="check" title="Device Info" bezelStyle="regularSquare" imagePosition="left" inset="2" id="YOz-MM-jki">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="saveState:" target="GIg-v3-M8h" id="RBI-Ih-y8B"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ogm-ZO-E2w">
+                                                        <rect key="frame" x="18" y="132" width="95" height="18"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <buttonCell key="cell" type="check" title="Frame Rate" bezelStyle="regularSquare" imagePosition="left" inset="2" id="olm-gB-DgF">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="saveState:" target="GIg-v3-M8h" id="GcS-Fx-2Vm"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DSc-kA-8q1">
+                                                        <rect key="frame" x="18" y="110" width="133" height="18"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <buttonCell key="cell" type="check" title="Frame time graph" bezelStyle="regularSquare" imagePosition="left" inset="2" id="ti2-f2-LWe">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="saveState:" target="GIg-v3-M8h" id="p8b-G6-ixk"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SxV-dE-5eD">
+                                                        <rect key="frame" x="18" y="88" width="207" height="18"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <buttonCell key="cell" type="check" title="Command buffer submissions" bezelStyle="regularSquare" imagePosition="left" inset="2" id="8s1-ty-wL8">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="saveState:" target="GIg-v3-M8h" id="cvK-3a-or5"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XaY-6Q-Mvo">
+                                                        <rect key="frame" x="18" y="66" width="204" height="18"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <buttonCell key="cell" type="check" title="Draw calls and render passes" bezelStyle="regularSquare" imagePosition="left" inset="2" id="7xs-cj-Vij">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="saveState:" target="GIg-v3-M8h" id="pph-eJ-tDs"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KfF-g1-nNK">
+                                                        <rect key="frame" x="18" y="44" width="221" height="18"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <buttonCell key="cell" type="check" title="Graphics and compute pipelines" bezelStyle="regularSquare" imagePosition="left" inset="2" id="dkA-rO-6VD">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="saveState:" target="GIg-v3-M8h" id="UxY-VO-Qv6"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HvH-pN-nVO">
+                                                        <rect key="frame" x="18" y="22" width="109" height="18"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <buttonCell key="cell" type="check" title="Memory used" bezelStyle="regularSquare" imagePosition="left" inset="2" id="jUY-i2-XaI">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="saveState:" target="GIg-v3-M8h" id="kok-7K-fch"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Fq-Sz-2ZL">
+                                                        <rect key="frame" x="335" y="154" width="83" height="18"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <buttonCell key="cell" type="check" title="GPU load" bezelStyle="regularSquare" imagePosition="left" inset="2" id="h1g-uy-cTN">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="saveState:" target="GIg-v3-M8h" id="Iev-Fz-Usy"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PxN-EU-Qcp">
+                                                        <rect key="frame" x="335" y="132" width="109" height="18"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <buttonCell key="cell" type="check" title="DXVK version" bezelStyle="regularSquare" imagePosition="left" inset="2" id="RHk-LT-kFy">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="saveState:" target="GIg-v3-M8h" id="pa0-Hw-XLN"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LpF-Gn-fld">
+                                                        <rect key="frame" x="335" y="110" width="131" height="18"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <buttonCell key="cell" type="check" title="D3D feature level" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Prr-45-dEP">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="saveState:" target="GIg-v3-M8h" id="Y70-z1-Yd9"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MGI-ae-PZ5">
+                                                        <rect key="frame" x="335" y="88" width="173" height="18"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <buttonCell key="cell" type="check" title="Shader compiler activity" bezelStyle="regularSquare" imagePosition="left" inset="2" id="g1m-2P-tRE">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="saveState:" target="GIg-v3-M8h" id="ffM-SA-OOz"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y0j-0A-ZOj">
+                                                        <rect key="frame" x="330" y="12" width="108" height="32"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <buttonCell key="cell" type="push" title="Select None" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hhJ-G0-ma9">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="selectNone:" target="GIg-v3-M8h" id="ZpX-A2-8yq"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gvh-xg-ZgM">
+                                                        <rect key="frame" x="330" y="44" width="92" height="32"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <buttonCell key="cell" type="push" title="Select All" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fgq-sv-nxT">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="selectFull:" target="GIg-v3-M8h" id="Q2t-7Q-DXq"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </view>
+                                        </box>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Ie-Yc-IY8">
+                                            <rect key="frame" x="310" y="297" width="24" height="16"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="fps" id="BMg-PA-pZ1">
+                                                <font key="font" usesAppearanceFont="YES"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </subviews>
+                                </view>
+                            </box>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="api" destination="LpF-Gn-fld" id="wNx-c6-TfI"/>
+                        <outlet property="async" destination="9Ej-Kx-qaB" id="sxa-Av-T1S"/>
+                        <outlet property="compiler" destination="MGI-ae-PZ5" id="Teg-SF-zIN"/>
+                        <outlet property="devinfo" destination="jgR-xu-GBS" id="67u-Cw-3f3"/>
+                        <outlet property="drawcalls" destination="XaY-6Q-Mvo" id="zm2-Ra-BNf"/>
+                        <outlet property="fps" destination="Ogm-ZO-E2w" id="OPW-hm-cEk"/>
+                        <outlet property="frametimes" destination="DSc-kA-8q1" id="NQ8-Yx-XTB"/>
+                        <outlet property="gpuload" destination="4Fq-Sz-2ZL" id="kpD-xR-1mP"/>
+                        <outlet property="maxFPS" destination="0PH-1i-0UA" id="3Y1-La-IoX"/>
+                        <outlet property="maxFPSField" destination="uQd-FB-xmH" id="pew-u4-IUq"/>
+                        <outlet property="memory" destination="HvH-pN-nVO" id="69Q-ki-iMz"/>
+                        <outlet property="pipelines" destination="KfF-g1-nNK" id="SDT-NK-JfC"/>
+                        <outlet property="scale" destination="Bvv-yo-MZ0" id="MxI-LE-c9j"/>
+                        <outlet property="submissions" destination="SxV-dE-5eD" id="iAS-Sl-rkN"/>
+                        <outlet property="version" destination="PxN-EU-Qcp" id="zNF-t4-Eyo"/>
+                    </connections>
+                </viewController>
+                <customObject id="tpD-0Q-AJh" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="896" y="501.5"/>
         </scene>
     </scenes>
 </document>
