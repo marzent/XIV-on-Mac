@@ -164,6 +164,7 @@ struct Util {
         env["MVK_CONFIG_FULL_IMAGE_VIEW_SWIZZLE"] = "1"
         //env["DYLD_PRINT_LIBRARIES"] = "YES"
         env["DYLD_FALLBACK_LIBRARY_PATH"] = Bundle.main.url(forResource: "lib", withExtension: "", subdirectory: "wine")!.path + ":/usr/lib:/usr/libexec:/usr/lib/system:/opt/X11/lib:/opt/local/lib:/usr/X11/lib:/usr/X11R6/lib"
+        env["DYLD_VERSIONED_LIBRARY_PATH"] = env["DYLD_FALLBACK_LIBRARY_PATH"]
         return env
     }
     
