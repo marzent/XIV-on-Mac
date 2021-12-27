@@ -61,9 +61,14 @@ struct Setup {
                 }
                 try fm.copyItem(atPath: dxvk_path.appendingPathComponent(dll).path, toPath: dll_path)
                 overideDLL(dll: dll.components(separatedBy: ".")[0], type: "native")
+				
+				
             }
             catch {
                 print("error setting up dxvk dll \(dll)")
+				
+				
+				
             }
         }
     }
