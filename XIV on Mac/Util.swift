@@ -159,11 +159,8 @@ struct Util {
         env["DXVK_FRAME_RATE"] = dxvkOptions.getMaxFramerate()
         env["XL_WINEONLINUX"] = "true"
         env["XL_WINEONMAC"] = "true"
-        env["MVK_CONFIG_FAST_MATH_ENABLED"] = "1"
-        env["MVK_CONFIG_RESUME_LOST_DEVICE"] = "1"
-        env["MVK_CONFIG_FULL_IMAGE_VIEW_SWIZZLE"] = "1"
         //env["DYLD_PRINT_LIBRARIES"] = "YES"
-        env["DYLD_FALLBACK_LIBRARY_PATH"] = Bundle.main.url(forResource: "lib", withExtension: "", subdirectory: "wine")!.path + ":/usr/lib:/usr/libexec:/usr/lib/system:/opt/X11/lib:/opt/local/lib:/usr/X11/lib:/usr/X11R6/lib"
+        env["DYLD_FALLBACK_LIBRARY_PATH"] = Bundle.main.url(forResource: "lib", withExtension: "", subdirectory: "wine")!.path + ":/opt/local/lib:/usr/local/lib:/usr/lib:/usr/libexec:/usr/lib/system:/opt/X11/lib"
         env["DYLD_VERSIONED_LIBRARY_PATH"] = env["DYLD_FALLBACK_LIBRARY_PATH"]
         return env
     }
