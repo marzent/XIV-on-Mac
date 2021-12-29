@@ -11,7 +11,6 @@ import SwordRPC
 class DiscordRichPresence {
     var discordAppId = "925647215421173820"
     var version = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as? String ?? "1.0.0"
-    var state = "https://www.xivmac.com/"
     var iconName = "appicon"
     
     var rpc:SwordRPC
@@ -28,7 +27,6 @@ class DiscordRichPresence {
     func setPresence() {
         self.richPresence.assets.largeImage = iconName
         self.richPresence.details = details
-        self.richPresence.state = state
         self.richPresence.timestamps.start = Date()
         rpc.setPresence(self.richPresence)
     }
