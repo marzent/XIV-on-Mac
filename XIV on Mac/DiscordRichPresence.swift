@@ -29,6 +29,7 @@ class DiscordRichPresence {
         self.richPresence.assets.largeImage = iconName
         self.richPresence.details = details
         self.richPresence.state = state
+        self.richPresence.timestamps.start = Date()
         rpc.setPresence(self.richPresence)
     }
 }
