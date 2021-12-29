@@ -10,30 +10,28 @@ import Cocoa
 class XIVController: NSViewController {
     
     @IBOutlet private var status: NSTextField!
+    @IBOutlet private var info: NSTextField!
     @IBOutlet private var button: NSButton!
     
-    override func viewDidAppear() {
-        super.viewDidAppear()
-        NotificationCenter.default.addObserver(self,selector: #selector(downloadDone(_:)),name: .depDownloadDone, object: nil)
-        NotificationCenter.default.addObserver(self,selector: #selector(depsDone(_:)),name: .depInstallDone, object: nil)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupObservers()
         if !FileManager.default.fileExists(atPath: Util.localSettings + "XIVLauncher") {
             button.isHidden = true
-            DispatchQueue.main.async {
+            DispatchQueue.global(qos: .userInitiated).async {
                 Setup.downloadDeps()
             }
         }
         else {
             self.view.window?.title = "XIV on Mac"
             self.status.stringValue = "Click Play to start the game"
+            self.info.stringValue = ""
         }
     }
     
     @objc
     func downloadDone(_ notif: Notification) {
-        DispatchQueue.main.async {
-            self.status.stringValue = "Installing dependencies...."
-            Setup.installDeps()
-        }
+        Setup.installDeps()
     }
     
     @objc
@@ -42,6 +40,18 @@ class XIVController: NSViewController {
             self.button.isHidden = false
             self.view.window?.title = "XIV on Mac"
             self.status.stringValue = "Click Play to start the game"
+            self.info.stringValue = ""
+        }
+    }
+    
+    @objc
+    func updateStatus(_ notif: Notification) {
+        let header = notif.userInfo?[Notification.status.header]! as! String
+        let info = notif.userInfo?[Notification.status.info]! as! String
+        DispatchQueue.main.async {
+            self.button.isHidden = true
+            self.status.stringValue = header
+            self.info.stringValue = info
         }
     }
     
@@ -82,7 +92,13 @@ class XIVController: NSViewController {
         let settingsWinController = self.storyboard!.instantiateController(withIdentifier: "SettingsWindow") as! NSWindowController
         settingsWinController.showWindow(self)
     }
-
+    
+    private func setupObservers() {
+        NotificationCenter.default.addObserver(self,selector: #selector(downloadDone(_:)),name: .depDownloadDone, object: nil)
+        NotificationCenter.default.addObserver(self,selector: #selector(depsDone(_:)),name: .depInstallDone, object: nil)
+        NotificationCenter.default.addObserver(self,selector: #selector(updateStatus(_:)),name: .installStatusUpdate, object: nil)
+    }
+    
 }
 
 class XIVWindowController: NSWindowController, NSWindowDelegate {
