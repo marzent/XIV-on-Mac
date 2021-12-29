@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2B7159B7277C526000945A24 /* Socket in Frameworks */ = {isa = PBXBuildFile; productRef = 2B7159B6277C526000945A24 /* Socket */; };
 		2B7159BA277C529300945A24 /* SwordRPC in Frameworks */ = {isa = PBXBuildFile; productRef = 2B7159B9277C529300945A24 /* SwordRPC */; };
+		2B7C95D2277C6C6000A3CA89 /* DiscordRichPresence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7C95D1277C6C6000A3CA89 /* DiscordRichPresence.swift */; };
 		5043E36C27728BA300E59127 /* wine in Resources */ = {isa = PBXBuildFile; fileRef = 5043E36B27728BA300E59127 /* wine */; };
 		50511EC52770E085003A1E9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50511EC42770E085003A1E9F /* AppDelegate.swift */; };
 		50511EC72770E085003A1E9F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50511EC62770E085003A1E9F /* ViewController.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2B7C95D1277C6C6000A3CA89 /* DiscordRichPresence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscordRichPresence.swift; sourceTree = "<group>"; };
 		5043E36B27728BA300E59127 /* wine */ = {isa = PBXFileReference; lastKnownFileType = folder; path = wine; sourceTree = "<group>"; };
 		50511EC12770E085003A1E9F /* XIV on Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "XIV on Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50511EC42770E085003A1E9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 				50ED0DB22773C619002E9854 /* Setup.swift */,
 				50BD278627785418002B0D1F /* Notifications.swift */,
 				50ED0DB42773CA8C002E9854 /* FileDownloader.swift */,
+				2B7C95D1277C6C6000A3CA89 /* DiscordRichPresence.swift */,
 				50511EC82770E087003A1E9F /* Assets.xcassets */,
 				50511ECA2770E087003A1E9F /* Main.storyboard */,
 				50511ECD2770E087003A1E9F /* XIV_on_Mac.entitlements */,
@@ -192,6 +195,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B7C95D2277C6C6000A3CA89 /* DiscordRichPresence.swift in Sources */,
 				50BD278727785418002B0D1F /* Notifications.swift in Sources */,
 				505C0D9B277333920008A344 /* Util.swift in Sources */,
 				50511EC72770E085003A1E9F /* ViewController.swift in Sources */,
