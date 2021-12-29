@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B7159B7277C526000945A24 /* Socket in Frameworks */ = {isa = PBXBuildFile; productRef = 2B7159B6277C526000945A24 /* Socket */; };
+		2B7159BA277C529300945A24 /* SwordRPC in Frameworks */ = {isa = PBXBuildFile; productRef = 2B7159B9277C529300945A24 /* SwordRPC */; };
 		5043E36C27728BA300E59127 /* wine in Resources */ = {isa = PBXBuildFile; fileRef = 5043E36B27728BA300E59127 /* wine */; };
 		50511EC52770E085003A1E9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50511EC42770E085003A1E9F /* AppDelegate.swift */; };
 		50511EC72770E085003A1E9F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50511EC62770E085003A1E9F /* ViewController.swift */; };
@@ -43,6 +45,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B7159BA277C529300945A24 /* SwordRPC in Frameworks */,
+				2B7159B7277C526000945A24 /* Socket in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +106,10 @@
 			dependencies = (
 			);
 			name = "XIV on Mac";
+			packageProductDependencies = (
+				2B7159B6277C526000945A24 /* Socket */,
+				2B7159B9277C529300945A24 /* SwordRPC */,
+			);
 			productName = "XIV on Mac";
 			productReference = 50511EC12770E085003A1E9F /* XIV on Mac.app */;
 			productType = "com.apple.product-type.application";
@@ -130,6 +138,10 @@
 				Base,
 			);
 			mainGroup = 50511EB82770E085003A1E9F;
+			packageReferences = (
+				2B7159B5277C526000945A24 /* XCRemoteSwiftPackageReference "BlueSocket" */,
+				2B7159B8277C529300945A24 /* XCRemoteSwiftPackageReference "SwordRPC" */,
+			);
 			productRefGroup = 50511EC22770E085003A1E9F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -411,6 +423,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2B7159B5277C526000945A24 /* XCRemoteSwiftPackageReference "BlueSocket" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Kitura/BlueSocket";
+			requirement = {
+				kind = exactVersion;
+				version = 2.0.2;
+			};
+		};
+		2B7159B8277C529300945A24 /* XCRemoteSwiftPackageReference "SwordRPC" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/PKBeam/SwordRPC.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2B7159B6277C526000945A24 /* Socket */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2B7159B5277C526000945A24 /* XCRemoteSwiftPackageReference "BlueSocket" */;
+			productName = Socket;
+		};
+		2B7159B9277C529300945A24 /* SwordRPC */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2B7159B8277C529300945A24 /* XCRemoteSwiftPackageReference "SwordRPC" */;
+			productName = SwordRPC;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 50511EB92770E085003A1E9F /* Project object */;
 }

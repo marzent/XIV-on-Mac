@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "swift-argument-parser",
+        "repositoryURL": "https://github.com/apple/swift-argument-parser",
+        "state": {
+          "branch": null,
+          "revision": "6b2aa2748a7881eebb9f84fb10c01293e15b52ca",
+          "version": "0.5.0"
+        }
+      },
+      {
+        "package": "SwordRPC",
+        "repositoryURL": "https://github.com/PKBeam/SwordRPC.git",
+        "state": {
+          "branch": "master",
+          "revision": "f9831261fcbe6a17243f8839921fb7820e99fa6e",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

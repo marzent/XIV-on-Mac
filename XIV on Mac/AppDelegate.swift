@@ -26,6 +26,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             macButton.state = .off
             winButton.state = .on
         }
+        let discord = Util.Discord()
+        if (discord.connected) {
+            discord.setPresence()
+        }
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
