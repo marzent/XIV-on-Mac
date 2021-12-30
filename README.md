@@ -20,7 +20,7 @@ FFXIV on MacOS. Our application gives better performance vs Square Enix's native
 <h6>*FPS may vary based on hardware, but in most cases FPS should be better!</h6>
 
 ---
-Visit our website www.xivmac.com for details about our team and the project!
+Visit our website www.xivmac.com for details about our team and the project!<br>
 You can read our depreciated Crossover setup guide <a href="https://github.com/seathasky/FF14-MAC_ModSupport">here.</a> 
 <br>
 
