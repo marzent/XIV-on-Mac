@@ -15,6 +15,7 @@ FFXIV on MacOS. Our application gives better performance vs Square Enix's native
 - Mod support: ACT, Gshade, Dalamud and more!
 - Performance enhancments; Better FPS vs Native Mac launcher & Crossover, updated DXVK/MoltenVK libraries, PCAP support for ACT etc.
 - User Support in our <a href="https://discord.gg/dWN5bTC4Yv">Discord.</a> 
+- Wine is build using https://github.com/marzent/winecx
 
 <h6>*FPS may vary based on hardware, but in most cases FPS should be better!</h6>
 
