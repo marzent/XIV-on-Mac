@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19455"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -529,11 +529,32 @@
             <objects>
                 <viewController id="GIg-v3-M8h" customClass="SettingsController" customModule="XIV_on_Mac" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="Uy2-An-Xxz">
-                        <rect key="frame" x="0.0" y="0.0" width="668" height="387"/>
+                        <rect key="frame" x="0.0" y="0.0" width="668" height="532"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
+                            <box fixedFrame="YES" title="Social Integration" translatesAutoresizingMaskIntoConstraints="NO" id="HJs-37-GDf">
+                                <rect key="frame" x="17" y="409" width="634" height="103"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <view key="contentView" id="hCN-fj-lmr">
+                                    <rect key="frame" x="3" y="3" width="628" height="85"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LP2-JT-YsT">
+                                            <rect key="frame" x="18" y="34" width="163" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="check" title="Discord Rich Presence" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="EJl-D1-TzE">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="saveState:" target="GIg-v3-M8h" id="KDC-z1-LCw"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </view>
+                            </box>
                             <box fixedFrame="YES" title="DXVK" translatesAutoresizingMaskIntoConstraints="NO" id="sgA-bR-Hht">
-                                <rect key="frame" x="17" y="16" width="634" height="351"/>
+                                <rect key="frame" x="17" y="38" width="634" height="351"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <view key="contentView" id="l3b-VZ-Zad">
                                     <rect key="frame" x="3" y="3" width="628" height="333"/>
@@ -773,6 +794,7 @@
                         <outlet property="async" destination="9Ej-Kx-qaB" id="sxa-Av-T1S"/>
                         <outlet property="compiler" destination="MGI-ae-PZ5" id="Teg-SF-zIN"/>
                         <outlet property="devinfo" destination="jgR-xu-GBS" id="67u-Cw-3f3"/>
+                        <outlet property="discord" destination="LP2-JT-YsT" id="ebb-hF-iX1"/>
                         <outlet property="drawcalls" destination="XaY-6Q-Mvo" id="zm2-Ra-BNf"/>
                         <outlet property="fps" destination="Ogm-ZO-E2w" id="OPW-hm-cEk"/>
                         <outlet property="frametimes" destination="DSc-kA-8q1" id="NQ8-Yx-XTB"/>
@@ -788,7 +810,7 @@
                 </viewController>
                 <customObject id="tpD-0Q-AJh" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="896" y="501.5"/>
+            <point key="canvasLocation" x="896" y="574"/>
         </scene>
     </scenes>
 </document>
