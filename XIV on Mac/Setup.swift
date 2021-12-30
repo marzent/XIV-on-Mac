@@ -114,7 +114,7 @@ struct Setup {
                 overideDLL(dll: dll.components(separatedBy: ".")[0], type: "native")
             }
             catch {
-                print("error setting up dxvk dll \(dll)")
+                print("error setting up dxvk dll \(dll)", to: &Util.logger)
             }
         }
     }
@@ -133,7 +133,7 @@ struct Setup {
             try fm.copyItem(atPath: XL_bundle, toPath: XL_path)
         }
         catch {
-            print("error setting up XIVLauncher")
+            print("error setting up XIVLauncher", to: &Util.logger)
         }
         Util.launchXL()
     }

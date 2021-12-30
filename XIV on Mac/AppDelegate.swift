@@ -29,7 +29,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
-        Util.killWine(logger: nil)
+        Util.killWine()
     }
 
     func applicationSupportsSecureRestorableState(_ app: NSApplication) -> Bool {

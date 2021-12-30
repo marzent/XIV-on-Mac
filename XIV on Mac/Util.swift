@@ -76,7 +76,7 @@ struct Util {
             }
         }
         catch {
-                print("Error starting subprocess")
+                print("Error starting subprocess", to: &logger)
         }
     }
     
@@ -88,7 +88,7 @@ struct Util {
         launchWine(args: [localSettings + "XIVLauncher/XIVLauncher.exe"])
     }
     
-    static func killWine(logger: NSTextView?) {
+    static func killWine() {
         launch(exec: wineserver, args: ["-k"])
     }
     
@@ -153,7 +153,7 @@ struct Util {
         var env = ProcessInfo.processInfo.environment
         env["WINEESYNC"] = "1"
         env["WINEPREFIX"] = prefix.path
-        env["WINEDEBUG"] = "-fixme"
+        env["WINEDEBUG"] = "fixme-seh"
         env["DXVK_HUD"] = dxvkOptions.getHud()
         env["DXVK_ASYNC"] = dxvkOptions.getAsync()
         env["DXVK_FRAME_RATE"] = dxvkOptions.getMaxFramerate()

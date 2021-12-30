@@ -23,9 +23,15 @@ class XIVController: NSViewController {
             }
         }
         else {
-            self.view.window?.title = "XIV on Mac"
             self.status.stringValue = "Click Play to start the game"
             self.info.stringValue = ""
+        }
+    }
+    
+    override func viewWillAppear() {
+        super.viewWillAppear()
+        if !button.isHidden {
+            self.view.window?.title = "XIV on Mac"
         }
     }
     
