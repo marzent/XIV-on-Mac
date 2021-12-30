@@ -3,16 +3,8 @@ Wine Wrapper, Setup tool and alternative launcher for FFXIV on MacOS.
 
 ---
 
-<b>"XIV on Mac"</b> is a team of collaborators and Mac gamers with the sole objective to provide an alternative method of running
-FFXIV on MacOS while providing better performance/support than Square Enix's native MacOS launcher. <b>This project is 100% open source.</b>
-
----
-
-Our initial project started by using Crossover with updated library files to provide a better experience in FFXIV on MacOS as well as supporting Apple's latest M1 processer.
-You can read our depreciated Crossover setup guide <a href="https://github.com/seathasky/FF14-MAC_ModSupport">here.</a> 
-In December of 2021, the <b>XIV on Mac</b> 
-team decided to make the project more user friendly by providing our own standalone MacOS application/launcher. 
-<br>
+<b>"XIV on Mac"</b> application is an alternative BETTER method of running
+FFXIV on MacOS. Our application gives better performance vs Square Enix's native MacOS launcher and Codeweavers Crossover. <b>This project is 100% open source.</b>
 
 ---
 <h3>Features:</h3>
@@ -20,10 +12,15 @@ team decided to make the project more user friendly by providing our own standal
 - User friendly setup
 - XIV Launcher Support w/ Dalamud Plugin injection
 - Mod support: ACT, Gshade, Dalamud and more!
-- Performance enhancments; Better FPS vs Native Mac launcher*, updated DXVK/MoltenVK libraries, PCAP support for ACT etc.
+- Performance enhancments; Better FPS vs Native Mac launcher & Crossover, updated DXVK/MoltenVK libraries, PCAP support for ACT etc.
 - User Support in our <a href="https://discord.gg/dWN5bTC4Yv">Discord.</a> 
 
 <h6>*FPS may vary based on hardware, but in most cases FPS should be better!</h6>
+
+---
+Visit our website www.xivmac.com for details about our team and the project!
+You can read our depreciated Crossover setup guide <a href="https://github.com/seathasky/FF14-MAC_ModSupport">here.</a> 
+<br>
 
 ---
 
@@ -33,6 +30,6 @@ team decided to make the project more user friendly by providing our own standal
 <b>Seathasky</b> (Project Manager, Support)<br>
 <b>FleetAdmiralButter</b> (Web Developer, Support)<br><br>
 
-<b>Special thanks</b> to <a href="https://github.com/Gcenx/">Gcenx</a>  for help with Wine development/troubleshooting, the <a href="https://github.com/goatcorp/FFXIVQuickLauncher/">XIVLauncher</a> team for not giving up on us and eventually inclusion. And very special thanks to our wonderful community and contributors. Without your love for this project, we would not exist!<br>
-
 ---
+
+<div align="center">FINAL FANTASY is a registered trademark of Square Enix Holdings Co., Ltd.</div>
