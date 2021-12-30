@@ -12,7 +12,7 @@ struct SocialIntegration {
     class DiscordRichPresence {
         let settingsKey = "DISCORD_OPTIONS"
         var discordAppId = "925647215421173820"
-        var iconName = "appicon"
+        var iconName = "appicon-alpha"
         var defaults = UserDefaults.standard
         var connected = false
         
