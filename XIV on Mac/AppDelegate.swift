@@ -26,6 +26,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             macButton.state = .off
             winButton.state = .on
         }
+        SocialIntegration.discord.setPresence()
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

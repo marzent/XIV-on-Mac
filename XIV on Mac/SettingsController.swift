@@ -23,6 +23,7 @@ class SettingsController: NSViewController {
     @IBOutlet private var maxFPS: NSButton!
     @IBOutlet private var maxFPSField: NSTextField!
     @IBOutlet private var async: NSButton!
+    @IBOutlet weak var discord: NSButton!
     
     private var mapping: [String : NSButton] = [:]
     
@@ -80,6 +81,7 @@ class SettingsController: NSViewController {
         maxFPS.state = limited ? NSControl.StateValue.on : NSControl.StateValue.off
         maxFPSField.isEnabled = limited
         maxFPSField.stringValue = String(Util.dxvkOptions.maxFramerate)
+        discord.state = SocialIntegration.discord.enabled ? NSControl.StateValue.on : NSControl.StateValue.off
         scale.doubleValue = Util.dxvkOptions.hudScale
     }
     
@@ -91,6 +93,9 @@ class SettingsController: NSViewController {
         Util.dxvkOptions.maxFramerate = maxFPSField.isEnabled ? Int(maxFPSField.stringValue) ?? 0 : 0
         Util.dxvkOptions.hudScale = scale.doubleValue
         Util.dxvkOptions.save()
+        
+        SocialIntegration.discord.enabled = (discord.state == NSControl.StateValue.on) ? true : false
+        SocialIntegration.discord.save()
     }
 
 }

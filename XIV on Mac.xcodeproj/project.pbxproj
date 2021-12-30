@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B7159B7277C526000945A24 /* Socket in Frameworks */ = {isa = PBXBuildFile; productRef = 2B7159B6277C526000945A24 /* Socket */; };
+		2B7159BA277C529300945A24 /* SwordRPC in Frameworks */ = {isa = PBXBuildFile; productRef = 2B7159B9277C529300945A24 /* SwordRPC */; };
+		2B7C95D2277C6C6000A3CA89 /* SocialIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7C95D1277C6C6000A3CA89 /* SocialIntegration.swift */; };
 		5043E36C27728BA300E59127 /* wine in Resources */ = {isa = PBXBuildFile; fileRef = 5043E36B27728BA300E59127 /* wine */; };
 		50511EC52770E085003A1E9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50511EC42770E085003A1E9F /* AppDelegate.swift */; };
 		50511EC72770E085003A1E9F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50511EC62770E085003A1E9F /* ViewController.swift */; };
@@ -22,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2B7C95D1277C6C6000A3CA89 /* SocialIntegration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialIntegration.swift; sourceTree = "<group>"; };
 		5043E36B27728BA300E59127 /* wine */ = {isa = PBXFileReference; lastKnownFileType = folder; path = wine; sourceTree = "<group>"; };
 		50511EC12770E085003A1E9F /* XIV on Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "XIV on Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50511EC42770E085003A1E9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +47,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B7159BA277C529300945A24 /* SwordRPC in Frameworks */,
+				2B7159B7277C526000945A24 /* Socket in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +81,7 @@
 				50ED0DB22773C619002E9854 /* Setup.swift */,
 				50BD278627785418002B0D1F /* Notifications.swift */,
 				50ED0DB42773CA8C002E9854 /* FileDownloader.swift */,
+				2B7C95D1277C6C6000A3CA89 /* SocialIntegration.swift */,
 				50511EC82770E087003A1E9F /* Assets.xcassets */,
 				50511ECA2770E087003A1E9F /* Main.storyboard */,
 				50511ECD2770E087003A1E9F /* XIV_on_Mac.entitlements */,
@@ -102,6 +109,10 @@
 			dependencies = (
 			);
 			name = "XIV on Mac";
+			packageProductDependencies = (
+				2B7159B6277C526000945A24 /* Socket */,
+				2B7159B9277C529300945A24 /* SwordRPC */,
+			);
 			productName = "XIV on Mac";
 			productReference = 50511EC12770E085003A1E9F /* XIV on Mac.app */;
 			productType = "com.apple.product-type.application";
@@ -130,6 +141,10 @@
 				Base,
 			);
 			mainGroup = 50511EB82770E085003A1E9F;
+			packageReferences = (
+				2B7159B5277C526000945A24 /* XCRemoteSwiftPackageReference "BlueSocket" */,
+				2B7159B8277C529300945A24 /* XCRemoteSwiftPackageReference "SwordRPC" */,
+			);
 			productRefGroup = 50511EC22770E085003A1E9F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -180,6 +195,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B7C95D2277C6C6000A3CA89 /* SocialIntegration.swift in Sources */,
 				50BD278727785418002B0D1F /* Notifications.swift in Sources */,
 				505C0D9B277333920008A344 /* Util.swift in Sources */,
 				50511EC72770E085003A1E9F /* ViewController.swift in Sources */,
@@ -413,6 +429,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2B7159B5277C526000945A24 /* XCRemoteSwiftPackageReference "BlueSocket" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Kitura/BlueSocket";
+			requirement = {
+				kind = exactVersion;
+				version = 2.0.2;
+			};
+		};
+		2B7159B8277C529300945A24 /* XCRemoteSwiftPackageReference "SwordRPC" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/PKBeam/SwordRPC.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2B7159B6277C526000945A24 /* Socket */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2B7159B5277C526000945A24 /* XCRemoteSwiftPackageReference "BlueSocket" */;
+			productName = Socket;
+		};
+		2B7159B9277C529300945A24 /* SwordRPC */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2B7159B8277C529300945A24 /* XCRemoteSwiftPackageReference "SwordRPC" */;
+			productName = SwordRPC;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 50511EB92770E085003A1E9F /* Project object */;
 }
