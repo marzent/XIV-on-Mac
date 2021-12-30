@@ -97,9 +97,6 @@ struct Setup {
     }
     
     static func DXVK() {
-        NotificationCenter.default.post(name: .installStatusUpdate, object: nil,
-                                        userInfo:[Notification.status.header: "Installing dependencies....",
-                                                  Notification.status.info: "DXVK 1.9.2"])
         let dxvk_path = Bundle.main.url(forResource: "dxvk", withExtension: nil, subdirectory: "")!
         let dx_dlls = ["d3d9.dll", "d3d10_1.dll", "d3d10.dll", "d3d10core.dll", "dxgi.dll", "d3d11.dll"]
         let system32 = Util.prefix.appendingPathComponent("drive_c/windows/system32")
@@ -120,9 +117,6 @@ struct Setup {
     }
     
     static func XL() {
-        NotificationCenter.default.post(name: .installStatusUpdate, object: nil,
-                                        userInfo:[Notification.status.header: "Installing dependencies....",
-                                                  Notification.status.info: "XIVLauncher"])
         let XL_bundle = Bundle.main.url(forResource: "XIVLauncher", withExtension: nil, subdirectory: "")!.path
         let XL_path = Util.localSettings + "XIVLauncher"
         let fm = FileManager.default
