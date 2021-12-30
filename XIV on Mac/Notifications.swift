@@ -11,11 +11,12 @@ extension Notification.Name {
     static let depInstall = Notification.Name("DepInstallNotification")
     static let depInstallDone = Notification.Name("DepInstallDoneNotification")
     static let depDownloadDone = Notification.Name("DepDownloadDoneNotification")
-	
+    static let installStatusUpdate = Notification.Name("InstallStatusUpdateNotification")
 }
 
 extension Notification {
-    enum dep: String {
-        case name
+    enum status: String {
+        case header
+        case info
     }
 }

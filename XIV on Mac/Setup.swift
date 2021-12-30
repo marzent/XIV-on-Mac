@@ -18,6 +18,9 @@ struct Setup {
                 "https://download.visualstudio.microsoft.com/download/pr/7afca223-55d2-470a-8edc-6a1739ae3252/abd170b4b0ec15ad0222a809b761a036/ndp48-x86-x64-allos-enu.exe" : false,]
     
     static func downloadDeps() {
+        NotificationCenter.default.post(name: .installStatusUpdate, object: nil,
+                                        userInfo:[Notification.status.header: "Downloading dependencies....",
+                                                  Notification.status.info: "0/\(dep_urls.count) done"])
         for (url, _) in dep_urls {
             FileDownloader.loadFileAsync(url: url, onFinish: downloadDone)
         }
@@ -25,31 +28,79 @@ struct Setup {
     
     static func downloadDone(url: String) {
         dep_urls[url] = true
+        let progress = dep_urls.filter({dep in return dep.value}).count
+        NotificationCenter.default.post(name: .installStatusUpdate, object: nil,
+                                        userInfo:[Notification.status.header: "Downloading dependencies....",
+                                                  Notification.status.info: "\(progress)/\(dep_urls.count) done"])
         if dep_urls.allSatisfy({$0.value}) {
             NotificationCenter.default.post(name: .depDownloadDone, object: nil)
         }
     }
     
     static func installDeps() {
+        installMSVC()
+        installDotNet40()
+        installDotNet462()
+        installDotNet472()
+        installDotNet48()
+        DXVK()
+        XL()
+        NotificationCenter.default.post(name: .depInstallDone, object: nil)
+    }
+    
+    static func installMSVC() {
+        NotificationCenter.default.post(name: .installStatusUpdate, object: nil,
+                                        userInfo:[Notification.status.header: "Installing dependencies....",
+                                                  Notification.status.info: "Microsoft Visual C++ Redistributables"])
         setWine(version: "win10")
-        Util.launchWine(args: [Util.cache.appendingPathComponent("vc_redist.x64.exe").path], blocking: true)
-        Util.launchWine(args: [Util.cache.appendingPathComponent("vc_redist.x86.exe").path], blocking: true)
+        Util.launchWine(args: [Util.cache.appendingPathComponent("vc_redist.x64.exe").path, "/install", "/passive", "/norestart"], blocking: true)
+        Util.launchWine(args: [Util.cache.appendingPathComponent("vc_redist.x86.exe").path, "/install", "/passive", "/norestart"], blocking: true)
+    }
+    
+    static func installDotNet40() {
+        NotificationCenter.default.post(name: .installStatusUpdate, object: nil,
+                                        userInfo:[Notification.status.header: "Installing dependencies....",
+                                                  Notification.status.info: "Microsoft .NET Framework 4.0"])
         setWine(version: "winxp64")
         overideDLL(dll: "mscoree", type: "native")
-        Util.launchWine(args: [Util.cache.appendingPathComponent("dotNetFx40_Full_x86_x64.exe").path, "/norestart"], blocking: true)
-        setWine(version: "win7")
-        Util.launchWine(args: [Util.cache.appendingPathComponent("NDP462-KB3151800-x86-x64-AllOS-ENU.exe").path, "/norestart"], blocking: true)
-        Util.launchWine(args: [Util.cache.appendingPathComponent("NDP472-KB4054530-x86-x64-AllOS-ENU.exe").path, "/norestart"], blocking: true)
+        Util.launchWine(args: [Util.cache.appendingPathComponent("dotNetFx40_Full_x86_x64.exe").path, "/passive", "/norestart"], blocking: true)
         setWine(version: "win10")
-        Util.launchWine(args: [Util.cache.appendingPathComponent("ndp48-x86-x64-allos-enu.exe").path, "/norestart"], blocking: true)
-        Setup.DXVK()
-        Setup.XL()
-        NotificationCenter.default.post(name: .depInstallDone, object: nil)
-        
+    }
+    
+    static func installDotNet462() {
+        NotificationCenter.default.post(name: .installStatusUpdate, object: nil,
+                                        userInfo:[Notification.status.header: "Installing dependencies....",
+                                                  Notification.status.info: "Microsoft .NET Framework 4.6.2"])
+        setWine(version: "win7")
+        overideDLL(dll: "mscoree", type: "native")
+        Util.launchWine(args: [Util.cache.appendingPathComponent("NDP462-KB3151800-x86-x64-AllOS-ENU.exe").path, "/passive", "/norestart"], blocking: true)
+        setWine(version: "win10")
+    }
+    
+    static func installDotNet472() {
+        NotificationCenter.default.post(name: .installStatusUpdate, object: nil,
+                                        userInfo:[Notification.status.header: "Installing dependencies....",
+                                                  Notification.status.info: "Microsoft .NET Framework 4.7.2"])
+        setWine(version: "win7")
+        overideDLL(dll: "mscoree", type: "native")
+        Util.launchWine(args: [Util.cache.appendingPathComponent("NDP472-KB4054530-x86-x64-AllOS-ENU.exe").path, "/passive", "/norestart"], blocking: true)
+        setWine(version: "win10")
+    }
+    
+    static func installDotNet48() {
+        NotificationCenter.default.post(name: .installStatusUpdate, object: nil,
+                                        userInfo:[Notification.status.header: "Installing dependencies....",
+                                                  Notification.status.info: "Microsoft .NET Framework 4.8"])
+        setWine(version: "win10")
+        overideDLL(dll: "mscoree", type: "native")
+        Util.launchWine(args: [Util.cache.appendingPathComponent("ndp48-x86-x64-allos-enu.exe").path, "/passive", "/norestart"], blocking: true)
     }
     
     static func DXVK() {
-        let dxvk_path = Bundle.main.url(forResource: "x64", withExtension: nil, subdirectory: "dxvk")!
+        NotificationCenter.default.post(name: .installStatusUpdate, object: nil,
+                                        userInfo:[Notification.status.header: "Installing dependencies....",
+                                                  Notification.status.info: "DXVK 1.9.2"])
+        let dxvk_path = Bundle.main.url(forResource: "dxvk", withExtension: nil, subdirectory: "")!
         let dx_dlls = ["d3d9.dll", "d3d10_1.dll", "d3d10.dll", "d3d10core.dll", "dxgi.dll", "d3d11.dll"]
         let system32 = Util.prefix.appendingPathComponent("drive_c/windows/system32")
         let fm = FileManager.default
@@ -61,19 +112,17 @@ struct Setup {
                 }
                 try fm.copyItem(atPath: dxvk_path.appendingPathComponent(dll).path, toPath: dll_path)
                 overideDLL(dll: dll.components(separatedBy: ".")[0], type: "native")
-				
-				
             }
             catch {
                 print("error setting up dxvk dll \(dll)")
-				
-				
-				
             }
         }
     }
     
     static func XL() {
+        NotificationCenter.default.post(name: .installStatusUpdate, object: nil,
+                                        userInfo:[Notification.status.header: "Installing dependencies....",
+                                                  Notification.status.info: "XIVLauncher"])
         let XL_bundle = Bundle.main.url(forResource: "XIVLauncher", withExtension: nil, subdirectory: "")!.path
         let XL_path = Util.localSettings + "XIVLauncher"
         let fm = FileManager.default
