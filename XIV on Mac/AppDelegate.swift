@@ -19,12 +19,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         Util.make(dir: Util.prefix.path)
         Util.make(dir: Util.cache.path)
         if Util.getSetting(settingKey: licenseSettingKey, defaultValue: "Mac") == "Mac" {
-            macButton.state = .on
-            winButton.state = .off
+            macLicense()
         }
         else {
-            macButton.state = .off
-            winButton.state = .on
+            winLicense()
         }
         SocialIntegration.discord.setPresence()
     }
@@ -38,6 +36,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @IBAction func winLicense(_ sender: Any) {
+        winLicense()
+    }
+    
+    func winLicense() {
         Util.launchWine(args: ["reg", "add", "HKEY_CURRENT_USER\\Software\\Wine", "/v", "HideWineExports", "/d", "1", "/f"])
         macButton.state = .off
         winButton.state = .on
@@ -45,11 +47,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 	
     @IBAction func macLicense(_ sender: Any) {
+        macLicense()
+    }
+    
+    func macLicense() {
         Util.launchWine(args: ["reg", "add", "HKEY_CURRENT_USER\\Software\\Wine", "/v", "HideWineExports", "/d", "0", "/f"])
         macButton.state = .on
         winButton.state = .off
         UserDefaults.standard.set("Mac", forKey: licenseSettingKey)
     }
+    
 	
 }
 

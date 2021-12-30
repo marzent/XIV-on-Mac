@@ -9,16 +9,19 @@ import Foundation
 import SwordRPC
 
 struct SocialIntegration {
+    @available(*, unavailable) private init() {}
+    
     class DiscordRichPresence {
         let settingsKey = "DISCORD_OPTIONS"
-        var discordAppId = "925647215421173820"
-        var iconName = "appicon-alpha"
-        var defaults = UserDefaults.standard
+        let discordAppId = "925647215421173820"
+        let iconName = "appicon-alpha"
+        let defaults = UserDefaults.standard
         var connected = false
         
-        var rpc:SwordRPC
-        var richPresence:RichPresence
-        var enabled:Bool
+        var rpc: SwordRPC
+        var richPresence: RichPresence
+        var enabled: Bool
+        
         init() {
             if (defaults.object(forKey: settingsKey) == nil) {
                 defaults.set(true, forKey: settingsKey)
@@ -39,7 +42,6 @@ struct SocialIntegration {
                 print("Discord not connected.")
                 return;
             }
-            
             self.richPresence.assets.largeImage = iconName
             self.richPresence.timestamps.start = Date()
             rpc.setPresence(self.richPresence)
@@ -56,7 +58,6 @@ struct SocialIntegration {
         
         func save() {
             defaults.set(self.enabled, forKey: settingsKey)
-            
             if (self.enabled) {
                 self.rpc = SwordRPC.init(appId: discordAppId)
                 self.connected = connect(rpc: self.rpc)

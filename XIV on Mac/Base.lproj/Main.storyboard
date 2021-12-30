@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19455"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -539,18 +539,18 @@
             <objects>
                 <viewController id="GIg-v3-M8h" customClass="SettingsController" customModule="XIV_on_Mac" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="Uy2-An-Xxz">
-                        <rect key="frame" x="0.0" y="0.0" width="668" height="532"/>
+                        <rect key="frame" x="0.0" y="0.0" width="668" height="479"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <box fixedFrame="YES" title="Social Integration" translatesAutoresizingMaskIntoConstraints="NO" id="HJs-37-GDf">
-                                <rect key="frame" x="17" y="409" width="634" height="103"/>
+                                <rect key="frame" x="17" y="383" width="634" height="76"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <view key="contentView" id="hCN-fj-lmr">
-                                    <rect key="frame" x="3" y="3" width="628" height="85"/>
+                                    <rect key="frame" x="3" y="3" width="628" height="58"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LP2-JT-YsT">
-                                            <rect key="frame" x="18" y="34" width="163" height="18"/>
+                                            <rect key="frame" x="18" y="21" width="163" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Discord Rich Presence" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="EJl-D1-TzE">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -564,7 +564,7 @@
                                 </view>
                             </box>
                             <box fixedFrame="YES" title="DXVK" translatesAutoresizingMaskIntoConstraints="NO" id="sgA-bR-Hht">
-                                <rect key="frame" x="17" y="38" width="634" height="351"/>
+                                <rect key="frame" x="17" y="16" width="634" height="351"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <view key="contentView" id="l3b-VZ-Zad">
                                     <rect key="frame" x="3" y="3" width="628" height="333"/>
@@ -820,7 +820,7 @@
                 </viewController>
                 <customObject id="tpD-0Q-AJh" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="896" y="574"/>
+            <point key="canvasLocation" x="896" y="547.5"/>
         </scene>
     </scenes>
 </document>
