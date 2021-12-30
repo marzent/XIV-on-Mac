@@ -34,4 +34,4 @@ You can read our depreciated Crossover setup guide <a href="https://github.com/s
 
 ---
 
-<div align="center">FINAL FANTASY is a registered trademark of Square Enix Holdings Co., Ltd.</div>
+<div align="center"><b>FINAL FANTASY is a registered trademark of Square Enix Holdings Co., Ltd.</b></div>
