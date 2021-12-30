@@ -1,4 +1,5 @@
 # XIV on Mac
+<img src="https://i.imgur.com/L2EETYx.png" alt="XIVonMAC" width="256" height="256"> 
 Wine Wrapper, Setup tool and alternative launcher for FFXIV on MacOS.
 
 ---
