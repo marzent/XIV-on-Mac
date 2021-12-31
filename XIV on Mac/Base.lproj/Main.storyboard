@@ -75,7 +75,8 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="aJh-i4-bef"/>
-                                        <menuItem title="Close" keyEquivalent="w" id="DVo-aG-piG">
+                                        <menuItem title="Close" keyEquivalent="\" id="DVo-aG-piG">
+                                            <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
                                             <connections>
                                                 <action selector="performClose:" target="Ady-hI-5gd" id="HmO-Ls-i7Q"/>
                                             </connections>
@@ -125,7 +126,7 @@
                                                 <action selector="delete:" target="Ady-hI-5gd" id="0Mk-Ml-PaM"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Select All" keyEquivalent="a" id="Ruw-6m-B2m">
+                                        <menuItem title="Select All" keyEquivalent="[" id="Ruw-6m-B2m">
                                             <connections>
                                                 <action selector="selectAll:" target="Ady-hI-5gd" id="VNm-Mi-diN"/>
                                             </connections>
@@ -495,6 +496,11 @@
                                             <action selector="play:" target="XfG-lQ-9wD" id="kyp-lx-V8P"/>
                                         </connections>
                                     </button>
+                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rLY-2d-SKn">
+                                        <rect key="frame" x="-272" y="-234" width="1175" height="415"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" image="bg" id="m3I-Y7-hxo"/>
+                                    </imageView>
                                 </subviews>
                             </visualEffectView>
                         </subviews>
@@ -823,4 +829,7 @@
             <point key="canvasLocation" x="896" y="547.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="bg" width="640" height="360"/>
+    </resources>
 </document>
