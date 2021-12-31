@@ -151,6 +151,7 @@ struct Util {
     
     static var enviroment : [String : String] {
         var env = ProcessInfo.processInfo.environment
+        env["LANG"] = "en_US" //needed to run when system language is set to 日本語
         env["WINEESYNC"] = "1"
         env["WINEPREFIX"] = prefix.path
         env["WINEDEBUG"] = "fixme-seh"

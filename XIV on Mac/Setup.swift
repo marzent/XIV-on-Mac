@@ -15,7 +15,8 @@ struct Setup {
                 "https://download.microsoft.com/download/9/5/A/95A9616B-7A37-4AF6-BC36-D6EA96C8DAAE/dotNetFx40_Full_x86_x64.exe" : false,
                 "https://download.visualstudio.microsoft.com/download/pr/8e396c75-4d0d-41d3-aea8-848babc2736a/80b431456d8866ebe053eb8b81a168b3/NDP462-KB3151800-x86-x64-AllOS-ENU.exe" : false,
                 "https://download.visualstudio.microsoft.com/download/pr/1f5af042-d0e4-4002-9c59-9ba66bcf15f6/089f837de42708daacaae7c04b7494db/NDP472-KB4054530-x86-x64-AllOS-ENU.exe" : false,
-                "https://download.visualstudio.microsoft.com/download/pr/7afca223-55d2-470a-8edc-6a1739ae3252/abd170b4b0ec15ad0222a809b761a036/ndp48-x86-x64-allos-enu.exe" : false,]
+                "https://download.visualstudio.microsoft.com/download/pr/7afca223-55d2-470a-8edc-6a1739ae3252/abd170b4b0ec15ad0222a809b761a036/ndp48-x86-x64-allos-enu.exe" : false,
+                "https://github.com/marzent/FFXIVQuickLauncher/releases/download/6.1.8/Setup.exe" : false]
     
     static func downloadDeps() {
         NotificationCenter.default.post(name: .installStatusUpdate, object: nil,
@@ -117,19 +118,7 @@ struct Setup {
     }
     
     static func XL() {
-        let XL_bundle = Bundle.main.url(forResource: "XIVLauncher", withExtension: nil, subdirectory: "")!.path
-        let XL_path = Util.localSettings + "XIVLauncher"
-        let fm = FileManager.default
-        do {
-            if fm.fileExists(atPath: XL_path) {
-                try fm.removeItem(atPath: XL_path)
-            }
-            try fm.copyItem(atPath: XL_bundle, toPath: XL_path)
-        }
-        catch {
-            print("error setting up XIVLauncher", to: &Util.logger)
-        }
-        Util.launchXL()
+        Util.launchWine(args: [Util.cache.appendingPathComponent("Setup.exe").path])
     }
     
     static func overideDLL(dll: String, type: String) {

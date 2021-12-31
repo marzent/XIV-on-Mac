@@ -17,7 +17,6 @@
 		50511ECC2770E087003A1E9F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50511ECA2770E087003A1E9F /* Main.storyboard */; };
 		505C0D9B277333920008A344 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505C0D9A277333920008A344 /* Util.swift */; };
 		507D8F2127766F52000F0CB0 /* dxvk in Resources */ = {isa = PBXBuildFile; fileRef = 507D8F2027766F52000F0CB0 /* dxvk */; };
-		507D8F2327770E99000F0CB0 /* XIVLauncher in Resources */ = {isa = PBXBuildFile; fileRef = 507D8F2227770E99000F0CB0 /* XIVLauncher */; };
 		50BD278727785418002B0D1F /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BD278627785418002B0D1F /* Notifications.swift */; };
 		50E5387B2779CF5C0038521A /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E5387A2779CF5C0038521A /* SettingsController.swift */; };
 		50ED0DB32773C619002E9854 /* Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ED0DB22773C619002E9854 /* Setup.swift */; };
@@ -35,7 +34,6 @@
 		50511ECD2770E087003A1E9F /* XIV_on_Mac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = XIV_on_Mac.entitlements; sourceTree = "<group>"; };
 		505C0D9A277333920008A344 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		507D8F2027766F52000F0CB0 /* dxvk */ = {isa = PBXFileReference; lastKnownFileType = folder; path = dxvk; sourceTree = "<group>"; };
-		507D8F2227770E99000F0CB0 /* XIVLauncher */ = {isa = PBXFileReference; lastKnownFileType = folder; path = XIVLauncher; sourceTree = "<group>"; };
 		50BD278627785418002B0D1F /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		50E5387A2779CF5C0038521A /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		50ED0DB22773C619002E9854 /* Setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setup.swift; sourceTree = "<group>"; };
@@ -87,7 +85,6 @@
 				50511ECD2770E087003A1E9F /* XIV_on_Mac.entitlements */,
 				507D8F2027766F52000F0CB0 /* dxvk */,
 				5043E36B27728BA300E59127 /* wine */,
-				507D8F2227770E99000F0CB0 /* XIVLauncher */,
 			);
 			path = "XIV on Mac";
 			sourceTree = "<group>";
@@ -163,7 +160,6 @@
 				507D8F2127766F52000F0CB0 /* dxvk in Resources */,
 				50511ECC2770E087003A1E9F /* Main.storyboard in Resources */,
 				5043E36C27728BA300E59127 /* wine in Resources */,
-				507D8F2327770E99000F0CB0 /* XIVLauncher in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,7 +359,7 @@
 					"$(PROJECT_DIR)/XIV\\ on\\ Mac/wine/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "dezent.XIV-on-Mac";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -398,7 +394,7 @@
 					"$(PROJECT_DIR)/XIV\\ on\\ Mac/wine/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "dezent.XIV-on-Mac";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
