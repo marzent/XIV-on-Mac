@@ -10,58 +10,68 @@ import Cocoa
 struct Setup {
     @available(*, unavailable) private init() {}
     
-    static var dep_urls = ["https://aka.ms/vs/17/release/vc_redist.x64.exe" : false,
-                "https://aka.ms/vs/17/release/vc_redist.x86.exe" : false,
-                "https://download.microsoft.com/download/9/5/A/95A9616B-7A37-4AF6-BC36-D6EA96C8DAAE/dotNetFx40_Full_x86_x64.exe" : false,
-                "https://download.visualstudio.microsoft.com/download/pr/8e396c75-4d0d-41d3-aea8-848babc2736a/80b431456d8866ebe053eb8b81a168b3/NDP462-KB3151800-x86-x64-AllOS-ENU.exe" : false,
-                "https://download.visualstudio.microsoft.com/download/pr/1f5af042-d0e4-4002-9c59-9ba66bcf15f6/089f837de42708daacaae7c04b7494db/NDP472-KB4054530-x86-x64-AllOS-ENU.exe" : false,
-                "https://download.visualstudio.microsoft.com/download/pr/7afca223-55d2-470a-8edc-6a1739ae3252/abd170b4b0ec15ad0222a809b761a036/ndp48-x86-x64-allos-enu.exe" : false,
-                "https://github.com/marzent/FFXIVQuickLauncher/releases/download/6.1.8/Setup.exe" : false]
-    
-    static func downloadDeps() {
+    static func postInstall(header: String) {
         NotificationCenter.default.post(name: .installStatusUpdate, object: nil,
-                                        userInfo:[Notification.status.header: "Downloading dependencies....",
-                                                  Notification.status.info: "0/\(dep_urls.count) done"])
-        for (url, _) in dep_urls {
-            FileDownloader.loadFileAsync(url: url, onFinish: downloadDone)
+                                        userInfo:[Notification.status.header: header,
+                                                  Notification.status.info: "Installing..."])
+    }
+    
+    static func postDownload(header: String) {
+        NotificationCenter.default.post(name: .installStatusUpdate, object: nil,
+                                        userInfo:[Notification.status.header: header,
+                                                  Notification.status.info: "Downloading..."])
+    }
+    
+    static func download(url: String) {
+        FileDownloader.loadFileSync(url: URL(string: url)!) {(path, error) in
+            print("File downloaded to : \(path!)")
         }
     }
     
-    static func downloadDone(url: String) {
-        dep_urls[url] = true
-        let progress = dep_urls.filter({dep in return dep.value}).count
-        NotificationCenter.default.post(name: .installStatusUpdate, object: nil,
-                                        userInfo:[Notification.status.header: "Downloading dependencies....",
-                                                  Notification.status.info: "\(progress)/\(dep_urls.count) done"])
-        if dep_urls.allSatisfy({$0.value}) {
-            NotificationCenter.default.post(name: .depDownloadDone, object: nil)
+    static func installDeps(vanilla: Bool) {
+        installMSVC32()
+        installMSVC64()
+        if !vanilla {
+            installDotNet40()
+            installDotNet462()
+            installDotNet472()
+            installDotNet48()
         }
-    }
-    
-    static func installDeps() {
-        installMSVC()
-        installDotNet40()
-        installDotNet462()
-        installDotNet472()
-        installDotNet48()
         DXVK()
-        XL()
+        vanillaConf()
+        if vanilla {
+            vanillaLauncher()
+        }
+        else {
+            XLConf()
+            XL()
+        }
         NotificationCenter.default.post(name: .depInstallDone, object: nil)
     }
     
-    static func installMSVC() {
-        NotificationCenter.default.post(name: .installStatusUpdate, object: nil,
-                                        userInfo:[Notification.status.header: "Installing dependencies....",
-                                                  Notification.status.info: "Microsoft Visual C++ Redistributables"])
+    static func installMSVC32() {
+        let name = "Microsoft Visual C++ Redistributables x86"
+        postDownload(header: name)
+        download(url: "https://aka.ms/vs/17/release/vc_redist.x86.exe")
+        postInstall(header: name)
         setWine(version: "win10")
-        Util.launchWine(args: [Util.cache.appendingPathComponent("vc_redist.x64.exe").path, "/install", "/passive", "/norestart"], blocking: true)
         Util.launchWine(args: [Util.cache.appendingPathComponent("vc_redist.x86.exe").path, "/install", "/passive", "/norestart"], blocking: true)
     }
     
+    static func installMSVC64() {
+        let name = "Microsoft Visual C++ Redistributables x64"
+        postDownload(header: name)
+        download(url: "https://aka.ms/vs/17/release/vc_redist.x64.exe")
+        postInstall(header: name)
+        setWine(version: "win10")
+        Util.launchWine(args: [Util.cache.appendingPathComponent("vc_redist.x64.exe").path, "/install", "/passive", "/norestart"], blocking: true)
+    }
+    
     static func installDotNet40() {
-        NotificationCenter.default.post(name: .installStatusUpdate, object: nil,
-                                        userInfo:[Notification.status.header: "Installing dependencies....",
-                                                  Notification.status.info: "Microsoft .NET Framework 4.0"])
+        let name = "Microsoft .NET Framework 4.0"
+        postDownload(header: name)
+        download(url: "https://download.microsoft.com/download/9/5/A/95A9616B-7A37-4AF6-BC36-D6EA96C8DAAE/dotNetFx40_Full_x86_x64.exe")
+        postInstall(header: name)
         setWine(version: "winxp64")
         overideDLL(dll: "mscoree", type: "native")
         Util.launchWine(args: [Util.cache.appendingPathComponent("dotNetFx40_Full_x86_x64.exe").path, "/passive", "/norestart"], blocking: true)
@@ -69,9 +79,10 @@ struct Setup {
     }
     
     static func installDotNet462() {
-        NotificationCenter.default.post(name: .installStatusUpdate, object: nil,
-                                        userInfo:[Notification.status.header: "Installing dependencies....",
-                                                  Notification.status.info: "Microsoft .NET Framework 4.6.2"])
+        let name = "Microsoft .NET Framework 4.6.2"
+        postDownload(header: name)
+        download(url: "https://download.visualstudio.microsoft.com/download/pr/8e396c75-4d0d-41d3-aea8-848babc2736a/80b431456d8866ebe053eb8b81a168b3/NDP462-KB3151800-x86-x64-AllOS-ENU.exe")
+        postInstall(header: name)
         setWine(version: "win7")
         overideDLL(dll: "mscoree", type: "native")
         Util.launchWine(args: [Util.cache.appendingPathComponent("NDP462-KB3151800-x86-x64-AllOS-ENU.exe").path, "/passive", "/norestart"], blocking: true)
@@ -79,9 +90,10 @@ struct Setup {
     }
     
     static func installDotNet472() {
-        NotificationCenter.default.post(name: .installStatusUpdate, object: nil,
-                                        userInfo:[Notification.status.header: "Installing dependencies....",
-                                                  Notification.status.info: "Microsoft .NET Framework 4.7.2"])
+        let name = "Microsoft .NET Framework 4.7.2"
+        postDownload(header: name)
+        download(url: "https://download.visualstudio.microsoft.com/download/pr/1f5af042-d0e4-4002-9c59-9ba66bcf15f6/089f837de42708daacaae7c04b7494db/NDP472-KB4054530-x86-x64-AllOS-ENU.exe")
+        postInstall(header: name)
         setWine(version: "win7")
         overideDLL(dll: "mscoree", type: "native")
         Util.launchWine(args: [Util.cache.appendingPathComponent("NDP472-KB4054530-x86-x64-AllOS-ENU.exe").path, "/passive", "/norestart"], blocking: true)
@@ -89,9 +101,10 @@ struct Setup {
     }
     
     static func installDotNet48() {
-        NotificationCenter.default.post(name: .installStatusUpdate, object: nil,
-                                        userInfo:[Notification.status.header: "Installing dependencies....",
-                                                  Notification.status.info: "Microsoft .NET Framework 4.8"])
+        let name = "Microsoft .NET Framework 4.8"
+        postDownload(header: name)
+        download(url: "https://download.visualstudio.microsoft.com/download/pr/7afca223-55d2-470a-8edc-6a1739ae3252/abd170b4b0ec15ad0222a809b761a036/ndp48-x86-x64-allos-enu.exe")
+        postInstall(header: name)
         setWine(version: "win10")
         overideDLL(dll: "mscoree", type: "native")
         Util.launchWine(args: [Util.cache.appendingPathComponent("ndp48-x86-x64-allos-enu.exe").path, "/passive", "/norestart"], blocking: true)
@@ -117,7 +130,55 @@ struct Setup {
         }
     }
     
+    static func writeConf(content: String, folder: URL, filename: String) {
+        Util.make(dir: folder.path)
+        let file = folder.appendingPathComponent(filename)
+        do {
+            if !FileManager.default.fileExists(atPath: file.path) {
+                try content.write(to: file, atomically: true, encoding: String.Encoding.utf8)
+            }
+        } catch {
+            print("Error writing \(filename)", to: &Util.logger)
+        }
+    }
+    
+    static func vanillaConf() {
+        let content = "<FINAL FANTASY XIV Boot Config File>\n\n<Version>\nBrowser 1\nStartupCompleted 1"
+        let folder = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("My Games/FINAL FANTASY XIV - A Realm Reborn")
+        writeConf(content: content, folder: folder, filename: "FFXIV_BOOT.cfg")
+    }
+    
+    static func XLConf() {
+        let content = """
+{
+    "PatchAcquisitionMethod": "Aria",
+    "InGameAddonLoadMethod": "DllInject",
+    "GamePath": "C:\\Program Files (x86)\\SquareEnix\\FINAL FANTASY XIV - A Realm Reborn",
+    "IsDx11": "true",
+    "InGameAddonEnabled": "true",
+    "LastVersion": "6.1.8.0",
+}
+"""
+        let folder = Util.prefix.appendingPathComponent("drive_c/users/emet-selch/Application Data/XIVLauncher")
+        writeConf(content: content, folder: folder, filename: "launcherConfigV3.json")
+    }
+    
+    static func vanillaLauncher() {
+        let name = "Final Fantasy XIV - official launcher"
+        postDownload(header: name)
+        download(url: "https://gdl.square-enix.com/ffxiv/inst/ffxivsetup.exe")
+        postInstall(header: name)
+        Util.launchWine(args: [Util.cache.appendingPathComponent("ffxivsetup.exe").path], blocking: true)
+        Util.launchPath = Util.prefix.appendingPathComponent("game/drive_c/Program Files (x86)/SquareEnix/FINAL FANTASY XIV - A Realm Reborn/boot/ffxivboot64.exe").path
+        Util.launchGame()
+    }
+    
     static func XL() {
+        let name = "XIVLauncher"
+        postDownload(header: name)
+        download(url: "https://github.com/marzent/FFXIVQuickLauncher/releases/download/6.1.8/Setup.exe")
+        postInstall(header: name)
+        Util.launchPath = Util.prefix.appendingPathComponent("drive_c/users/emet-selch/Local Settings/Application Data/XIVLauncher/XIVLauncher.exe").path
         Util.launchWine(args: [Util.cache.appendingPathComponent("Setup.exe").path])
     }
     

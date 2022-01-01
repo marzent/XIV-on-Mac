@@ -66,7 +66,7 @@ struct Util {
             if let line = String(data: pipe.availableData, encoding: String.Encoding.utf8) {
                 print(line, to: &wineLogger)
             } else {
-                print("Error decoding data: \(pipe.availableData)", to: &logger)
+                print("Error decoding data: \(pipe.availableData)\n", to: &logger)
             }
         }
         do {
@@ -76,7 +76,7 @@ struct Util {
             }
         }
         catch {
-                print("Error starting subprocess", to: &logger)
+            print("Error starting subprocess", to: &logger)
         }
     }
     
@@ -84,12 +84,32 @@ struct Util {
         launch(exec: wine, args : args, blocking: blocking)
     }
     
-    static func launchXL() {
-        launchWine(args: [localSettings + "XIVLauncher/XIVLauncher.exe"])
+    static let launchSettingKey = "LaunchPath"
+    static var launchPath: String {
+        get {
+            return Util.getSetting(settingKey: launchSettingKey, defaultValue: "")
+        }
+        set(newPath) {
+            UserDefaults.standard.set(newPath, forKey: launchSettingKey)
+        }
+    }
+    
+    static func launchGame(blocking: Bool = false) {
+        launchWine(args : [launchPath], blocking: blocking)
+        DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 10.0) {
+            waitWine()
+            DispatchQueue.main.async {
+                NSApplication.shared.terminate(nil)
+            }
+        }
     }
     
     static func killWine() {
-        launch(exec: wineserver, args: ["-k"])
+        launch(exec: wineserver, args: ["-k"], blocking: true)
+    }
+    
+    static func waitWine() {
+        launch(exec: wineserver, args: ["-w"], blocking: true)
     }
     
     class DXVK: Codable {
