@@ -745,10 +745,10 @@ Gw
                                                                             </textFieldCell>
                                                                         </textField>
                                                                         <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ONA-w1-DjM">
-                                                                            <rect key="frame" x="116" y="16" width="514" height="54"/>
+                                                                            <rect key="frame" x="187" y="16" width="486" height="54"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                             <textFieldCell key="cell" id="uJx-kU-CQH">
-                                                                                <font key="font" textStyle="title2" name=".SFNS-Regular"/>
+                                                                                <font key="font" metaFont="system"/>
                                                                                 <string key="title">When copying or symlinking, please select the folder your game is installed in. It should contain the folders "game" and "boot".</string>
                                                                                 <color key="textColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
                                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
