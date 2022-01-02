@@ -10,6 +10,8 @@ import Cocoa
 class InstallerController: NSViewController {
     
     private var vanillaClient = true
+    private var copyGame = false
+    private var linkGame = false
     
     @IBOutlet private var status: NSTextField!
     @IBOutlet private var info: NSTextField!
@@ -53,17 +55,52 @@ class InstallerController: NSViewController {
     }
     
     @IBAction func versionSelect(_ sender: NSButton) {
-        vanillaClient = (sender.stringValue == "Square Enix Launcher")
+        vanillaClient = (sender.identifier == NSUserInterfaceItemIdentifier("vanilla_launcher"))
     }
     
     @IBAction func gameFileSelect(_ sender: NSButton) {
-        //todo
+        switch sender.identifier! {
+        case NSUserInterfaceItemIdentifier("copy_game"):
+            copyGame = true
+            linkGame = false
+        case NSUserInterfaceItemIdentifier("link_game"):
+            copyGame = false
+            linkGame = true
+        default:
+            copyGame = false
+            linkGame = false
+        }
     }
     
     @IBAction func startInstall(_ sender: Any) {
         tabView.selectNextTabViewItem(sender)
+        if copyGame || linkGame {
+            let openPanel = NSOpenPanel()
+            openPanel.title = "Choose the folder with the existing install"
+            if #available(macOS 11.0, *) {
+                openPanel.subtitle = "It should contain the folders \"game\" and \"boot\"."
+            }
+            openPanel.showsResizeIndicator = true
+            openPanel.showsHiddenFiles = true
+            openPanel.canChooseDirectories = true
+            openPanel.canChooseFiles = false
+            openPanel.canCreateDirectories = false
+            openPanel.allowsMultipleSelection = false
+            openPanel.beginSheetModal(for:self.view.window!) { (response) in
+                if response == .OK {
+                    self.install(gamePath: openPanel.url!.path)
+                    openPanel.close()
+                }
+            }
+        }
+        else {
+            install()
+        }
+    }
+    
+    func install(gamePath: String = "") {
         DispatchQueue.global(qos: .default).async {
-            Setup.installDeps(vanilla: self.vanillaClient)
+            Setup.install(vanilla: self.vanillaClient, copy: self.copyGame, link: self.linkGame, gamePath: gamePath)
         }
     }
     

@@ -6,6 +6,7 @@
 //
 
 import Cocoa
+import ZIPFoundation
 
 struct Setup {
     @available(*, unavailable) private init() {}
@@ -28,25 +29,89 @@ struct Setup {
         }
     }
     
-    static func installDeps(vanilla: Bool) {
+    static func install(vanilla: Bool, copy: Bool, link: Bool, gamePath: String) {
+        DXVK()
+        vanillaConf()
         installMSVC32()
         installMSVC64()
+        if copy{
+            copyGame(gamePath: gamePath)
+        } else if link {
+            linkGame(gamePath: gamePath)
+        } else if vanilla {
+            vanillaLauncher()
+        }
+        movieFix()
         if !vanilla {
             installDotNet40()
             installDotNet462()
             installDotNet472()
             installDotNet48()
-        }
-        DXVK()
-        vanillaConf()
-        if vanilla {
-            vanillaLauncher()
-        }
-        else {
             XLConf()
             XL()
         }
+        else {
+            Util.launchGame()
+        }
         NotificationCenter.default.post(name: .depInstallDone, object: nil)
+    }
+    
+    static func copyGame(gamePath: String) {
+        postInstall(header: "Copying Game files")
+        let squex = Util.prefix.appendingPathComponent("drive_c/Program Files (x86)/SquareEnix")
+        let gameDest = squex.appendingPathComponent("FINAL FANTASY XIV - A Realm Reborn")
+        Util.make(dir: squex.path)
+        do {
+            try FileManager.default.copyItem(atPath: gamePath, toPath: gameDest.path)
+        }
+        catch {
+            print("error copying game from \(gamePath)\n", to: &Util.logger)
+        }
+        Util.launchPath = Util.prefix.appendingPathComponent("drive_c/Program Files (x86)/SquareEnix/FINAL FANTASY XIV - A Realm Reborn/boot/ffxivboot64.exe").path
+    }
+    
+    static func linkGame(gamePath: String) {
+        postInstall(header: "Linking Game files")
+        let squex = Util.prefix.appendingPathComponent("drive_c/Program Files (x86)/SquareEnix")
+        let gameDest = squex.appendingPathComponent("FINAL FANTASY XIV - A Realm Reborn")
+        Util.make(dir: squex.path)
+        do {
+            try FileManager.default.createSymbolicLink(atPath: gameDest.path, withDestinationPath: gamePath)
+        }
+        catch {
+            print("error creating symbolic link to \(gamePath)\n", to: &Util.logger)
+        }
+        Util.launchPath = Util.prefix.appendingPathComponent("drive_c/Program Files (x86)/SquareEnix/FINAL FANTASY XIV - A Realm Reborn/boot/ffxivboot64.exe").path
+    }
+    
+    static func movieFix() {
+        let name = "Fixing broken ARR cutscenes"
+        let version = "1.0.5"
+        let movies = ["00000.bk2", "00001.bk2", "00002.bk2", "00003.bk2"]
+        let moviePath = "drive_c/Program Files (x86)/SquareEnix/FINAL FANTASY XIV - A Realm Reborn/game/movie/ffxiv"
+        let unzipURL = Util.cache.appendingPathComponent("official-app")
+        let appMovies = unzipURL.appendingPathComponent("FINAL FANTASY XIV ONLINE.app/Contents/SharedSupport/finalfantasyxiv/support/published_Final_Fantasy/" + moviePath)
+        let prefixMovies = Util.prefix.appendingPathComponent(moviePath)
+        let fm = FileManager.default
+        postDownload(header: name)
+        download(url: "https://mac-dl.ffxiv.com/cw/finalfantasyxiv-\(version).zip")
+        postInstall(header: name)
+        Util.make(dir: unzipURL.path)
+        do {
+            try fm.unzipItem(at: Util.cache.appendingPathComponent("finalfantasyxiv-\(version).zip"), to: unzipURL)
+        }
+        catch {
+            print("error extracting native mac app archive\n", to: &Util.logger)
+        }
+        Util.make(dir: Util.prefix.appendingPathComponent(moviePath).path)
+        for movie in movies {
+            do {
+                try fm.copyItem(atPath: appMovies.appendingPathComponent(movie).path, toPath: prefixMovies.appendingPathComponent(movie).path)
+            }
+            catch {
+                print("error copying movie \(movie)\n", to: &Util.logger)
+            }
+        }
     }
     
     static func installMSVC32() {
@@ -169,7 +234,7 @@ struct Setup {
         download(url: "https://gdl.square-enix.com/ffxiv/inst/ffxivsetup.exe")
         postInstall(header: name)
         Util.launchWine(args: [Util.cache.appendingPathComponent("ffxivsetup.exe").path], blocking: true)
-        Util.launchPath = Util.prefix.appendingPathComponent("game/drive_c/Program Files (x86)/SquareEnix/FINAL FANTASY XIV - A Realm Reborn/boot/ffxivboot64.exe").path
+        Util.launchPath = Util.prefix.appendingPathComponent("drive_c/Program Files (x86)/SquareEnix/FINAL FANTASY XIV - A Realm Reborn/boot/ffxivboot64.exe").path
         Util.launchGame()
     }
     

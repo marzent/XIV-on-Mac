@@ -64,7 +64,7 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="File" id="bib-Uj-vzu">
                                     <items>
-                                        <menuItem title="Play" keyEquivalent="n" id="Was-JA-tGl">
+                                        <menuItem title="New Game Instance" keyEquivalent="n" id="Was-JA-tGl">
                                             <connections>
                                                 <action selector="play:" target="Voe-Tx-rLC" id="MG0-Wh-99r"/>
                                             </connections>
@@ -72,6 +72,11 @@
                                         <menuItem title="Open…" keyEquivalent="o" id="IAo-SY-fd9">
                                             <connections>
                                                 <action selector="explorer:" target="Voe-Tx-rLC" id="yFN-JF-vol"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Select startup executable" keyEquivalent="O" id="dxd-Xu-JNa">
+                                            <connections>
+                                                <action selector="explorer:" target="Voe-Tx-rLC" id="jM8-ya-rR0"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="aJh-i4-bef"/>
@@ -111,12 +116,6 @@
                                         <menuItem title="Paste" keyEquivalent="v" id="gVA-U4-sdL">
                                             <connections>
                                                 <action selector="paste:" target="Ady-hI-5gd" id="UvS-8e-Qdg"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Paste and Match Style" keyEquivalent="V" id="WeT-3V-zwk">
-                                            <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
-                                            <connections>
-                                                <action selector="pasteAsPlainText:" target="Ady-hI-5gd" id="cEh-KX-wJQ"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Delete" id="pa3-QI-u2k">
@@ -312,7 +311,7 @@
                                                 <action selector="regedit:" target="Voe-Tx-rLC" id="0Fs-1x-gQQ"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Wine Config" id="1UK-8n-QPP">
+                                        <menuItem title="Wine Configuration" id="1UK-8n-QPP">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="winecfg:" target="Voe-Tx-rLC" id="O3i-Tz-v44"/>
@@ -398,6 +397,13 @@
                                                             <action selector="installDotNet48:" target="Voe-Tx-rLC" id="KQA-LM-e9c"/>
                                                         </connections>
                                                     </menuItem>
+                                                    <menuItem isSeparatorItem="YES" id="lj6-6S-wy9"/>
+                                                    <menuItem title="All" id="pHz-sa-9jf">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="installDotNet48:" target="Voe-Tx-rLC" id="pl6-AS-Skg"/>
+                                                        </connections>
+                                                    </menuItem>
                                                 </items>
                                             </menu>
                                         </menuItem>
@@ -420,8 +426,14 @@
                                                 <action selector="vanillaLauncher:" target="Voe-Tx-rLC" id="aXS-oe-ci8"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem title="ARR cutcenes" id="9oO-6y-dqi">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="vanillaLauncher:" target="Voe-Tx-rLC" id="ZWZ-R2-p7q"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="8ME-M6-Hmm"/>
-                                        <menuItem title="Run Full Installer" id="WUo-tp-nqk">
+                                        <menuItem title="Run Install Wizard" id="WUo-tp-nqk">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
                                     </items>
@@ -479,7 +491,7 @@
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="0.0"/>
+            <point key="canvasLocation" x="108" y="-196"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
@@ -552,7 +564,7 @@
                                                                                 <action selector="openFAQ:" target="XfG-lQ-9wD" id="zBv-ew-B1a"/>
                                                                             </connections>
                                                                         </button>
-                                                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="12R-g7-krS">
+                                                                        <button identifier="vanilla_launcher" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="12R-g7-krS">
                                                                             <rect key="frame" x="227" y="197" width="405" height="18"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                             <buttonCell key="cell" type="radio" title="Square Enix Launcher" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="qDd-CO-Fjs">
@@ -575,9 +587,9 @@
                                                                             </connections>
                                                                         </button>
                                                                         <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kd7-D8-V8B">
-                                                                            <rect key="frame" x="248" y="174" width="121" height="16"/>
+                                                                            <rect key="frame" x="248" y="174" width="352" height="16"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Will skip .net install" id="Jbf-yx-ZQ7">
+                                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Will skip .net install, do not change default install location" id="Jbf-yx-ZQ7">
                                                                                 <font key="font" metaFont="system"/>
                                                                                 <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -671,7 +683,7 @@ Gw
                                                                                 <action selector="openFAQ:" target="XfG-lQ-9wD" id="dpA-Rs-X9F"/>
                                                                             </connections>
                                                                         </button>
-                                                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I75-eh-bU9">
+                                                                        <button identifier="download_game" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I75-eh-bU9">
                                                                             <rect key="frame" x="227" y="220" width="405" height="18"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                             <buttonCell key="cell" type="radio" title="Download" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="AHs-hu-DAo">
@@ -682,10 +694,10 @@ Gw
                                                                                 <action selector="gameFileSelect:" target="XfG-lQ-9wD" id="G3b-YS-YrY"/>
                                                                             </connections>
                                                                         </button>
-                                                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fuM-NQ-SoT">
+                                                                        <button identifier="copy_game" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fuM-NQ-SoT">
                                                                             <rect key="frame" x="227" y="172" width="405" height="18"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                            <buttonCell key="cell" type="radio" title="Copy existing install" bezelStyle="regularSquare" imagePosition="left" alignment="left" enabled="NO" inset="2" id="CKg-pw-iZA">
+                                                                            <buttonCell key="cell" type="radio" title="Copy existing install" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="CKg-pw-iZA">
                                                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                                 <font key="font" metaFont="system"/>
                                                                             </buttonCell>
@@ -693,10 +705,10 @@ Gw
                                                                                 <action selector="gameFileSelect:" target="XfG-lQ-9wD" id="1gW-R0-OWK"/>
                                                                             </connections>
                                                                         </button>
-                                                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LLy-8u-ygg">
+                                                                        <button identifier="link_game" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LLy-8u-ygg">
                                                                             <rect key="frame" x="227" y="124" width="405" height="18"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                            <buttonCell key="cell" type="radio" title="Create Alias of existing install" bezelStyle="regularSquare" imagePosition="left" alignment="left" enabled="NO" inset="2" id="Loh-1J-Ipp">
+                                                                            <buttonCell key="cell" type="radio" title="Create symbolic link of existing install" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="Loh-1J-Ipp">
                                                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                                 <font key="font" metaFont="system"/>
                                                                             </buttonCell>

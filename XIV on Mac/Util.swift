@@ -15,7 +15,6 @@ struct Util {
     static let wineserver = Bundle.main.url(forResource: "wineserver", withExtension: nil, subdirectory: "wine/bin")!
     static let prefix = applicationSupport.appendingPathComponent("game")
     static let cache = applicationSupport.appendingPathComponent("cache")
-    static let localSettings = prefix.path + "/drive_c/users/emet-selch/Local Settings/"
     
     class Log: TextOutputStream {
         var logName: String

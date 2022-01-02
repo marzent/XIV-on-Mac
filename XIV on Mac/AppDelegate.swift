@@ -30,22 +30,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             winLicense()
         }
         SocialIntegration.discord.setPresence()
-        if !FileManager.default.fileExists(atPath: Util.launchPath) {
-            Util.launchPath = ""
-        }
-        if Util.launchPath == "" {
-            let fm = FileManager.default
-            let path = Util.localSettings + "XIVLauncher/XIVLauncher.exe"
-            if fm.fileExists(atPath: path) { //for compatibilty with older versions
-                Util.launchPath = path
-                Util.launchGame()
-            }
-            else {
-                installerWinController?.showWindow(self)
-            }
+        if FileManager.default.fileExists(atPath: Util.launchPath) {
+            Util.launchGame()
         }
         else {
-            Util.launchGame()
+            installerWinController?.showWindow(self)
         }
     }
 
@@ -128,6 +117,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @IBAction func installDotNet48(_ sender: Any) {
+        Setup.installDotNet48()
+    }
+    
+    @IBAction func installDotNet(_ sender: Any) {
+        Setup.installDotNet40()
+        Setup.installDotNet462()
+        Setup.installDotNet472()
         Setup.installDotNet48()
     }
     

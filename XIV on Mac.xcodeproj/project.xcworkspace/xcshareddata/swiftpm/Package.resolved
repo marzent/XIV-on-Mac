@@ -2,15 +2,6 @@
   "object": {
     "pins": [
       {
-        "package": "Socket",
-        "repositoryURL": "https://github.com/Kitura/BlueSocket",
-        "state": {
-          "branch": null,
-          "revision": "dd924c3bc2c1c144c42b8dda3896f1a03115ded4",
-          "version": "2.0.2"
-        }
-      },
-      {
         "package": "swift-argument-parser",
         "repositoryURL": "https://github.com/apple/swift-argument-parser",
         "state": {
@@ -26,6 +17,15 @@
           "branch": "master",
           "revision": "f9831261fcbe6a17243f8839921fb7820e99fa6e",
           "version": null
+        }
+      },
+      {
+        "package": "ZIPFoundation",
+        "repositoryURL": "https://github.com/weichsel/ZIPFoundation.git",
+        "state": {
+          "branch": null,
+          "revision": "7254c74b49cec2cb81520523ba993c671f71b066",
+          "version": "0.9.14"
         }
       }
     ]
