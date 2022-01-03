@@ -16,7 +16,7 @@ class InstallerController: NSViewController {
     @IBOutlet private var status: NSTextField!
     @IBOutlet private var info: NSTextField!
     @IBOutlet private var tabView: NSTabView!
-    @IBOutlet private var spinner: NSProgressIndicator!
+    @IBOutlet private var progressbar: NSProgressIndicator!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +25,8 @@ class InstallerController: NSViewController {
     
     override func viewWillAppear() {
         super.viewWillAppear()
-        spinner.usesThreadedAnimation = true
-        spinner.startAnimation(self)
+        progressbar.usesThreadedAnimation = true
+        progressbar.startAnimation(self)
     }
     
     @objc
