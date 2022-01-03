@@ -836,10 +836,6 @@ Gw
                                                                                 <action selector="openFAQ:" target="XfG-lQ-9wD" id="DNC-sy-VjS"/>
                                                                             </connections>
                                                                         </button>
-                                                                        <progressIndicator wantsLayer="YES" fixedFrame="YES" maxValue="100" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="LKT-QR-zNk">
-                                                                            <rect key="frame" x="340" y="154" width="32" height="32"/>
-                                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                        </progressIndicator>
                                                                         <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WX4-6F-8Aq">
                                                                             <rect key="frame" x="18" y="231" width="677" height="25"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -858,6 +854,10 @@ Gw
                                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                             </textFieldCell>
                                                                         </textField>
+                                                                        <progressIndicator wantsLayer="YES" fixedFrame="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="LKT-QR-zNk">
+                                                                            <rect key="frame" x="243" y="154" width="227" height="20"/>
+                                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                        </progressIndicator>
                                                                     </subviews>
                                                                 </visualEffectView>
                                                             </subviews>
@@ -963,7 +963,7 @@ Gw
                     </view>
                     <connections>
                         <outlet property="info" destination="WX4-6F-8Aq" id="ZVx-bS-BgO"/>
-                        <outlet property="spinner" destination="LKT-QR-zNk" id="4GB-Lv-iU0"/>
+                        <outlet property="progressbar" destination="LKT-QR-zNk" id="4GB-Lv-iU0"/>
                         <outlet property="status" destination="cYC-V7-iN9" id="6Zv-Ac-5RC"/>
                         <outlet property="tabView" destination="84e-Ob-yqc" id="SMR-2c-TAc"/>
                     </connections>
