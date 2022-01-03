@@ -111,7 +111,7 @@ class InstallerController: NSViewController {
     }
 
     @IBAction func openFAQ(_ sender: Any) {
-        let url = URL(string: "https://www.xivmac.com/faq")!
+        let url = URL(string: "https://www.xivmac.com/xiv-mac-application-help")!
         NSWorkspace.shared.open(url)
     }
     
