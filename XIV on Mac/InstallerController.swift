@@ -73,7 +73,6 @@ class InstallerController: NSViewController {
     }
     
     @IBAction func startInstall(_ sender: Any) {
-        tabView.selectNextTabViewItem(sender)
         if copyGame || linkGame {
             let openPanel = NSOpenPanel()
             openPanel.title = "Choose the folder with the existing install"
@@ -88,14 +87,32 @@ class InstallerController: NSViewController {
             openPanel.allowsMultipleSelection = false
             openPanel.beginSheetModal(for:self.view.window!) { (response) in
                 if response == .OK {
-                    self.install(gamePath: openPanel.url!.path)
                     openPanel.close()
+                    if (!self.isValidGameDirectory(gamePath: openPanel.url!.path)) {
+                        let alert = NSAlert()
+                        alert.messageText = "Invalid FFXIV Directory"
+                        alert.informativeText = "It should contain the folders \"game\" and \"boot\"."
+                        alert.addButton(withTitle: "By the Twelve!")
+                        alert.runModal()
+                    } else {
+                        self.tabView.selectNextTabViewItem(sender)
+                        self.install(gamePath: openPanel.url!.path)
+                    }
                 }
             }
         }
         else {
             install()
+            tabView.selectNextTabViewItem(sender)
         }
+    }
+    
+    private func isValidGameDirectory(gamePath: String) -> Bool {
+        let game = gamePath + "/game"
+        let boot = gamePath + "/boot"
+        let validGame = FileManager.default.fileExists(atPath: game)
+        let validBoot = FileManager.default.fileExists(atPath: boot)
+        return (validGame && validBoot)
     }
     
     func install(gamePath: String = "") {
