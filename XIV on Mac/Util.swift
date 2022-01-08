@@ -177,6 +177,7 @@ struct Util {
         env["DXVK_HUD"] = dxvkOptions.getHud()
         env["DXVK_ASYNC"] = dxvkOptions.getAsync()
         env["DXVK_FRAME_RATE"] = dxvkOptions.getMaxFramerate()
+        env["DXVK_STATE_CACHE_PATH"] = "C:\\users\\emet-selch\\"
         env["XL_WINEONLINUX"] = "true"
         env["XL_WINEONMAC"] = "true"
         env["MVK_CONFIG_FULL_IMAGE_VIEW_SWIZZLE"] = "0"
