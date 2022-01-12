@@ -9,10 +9,6 @@ import Cocoa
 
 class InstallerController: NSViewController {
     
-    private var vanillaClient = true
-    private var copyGame = false
-    private var linkGame = false
-    
     @IBOutlet private var status: NSTextField!
     @IBOutlet private var info: NSTextField!
     @IBOutlet private var tabView: NSTabView!
@@ -55,25 +51,25 @@ class InstallerController: NSViewController {
     }
     
     @IBAction func versionSelect(_ sender: NSButton) {
-        vanillaClient = (sender.identifier == NSUserInterfaceItemIdentifier("vanilla_launcher"))
+        Setup.vanilla = (sender.identifier == NSUserInterfaceItemIdentifier("vanilla_launcher"))
     }
     
     @IBAction func gameFileSelect(_ sender: NSButton) {
         switch sender.identifier! {
         case NSUserInterfaceItemIdentifier("copy_game"):
-            copyGame = true
-            linkGame = false
+            Setup.copy = true
+            Setup.link = false
         case NSUserInterfaceItemIdentifier("link_game"):
-            copyGame = false
-            linkGame = true
+            Setup.copy = false
+            Setup.link = true
         default:
-            copyGame = false
-            linkGame = false
+            Setup.copy = false
+            Setup.link = false
         }
     }
     
     @IBAction func startInstall(_ sender: Any) {
-        if copyGame || linkGame {
+        if Setup.copy || Setup.link {
             let openPanel = NSOpenPanel()
             openPanel.title = "Choose the folder with the existing install"
             if #available(macOS 11.0, *) {
@@ -116,8 +112,9 @@ class InstallerController: NSViewController {
     }
     
     func install(gamePath: String = "") {
-        DispatchQueue.global(qos: .default).async {
-            Setup.install(vanilla: self.vanillaClient, copy: self.copyGame, link: self.linkGame, gamePath: gamePath)
+        Setup.gamePath = gamePath
+        DispatchQueue.global(qos: .default).asyncAfter(deadline: .now() + 0.5) {
+            NotificationCenter.default.post(name: .depInstall, object: nil)
         }
     }
     
@@ -137,6 +134,7 @@ class InstallerController: NSViewController {
     }
     
     private func setupObservers() {
+        Setup.observers()
         NotificationCenter.default.addObserver(self,selector: #selector(depsDone(_:)),name: .depInstallDone, object: nil)
         NotificationCenter.default.addObserver(self,selector: #selector(updateStatus(_:)),name: .installStatusUpdate, object: nil)
     }

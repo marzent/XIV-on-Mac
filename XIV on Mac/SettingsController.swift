@@ -23,6 +23,8 @@ class SettingsController: NSViewController {
     @IBOutlet private var maxFPS: NSButton!
     @IBOutlet private var maxFPSField: NSTextField!
     @IBOutlet private var async: NSButton!
+    @IBOutlet private var esync: NSButton!
+    @IBOutlet private var wineDebugField: NSTextField!
     @IBOutlet weak var discord: NSButton!
     
     private var mapping: [String : NSButton] = [:]
@@ -83,6 +85,8 @@ class SettingsController: NSViewController {
         maxFPSField.stringValue = String(Util.dxvkOptions.maxFramerate)
         discord.state = SocialIntegration.discord.enabled ? NSControl.StateValue.on : NSControl.StateValue.off
         scale.doubleValue = Util.dxvkOptions.hudScale
+        esync.state = Util.esync ? NSControl.StateValue.on : NSControl.StateValue.off
+        wineDebugField.stringValue = Util.wineDebug
     }
     
     func saveState() {
@@ -93,6 +97,9 @@ class SettingsController: NSViewController {
         Util.dxvkOptions.maxFramerate = maxFPSField.isEnabled ? Int(maxFPSField.stringValue) ?? 0 : 0
         Util.dxvkOptions.hudScale = scale.doubleValue
         Util.dxvkOptions.save()
+        
+        Util.esync = (esync.state == NSControl.StateValue.on) ? true : false
+        Util.wineDebug = wineDebugField.stringValue
         
         SocialIntegration.discord.enabled = (discord.state == NSControl.StateValue.on) ? true : false
         SocialIntegration.discord.save()

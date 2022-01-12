@@ -8,8 +8,17 @@
 import Cocoa
 import ZIPFoundation
 
-struct Setup {
+class Setup {
     @available(*, unavailable) private init() {}
+    
+    static var vanilla = true
+    static var copy = false
+    static var link = false
+    static var gamePath = ""
+    
+    static func observers() {
+        NotificationCenter.default.addObserver(self,selector: #selector(install(_:)),name: .depInstall, object: nil)
+    }
     
     static func postInstall(header: String) {
         NotificationCenter.default.post(name: .installStatusUpdate, object: nil,
@@ -29,7 +38,8 @@ struct Setup {
         }
     }
     
-    static func install(vanilla: Bool, copy: Bool, link: Bool, gamePath: String) {
+    @objc
+    static func install(_ notif: Notification) {
         DXVK()
         vanillaConf()
         installMSVC32()
@@ -235,7 +245,6 @@ struct Setup {
         postInstall(header: name)
         Util.launchWine(args: [Util.cache.appendingPathComponent("ffxivsetup.exe").path], blocking: true)
         Util.launchPath = Util.prefix.appendingPathComponent("drive_c/Program Files (x86)/SquareEnix/FINAL FANTASY XIV - A Realm Reborn/boot/ffxivboot64.exe").path
-        Util.launchGame()
     }
     
     static func XL() {
@@ -248,7 +257,7 @@ struct Setup {
     }
     
     static func overideDLL(dll: String, type: String) {
-        Util.launchWine(args: ["reg", "add", "HKEY_CURRENT_USER\\Software\\Wine\\DllOverrides", "/v", dll, "/d", type, "/f"])
+        Util.launchWine(args: ["reg", "add", "HKEY_CURRENT_USER\\Software\\Wine\\DllOverrides", "/v", dll, "/d", type, "/f"], blocking: true)
     }
     
     static func setWine(version: String) {

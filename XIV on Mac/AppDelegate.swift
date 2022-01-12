@@ -31,6 +31,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         SocialIntegration.discord.setPresence()
         if FileManager.default.fileExists(atPath: Util.launchPath) {
+            Util.launchWine(args: ["wineboot", "-u"], blocking: true)
             Util.launchGame()
         }
         else {
@@ -137,6 +138,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         Setup.vanillaLauncher()
     }
     
+    @IBAction func movieFix(_ sender: Any) {
+        Setup.movieFix()
+    }
+    
     @IBAction func fullInstall(_ sender: Any) {
         installerWinController?.showWindow(self)
     }
@@ -161,5 +166,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         settingsWinController?.showWindow(self)
     }
 	
+    @IBAction func selectExec(_ sender: Any) {
+        let openPanel = NSOpenPanel()
+        openPanel.title = "Choose the executable to start on App launch"
+        if #available(macOS 11.0, *) {
+            openPanel.subtitle = "It should end on .exe"
+        }
+        openPanel.showsResizeIndicator = true
+        openPanel.showsHiddenFiles = true
+        openPanel.canChooseDirectories = false
+        openPanel.canChooseFiles = true
+        openPanel.canCreateDirectories = false
+        openPanel.allowsMultipleSelection = false
+        openPanel.begin() { (response) in
+            if response == .OK {
+                openPanel.close()
+                Util.launchPath = openPanel.url!.path
+            }
+        }
+    }
 }
 

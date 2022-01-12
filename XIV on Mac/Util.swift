@@ -70,12 +70,12 @@ struct Util {
         }
         do {
             try task.run()
-            if blocking {
-                task.waitUntilExit()
-            }
         }
         catch {
             print("Error starting subprocess", to: &logger)
+        }
+        if blocking {
+            task.waitUntilExit()
         }
     }
     
@@ -83,13 +83,33 @@ struct Util {
         launch(exec: wine, args : args, blocking: blocking)
     }
     
-    static let launchSettingKey = "LaunchPath"
+    private static let launchSettingKey = "LaunchPath"
     static var launchPath: String {
         get {
             return Util.getSetting(settingKey: launchSettingKey, defaultValue: "")
         }
         set(newPath) {
             UserDefaults.standard.set(newPath, forKey: launchSettingKey)
+        }
+    }
+    
+    private static let esyncSettingKey = "EsyncSetting"
+    static var esync: Bool {
+        get {
+            return Util.getSetting(settingKey: esyncSettingKey, defaultValue: true)
+        }
+        set(newPath) {
+            UserDefaults.standard.set(newPath, forKey: esyncSettingKey)
+        }
+    }
+    
+    private static let wineDebugSettingKey = "WineDebugSetting"
+    static var wineDebug: String {
+        get {
+            return Util.getSetting(settingKey: wineDebugSettingKey, defaultValue: "-all")
+        }
+        set(newPath) {
+            UserDefaults.standard.set(newPath, forKey: wineDebugSettingKey)
         }
     }
     
@@ -171,15 +191,16 @@ struct Util {
     static var enviroment : [String : String] {
         var env = ProcessInfo.processInfo.environment
         env["LANG"] = "en_US" //needed to run when system language is set to 日本語
-        env["WINEESYNC"] = "1"
+        env["WINEESYNC"] = esync ? "1" : "0"
         env["WINEPREFIX"] = prefix.path
-        env["WINEDEBUG"] = "fixme-seh"
+        env["WINEDEBUG"] = wineDebug
         env["DXVK_HUD"] = dxvkOptions.getHud()
         env["DXVK_ASYNC"] = dxvkOptions.getAsync()
         env["DXVK_FRAME_RATE"] = dxvkOptions.getMaxFramerate()
         env["XL_WINEONLINUX"] = "true"
         env["XL_WINEONMAC"] = "true"
         env["MVK_CONFIG_FULL_IMAGE_VIEW_SWIZZLE"] = "0"
+        env["MVK_CONFIG_USE_METAL_ARGUMENT_BUFFERS"] = "1"
         //env["DYLD_PRINT_LIBRARIES"] = "YES"
         env["DYLD_FALLBACK_LIBRARY_PATH"] = Bundle.main.url(forResource: "lib", withExtension: "", subdirectory: "wine")!.path + ":/opt/local/lib:/usr/local/lib:/usr/lib:/usr/libexec:/usr/lib/system:/opt/X11/lib"
         env["DYLD_VERSIONED_LIBRARY_PATH"] = env["DYLD_FALLBACK_LIBRARY_PATH"]
