@@ -49,7 +49,7 @@
             startingLineNumber = "123"
             endingLineNumber = "123"
             landmarkName = "cancelInstall(_:)"
-            landmarkType = "9">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
