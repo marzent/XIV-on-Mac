@@ -143,7 +143,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @IBAction func installGShade(_ sender: Any) {
-        Util.launch(exec: URL(string: "file:///usr/bin/open")!, args: [Bundle.main.url(forResource: "install_gshade", withExtension: "command", subdirectory: "")!.path, "--args", Util.wine.path])
+        Util.launch(exec: URL(string: "file:///usr/bin/open")!, args: ["-b", "com.apple.Terminal", Bundle.main.url(forResource: "install_gshade", withExtension: "sh", subdirectory: "")!.path, "--env", "WINEPATH=\( Bundle.main.url(forResource: "bin", withExtension: nil, subdirectory: "wine")!.path)"])
     }
     
     @IBAction func fullInstall(_ sender: Any) {

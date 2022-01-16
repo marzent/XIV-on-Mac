@@ -1,7 +1,7 @@
 #!/bin/bash 
 
 cd $TMPDIR
-export PATH="$1":$PATH
+export PATH=$WINEPATH:$PATH
 export WINEESYNC=1
 export WINEPREFIX="$HOME/Library/Application Support/XIV on Mac/game"
 rm -rf gshade_installer
