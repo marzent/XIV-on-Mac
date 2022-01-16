@@ -142,6 +142,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         Setup.movieFix()
     }
     
+    @IBAction func installGShade(_ sender: Any) {
+        Util.launch(exec: URL(string: "file:///usr/bin/open")!, args: [Bundle.main.url(forResource: "install_gshade", withExtension: "command", subdirectory: "")!.path, "--args", Util.wine.path])
+    }
+    
     @IBAction func fullInstall(_ sender: Any) {
         installerWinController?.showWindow(self)
     }

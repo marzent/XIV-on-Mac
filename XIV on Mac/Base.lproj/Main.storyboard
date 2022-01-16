@@ -433,9 +433,18 @@
                                                 <action selector="movieFix:" target="Voe-Tx-rLC" id="Ti0-d7-yh6"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem title="GShade" id="Jyy-2Z-CH0">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="installGShade:" target="Voe-Tx-rLC" id="kL6-Y3-mYN"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="8ME-M6-Hmm"/>
                                         <menuItem title="Run Install Wizard" id="WUo-tp-nqk">
                                             <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="fullInstall:" target="Voe-Tx-rLC" id="cNe-qd-BDD"/>
+                                            </connections>
                                         </menuItem>
                                     </items>
                                 </menu>
