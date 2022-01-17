@@ -433,11 +433,24 @@
                                                 <action selector="movieFix:" target="Voe-Tx-rLC" id="Ti0-d7-yh6"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="GShade" id="Jyy-2Z-CH0">
+                                        <menuItem title="GShade" id="9VN-cs-jNP">
                                             <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="installGShade:" target="Voe-Tx-rLC" id="kL6-Y3-mYN"/>
-                                            </connections>
+                                            <menu key="submenu" title="GShade" id="AgC-OX-7rb">
+                                                <items>
+                                                    <menuItem title="Auto Install" id="8FT-OM-tMB">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="installGShade:" target="Voe-Tx-rLC" id="9mh-2w-KJ5"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="Manual Install" id="Taa-Lw-mwf">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="manualGShade:" target="Voe-Tx-rLC" id="7Yg-HS-g4g"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                </items>
+                                            </menu>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="8ME-M6-Hmm"/>
                                         <menuItem title="Run Install Wizard" id="WUo-tp-nqk">

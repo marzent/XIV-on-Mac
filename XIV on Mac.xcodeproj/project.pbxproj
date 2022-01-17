@@ -19,8 +19,8 @@
 		507CFBF62781C780007ADEC9 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 507CFBF52781C780007ADEC9 /* ZIPFoundation */; };
 		507D8F2127766F52000F0CB0 /* dxvk in Resources */ = {isa = PBXBuildFile; fileRef = 507D8F2027766F52000F0CB0 /* dxvk */; };
 		50BD278727785418002B0D1F /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BD278627785418002B0D1F /* Notifications.swift */; };
+		50DF45992795C53300E3D22F /* GShade in Resources */ = {isa = PBXBuildFile; fileRef = 50DF45982795C53300E3D22F /* GShade */; };
 		50E5387B2779CF5C0038521A /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E5387A2779CF5C0038521A /* SettingsController.swift */; };
-		50E709672794B61C0042B26D /* install_gshade.sh in Resources */ = {isa = PBXBuildFile; fileRef = 50E709662794B61B0042B26D /* install_gshade.sh */; };
 		50ED0DB32773C619002E9854 /* Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ED0DB22773C619002E9854 /* Setup.swift */; };
 		50ED0DB52773CA8C002E9854 /* FileDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ED0DB42773CA8C002E9854 /* FileDownloader.swift */; };
 /* End PBXBuildFile section */
@@ -37,8 +37,8 @@
 		505C0D9A277333920008A344 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		507D8F2027766F52000F0CB0 /* dxvk */ = {isa = PBXFileReference; lastKnownFileType = folder; path = dxvk; sourceTree = "<group>"; };
 		50BD278627785418002B0D1F /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		50DF45982795C53300E3D22F /* GShade */ = {isa = PBXFileReference; lastKnownFileType = folder; path = GShade; sourceTree = "<group>"; };
 		50E5387A2779CF5C0038521A /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
-		50E709662794B61B0042B26D /* install_gshade.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = install_gshade.sh; sourceTree = "<group>"; };
 		50ED0DB22773C619002E9854 /* Setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setup.swift; sourceTree = "<group>"; };
 		50ED0DB42773CA8C002E9854 /* FileDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDownloader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -85,9 +85,9 @@
 				50ED0DB42773CA8C002E9854 /* FileDownloader.swift */,
 				2B7C95D1277C6C6000A3CA89 /* SocialIntegration.swift */,
 				50511EC82770E087003A1E9F /* Assets.xcassets */,
-				50E709662794B61B0042B26D /* install_gshade.sh */,
 				50511ECA2770E087003A1E9F /* Main.storyboard */,
 				50511ECD2770E087003A1E9F /* XIV_on_Mac.entitlements */,
+				50DF45982795C53300E3D22F /* GShade */,
 				507D8F2027766F52000F0CB0 /* dxvk */,
 				5043E36B27728BA300E59127 /* wine */,
 			);
@@ -163,8 +163,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50DF45992795C53300E3D22F /* GShade in Resources */,
 				50511EC92770E087003A1E9F /* Assets.xcassets in Resources */,
-				50E709672794B61C0042B26D /* install_gshade.sh in Resources */,
 				507D8F2127766F52000F0CB0 /* dxvk in Resources */,
 				50511ECC2770E087003A1E9F /* Main.storyboard in Resources */,
 				5043E36C27728BA300E59127 /* wine in Resources */,

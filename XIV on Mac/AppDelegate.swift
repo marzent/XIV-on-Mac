@@ -143,12 +143,39 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @IBAction func installGShade(_ sender: Any) {
-        Util.launch(exec: URL(string: "file:///usr/bin/open")!,
-                    args: ["-n", "-b", "com.apple.Terminal",
-                           Bundle.main.url(forResource: "install_gshade", withExtension: "sh", subdirectory: "")!.path,
-                           "--env", "WINEPATH=\( Bundle.main.url(forResource: "bin", withExtension: nil, subdirectory: "wine")!.path)",
-                           "--env", "WINEESYNC=\(Util.esync ? "1" : "0")",
-                           "--env", "WINEPREFIX=\(Util.prefix.path)"])
+        if #available(OSX 11.0, *) {
+            Util.launch(exec: URL(string: "file:///usr/bin/open")!,
+                        args: ["-n", "-b", "com.apple.Terminal",
+                               Bundle.main.url(forResource: "install_gshade", withExtension: "sh", subdirectory: "GShade")!.path,
+                               "--env", "WINEPATH=\( Bundle.main.url(forResource: "bin", withExtension: nil, subdirectory: "wine")!.path)",
+                               "--env", "WINEESYNC=\(Util.esync ? "1" : "0")",
+                               "--env", "WINEPREFIX=\(Util.prefix.path)"])
+        } else {
+            let alert = NSAlert()
+            alert.messageText = "Catalina is not supported by the automatic GShade installer"
+            alert.informativeText = "You can still manually run the GShade Linux install script"
+            alert.alertStyle = .critical
+            alert.addButton(withTitle: "OK")
+            alert.runModal()
+        }
+    }
+    
+    @IBAction func manualGShade(_ sender: Any) {
+        if #available(OSX 11.0, *) {
+            Util.launch(exec: URL(string: "file:///usr/bin/open")!,
+                        args: ["-n", "-b", "com.apple.Terminal",
+                               Bundle.main.url(forResource: "manual_gshade", withExtension: "sh", subdirectory: "GShade")!.path,
+                               "--env", "WINEPATH=\( Bundle.main.url(forResource: "bin", withExtension: nil, subdirectory: "wine")!.path)",
+                               "--env", "WINEESYNC=\(Util.esync ? "1" : "0")",
+                               "--env", "WINEPREFIX=\(Util.prefix.path)"])
+        } else {
+            let alert = NSAlert()
+            alert.messageText = "When running Catalina you must have wine or CrossOver installed"
+            alert.informativeText = "You can also manually add the wine version bundled with the XIV on Mac.app to your $PATH"
+            alert.alertStyle = .warning
+            alert.addButton(withTitle: "OK")
+            alert.runModal()
+        }
     }
     
     @IBAction func fullInstall(_ sender: Any) {
