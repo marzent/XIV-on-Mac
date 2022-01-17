@@ -402,7 +402,7 @@
                                                     <menuItem title="All" id="pHz-sa-9jf">
                                                         <modifierMask key="keyEquivalentModifierMask"/>
                                                         <connections>
-                                                            <action selector="installDotNet48:" target="Voe-Tx-rLC" id="pl6-AS-Skg"/>
+                                                            <action selector="installDotNet:" target="Voe-Tx-rLC" id="EPD-TQ-v2I"/>
                                                         </connections>
                                                     </menuItem>
                                                 </items>

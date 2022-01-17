@@ -2,9 +2,10 @@
 
 cd $TMPDIR
 export PATH=$WINEPATH:$PATH
-export WINEESYNC=1
-export WINEPREFIX="$HOME/Library/Application Support/XIV on Mac/game"
-rm -rf gshade_installer
-git clone https://github.com/HereInPlainSight/gshade_installer.git
-cd gshade_installer
+echo $WINEPATH
+rm master.zip
+rm -rf gshade_installer-master
+curl -LO https://github.com/HereInPlainSight/gshade_installer/archive/refs/heads/master.zip
+unzip -qquo master.zip
+cd gshade_installer-master
 ./gshade_installer.sh ffxiv
