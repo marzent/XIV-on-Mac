@@ -250,7 +250,7 @@ class Setup {
     static func XL() {
         let name = "XIVLauncher"
         postDownload(header: name)
-        download(url: "https://github.com/marzent/FFXIVQuickLauncher/releases/download/6.1.8/Setup.exe")
+        download(url: "https://github.com/marzent/FFXIVQuickLauncher/releases/download/6.1.16/Setup.exe")
         postInstall(header: name)
         Util.launchPath = Util.prefix.appendingPathComponent("drive_c/users/emet-selch/Local Settings/Application Data/XIVLauncher/XIVLauncher.exe").path
         Util.launchWine(args: [Util.cache.appendingPathComponent("Setup.exe").path])
