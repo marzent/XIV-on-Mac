@@ -421,13 +421,13 @@
                                                 <action selector="installXL:" target="Voe-Tx-rLC" id="Bza-ng-89u"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Vannila Launcher" id="rp2-Zf-JOT">
+                                        <menuItem title="Vanilla Launcher" id="rp2-Zf-JOT">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="vanillaLauncher:" target="Voe-Tx-rLC" id="aXS-oe-ci8"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="ARR cutcenes" id="9oO-6y-dqi">
+                                        <menuItem title="ARR Cutcenes" id="9oO-6y-dqi">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="movieFix:" target="Voe-Tx-rLC" id="Ti0-d7-yh6"/>
@@ -1046,9 +1046,9 @@ Gw
                                             </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0PH-1i-0UA">
-                                            <rect key="frame" x="18" y="296" width="150" height="18"/>
+                                            <rect key="frame" x="18" y="296" width="157" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="check" title="Maximum Framerate" bezelStyle="regularSquare" imagePosition="left" inset="2" id="qVB-Tz-GDg">
+                                            <buttonCell key="cell" type="check" title="Maximum Frame Rate" bezelStyle="regularSquare" imagePosition="left" inset="2" id="qVB-Tz-GDg">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
@@ -1126,9 +1126,9 @@ Gw
                                                         </connections>
                                                     </button>
                                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DSc-kA-8q1">
-                                                        <rect key="frame" x="18" y="110" width="133" height="18"/>
+                                                        <rect key="frame" x="18" y="110" width="138" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Frame time graph" bezelStyle="regularSquare" imagePosition="left" inset="2" id="ti2-f2-LWe">
+                                                        <buttonCell key="cell" type="check" title="Frame Time Graph" bezelStyle="regularSquare" imagePosition="left" inset="2" id="ti2-f2-LWe">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
@@ -1137,9 +1137,9 @@ Gw
                                                         </connections>
                                                     </button>
                                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SxV-dE-5eD">
-                                                        <rect key="frame" x="18" y="88" width="207" height="18"/>
+                                                        <rect key="frame" x="18" y="88" width="209" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Command buffer submissions" bezelStyle="regularSquare" imagePosition="left" inset="2" id="8s1-ty-wL8">
+                                                        <buttonCell key="cell" type="check" title="Command Buffer Submissions" bezelStyle="regularSquare" imagePosition="left" inset="2" id="8s1-ty-wL8">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
@@ -1148,9 +1148,9 @@ Gw
                                                         </connections>
                                                     </button>
                                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XaY-6Q-Mvo">
-                                                        <rect key="frame" x="18" y="66" width="204" height="18"/>
+                                                        <rect key="frame" x="18" y="66" width="209" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Draw calls and render passes" bezelStyle="regularSquare" imagePosition="left" inset="2" id="7xs-cj-Vij">
+                                                        <buttonCell key="cell" type="check" title="Draw Calls and Render Passes" bezelStyle="regularSquare" imagePosition="left" inset="2" id="7xs-cj-Vij">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
@@ -1159,9 +1159,9 @@ Gw
                                                         </connections>
                                                     </button>
                                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KfF-g1-nNK">
-                                                        <rect key="frame" x="18" y="44" width="221" height="18"/>
+                                                        <rect key="frame" x="18" y="44" width="224" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Graphics and compute pipelines" bezelStyle="regularSquare" imagePosition="left" inset="2" id="dkA-rO-6VD">
+                                                        <buttonCell key="cell" type="check" title="Graphics and Compute Pipelines" bezelStyle="regularSquare" imagePosition="left" inset="2" id="dkA-rO-6VD">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
@@ -1170,9 +1170,9 @@ Gw
                                                         </connections>
                                                     </button>
                                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HvH-pN-nVO">
-                                                        <rect key="frame" x="18" y="22" width="109" height="18"/>
+                                                        <rect key="frame" x="18" y="22" width="111" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Memory used" bezelStyle="regularSquare" imagePosition="left" inset="2" id="jUY-i2-XaI">
+                                                        <buttonCell key="cell" type="check" title="Memory Used" bezelStyle="regularSquare" imagePosition="left" inset="2" id="jUY-i2-XaI">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
@@ -1181,9 +1181,9 @@ Gw
                                                         </connections>
                                                     </button>
                                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Fq-Sz-2ZL">
-                                                        <rect key="frame" x="335" y="154" width="83" height="18"/>
+                                                        <rect key="frame" x="335" y="154" width="87" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="GPU load" bezelStyle="regularSquare" imagePosition="left" inset="2" id="h1g-uy-cTN">
+                                                        <buttonCell key="cell" type="check" title="GPU Load" bezelStyle="regularSquare" imagePosition="left" inset="2" id="h1g-uy-cTN">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
@@ -1192,9 +1192,9 @@ Gw
                                                         </connections>
                                                     </button>
                                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PxN-EU-Qcp">
-                                                        <rect key="frame" x="335" y="132" width="109" height="18"/>
+                                                        <rect key="frame" x="335" y="132" width="110" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="DXVK version" bezelStyle="regularSquare" imagePosition="left" inset="2" id="RHk-LT-kFy">
+                                                        <buttonCell key="cell" type="check" title="DXVK Version" bezelStyle="regularSquare" imagePosition="left" inset="2" id="RHk-LT-kFy">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
@@ -1203,9 +1203,9 @@ Gw
                                                         </connections>
                                                     </button>
                                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LpF-Gn-fld">
-                                                        <rect key="frame" x="335" y="110" width="131" height="18"/>
+                                                        <rect key="frame" x="335" y="110" width="138" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="D3D feature level" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Prr-45-dEP">
+                                                        <buttonCell key="cell" type="check" title="D3D Feature Level" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Prr-45-dEP">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
@@ -1214,9 +1214,9 @@ Gw
                                                         </connections>
                                                     </button>
                                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MGI-ae-PZ5">
-                                                        <rect key="frame" x="335" y="88" width="173" height="18"/>
+                                                        <rect key="frame" x="335" y="88" width="176" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Shader compiler activity" bezelStyle="regularSquare" imagePosition="left" inset="2" id="g1m-2P-tRE">
+                                                        <buttonCell key="cell" type="check" title="Shader Compiler Activity" bezelStyle="regularSquare" imagePosition="left" inset="2" id="g1m-2P-tRE">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
