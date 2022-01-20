@@ -103,12 +103,8 @@ class InstallerController: NSViewController {
                         return result == .alertFirstButtonReturn
                     }
                 }
-                do {
-                    if try await alertTask.result.get() {
-                        return gamePath
-                    }
-                }
-                catch {
+                if try! await alertTask.result.get() {
+                    return gamePath
                 }
             }
         }
@@ -124,47 +120,39 @@ class InstallerController: NSViewController {
                 return result == .alertFirstButtonReturn
             }
         }
-        do {
-            if try await alertTask.result.get() {
-                let openTask = Task { () -> String? in
-                    let openPanel = NSOpenPanel()
-                    openPanel.title = "Choose the folder with the existing install"
-                    if #available(macOS 11.0, *) {
-                        openPanel.subtitle = "It should contain the folders \"game\" and \"boot\" and the game executable."
-                    }
-                    openPanel.showsResizeIndicator = true
-                    openPanel.showsHiddenFiles = true
-                    openPanel.canChooseDirectories = true
-                    openPanel.canChooseFiles = false
-                    openPanel.canCreateDirectories = false
-                    openPanel.allowsMultipleSelection = false
-                    let result = await openPanel.beginSheetModal(for: view.window!)
-                    if result != .OK {
-                        return nil
-                    }
-                    let openPath = openPanel.url!.path
-                    openPanel.close()
-                    if (self.isValidGameDirectory(gamePath: openPath)) {
-                        return openPath
-                    }
-                    let alert = NSAlert()
-                    alert.messageText = "Invalid FFXIV Directory"
-                    alert.informativeText = "It should contain the folders \"game\" and \"boot\" and the game executable and not be located inside the XIV on Mac wine prefix."
-                    alert.alertStyle = .critical
-                    alert.addButton(withTitle: "By the Twelve!")
-                    await alert.beginSheetModal(for: self.view.window!)
+        if try! await alertTask.result.get() {
+            let openTask = Task { () -> String? in
+                let openPanel = NSOpenPanel()
+                openPanel.title = "Choose the folder with the existing install"
+                if #available(macOS 11.0, *) {
+                    openPanel.subtitle = "It should contain the folders \"game\" and \"boot\" and the game executable."
+                }
+                openPanel.showsResizeIndicator = true
+                openPanel.showsHiddenFiles = true
+                openPanel.canChooseDirectories = true
+                openPanel.canChooseFiles = false
+                openPanel.canCreateDirectories = false
+                openPanel.allowsMultipleSelection = false
+                let result = await openPanel.beginSheetModal(for: view.window!)
+                openPanel.close()
+                if result != .OK {
                     return nil
                 }
-                do {
-                    if let gamePath = try await openTask.result.get() {
-                        return gamePath
-                    }
+                let openPath = openPanel.url!.path
+                if (self.isValidGameDirectory(gamePath: openPath)) {
+                    return openPath
                 }
-                catch {
-                }
+                let alert = NSAlert()
+                alert.messageText = "Invalid FFXIV Directory"
+                alert.informativeText = "It should contain the folders \"game\" and \"boot\" and the game executable and not be located inside the XIV on Mac wine prefix."
+                alert.alertStyle = .critical
+                alert.addButton(withTitle: "By the Twelve!")
+                await alert.beginSheetModal(for: self.view.window!)
+                return nil
             }
-        }
-        catch {
+            if let gamePath = try! await openTask.result.get() {
+                return gamePath
+            }
         }
         return nil
     }

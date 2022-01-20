@@ -195,7 +195,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @IBAction func cmd(_ sender: Any) {
-        Util.launchWine(args: ["cmd"]) //fixme
+        Util.launchWine(args: ["wineconsole"])
     }
     
     @IBAction func dxvkSettings(_ sender: Any) {
