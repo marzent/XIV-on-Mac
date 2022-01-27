@@ -9,10 +9,6 @@ import Cocoa
 
 class InstallerController: NSViewController {
     
-    private var vanillaClient = true
-    private var copyGame = false
-    private var linkGame = false
-    
     @IBOutlet private var status: NSTextField!
     @IBOutlet private var info: NSTextField!
     @IBOutlet private var tabView: NSTabView!
@@ -55,69 +51,129 @@ class InstallerController: NSViewController {
     }
     
     @IBAction func versionSelect(_ sender: NSButton) {
-        vanillaClient = (sender.identifier == NSUserInterfaceItemIdentifier("vanilla_launcher"))
+        Setup.vanilla = (sender.identifier == NSUserInterfaceItemIdentifier("vanilla_launcher"))
     }
     
     @IBAction func gameFileSelect(_ sender: NSButton) {
         switch sender.identifier! {
         case NSUserInterfaceItemIdentifier("copy_game"):
-            copyGame = true
-            linkGame = false
+            Setup.copy = true
+            Setup.link = false
         case NSUserInterfaceItemIdentifier("link_game"):
-            copyGame = false
-            linkGame = true
+            Setup.copy = false
+            Setup.link = true
         default:
-            copyGame = false
-            linkGame = false
+            Setup.copy = false
+            Setup.link = false
         }
     }
     
     @IBAction func startInstall(_ sender: Any) {
-        if copyGame || linkGame {
-            let openPanel = NSOpenPanel()
-            openPanel.title = "Choose the folder with the existing install"
-            if #available(macOS 11.0, *) {
-                openPanel.subtitle = "It should contain the folders \"game\" and \"boot\"."
-            }
-            openPanel.showsResizeIndicator = true
-            openPanel.showsHiddenFiles = true
-            openPanel.canChooseDirectories = true
-            openPanel.canChooseFiles = false
-            openPanel.canCreateDirectories = false
-            openPanel.allowsMultipleSelection = false
-            openPanel.beginSheetModal(for:self.view.window!) { (response) in
-                if response == .OK {
-                    openPanel.close()
-                    if (!self.isValidGameDirectory(gamePath: openPanel.url!.path)) {
-                        let alert = NSAlert()
-                        alert.messageText = "Invalid FFXIV Directory"
-                        alert.informativeText = "It should contain the folders \"game\" and \"boot\"."
-                        alert.addButton(withTitle: "By the Twelve!")
-                        alert.runModal()
-                    } else {
-                        self.tabView.selectNextTabViewItem(sender)
-                        self.install(gamePath: openPanel.url!.path)
+        Task {
+            do {
+                if Setup.copy || Setup.link {
+                    if let gamePath = await getGameDirectory() {
+                        install(gamePath: gamePath)
+                        tabView.selectNextTabViewItem(sender)
                     }
+                }
+                else {
+                    install()
+                    tabView.selectNextTabViewItem(sender)
                 }
             }
         }
-        else {
-            install()
-            tabView.selectNextTabViewItem(sender)
+    }
+    
+    private func getGameDirectory() async -> String? {
+        let appSupportFolder = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).last!
+        let gamePaths = [appSupportFolder.appendingPathComponent("FINAL FANTASY XIV ONLINE/Bottles/published_Final_Fantasy/drive_c/Program Files (x86)/SquareEnix/FINAL FANTASY XIV - A Realm Reborn").path,
+                         appSupportFolder.appendingPathComponent("CrossOver/Bottles/Final Fantasy XIV Online/drive_c/Program Files (x86)/SquareEnix/FINAL FANTASY XIV - A Realm Reborn").path]
+        for gamePath in gamePaths {
+            if isValidGameDirectory(gamePath: gamePath) {
+                let alertTask = Task { () -> Bool in
+                    do {
+                        let alert = NSAlert()
+                        alert.messageText = "FINAL FANTASY XIV ONLINE install found!"
+                        alert.informativeText = "Would you like to use the install located at \(gamePath)?"
+                        alert.alertStyle = .informational
+                        alert.addButton(withTitle: "Yes")
+                        alert.addButton(withTitle: "No")
+                        let result = await alert.beginSheetModal(for: self.view.window!)
+                        return result == .alertFirstButtonReturn
+                    }
+                }
+                if try! await alertTask.result.get() {
+                    return gamePath
+                }
+            }
         }
+        let alertTask = Task { () -> Bool in
+            do {
+                let alert = NSAlert()
+                alert.messageText = "No FINAL FANTASY XIV ONLINE installs were detected..."
+                alert.informativeText = "Would you like to manually choose a Folder?"
+                alert.alertStyle = .warning
+                alert.addButton(withTitle: "Yes")
+                alert.addButton(withTitle: "No")
+                let result = await alert.beginSheetModal(for: self.view.window!)
+                return result == .alertFirstButtonReturn
+            }
+        }
+        if try! await alertTask.result.get() {
+            let openTask = Task { () -> String? in
+                let openPanel = NSOpenPanel()
+                openPanel.title = "Choose the folder with the existing install"
+                if #available(macOS 11.0, *) {
+                    openPanel.subtitle = "It should contain the folders \"game\" and \"boot\" and the game executable."
+                }
+                openPanel.showsResizeIndicator = true
+                openPanel.showsHiddenFiles = true
+                openPanel.canChooseDirectories = true
+                openPanel.canChooseFiles = false
+                openPanel.canCreateDirectories = false
+                openPanel.allowsMultipleSelection = false
+                let result = await openPanel.beginSheetModal(for: view.window!)
+                openPanel.close()
+                if result != .OK {
+                    return nil
+                }
+                let openPath = openPanel.url!.path
+                if (self.isValidGameDirectory(gamePath: openPath)) {
+                    return openPath
+                }
+                let alert = NSAlert()
+                alert.messageText = "Invalid FFXIV Directory"
+                alert.informativeText = "It should contain the folders \"game\" and \"boot\" and the game executable and not be located inside the XIV on Mac wine prefix."
+                alert.alertStyle = .critical
+                alert.addButton(withTitle: "By the Twelve!")
+                await alert.beginSheetModal(for: self.view.window!)
+                return nil
+            }
+            if let gamePath = try! await openTask.result.get() {
+                return gamePath
+            }
+        }
+        return nil
     }
     
     private func isValidGameDirectory(gamePath: String) -> Bool {
-        let game = gamePath + "/game"
+        let game = gamePath + "/game/ffxiv_dx11.exe" //needed in order to discriminate against SE's app bundle version
         let boot = gamePath + "/boot"
         let validGame = FileManager.default.fileExists(atPath: game)
         let validBoot = FileManager.default.fileExists(atPath: boot)
+        let components = gamePath.split(separator: "/")
+        let trimmedComponents = components[...min(components.count - 1, 5)]
+        if "/" + trimmedComponents.map(String.init).joined(separator: "/") == Util.prefix.path {
+            return false // do not allow game directories from the prefix itself
+        }
         return (validGame && validBoot)
     }
     
     func install(gamePath: String = "") {
-        DispatchQueue.global(qos: .default).async {
-            Setup.install(vanilla: self.vanillaClient, copy: self.copyGame, link: self.linkGame, gamePath: gamePath)
+        Setup.gamePath = gamePath
+        DispatchQueue.global(qos: .default).asyncAfter(deadline: .now() + 0.5) {
+            NotificationCenter.default.post(name: .depInstall, object: nil)
         }
     }
     
@@ -137,6 +193,7 @@ class InstallerController: NSViewController {
     }
     
     private func setupObservers() {
+        Setup.observers()
         NotificationCenter.default.addObserver(self,selector: #selector(depsDone(_:)),name: .depInstallDone, object: nil)
         NotificationCenter.default.addObserver(self,selector: #selector(updateStatus(_:)),name: .installStatusUpdate, object: nil)
     }
