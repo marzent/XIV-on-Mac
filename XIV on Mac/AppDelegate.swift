@@ -47,6 +47,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return true
     }
     
+    func application(_ sender: NSApplication, openFile filename: String) -> Bool {
+        Util.launchWine(args: [filename])
+        return true
+    }
+    
     func relaunch() {
         let alert = NSAlert()
         alert.messageText = "Do you want to restart XIV on Mac?"

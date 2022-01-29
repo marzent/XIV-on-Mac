@@ -113,12 +113,14 @@ struct Util {
         }
     }
     
-    static func launchGame(blocking: Bool = false) {
-        launchWine(args : [launchPath], blocking: blocking)
-        DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 10.0) {
-            waitWine()
-            DispatchQueue.main.async {
-                NSApplication.shared.terminate(nil)
+    static func launchGame(terminating: Bool = true) {
+        launchWine(args : [launchPath], blocking: false)
+        if terminating {
+            DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 10.0) {
+                waitWine()
+                DispatchQueue.main.async {
+                    NSApplication.shared.terminate(nil)
+                }
             }
         }
     }
