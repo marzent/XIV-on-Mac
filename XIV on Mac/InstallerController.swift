@@ -164,7 +164,7 @@ class InstallerController: NSViewController {
         let validBoot = FileManager.default.fileExists(atPath: boot)
         let components = gamePath.split(separator: "/")
         let trimmedComponents = components[...min(components.count - 1, 5)]
-        if "/" + trimmedComponents.map(String.init).joined(separator: "/") == Util.prefix.path {
+        if "/" + trimmedComponents.map(String.init).joined(separator: "/") == Wine.prefix.path {
             return false // do not allow game directories from the prefix itself
         }
         return (validGame && validBoot)

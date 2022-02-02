@@ -25,6 +25,7 @@ class SettingsController: NSViewController {
     @IBOutlet private var async: NSButton!
     @IBOutlet private var esync: NSButton!
     @IBOutlet private var wineDebugField: NSTextField!
+    @IBOutlet private var wineRetina: NSButton!
     @IBOutlet weak var discord: NSButton!
     
     private var mapping: [String : NSButton] = [:]
@@ -74,6 +75,10 @@ class SettingsController: NSViewController {
         saveState()
     }
     
+    @IBAction func updateRetina(_ sender: NSButton) {
+        Wine.retina = (sender.state == NSControl.StateValue.on)
+    }
+    
     func updateView() {
         for (option, enabled) in Util.dxvkOptions.hud {
             mapping[option]?.state = enabled ? NSControl.StateValue.on : NSControl.StateValue.off
@@ -85,8 +90,9 @@ class SettingsController: NSViewController {
         maxFPSField.stringValue = String(Util.dxvkOptions.maxFramerate)
         discord.state = SocialIntegration.discord.enabled ? NSControl.StateValue.on : NSControl.StateValue.off
         scale.doubleValue = Util.dxvkOptions.hudScale
-        esync.state = Util.esync ? NSControl.StateValue.on : NSControl.StateValue.off
-        wineDebugField.stringValue = Util.wineDebug
+        esync.state = Wine.esync ? NSControl.StateValue.on : NSControl.StateValue.off
+        wineRetina.state = Wine.retina ? NSControl.StateValue.on : NSControl.StateValue.off
+        wineDebugField.stringValue = Wine.debug
     }
     
     func saveState() {
@@ -98,8 +104,8 @@ class SettingsController: NSViewController {
         Util.dxvkOptions.hudScale = scale.doubleValue
         Util.dxvkOptions.save()
         
-        Util.esync = (esync.state == NSControl.StateValue.on) ? true : false
-        Util.wineDebug = wineDebugField.stringValue
+        Wine.esync = (esync.state == NSControl.StateValue.on) ? true : false
+        Wine.debug = wineDebugField.stringValue
         
         SocialIntegration.discord.enabled = (discord.state == NSControl.StateValue.on) ? true : false
         SocialIntegration.discord.save()
