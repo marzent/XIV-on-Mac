@@ -1280,7 +1280,7 @@ Gw
                                             </connections>
                                         </button>
                                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qGE-fd-l1u">
-                                            <rect key="frame" x="294" y="19" width="314" height="21"/>
+                                            <rect key="frame" x="407" y="19" width="201" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="Wfl-gF-eSY">
                                                 <font key="font" metaFont="system"/>
@@ -1292,7 +1292,7 @@ Gw
                                             </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bVO-QG-s4L">
-                                            <rect key="frame" x="206" y="22" width="82" height="16"/>
+                                            <rect key="frame" x="325" y="21" width="82" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Wine Debug:" id="nXs-Qb-iRe">
                                                 <font key="font" metaFont="system"/>
@@ -1300,6 +1300,17 @@ Gw
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="buc-8R-1Wp">
+                                            <rect key="frame" x="174" y="21" width="64" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="check" title="Retina" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="7vx-YJ-IUo">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="saveState:" target="GIg-v3-M8h" id="HeB-xt-rJP"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                 </view>
                             </box>

@@ -61,14 +61,14 @@ class Setup {
             XL()
         }
         else {
-            Util.launchGame()
+            Util.launchExec()
         }
         NotificationCenter.default.post(name: .depInstallDone, object: nil)
     }
     
     static func copyGame(gamePath: String) {
         postInstall(header: "Copying Game files")
-        let squex = Util.prefix.appendingPathComponent("drive_c/Program Files (x86)/SquareEnix")
+        let squex = Wine.prefix.appendingPathComponent("drive_c/Program Files (x86)/SquareEnix")
         let gameDest = squex.appendingPathComponent("FINAL FANTASY XIV - A Realm Reborn")
         Util.make(dir: squex.path)
         do {
@@ -77,12 +77,12 @@ class Setup {
         catch {
             print("error copying game from \(gamePath)\n", to: &Util.logger)
         }
-        Util.launchPath = Util.prefix.appendingPathComponent("drive_c/Program Files (x86)/SquareEnix/FINAL FANTASY XIV - A Realm Reborn/boot/ffxivboot64.exe").path
+        Util.launchPath = Wine.prefix.appendingPathComponent("drive_c/Program Files (x86)/SquareEnix/FINAL FANTASY XIV - A Realm Reborn/boot/ffxivboot64.exe").path
     }
     
     static func linkGame(gamePath: String) {
         postInstall(header: "Linking Game files")
-        let squex = Util.prefix.appendingPathComponent("drive_c/Program Files (x86)/SquareEnix")
+        let squex = Wine.prefix.appendingPathComponent("drive_c/Program Files (x86)/SquareEnix")
         let gameDest = squex.appendingPathComponent("FINAL FANTASY XIV - A Realm Reborn")
         Util.make(dir: squex.path)
         do {
@@ -91,7 +91,7 @@ class Setup {
         catch {
             print("error creating symbolic link to \(gamePath)\n", to: &Util.logger)
         }
-        Util.launchPath = Util.prefix.appendingPathComponent("drive_c/Program Files (x86)/SquareEnix/FINAL FANTASY XIV - A Realm Reborn/boot/ffxivboot64.exe").path
+        Util.launchPath = Wine.prefix.appendingPathComponent("drive_c/Program Files (x86)/SquareEnix/FINAL FANTASY XIV - A Realm Reborn/boot/ffxivboot64.exe").path
     }
     
     static func movieFix() {
@@ -101,7 +101,7 @@ class Setup {
         let moviePath = "drive_c/Program Files (x86)/SquareEnix/FINAL FANTASY XIV - A Realm Reborn/game/movie/ffxiv"
         let unzipURL = Util.cache.appendingPathComponent("official-app")
         let appMovies = unzipURL.appendingPathComponent("FINAL FANTASY XIV ONLINE.app/Contents/SharedSupport/finalfantasyxiv/support/published_Final_Fantasy/" + moviePath)
-        let prefixMovies = Util.prefix.appendingPathComponent(moviePath)
+        let prefixMovies = Wine.prefix.appendingPathComponent(moviePath)
         let fm = FileManager.default
         postDownload(header: name)
         download(url: "https://mac-dl.ffxiv.com/cw/finalfantasyxiv-\(version).zip")
@@ -113,7 +113,7 @@ class Setup {
         catch {
             print("error extracting native mac app archive\n", to: &Util.logger)
         }
-        Util.make(dir: Util.prefix.appendingPathComponent(moviePath).path)
+        Util.make(dir: Wine.prefix.appendingPathComponent(moviePath).path)
         for movie in movies {
             do {
                 try fm.copyItem(atPath: appMovies.appendingPathComponent(movie).path, toPath: prefixMovies.appendingPathComponent(movie).path)
@@ -129,8 +129,8 @@ class Setup {
         postDownload(header: name)
         download(url: "https://aka.ms/vs/17/release/vc_redist.x86.exe")
         postInstall(header: name)
-        setWine(version: "win10")
-        Util.launchWine(args: [Util.cache.appendingPathComponent("vc_redist.x86.exe").path, "/install", "/passive", "/norestart"], blocking: true)
+        Wine.set(version: "win10")
+        Wine.launch(args: [Util.cache.appendingPathComponent("vc_redist.x86.exe").path, "/install", "/passive", "/norestart"], blocking: true)
     }
     
     static func installMSVC64() {
@@ -138,8 +138,8 @@ class Setup {
         postDownload(header: name)
         download(url: "https://aka.ms/vs/17/release/vc_redist.x64.exe")
         postInstall(header: name)
-        setWine(version: "win10")
-        Util.launchWine(args: [Util.cache.appendingPathComponent("vc_redist.x64.exe").path, "/install", "/passive", "/norestart"], blocking: true)
+        Wine.set(version: "win10")
+        Wine.launch(args: [Util.cache.appendingPathComponent("vc_redist.x64.exe").path, "/install", "/passive", "/norestart"], blocking: true)
     }
     
     static func installDotNet40() {
@@ -147,10 +147,10 @@ class Setup {
         postDownload(header: name)
         download(url: "https://download.microsoft.com/download/9/5/A/95A9616B-7A37-4AF6-BC36-D6EA96C8DAAE/dotNetFx40_Full_x86_x64.exe")
         postInstall(header: name)
-        setWine(version: "winxp64")
-        overideDLL(dll: "mscoree", type: "native")
-        Util.launchWine(args: [Util.cache.appendingPathComponent("dotNetFx40_Full_x86_x64.exe").path, "/passive", "/norestart"], blocking: true)
-        setWine(version: "win10")
+        Wine.set(version: "winxp64")
+        Wine.override(dll: "mscoree", type: "native")
+        Wine.launch(args: [Util.cache.appendingPathComponent("dotNetFx40_Full_x86_x64.exe").path, "/passive", "/norestart"], blocking: true)
+        Wine.set(version: "win10")
     }
     
     static func installDotNet462() {
@@ -158,10 +158,10 @@ class Setup {
         postDownload(header: name)
         download(url: "https://download.visualstudio.microsoft.com/download/pr/8e396c75-4d0d-41d3-aea8-848babc2736a/80b431456d8866ebe053eb8b81a168b3/NDP462-KB3151800-x86-x64-AllOS-ENU.exe")
         postInstall(header: name)
-        setWine(version: "win7")
-        overideDLL(dll: "mscoree", type: "native")
-        Util.launchWine(args: [Util.cache.appendingPathComponent("NDP462-KB3151800-x86-x64-AllOS-ENU.exe").path, "/passive", "/norestart"], blocking: true)
-        setWine(version: "win10")
+        Wine.set(version: "win7")
+        Wine.override(dll: "mscoree", type: "native")
+        Wine.launch(args: [Util.cache.appendingPathComponent("NDP462-KB3151800-x86-x64-AllOS-ENU.exe").path, "/passive", "/norestart"], blocking: true)
+        Wine.set(version: "win10")
     }
     
     static func installDotNet472() {
@@ -169,10 +169,10 @@ class Setup {
         postDownload(header: name)
         download(url: "https://download.visualstudio.microsoft.com/download/pr/1f5af042-d0e4-4002-9c59-9ba66bcf15f6/089f837de42708daacaae7c04b7494db/NDP472-KB4054530-x86-x64-AllOS-ENU.exe")
         postInstall(header: name)
-        setWine(version: "win7")
-        overideDLL(dll: "mscoree", type: "native")
-        Util.launchWine(args: [Util.cache.appendingPathComponent("NDP472-KB4054530-x86-x64-AllOS-ENU.exe").path, "/passive", "/norestart"], blocking: true)
-        setWine(version: "win10")
+        Wine.set(version: "win7")
+        Wine.override(dll: "mscoree", type: "native")
+        Wine.launch(args: [Util.cache.appendingPathComponent("NDP472-KB4054530-x86-x64-AllOS-ENU.exe").path, "/passive", "/norestart"], blocking: true)
+        Wine.set(version: "win10")
     }
     
     static func installDotNet48() {
@@ -180,15 +180,15 @@ class Setup {
         postDownload(header: name)
         download(url: "https://download.visualstudio.microsoft.com/download/pr/7afca223-55d2-470a-8edc-6a1739ae3252/abd170b4b0ec15ad0222a809b761a036/ndp48-x86-x64-allos-enu.exe")
         postInstall(header: name)
-        setWine(version: "win10")
-        overideDLL(dll: "mscoree", type: "native")
-        Util.launchWine(args: [Util.cache.appendingPathComponent("ndp48-x86-x64-allos-enu.exe").path, "/passive", "/norestart"], blocking: true)
+        Wine.set(version: "win10")
+        Wine.override(dll: "mscoree", type: "native")
+        Wine.launch(args: [Util.cache.appendingPathComponent("ndp48-x86-x64-allos-enu.exe").path, "/passive", "/norestart"], blocking: true)
     }
     
     static func DXVK() {
         let dxvk_path = Bundle.main.url(forResource: "dxvk", withExtension: nil, subdirectory: "")!
         let dx_dlls = ["d3d9.dll", "d3d10_1.dll", "d3d10.dll", "d3d10core.dll", "dxgi.dll", "d3d11.dll"]
-        let system32 = Util.prefix.appendingPathComponent("drive_c/windows/system32")
+        let system32 = Wine.prefix.appendingPathComponent("drive_c/windows/system32")
         let fm = FileManager.default
         for dll in dx_dlls {
             do {
@@ -197,7 +197,7 @@ class Setup {
                     try fm.removeItem(atPath: dll_path)
                 }
                 try fm.copyItem(atPath: dxvk_path.appendingPathComponent(dll).path, toPath: dll_path)
-                overideDLL(dll: dll.components(separatedBy: ".")[0], type: "native")
+                Wine.override(dll: dll.components(separatedBy: ".")[0], type: "native")
             }
             catch {
                 print("error setting up dxvk dll \(dll)", to: &Util.logger)
@@ -234,7 +234,7 @@ class Setup {
     "LastVersion": "6.1.8.0",
 }
 """
-        let folder = Util.prefix.appendingPathComponent("drive_c/users/emet-selch/Application Data/XIVLauncher")
+        let folder = Wine.prefix.appendingPathComponent("drive_c/users/emet-selch/Application Data/XIVLauncher")
         writeConf(content: content, folder: folder, filename: "launcherConfigV3.json")
     }
     
@@ -243,8 +243,8 @@ class Setup {
         postDownload(header: name)
         download(url: "https://gdl.square-enix.com/ffxiv/inst/ffxivsetup.exe")
         postInstall(header: name)
-        Util.launchWine(args: [Util.cache.appendingPathComponent("ffxivsetup.exe").path], blocking: true)
-        Util.launchPath = Util.prefix.appendingPathComponent("drive_c/Program Files (x86)/SquareEnix/FINAL FANTASY XIV - A Realm Reborn/boot/ffxivboot64.exe").path
+        Wine.launch(args: [Util.cache.appendingPathComponent("ffxivsetup.exe").path], blocking: true)
+        Util.launchPath = Wine.prefix.appendingPathComponent("drive_c/Program Files (x86)/SquareEnix/FINAL FANTASY XIV - A Realm Reborn/boot/ffxivboot64.exe").path
     }
     
     static func XL() {
@@ -252,17 +252,11 @@ class Setup {
         postDownload(header: name)
         download(url: "https://github.com/marzent/FFXIVQuickLauncher/releases/download/6.1.16/Setup.exe")
         postInstall(header: name)
-        Util.launchPath = Util.prefix.appendingPathComponent("drive_c/users/emet-selch/Local Settings/Application Data/XIVLauncher/XIVLauncher.exe").path
-        Util.launchWine(args: [Util.cache.appendingPathComponent("Setup.exe").path])
+        Util.launchPath = Wine.prefix.appendingPathComponent("drive_c/users/emet-selch/Local Settings/Application Data/XIVLauncher/XIVLauncher.exe").path
+        Wine.launch(args: [Util.cache.appendingPathComponent("Setup.exe").path])
     }
     
-    static func overideDLL(dll: String, type: String) {
-        Util.launchWine(args: ["reg", "add", "HKEY_CURRENT_USER\\Software\\Wine\\DllOverrides", "/v", dll, "/d", type, "/f"], blocking: true)
-    }
-    
-    static func setWine(version: String) {
-        Util.launchWine(args: ["winecfg", "-v", version], blocking: true)
-    }
+
     
     
 }

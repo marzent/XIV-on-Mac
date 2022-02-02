@@ -11,9 +11,6 @@ struct Util {
     @available(*, unavailable) private init() {}
     
     static let applicationSupport = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).last!.appendingPathComponent("XIV on Mac")
-    static let wine = Bundle.main.url(forResource: "wine64", withExtension: nil, subdirectory: "wine/bin")!
-    static let wineserver = Bundle.main.url(forResource: "wineserver", withExtension: nil, subdirectory: "wine/bin")!
-    static let prefix = applicationSupport.appendingPathComponent("game")
     static let cache = applicationSupport.appendingPathComponent("cache")
     
     class Log: TextOutputStream {
@@ -39,7 +36,6 @@ struct Util {
     }
 
     static var logger = Log(name: "app.log")
-    static var wineLogger = Log(name: "wine.log")
     
     static func make(dir : String) {
         if !FileManager.default.fileExists(atPath: dir) {
@@ -63,7 +59,7 @@ struct Util {
         let outHandle = pipe.fileHandleForReading
         outHandle.readabilityHandler = { pipe in
             if let line = String(data: pipe.availableData, encoding: String.Encoding.utf8) {
-                print(line, to: &wineLogger)
+                print(line, to: &Wine.logger)
             } else {
                 print("Error decoding data: \(pipe.availableData)\n", to: &logger)
             }
@@ -79,10 +75,6 @@ struct Util {
         }
     }
     
-    static func launchWine(args: [String], blocking: Bool = false) {
-        launch(exec: wine, args : args, blocking: blocking)
-    }
-    
     private static let launchSettingKey = "LaunchPath"
     static var launchPath: String {
         get {
@@ -93,44 +85,16 @@ struct Util {
         }
     }
     
-    private static let esyncSettingKey = "EsyncSetting"
-    static var esync: Bool {
-        get {
-            return Util.getSetting(settingKey: esyncSettingKey, defaultValue: true)
-        }
-        set(newPath) {
-            UserDefaults.standard.set(newPath, forKey: esyncSettingKey)
-        }
-    }
-    
-    private static let wineDebugSettingKey = "WineDebugSetting"
-    static var wineDebug: String {
-        get {
-            return Util.getSetting(settingKey: wineDebugSettingKey, defaultValue: "-all")
-        }
-        set(newPath) {
-            UserDefaults.standard.set(newPath, forKey: wineDebugSettingKey)
-        }
-    }
-    
-    static func launchGame(terminating: Bool = true) {
-        launchWine(args : [launchPath], blocking: false)
+    static func launchExec(terminating: Bool = true) {
+        Wine.launch(args : [launchPath], blocking: false)
         if terminating {
             DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 10.0) {
-                waitWine()
+                Wine.wait()
                 DispatchQueue.main.async {
                     NSApplication.shared.terminate(nil)
                 }
             }
         }
-    }
-    
-    static func killWine() {
-        launch(exec: wineserver, args: ["-k"], blocking: true)
-    }
-    
-    static func waitWine() {
-        launch(exec: wineserver, args: ["-w"], blocking: true)
     }
     
     class DXVK: Codable {
@@ -193,9 +157,9 @@ struct Util {
     static var enviroment : [String : String] {
         var env = ProcessInfo.processInfo.environment
         env["LANG"] = "en_US" //needed to run when system language is set to 日本語
-        env["WINEESYNC"] = esync ? "1" : "0"
-        env["WINEPREFIX"] = prefix.path
-        env["WINEDEBUG"] = wineDebug
+        env["WINEESYNC"] = Wine.esync ? "1" : "0"
+        env["WINEPREFIX"] = Wine.prefix.path
+        env["WINEDEBUG"] = Wine.debug
         env["DXVK_HUD"] = dxvkOptions.getHud()
         env["DXVK_ASYNC"] = dxvkOptions.getAsync()
         env["DXVK_FRAME_RATE"] = dxvkOptions.getMaxFramerate()

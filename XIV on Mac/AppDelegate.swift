@@ -21,7 +21,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         settingsWinController = storyboard.instantiateController(withIdentifier: "SettingsWindow") as? NSWindowController
         installerWinController = storyboard.instantiateController(withIdentifier: "InstallerWindow") as? NSWindowController
-        Util.make(dir: Util.prefix.path)
+        Util.make(dir: Wine.prefix.path)
         Util.make(dir: Util.cache.path)
         if Util.getSetting(settingKey: licenseSettingKey, defaultValue: "Mac") == "Mac" {
             macLicense()
@@ -31,8 +31,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         SocialIntegration.discord.setPresence()
         if FileManager.default.fileExists(atPath: Util.launchPath) {
-            Util.launchWine(args: ["wineboot", "-u"], blocking: true)
-            Util.launchGame()
+            Util.launchExec()
         }
         else {
             installerWinController?.showWindow(self)
@@ -40,7 +39,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
-        Util.killWine()
+        Wine.kill()
     }
 
     func applicationSupportsSecureRestorableState(_ app: NSApplication) -> Bool {
@@ -48,7 +47,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func application(_ sender: NSApplication, openFile filename: String) -> Bool {
-        Util.launchWine(args: [filename])
+        Wine.launch(args: [filename])
         return true
     }
     
@@ -76,7 +75,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func winLicense() {
-        Util.launchWine(args: ["reg", "add", "HKEY_CURRENT_USER\\Software\\Wine", "/v", "HideWineExports", "/d", "1", "/f"])
+        Wine.addReg(key: "HKEY_CURRENT_USER\\Software\\Wine", value: "HideWineExports", data: "1")
         macButton.state = .off
         winButton.state = .on
         UserDefaults.standard.set("Win", forKey: licenseSettingKey)
@@ -88,14 +87,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func macLicense() {
-        Util.launchWine(args: ["reg", "add", "HKEY_CURRENT_USER\\Software\\Wine", "/v", "HideWineExports", "/d", "0", "/f"])
+        Wine.addReg(key: "HKEY_CURRENT_USER\\Software\\Wine", value: "HideWineExports", data: "0")
         macButton.state = .on
         winButton.state = .off
         UserDefaults.standard.set("Mac", forKey: licenseSettingKey)
     }
     
     @IBAction func play(_ sender: Any) {
-        Util.launchGame()
+        Util.launchExec(terminating: false)
     }
     
     @IBAction func installDXVK(_ sender: Any) {
@@ -153,8 +152,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                         args: ["-n", "-b", "com.apple.Terminal",
                                Bundle.main.url(forResource: "install_gshade", withExtension: "sh", subdirectory: "GShade")!.path,
                                "--env", "WINEPATH=\( Bundle.main.url(forResource: "bin", withExtension: nil, subdirectory: "wine")!.path)",
-                               "--env", "WINEESYNC=\(Util.esync ? "1" : "0")",
-                               "--env", "WINEPREFIX=\(Util.prefix.path)"])
+                               "--env", "WINEESYNC=\(Wine.esync ? "1" : "0")",
+                               "--env", "WINEPREFIX=\(Wine.prefix.path)"])
         } else {
             let alert = NSAlert()
             alert.messageText = "Catalina is not supported by the automatic GShade installer"
@@ -171,8 +170,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                         args: ["-n", "-b", "com.apple.Terminal",
                                Bundle.main.url(forResource: "manual_gshade", withExtension: "sh", subdirectory: "GShade")!.path,
                                "--env", "WINEPATH=\( Bundle.main.url(forResource: "bin", withExtension: nil, subdirectory: "wine")!.path)",
-                               "--env", "WINEESYNC=\(Util.esync ? "1" : "0")",
-                               "--env", "WINEPREFIX=\(Util.prefix.path)"])
+                               "--env", "WINEESYNC=\(Wine.esync ? "1" : "0")",
+                               "--env", "WINEPREFIX=\(Wine.prefix.path)"])
         } else {
             let alert = NSAlert()
             alert.messageText = "When running Catalina you must have wine or CrossOver installed"
@@ -188,19 +187,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @IBAction func regedit(_ sender: Any) {
-        Util.launchWine(args: ["regedit"])
+        Wine.launch(args: ["regedit"])
     }
     
     @IBAction func winecfg(_ sender: Any) {
-        Util.launchWine(args: ["winecfg"])
+        Wine.launch(args: ["winecfg"])
     }
     
     @IBAction func explorer(_ sender: Any) {
-        Util.launchWine(args: ["explorer"])
+        Wine.launch(args: ["explorer"])
     }
     
     @IBAction func cmd(_ sender: Any) {
-        Util.launchWine(args: ["wineconsole"])
+        Wine.launch(args: ["wineconsole"])
     }
     
     @IBAction func dxvkSettings(_ sender: Any) {

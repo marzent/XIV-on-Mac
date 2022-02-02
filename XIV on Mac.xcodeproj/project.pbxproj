@@ -23,6 +23,7 @@
 		50E5387B2779CF5C0038521A /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E5387A2779CF5C0038521A /* SettingsController.swift */; };
 		50ED0DB32773C619002E9854 /* Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ED0DB22773C619002E9854 /* Setup.swift */; };
 		50ED0DB52773CA8C002E9854 /* FileDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ED0DB42773CA8C002E9854 /* FileDownloader.swift */; };
+		50F6CBAA27A975A000013301 /* Wine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F6CBA927A975A000013301 /* Wine.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		50E5387A2779CF5C0038521A /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		50ED0DB22773C619002E9854 /* Setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setup.swift; sourceTree = "<group>"; };
 		50ED0DB42773CA8C002E9854 /* FileDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDownloader.swift; sourceTree = "<group>"; };
+		50F6CBA927A975A000013301 /* Wine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wine.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				505C0D9A277333920008A344 /* Util.swift */,
+				50F6CBA927A975A000013301 /* Wine.swift */,
 				50511EC42770E085003A1E9F /* AppDelegate.swift */,
 				50511EC62770E085003A1E9F /* InstallerController.swift */,
 				50E5387A2779CF5C0038521A /* SettingsController.swift */,
@@ -201,6 +204,7 @@
 			files = (
 				2B7C95D2277C6C6000A3CA89 /* SocialIntegration.swift in Sources */,
 				50BD278727785418002B0D1F /* Notifications.swift in Sources */,
+				50F6CBAA27A975A000013301 /* Wine.swift in Sources */,
 				505C0D9B277333920008A344 /* Util.swift in Sources */,
 				50511EC72770E085003A1E9F /* InstallerController.swift in Sources */,
 				50E5387B2779CF5C0038521A /* SettingsController.swift in Sources */,
@@ -369,7 +373,7 @@
 					"$(PROJECT_DIR)/XIV\\ on\\ Mac/wine/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 2.3;
+				MARKETING_VERSION = 2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "dezent.XIV-on-Mac";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -404,7 +408,7 @@
 					"$(PROJECT_DIR)/XIV\\ on\\ Mac/wine/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 2.3;
+				MARKETING_VERSION = 2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "dezent.XIV-on-Mac";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
