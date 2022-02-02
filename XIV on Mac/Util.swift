@@ -50,6 +50,7 @@ struct Util {
     
     static func launch(exec: URL, args: [String], blocking: Bool = false) {
         let task = Process()
+        task.qualityOfService = QualityOfService.userInteractive
         task.environment = enviroment
         task.executableURL = exec
         task.arguments = args
