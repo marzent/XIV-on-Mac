@@ -60,4 +60,15 @@ struct Wine {
         launch(args: ["winecfg", "-v", version], blocking: true)
     }
     
+    private static let retinaSettingKey = "RetinaMode"
+    static var retina: Bool {
+        get {
+            return Util.getSetting(settingKey: retinaSettingKey, defaultValue: false)
+        }
+        set(_retina) {
+            addReg(key: "HKEY_CURRENT_USER\\Software\\Wine\\Mac Driver", value: "RetinaMode", data: _retina ? "y" : "n")
+            UserDefaults.standard.set(_retina, forKey: retinaSettingKey)
+        }
+    }
+    
 }

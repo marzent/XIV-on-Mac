@@ -1303,12 +1303,12 @@ Gw
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="buc-8R-1Wp">
                                             <rect key="frame" x="174" y="21" width="64" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="check" title="Retina" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="7vx-YJ-IUo">
+                                            <buttonCell key="cell" type="check" title="Retina" bezelStyle="regularSquare" imagePosition="left" inset="2" id="7vx-YJ-IUo">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
-                                                <action selector="saveState:" target="GIg-v3-M8h" id="HeB-xt-rJP"/>
+                                                <action selector="updateRetina:" target="GIg-v3-M8h" id="vpB-lR-4wX"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -1356,6 +1356,7 @@ Gw
                         <outlet property="submissions" destination="SxV-dE-5eD" id="iAS-Sl-rkN"/>
                         <outlet property="version" destination="PxN-EU-Qcp" id="zNF-t4-Eyo"/>
                         <outlet property="wineDebugField" destination="qGE-fd-l1u" id="tHW-rs-7ze"/>
+                        <outlet property="wineRetina" destination="buc-8R-1Wp" id="izP-cS-C72"/>
                     </connections>
                 </viewController>
                 <customObject id="tpD-0Q-AJh" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
