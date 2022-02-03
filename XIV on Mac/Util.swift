@@ -76,6 +76,34 @@ struct Util {
         }
     }
     
+    static func launchToString(exec: URL, args: [String]) -> String {
+        var ret = ""
+        let task = Process()
+        task.qualityOfService = QualityOfService.userInteractive
+        task.environment = enviroment
+        task.executableURL = exec
+        task.arguments = args
+        let pipe = Pipe()
+        task.standardOutput = pipe
+        task.standardError = pipe
+        let outHandle = pipe.fileHandleForReading
+        outHandle.readabilityHandler = { pipe in
+            if let line = String(data: pipe.availableData, encoding: String.Encoding.utf8) {
+                ret.append(contentsOf: line)
+            } else {
+                print("Error decoding data: \(pipe.availableData)\n", to: &logger)
+            }
+        }
+        do {
+            try task.run()
+        }
+        catch {
+            print("Error starting subprocess", to: &logger)
+        }
+        task.waitUntilExit()
+        return ret
+    }
+    
     private static let macLicenseSettingKey = "MacLicenseSetting"
     static var macLicense: Bool {
         get {

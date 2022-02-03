@@ -13,6 +13,7 @@ struct Wine {
     static let wine64 = Bundle.main.url(forResource: "wine64", withExtension: nil, subdirectory: "wine/bin")!
     static let wineserver = Bundle.main.url(forResource: "wineserver", withExtension: nil, subdirectory: "wine/bin")!
     static let prefix = Util.applicationSupport.appendingPathComponent("game")
+    static let xomData = prefix.appendingPathComponent("drive_c/Program Files/XIV on Mac")
 
     static var logger = Util.Log(name: "wine.log")
     

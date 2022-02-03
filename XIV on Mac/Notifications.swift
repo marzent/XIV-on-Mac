@@ -12,6 +12,7 @@ extension Notification.Name {
     static let depInstallDone = Notification.Name("DepInstallDoneNotification")
     static let depDownloadDone = Notification.Name("DepDownloadDoneNotification")
     static let installStatusUpdate = Notification.Name("InstallStatusUpdateNotification")
+    static let loginDone = Notification.Name("LoginDoneNotification")
 }
 
 extension Notification {

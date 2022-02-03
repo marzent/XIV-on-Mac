@@ -9,6 +9,8 @@ import Cocoa
 
 class LaunchController: NSViewController {
     
+    var loginSheetWinController: NSWindowController?
+    
     @IBOutlet private var loginButton: NSButton!
     @IBOutlet private var userField: NSTextField!
     @IBOutlet private var passwdField: NSTextField!
@@ -16,13 +18,17 @@ class LaunchController: NSViewController {
     var settings: FFXIVSettings = FFXIVSettings()
     
     override func viewDidAppear() {
+        super.viewDidAppear()
         settings = FFXIVSettings.storedSettings()
         userField.stringValue = settings.credentials?.username ?? ""
         passwdField.stringValue = settings.credentials?.password ?? ""
-        super.viewDidAppear()
+        loginSheetWinController = storyboard?.instantiateController(withIdentifier: "LoginSheet") as? NSWindowController
+        Dalamud.install()
+        settings.dalamud = true
     }
     
     @IBAction func doLogin(_ sender: Any) {
+        view.window?.beginSheet(loginSheetWinController!.window!)
         settings.credentials = FFXIVLoginCredentials(username: userField.stringValue, password: passwdField.stringValue)
         doLogin()
     }
@@ -38,6 +44,7 @@ class LaunchController: NSViewController {
                 }
             default:
                 DispatchQueue.main.async {
+                    self.loginSheetWinController?.window?.close()
                     self.settings.credentials!.deleteLogin()
                     var updatedSettings = self.settings
                     updatedSettings.credentials = nil
@@ -52,8 +59,8 @@ class LaunchController: NSViewController {
         let queue = OperationQueue()
         let op = StartGameOperation(settings: settings, sid: sid)
         op.completionBlock = {
-            DispatchQueue.main.async {
-                //NSApp.terminate(nil)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                NotificationCenter.default.post(name: .loginDone, object: nil)
             }
         }
         queue.addOperation(op)

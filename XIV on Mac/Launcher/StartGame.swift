@@ -41,7 +41,12 @@ class StartGameOperation: AsyncOperation {
     override func main() {
         let app = FFXIVApp()
         let args = arguments(app: app)
-        Wine.launch(args: args)
+        if settings.dalamud {
+            Dalamud.launch(args: args)
+        }
+        else {
+            Wine.launch(args: args)
+        }
         state = .finished
     }
 

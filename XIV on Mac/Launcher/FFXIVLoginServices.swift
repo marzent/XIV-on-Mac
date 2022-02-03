@@ -154,8 +154,8 @@ public struct FFXIVSettings {
     public var credentials: FFXIVLoginCredentials?
     public var expansionId: FFXIVExpansionLevel = .aRealmReborn
     public var dalamud: Bool = false
+    public var steam: Bool = false
     public var usesOneTimePassword: Bool = false
-    public var appPath: URL?
     public var region: FFXIVRegion = FFXIVRegion.guessFromLocale()
     
     static func storedSettings(storage: UserDefaults = UserDefaults.standard) -> FFXIVSettings {
@@ -164,9 +164,6 @@ public struct FFXIVSettings {
             let login = FFXIVLoginCredentials.storedLogin(username: storedUsername)
             settings.credentials = login
         }
-        if let path = storage.string(forKey: "appPath") {
-            settings.appPath = URL(fileURLWithPath: path)
-        }
         if let expansionId = FFXIVExpansionLevel(rawValue: UInt32(storage.integer(forKey: "expansionId"))) {
             settings.expansionId = expansionId
         }
@@ -174,6 +171,7 @@ public struct FFXIVSettings {
             settings.region = region
         }
         settings.dalamud = storage.bool(forKey: "dalamud")
+        settings.steam = storage.bool(forKey: "steam")
         settings.usesOneTimePassword = storage.bool(forKey: "usesOneTimePassword")
         return settings
     }
@@ -184,8 +182,8 @@ public struct FFXIVSettings {
         }
         storage.set(expansionId.rawValue, forKey: "expansionId")
         storage.set(dalamud, forKey: "dalamud")
+        storage.set(steam, forKey: "steam")
         storage.set(usesOneTimePassword, forKey: "usesOneTimePassword")
-        storage.set(appPath?.path, forKey: "appPath")
         storage.set(region.rawValue, forKey: "region")
         storage.synchronize()
         if let creds = credentials {

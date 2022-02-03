@@ -10,7 +10,6 @@ import Cocoa
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
     
-    let licenseSettingKey = "LicenseType"
     let storyboard = NSStoryboard(name: "Main", bundle: nil)
     var launchWinController: NSWindowController?
     var settingsWinController: NSWindowController?
@@ -24,6 +23,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         settingsWinController = storyboard.instantiateController(withIdentifier: "SettingsWindow") as? NSWindowController
         installerWinController = storyboard.instantiateController(withIdentifier: "InstallerWindow") as? NSWindowController
         Util.make(dir: Wine.prefix.path)
+        Util.make(dir: Wine.xomData.path)
         Util.make(dir: Util.cache.path)
         if Util.macLicense {
             macLicense()
