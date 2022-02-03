@@ -76,6 +76,17 @@ struct Util {
         }
     }
     
+    private static let macLicenseSettingKey = "MacLicenseSetting"
+    static var macLicense: Bool {
+        get {
+            return Util.getSetting(settingKey: macLicenseSettingKey, defaultValue: true)
+        }
+        set(newLicense) {
+            Wine.addReg(key: "HKEY_CURRENT_USER\\Software\\Wine", value: "HideWineExports", data: newLicense ? "0" : "1")
+            UserDefaults.standard.set(newLicense, forKey: macLicenseSettingKey)
+        }
+    }
+    
     private static let launchSettingKey = "LaunchPath"
     static var launchPath: String {
         get {
@@ -86,7 +97,7 @@ struct Util {
         }
     }
     
-    static func launchExec(terminating: Bool = true) {
+    static func launchExec(terminating: Bool = false) {
         Wine.launch(args : [launchPath], blocking: false)
         if terminating {
             DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 10.0) {
@@ -183,4 +194,6 @@ struct Util {
         }
         return setting as! T
     }
+    
+
 }

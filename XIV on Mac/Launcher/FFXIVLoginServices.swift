@@ -9,6 +9,7 @@ import Foundation
 import Security
 import KeychainAccess
 import CommonCrypto
+import AppKit
 
 
 public enum FFXIVExpansionLevel: UInt32 {
@@ -152,7 +153,7 @@ private enum FFXIVLoginPageData {
 public struct FFXIVSettings {
     public var credentials: FFXIVLoginCredentials?
     public var expansionId: FFXIVExpansionLevel = .aRealmReborn
-    public var directX11: Bool = false
+    public var dalamud: Bool = false
     public var usesOneTimePassword: Bool = false
     public var appPath: URL?
     public var region: FFXIVRegion = FFXIVRegion.guessFromLocale()
@@ -172,34 +173,9 @@ public struct FFXIVSettings {
         if let region = FFXIVRegion(rawValue: UInt32(storage.integer(forKey: "region"))) {
             settings.region = region
         }
-        settings.directX11 = storage.bool(forKey: "directX11")
+        settings.dalamud = storage.bool(forKey: "dalamud")
         settings.usesOneTimePassword = storage.bool(forKey: "usesOneTimePassword")
         return settings
-    }
-    
-    static func appPathIsValid(url: URL?) -> Bool {
-        guard let url = url else {
-            return false
-        }
-        let fm = FileManager()
-        if !url.isFileURL {
-            return false
-        }
-        var isDir: ObjCBool = false
-        if !fm.fileExists(atPath: url.path, isDirectory: &isDir) || !isDir.boolValue {
-            return false
-        }
-        
-        guard let bundle = Bundle(url: url) else {
-            return false
-        }
-        guard let bundleId = bundle.object(forInfoDictionaryKey: kCFBundleIdentifierKey as String) as? String else {
-            return false
-        }
-        if bundleId != "com.square-enix.finalfantasyxiv" {
-            return false
-        }
-        return true
     }
     
     func serialize(into storage: UserDefaults = UserDefaults.standard) {
@@ -207,7 +183,7 @@ public struct FFXIVSettings {
             storage.set(username, forKey: "username")
         }
         storage.set(expansionId.rawValue, forKey: "expansionId")
-        storage.set(directX11, forKey: "directX11")
+        storage.set(dalamud, forKey: "dalamud")
         storage.set(usesOneTimePassword, forKey: "usesOneTimePassword")
         storage.set(appPath?.path, forKey: "appPath")
         storage.set(region.rawValue, forKey: "region")
@@ -218,7 +194,7 @@ public struct FFXIVSettings {
     }
     
     public func login(completion: @escaping ((FFXIVLoginResult) -> Void)) {
-        print(FFXIVApp(appPath!).versionHash)
+        print(FFXIVApp().versionHash)
         if credentials == nil {
             completion(.incorrectCredentials)
             return
@@ -255,7 +231,8 @@ private class FFXIVSSLDelegate: NSObject, URLSessionDelegate {
 }
 
 private struct FFXIVLogin {
-    static let userAgent = "macSQEXAuthor/2.0.0(MacOSX; ja-jp)"
+    static let userAgent = Util.macLicense ? "macSQEXAuthor/2.0.0(MacOSX; ja-jp)" : "SQEXAuthor/2.0.0(Windows 6.2; ja-jp; \(uniqueID))"
+    static let userAgentPatch = Util.macLicense ? "FFXIV-MAC PATCH CLIENT" : "FFXIV PATCH CLIENT"
     static let authURL = URL(string: "https://ffxiv-login.square-enix.com/oauth/ffxivarr/login/login.send")!
     
     static let loginHeaders = [
@@ -268,18 +245,18 @@ private struct FFXIVLogin {
     ]
     
     static let sessionHeaders = [
-        "User-Agent": "FFXIV-MAC PATCH CLIENT",
+        "User-Agent": userAgentPatch,
         "Content-Type": "application/x-www-form-urlencoded",
         "X-Hash-Check": "enabled"
     ]
     
     
     static let versionHeaders = [
-        "User-Agent": "FFXIV-MAC PATCH CLIENT"
+        "User-Agent": userAgentPatch
     ]
     
     var loginURL: URL {
-        return URL(string: "https://ffxiv-login.square-enix.com/oauth/ffxivarr/login/top?lng=en&rgn=\(settings.region.rawValue)&isft=0&issteam=0")!
+        return URL(string: "https://ffxiv-login.square-enix.com/oauth/ffxivarr/login/top?lng=en&rgn=\(settings.region.rawValue)&isft=0&cssmode=1&isnew=1&launchver=3")!
     }
     
     var sessionURL: URL {
@@ -291,11 +268,8 @@ private struct FFXIVLogin {
     let sslDelegate = FFXIVSSLDelegate()
     
     init?(settings: FFXIVSettings) {
-        guard let url = settings.appPath else {
-            return nil
-        }
         self.settings = settings
-        app = FFXIVApp(url)
+        app = FFXIVApp()
     }
     
     fileprivate func getStored(completion: @escaping ((FFXIVLoginPageData) -> Void)) {
@@ -418,10 +392,26 @@ private struct FFXIVLogin {
         }
         task.resume()
     }
+    
+    static private var uniqueID: String {
+          let platformExpert = IOServiceGetMatchingService(kIOMasterPortDefault, IOServiceMatching("IOPlatformExpertDevice") )
+
+          guard platformExpert > 0 else {
+            return "ecf4a84335"
+          }
+
+          guard let serialNumber = (IORegistryEntryCreateCFProperty(platformExpert, kIOPlatformSerialNumberKey as CFString, kCFAllocatorDefault, 0).takeUnretainedValue() as? String) else {
+            return "ecf4a84335"
+          }
+
+
+          IOObjectRelease(platformExpert)
+
+        return String(serialNumber.lowercased().prefix(10))
+    }
 }
 
 public struct FFXIVApp {
-    let appURL: URL
     let bootExeURL: URL
     let bootExe64URL: URL
     let bootVersionURL: URL
@@ -429,22 +419,14 @@ public struct FFXIVApp {
     let launcherExe64URL: URL
     let updaterExeURL: URL
     let updaterExe64URL: URL
-    let ciderURL: URL
     let dx9URL: URL
     let dx11URL: URL
     let gameVersionURL: URL
     let sqpackFolderURL: URL
     
-    init(_ appURL: URL) {
-        self.appURL = appURL
-        let bottle = FileManager.default.homeDirectoryForCurrentUser
-            .appendingPathComponent("Library")
-            .appendingPathComponent("Application Support")
-            .appendingPathComponent("FINAL FANTASY XIV ONLINE")
-            .appendingPathComponent("Bottles")
-            .appendingPathComponent("published_Final_Fantasy")
+    init() {
 
-        let ffxiv = bottle
+        let ffxiv = Wine.prefix
             .appendingPathComponent("drive_c")
             .appendingPathComponent("Program Files (x86)")
             .appendingPathComponent("SquareEnix")
@@ -459,13 +441,6 @@ public struct FFXIVApp {
         launcherExe64URL = boot.appendingPathComponent("ffxivlauncher64.exe")
         updaterExeURL = boot.appendingPathComponent("ffxivupdater.exe")
         updaterExe64URL = boot.appendingPathComponent("ffxivupdater64.exe")
-
-        ciderURL = appURL
-            .appendingPathComponent("Contents")
-            .appendingPathComponent("SharedSupport")
-            .appendingPathComponent("finalfantasyxiv")
-            .appendingPathComponent("bin")
-            .appendingPathComponent("wine")
         
         let game = ffxiv.appendingPathComponent("game")
         dx9URL = game.appendingPathComponent("ffxiv.exe")

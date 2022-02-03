@@ -12,6 +12,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     let licenseSettingKey = "LicenseType"
     let storyboard = NSStoryboard(name: "Main", bundle: nil)
+    var launchWinController: NSWindowController?
     var settingsWinController: NSWindowController?
     var installerWinController: NSWindowController?
 
@@ -19,11 +20,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet private var winButton: NSMenuItem!
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        launchWinController = storyboard.instantiateController(withIdentifier: "LaunchWindow") as? NSWindowController
         settingsWinController = storyboard.instantiateController(withIdentifier: "SettingsWindow") as? NSWindowController
         installerWinController = storyboard.instantiateController(withIdentifier: "InstallerWindow") as? NSWindowController
         Util.make(dir: Wine.prefix.path)
         Util.make(dir: Util.cache.path)
-        if Util.getSetting(settingKey: licenseSettingKey, defaultValue: "Mac") == "Mac" {
+        if Util.macLicense {
             macLicense()
         }
         else {
@@ -31,12 +33,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         SocialIntegration.discord.setPresence()
         if FileManager.default.fileExists(atPath: Util.launchPath) {
-            Util.launchExec()
+            launchWinController?.showWindow(self)
         }
         else {
             installerWinController?.showWindow(self)
         }
     }
+    
 
     func applicationWillTerminate(_ aNotification: Notification) {
         Wine.kill()
@@ -75,10 +78,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func winLicense() {
-        Wine.addReg(key: "HKEY_CURRENT_USER\\Software\\Wine", value: "HideWineExports", data: "1")
         macButton.state = .off
         winButton.state = .on
-        UserDefaults.standard.set("Win", forKey: licenseSettingKey)
+        Util.macLicense = false
     }
 	
     @IBAction func macLicense(_ sender: Any) {
@@ -87,10 +89,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func macLicense() {
-        Wine.addReg(key: "HKEY_CURRENT_USER\\Software\\Wine", value: "HideWineExports", data: "0")
         macButton.state = .on
         winButton.state = .off
-        UserDefaults.standard.set("Mac", forKey: licenseSettingKey)
+        Util.macLicense = true
     }
     
     @IBAction func play(_ sender: Any) {

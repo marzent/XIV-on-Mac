@@ -38,8 +38,7 @@ class Setup {
         }
     }
     
-    @objc
-    static func install(_ notif: Notification) {
+    @objc static func install(_ notif: Notification) {
         DXVK()
         vanillaConf()
         installMSVC32()

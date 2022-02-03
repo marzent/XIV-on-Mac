@@ -25,15 +25,13 @@ class InstallerController: NSViewController {
         spinner.startAnimation(self)
     }
     
-    @objc
-    func depsDone(_ notif: Notification) {
+    @objc func depsDone(_ notif: Notification) {
         DispatchQueue.main.async {
             self.tabView.selectNextTabViewItem(self)
         }
     }
     
-    @objc
-    func updateStatus(_ notif: Notification) {
+    @objc func updateStatus(_ notif: Notification) {
         let header = notif.userInfo?[Notification.status.header]! as! String
         let info = notif.userInfo?[Notification.status.info]! as! String
         DispatchQueue.main.async {

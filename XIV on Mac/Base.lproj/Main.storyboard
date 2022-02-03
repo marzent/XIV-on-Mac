@@ -1363,5 +1363,88 @@ Gw
             </objects>
             <point key="canvasLocation" x="896" y="590.5"/>
         </scene>
+        <!--Window Controller-->
+        <scene sceneID="ImY-2l-0oe">
+            <objects>
+                <windowController storyboardIdentifier="LaunchWindow" id="SmX-cH-8Kr" sceneMemberID="viewController">
+                    <window key="window" title="XIV on Mac" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="msO-z3-Trw">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="425" y="462" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
+                        <view key="contentView" id="NeK-oL-gbq">
+                            <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </view>
+                        <connections>
+                            <outlet property="delegate" destination="SmX-cH-8Kr" id="ze7-TO-pzq"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="sya-zo-KBW" kind="relationship" relationship="window.shadowedContentViewController" id="cBn-Mp-YgR"/>
+                    </connections>
+                </windowController>
+                <customObject id="KvU-Vz-zp3" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="133" y="1240"/>
+        </scene>
+        <!--Launch Controller-->
+        <scene sceneID="LxT-9M-fJX">
+            <objects>
+                <viewController id="sya-zo-KBW" customClass="LaunchController" customModule="XIV_on_Mac" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="Agp-L5-Fby">
+                        <rect key="frame" x="0.0" y="0.0" width="892" height="400"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <visualEffectView fixedFrame="YES" blendingMode="behindWindow" material="appearanceBased" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="wY2-dv-E6t">
+                                <rect key="frame" x="0.0" y="0.0" width="892" height="406"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <textField wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oji-h2-frf">
+                                        <rect key="frame" x="675" y="337" width="197" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="V4u-7G-g7u">
+                                            <font key="font" usesAppearanceFont="YES"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <secureTextField wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bhg-a8-aUl">
+                                        <rect key="frame" x="675" y="306" width="197" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" usesSingleLineMode="YES" id="TfY-Li-gp6">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <allowedInputSourceLocales>
+                                                <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                                            </allowedInputSourceLocales>
+                                        </secureTextFieldCell>
+                                    </secureTextField>
+                                    <button wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cgh-yM-JG5">
+                                        <rect key="frame" x="672" y="152" width="68" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="push" title="Login" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="TON-Zk-2g1">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="doLogin:" target="sya-zo-KBW" id="VVO-TS-DAx"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </visualEffectView>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="loginButton" destination="Cgh-yM-JG5" id="gcf-Am-XLt"/>
+                        <outlet property="passwdField" destination="Bhg-a8-aUl" id="C2s-Nr-4j7"/>
+                        <outlet property="userField" destination="Oji-h2-frf" id="7yS-C3-q1w"/>
+                    </connections>
+                </viewController>
+                <customObject id="0mb-fo-mzL" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="133" y="1727"/>
+        </scene>
     </scenes>
 </document>
