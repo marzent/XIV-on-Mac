@@ -192,7 +192,13 @@ public struct FFXIVSettings {
     }
     
     public func login(completion: @escaping ((FFXIVLoginResult) -> Void)) {
-        print(FFXIVApp().versionHash)
+        do {
+            try print(FFXIVApp().versionHash)
+        }
+        catch {
+            completion(.clientUpdate)
+            return
+        }
         if credentials == nil {
             completion(.incorrectCredentials)
             return
@@ -339,7 +345,8 @@ private struct FFXIVLogin {
 
         var url = sessionURL
         url = url.appendingPathComponent(tempSID)
-        let postBody = app.versionList(maxEx: updatedSettings.expansionId.rawValue).data(using: .utf8)
+        
+        let postBody = try? app.versionList(maxEx: updatedSettings.expansionId.rawValue).data(using: .utf8)
         fetch(headers: headers, url: url, postBody: postBody) { body, response in
             if let unexpectedResponseBody = body, unexpectedResponseBody.count > 0 {
                 if (response.statusCode <= 299) {
@@ -458,15 +465,17 @@ public struct FFXIVApp {
     }
     
     var versionHash: String {
-        let segments = [
-            FFXIVApp.hashSegment(file: bootExeURL),
-            FFXIVApp.hashSegment(file: bootExe64URL),
-            FFXIVApp.hashSegment(file: launcherExeURL),
-            FFXIVApp.hashSegment(file: launcherExe64URL),
-            FFXIVApp.hashSegment(file: updaterExeURL),
-            FFXIVApp.hashSegment(file: updaterExe64URL),
-        ]
-        return segments.joined(separator: ",")
+        get throws {
+            let segments = [
+                try FFXIVApp.hashSegment(file: bootExeURL),
+                try FFXIVApp.hashSegment(file: bootExe64URL),
+                try FFXIVApp.hashSegment(file: launcherExeURL),
+                try FFXIVApp.hashSegment(file: launcherExe64URL),
+                try FFXIVApp.hashSegment(file: updaterExeURL),
+                try FFXIVApp.hashSegment(file: updaterExe64URL),
+            ]
+            return segments.joined(separator: ",")
+        }
     }
 
     func sqpackVer(expansion: String) -> String {
@@ -478,20 +487,20 @@ public struct FFXIVApp {
         return String(data: data, encoding: .utf8)!
     }
 
-    func versionList(maxEx: UInt32) -> String {
+    func versionList(maxEx: UInt32) throws -> String {
         let exs = stride(from: 1, through: maxEx, by: 1).map({"ex\($0)"})
         let versions = exs.map({"\($0)\t\(sqpackVer(expansion: $0))"})
-        let versionList = "\(bootVer)=\(versionHash)\n\(versions.joined(separator: "\n"))"
+        let versionList = try "\(bootVer)=\(versionHash)\n\(versions.joined(separator: "\n"))"
         return versionList
     }
     
-    private static func hashSegment(file: URL) -> String {
-        let (hash, len) = FFXIVApp.sha1(file: file)
+    private static func hashSegment(file: URL) throws -> String {
+        let (hash, len) = try FFXIVApp.sha1(file: file)
         return "\(file.lastPathComponent)/\(len)/\(hash)"
     }
     
-    private static func sha1(file: URL) -> (String, Int) {
-        let data = try! Data.init(contentsOf: file)
+    private static func sha1(file: URL) throws -> (String, Int) {
+        let data = try Data.init(contentsOf: file)
         var hash = [UInt8](repeating: 0, count: Int(CC_SHA1_DIGEST_LENGTH))
         data.withUnsafeBytes { (bytes: UnsafeRawBufferPointer) -> Void in
             CC_SHA1(bytes.baseAddress, UInt32(data.count), &hash)

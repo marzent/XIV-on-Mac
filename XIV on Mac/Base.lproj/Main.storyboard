@@ -1401,7 +1401,7 @@ Gw
                 </windowController>
                 <customObject id="KvU-Vz-zp3" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="133" y="1240"/>
+            <point key="canvasLocation" x="80" y="1239"/>
         </scene>
         <!--Launch Controller-->
         <scene sceneID="LxT-9M-fJX">
@@ -1415,19 +1415,22 @@ Gw
                                 <rect key="frame" x="0.0" y="0.0" width="965" height="442"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <textField wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oji-h2-frf">
+                                    <textField wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" contentType="username" translatesAutoresizingMaskIntoConstraints="NO" id="Oji-h2-frf">
                                         <rect key="frame" x="682" y="357" width="264" height="27"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" controlSize="large" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="V4u-7G-g7u">
+                                        <textFieldCell key="cell" controlSize="large" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" drawsBackground="YES" id="V4u-7G-g7u">
                                             <font key="font" metaFont="system" size="16"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
+                                        <connections>
+                                            <action selector="doLogin:" target="sya-zo-KBW" id="ajX-HS-2l8"/>
+                                        </connections>
                                     </textField>
-                                    <secureTextField wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bhg-a8-aUl">
+                                    <secureTextField wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" contentType="password" translatesAutoresizingMaskIntoConstraints="NO" id="Bhg-a8-aUl">
                                         <rect key="frame" x="682" y="298" width="264" height="27"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <secureTextFieldCell key="cell" controlSize="large" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="required" drawsBackground="YES" usesSingleLineMode="YES" id="TfY-Li-gp6">
+                                        <secureTextFieldCell key="cell" controlSize="large" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="required" drawsBackground="YES" usesSingleLineMode="YES" id="TfY-Li-gp6">
                                             <font key="font" metaFont="system" size="16"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1435,23 +1438,14 @@ Gw
                                                 <string>NSAllRomanInputSourcesLocaleIdentifier</string>
                                             </allowedInputSourceLocales>
                                         </secureTextFieldCell>
-                                    </secureTextField>
-                                    <secureTextField wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lnK-vr-VBo">
-                                        <rect key="frame" x="682" y="239" width="197" height="27"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <secureTextFieldCell key="cell" controlSize="large" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="optional" drawsBackground="YES" usesSingleLineMode="YES" id="noy-fs-Y6Z">
-                                            <font key="font" metaFont="system" size="16"/>
-                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            <allowedInputSourceLocales>
-                                                <string>NSAllRomanInputSourcesLocaleIdentifier</string>
-                                            </allowedInputSourceLocales>
-                                        </secureTextFieldCell>
+                                        <connections>
+                                            <action selector="doLogin:" target="sya-zo-KBW" id="QrA-k5-7Zd"/>
+                                        </connections>
                                     </secureTextField>
                                     <button wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fhv-Eb-PmW">
                                         <rect key="frame" x="679" y="197" width="127" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="check" title="Auto-Login" bezelStyle="regularSquare" imagePosition="left" controlSize="large" state="on" inset="2" id="J8n-OX-VtC">
+                                        <buttonCell key="cell" type="check" title="Auto-Login" bezelStyle="regularSquare" imagePosition="left" controlSize="large" inset="2" id="J8n-OX-VtC">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system" size="15"/>
                                         </buttonCell>
@@ -1528,12 +1522,25 @@ Gw
                                             <font key="font" metaFont="system" size="15"/>
                                         </buttonCell>
                                     </button>
+                                    <textField wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" contentType="username" translatesAutoresizingMaskIntoConstraints="NO" id="hjj-4f-wNd">
+                                        <rect key="frame" x="681" y="240" width="190" height="27"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <textFieldCell key="cell" controlSize="large" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="optional" drawsBackground="YES" id="5FC-rM-Oay">
+                                            <font key="font" metaFont="system" size="16"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <connections>
+                                            <action selector="doLogin:" target="sya-zo-KBW" id="G0X-GO-dEw"/>
+                                        </connections>
+                                    </textField>
                                 </subviews>
                             </visualEffectView>
                         </subviews>
                     </view>
                     <connections>
                         <outlet property="loginButton" destination="Cgh-yM-JG5" id="gcf-Am-XLt"/>
+                        <outlet property="otpField" destination="hjj-4f-wNd" id="Qbt-Wl-rev"/>
                         <outlet property="passwdField" destination="Bhg-a8-aUl" id="C2s-Nr-4j7"/>
                         <outlet property="userField" destination="Oji-h2-frf" id="7yS-C3-q1w"/>
                     </connections>
@@ -1571,11 +1578,15 @@ Gw
             <objects>
                 <viewController id="FW0-Pr-cuJ" customClass="LoginSheetController" customModule="XIV_on_Mac" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="eS1-Qc-GLA">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="130"/>
+                        <rect key="frame" x="0.0" y="0.0" width="346" height="124"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
+                            <progressIndicator fixedFrame="YES" maxValue="100" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="YI2-3y-rQd">
+                                <rect key="frame" x="157" y="20" width="32" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </progressIndicator>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3sL-MF-vd4">
-                                <rect key="frame" x="-2" y="82" width="484" height="28"/>
+                                <rect key="frame" x="-69" y="76" width="484" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Logging In..." id="qM7-gN-uyd">
                                     <font key="font" metaFont="system" size="24"/>
@@ -1583,10 +1594,6 @@ Gw
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <progressIndicator fixedFrame="YES" maxValue="100" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="YI2-3y-rQd">
-                                <rect key="frame" x="224" y="26" width="32" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            </progressIndicator>
                         </subviews>
                     </view>
                     <connections>
@@ -1596,7 +1603,7 @@ Gw
                 </viewController>
                 <customObject id="MkQ-aV-33T" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="108" y="2490"/>
+            <point key="canvasLocation" x="108" y="2493"/>
         </scene>
     </scenes>
 </document>

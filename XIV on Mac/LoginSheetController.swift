@@ -23,17 +23,22 @@ class LoginSheetController: NSViewController {
         spinner.startAnimation(self)
     }
     
+    @objc func loginUpdate(_ notif: Notification) {
+        let info = notif.userInfo?[Notification.status.info]! as! String
+        DispatchQueue.main.async {
+            self.status.stringValue = info
+        }
+    }
+    
     @objc func loginDone(_ notif: Notification) {
         DispatchQueue.main.async {
-            self.status.stringValue = "Starting Wine..."
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 20.0) {
             self.view.window?.close()
         }
     }
     
     private func setupObservers() {
-        NotificationCenter.default.addObserver(self,selector: #selector(loginDone(_:)),name: .loginDone, object: nil)
+        NotificationCenter.default.addObserver(self,selector: #selector(loginUpdate(_:)),name: .loginInfo, object: nil)
+        NotificationCenter.default.addObserver(self,selector: #selector(loginDone(_:)),name: .gameStarted, object: nil)
     }
     
 }

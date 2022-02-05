@@ -45,6 +45,7 @@ class StartGameOperation: AsyncOperation {
             Dalamud.launch(args: args)
         }
         else {
+            NotificationCenter.default.post(name: .loginInfo, object: nil, userInfo: [Notification.status.info: "Starting Wine..."])
             Wine.launch(args: args)
         }
         state = .finished

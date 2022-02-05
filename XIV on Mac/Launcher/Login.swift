@@ -31,22 +31,22 @@ class LoginOperation: AsyncOperation {
             alert.addButton(withTitle: "Ok")
             alert.alertStyle = .critical
             alert.messageText = "Login system error"
-            alert.informativeText = "The login servers did not present the login challenge the way we were expecting. " +
-                "It may have changed on the server. Please check for an update to LaunchXIV to fix this. In the meantime " +
-            "please use the default launcher."
+            alert.informativeText = "The login servers did not present the login challenge the way we were expecting. It may have changed on the server. Please check for an update to XIV on Mac to fix this. In the meantime please use the default launcher."
             alert.runModal()
-            NSApp.terminate(nil)
         case .incorrectCredentials:
-            // Let the caller handle it
-            break
+            let alert = NSAlert()
+            alert.addButton(withTitle: "Ok")
+            alert.alertStyle = .critical
+            alert.messageText = "Incorrect Credentials"
+            alert.informativeText = "The login servers did not accept the provided credentials. Please make sure to select the correct license (Windows, Steam or Mac) in Settings."
+            alert.runModal()
         case .clientUpdate:
             let alert = NSAlert()
             alert.addButton(withTitle: "Ok")
             alert.alertStyle = .critical
             alert.messageText = "Final Fantasy XIV Needs Updating!"
-            alert.informativeText = "LaunchXIV cannot patch Final Fantasy XIV. Please use the standard launcher to patch."
+            alert.informativeText = "XIV on Mac cannot patch Final Fantasy XIV yet. Please use the standard launcher to patch."
             alert.runModal()
-            NSApp.terminate(nil)
         case .networkError:
             let alert = NSAlert()
             alert.addButton(withTitle: "Ok")
@@ -54,9 +54,8 @@ class LoginOperation: AsyncOperation {
             alert.messageText = "Network Error"
             alert.informativeText = "Check your internet connection, or try again later. Is FFXIV down?"
             alert.runModal()
-            NSApp.terminate(nil)
         case .success(_, let updatedSettings):
-            // These settings are provably correct, definitely save them
+            // These settings are probably correct, definitely save them
             updatedSettings.serialize()
         }
         

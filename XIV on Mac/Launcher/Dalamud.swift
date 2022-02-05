@@ -100,8 +100,9 @@ struct Dalamud {
         }
     }
 
-    static func install() {
+    private static func install() {
         if needsUpdate() {
+            NotificationCenter.default.post(name: .loginInfo, object: nil, userInfo: [Notification.status.info: "Updating Dalamud..."])
             purge()
         }
         Setup.download(url: remote.distrib)
@@ -130,15 +131,8 @@ struct Dalamud {
         try? fm.unzipItem(at: Util.cache.appendingPathComponent("windowsdesktop-runtime-\(version)-win-x64.zip"), to: runtime)
     }
     
-    static func launch(args: [String]) {
-        let output = Util.launchToString(exec: Wine.wine64, args: [nativeLauncher.path] + args)
-        let pid = String(output.split(separator: "\n").last!)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 7.0) {
-            Wine.launch(args: [path.appendingPathComponent("Dalamud.Injector.exe").path, pid])
-        }
-    }
-    
     private static func needsUpdate() -> Bool {
+        //Loosely inspired by https://github.com/redstrate/xivlauncher/ and even more janky :)
         do {
             let deps = try String(contentsOf: path.appendingPathComponent("Dalamud.deps.json"), encoding: .utf8)
             let head = String(deps.prefix(300))
@@ -161,6 +155,20 @@ struct Dalamud {
                          path,
                          runtime] {
             try? fm.removeItem(at: toRemove)
+        }
+    }
+    
+    static func launch(args: [String]) {
+        install()
+        NotificationCenter.default.post(name: .loginInfo, object: nil, userInfo: [Notification.status.info: "Starting Wine..."])
+        let output = Util.launchToString(exec: Wine.wine64, args: [nativeLauncher.path] + args)
+        let pid = String(output.split(separator: "\n").last!)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 7.0) {
+            NotificationCenter.default.post(name: .loginInfo, object: nil, userInfo: [Notification.status.info: "Injecting Dalamud..."])
+            Wine.launch(args: [path.appendingPathComponent("Dalamud.Injector.exe").path, pid])
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 15.0) {
+            NotificationCenter.default.post(name: .gameStarted, object: nil)
         }
     }
     
