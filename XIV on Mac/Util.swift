@@ -222,6 +222,4 @@ struct Util {
         }
         return setting as! T
     }
-    
-
 }

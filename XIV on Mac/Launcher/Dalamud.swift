@@ -17,7 +17,7 @@ struct Dalamud {
         static let remote = "https://github.com/redstrate/nativelauncher/releases/download/v1.0.0/" + exec
     }
     
-    // MARK: - Version
+    
     struct Version: Codable {
         let assemblyVersion, supportedGameVer, runtimeVersion: String
         let runtimeRequired: Bool
@@ -30,8 +30,20 @@ struct Dalamud {
         }
     }
     
-    // MARK: - Assets
     struct Assets: Codable {
+        
+        struct Asset: Codable {
+            let url: String
+            let fileName: String
+            let hash: String?
+
+            enum CodingKeys: String, CodingKey {
+                case url = "Url"
+                case fileName = "FileName"
+                case hash = "Hash"
+            }
+        }
+        
         let version: Int
         let assets: [Asset]
 
@@ -40,22 +52,13 @@ struct Dalamud {
             case assets = "Assets"
         }
     }
-
-    // MARK: - Asset
-    struct Asset: Codable {
-        let url: String
-        let fileName: String
-        let hash: String?
-
-        enum CodingKeys: String, CodingKey {
-            case url = "Url"
-            case fileName = "FileName"
-            case hash = "Hash"
-        }
-    }
     
+    static let fm = FileManager.default
     static let path = Wine.xomData.appendingPathComponent("Dalamud")
-    struct remote {
+    static let localAssets =  Wine.prefix.appendingPathComponent("drive_c/users/emet-selch/Application Data/XIVLauncher/dalamudAssets/dev/")
+    static let runtime = Wine.prefix.appendingPathComponent("drive_c/users/emet-selch/Application Data/XIVLauncher/runtime")
+    
+    private struct remote {
         static let distrib = "https://goatcorp.github.io/dalamud-distrib/latest.zip"
         static var assets: Assets? {
             var ret: Assets?
@@ -98,12 +101,13 @@ struct Dalamud {
     }
 
     static func install() {
+        if needsUpdate() {
+            purge()
+        }
         Setup.download(url: remote.distrib)
         Setup.download(url: nativeLauncher.remote)
-        let fm = FileManager.default
         try? fm.copyItem(atPath: Util.cache.appendingPathComponent(nativeLauncher.exec).path, toPath: nativeLauncher.path)
         try? fm.unzipItem(at: Util.cache.appendingPathComponent("latest.zip"), to: path)
-        let localAssets =  Wine.prefix.appendingPathComponent("drive_c/users/emet-selch/Application Data/XIVLauncher/dalamudAssets/dev/")
         for asset in remote.assets!.assets {
             FileDownloader.loadFileSync(url: URL(string: asset.url)!,
                                         destination: URL(fileURLWithPath: localAssets.path + "/" + asset.fileName).deletingLastPathComponent())
@@ -111,6 +115,19 @@ struct Dalamud {
                 print("Dalamud Asset downloaded to: \(path!)\n", to: &Util.logger)
             }
         }
+        try? fm.moveItem(at: localAssets.appendingPathComponent("UIRes/FFXIV_Lodestone_SSF.ttf"), to: localAssets.appendingPathComponent("UIRes/gamesym.ttf")) //WHY???
+        installRuntime()
+    }
+    
+    private static func installRuntime() {
+        if !remote.version!.runtimeRequired {
+            return
+        }
+        let version = remote.version!.runtimeVersion
+        Setup.download(url: "https://dotnetcli.azureedge.net/dotnet/Runtime/\(version)/dotnet-runtime-\(version)-win-x64.zip")
+        Setup.download(url: "https://dotnetcli.azureedge.net/dotnet/WindowsDesktop/\(version)/windowsdesktop-runtime-\(version)-win-x64.zip")
+        try? fm.unzipItem(at: Util.cache.appendingPathComponent("dotnet-runtime-\(version)-win-x64.zip"), to: runtime)
+        try? fm.unzipItem(at: Util.cache.appendingPathComponent("windowsdesktop-runtime-\(version)-win-x64.zip"), to: runtime)
     }
     
     static func launch(args: [String]) {
@@ -118,6 +135,32 @@ struct Dalamud {
         let pid = String(output.split(separator: "\n").last!)
         DispatchQueue.main.asyncAfter(deadline: .now() + 7.0) {
             Wine.launch(args: [path.appendingPathComponent("Dalamud.Injector.exe").path, pid])
+        }
+    }
+    
+    private static func needsUpdate() -> Bool {
+        do {
+            let deps = try String(contentsOf: path.appendingPathComponent("Dalamud.deps.json"), encoding: .utf8)
+            let head = String(deps.prefix(300))
+            if let range = head.range(of: #"(?<=Dalamud\/).*(?=":)"#, options: .regularExpression) {
+                let localVersion = head[range]
+                if localVersion == remote.version!.assemblyVersion {
+                    return false
+                }
+            }
+        }
+        catch {
+            return true
+        }
+        return true
+    }
+    
+    private static func purge() {
+        for toRemove in [Util.cache.appendingPathComponent("latest.zip"),
+                         localAssets,
+                         path,
+                         runtime] {
+            try? fm.removeItem(at: toRemove)
         }
     }
     
