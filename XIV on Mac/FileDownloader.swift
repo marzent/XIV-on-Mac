@@ -9,15 +9,15 @@ import Foundation
 
 class FileDownloader {
 
-    static func loadFileSync(url: URL, completion: @escaping (String?, Error?) -> Void) {
-        let downloadUrl = Util.cache
-        let destinationUrl = downloadUrl.appendingPathComponent(url.lastPathComponent)
-
+    static func loadFileSync(url: URL, destination: URL = Util.cache, completion: @escaping (String?, Error?) -> Void) {
+        let destinationUrl = destination.appendingPathComponent(url.lastPathComponent)
+        
         if FileManager().fileExists(atPath: destinationUrl.path) {
             print("File already exists [\(destinationUrl.path)]")
             completion(destinationUrl.path, nil)
         }
         else if let dataFromURL = NSData(contentsOf: url) {
+            Util.make(dir: destination.path)
             if dataFromURL.write(to: destinationUrl, atomically: true) {
                 print("file saved [\(destinationUrl.path)]")
                 completion(destinationUrl.path, nil)

@@ -80,7 +80,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func winLicense() {
         macButton.state = .off
         winButton.state = .on
-        Util.macLicense = false
+        DispatchQueue.global(qos: .utility).async {
+            Util.macLicense = false
+        }
     }
 	
     @IBAction func macLicense(_ sender: Any) {
@@ -91,7 +93,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func macLicense() {
         macButton.state = .on
         winButton.state = .off
-        Util.macLicense = true
+        DispatchQueue.global(qos: .utility).async {
+            Util.macLicense = true
+        }
     }
     
     @IBAction func play(_ sender: Any) {

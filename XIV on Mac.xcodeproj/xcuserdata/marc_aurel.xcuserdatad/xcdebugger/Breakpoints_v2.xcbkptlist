@@ -263,16 +263,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F98ADF13-CD3C-4CFA-BA7A-93656FF8D73F"
+            uuid = "A42648FE-F4A4-4021-84AF-AAF22076D55A"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "XIV on Mac/Launcher/Dalamud.swift"
+            filePath = "XIV on Mac/FileDownloader.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "install()"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "loadFileSync(url:destination:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -1017,7 +1017,7 @@ Gw
                 </windowController>
                 <customObject id="gt0-lc-YaY" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="896" y="-29"/>
+            <point key="canvasLocation" x="880" y="-240"/>
         </scene>
         <!--Settings Controller-->
         <scene sceneID="XL5-1S-wKF">
@@ -1360,6 +1360,21 @@ Gw
                     </connections>
                 </viewController>
                 <customObject id="tpD-0Q-AJh" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <toolbar implicitIdentifier="09D11707-F4A3-4FD5-970E-AC5832E91C2B" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="fQB-5y-0Be">
+                    <allowedToolbarItems>
+                        <toolbarItem implicitItemIdentifier="NSToolbarShowColorsItem" id="9XN-db-n3l"/>
+                        <toolbarItem implicitItemIdentifier="NSToolbarShowFontsItem" id="OdS-Rd-Bnk"/>
+                        <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="qDy-L6-6dU"/>
+                        <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="nbS-ze-pMb"/>
+                    </allowedToolbarItems>
+                    <defaultToolbarItems>
+                        <toolbarItem reference="nbS-ze-pMb"/>
+                        <toolbarItem reference="9XN-db-n3l"/>
+                        <toolbarItem reference="OdS-Rd-Bnk"/>
+                        <toolbarItem reference="qDy-L6-6dU"/>
+                        <toolbarItem reference="nbS-ze-pMb"/>
+                    </defaultToolbarItems>
+                </toolbar>
             </objects>
             <point key="canvasLocation" x="896" y="590.5"/>
         </scene>
@@ -1445,7 +1460,7 @@ Gw
                                         <rect key="frame" x="680" y="386" width="80" height="14"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" title="Square Enix ID" id="dYN-5e-LY1">
-                                            <font key="font" metaFont="system" size="11"/>
+                                            <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -1454,7 +1469,7 @@ Gw
                                         <rect key="frame" x="680" y="327" width="120" height="14"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" title="Square Enix Password" id="P4p-qs-m93">
-                                            <font key="font" metaFont="system" size="11"/>
+                                            <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -1463,7 +1478,7 @@ Gw
                                         <rect key="frame" x="680" y="269" width="109" height="14"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" title="One-Time Password" id="Def-J0-BrB">
-                                            <font key="font" metaFont="system" size="11"/>
+                                            <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>

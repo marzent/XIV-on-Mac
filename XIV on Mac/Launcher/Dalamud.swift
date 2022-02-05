@@ -17,15 +17,100 @@ struct Dalamud {
         static let remote = "https://github.com/redstrate/nativelauncher/releases/download/v1.0.0/" + exec
     }
     
+    // MARK: - Version
+    struct Version: Codable {
+        let assemblyVersion, supportedGameVer, runtimeVersion: String
+        let runtimeRequired: Bool
+
+        enum CodingKeys: String, CodingKey {
+            case assemblyVersion = "AssemblyVersion"
+            case supportedGameVer = "SupportedGameVer"
+            case runtimeVersion = "RuntimeVersion"
+            case runtimeRequired = "RuntimeRequired"
+        }
+    }
+    
+    // MARK: - Assets
+    struct Assets: Codable {
+        let version: Int
+        let assets: [Asset]
+
+        enum CodingKeys: String, CodingKey {
+            case version = "Version"
+            case assets = "Assets"
+        }
+    }
+
+    // MARK: - Asset
+    struct Asset: Codable {
+        let url: String
+        let fileName: String
+        let hash: String?
+
+        enum CodingKeys: String, CodingKey {
+            case url = "Url"
+            case fileName = "FileName"
+            case hash = "Hash"
+        }
+    }
+    
     static let path = Wine.xomData.appendingPathComponent("Dalamud")
-    static let remote = "https://goatcorp.github.io/dalamud-distrib/latest.zip"
+    struct remote {
+        static let distrib = "https://goatcorp.github.io/dalamud-distrib/latest.zip"
+        static var assets: Assets? {
+            var ret: Assets?
+            let url = URL(string: "https://goatcorp.github.io/DalamudAssets/asset.json")!
+            let semaphore = DispatchSemaphore(value: 0)
+            let task = URLSession.shared.dataTask(with: url) { data, response, error in
+                if let data = data {
+                    let jsonDecoder = JSONDecoder()
+                    do {
+                        ret = try jsonDecoder.decode(Assets.self, from: data)
+                    } catch {
+                        print(error, to: &Util.logger)
+                    }
+                }
+                semaphore.signal()
+            }
+            task.resume()
+            semaphore.wait()
+            return ret
+        }
+        static var version: Version? {
+            var ret: Version?
+            let url = URL(string: "https://goatcorp.github.io/dalamud-distrib/version")!
+            let semaphore = DispatchSemaphore(value: 0)
+            let task = URLSession.shared.dataTask(with: url) { data, response, error in
+                if let data = data {
+                    let jsonDecoder = JSONDecoder()
+                    do {
+                        ret = try jsonDecoder.decode(Version.self, from: data)
+                    } catch {
+                        print(error, to: &Util.logger)
+                    }
+                }
+                semaphore.signal()
+            }
+            task.resume()
+            semaphore.wait()
+            return ret
+        }
+    }
 
     static func install() {
-        Setup.download(url: remote)
+        Setup.download(url: remote.distrib)
         Setup.download(url: nativeLauncher.remote)
         let fm = FileManager.default
         try? fm.copyItem(atPath: Util.cache.appendingPathComponent(nativeLauncher.exec).path, toPath: nativeLauncher.path)
         try? fm.unzipItem(at: Util.cache.appendingPathComponent("latest.zip"), to: path)
+        let localAssets =  Wine.prefix.appendingPathComponent("drive_c/users/emet-selch/Application Data/XIVLauncher/dalamudAssets/dev/")
+        for asset in remote.assets!.assets {
+            FileDownloader.loadFileSync(url: URL(string: asset.url)!,
+                                        destination: URL(fileURLWithPath: localAssets.path + "/" + asset.fileName).deletingLastPathComponent())
+            {(path, error) in
+                print("Dalamud Asset downloaded to: \(path!)\n", to: &Util.logger)
+            }
+        }
     }
     
     static func launch(args: [String]) {
