@@ -137,7 +137,7 @@ class StartGameOperation: AsyncOperation {
             ("/DEV.UseSqPack", "1"),
             ("/SYS.Region", "\(settings.region.rawValue)"),
             ("/language", "1"),
-            ("/IsSteam", "0"),
+            ("/IsSteam", settings.steam ? "1" : "0"),
             ("/ver", "\(app.gameVer)")
         ]
         return [

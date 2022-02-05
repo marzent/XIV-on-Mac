@@ -1400,32 +1400,6 @@ Gw
                                 <rect key="frame" x="0.0" y="0.0" width="965" height="442"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <scrollView wantsLayer="YES" fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M54-b0-8eW">
-                                        <rect key="frame" x="20" y="150" width="640" height="250"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <clipView key="contentView" id="l9n-E8-96q">
-                                            <rect key="frame" x="1" y="1" width="638" height="248"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <subviews>
-                                                <collectionView id="cf0-Sg-AYI">
-                                                    <rect key="frame" x="0.0" y="0.0" width="638" height="158"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="98P-Kw-csZ">
-                                                        <size key="itemSize" width="50" height="50"/>
-                                                    </collectionViewFlowLayout>
-                                                    <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                </collectionView>
-                                            </subviews>
-                                        </clipView>
-                                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="zXo-Fl-Qco">
-                                            <rect key="frame" x="1" y="144" width="233" height="15"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </scroller>
-                                        <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="Aa8-VQ-GlY">
-                                            <rect key="frame" x="234" y="1" width="15" height="143"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </scroller>
-                                    </scrollView>
                                     <textField wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oji-h2-frf">
                                         <rect key="frame" x="682" y="357" width="264" height="27"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -1460,7 +1434,7 @@ Gw
                                         </secureTextFieldCell>
                                     </secureTextField>
                                     <button wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fhv-Eb-PmW">
-                                        <rect key="frame" x="679" y="197" width="176" height="24"/>
+                                        <rect key="frame" x="679" y="197" width="127" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="check" title="Auto-Login" bezelStyle="regularSquare" imagePosition="left" controlSize="large" state="on" inset="2" id="J8n-OX-VtC">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1504,6 +1478,40 @@ Gw
                                         <connections>
                                             <action selector="doLogin:" target="sya-zo-KBW" id="VVO-TS-DAx"/>
                                         </connections>
+                                    </button>
+                                    <scrollView wantsLayer="YES" fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M54-b0-8eW">
+                                        <rect key="frame" x="20" y="150" width="640" height="250"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <clipView key="contentView" id="l9n-E8-96q">
+                                            <rect key="frame" x="1" y="1" width="638" height="248"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <collectionView id="cf0-Sg-AYI">
+                                                    <rect key="frame" x="0.0" y="0.0" width="638" height="158"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="98P-Kw-csZ">
+                                                        <size key="itemSize" width="50" height="50"/>
+                                                    </collectionViewFlowLayout>
+                                                    <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </collectionView>
+                                            </subviews>
+                                        </clipView>
+                                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="zXo-Fl-Qco">
+                                            <rect key="frame" x="1" y="144" width="233" height="15"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </scroller>
+                                        <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="Aa8-VQ-GlY">
+                                            <rect key="frame" x="234" y="1" width="15" height="143"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </scroller>
+                                    </scrollView>
+                                    <button wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xhX-md-4MR">
+                                        <rect key="frame" x="819" y="197" width="127" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="check" title="Auto-OTP" bezelStyle="regularSquare" imagePosition="left" controlSize="large" enabled="NO" inset="2" id="hjS-RC-X85">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system" size="15"/>
+                                        </buttonCell>
                                     </button>
                                 </subviews>
                             </visualEffectView>

@@ -254,7 +254,7 @@ private struct FFXIVLogin {
     ]
     
     var loginURL: URL {
-        return URL(string: "https://ffxiv-login.square-enix.com/oauth/ffxivarr/login/top?lng=en&rgn=\(settings.region.rawValue)&isft=0&cssmode=1&isnew=1&launchver=3")!
+        return URL(string: "https://ffxiv-login.square-enix.com/oauth/ffxivarr/login/top?lng=en&rgn=\(settings.region.rawValue)&isft=0&cssmode=1&isnew=1&launchver=3\(settings.steam ? "&issteam=1" : "")")!
     }
     
     var sessionURL: URL {
