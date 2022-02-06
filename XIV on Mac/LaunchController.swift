@@ -23,6 +23,7 @@ class LaunchController: NSViewController {
         update(FFXIVSettings.storedSettings())
         loginSheetWinController = storyboard?.instantiateController(withIdentifier: "LoginSheet") as? NSWindowController
         settings.dalamud = true
+        view.window?.isMovableByWindowBackground = true
     }
     
     private func update(_ settings: FFXIVSettings) {

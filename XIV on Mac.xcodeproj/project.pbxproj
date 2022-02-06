@@ -29,7 +29,6 @@
 		507D8F2127766F52000F0CB0 /* dxvk in Resources */ = {isa = PBXBuildFile; fileRef = 507D8F2027766F52000F0CB0 /* dxvk */; };
 		50B2A2B527AC1BC400EFA0A2 /* LoginSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A2B427AC1BC400EFA0A2 /* LoginSheetController.swift */; };
 		50B2A2B927AC461800EFA0A2 /* Dalamud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A2B827AC461800EFA0A2 /* Dalamud.swift */; };
-		50B4EE6C27AE641A00D2770B /* Icons in Resources */ = {isa = PBXBuildFile; fileRef = 50B4EE6B27AE641A00D2770B /* Icons */; };
 		50BD278727785418002B0D1F /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BD278627785418002B0D1F /* Notifications.swift */; };
 		50DF45992795C53300E3D22F /* GShade in Resources */ = {isa = PBXBuildFile; fileRef = 50DF45982795C53300E3D22F /* GShade */; };
 		50E5387B2779CF5C0038521A /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E5387A2779CF5C0038521A /* SettingsController.swift */; };
@@ -60,7 +59,6 @@
 		50B2A2B327ABEF6800EFA0A2 /* XIV-on-Mac-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "XIV-on-Mac-Info.plist"; sourceTree = SOURCE_ROOT; };
 		50B2A2B427AC1BC400EFA0A2 /* LoginSheetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSheetController.swift; sourceTree = "<group>"; };
 		50B2A2B827AC461800EFA0A2 /* Dalamud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dalamud.swift; sourceTree = "<group>"; };
-		50B4EE6B27AE641A00D2770B /* Icons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Icons; sourceTree = "<group>"; };
 		50BD278627785418002B0D1F /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		50DF45982795C53300E3D22F /* GShade */ = {isa = PBXFileReference; lastKnownFileType = folder; path = GShade; sourceTree = "<group>"; };
 		50E5387A2779CF5C0038521A /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
@@ -119,7 +117,6 @@
 				50511EC82770E087003A1E9F /* Assets.xcassets */,
 				50511ECA2770E087003A1E9F /* Main.storyboard */,
 				50511ECD2770E087003A1E9F /* XIV_on_Mac.entitlements */,
-				50B4EE6B27AE641A00D2770B /* Icons */,
 				50DF45982795C53300E3D22F /* GShade */,
 				507D8F2027766F52000F0CB0 /* dxvk */,
 				5043E36B27728BA300E59127 /* wine */,
@@ -216,7 +213,6 @@
 				50DF45992795C53300E3D22F /* GShade in Resources */,
 				50511EC92770E087003A1E9F /* Assets.xcassets in Resources */,
 				507D8F2127766F52000F0CB0 /* dxvk in Resources */,
-				50B4EE6C27AE641A00D2770B /* Icons in Resources */,
 				50511ECC2770E087003A1E9F /* Main.storyboard in Resources */,
 				5043E36C27728BA300E59127 /* wine in Resources */,
 			);

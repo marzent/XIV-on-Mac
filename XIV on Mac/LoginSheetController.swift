@@ -32,6 +32,7 @@ class LoginSheetController: NSViewController {
     
     @objc func loginDone(_ notif: Notification) {
         DispatchQueue.main.async {
+            self.status.stringValue = "Logging In"
             self.view.window?.close()
         }
     }

@@ -203,6 +203,7 @@ struct Util {
         env["DXVK_HUD"] = dxvkOptions.getHud()
         env["DXVK_ASYNC"] = dxvkOptions.getAsync()
         env["DXVK_FRAME_RATE"] = dxvkOptions.getMaxFramerate()
+        env["DALAMUD_RUNTIME"] = "C:\\Program Files\\XIV on Mac\\dotNET Runtime"
         env["XL_WINEONLINUX"] = "true"
         env["XL_WINEONMAC"] = "true"
         env["MVK_CONFIG_FULL_IMAGE_VIEW_SWIZZLE"] = "0"

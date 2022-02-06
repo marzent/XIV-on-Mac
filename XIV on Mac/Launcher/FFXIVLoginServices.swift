@@ -40,6 +40,19 @@ public enum FFXIVRegion: UInt32 {
             return .english
         }
     }
+    
+    func goatLanguage() -> Int {
+        switch self {
+        case .english:
+            return 1
+        case .french:
+            return 3
+        case .german:
+            return 2
+        case .japanese:
+            return 0
+        }
+    }
 }
 
 public struct FFXIVServerLoginResponse {

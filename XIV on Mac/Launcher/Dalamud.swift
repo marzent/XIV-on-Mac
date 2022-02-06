@@ -53,13 +53,36 @@ struct Dalamud {
         }
     }
     
+    struct StartInfo: Codable {
+        let workingDirectory: String?
+        let configurationPath, pluginDirectory, defaultPluginDirectory, assetDirectory: String
+        let language: Int
+        let gameVersion: String
+        let optOutMBCollection: Bool
+        let delayInitializeMS: Int
+
+        enum CodingKeys: String, CodingKey {
+            case workingDirectory = "WorkingDirectory"
+            case configurationPath = "ConfigurationPath"
+            case pluginDirectory = "PluginDirectory"
+            case defaultPluginDirectory = "DefaultPluginDirectory"
+            case assetDirectory = "AssetDirectory"
+            case language = "Language"
+            case gameVersion = "GameVersion"
+            case optOutMBCollection = "OptOutMbCollection"
+            case delayInitializeMS = "DelayInitializeMs"
+        }
+    }
+    
     static let fm = FileManager.default
     static let path = Wine.xomData.appendingPathComponent("Dalamud")
-    static let localAssets =  Wine.prefix.appendingPathComponent("drive_c/users/emet-selch/Application Data/XIVLauncher/dalamudAssets/dev/")
-    static let runtime = Wine.prefix.appendingPathComponent("drive_c/users/emet-selch/Application Data/XIVLauncher/runtime")
+    static let localAssets = Wine.xomData.appendingPathComponent("Dalamud Assets")
+    static let runtime = Wine.xomData.appendingPathComponent("dotNET Runtime")
     
     private struct remote {
+        
         static let distrib = "https://goatcorp.github.io/dalamud-distrib/latest.zip"
+        
         static var assets: Assets? {
             var ret: Assets?
             let url = URL(string: "https://goatcorp.github.io/DalamudAssets/asset.json")!
@@ -79,6 +102,7 @@ struct Dalamud {
             semaphore.wait()
             return ret
         }
+        
         static var version: Version? {
             var ret: Version?
             let url = URL(string: "https://goatcorp.github.io/dalamud-distrib/version")!
@@ -99,7 +123,28 @@ struct Dalamud {
             return ret
         }
     }
-
+    
+    
+    private static let injectionSettingKey = "InjectionDelaySetting"
+    static var delay: Double {
+        get {
+            return Util.getSetting(settingKey: injectionSettingKey, defaultValue: 7.0)
+        }
+        set(newDelay) {
+            UserDefaults.standard.set(newDelay, forKey: injectionSettingKey)
+        }
+    }
+    
+    private static let mbCollectionSettingKey = "MBCollectionSetting"
+    static var mbCollection: Bool {
+        get {
+            return Util.getSetting(settingKey: mbCollectionSettingKey, defaultValue: true)
+        }
+        set(collect) {
+            UserDefaults.standard.set(collect, forKey: mbCollectionSettingKey)
+        }
+    }
+    
     private static func install() {
         if needsUpdate() {
             NotificationCenter.default.post(name: .loginInfo, object: nil, userInfo: [Notification.status.info: "Updating Dalamud..."])
@@ -158,17 +203,24 @@ struct Dalamud {
         }
     }
     
-    static func launch(args: [String]) {
+    static func launch(args: [String], region: FFXIVRegion, gameVersion: String) {
         install()
-        NotificationCenter.default.post(name: .loginInfo, object: nil, userInfo: [Notification.status.info: "Starting Wine..."])
+        NotificationCenter.default.post(name: .loginInfo, object: nil, userInfo: [Notification.status.info: "Starting Wine"])
         let output = Util.launchToString(exec: Wine.wine64, args: [nativeLauncher.path] + args)
         let pid = String(output.split(separator: "\n").last!)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 7.0) {
-            NotificationCenter.default.post(name: .loginInfo, object: nil, userInfo: [Notification.status.info: "Injecting Dalamud..."])
-            Wine.launch(args: [path.appendingPathComponent("Dalamud.Injector.exe").path, pid])
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 15.0) {
-            NotificationCenter.default.post(name: .gameStarted, object: nil)
+        let startInfo = StartInfo(workingDirectory: nil,
+                                  configurationPath: "C:\\Program Files\\XIV on Mac\\dalamudConfig.json",
+                                  pluginDirectory: "C:\\Program Files\\XIV on Mac\\installedPlugins",
+                                  defaultPluginDirectory: "C:\\Program Files\\XIV on Mac\\devPlugins",
+                                  assetDirectory: "C:\\Program Files\\XIV on Mac\\Dalamud Assets",
+                                  language: region.goatLanguage(),
+                                  gameVersion: gameVersion,
+                                  optOutMBCollection: !mbCollection,
+                                  delayInitializeMS: 0) //we handle delay ourselves
+        let encodedStartInfo = try! JSONEncoder().encode(startInfo).base64EncodedString()
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+            NotificationCenter.default.post(name: .loginInfo, object: nil, userInfo: [Notification.status.info: "Injecting Dalamud"])
+            Wine.launch(args: [path.appendingPathComponent("Dalamud.Injector.exe").path, pid, encodedStartInfo])
         }
     }
     

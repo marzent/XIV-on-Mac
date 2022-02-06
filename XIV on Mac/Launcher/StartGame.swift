@@ -42,13 +42,16 @@ class StartGameOperation: AsyncOperation {
         let app = FFXIVApp()
         let args = arguments(app: app)
         if settings.dalamud {
-            Dalamud.launch(args: args)
+            Dalamud.launch(args: args, region: settings.region, gameVersion: app.gameVer)
         }
         else {
-            NotificationCenter.default.post(name: .loginInfo, object: nil, userInfo: [Notification.status.info: "Starting Wine..."])
+            NotificationCenter.default.post(name: .loginInfo, object: nil, userInfo: [Notification.status.info: "Starting Wine"])
             Wine.launch(args: args)
         }
         state = .finished
+        DispatchQueue.main.asyncAfter(deadline: .now() + 15.0) {
+            NotificationCenter.default.post(name: .gameStarted, object: nil)
+        }
     }
 
     class func wineGetTickCount(timeFunc: () -> UInt64) -> UInt64 {
