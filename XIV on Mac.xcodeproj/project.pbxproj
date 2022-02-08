@@ -25,6 +25,7 @@
 		50511EC92770E087003A1E9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50511EC82770E087003A1E9F /* Assets.xcassets */; };
 		50511ECC2770E087003A1E9F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50511ECA2770E087003A1E9F /* Main.storyboard */; };
 		505C0D9B277333920008A344 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505C0D9A277333920008A344 /* Util.swift */; };
+		507607A127B149F600DDF3E6 /* Frontier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507607A027B149F600DDF3E6 /* Frontier.swift */; };
 		507CFBF62781C780007ADEC9 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 507CFBF52781C780007ADEC9 /* ZIPFoundation */; };
 		507D8F2127766F52000F0CB0 /* dxvk in Resources */ = {isa = PBXBuildFile; fileRef = 507D8F2027766F52000F0CB0 /* dxvk */; };
 		50B2A2B527AC1BC400EFA0A2 /* LoginSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A2B427AC1BC400EFA0A2 /* LoginSheetController.swift */; };
@@ -55,6 +56,7 @@
 		50511ECB2770E087003A1E9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		50511ECD2770E087003A1E9F /* XIV_on_Mac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = XIV_on_Mac.entitlements; sourceTree = "<group>"; };
 		505C0D9A277333920008A344 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		507607A027B149F600DDF3E6 /* Frontier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frontier.swift; sourceTree = "<group>"; };
 		507D8F2027766F52000F0CB0 /* dxvk */ = {isa = PBXFileReference; lastKnownFileType = folder; path = dxvk; sourceTree = "<group>"; };
 		50B2A2B327ABEF6800EFA0A2 /* XIV-on-Mac-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "XIV-on-Mac-Info.plist"; sourceTree = SOURCE_ROOT; };
 		50B2A2B427AC1BC400EFA0A2 /* LoginSheetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSheetController.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				50B2A2B827AC461800EFA0A2 /* Dalamud.swift */,
 				502A18D927AA8DD000144AB9 /* HTMLParser.swift */,
 				502A18DB27AA8E3E00144AB9 /* Login.swift */,
+				507607A027B149F600DDF3E6 /* Frontier.swift */,
 				502A18DD27AA8EA700144AB9 /* SidParse.swift */,
 				502A18E627AAC12800144AB9 /* StartGame.swift */,
 				502A18E427AAC05C00144AB9 /* StoredParse.swift */,
@@ -264,6 +267,7 @@
 				50511EC52770E085003A1E9F /* AppDelegate.swift in Sources */,
 				502A18DA27AA8DD000144AB9 /* HTMLParser.swift in Sources */,
 				50ED0DB32773C619002E9854 /* Setup.swift in Sources */,
+				507607A127B149F600DDF3E6 /* Frontier.swift in Sources */,
 				50ED0DB52773CA8C002E9854 /* FileDownloader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

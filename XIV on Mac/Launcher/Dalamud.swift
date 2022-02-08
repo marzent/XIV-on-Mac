@@ -213,12 +213,13 @@ struct Dalamud {
                                   pluginDirectory: "C:\\Program Files\\XIV on Mac\\installedPlugins",
                                   defaultPluginDirectory: "C:\\Program Files\\XIV on Mac\\devPlugins",
                                   assetDirectory: "C:\\Program Files\\XIV on Mac\\Dalamud Assets",
-                                  language: region.goatLanguage(),
+                                  language: region.goatLanguage,
                                   gameVersion: gameVersion,
                                   optOutMBCollection: !mbCollection,
                                   delayInitializeMS: 0) //we handle delay ourselves
         let encodedStartInfo = try! JSONEncoder().encode(startInfo).base64EncodedString()
         DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+            print("Starting Dalamud with StartInfo:\n", encodedStartInfo, "\n", to: &Util.logger)
             NotificationCenter.default.post(name: .loginInfo, object: nil, userInfo: [Notification.status.info: "Injecting Dalamud"])
             Wine.launch(args: [path.appendingPathComponent("Dalamud.Injector.exe").path, pid, encodedStartInfo])
         }

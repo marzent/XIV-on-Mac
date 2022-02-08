@@ -41,7 +41,7 @@ public enum FFXIVRegion: UInt32 {
         }
     }
     
-    func goatLanguage() -> Int {
+    var goatLanguage: Int {
         switch self {
         case .english:
             return 1
@@ -51,6 +51,24 @@ public enum FFXIVRegion: UInt32 {
             return 2
         case .japanese:
             return 0
+        }
+    }
+    
+    var langCode: String {
+        switch self {
+        case .english:
+            switch TimeZone.current.identifier.split(separator: "/").first ?? "" {
+            case "America", "Antarctica", "Pacific":
+                return "en-us"
+            default:
+                return "en-gb"
+            }
+        case .french:
+            return "fr"
+        case .german:
+            return "de"
+        case .japanese:
+            return "ja"
         }
     }
 }
@@ -412,19 +430,17 @@ private struct FFXIVLogin {
     }
     
     static private var uniqueID: String {
-          let platformExpert = IOServiceGetMatchingService(kIOMasterPortDefault, IOServiceMatching("IOPlatformExpertDevice") )
-
-          guard platformExpert > 0 else {
-            return "ecf4a84335"
-          }
-
-          guard let serialNumber = (IORegistryEntryCreateCFProperty(platformExpert, kIOPlatformSerialNumberKey as CFString, kCFAllocatorDefault, 0).takeUnretainedValue() as? String) else {
-            return "ecf4a84335"
-          }
-
-
-          IOObjectRelease(platformExpert)
-
+        let platformExpert = IOServiceGetMatchingService(kIOMasterPortDefault, IOServiceMatching("IOPlatformExpertDevice") )
+        let fallbackID = "ecf4a84335"
+        
+        guard platformExpert > 0 else {
+            return fallbackID
+        }
+        guard let serialNumber = (IORegistryEntryCreateCFProperty(platformExpert, kIOPlatformSerialNumberKey as CFString, kCFAllocatorDefault, 0).takeUnretainedValue() as? String) else {
+            return fallbackID
+        }
+        IOObjectRelease(platformExpert)
+        
         return String(serialNumber.lowercased().prefix(10))
     }
 }
