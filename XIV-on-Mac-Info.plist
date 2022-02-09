@@ -30,5 +30,11 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>SUEnableAutomaticChecks</key>
+	<true/>
+	<key>SUFeedURL</key>
+	<string>https://www.xivmac.com/sites/default/files/update_data/xivonmac_appcast.xml</string>
+	<key>SUPublicEDKey</key>
+	<string>8hoOlhjX1P4v5DkUYUTUVM7mWisXKlpjtClFZ2iqlyc=</string>
 </dict>
 </plist>

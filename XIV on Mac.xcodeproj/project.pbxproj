@@ -25,6 +25,8 @@
 		50511EC92770E087003A1E9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50511EC82770E087003A1E9F /* Assets.xcassets */; };
 		50511ECC2770E087003A1E9F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50511ECA2770E087003A1E9F /* Main.storyboard */; };
 		505C0D9B277333920008A344 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505C0D9A277333920008A344 /* Util.swift */; };
+		50692C8927B3D13700945593 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 50692C8827B3D13700945593 /* Sparkle */; };
+		50692C8B27B3E48B00945593 /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = 50692C8A27B3E48B00945593 /* Credits.html */; };
 		507607A127B149F600DDF3E6 /* Frontier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507607A027B149F600DDF3E6 /* Frontier.swift */; };
 		507CFBF62781C780007ADEC9 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 507CFBF52781C780007ADEC9 /* ZIPFoundation */; };
 		507D8F2127766F52000F0CB0 /* dxvk in Resources */ = {isa = PBXBuildFile; fileRef = 507D8F2027766F52000F0CB0 /* dxvk */; };
@@ -56,6 +58,7 @@
 		50511ECB2770E087003A1E9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		50511ECD2770E087003A1E9F /* XIV_on_Mac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = XIV_on_Mac.entitlements; sourceTree = "<group>"; };
 		505C0D9A277333920008A344 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		50692C8A27B3E48B00945593 /* Credits.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Credits.html; sourceTree = "<group>"; };
 		507607A027B149F600DDF3E6 /* Frontier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frontier.swift; sourceTree = "<group>"; };
 		507D8F2027766F52000F0CB0 /* dxvk */ = {isa = PBXFileReference; lastKnownFileType = folder; path = dxvk; sourceTree = "<group>"; };
 		50B2A2B327ABEF6800EFA0A2 /* XIV-on-Mac-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "XIV-on-Mac-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -74,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50692C8927B3D13700945593 /* Sparkle in Frameworks */,
 				502A18E127AABF8400144AB9 /* KeychainAccess in Frameworks */,
 				2B7159BA277C529300945A24 /* SwordRPC in Frameworks */,
 				2B7159B7277C526000945A24 /* Socket in Frameworks */,
@@ -117,6 +121,7 @@
 				50ED0DB42773CA8C002E9854 /* FileDownloader.swift */,
 				2B7C95D1277C6C6000A3CA89 /* SocialIntegration.swift */,
 				50511EC82770E087003A1E9F /* Assets.xcassets */,
+				50692C8A27B3E48B00945593 /* Credits.html */,
 				50511ECA2770E087003A1E9F /* Main.storyboard */,
 				50511ECD2770E087003A1E9F /* XIV_on_Mac.entitlements */,
 				50DF45982795C53300E3D22F /* GShade */,
@@ -164,6 +169,7 @@
 				2B7159B9277C529300945A24 /* SwordRPC */,
 				507CFBF52781C780007ADEC9 /* ZIPFoundation */,
 				502A18E027AABF8400144AB9 /* KeychainAccess */,
+				50692C8827B3D13700945593 /* Sparkle */,
 			);
 			productName = "XIV on Mac";
 			productReference = 50511EC12770E085003A1E9F /* XIV on Mac.app */;
@@ -198,6 +204,7 @@
 				2B7159B8277C529300945A24 /* XCRemoteSwiftPackageReference "SwordRPC" */,
 				507CFBF42781C780007ADEC9 /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
 				502A18DF27AABF8400144AB9 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+				50692C8727B3D13700945593 /* XCRemoteSwiftPackageReference "Sparkle" */,
 			);
 			productRefGroup = 50511EC22770E085003A1E9F /* Products */;
 			projectDirPath = "";
@@ -214,6 +221,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50DF45992795C53300E3D22F /* GShade in Resources */,
+				50692C8B27B3E48B00945593 /* Credits.html in Resources */,
 				50511EC92770E087003A1E9F /* Assets.xcassets in Resources */,
 				507D8F2127766F52000F0CB0 /* dxvk in Resources */,
 				50511ECC2770E087003A1E9F /* Main.storyboard in Resources */,
@@ -432,7 +440,7 @@
 					"$(PROJECT_DIR)/XIV\\ on\\ Mac/wine/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 2.4;
+				MARKETING_VERSION = 2.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "dezent.XIV-on-Mac";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -468,7 +476,7 @@
 					"$(PROJECT_DIR)/XIV\\ on\\ Mac/wine/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 2.4;
+				MARKETING_VERSION = 2.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "dezent.XIV-on-Mac";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -525,6 +533,14 @@
 				kind = branch;
 			};
 		};
+		50692C8727B3D13700945593 /* XCRemoteSwiftPackageReference "Sparkle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparkle-project/Sparkle";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		507CFBF42781C780007ADEC9 /* XCRemoteSwiftPackageReference "ZIPFoundation" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/weichsel/ZIPFoundation.git";
@@ -550,6 +566,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 502A18DF27AABF8400144AB9 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
 			productName = KeychainAccess;
+		};
+		50692C8827B3D13700945593 /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 50692C8727B3D13700945593 /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
 		};
 		507CFBF52781C780007ADEC9 /* ZIPFoundation */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -178,7 +178,8 @@ public enum FFXIVLoginResult {
 
 private enum FFXIVLoginPageData {
     case success(storedSid: String, cookie: String?)
-    case error
+    case networkError
+    case loginError
 }
 
 public struct FFXIVSettings {
@@ -239,7 +240,9 @@ public struct FFXIVSettings {
         }
         login.getStored() { result in
             switch result {
-            case .error:
+            case .networkError:
+                completion(.networkError)
+            case .loginError:
                 completion(.protocolError)
             case .success(let storedSid, let cookie):
                 login.getTempSID(storedSID: storedSid, cookie: cookie, completion: completion)
@@ -310,16 +313,16 @@ private struct FFXIVLogin {
     fileprivate func getStored(completion: @escaping ((FFXIVLoginPageData) -> Void)) {
         fetch(headers: FFXIVLogin.loginHeaders, url: loginURL, postBody: nil) { body, response in
             guard let html = body else {
-                completion(.error)
+                completion(.networkError)
                 return
             }
-            let cookie = response.allHeaderFields["Set-Cookie"] as? String
+            let cookie = response?.allHeaderFields["Set-Cookie"] as? String
             let op = StoredParseOperation(html: html)
             let queue = OperationQueue()
             op.completionBlock = {
                 DispatchQueue.main.async {
                     guard case let .some(HTMLParseResult.result(result)) = op.result else {
-                        completion(.error)
+                        completion(.loginError)
                         return
                     }
                     completion(.success(storedSid: result, cookie: cookie))
@@ -338,10 +341,10 @@ private struct FFXIVLogin {
         let postBody = settings.credentials!.loginData(storedSID: storedSID)
         fetch(headers: headers, url: FFXIVLogin.authURL, postBody: postBody) { body, response in
             guard let html = body else {
-                completion(.protocolError)
+                completion(.networkError)
                 return
             }
-            let cookie = response.allHeaderFields["Set-Cookie"] as? String
+            let cookie = response?.allHeaderFields["Set-Cookie"] as? String
             let op = SidParseOperation(html: html)
             let queue = OperationQueue()
             op.completionBlock = {
@@ -380,7 +383,7 @@ private struct FFXIVLogin {
         let postBody = try? app.versionList(maxEx: updatedSettings.expansionId.rawValue).data(using: .utf8)
         fetch(headers: headers, url: url, postBody: postBody) { body, response in
             if let unexpectedResponseBody = body, unexpectedResponseBody.count > 0 {
-                if (response.statusCode <= 299) {
+                if (response?.statusCode ?? 404 <= 299) {
                     completion(.clientUpdate)
                 } else {
                     completion(.networkError)
@@ -389,9 +392,9 @@ private struct FFXIVLogin {
             }
 
             // Apple changed allHeaderFields in newer SDKs to "canonicalize" headers. So on some OSes it'll be lowercase and others it won't... thanks.
-            if let finalSid = response.allHeaderFields["X-Patch-Unique-Id"] as? String {
+            if let finalSid = response?.allHeaderFields["X-Patch-Unique-Id"] as? String {
                 completion(.success(sid: finalSid, updatedSettings: updatedSettings))
-            } else if let finalSid = response.allHeaderFields["x-patch-unique-id"] as? String {
+            } else if let finalSid = response?.allHeaderFields["x-patch-unique-id"] as? String {
                 completion(.success(sid: finalSid, updatedSettings: updatedSettings))
             } else {
                 completion(.protocolError)
@@ -399,7 +402,7 @@ private struct FFXIVLogin {
         }
     }
     
-    fileprivate func fetch(headers: [String: String], url: URL, postBody: Data?, completion: @escaping ((_ body: String?, _ response: HTTPURLResponse) -> Void)) {
+    fileprivate func fetch(headers: [String: String], url: URL, postBody: Data?, completion: @escaping ((_ body: String?, _ response: HTTPURLResponse?) -> Void)) {
         let session = URLSession(configuration: .default, delegate: sslDelegate, delegateQueue: nil)
         let req = NSMutableURLRequest(url: url)
         for (hdr, val) in headers {
@@ -410,7 +413,10 @@ private struct FFXIVLogin {
             req.httpMethod = "POST"
         }
         let task = session.dataTask(with: req as URLRequest) { (data, resp, err) in
-            let response = resp as! HTTPURLResponse
+            guard let response = resp as? HTTPURLResponse else {
+                completion(nil, nil)
+                return
+            }
             guard let data = data else {
                 completion(nil, response)
                 return

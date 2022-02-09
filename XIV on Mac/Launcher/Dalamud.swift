@@ -147,14 +147,18 @@ struct Dalamud {
     
     private static func install() {
         if needsUpdate() {
-            NotificationCenter.default.post(name: .loginInfo, object: nil, userInfo: [Notification.status.info: "Updating Dalamud..."])
+            NotificationCenter.default.post(name: .loginInfo, object: nil, userInfo: [Notification.status.info: "Updating Dalamud"])
             purge()
         }
         Setup.download(url: remote.distrib)
         Setup.download(url: nativeLauncher.remote)
         try? fm.copyItem(atPath: Util.cache.appendingPathComponent(nativeLauncher.exec).path, toPath: nativeLauncher.path)
         try? fm.unzipItem(at: Util.cache.appendingPathComponent("latest.zip"), to: path)
-        for asset in remote.assets!.assets {
+        guard let remoteAssets = remote.assets else {
+            print("Could not get Dalamud Assets", to: &Util.logger)
+            return
+        }
+        for asset in remoteAssets.assets {
             FileDownloader.loadFileSync(url: URL(string: asset.url)!,
                                         destination: URL(fileURLWithPath: localAssets.path + "/" + asset.fileName).deletingLastPathComponent())
             {(path, error) in
@@ -183,9 +187,10 @@ struct Dalamud {
             let head = String(deps.prefix(300))
             if let range = head.range(of: #"(?<=Dalamud\/).*(?=":)"#, options: .regularExpression) {
                 let localVersion = head[range]
-                if localVersion == remote.version!.assemblyVersion {
-                    return false
+                if let remoteVersion = remote.version {
+                    return localVersion != remoteVersion.assemblyVersion
                 }
+                return false
             }
         }
         catch {

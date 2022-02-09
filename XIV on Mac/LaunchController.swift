@@ -7,7 +7,7 @@
 
 import Cocoa
 
-class LaunchController: NSViewController {
+class LaunchController: NSViewController, NSWindowDelegate {
     
     var loginSheetWinController: NSWindowController?
     var settings: FFXIVSettings = FFXIVSettings()
@@ -32,13 +32,19 @@ class LaunchController: NSViewController {
         super.viewDidAppear()
         update(FFXIVSettings.storedSettings())
         loginSheetWinController = storyboard?.instantiateController(withIdentifier: "LoginSheet") as? NSWindowController
+        view.window?.delegate = self
         view.window?.isMovableByWindowBackground = true
         DispatchQueue.global(qos: .userInteractive).async {
-            let frontier = Frontier.info!
-            print(frontier)
-            self.populateNews(frontier)
+            if let frontier = Frontier.info {
+                self.populateNews(frontier)
+            }
         }
     }
+    
+    func windowShouldClose(_ sender: NSWindow) -> Bool {
+            NSApp.hide(nil)
+            return false
+        }
     
     private func populateNews(_ info: Frontier.Info) {
         DispatchQueue.main.async {
@@ -201,7 +207,6 @@ class FrontierTableView: NSObject {
         tableView.intercellSpacing = NSSize(width: 0, height: 9)
         tableView.rowSizeStyle = .large
         tableView.backgroundColor = .clear
-        tableView.appearance = NSAppearance(named: .vibrantDark)
         tableView.headerView = nil
         tableView.dataSource = self
         tableView.delegate = self
