@@ -11,13 +11,22 @@ class LaunchController: NSViewController {
     
     var loginSheetWinController: NSWindowController?
     var settings: FFXIVSettings = FFXIVSettings()
+    var newsTable = FrontierTableView(iconText: "􀤦")
+    var topicsTable = FrontierTableView(iconText: "􀥅")
     
     @IBOutlet private var loginButton: NSButton!
     @IBOutlet private var userField: NSTextField!
     @IBOutlet private var passwdField: NSTextField!
     @IBOutlet private var otpField: NSTextField!
     @IBOutlet private var scrollView: AnimatingScrollView!
+    @IBOutlet private var newsView: NSScrollView!
+    @IBOutlet private var topicsView: NSScrollView!
     
+    override func loadView() {
+        super.loadView()
+        newsView.documentView = newsTable.tableView
+        topicsView.documentView = topicsTable.tableView
+    }
     
     override func viewDidAppear() {
         super.viewDidAppear()
@@ -26,6 +35,7 @@ class LaunchController: NSViewController {
         view.window?.isMovableByWindowBackground = true
         DispatchQueue.global(qos: .userInteractive).async {
             let frontier = Frontier.info!
+            print(frontier)
             self.populateNews(frontier)
         }
     }
@@ -33,6 +43,8 @@ class LaunchController: NSViewController {
     private func populateNews(_ info: Frontier.Info) {
         DispatchQueue.main.async {
             self.scrollView.banners = info.banner
+            self.topicsTable.add(items: info.topics)
+            self.newsTable.add(items: info.pinned + info.news)
         }
     }
     
@@ -111,7 +123,8 @@ final class AnimatingScrollView: NSScrollView {
         return self.contentSize.height
     }
     
-    private let animationDuration = 3.0
+    private let animationDuration = 2.0
+    private let stayDuration = 8.0
     private var index = 0
     private var timer = Timer()
     
@@ -133,7 +146,7 @@ final class AnimatingScrollView: NSScrollView {
     
     private func startTimer() {
         self.timer.invalidate()
-        self.timer = Timer.scheduledTimer(withTimeInterval: 7, repeats: true, block: { _ in
+        self.timer = Timer.scheduledTimer(withTimeInterval: stayDuration, repeats: true, block: { _ in
             self.animate()
             })
     }
@@ -144,7 +157,7 @@ final class AnimatingScrollView: NSScrollView {
         CATransaction.setDisableActions(true)
         contentView.setBoundsOrigin(point)
         CATransaction.commit()
-        //super.scroll(clipView, to: point)
+        super.scroll(clipView, to: point)
         index = Int(floor((point.x + width / 2) / width))
         let snap_x = CGFloat(index) * width
         scroll(toPoint: NSPoint(x: snap_x, y: 0), animationDuration: animationDuration)
@@ -159,7 +172,7 @@ final class AnimatingScrollView: NSScrollView {
         NSAnimationContext.endGrouping()
     }
     
-    public func animate() {
+    private func animate() {
         if let banners = banners {
             index = (index + 1) % banners.count
             self.scroll(toPoint: NSPoint(x: Int(width) * index, y: 0), animationDuration: animationDuration)
@@ -167,3 +180,92 @@ final class AnimatingScrollView: NSScrollView {
     }
 
 }
+
+class FrontierTableView: NSObject {
+    static let columnText = "text"
+    static let columnIcon = "icon"
+    
+    var items: [Frontier.Info.News] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
+    var iconText: String
+    var tableView: NSTableView
+    
+    init(iconText: String) {
+        self.iconText = iconText
+        tableView = NSTableView(frame: .zero)
+        super.init()
+        tableView.intercellSpacing = NSSize(width: 0, height: 9)
+        tableView.rowSizeStyle = .large
+        tableView.backgroundColor = .clear
+        tableView.appearance = NSAppearance(named: .vibrantDark)
+        tableView.headerView = nil
+        tableView.dataSource = self
+        tableView.delegate = self
+        let icon = NSTableColumn(identifier: NSUserInterfaceItemIdentifier(rawValue: FrontierTableView.columnIcon))
+        let text = NSTableColumn(identifier: NSUserInterfaceItemIdentifier(rawValue: FrontierTableView.columnText))
+        icon.width = 20
+        text.width = 433
+        tableView.addTableColumn(icon)
+        tableView.addTableColumn(text)
+        tableView.action = #selector(onItemClicked)
+    }
+        
+    func add(items: [Frontier.Info.News]) {
+        self.items += items
+    }
+    
+    @objc private func onItemClicked() {
+        print("row \(tableView.clickedRow), col \(tableView.clickedColumn) clicked")
+    }
+}
+
+
+extension FrontierTableView: NSTableViewDelegate, NSTableViewDataSource {
+    func numberOfRows(in tableView: NSTableView) -> Int {
+        return items.count
+    }
+    
+    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        switch (tableColumn?.identifier)!.rawValue {
+        case FrontierTableView.columnIcon:
+            return createCell(name: iconText)
+        case FrontierTableView.columnText:
+            return createCell(name: items[row].title)
+        default:
+            fatalError("FrontierTableView identifier not found")
+        }
+    }
+    
+    private func createCell(name: String) -> NSView {
+        let text = NSTextField(string: name)
+        text.cell?.usesSingleLineMode = false
+        text.cell?.wraps = true
+        text.cell?.lineBreakMode = .byWordWrapping
+        text.isEditable = false
+        text.isBordered = false
+        text.drawsBackground = false
+        text.preferredMaxLayoutWidth = 433
+        return text
+    }
+
+    
+    func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
+        return createCell(name: items[row].title).intrinsicContentSize.height
+    }
+    
+    func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
+        return false
+    }
+    
+    
+    func tableView(_ tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
+        let rowView = NSTableRowView()
+        rowView.isEmphasized = false
+        return rowView
+    }
+}
+

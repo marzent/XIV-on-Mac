@@ -5,7 +5,7 @@
 //  Created by Marc-Aurel Zent on 07.02.22.
 //
 
-import Foundation
+import Cocoa
 
 class Frontier {
     
