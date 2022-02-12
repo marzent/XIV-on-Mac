@@ -145,7 +145,7 @@ class StartGameOperation: AsyncOperation {
             ("/ver", "\(app.gameVer)")
         ]
         return [
-            Wine.prefix.appendingPathComponent("drive_c/Program Files (x86)/SquareEnix/FINAL FANTASY XIV - A Realm Reborn/game/ffxiv_dx11.exe").path,
+            app.dx11URL.path,
             StartGameOperation.encryptedArgs(args: args, ticks: ticks)
         ]
     }
