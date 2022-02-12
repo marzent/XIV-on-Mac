@@ -6,6 +6,7 @@
 //
 
 import Cocoa
+import Sparkle
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -17,8 +18,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet private var macButton: NSMenuItem!
     @IBOutlet private var winButton: NSMenuItem!
+    @IBOutlet private var sparkle: SPUStandardUpdaterController!
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        sparkle.updater.checkForUpdatesInBackground()
         launchWinController = storyboard.instantiateController(withIdentifier: "LaunchWindow") as? NSWindowController
         settingsWinController = storyboard.instantiateController(withIdentifier: "SettingsWindow") as? NSWindowController
         installerWinController = storyboard.instantiateController(withIdentifier: "InstallerWindow") as? NSWindowController

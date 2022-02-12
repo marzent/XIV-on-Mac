@@ -26,6 +26,11 @@ class LaunchController: NSViewController, NSWindowDelegate {
         super.loadView()
         newsView.documentView = newsTable.tableView
         topicsView.documentView = topicsTable.tableView
+        DispatchQueue.global(qos: .userInteractive).async {
+            if let frontier = Frontier.info {
+                self.populateNews(frontier)
+            }
+        }
     }
     
     override func viewDidAppear() {
@@ -34,11 +39,6 @@ class LaunchController: NSViewController, NSWindowDelegate {
         loginSheetWinController = storyboard?.instantiateController(withIdentifier: "LoginSheet") as? NSWindowController
         view.window?.delegate = self
         view.window?.isMovableByWindowBackground = true
-        DispatchQueue.global(qos: .userInteractive).async {
-            if let frontier = Frontier.info {
-                self.populateNews(frontier)
-            }
-        }
     }
     
     func windowShouldClose(_ sender: NSWindow) -> Bool {
@@ -48,9 +48,9 @@ class LaunchController: NSViewController, NSWindowDelegate {
     
     private func populateNews(_ info: Frontier.Info) {
         DispatchQueue.main.async {
-            self.scrollView.banners = info.banner
             self.topicsTable.add(items: info.topics)
             self.newsTable.add(items: info.pinned + info.news)
+            self.scrollView.banners = info.banner
         }
     }
     

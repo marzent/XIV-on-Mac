@@ -514,6 +514,7 @@
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="XIV_on_Mac" customModuleProvider="target">
                     <connections>
                         <outlet property="macButton" destination="Gi5-1S-RQB" id="VLe-4L-BCD"/>
+                        <outlet property="sparkle" destination="yc9-Mt-LbV" id="5O3-N6-awX"/>
                         <outlet property="winButton" destination="Fal-I4-PZk" id="yN0-XA-4uw"/>
                     </connections>
                 </customObject>
@@ -571,9 +572,9 @@
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p8f-tf-t7C">
-                                                                    <rect key="frame" x="-2" y="340" width="265" height="16"/>
+                                                                    <rect key="frame" x="-2" y="340" width="107" height="16"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Select the game version you wish to install:" id="TeW-Wy-5YR">
+                                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Select an option:" id="TeW-Wy-5YR">
                                                                         <font key="font" usesAppearanceFont="YES"/>
                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -597,7 +598,7 @@
                                                                         <button identifier="vanilla_launcher" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="12R-g7-krS">
                                                                             <rect key="frame" x="227" y="197" width="405" height="18"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                            <buttonCell key="cell" type="radio" title="Square Enix Launcher" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="qDd-CO-Fjs">
+                                                                            <buttonCell key="cell" type="radio" title="Launch Vanilla Game" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="qDd-CO-Fjs">
                                                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                                 <font key="font" metaFont="system"/>
                                                                             </buttonCell>
@@ -608,7 +609,7 @@
                                                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LIi-e8-P8r">
                                                                             <rect key="frame" x="227" y="149" width="405" height="18"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                            <buttonCell key="cell" type="radio" title="XIVLauncher" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="0ZX-g7-76H">
+                                                                            <buttonCell key="cell" type="radio" title="Launch with Dalamud Plugin Support" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="0ZX-g7-76H">
                                                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                                 <font key="font" metaFont="system"/>
                                                                             </buttonCell>
@@ -617,18 +618,18 @@
                                                                             </connections>
                                                                         </button>
                                                                         <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kd7-D8-V8B">
-                                                                            <rect key="frame" x="248" y="174" width="352" height="16"/>
+                                                                            <rect key="frame" x="248" y="176" width="240" height="16"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Will skip .net install, do not change default install location" id="Jbf-yx-ZQ7">
+                                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="You can chose to enable Dalamud later" id="Jbf-yx-ZQ7">
                                                                                 <font key="font" metaFont="system"/>
                                                                                 <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                             </textFieldCell>
                                                                         </textField>
                                                                         <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rVc-z6-q4l">
-                                                                            <rect key="frame" x="248" y="84" width="195" height="58"/>
+                                                                            <rect key="frame" x="248" y="86" width="208" height="58"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Will install .net, needed for ACT" id="LPN-SN-8np">
+                                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="You can disable Dalamud anytime" id="LPN-SN-8np">
                                                                                 <font key="font" metaFont="system"/>
                                                                                 <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -675,6 +676,158 @@ Gw
                                                             </buttonCell>
                                                             <connections>
                                                                 <action selector="cancelInstall:" target="XfG-lQ-9wD" id="GaK-6l-hSu"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                </view>
+                                            </tabViewItem>
+                                            <tabViewItem label="License selector" identifier="" id="dP0-z3-3xE">
+                                                <view key="view" id="bZE-Vv-esu">
+                                                    <rect key="frame" x="0.0" y="0.0" width="713" height="408"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <subviews>
+                                                        <view id="3HR-P7-vNN">
+                                                            <rect key="frame" x="0.0" y="45" width="713" height="363"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <subviews>
+                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="szu-bh-elg">
+                                                                    <rect key="frame" x="-2" y="340" width="103" height="16"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Select a License" id="hfH-NT-WKX">
+                                                                        <font key="font" usesAppearanceFont="YES"/>
+                                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                    </textFieldCell>
+                                                                </textField>
+                                                                <visualEffectView fixedFrame="YES" blendingMode="behindWindow" material="titlebar" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="yw5-uG-bQe">
+                                                                    <rect key="frame" x="0.0" y="-8" width="713" height="339"/>
+                                                                    <autoresizingMask key="autoresizingMask"/>
+                                                                    <subviews>
+                                                                        <button horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TEi-dy-7Sb">
+                                                                            <rect key="frame" x="17" y="29" width="25" height="25"/>
+                                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                            <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2ts-S3-Czc">
+                                                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                                <font key="font" metaFont="system"/>
+                                                                            </buttonCell>
+                                                                            <connections>
+                                                                                <action selector="openFAQ:" target="XfG-lQ-9wD" id="kg4-UI-ihg"/>
+                                                                            </connections>
+                                                                        </button>
+                                                                        <button identifier="download_game" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xkg-zq-YPP">
+                                                                            <rect key="frame" x="227" y="220" width="405" height="18"/>
+                                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                            <buttonCell key="cell" type="radio" title="Mac" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="LRc-OZ-739">
+                                                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                                                <font key="font" metaFont="system"/>
+                                                                            </buttonCell>
+                                                                            <connections>
+                                                                                <action selector="gameFileSelect:" target="XfG-lQ-9wD" id="29q-03-bLA"/>
+                                                                            </connections>
+                                                                        </button>
+                                                                        <button identifier="copy_game" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Xr-p2-gTo">
+                                                                            <rect key="frame" x="227" y="172" width="405" height="18"/>
+                                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                            <buttonCell key="cell" type="radio" title="Windows" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="CqV-50-MBO">
+                                                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                                                <font key="font" metaFont="system"/>
+                                                                            </buttonCell>
+                                                                            <connections>
+                                                                                <action selector="gameFileSelect:" target="XfG-lQ-9wD" id="yPf-YU-u0H"/>
+                                                                            </connections>
+                                                                        </button>
+                                                                        <button identifier="link_game" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eLA-Ed-AXO">
+                                                                            <rect key="frame" x="227" y="124" width="405" height="18"/>
+                                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                            <buttonCell key="cell" type="radio" title="Windows (Steam)" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="NHb-zd-owg">
+                                                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                                                <font key="font" metaFont="system"/>
+                                                                            </buttonCell>
+                                                                            <connections>
+                                                                                <action selector="gameFileSelect:" target="XfG-lQ-9wD" id="9dM-bl-z0o"/>
+                                                                            </connections>
+                                                                        </button>
+                                                                        <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6qH-xm-W9T">
+                                                                            <rect key="frame" x="248" y="199" width="191" height="16"/>
+                                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="This is the normal Mac License" id="KhY-Wz-XDC">
+                                                                                <font key="font" metaFont="system"/>
+                                                                                <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                            </textFieldCell>
+                                                                        </textField>
+                                                                        <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o1g-cj-6wF">
+                                                                            <rect key="frame" x="248" y="151" width="291" height="16"/>
+                                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="This is the normal non-Steam Windows License" id="RY6-Fp-v5E">
+                                                                                <font key="font" metaFont="system"/>
+                                                                                <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                            </textFieldCell>
+                                                                        </textField>
+                                                                        <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5QZ-0W-cnY">
+                                                                            <rect key="frame" x="248" y="103" width="251" height="16"/>
+                                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="Symlink your existing install of the game." id="rFx-Wl-XRP">
+                                                                                <font key="font" metaFont="system"/>
+                                                                                <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                            </textFieldCell>
+                                                                        </textField>
+                                                                        <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A29-oe-D0i">
+                                                                            <rect key="frame" x="187" y="16" width="486" height="54"/>
+                                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                            <textFieldCell key="cell" id="BBW-Tn-o29">
+                                                                                <font key="font" metaFont="system"/>
+                                                                                <string key="title">When copying or symlinking, please select the folder your game is installed in. It should contain the folders "game" and "boot".</string>
+                                                                                <color key="textColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
+                                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                            </textFieldCell>
+                                                                        </textField>
+                                                                    </subviews>
+                                                                </visualEffectView>
+                                                            </subviews>
+                                                        </view>
+                                                        <button wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fKJ-uq-w7c">
+                                                            <rect key="frame" x="630" y="-2" width="90" height="32"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                            <buttonCell key="cell" type="push" title="Next" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aez-gT-7io">
+                                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                <font key="font" metaFont="system"/>
+                                                                <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                                                            </buttonCell>
+                                                            <connections>
+                                                                <action selector="startInstall:" target="XfG-lQ-9wD" id="eul-ND-2Yk"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ynl-qa-x4K">
+                                                            <rect key="frame" x="542" y="-2" width="90" height="32"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                            <buttonCell key="cell" type="push" title="Previous" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BDK-br-7Ao">
+                                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                <font key="font" metaFont="system"/>
+                                                                <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                                                            </buttonCell>
+                                                            <connections>
+                                                                <action selector="previousTab:" target="XfG-lQ-9wD" id="D5R-mQ-jJ5"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W8U-Aa-Koy">
+                                                            <rect key="frame" x="-7" y="-2" width="90" height="32"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                            <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="LsB-Af-NpT">
+                                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                <font key="font" metaFont="system"/>
+                                                                <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                                                            </buttonCell>
+                                                            <connections>
+                                                                <action selector="cancelInstall:" target="XfG-lQ-9wD" id="0iv-u0-qFU"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
@@ -747,7 +900,7 @@ Gw
                                                                             </connections>
                                                                         </button>
                                                                         <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oeW-Qj-r9i">
-                                                                            <rect key="frame" x="248" y="197" width="194" height="16"/>
+                                                                            <rect key="frame" x="248" y="199" width="194" height="16"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Download and Install the game." id="uai-Rg-ZEO">
                                                                                 <font key="font" metaFont="system"/>
@@ -756,7 +909,7 @@ Gw
                                                                             </textFieldCell>
                                                                         </textField>
                                                                         <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WRE-k0-C6w">
-                                                                            <rect key="frame" x="248" y="149" width="296" height="16"/>
+                                                                            <rect key="frame" x="248" y="151" width="296" height="16"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Copy existing game data to &quot;XIV on Mac&quot; prefix." id="9yd-8A-qFs">
                                                                                 <font key="font" metaFont="system"/>
@@ -765,7 +918,7 @@ Gw
                                                                             </textFieldCell>
                                                                         </textField>
                                                                         <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XZQ-Qo-Clb">
-                                                                            <rect key="frame" x="248" y="101" width="251" height="16"/>
+                                                                            <rect key="frame" x="248" y="103" width="251" height="16"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                             <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="Symlink your existing install of the game." id="0iQ-Qw-vtu">
                                                                                 <font key="font" metaFont="system"/>
