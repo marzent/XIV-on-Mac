@@ -23,12 +23,19 @@ class SettingsController: NSViewController {
     @IBOutlet private var maxFPS: NSButton!
     @IBOutlet private var maxFPSField: NSTextField!
     @IBOutlet private var async: NSButton!
+    
     @IBOutlet private var esync: NSButton!
     @IBOutlet private var wineDebugField: NSTextField!
     @IBOutlet private var wineRetina: NSButton!
+    
+    @IBOutlet private var dalamud: NSButton!
+    @IBOutlet private var delay: NSTextField!
+    @IBOutlet private var crowdSource: NSButton!
+    
     @IBOutlet weak var discord: NSButton!
     
     private var mapping: [String : NSButton] = [:]
+    private var ffSettings = FFXIVSettings.storedSettings()
     
     override func viewDidAppear() {
         super.viewDidAppear()
@@ -88,11 +95,17 @@ class SettingsController: NSViewController {
         maxFPS.state = limited ? NSControl.StateValue.on : NSControl.StateValue.off
         maxFPSField.isEnabled = limited
         maxFPSField.stringValue = String(Util.dxvkOptions.maxFramerate)
-        discord.state = SocialIntegration.discord.enabled ? NSControl.StateValue.on : NSControl.StateValue.off
         scale.doubleValue = Util.dxvkOptions.hudScale
+        
+        discord.state = SocialIntegration.discord.enabled ? NSControl.StateValue.on : NSControl.StateValue.off
+        
         esync.state = Wine.esync ? NSControl.StateValue.on : NSControl.StateValue.off
         wineRetina.state = Wine.retina ? NSControl.StateValue.on : NSControl.StateValue.off
         wineDebugField.stringValue = Wine.debug
+        
+        dalamud.state = ffSettings.dalamud ? NSControl.StateValue.on : NSControl.StateValue.off
+        crowdSource.state = Dalamud.mbCollection ? NSControl.StateValue.on : NSControl.StateValue.off
+        delay.stringValue = "\(Dalamud.delay)"
     }
     
     func saveState() {
@@ -109,6 +122,12 @@ class SettingsController: NSViewController {
         
         SocialIntegration.discord.enabled = (discord.state == NSControl.StateValue.on) ? true : false
         SocialIntegration.discord.save()
+        
+        ffSettings = FFXIVSettings.storedSettings()
+        ffSettings.dalamud = (dalamud.state == NSControl.StateValue.on) ? true : false
+        ffSettings.serialize()
+        Dalamud.mbCollection = (crowdSource.state == NSControl.StateValue.on) ? true : false
+        Dalamud.delay = Double(delay.stringValue) ?? 7.0
     }
 
 }

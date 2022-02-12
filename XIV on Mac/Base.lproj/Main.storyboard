@@ -1149,7 +1149,7 @@ Gw
             <objects>
                 <windowController storyboardIdentifier="SettingsWindow" id="gQL-ir-uY1" sceneMemberID="viewController">
                     <window key="window" title="Settings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="2hl-BH-elL">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="425" y="462" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
@@ -1174,7 +1174,7 @@ Gw
             <objects>
                 <viewController id="GIg-v3-M8h" customClass="SettingsController" customModule="XIV_on_Mac" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="Uy2-An-Xxz">
-                        <rect key="frame" x="0.0" y="0.0" width="668" height="565"/>
+                        <rect key="frame" x="0.0" y="0.0" width="668" height="627"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <box fixedFrame="YES" title="DXVK" translatesAutoresizingMaskIntoConstraints="NO" id="sgA-bR-Hht">
@@ -1412,7 +1412,7 @@ Gw
                                 </view>
                             </box>
                             <box fixedFrame="YES" title="Wine" translatesAutoresizingMaskIntoConstraints="NO" id="8tD-wK-kJH">
-                                <rect key="frame" x="17" y="469" width="634" height="76"/>
+                                <rect key="frame" x="17" y="451" width="634" height="76"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <view key="contentView" id="uui-KI-oZW">
                                     <rect key="frame" x="3" y="3" width="628" height="58"/>
@@ -1465,7 +1465,7 @@ Gw
                                 </view>
                             </box>
                             <box fixedFrame="YES" title="Social Integration" translatesAutoresizingMaskIntoConstraints="NO" id="HJs-37-GDf">
-                                <rect key="frame" x="17" y="380" width="634" height="76"/>
+                                <rect key="frame" x="17" y="371" width="634" height="76"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <view key="contentView" id="hCN-fj-lmr">
                                     <rect key="frame" x="3" y="3" width="628" height="58"/>
@@ -1485,12 +1485,77 @@ Gw
                                     </subviews>
                                 </view>
                             </box>
+                            <box fixedFrame="YES" title="Dalamud" translatesAutoresizingMaskIntoConstraints="NO" id="dQ2-hM-1k5">
+                                <rect key="frame" x="17" y="531" width="634" height="76"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <view key="contentView" id="NPh-1H-Ngn">
+                                    <rect key="frame" x="3" y="3" width="628" height="58"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bm4-zN-Lc3">
+                                            <rect key="frame" x="18" y="21" width="75" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="check" title="Enabled" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Z8s-GL-J9H">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="saveState:" target="GIg-v3-M8h" id="vgu-p0-XyM"/>
+                                            </connections>
+                                        </button>
+                                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u9T-EJ-hgN">
+                                            <rect key="frame" x="547" y="19" width="46" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="RD2-hm-ywC">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <connections>
+                                                <action selector="saveState:" target="GIg-v3-M8h" id="nuq-o4-DwH"/>
+                                            </connections>
+                                        </textField>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Je-zP-ZQk">
+                                            <rect key="frame" x="174" y="21" width="229" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="check" title="Contribute to Crowd-Source Data" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="l28-q2-Rck">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="updateRetina:" target="GIg-v3-M8h" id="5Km-ai-97d"/>
+                                            </connections>
+                                        </button>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YDL-Cb-Q7P">
+                                            <rect key="frame" x="599" y="22" width="11" height="16"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="s" id="6Ur-qN-wMK">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6SM-Uz-I3s">
+                                            <rect key="frame" x="499" y="22" width="42" height="16"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Delay:" id="fjk-PO-eLj">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </subviews>
+                                </view>
+                            </box>
                         </subviews>
                     </view>
                     <connections>
                         <outlet property="api" destination="LpF-Gn-fld" id="wNx-c6-TfI"/>
                         <outlet property="async" destination="9Ej-Kx-qaB" id="sxa-Av-T1S"/>
                         <outlet property="compiler" destination="MGI-ae-PZ5" id="Teg-SF-zIN"/>
+                        <outlet property="crowdSource" destination="9Je-zP-ZQk" id="PLn-9s-xHU"/>
+                        <outlet property="dalamud" destination="bm4-zN-Lc3" id="rxW-HU-O0X"/>
+                        <outlet property="delay" destination="u9T-EJ-hgN" id="aJw-Ut-HSt"/>
                         <outlet property="devinfo" destination="jgR-xu-GBS" id="67u-Cw-3f3"/>
                         <outlet property="discord" destination="LP2-JT-YsT" id="ebb-hF-iX1"/>
                         <outlet property="drawcalls" destination="XaY-6Q-Mvo" id="zm2-Ra-BNf"/>
@@ -1526,7 +1591,7 @@ Gw
                     </defaultToolbarItems>
                 </toolbar>
             </objects>
-            <point key="canvasLocation" x="1029" y="1344"/>
+            <point key="canvasLocation" x="1029" y="1374.5"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="ImY-2l-0oe">
