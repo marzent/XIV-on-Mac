@@ -115,25 +115,13 @@ struct Util {
         }
     }
     
-    private static let launchSettingKey = "LaunchPath"
-    static var launchPath: String {
+    private static let gamePathKey = "GamePath"
+    static var gamePath: URL {
         get {
-            return Util.getSetting(settingKey: launchSettingKey, defaultValue: "")
+            return URL(fileURLWithPath: getSetting(settingKey: gamePathKey, defaultValue: Wine.prefix.appendingPathComponent("drive_c/Program Files (x86)/SquareEnix/FINAL FANTASY XIV - A Realm Reborn").path))
         }
-        set(newPath) {
-            UserDefaults.standard.set(newPath, forKey: launchSettingKey)
-        }
-    }
-    
-    static func launchExec(terminating: Bool = false) {
-        Wine.launch(args : [launchPath], blocking: false)
-        if terminating {
-            DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 10.0) {
-                Wine.wait()
-                DispatchQueue.main.async {
-                    NSApplication.shared.terminate(nil)
-                }
-            }
+        set(newURL) {
+            UserDefaults.standard.set(newURL.path, forKey: gamePathKey)
         }
     }
     

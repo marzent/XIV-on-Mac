@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="SmX-cH-8Kr">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
@@ -627,7 +627,7 @@
                                                                             </textFieldCell>
                                                                         </textField>
                                                                         <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rVc-z6-q4l">
-                                                                            <rect key="frame" x="248" y="86" width="208" height="58"/>
+                                                                            <rect key="frame" x="248" y="128" width="208" height="16"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="You can disable Dalamud anytime" id="LPN-SN-8np">
                                                                                 <font key="font" metaFont="system"/>
@@ -714,7 +714,7 @@ Gw
                                                                                 <action selector="openFAQ:" target="XfG-lQ-9wD" id="kg4-UI-ihg"/>
                                                                             </connections>
                                                                         </button>
-                                                                        <button identifier="download_game" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xkg-zq-YPP">
+                                                                        <button identifier="mac_license" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xkg-zq-YPP">
                                                                             <rect key="frame" x="227" y="220" width="405" height="18"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                             <buttonCell key="cell" type="radio" title="Mac" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="LRc-OZ-739">
@@ -725,7 +725,7 @@ Gw
                                                                                 <action selector="gameFileSelect:" target="XfG-lQ-9wD" id="29q-03-bLA"/>
                                                                             </connections>
                                                                         </button>
-                                                                        <button identifier="copy_game" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Xr-p2-gTo">
+                                                                        <button identifier="windows_license" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Xr-p2-gTo">
                                                                             <rect key="frame" x="227" y="172" width="405" height="18"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                             <buttonCell key="cell" type="radio" title="Windows" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="CqV-50-MBO">
@@ -736,7 +736,7 @@ Gw
                                                                                 <action selector="gameFileSelect:" target="XfG-lQ-9wD" id="yPf-YU-u0H"/>
                                                                             </connections>
                                                                         </button>
-                                                                        <button identifier="link_game" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eLA-Ed-AXO">
+                                                                        <button identifier="steam_license" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eLA-Ed-AXO">
                                                                             <rect key="frame" x="227" y="124" width="405" height="18"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                             <buttonCell key="cell" type="radio" title="Windows (Steam)" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="NHb-zd-owg">
@@ -771,16 +771,6 @@ Gw
                                                                             <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="Symlink your existing install of the game." id="rFx-Wl-XRP">
                                                                                 <font key="font" metaFont="system"/>
                                                                                 <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
-                                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                                            </textFieldCell>
-                                                                        </textField>
-                                                                        <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A29-oe-D0i">
-                                                                            <rect key="frame" x="187" y="16" width="486" height="54"/>
-                                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                            <textFieldCell key="cell" id="BBW-Tn-o29">
-                                                                                <font key="font" metaFont="system"/>
-                                                                                <string key="title">When copying or symlinking, please select the folder your game is installed in. It should contain the folders "game" and "boot".</string>
-                                                                                <color key="textColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
                                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                             </textFieldCell>
                                                                         </textField>
@@ -927,7 +917,7 @@ Gw
                                                                             </textFieldCell>
                                                                         </textField>
                                                                         <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ONA-w1-DjM">
-                                                                            <rect key="frame" x="187" y="16" width="486" height="54"/>
+                                                                            <rect key="frame" x="187" y="44" width="481" height="32"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                             <textFieldCell key="cell" id="uJx-kU-CQH">
                                                                                 <font key="font" metaFont="system"/>
@@ -1545,10 +1535,10 @@ Gw
                     <window key="window" title="XIV on Mac" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="msO-z3-Trw">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="425" y="462" width="480" height="270"/>
+                        <rect key="contentRect" x="425" y="462" width="163" height="137"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
                         <view key="contentView" id="NeK-oL-gbq">
-                            <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                            <rect key="frame" x="0.0" y="0.0" width="163" height="137"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </view>
                         <connections>
@@ -1561,7 +1551,7 @@ Gw
                 </windowController>
                 <customObject id="KvU-Vz-zp3" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="80" y="1263"/>
+            <point key="canvasLocation" x="81" y="1323"/>
         </scene>
         <!--Launch Controller-->
         <scene sceneID="LxT-9M-fJX">

@@ -12,7 +12,6 @@ import Sparkle
 class AppDelegate: NSObject, NSApplicationDelegate {
     
     let storyboard = NSStoryboard(name: "Main", bundle: nil)
-    var launchWinController: NSWindowController?
     var settingsWinController: NSWindowController?
     var installerWinController: NSWindowController?
 
@@ -22,10 +21,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         sparkle.updater.checkForUpdatesInBackground()
-        launchWinController = storyboard.instantiateController(withIdentifier: "LaunchWindow") as? NSWindowController
         settingsWinController = storyboard.instantiateController(withIdentifier: "SettingsWindow") as? NSWindowController
         installerWinController = storyboard.instantiateController(withIdentifier: "InstallerWindow") as? NSWindowController
-        Util.make(dir: Wine.prefix.path)
         Util.make(dir: Wine.xomData.path)
         Util.make(dir: Util.cache.path)
         if Util.macLicense {
@@ -35,12 +32,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             winLicense()
         }
         SocialIntegration.discord.setPresence()
-        if FileManager.default.fileExists(atPath: Util.launchPath) {
-            launchWinController?.showWindow(self)
-        }
-        else {
-            installerWinController?.showWindow(self)
-        }
     }
     
 
@@ -64,7 +55,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         alert.alertStyle = .warning
         alert.addButton(withTitle: "Yes")
         alert.addButton(withTitle: "No")
-        if alert.runModal() == NSApplication.ModalResponse.alertFirstButtonReturn {
+        if alert.runModal() == .alertFirstButtonReturn {
             let task = Process()
             task.launchPath = "/bin/sh"
             task.arguments = ["-c", "sleep 5; open \"\(Bundle.main.bundlePath)\""]
@@ -101,9 +92,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
-    @IBAction func play(_ sender: Any) {
-        Util.launchExec(terminating: false)
-    }
     
     @IBAction func installDXVK(_ sender: Any) {
         Setup.DXVK()
@@ -214,22 +202,30 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         settingsWinController?.showWindow(self)
     }
 	
-    @IBAction func selectExec(_ sender: Any) {
+    @IBAction func selectGamePath(_ sender: Any) {
         let openPanel = NSOpenPanel()
-        openPanel.title = "Choose the executable to start on App launch"
+        openPanel.title = "Choose the folder FFXIV is located in"
         if #available(macOS 11.0, *) {
-            openPanel.subtitle = "It should end on .exe"
+            openPanel.subtitle = #"It should contain the folders "game" and "boot""#
         }
         openPanel.showsResizeIndicator = true
         openPanel.showsHiddenFiles = true
-        openPanel.canChooseDirectories = false
-        openPanel.canChooseFiles = true
+        openPanel.canChooseDirectories = true
+        openPanel.canChooseFiles = false
         openPanel.canCreateDirectories = false
         openPanel.allowsMultipleSelection = false
         openPanel.begin() { (response) in
             if response == .OK {
+                let alert = NSAlert()
+                alert.messageText = "The folder you chose for your game install does not seem to be valid"
+                alert.informativeText = "Do you still want to use it?"
+                alert.alertStyle = .warning
+                alert.addButton(withTitle: "Yes")
+                alert.addButton(withTitle: "No")
+                if alert.runModal() == .alertFirstButtonReturn {
+                    Util.gamePath = openPanel.url!
+                }
                 openPanel.close()
-                Util.launchPath = openPanel.url!.path
             }
         }
     }

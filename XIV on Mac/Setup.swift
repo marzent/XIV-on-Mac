@@ -60,7 +60,7 @@ class Setup {
             XL()
         }
         else {
-            Util.launchExec()
+            //Util.launchExec()
         }
         NotificationCenter.default.post(name: .depInstallDone, object: nil)
     }
@@ -76,7 +76,6 @@ class Setup {
         catch {
             print("error copying game from \(gamePath)\n", to: &Util.logger)
         }
-        Util.launchPath = Wine.prefix.appendingPathComponent("drive_c/Program Files (x86)/SquareEnix/FINAL FANTASY XIV - A Realm Reborn/boot/ffxivboot64.exe").path
     }
     
     static func linkGame(gamePath: String) {
@@ -90,7 +89,6 @@ class Setup {
         catch {
             print("error creating symbolic link to \(gamePath)\n", to: &Util.logger)
         }
-        Util.launchPath = Wine.prefix.appendingPathComponent("drive_c/Program Files (x86)/SquareEnix/FINAL FANTASY XIV - A Realm Reborn/boot/ffxivboot64.exe").path
     }
     
     static func movieFix() {
@@ -243,7 +241,6 @@ class Setup {
         download(url: "https://gdl.square-enix.com/ffxiv/inst/ffxivsetup.exe")
         postInstall(header: name)
         Wine.launch(args: [Util.cache.appendingPathComponent("ffxivsetup.exe").path], blocking: true)
-        Util.launchPath = Wine.prefix.appendingPathComponent("drive_c/Program Files (x86)/SquareEnix/FINAL FANTASY XIV - A Realm Reborn/boot/ffxivboot64.exe").path
     }
     
     static func XL() {
@@ -251,7 +248,6 @@ class Setup {
         postDownload(header: name)
         download(url: "https://github.com/marzent/FFXIVQuickLauncher/releases/download/6.1.16/Setup.exe")
         postInstall(header: name)
-        Util.launchPath = Wine.prefix.appendingPathComponent("drive_c/users/emet-selch/Local Settings/Application Data/XIVLauncher/XIVLauncher.exe").path
         Wine.launch(args: [Util.cache.appendingPathComponent("Setup.exe").path])
     }
     

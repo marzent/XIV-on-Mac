@@ -174,6 +174,7 @@ public enum FFXIVLoginResult {
     case incorrectCredentials
     case protocolError
     case networkError
+    case noInstall
 }
 
 private enum FFXIVLoginPageData {
@@ -228,7 +229,7 @@ public struct FFXIVSettings {
             try print(FFXIVApp().versionHash)
         }
         catch {
-            completion(.clientUpdate)
+            completion(.noInstall)
             return
         }
         if credentials == nil {
@@ -465,15 +466,8 @@ public struct FFXIVApp {
     let sqpackFolderURL: URL
     
     init() {
-
-        let ffxiv = Wine.prefix
-            .appendingPathComponent("drive_c")
-            .appendingPathComponent("Program Files (x86)")
-            .appendingPathComponent("SquareEnix")
-            .appendingPathComponent("FINAL FANTASY XIV - A Realm Reborn")
-
         
-        let boot = ffxiv.appendingPathComponent("boot")
+        let boot = Util.gamePath.appendingPathComponent("boot")
         bootExeURL = boot.appendingPathComponent("ffxivboot.exe")
         bootExe64URL = boot.appendingPathComponent("ffxivboot64.exe")
         bootVersionURL = boot.appendingPathComponent("ffxivboot.ver")
@@ -482,7 +476,7 @@ public struct FFXIVApp {
         updaterExeURL = boot.appendingPathComponent("ffxivupdater.exe")
         updaterExe64URL = boot.appendingPathComponent("ffxivupdater64.exe")
         
-        let game = ffxiv.appendingPathComponent("game")
+        let game = Util.gamePath.appendingPathComponent("game")
         dx9URL = game.appendingPathComponent("ffxiv.exe")
         dx11URL = game.appendingPathComponent("ffxiv_dx11.exe")
         gameVersionURL = game.appendingPathComponent("ffxivgame.ver")

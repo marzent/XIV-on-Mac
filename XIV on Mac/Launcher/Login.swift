@@ -54,6 +54,13 @@ class LoginOperation: AsyncOperation {
             alert.messageText = "Network Error"
             alert.informativeText = "Check your internet connection, or try again later. Is FFXIV down?"
             alert.runModal()
+        case .noInstall:
+            let alert = NSAlert()
+            alert.addButton(withTitle: "Ok")
+            alert.alertStyle = .critical
+            alert.messageText = "Final Fantasy XIV is not installed!"
+            alert.informativeText = "Essential game files could not be found at \(Util.gamePath.path)"
+            alert.runModal()
         case .success(_, let updatedSettings):
             // These settings are probably correct, definitely save them
             updatedSettings.serialize()

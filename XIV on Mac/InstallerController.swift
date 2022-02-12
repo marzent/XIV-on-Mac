@@ -88,7 +88,7 @@ class InstallerController: NSViewController {
         let gamePaths = [appSupportFolder.appendingPathComponent("FINAL FANTASY XIV ONLINE/Bottles/published_Final_Fantasy/drive_c/Program Files (x86)/SquareEnix/FINAL FANTASY XIV - A Realm Reborn").path,
                          appSupportFolder.appendingPathComponent("CrossOver/Bottles/Final Fantasy XIV Online/drive_c/Program Files (x86)/SquareEnix/FINAL FANTASY XIV - A Realm Reborn").path]
         for gamePath in gamePaths {
-            if isValidGameDirectory(gamePath: gamePath) {
+            if InstallerController.isValidGameDirectory(gamePath: gamePath) {
                 let alertTask = Task { () -> Bool in
                     do {
                         let alert = NSAlert()
@@ -137,7 +137,7 @@ class InstallerController: NSViewController {
                     return nil
                 }
                 let openPath = openPanel.url!.path
-                if (self.isValidGameDirectory(gamePath: openPath)) {
+                if (InstallerController.isValidGameDirectory(gamePath: openPath)) {
                     return openPath
                 }
                 let alert = NSAlert()
@@ -155,7 +155,7 @@ class InstallerController: NSViewController {
         return nil
     }
     
-    private func isValidGameDirectory(gamePath: String) -> Bool {
+    static func isValidGameDirectory(gamePath: String) -> Bool {
         let game = gamePath + "/game/ffxiv_dx11.exe" //needed in order to discriminate against SE's app bundle version
         let boot = gamePath + "/boot"
         let validGame = FileManager.default.fileExists(atPath: game)
