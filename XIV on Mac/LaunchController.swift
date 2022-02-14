@@ -10,20 +10,23 @@ import Cocoa
 class LaunchController: NSViewController, NSWindowDelegate {
     
     var loginSheetWinController: NSWindowController?
-    var settings: FFXIVSettings = FFXIVSettings()
+    var settings: FFXIVSettings = FFXIVSettings.storedSettings()
     var newsTable = FrontierTableView(iconText: "􀤦")
     var topicsTable = FrontierTableView(iconText: "􀥅")
+    var otp: OTP? = nil
     
     @IBOutlet private var loginButton: NSButton!
     @IBOutlet private var userField: NSTextField!
     @IBOutlet private var passwdField: NSTextField!
-    @IBOutlet private var otpField: NSTextField!
+    @IBOutlet weak var otpField: NSTextField!
+    @IBOutlet weak var otpCheck: NSButton!
     @IBOutlet private var scrollView: AnimatingScrollView!
     @IBOutlet private var newsView: NSScrollView!
     @IBOutlet private var topicsView: NSScrollView!
     
     override func loadView() {
         super.loadView()
+        setupOTP()
         newsView.documentView = newsTable.tableView
         topicsView.documentView = topicsTable.tableView
         DispatchQueue.global(qos: .userInteractive).async {
@@ -79,10 +82,6 @@ class LaunchController: NSViewController, NSWindowDelegate {
             case .incorrectCredentials:
                 DispatchQueue.main.async {
                     self.loginSheetWinController?.window?.close()
-                    self.settings.credentials!.deleteLogin()
-                    var updatedSettings = self.settings
-                    updatedSettings.credentials = nil
-                    self.update(updatedSettings)
                     self.otpField.stringValue = ""
                 }
             default:

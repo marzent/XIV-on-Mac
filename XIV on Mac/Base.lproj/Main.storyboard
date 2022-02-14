@@ -1657,7 +1657,7 @@ Gw
                                             <action selector="doLogin:" target="sya-zo-KBW" id="QrA-k5-7Zd"/>
                                         </connections>
                                     </secureTextField>
-                                    <textField wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" contentType="username" translatesAutoresizingMaskIntoConstraints="NO" id="hjj-4f-wNd">
+                                    <textField wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" contentType="oneTimeCode" translatesAutoresizingMaskIntoConstraints="NO" id="hjj-4f-wNd">
                                         <rect key="frame" x="681" y="240" width="190" height="27"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" controlSize="large" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="optional" drawsBackground="YES" id="5FC-rM-Oay">
@@ -1672,7 +1672,7 @@ Gw
                                     <button wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fhv-Eb-PmW">
                                         <rect key="frame" x="679" y="197" width="127" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="check" title="Auto-Login" bezelStyle="regularSquare" imagePosition="left" controlSize="large" inset="2" id="J8n-OX-VtC">
+                                        <buttonCell key="cell" type="check" title="Auto-Login" bezelStyle="regularSquare" imagePosition="left" controlSize="large" enabled="NO" inset="2" id="J8n-OX-VtC">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system" size="15"/>
                                         </buttonCell>
@@ -1680,10 +1680,13 @@ Gw
                                     <button wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xhX-md-4MR">
                                         <rect key="frame" x="819" y="197" width="127" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="check" title="Auto-OTP" bezelStyle="regularSquare" imagePosition="left" controlSize="large" enabled="NO" inset="2" id="hjS-RC-X85">
+                                        <buttonCell key="cell" type="check" title="Auto-OTP" bezelStyle="regularSquare" imagePosition="left" controlSize="large" inset="2" id="hjS-RC-X85">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system" size="15"/>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="toggleOTP:" target="sya-zo-KBW" id="MbF-Ej-s0P"/>
+                                        </connections>
                                     </button>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3uG-Aq-0R3">
                                         <rect key="frame" x="680" y="386" width="80" height="14"/>
@@ -1796,6 +1799,7 @@ Gw
                     <connections>
                         <outlet property="loginButton" destination="Cgh-yM-JG5" id="gcf-Am-XLt"/>
                         <outlet property="newsView" destination="VFB-VA-Nbg" id="Joc-Vj-rNh"/>
+                        <outlet property="otpCheck" destination="xhX-md-4MR" id="16N-02-2YO"/>
                         <outlet property="otpField" destination="hjj-4f-wNd" id="Qbt-Wl-rev"/>
                         <outlet property="passwdField" destination="Bhg-a8-aUl" id="C2s-Nr-4j7"/>
                         <outlet property="scrollView" destination="kUd-Jw-ky7" id="GXL-go-HMw"/>

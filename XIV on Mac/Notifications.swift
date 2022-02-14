@@ -14,6 +14,7 @@ extension Notification.Name {
     static let installStatusUpdate = Notification.Name("InstallStatusUpdateNotification")
     static let loginInfo = Notification.Name("LoginInfoNotification")
     static let gameStarted = Notification.Name("GameStartedNotification")
+    static let otpPush = Notification.Name("OTPPushNotification")
 }
 
 extension Notification {
