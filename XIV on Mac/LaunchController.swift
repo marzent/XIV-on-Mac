@@ -38,7 +38,7 @@ class LaunchController: NSViewController, NSWindowDelegate {
     
     override func viewDidAppear() {
         super.viewDidAppear()
-        update(FFXIVSettings.storedSettings())
+        update(settings)
         loginSheetWinController = storyboard?.instantiateController(withIdentifier: "LoginSheet") as? NSWindowController
         view.window?.delegate = self
         view.window?.isMovableByWindowBackground = true

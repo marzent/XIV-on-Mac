@@ -22,12 +22,12 @@ public enum FFXIVExpansionLevel: UInt32 {
 
 public enum FFXIVRegion: UInt32 {
     case japanese = 0
-    case english = 3
+    case english = 2
     case french = 1
-    case german = 2
+    case german = 3
     
     static func guessFromLocale() -> FFXIVRegion {
-        switch NSLocale.current.languageCode {
+        switch Locale.current.languageCode {
         case "ja"?:
             return .japanese
         case "en"?:
