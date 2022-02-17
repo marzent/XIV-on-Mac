@@ -8,7 +8,7 @@
 import Foundation
 import Security
 import KeychainAccess
-import CommonCrypto
+import CryptoKit
 import AppKit
 
 
@@ -41,20 +41,27 @@ public enum FFXIVRegion: UInt32 {
         }
     }
     
-    var goatLanguage: Int {
+    var language: FFXIVLanguage {
         switch self {
         case .english:
-            return 1
+            return .english
         case .french:
-            return 3
+            return .french
         case .german:
-            return 2
+            return .german
         case .japanese:
-            return 0
+            return .japanese
         }
     }
+}
+
+public enum FFXIVLanguage: UInt32 {
+    case japanese = 0
+    case english = 1
+    case french = 3
+    case german = 2
     
-    var langCode: String {
+    var code: String {
         switch self {
         case .english:
             switch TimeZone.current.identifier.split(separator: "/").first ?? "" {
@@ -132,7 +139,7 @@ public struct FFXIVLoginCredentials {
     }
     
     static func storedLogin(username: String) -> FFXIVLoginCredentials? {
-        let keychain = Keychain(server: "https://secure.square-enix.com", protocolType: .https)
+        let keychain = Keychain(server: "https://secure.square-enix.com", protocolType: .https).synchronizable(true)
         // wtf Swift
         guard case let storedPassword?? = (((try? keychain.get(username)) as String??)) else {
             return nil
@@ -141,7 +148,7 @@ public struct FFXIVLoginCredentials {
     }
     
     static func deleteLogin(username: String) {
-        let keychain = Keychain(server: "https://secure.square-enix.com", protocolType: .https)
+        let keychain = Keychain(server: "https://secure.square-enix.com", protocolType: .https).synchronizable(true)
         keychain[username] = nil
     }
     
@@ -530,15 +537,18 @@ public struct FFXIVApp {
     
     private static func sha1(file: URL) throws -> (String, Int) {
         let data = try Data.init(contentsOf: file)
-        var hash = [UInt8](repeating: 0, count: Int(CC_SHA1_DIGEST_LENGTH))
-        data.withUnsafeBytes { (bytes: UnsafeRawBufferPointer) -> Void in
-            CC_SHA1(bytes.baseAddress, UInt32(data.count), &hash)
-        }
+        let digest = Insecure.SHA1.hash(data: data)
+        return (digest.hexStr, data.count)
+    }
+}
 
+extension Digest {
+    var bytes: [UInt8] { Array(makeIterator()) }
+    var hexStr: String {
         var string = ""
-        for byte in hash {
+        for byte in self.bytes {
             string += String(format: "%02x", byte)
         }
-        return (string, data.count)
+        return string
     }
 }

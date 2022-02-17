@@ -184,6 +184,9 @@ struct Util {
     
     static var enviroment : [String : String] {
         var env = ProcessInfo.processInfo.environment
+        if FFXIVSettings.storedSettings().steam {
+            env["IS_FFXIV_LAUNCH_FROM_STEAM"] = "1"
+        }
         env["LANG"] = "en_US" //needed to run when system language is set to 日本語
         env["WINEESYNC"] = Wine.esync ? "1" : "0"
         env["WINEPREFIX"] = Wine.prefix.path

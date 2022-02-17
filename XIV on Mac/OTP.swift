@@ -13,7 +13,7 @@ import SwiftOTP
 class OTP {
     private let loop: SelectorEventLoop
     private var server: DefaultHTTPServer? = nil
-    static private let keychain = Keychain(server: "https://secure.square-enix.com", protocolType: .https)
+    static private let keychain = Keychain(server: "https://secure.square-enix.com", protocolType: .https).synchronizable(true)
     private var generator: TOTP? = nil
     private var timer = Timer()
     
@@ -70,7 +70,7 @@ class OTP {
         DispatchQueue.global(qos: .utility).async {
             self.loop.runForever()
         }
-        try! server?.start()
+        try? server?.start()
     }
     
     private func stopServer() {
@@ -127,7 +127,7 @@ extension LaunchController {
                 msg.addButton(withTitle: "OK")
                 msg.addButton(withTitle: "Cancel")
                 msg.messageText = "OTP Secret"
-                msg.informativeText = "If you trust your local Keychain you can let XIV on Mac handle OTP generation for you if you provide a base 32 encoded secret below:"
+                msg.informativeText = "If you trust your local Keychain you can let XIV on Mac handle OTP generation for you if you provide a BASE32 encoded secret below:"
                 let txt = NSTextField(frame: NSRect(x: 0, y: 0, width: 200, height: 24))
                 msg.accessoryView = txt
                 if msg.runModal() == .alertFirstButtonReturn {

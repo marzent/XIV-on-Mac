@@ -28,6 +28,7 @@
 		50692C8927B3D13700945593 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 50692C8827B3D13700945593 /* Sparkle */; };
 		50692C8B27B3E48B00945593 /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = 50692C8A27B3E48B00945593 /* Credits.html */; };
 		507607A127B149F600DDF3E6 /* Frontier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507607A027B149F600DDF3E6 /* Frontier.swift */; };
+		507C824527BE40CB004CC48B /* CryptoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 507C824427BE40CB004CC48B /* CryptoSwift */; };
 		507CFBF62781C780007ADEC9 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 507CFBF52781C780007ADEC9 /* ZIPFoundation */; };
 		507D8F2127766F52000F0CB0 /* dxvk in Resources */ = {isa = PBXBuildFile; fileRef = 507D8F2027766F52000F0CB0 /* dxvk */; };
 		50B2A2B527AC1BC400EFA0A2 /* LoginSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A2B427AC1BC400EFA0A2 /* LoginSheetController.swift */; };
@@ -82,6 +83,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50692C8927B3D13700945593 /* Sparkle in Frameworks */,
+				507C824527BE40CB004CC48B /* CryptoSwift in Frameworks */,
 				502A18E127AABF8400144AB9 /* KeychainAccess in Frameworks */,
 				2B7159BA277C529300945A24 /* SwordRPC in Frameworks */,
 				50ED768727BA417200A348F9 /* SwiftOTP in Frameworks */,
@@ -179,6 +181,7 @@
 				50692C8827B3D13700945593 /* Sparkle */,
 				50D30FA227B93359007A9F66 /* Embassy */,
 				50ED768627BA417200A348F9 /* SwiftOTP */,
+				507C824427BE40CB004CC48B /* CryptoSwift */,
 			);
 			productName = "XIV on Mac";
 			productReference = 50511EC12770E085003A1E9F /* XIV on Mac.app */;
@@ -216,6 +219,7 @@
 				50692C8727B3D13700945593 /* XCRemoteSwiftPackageReference "Sparkle" */,
 				50D30FA127B93359007A9F66 /* XCRemoteSwiftPackageReference "Embassy" */,
 				50ED768527BA417200A348F9 /* XCRemoteSwiftPackageReference "SwiftOTP" */,
+				507C824327BE40CB004CC48B /* XCRemoteSwiftPackageReference "CryptoSwift" */,
 			);
 			productRefGroup = 50511EC22770E085003A1E9F /* Products */;
 			projectDirPath = "";
@@ -434,7 +438,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = TQJJTJ6364;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -452,7 +456,7 @@
 					"$(PROJECT_DIR)/XIV\\ on\\ Mac/wine/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 2.99;
+				MARKETING_VERSION = 2.99.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "dezent.XIV-on-Mac";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -471,7 +475,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = TQJJTJ6364;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -489,7 +493,7 @@
 					"$(PROJECT_DIR)/XIV\\ on\\ Mac/wine/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 2.99;
+				MARKETING_VERSION = 2.99.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "dezent.XIV-on-Mac";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -555,6 +559,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		507C824327BE40CB004CC48B /* XCRemoteSwiftPackageReference "CryptoSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/krzyzanowskim/CryptoSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		507CFBF42781C780007ADEC9 /* XCRemoteSwiftPackageReference "ZIPFoundation" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/weichsel/ZIPFoundation.git";
@@ -601,6 +613,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 50692C8727B3D13700945593 /* XCRemoteSwiftPackageReference "Sparkle" */;
 			productName = Sparkle;
+		};
+		507C824427BE40CB004CC48B /* CryptoSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 507C824327BE40CB004CC48B /* XCRemoteSwiftPackageReference "CryptoSwift" */;
+			productName = CryptoSwift;
 		};
 		507CFBF52781C780007ADEC9 /* ZIPFoundation */ = {
 			isa = XCSwiftPackageProductDependency;
