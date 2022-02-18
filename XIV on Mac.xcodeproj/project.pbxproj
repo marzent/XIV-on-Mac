@@ -119,6 +119,7 @@
 				505C0D9A277333920008A344 /* Util.swift */,
 				50F6CBA927A975A000013301 /* Wine.swift */,
 				50511EC42770E085003A1E9F /* AppDelegate.swift */,
+				50F8A5F827BFA93800ADC0CB /* Patch */,
 				509A62D527A58966001B203A /* Launcher */,
 				502A18E827AACEFE00144AB9 /* LaunchController.swift */,
 				50D30F9F27B92EDB007A9F66 /* OTP.swift */,
@@ -154,6 +155,13 @@
 				502A18E427AAC05C00144AB9 /* StoredParse.swift */,
 			);
 			path = Launcher;
+			sourceTree = "<group>";
+		};
+		50F8A5F827BFA93800ADC0CB /* Patch */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Patch;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -438,7 +446,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = TQJJTJ6364;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -456,7 +464,7 @@
 					"$(PROJECT_DIR)/XIV\\ on\\ Mac/wine/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 2.99.2;
+				MARKETING_VERSION = 2.99.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "dezent.XIV-on-Mac";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -475,7 +483,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = TQJJTJ6364;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -493,7 +501,7 @@
 					"$(PROJECT_DIR)/XIV\\ on\\ Mac/wine/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 2.99.2;
+				MARKETING_VERSION = 2.99.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "dezent.XIV-on-Mac";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

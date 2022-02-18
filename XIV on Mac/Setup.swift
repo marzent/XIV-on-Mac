@@ -197,7 +197,7 @@ class Setup {
                 Wine.override(dll: dll.components(separatedBy: ".")[0], type: "native")
             }
             catch {
-                print("error setting up dxvk dll \(dll)", to: &Util.logger)
+                print("error setting up dxvk dll \(dll)\n", to: &Util.logger)
             }
         }
     }

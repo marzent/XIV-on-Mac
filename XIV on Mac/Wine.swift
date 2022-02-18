@@ -72,4 +72,15 @@ struct Wine {
         }
     }
     
+    static var tickCount: UInt64 {
+        if timebase.denom == 0 {
+            mach_timebase_info(&timebase)
+        }
+        let machtime = mach_continuous_time() //maybe mach_absolute_time for older wine versions?
+        let numer = UInt64(timebase.numer)
+        let denom = UInt64(timebase.denom)
+        let monotonic_time = machtime * numer / denom / 100
+        return monotonic_time / 10000
+    }
+    
 }

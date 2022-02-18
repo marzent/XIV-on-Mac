@@ -8,8 +8,7 @@
 import Cocoa
 import Sparkle
 
-@main
-class AppDelegate: NSObject, NSApplicationDelegate {
+@main class AppDelegate: NSObject, NSApplicationDelegate {
     
     let storyboard = NSStoryboard(name: "Main", bundle: nil)
     var settingsWinController: NSWindowController?

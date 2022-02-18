@@ -51,17 +51,6 @@ class StartGameOperation: AsyncOperation {
         }
     }
 
-    class func wineGetTickCount(timeFunc: () -> UInt64) -> UInt64 {
-        if timebase.denom == 0 {
-            mach_timebase_info(&timebase)
-        }
-        let machtime = timeFunc()
-        let numer = UInt64(timebase.numer)
-        let denom = UInt64(timebase.denom)
-        let monotonic_time = machtime * numer / denom / 100
-        return monotonic_time / 10000
-    }
-
     class func blowfishKey(ticks: UInt64) -> UInt64 {
         let maskedTicks = ticks & 0xFFFFFFFF
         let key = maskedTicks & 0xFFFF0000
@@ -107,14 +96,14 @@ class StartGameOperation: AsyncOperation {
     }
     
     func arguments(app: FFXIVApp) -> [String] {
-        let ticks = StartGameOperation.wineGetTickCount(timeFunc: mach_absolute_time)
+        let ticks = Wine.tickCount
         let args = [
             ("/DEV.DataPathType", "1"),
             ("/DEV.MaxEntitledExpansionID", "\(settings.expansionId.rawValue)"),
             ("/DEV.TestSID", "\(sid)"),
             ("/DEV.UseSqPack", "1"),
             ("/SYS.Region", "\(settings.region.rawValue)"),
-            ("/language", "\(settings.region.language.rawValue)"),
+            ("/language", "\(FFXIVRegion.guessFromLocale().language.rawValue)"),
             ("/IsSteam", settings.steam ? "1" : "0"),
             ("/ver", "\(app.gameVer)")
         ]

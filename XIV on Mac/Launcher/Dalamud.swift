@@ -218,7 +218,7 @@ struct Dalamud {
                                   pluginDirectory: "C:\\Program Files\\XIV on Mac\\installedPlugins",
                                   defaultPluginDirectory: "C:\\Program Files\\XIV on Mac\\devPlugins",
                                   assetDirectory: "C:\\Program Files\\XIV on Mac\\Dalamud Assets",
-                                  language: Int(region.language.rawValue),
+                                  language: Int(FFXIVRegion.guessFromLocale().language.rawValue),
                                   gameVersion: gameVersion,
                                   optOutMBCollection: !mbCollection,
                                   delayInitializeMS: 0) //we handle delay ourselves
