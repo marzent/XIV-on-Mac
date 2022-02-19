@@ -208,7 +208,7 @@ struct Dalamud {
         }
     }
     
-    static func launch(args: [String], region: FFXIVRegion, gameVersion: String) {
+    static func launch(args: [String], language: FFXIVLanguage, gameVersion: String) {
         install()
         NotificationCenter.default.post(name: .loginInfo, object: nil, userInfo: [Notification.status.info: "Starting Wine"])
         let output = Util.launchToString(exec: Wine.wine64, args: [nativeLauncher.path] + args)
@@ -218,7 +218,7 @@ struct Dalamud {
                                   pluginDirectory: "C:\\Program Files\\XIV on Mac\\installedPlugins",
                                   defaultPluginDirectory: "C:\\Program Files\\XIV on Mac\\devPlugins",
                                   assetDirectory: "C:\\Program Files\\XIV on Mac\\Dalamud Assets",
-                                  language: Int(FFXIVRegion.guessFromLocale().language.rawValue),
+                                  language: Int(language.rawValue),
                                   gameVersion: gameVersion,
                                   optOutMBCollection: !mbCollection,
                                   delayInitializeMS: 0) //we handle delay ourselves

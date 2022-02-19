@@ -10,7 +10,6 @@ import Cocoa
 class LaunchController: NSViewController, NSWindowDelegate {
     
     var loginSheetWinController: NSWindowController?
-    var settings: FFXIVSettings = FFXIVSettings.storedSettings()
     var newsTable = FrontierTableView(iconText: "􀤦")
     var topicsTable = FrontierTableView(iconText: "􀥅")
     var otp: OTP? = nil
@@ -38,7 +37,7 @@ class LaunchController: NSViewController, NSWindowDelegate {
     
     override func viewDidAppear() {
         super.viewDidAppear()
-        update(settings)
+        update()
         loginSheetWinController = storyboard?.instantiateController(withIdentifier: "LoginSheet") as? NSWindowController
         view.window?.delegate = self
         view.window?.isMovableByWindowBackground = true
@@ -57,27 +56,25 @@ class LaunchController: NSViewController, NSWindowDelegate {
         }
     }
     
-    private func update(_ settings: FFXIVSettings) {
-        settings.serialize()
-        self.settings = settings
-        userField.stringValue = settings.credentials?.username ?? ""
-        passwdField.stringValue = settings.credentials?.password ?? ""
+    private func update() {
+        userField.stringValue = FFXIVSettings.credentials?.username ?? ""
+        passwdField.stringValue = FFXIVSettings.credentials?.password ?? ""
     }
     
     @IBAction func doLogin(_ sender: Any) {
         view.window?.beginSheet(loginSheetWinController!.window!)
-        settings.credentials = FFXIVLoginCredentials(username: userField.stringValue, password: passwdField.stringValue, oneTimePassword: otpField.stringValue)
+        FFXIVSettings.credentials = FFXIVLoginCredentials(username: userField.stringValue, password: passwdField.stringValue, oneTimePassword: otpField.stringValue)
         doLogin()
     }
     
     func doLogin() {
         let queue = OperationQueue()
-        let op = LoginOperation(settings: settings)
+        let op = LoginOperation()
         op.completionBlock = {
             switch op.loginResult {
-            case .success(let sid, let updatedSettings)?:
+            case .success(let sid)?:
                 DispatchQueue.main.async {
-                    self.startGame(sid: sid, settings: updatedSettings)
+                    self.startGame(sid: sid)
                 }
             case .incorrectCredentials:
                 DispatchQueue.main.async {
@@ -93,9 +90,9 @@ class LaunchController: NSViewController, NSWindowDelegate {
         queue.addOperation(op)
     }
     
-    func startGame(sid: String, settings: FFXIVSettings) {
+    func startGame(sid: String) {
         let queue = OperationQueue()
-        let op = StartGameOperation(settings: settings, sid: sid)
+        let op = StartGameOperation(sid: sid)
         queue.addOperation(op)
     }
 

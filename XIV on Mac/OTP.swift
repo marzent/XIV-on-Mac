@@ -97,6 +97,8 @@ class OTP {
 
 extension LaunchController {
     
+    typealias settings = FFXIVSettings
+    
     func setupOTP() {
         NotificationCenter.default.addObserver(self,selector: #selector(otpUpdate(_:)),name: .otpPush, object: nil)
         if settings.usesOneTimePassword {
@@ -116,11 +118,9 @@ extension LaunchController {
         otp?.stop()
         if sender.state == .off {
             settings.usesOneTimePassword = false
-            settings.serialize()
             return
         }
         settings.usesOneTimePassword = true
-        settings.serialize()
         if let username = settings.credentials?.username{
             if !OTP.secretStored(username: username) {
                 let msg = NSAlert()

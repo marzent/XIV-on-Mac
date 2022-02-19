@@ -24,7 +24,7 @@ import Sparkle
         installerWinController = storyboard.instantiateController(withIdentifier: "InstallerWindow") as? NSWindowController
         Util.make(dir: Wine.xomData.path)
         Util.make(dir: Util.cache.path)
-        if Util.macLicense {
+        if FFXIVSettings.platform == .mac {
             macLicense()
         }
         else {
@@ -74,7 +74,7 @@ import Sparkle
         macButton.state = .off
         winButton.state = .on
         DispatchQueue.global(qos: .utility).async {
-            Util.macLicense = false
+            FFXIVSettings.platform = .windows
         }
     }
 	
@@ -87,7 +87,7 @@ import Sparkle
         macButton.state = .on
         winButton.state = .off
         DispatchQueue.global(qos: .utility).async {
-            Util.macLicense = true
+            FFXIVSettings.platform = .mac
         }
     }
     
@@ -222,7 +222,7 @@ import Sparkle
                 alert.addButton(withTitle: "Yes")
                 alert.addButton(withTitle: "No")
                 if alert.runModal() == .alertFirstButtonReturn {
-                    Util.gamePath = openPanel.url!
+                    FFXIVSettings.gamePath = openPanel.url!
                 }
                 openPanel.close()
             }

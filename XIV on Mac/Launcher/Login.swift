@@ -8,15 +8,10 @@
 import Cocoa
 
 class LoginOperation: AsyncOperation {
-    let settings: FFXIVSettings
     var loginResult: FFXIVLoginResult?
     
-    init(settings: FFXIVSettings) {
-        self.settings = settings
-    }
-    
     override func main() {
-        settings.login() { result in
+        FFXIVSettings.login() { result in
             DispatchQueue.main.async {
                 self.handleResult(result: result)
             }
@@ -59,11 +54,10 @@ class LoginOperation: AsyncOperation {
             alert.addButton(withTitle: "Ok")
             alert.alertStyle = .critical
             alert.messageText = "Final Fantasy XIV is not installed!"
-            alert.informativeText = "Essential game files could not be found at \(Util.gamePath.path)"
+            alert.informativeText = "Essential game files could not be found at \(FFXIVSettings.gamePath.path)"
             alert.runModal()
-        case .success(_, let updatedSettings):
-            // These settings are probably correct, definitely save them
-            updatedSettings.serialize()
+        case .success(_):
+            print("Login Success!")
         }
         
         state = .finished

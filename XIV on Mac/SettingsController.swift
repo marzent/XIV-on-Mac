@@ -8,6 +8,8 @@
 import Cocoa
 
 class SettingsController: NSViewController {
+    @IBOutlet private var language: NSPopUpButton!
+    
     @IBOutlet private var devinfo: NSButton!
     @IBOutlet private var fps: NSButton!
     @IBOutlet private var frametimes: NSButton!
@@ -35,7 +37,6 @@ class SettingsController: NSViewController {
     @IBOutlet weak var discord: NSButton!
     
     private var mapping: [String : NSButton] = [:]
-    private var ffSettings = FFXIVSettings.storedSettings()
     
     override func viewDidAppear() {
         super.viewDidAppear()
@@ -103,9 +104,11 @@ class SettingsController: NSViewController {
         wineRetina.state = Wine.retina ? NSControl.StateValue.on : NSControl.StateValue.off
         wineDebugField.stringValue = Wine.debug
         
-        dalamud.state = ffSettings.dalamud ? NSControl.StateValue.on : NSControl.StateValue.off
+        dalamud.state = FFXIVSettings.dalamud ? NSControl.StateValue.on : NSControl.StateValue.off
         crowdSource.state = Dalamud.mbCollection ? NSControl.StateValue.on : NSControl.StateValue.off
         delay.stringValue = "\(Dalamud.delay)"
+        
+        language.selectItem(at: Int(FFXIVSettings.language.rawValue))
     }
     
     func saveState() {
@@ -123,11 +126,11 @@ class SettingsController: NSViewController {
         SocialIntegration.discord.enabled = (discord.state == NSControl.StateValue.on) ? true : false
         SocialIntegration.discord.save()
         
-        ffSettings = FFXIVSettings.storedSettings()
-        ffSettings.dalamud = (dalamud.state == NSControl.StateValue.on) ? true : false
-        ffSettings.serialize()
+        FFXIVSettings.dalamud = (dalamud.state == NSControl.StateValue.on) ? true : false
         Dalamud.mbCollection = (crowdSource.state == NSControl.StateValue.on) ? true : false
         Dalamud.delay = Double(delay.stringValue) ?? 7.0
+        
+        FFXIVSettings.language = FFXIVLanguage(rawValue: UInt32(language.indexOfSelectedItem))!
     }
 
 }

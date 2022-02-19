@@ -104,29 +104,8 @@ struct Util {
         return ret
     }
     
-    private static let macLicenseSettingKey = "MacLicenseSetting"
-    static var macLicense: Bool {
-        get {
-            return Util.getSetting(settingKey: macLicenseSettingKey, defaultValue: true)
-        }
-        set(newLicense) {
-            Wine.addReg(key: "HKEY_CURRENT_USER\\Software\\Wine", value: "HideWineExports", data: newLicense ? "0" : "1")
-            UserDefaults.standard.set(newLicense, forKey: macLicenseSettingKey)
-        }
-    }
-    
-    private static let gamePathKey = "GamePath"
-    static var gamePath: URL {
-        get {
-            return URL(fileURLWithPath: getSetting(settingKey: gamePathKey, defaultValue: Wine.prefix.appendingPathComponent("drive_c/Program Files (x86)/SquareEnix/FINAL FANTASY XIV - A Realm Reborn").path))
-        }
-        set(newURL) {
-            UserDefaults.standard.set(newURL.path, forKey: gamePathKey)
-        }
-    }
-    
     class DXVK: Codable {
-        static let settingKey = "DXVK_OPTIONS"
+        static let settingKey = "DxvkOptions"
         var async = true
         var maxFramerate = 0
         var hud = ["devinfo": false, //Displays the name of the GPU and the driver version.
@@ -184,7 +163,7 @@ struct Util {
     
     static var enviroment : [String : String] {
         var env = ProcessInfo.processInfo.environment
-        if FFXIVSettings.storedSettings().steam {
+        if FFXIVSettings.platform == .steam {
             env["IS_FFXIV_LAUNCH_FROM_STEAM"] = "1"
         }
         env["LANG"] = "en_US" //needed to run when system language is set to 日本語
@@ -213,5 +192,15 @@ struct Util {
             return defaultValue
         }
         return setting as! T
+    }
+    
+    static func swapByteOrder32(_ bytes: [UInt8]) -> [UInt8]{
+        var mbytes = bytes
+        for i in stride(from: 0, to: bytes.count, by: 4) {
+            for j in 0 ..< 4 {
+                mbytes[i + j] = bytes[i + 3 - j]
+            }
+        }
+        return mbytes
     }
 }

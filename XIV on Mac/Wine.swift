@@ -72,6 +72,7 @@ struct Wine {
         }
     }
     
+    private static var timebase: mach_timebase_info = mach_timebase_info()
     static var tickCount: UInt64 {
         if timebase.denom == 0 {
             mach_timebase_info(&timebase)

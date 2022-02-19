@@ -28,6 +28,7 @@
 		50692C8927B3D13700945593 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 50692C8827B3D13700945593 /* Sparkle */; };
 		50692C8B27B3E48B00945593 /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = 50692C8A27B3E48B00945593 /* Credits.html */; };
 		507607A127B149F600DDF3E6 /* Frontier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507607A027B149F600DDF3E6 /* Frontier.swift */; };
+		5077A32C27C12A9100D4F1B8 /* FFXIVSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5077A32B27C12A9100D4F1B8 /* FFXIVSettings.swift */; };
 		507C824527BE40CB004CC48B /* CryptoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 507C824427BE40CB004CC48B /* CryptoSwift */; };
 		507CFBF62781C780007ADEC9 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 507CFBF52781C780007ADEC9 /* ZIPFoundation */; };
 		507D8F2127766F52000F0CB0 /* dxvk in Resources */ = {isa = PBXBuildFile; fileRef = 507D8F2027766F52000F0CB0 /* dxvk */; };
@@ -42,6 +43,8 @@
 		50ED0DB52773CA8C002E9854 /* FileDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ED0DB42773CA8C002E9854 /* FileDownloader.swift */; };
 		50ED768727BA417200A348F9 /* SwiftOTP in Frameworks */ = {isa = PBXBuildFile; productRef = 50ED768627BA417200A348F9 /* SwiftOTP */; };
 		50F6CBAA27A975A000013301 /* Wine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F6CBA927A975A000013301 /* Wine.swift */; };
+		50F8A5FA27BFAF6B00ADC0CB /* ZiPatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F8A5F927BFAF6B00ADC0CB /* ZiPatch.swift */; };
+		50F8A5FC27BFB3C100ADC0CB /* Chunk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F8A5FB27BFB3C100ADC0CB /* Chunk.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +67,7 @@
 		505C0D9A277333920008A344 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		50692C8A27B3E48B00945593 /* Credits.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Credits.html; sourceTree = "<group>"; };
 		507607A027B149F600DDF3E6 /* Frontier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frontier.swift; sourceTree = "<group>"; };
+		5077A32B27C12A9100D4F1B8 /* FFXIVSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFXIVSettings.swift; sourceTree = "<group>"; };
 		507D8F2027766F52000F0CB0 /* dxvk */ = {isa = PBXFileReference; lastKnownFileType = folder; path = dxvk; sourceTree = "<group>"; };
 		50B2A2B327ABEF6800EFA0A2 /* XIV-on-Mac-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "XIV-on-Mac-Info.plist"; sourceTree = SOURCE_ROOT; };
 		50B2A2B427AC1BC400EFA0A2 /* LoginSheetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSheetController.swift; sourceTree = "<group>"; };
@@ -75,6 +79,8 @@
 		50ED0DB22773C619002E9854 /* Setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setup.swift; sourceTree = "<group>"; };
 		50ED0DB42773CA8C002E9854 /* FileDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDownloader.swift; sourceTree = "<group>"; };
 		50F6CBA927A975A000013301 /* Wine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wine.swift; sourceTree = "<group>"; };
+		50F8A5F927BFAF6B00ADC0CB /* ZiPatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZiPatch.swift; sourceTree = "<group>"; };
+		50F8A5FB27BFB3C100ADC0CB /* Chunk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chunk.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,7 +125,7 @@
 				505C0D9A277333920008A344 /* Util.swift */,
 				50F6CBA927A975A000013301 /* Wine.swift */,
 				50511EC42770E085003A1E9F /* AppDelegate.swift */,
-				50F8A5F827BFA93800ADC0CB /* Patch */,
+				50F8A5F827BFA93800ADC0CB /* Patcher */,
 				509A62D527A58966001B203A /* Launcher */,
 				502A18E827AACEFE00144AB9 /* LaunchController.swift */,
 				50D30F9F27B92EDB007A9F66 /* OTP.swift */,
@@ -146,6 +152,7 @@
 			children = (
 				502A18E227AABFED00144AB9 /* AsyncOperation.swift */,
 				502A18D727AA8C0D00144AB9 /* FFXIVLoginServices.swift */,
+				5077A32B27C12A9100D4F1B8 /* FFXIVSettings.swift */,
 				50B2A2B827AC461800EFA0A2 /* Dalamud.swift */,
 				502A18D927AA8DD000144AB9 /* HTMLParser.swift */,
 				502A18DB27AA8E3E00144AB9 /* Login.swift */,
@@ -157,11 +164,13 @@
 			path = Launcher;
 			sourceTree = "<group>";
 		};
-		50F8A5F827BFA93800ADC0CB /* Patch */ = {
+		50F8A5F827BFA93800ADC0CB /* Patcher */ = {
 			isa = PBXGroup;
 			children = (
+				50F8A5F927BFAF6B00ADC0CB /* ZiPatch.swift */,
+				50F8A5FB27BFB3C100ADC0CB /* Chunk.swift */,
 			);
-			path = Patch;
+			path = Patcher;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,6 +290,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B7C95D2277C6C6000A3CA89 /* SocialIntegration.swift in Sources */,
+				50F8A5FA27BFAF6B00ADC0CB /* ZiPatch.swift in Sources */,
+				5077A32C27C12A9100D4F1B8 /* FFXIVSettings.swift in Sources */,
 				50B2A2B927AC461800EFA0A2 /* Dalamud.swift in Sources */,
 				50BD278727785418002B0D1F /* Notifications.swift in Sources */,
 				502A18E727AAC12800144AB9 /* StartGame.swift in Sources */,
@@ -296,6 +307,7 @@
 				502A18D827AA8C0D00144AB9 /* FFXIVLoginServices.swift in Sources */,
 				502A18E527AAC05C00144AB9 /* StoredParse.swift in Sources */,
 				50E5387B2779CF5C0038521A /* SettingsController.swift in Sources */,
+				50F8A5FC27BFB3C100ADC0CB /* Chunk.swift in Sources */,
 				50511EC52770E085003A1E9F /* AppDelegate.swift in Sources */,
 				502A18DA27AA8DD000144AB9 /* HTMLParser.swift in Sources */,
 				50ED0DB32773C619002E9854 /* Setup.swift in Sources */,
@@ -446,7 +458,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = TQJJTJ6364;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -464,7 +476,7 @@
 					"$(PROJECT_DIR)/XIV\\ on\\ Mac/wine/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 2.99.4;
+				MARKETING_VERSION = 2.99.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "dezent.XIV-on-Mac";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -483,7 +495,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = TQJJTJ6364;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -501,7 +513,7 @@
 					"$(PROJECT_DIR)/XIV\\ on\\ Mac/wine/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 2.99.4;
+				MARKETING_VERSION = 2.99.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "dezent.XIV-on-Mac";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

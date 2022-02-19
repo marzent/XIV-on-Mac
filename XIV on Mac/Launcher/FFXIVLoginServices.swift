@@ -12,6 +12,12 @@ import CryptoKit
 import AppKit
 
 
+public enum FFXIVPlatform: UInt32 {
+    case windows = 0
+    case mac = 1
+    case steam = 2
+}
+
 public enum FFXIVExpansionLevel: UInt32 {
     case aRealmReborn = 0
     case heavensward = 1
@@ -176,7 +182,7 @@ public struct FFXIVLoginCredentials {
 }
 
 public enum FFXIVLoginResult {
-    case success(sid: String, updatedSettings: FFXIVSettings)
+    case success(sid: String)
     case clientUpdate
     case incorrectCredentials
     case protocolError
@@ -190,84 +196,6 @@ private enum FFXIVLoginPageData {
     case loginError
 }
 
-public struct FFXIVSettings {
-    public var credentials: FFXIVLoginCredentials?
-    public var expansionId: FFXIVExpansionLevel = .aRealmReborn
-    public var dalamud: Bool = false
-    public var steam: Bool = false
-    public var usesOneTimePassword: Bool = false
-    public var region: FFXIVRegion = FFXIVRegion.guessFromLocale()
-    
-    static func storedSettings(storage: UserDefaults = UserDefaults.standard) -> FFXIVSettings {
-        var settings = FFXIVSettings()
-        if let storedUsername = storage.string(forKey: "username") {
-            let login = FFXIVLoginCredentials.storedLogin(username: storedUsername)
-            settings.credentials = login
-        }
-        if let expansionId = FFXIVExpansionLevel(rawValue: UInt32(storage.integer(forKey: "expansionId"))) {
-            settings.expansionId = expansionId
-        }
-        if let region = FFXIVRegion(rawValue: UInt32(storage.integer(forKey: "region"))) {
-            settings.region = region
-        }
-        settings.dalamud = storage.bool(forKey: "dalamud")
-        settings.steam = storage.bool(forKey: "steam")
-        settings.usesOneTimePassword = storage.bool(forKey: "usesOneTimePassword")
-        return settings
-    }
-    
-    func serialize(into storage: UserDefaults = UserDefaults.standard) {
-        if let username = credentials?.username {
-            storage.set(username, forKey: "username")
-        }
-        storage.set(expansionId.rawValue, forKey: "expansionId")
-        storage.set(dalamud, forKey: "dalamud")
-        storage.set(steam, forKey: "steam")
-        storage.set(usesOneTimePassword, forKey: "usesOneTimePassword")
-        storage.set(region.rawValue, forKey: "region")
-        storage.synchronize()
-        if let creds = credentials {
-            creds.saveLogin()
-        }
-    }
-    
-    public func login(completion: @escaping ((FFXIVLoginResult) -> Void)) {
-        do {
-            try print(FFXIVApp().versionHash)
-        }
-        catch {
-            completion(.noInstall)
-            return
-        }
-        if credentials == nil {
-            completion(.incorrectCredentials)
-            return
-        }
-        guard let login = FFXIVLogin(settings: self) else {
-            return
-        }
-        login.getStored() { result in
-            switch result {
-            case .networkError:
-                completion(.networkError)
-            case .loginError:
-                completion(.protocolError)
-            case .success(let storedSid, let cookie):
-                login.getTempSID(storedSID: storedSid, cookie: cookie, completion: completion)
-            }
-        }
-    }
-    
-    public mutating func update(from response: FFXIVServerLoginResponse) {
-        if let rgnInt = response.region, let rgn = FFXIVRegion(rawValue: rgnInt) {
-            region = rgn
-        }
-        if let expInt = response.maxEx, let expId = FFXIVExpansionLevel(rawValue: expInt) {
-            expansionId = expId
-        }
-    }
-}
-
 private class FFXIVSSLDelegate: NSObject, URLSessionDelegate {
     func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
         // Always trust the Square Enix server. Yep, this can totally make us vulnerable to MITM, but you can
@@ -277,8 +205,8 @@ private class FFXIVSSLDelegate: NSObject, URLSessionDelegate {
 }
 
 private struct FFXIVLogin {
-    static let userAgent = Util.macLicense ? "macSQEXAuthor/2.0.0(MacOSX; ja-jp)" : "SQEXAuthor/2.0.0(Windows 6.2; ja-jp; \(uniqueID))"
-    static let userAgentPatch = Util.macLicense ? "FFXIV-MAC PATCH CLIENT" : "FFXIV PATCH CLIENT"
+    static let userAgent = settings.platform == .mac ? "macSQEXAuthor/2.0.0(MacOSX; ja-jp)" : "SQEXAuthor/2.0.0(Windows 6.2; ja-jp; \(uniqueID))"
+    static let userAgentPatch = settings.platform == .mac ? "FFXIV-MAC PATCH CLIENT" : "FFXIV PATCH CLIENT"
     static let authURL = URL(string: "https://ffxiv-login.square-enix.com/oauth/ffxivarr/login/login.send")!
     
     static let loginHeaders = [
@@ -302,21 +230,16 @@ private struct FFXIVLogin {
     ]
     
     var loginURL: URL {
-        return URL(string: "https://ffxiv-login.square-enix.com/oauth/ffxivarr/login/top?lng=en&rgn=\(settings.region.rawValue)&isft=0&cssmode=1&isnew=1&launchver=3\(settings.steam ? "&issteam=1" : "")")!
+        return URL(string: "https://ffxiv-login.square-enix.com/oauth/ffxivarr/login/top?lng=en&rgn=\(settings.region.rawValue)&isft=0&cssmode=1&isnew=1&launchver=3\(settings.platform == .steam ? "&issteam=1" : "")")!
     }
     
     var sessionURL: URL {
         return URL(string: "https://patch-gamever.ffxiv.com/http/win32/ffxivneo_release_game/\(app.gameVer)")!
     }
     
-    let settings: FFXIVSettings
-    let app: FFXIVApp
+    typealias settings = FFXIVSettings
+    let app = FFXIVApp()
     let sslDelegate = FFXIVSSLDelegate()
-    
-    init?(settings: FFXIVSettings) {
-        self.settings = settings
-        app = FFXIVApp()
-    }
     
     fileprivate func getStored(completion: @escaping ((FFXIVLoginPageData) -> Void)) {
         fetch(headers: FFXIVLogin.loginHeaders, url: loginURL, postBody: nil) { body, response in
@@ -373,22 +296,21 @@ private struct FFXIVLogin {
                         completion(.protocolError)
                         return
                     }
-                    var updatedSettings = self.settings
-                    updatedSettings.update(from: parsedResult)
-                    self.getFinalSID(tempSID: sid, cookie: cookie, updatedSettings: updatedSettings, completion: completion)
+                    settings.update(from: parsedResult)
+                    self.getFinalSID(tempSID: sid, cookie: cookie, completion: completion)
                 }
             }
             queue.addOperation(op)
         }
     }
     
-    fileprivate func getFinalSID(tempSID: String, cookie: String?, updatedSettings: FFXIVSettings, completion: @escaping ((FFXIVLoginResult) -> Void)) {
+    fileprivate func getFinalSID(tempSID: String, cookie: String?, completion: @escaping ((FFXIVLoginResult) -> Void)) {
         let headers = FFXIVLogin.sessionHeaders
 
         var url = sessionURL
         url = url.appendingPathComponent(tempSID)
         
-        let postBody = try? app.versionList(maxEx: updatedSettings.expansionId.rawValue).data(using: .utf8)
+        let postBody = try? app.versionList(maxEx: settings.expansionId.rawValue).data(using: .utf8)
         fetch(headers: headers, url: url, postBody: postBody) { body, response in
             if let unexpectedResponseBody = body, unexpectedResponseBody.count > 0 {
                 if (response?.statusCode ?? 404 <= 299) {
@@ -401,9 +323,9 @@ private struct FFXIVLogin {
 
             // Apple changed allHeaderFields in newer SDKs to "canonicalize" headers. So on some OSes it'll be lowercase and others it won't... thanks.
             if let finalSid = response?.allHeaderFields["X-Patch-Unique-Id"] as? String {
-                completion(.success(sid: finalSid, updatedSettings: updatedSettings))
+                completion(.success(sid: finalSid))
             } else if let finalSid = response?.allHeaderFields["x-patch-unique-id"] as? String {
-                completion(.success(sid: finalSid, updatedSettings: updatedSettings))
+                completion(.success(sid: finalSid))
             } else {
                 completion(.protocolError)
             }
@@ -459,6 +381,44 @@ private struct FFXIVLogin {
     }
 }
 
+extension FFXIVSettings {
+    
+    static func login(completion: @escaping ((FFXIVLoginResult) -> Void)) {
+        do {
+            try print(FFXIVApp().versionHash)
+        }
+        catch {
+            completion(.noInstall)
+            return
+        }
+        if credentials == nil {
+            completion(.incorrectCredentials)
+            return
+        }
+        let login = FFXIVLogin()
+        login.getStored() { result in
+            switch result {
+            case .networkError:
+                completion(.networkError)
+            case .loginError:
+                completion(.protocolError)
+            case .success(let storedSid, let cookie):
+                login.getTempSID(storedSID: storedSid, cookie: cookie, completion: completion)
+            }
+        }
+    }
+    
+    static func update(from response: FFXIVServerLoginResponse) {
+        if let rgnInt = response.region, let rgn = FFXIVRegion(rawValue: rgnInt) {
+            region = rgn
+        }
+        if let expInt = response.maxEx, let expId = FFXIVExpansionLevel(rawValue: expInt) {
+            expansionId = expId
+        }
+    }
+    
+}
+
 public struct FFXIVApp {
     let bootExeURL: URL
     let bootExe64URL: URL
@@ -474,7 +434,7 @@ public struct FFXIVApp {
     
     init() {
         
-        let boot = Util.gamePath.appendingPathComponent("boot")
+        let boot = FFXIVSettings.gamePath.appendingPathComponent("boot")
         bootExeURL = boot.appendingPathComponent("ffxivboot.exe")
         bootExe64URL = boot.appendingPathComponent("ffxivboot64.exe")
         bootVersionURL = boot.appendingPathComponent("ffxivboot.ver")
@@ -483,7 +443,7 @@ public struct FFXIVApp {
         updaterExeURL = boot.appendingPathComponent("ffxivupdater.exe")
         updaterExe64URL = boot.appendingPathComponent("ffxivupdater64.exe")
         
-        let game = Util.gamePath.appendingPathComponent("game")
+        let game = FFXIVSettings.gamePath.appendingPathComponent("game")
         dx9URL = game.appendingPathComponent("ffxiv.exe")
         dx11URL = game.appendingPathComponent("ffxiv_dx11.exe")
         gameVersionURL = game.appendingPathComponent("ffxivgame.ver")

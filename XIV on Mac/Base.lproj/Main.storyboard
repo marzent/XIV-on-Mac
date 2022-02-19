@@ -80,9 +80,9 @@
                                                 <action selector="explorer:" target="Voe-Tx-rLC" id="yFN-JF-vol"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Select startup executable" keyEquivalent="O" id="dxd-Xu-JNa">
+                                        <menuItem title="Select Game Path" keyEquivalent="O" id="dxd-Xu-JNa">
                                             <connections>
-                                                <action selector="selectExec:" target="Voe-Tx-rLC" id="DeS-zi-1Ij"/>
+                                                <action selector="selectGamePath:" target="Voe-Tx-rLC" id="68k-0i-emw"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="aJh-i4-bef"/>
@@ -1174,7 +1174,7 @@ Gw
             <objects>
                 <viewController id="GIg-v3-M8h" customClass="SettingsController" customModule="XIV_on_Mac" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="Uy2-An-Xxz">
-                        <rect key="frame" x="0.0" y="0.0" width="668" height="627"/>
+                        <rect key="frame" x="0.0" y="0.0" width="668" height="707"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <box fixedFrame="YES" title="DXVK" translatesAutoresizingMaskIntoConstraints="NO" id="sgA-bR-Hht">
@@ -1547,6 +1547,44 @@ Gw
                                     </subviews>
                                 </view>
                             </box>
+                            <box fixedFrame="YES" title="FFXIV" translatesAutoresizingMaskIntoConstraints="NO" id="9CE-y2-L8x">
+                                <rect key="frame" x="17" y="611" width="634" height="76"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <view key="contentView" id="MlF-Zi-8T3">
+                                    <rect key="frame" x="3" y="3" width="628" height="58"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ULK-bj-zua">
+                                            <rect key="frame" x="18" y="22" width="68" height="16"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Language:" id="7QP-ih-obw">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tOj-q2-gaD">
+                                            <rect key="frame" x="89" y="15" width="241" height="25"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <popUpButtonCell key="cell" type="push" title="Japanese" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Z2I-xl-N2E" id="Xvs-hx-TNW">
+                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="menu"/>
+                                                <menu key="menu" id="9qd-sK-RFK">
+                                                    <items>
+                                                        <menuItem title="Japanese" state="on" id="Z2I-xl-N2E"/>
+                                                        <menuItem title="English" id="isk-p1-eED"/>
+                                                        <menuItem title="German" id="z71-AL-d6f"/>
+                                                        <menuItem title="French" id="JVS-ez-96D"/>
+                                                    </items>
+                                                </menu>
+                                            </popUpButtonCell>
+                                            <connections>
+                                                <action selector="saveState:" target="GIg-v3-M8h" id="1Vb-W6-uYD"/>
+                                            </connections>
+                                        </popUpButton>
+                                    </subviews>
+                                </view>
+                            </box>
                         </subviews>
                     </view>
                     <connections>
@@ -1563,6 +1601,7 @@ Gw
                         <outlet property="fps" destination="Ogm-ZO-E2w" id="OPW-hm-cEk"/>
                         <outlet property="frametimes" destination="DSc-kA-8q1" id="NQ8-Yx-XTB"/>
                         <outlet property="gpuload" destination="4Fq-Sz-2ZL" id="kpD-xR-1mP"/>
+                        <outlet property="language" destination="tOj-q2-gaD" id="YA2-qM-B6g"/>
                         <outlet property="maxFPS" destination="0PH-1i-0UA" id="3Y1-La-IoX"/>
                         <outlet property="maxFPSField" destination="uQd-FB-xmH" id="pew-u4-IUq"/>
                         <outlet property="memory" destination="HvH-pN-nVO" id="69Q-ki-iMz"/>
@@ -1591,7 +1630,7 @@ Gw
                     </defaultToolbarItems>
                 </toolbar>
             </objects>
-            <point key="canvasLocation" x="1029" y="1374.5"/>
+            <point key="canvasLocation" x="1029" y="1414.5"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="ImY-2l-0oe">
