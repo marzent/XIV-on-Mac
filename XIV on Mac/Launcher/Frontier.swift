@@ -36,7 +36,7 @@ class Frontier {
     static var info: Info? {
         var ret: Info?
         let time = Int64((Date().timeIntervalSince1970 * 1000.0).rounded())
-        let lang = FFXIVRegion.guessFromLocale().language.code
+        let lang = FFXIVSettings.language.code
         let url = URL(string: "https://frontier.ffxiv.com/news/headline.json?lang=\(lang)&media=pcapp&\(time)")!
         let semaphore = DispatchSemaphore(value: 0)
         let task = URLSession.shared.dataTask(with: url) { data, response, error in

@@ -13,7 +13,7 @@ public struct FFXIVSettings {
     private static let platformKey = "Platform"
     static var platform: FFXIVPlatform {
         get {
-            return FFXIVPlatform(rawValue: UInt32(storage.integer(forKey: platformKey))) ?? .mac
+            FFXIVPlatform(rawValue: UInt32(storage.integer(forKey: platformKey))) ?? .mac
         }
         set {
             storage.set(newValue.rawValue, forKey: platformKey)
@@ -24,7 +24,7 @@ public struct FFXIVSettings {
     private static let gamePathKey = "GamePath"
     static var gamePath: URL {
         get {
-            return URL(fileURLWithPath: Util.getSetting(settingKey: gamePathKey, defaultValue: Wine.prefix.appendingPathComponent("drive_c/Program Files (x86)/SquareEnix/FINAL FANTASY XIV - A Realm Reborn").path))
+            URL(fileURLWithPath: Util.getSetting(settingKey: gamePathKey, defaultValue: Wine.prefix.appendingPathComponent("drive_c/Program Files (x86)/SquareEnix/FINAL FANTASY XIV - A Realm Reborn").path))
         }
         set {
             storage.set(newValue.path, forKey: gamePathKey)
@@ -44,10 +44,8 @@ public struct FFXIVSettings {
             return nil
         }
         set {
-            if let username = newValue?.username {
-                storage.set(username, forKey: usernameKey)
-            }
             if let creds = newValue {
+                storage.set(creds.username, forKey: usernameKey)
                 creds.saveLogin()
                 credentialsCache = creds
             }
@@ -57,7 +55,7 @@ public struct FFXIVSettings {
     private static let expansionIdKey = "ExpansionId"
     static var expansionId: FFXIVExpansionLevel {
         get {
-            return FFXIVExpansionLevel(rawValue: UInt32(storage.integer(forKey: expansionIdKey))) ?? .aRealmReborn
+            FFXIVExpansionLevel(rawValue: UInt32(storage.integer(forKey: expansionIdKey))) ?? .aRealmReborn
         }
         set {
             storage.set(newValue.rawValue, forKey: expansionIdKey)
@@ -67,7 +65,7 @@ public struct FFXIVSettings {
     private static let dalamudKey = "DalamudEnabled"
     static var dalamud: Bool {
         get {
-            return storage.bool(forKey: dalamudKey)
+            storage.bool(forKey: dalamudKey)
         }
         set {
             storage.set(newValue, forKey: dalamudKey)
@@ -77,7 +75,7 @@ public struct FFXIVSettings {
     private static let usesOneTimePasswordKey = "UsesOneTimePassword"
     static var usesOneTimePassword: Bool {
         get {
-            return storage.bool(forKey: usesOneTimePasswordKey)
+            storage.bool(forKey: usesOneTimePasswordKey)
         }
         set {
             storage.set(newValue, forKey: usesOneTimePasswordKey)
@@ -97,7 +95,7 @@ public struct FFXIVSettings {
     private static let languageKey = "Language"
     static var language: FFXIVLanguage {
         get {
-            FFXIVLanguage(rawValue: UInt32(storage.integer(forKey: languageKey))) ?? region.language
+            FFXIVLanguage(rawValue: UInt32(Util.getSetting(settingKey: languageKey, defaultValue: region.language.rawValue))) ?? region.language
         }
         set {
             storage.set(newValue.rawValue, forKey: languageKey)

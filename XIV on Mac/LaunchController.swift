@@ -212,6 +212,7 @@ class FrontierTableView: NSObject {
         text.width = 433
         tableView.addTableColumn(icon)
         tableView.addTableColumn(text)
+        tableView.target = self
         tableView.action = #selector(onItemClicked)
     }
         
@@ -220,12 +221,15 @@ class FrontierTableView: NSObject {
     }
     
     @objc private func onItemClicked() {
-        print("row \(tableView.clickedRow), col \(tableView.clickedColumn) clicked")
+        if let url = URL(string: items[tableView.clickedRow].url) {
+            NSWorkspace.shared.open(url)
+        }
     }
 }
 
 
 extension FrontierTableView: NSTableViewDelegate, NSTableViewDataSource {
+    
     func numberOfRows(in tableView: NSTableView) -> Int {
         return items.count
     }
@@ -241,7 +245,7 @@ extension FrontierTableView: NSTableViewDelegate, NSTableViewDataSource {
         }
     }
     
-    private func createCell(name: String) -> NSView {
+    private func createCell(name: String, link: URL? = nil) -> NSView {
         let text = NSTextField(string: name)
         text.cell?.usesSingleLineMode = false
         text.cell?.wraps = true

@@ -172,7 +172,7 @@ public struct FFXIVLoginCredentials {
     }
     
     public func saveLogin() {
-        let keychain = Keychain(server: "https://secure.square-enix.com", protocolType: .https)
+        let keychain = Keychain(server: "https://secure.square-enix.com", protocolType: .https).synchronizable(true)
         keychain[username] = password
     }
     
