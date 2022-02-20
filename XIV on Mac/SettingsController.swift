@@ -9,6 +9,7 @@ import Cocoa
 
 class SettingsController: NSViewController {
     @IBOutlet private var language: NSPopUpButton!
+    @IBOutlet private var license: NSPopUpButton!
     
     @IBOutlet private var devinfo: NSButton!
     @IBOutlet private var fps: NSButton!
@@ -109,6 +110,7 @@ class SettingsController: NSViewController {
         delay.stringValue = "\(Dalamud.delay)"
         
         language.selectItem(at: Int(FFXIVSettings.language.rawValue))
+        license.selectItem(at: Int(FFXIVSettings.platform.rawValue))
     }
     
     func saveState() {
@@ -130,7 +132,8 @@ class SettingsController: NSViewController {
         Dalamud.mbCollection = (crowdSource.state == NSControl.StateValue.on) ? true : false
         Dalamud.delay = Double(delay.stringValue) ?? 7.0
         
-        FFXIVSettings.language = FFXIVLanguage(rawValue: UInt32(language.indexOfSelectedItem))!
+        FFXIVSettings.language = FFXIVLanguage(rawValue: UInt32(language.indexOfSelectedItem)) ?? .english
+        FFXIVSettings.platform = FFXIVPlatform(rawValue: UInt32(license.indexOfSelectedItem)) ?? .mac
     }
 
 }

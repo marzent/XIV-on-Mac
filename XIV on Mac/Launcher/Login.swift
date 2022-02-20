@@ -22,6 +22,7 @@ class LoginOperation: AsyncOperation {
         loginResult = result
         switch result {
         case .protocolError:
+            StartGameOperation.vanilla()
             let alert = NSAlert()
             alert.addButton(withTitle: "Ok")
             alert.alertStyle = .critical
@@ -36,6 +37,7 @@ class LoginOperation: AsyncOperation {
             alert.informativeText = "The login servers did not accept the provided credentials. Please make sure to select the correct license (Windows, Steam or Mac) in Settings."
             alert.runModal()
         case .clientUpdate:
+            StartGameOperation.vanilla()
             let alert = NSAlert()
             alert.addButton(withTitle: "Ok")
             alert.alertStyle = .critical

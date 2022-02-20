@@ -85,7 +85,7 @@ public struct FFXIVSettings {
     private static let regionKey = "Region"
     static var region: FFXIVRegion {
         get {
-            FFXIVRegion(rawValue: UInt32(storage.integer(forKey: regionKey))) ?? FFXIVRegion.guessFromLocale()
+            FFXIVRegion(rawValue: UInt32(Util.getSetting(settingKey: regionKey, defaultValue: FFXIVRegion.guessFromLocale().rawValue))) ?? FFXIVRegion.guessFromLocale()
         }
         set {
             storage.set(newValue.rawValue, forKey: regionKey)

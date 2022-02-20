@@ -274,7 +274,6 @@ extension FrontierTableView: NSTableViewDelegate, NSTableViewDataSource {
         return false
     }
     
-    
     func tableView(_ tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
         let rowView = NSTableRowView()
         rowView.isEmphasized = false

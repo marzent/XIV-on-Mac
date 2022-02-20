@@ -17,7 +17,6 @@ struct Dalamud {
         static let remote = "https://github.com/redstrate/nativelauncher/releases/download/v1.0.0/" + exec
     }
     
-    
     struct Version: Codable {
         let assemblyVersion, supportedGameVer, runtimeVersion: String
         let runtimeRequired: Bool

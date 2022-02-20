@@ -334,25 +334,6 @@
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="License" id="jxT-CU-nIS">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="License" id="GEO-Iw-cKr">
-                                    <items>
-                                        <menuItem title="Mac" state="on" id="Gi5-1S-RQB">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="macLicense:" target="Voe-Tx-rLC" id="yRj-5L-R1c"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Windows" id="Fal-I4-PZk">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="winLicense:" target="Voe-Tx-rLC" id="QYM-Y2-uRo"/>
-                                            </connections>
-                                        </menuItem>
-                                    </items>
-                                </menu>
-                            </menuItem>
                             <menuItem title="Install" id="i3J-kg-a1T">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Install" id="w9C-j3-R4E">
@@ -446,7 +427,7 @@
                                                     <menuItem title="Auto Install" id="8FT-OM-tMB">
                                                         <modifierMask key="keyEquivalentModifierMask"/>
                                                         <connections>
-                                                            <action selector="installGShade:" target="Voe-Tx-rLC" id="9mh-2w-KJ5"/>
+                                                            <action selector="installGShade:" target="Voe-Tx-rLC" id="VTr-jj-E15"/>
                                                         </connections>
                                                     </menuItem>
                                                     <menuItem title="Manual Install" id="Taa-Lw-mwf">
@@ -513,9 +494,7 @@
                 </application>
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="XIV_on_Mac" customModuleProvider="target">
                     <connections>
-                        <outlet property="macButton" destination="Gi5-1S-RQB" id="VLe-4L-BCD"/>
                         <outlet property="sparkle" destination="yc9-Mt-LbV" id="5O3-N6-awX"/>
-                        <outlet property="winButton" destination="Fal-I4-PZk" id="yN0-XA-4uw"/>
                     </connections>
                 </customObject>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
@@ -1430,7 +1409,7 @@ Gw
                                             </connections>
                                         </button>
                                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qGE-fd-l1u">
-                                            <rect key="frame" x="407" y="19" width="201" height="21"/>
+                                            <rect key="frame" x="413" y="19" width="195" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="Wfl-gF-eSY">
                                                 <font key="font" metaFont="system"/>
@@ -1563,8 +1542,17 @@ Gw
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vuf-22-gMN">
+                                            <rect key="frame" x="321" y="21" width="55" height="16"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="License:" id="KR1-HA-AnN">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
                                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tOj-q2-gaD">
-                                            <rect key="frame" x="89" y="15" width="241" height="25"/>
+                                            <rect key="frame" x="89" y="15" width="150" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <popUpButtonCell key="cell" type="push" title="Japanese" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Z2I-xl-N2E" id="Xvs-hx-TNW">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -1580,6 +1568,24 @@ Gw
                                             </popUpButtonCell>
                                             <connections>
                                                 <action selector="saveState:" target="GIg-v3-M8h" id="1Vb-W6-uYD"/>
+                                            </connections>
+                                        </popUpButton>
+                                        <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eWT-Ny-Sac">
+                                            <rect key="frame" x="379" y="15" width="150" height="25"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <popUpButtonCell key="cell" type="push" title="Windows" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="qRO-Pi-PbC" id="IMg-2Z-eZx">
+                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="menu"/>
+                                                <menu key="menu" id="CGi-WS-G4w">
+                                                    <items>
+                                                        <menuItem title="Windows" state="on" id="qRO-Pi-PbC"/>
+                                                        <menuItem title="Mac" id="8gA-hG-foX"/>
+                                                        <menuItem title="Steam" id="Azf-g8-OxM"/>
+                                                    </items>
+                                                </menu>
+                                            </popUpButtonCell>
+                                            <connections>
+                                                <action selector="saveState:" target="GIg-v3-M8h" id="4xZ-YC-pwK"/>
                                             </connections>
                                         </popUpButton>
                                     </subviews>
@@ -1602,6 +1608,7 @@ Gw
                         <outlet property="frametimes" destination="DSc-kA-8q1" id="NQ8-Yx-XTB"/>
                         <outlet property="gpuload" destination="4Fq-Sz-2ZL" id="kpD-xR-1mP"/>
                         <outlet property="language" destination="tOj-q2-gaD" id="YA2-qM-B6g"/>
+                        <outlet property="license" destination="eWT-Ny-Sac" id="MFZ-zh-TaL"/>
                         <outlet property="maxFPS" destination="0PH-1i-0UA" id="3Y1-La-IoX"/>
                         <outlet property="maxFPSField" destination="uQd-FB-xmH" id="pew-u4-IUq"/>
                         <outlet property="memory" destination="HvH-pN-nVO" id="69Q-ki-iMz"/>

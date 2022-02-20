@@ -14,8 +14,6 @@ import Sparkle
     var settingsWinController: NSWindowController?
     var installerWinController: NSWindowController?
 
-    @IBOutlet private var macButton: NSMenuItem!
-    @IBOutlet private var winButton: NSMenuItem!
     @IBOutlet private var sparkle: SPUStandardUpdaterController!
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
@@ -24,12 +22,6 @@ import Sparkle
         installerWinController = storyboard.instantiateController(withIdentifier: "InstallerWindow") as? NSWindowController
         Util.make(dir: Wine.xomData.path)
         Util.make(dir: Util.cache.path)
-        if FFXIVSettings.platform == .mac {
-            macLicense()
-        }
-        else {
-            winLicense()
-        }
         SocialIntegration.discord.setPresence()
     }
     
@@ -46,51 +38,6 @@ import Sparkle
         Wine.launch(args: [filename])
         return true
     }
-    
-    func relaunch() {
-        let alert = NSAlert()
-        alert.messageText = "Do you want to restart XIV on Mac?"
-        alert.informativeText = "An application restart is required in order to change the license configuration"
-        alert.alertStyle = .warning
-        alert.addButton(withTitle: "Yes")
-        alert.addButton(withTitle: "No")
-        if alert.runModal() == .alertFirstButtonReturn {
-            let task = Process()
-            task.launchPath = "/bin/sh"
-            task.arguments = ["-c", "sleep 5; open \"\(Bundle.main.bundlePath)\""]
-            task.launch()
-            DispatchQueue.main.async {
-                NSApplication.shared.terminate(nil)
-            }
-        }
-    }
-
-    @IBAction func winLicense(_ sender: Any) {
-        winLicense()
-        relaunch()
-    }
-    
-    func winLicense() {
-        macButton.state = .off
-        winButton.state = .on
-        DispatchQueue.global(qos: .utility).async {
-            FFXIVSettings.platform = .windows
-        }
-    }
-	
-    @IBAction func macLicense(_ sender: Any) {
-        macLicense()
-        relaunch()
-    }
-    
-    func macLicense() {
-        macButton.state = .on
-        winButton.state = .off
-        DispatchQueue.global(qos: .utility).async {
-            FFXIVSettings.platform = .mac
-        }
-    }
-    
     
     @IBAction func installDXVK(_ sender: Any) {
         Setup.DXVK()
@@ -142,39 +89,11 @@ import Sparkle
     }
     
     @IBAction func installGShade(_ sender: Any) {
-        if #available(OSX 11.0, *) {
-            Util.launch(exec: URL(string: "file:///usr/bin/open")!,
-                        args: ["-n", "-b", "com.apple.Terminal",
-                               Bundle.main.url(forResource: "install_gshade", withExtension: "sh", subdirectory: "GShade")!.path,
-                               "--env", "WINEPATH=\( Bundle.main.url(forResource: "bin", withExtension: nil, subdirectory: "wine")!.path)",
-                               "--env", "WINEESYNC=\(Wine.esync ? "1" : "0")",
-                               "--env", "WINEPREFIX=\(Wine.prefix.path)"])
-        } else {
-            let alert = NSAlert()
-            alert.messageText = "Catalina is not supported by the automatic GShade installer"
-            alert.informativeText = "You can still manually run the GShade Linux install script"
-            alert.alertStyle = .critical
-            alert.addButton(withTitle: "OK")
-            alert.runModal()
-        }
+        GShade.install()
     }
     
     @IBAction func manualGShade(_ sender: Any) {
-        if #available(OSX 11.0, *) {
-            Util.launch(exec: URL(string: "file:///usr/bin/open")!,
-                        args: ["-n", "-b", "com.apple.Terminal",
-                               Bundle.main.url(forResource: "manual_gshade", withExtension: "sh", subdirectory: "GShade")!.path,
-                               "--env", "WINEPATH=\( Bundle.main.url(forResource: "bin", withExtension: nil, subdirectory: "wine")!.path)",
-                               "--env", "WINEESYNC=\(Wine.esync ? "1" : "0")",
-                               "--env", "WINEPREFIX=\(Wine.prefix.path)"])
-        } else {
-            let alert = NSAlert()
-            alert.messageText = "When running Catalina you must have wine or CrossOver installed"
-            alert.informativeText = "You can also manually add the wine version bundled with the XIV on Mac.app to your $PATH"
-            alert.alertStyle = .warning
-            alert.addButton(withTitle: "OK")
-            alert.runModal()
-        }
+        GShade.manual()
     }
     
     @IBAction func fullInstall(_ sender: Any) {
@@ -215,6 +134,11 @@ import Sparkle
         openPanel.allowsMultipleSelection = false
         openPanel.begin() { (response) in
             if response == .OK {
+                if InstallerController.isValidGameDirectory(gamePath: openPanel.url!.path) {
+                    FFXIVSettings.gamePath = openPanel.url!
+                    openPanel.close()
+                    return
+                }
                 let alert = NSAlert()
                 alert.messageText = "The folder you chose for your game install does not seem to be valid"
                 alert.informativeText = "Do you still want to use it?"

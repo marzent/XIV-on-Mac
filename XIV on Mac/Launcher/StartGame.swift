@@ -33,7 +33,12 @@ class StartGameOperation: AsyncOperation {
             NotificationCenter.default.post(name: .gameStarted, object: nil)
         }
     }
-
+    
+    class func vanilla() {
+        let app = FFXIVApp()
+        Wine.launch(args: [app.bootExe64URL.path])
+    }
+    
     class func blowfishKey(ticks: UInt64) -> UInt64 {
         let maskedTicks = ticks & 0xFFFFFFFF
         let key = maskedTicks & 0xFFFF0000
