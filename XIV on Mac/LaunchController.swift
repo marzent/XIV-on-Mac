@@ -10,8 +10,8 @@ import Cocoa
 class LaunchController: NSViewController, NSWindowDelegate {
     
     var loginSheetWinController: NSWindowController?
-    var newsTable = FrontierTableView(iconText: "􀤦")
-    var topicsTable = FrontierTableView(iconText: "􀥅")
+    var newsTable: FrontierTableView!
+    var topicsTable: FrontierTableView!
     var otp: OTP? = nil
     
     @IBOutlet private var loginButton: NSButton!
@@ -26,6 +26,14 @@ class LaunchController: NSViewController, NSWindowDelegate {
     override func loadView() {
         super.loadView()
         setupOTP()
+        if #available(macOS 11.0, *) {
+            newsTable = FrontierTableView(icon: NSImage(systemSymbolName: "newspaper", accessibilityDescription: nil)!)
+            topicsTable = FrontierTableView(icon: NSImage(systemSymbolName: "newspaper.fill", accessibilityDescription: nil)!)
+        }
+        else {
+            newsTable = FrontierTableView(icon: NSImage(size: NSSize(width: 20, height: 20)))
+            topicsTable = FrontierTableView(icon: NSImage(size: NSSize(width: 20, height: 20)))
+        }
         newsView.documentView = newsTable.tableView
         topicsView.documentView = topicsTable.tableView
         DispatchQueue.global(qos: .userInteractive).async {
@@ -193,11 +201,11 @@ class FrontierTableView: NSObject {
         }
     }
     
-    var iconText: String
+    var icon: NSImage
     var tableView: NSTableView
     
-    init(iconText: String) {
-        self.iconText = iconText
+    init(icon: NSImage) {
+        self.icon = icon
         tableView = NSTableView(frame: .zero)
         super.init()
         tableView.intercellSpacing = NSSize(width: 0, height: 9)
@@ -206,12 +214,12 @@ class FrontierTableView: NSObject {
         tableView.headerView = nil
         tableView.dataSource = self
         tableView.delegate = self
-        let icon = NSTableColumn(identifier: NSUserInterfaceItemIdentifier(rawValue: FrontierTableView.columnIcon))
-        let text = NSTableColumn(identifier: NSUserInterfaceItemIdentifier(rawValue: FrontierTableView.columnText))
-        icon.width = 20
-        text.width = 433
-        tableView.addTableColumn(icon)
-        tableView.addTableColumn(text)
+        let iconCol = NSTableColumn(identifier: NSUserInterfaceItemIdentifier(rawValue: FrontierTableView.columnIcon))
+        let textCol = NSTableColumn(identifier: NSUserInterfaceItemIdentifier(rawValue: FrontierTableView.columnText))
+        iconCol.width = 20
+        textCol.width = 433
+        tableView.addTableColumn(iconCol)
+        tableView.addTableColumn(textCol)
         tableView.target = self
         tableView.action = #selector(onItemClicked)
     }
@@ -237,7 +245,7 @@ extension FrontierTableView: NSTableViewDelegate, NSTableViewDataSource {
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         switch (tableColumn?.identifier)!.rawValue {
         case FrontierTableView.columnIcon:
-            return createCell(name: iconText)
+            return NSImageView(image: icon)
         case FrontierTableView.columnText:
             return createCell(name: items[row].title)
         default:
@@ -245,7 +253,7 @@ extension FrontierTableView: NSTableViewDelegate, NSTableViewDataSource {
         }
     }
     
-    private func createCell(name: String, link: URL? = nil) -> NSView {
+    private func createCell(name: String) -> NSView {
         let text = NSTextField(string: name)
         text.cell?.usesSingleLineMode = false
         text.cell?.wraps = true
