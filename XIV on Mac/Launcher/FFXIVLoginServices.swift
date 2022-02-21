@@ -474,18 +474,18 @@ public struct FFXIVApp {
         }
     }
 
-    func sqpackVer(expansion: String) -> String {
+    func sqpackVer(expansion: String) throws -> String {
         let url = sqpackFolderURL
             .appendingPathComponent(expansion)
             .appendingPathComponent("\(expansion).ver")
 
-        let data = try! Data.init(contentsOf: url)
+        let data = try Data.init(contentsOf: url)
         return String(data: data, encoding: .utf8)!
     }
 
     func versionList(maxEx: UInt32) throws -> String {
         let exs = stride(from: 1, through: maxEx, by: 1).map({"ex\($0)"})
-        let versions = exs.map({"\($0)\t\(sqpackVer(expansion: $0))"})
+        let versions = try exs.map({"\($0)\t\(try sqpackVer(expansion: $0))"})
         let versionList = try "\(bootVer)=\(versionHash)\n\(versions.joined(separator: "\n"))"
         return versionList
     }

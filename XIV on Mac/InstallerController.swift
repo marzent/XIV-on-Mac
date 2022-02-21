@@ -6,13 +6,23 @@
 //
 
 import Cocoa
+import ZIPFoundation
 
 class InstallerController: NSViewController {
+    
+    private enum GameFiles {
+        case download
+        case copy
+        case point
+    }
+    
+    fileprivate let downloadDone = DispatchSemaphore(value: 0)
+    private var action = GameFiles.download
     
     @IBOutlet private var status: NSTextField!
     @IBOutlet private var info: NSTextField!
     @IBOutlet private var tabView: NSTabView!
-    @IBOutlet private var spinner: NSProgressIndicator!
+    @IBOutlet private var bar: NSProgressIndicator!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,8 +31,7 @@ class InstallerController: NSViewController {
     
     override func viewWillAppear() {
         super.viewWillAppear()
-        spinner.usesThreadedAnimation = true
-        spinner.startAnimation(self)
+        bar.usesThreadedAnimation = true
     }
     
     @objc func depsDone(_ notif: Notification) {
@@ -49,37 +58,67 @@ class InstallerController: NSViewController {
     }
     
     @IBAction func versionSelect(_ sender: NSButton) {
-        Setup.vanilla = (sender.identifier == NSUserInterfaceItemIdentifier("vanilla_launcher"))
+        FFXIVSettings.dalamud = (sender.identifier == NSUserInterfaceItemIdentifier("withDalamud"))
+    }
+    
+    @IBAction func licenseSelect(_ sender: NSButton) {
+        switch sender.identifier! {
+        case NSUserInterfaceItemIdentifier("windowsLicense"):
+            DispatchQueue.global(qos: .utility).async {
+                FFXIVSettings.platform = .windows
+            }
+        case NSUserInterfaceItemIdentifier("steamLicense"):
+            DispatchQueue.global(qos: .utility).async {
+                FFXIVSettings.platform = .steam
+            }
+        default:
+            DispatchQueue.global(qos: .utility).async {
+                FFXIVSettings.platform = .mac
+            }
+        }
     }
     
     @IBAction func gameFileSelect(_ sender: NSButton) {
         switch sender.identifier! {
-        case NSUserInterfaceItemIdentifier("copy_game"):
-            Setup.copy = true
-            Setup.link = false
-        case NSUserInterfaceItemIdentifier("link_game"):
-            Setup.copy = false
-            Setup.link = true
+        case NSUserInterfaceItemIdentifier("copyGame"):
+            action = GameFiles.copy
+        case NSUserInterfaceItemIdentifier("pointGame"):
+            action = GameFiles.point
         default:
-            Setup.copy = false
-            Setup.link = false
+            action = GameFiles.download
         }
     }
     
     @IBAction func startInstall(_ sender: Any) {
         Task {
-            do {
-                if Setup.copy || Setup.link {
-                    if let gamePath = await getGameDirectory() {
-                        install(gamePath: gamePath)
-                        tabView.selectNextTabViewItem(sender)
-                    }
-                }
-                else {
-                    install()
+            switch(action) {
+            case .download:
+                tabView.selectNextTabViewItem(sender)
+                install()
+            case .copy:
+                if let gamePath = await getGameDirectory() {
+                    copyGame(gamePath: gamePath)
                     tabView.selectNextTabViewItem(sender)
+                    install()
+                }
+            case .point:
+                if let gamePath = await getGameDirectory() {
+                    FFXIVSettings.gamePath = URL(string: gamePath)!
+                    tabView.selectNextTabViewItem(sender)
+                    install()
                 }
             }
+        }
+    }
+    
+    private func copyGame(gamePath: String) {
+        FFXIVSettings.gamePath = FFXIVSettings.defaultGameLoc
+        Util.make(dir: FFXIVSettings.defaultGameLoc.deletingLastPathComponent().path)
+        do {
+            try FileManager.default.copyItem(atPath: gamePath, toPath: FFXIVSettings.defaultGameLoc.path)
+        }
+        catch {
+            print("error copying game from \(gamePath)\n", to: &Util.logger)
         }
     }
     
@@ -142,7 +181,7 @@ class InstallerController: NSViewController {
                 }
                 let alert = NSAlert()
                 alert.messageText = "Invalid FFXIV Directory"
-                alert.informativeText = "It should contain the folders \"game\" and \"boot\" and the game executable and not be located inside the XIV on Mac wine prefix."
+                alert.informativeText = "It should contain the folders \"game\" and \"boot\" and the game executable."
                 alert.alertStyle = .critical
                 alert.addButton(withTitle: "By the Twelve!")
                 await alert.beginSheetModal(for: self.view.window!)
@@ -160,18 +199,52 @@ class InstallerController: NSViewController {
         let boot = gamePath + "/boot"
         let validGame = FileManager.default.fileExists(atPath: game)
         let validBoot = FileManager.default.fileExists(atPath: boot)
-        let components = gamePath.split(separator: "/")
-        let trimmedComponents = components[...min(components.count - 1, 5)]
-        if "/" + trimmedComponents.map(String.init).joined(separator: "/") == Wine.prefix.path {
-            return false // do not allow game directories from the prefix itself
-        }
         return (validGame && validBoot)
     }
     
-    func install(gamePath: String = "") {
-        Setup.gamePath = gamePath
-        DispatchQueue.global(qos: .default).asyncAfter(deadline: .now() + 0.5) {
-            NotificationCenter.default.post(name: .depInstall, object: nil)
+    func install() {
+        DispatchQueue.global(qos: .userInitiated).async {
+            let version = "1.0.5"
+            let url = URL(string: "https://mac-dl.ffxiv.com/cw/finalfantasyxiv-\(version).zip")!
+            var observation: NSKeyValueObservation?
+            if let task = FileDownloader.loadFileAsync(url: url, semaphore: self.downloadDone) {
+                observation = task.progress.observe(\.fractionCompleted) { progress, _ in
+                    DispatchQueue.main.async {
+                        self.bar.doubleValue = self.bar.maxValue * progress.fractionCompleted
+                    }
+                }
+                task.resume()
+            }
+            self.downloadDone.wait()
+            observation?.invalidate()
+            DispatchQueue.main.async {
+                self.info.stringValue = "Extracting"
+            }
+            guard let archive = Archive(url: Util.cache.appendingPathComponent("finalfantasyxiv-\(version).zip"), accessMode: .read) else  {
+                print("Fatal error reading base game archive", to: &Util.logger)
+                return
+            }
+            let baseGamePath = "FINAL FANTASY XIV ONLINE.app/Contents/SharedSupport/finalfantasyxiv/support/published_Final_Fantasy/drive_c/Program Files (x86)/SquareEnix/FINAL FANTASY XIV - A Realm Reborn/"
+            let baseGameFiles = archive.filter({ $0.path.starts(with: baseGamePath) })
+            Util.make(dir: FFXIVSettings.gamePath.deletingLastPathComponent())
+            DispatchQueue.main.async {
+                self.bar.doubleValue = 0.0
+            }
+            for (i, file) in baseGameFiles.enumerated() {
+                let components = URL(fileURLWithPath: file.path).pathComponents
+                let relDestination = components[10...].joined(separator: "/")
+                let destination = URL(fileURLWithPath: relDestination, relativeTo: FFXIVSettings.gamePath.deletingLastPathComponent())
+                Util.make(dir: destination.deletingLastPathComponent())
+                try? _ = archive.extract(file, to: destination)
+                DispatchQueue.main.async {
+                    self.bar.doubleValue = self.bar.maxValue * Double(i + 1) / Double(baseGameFiles.count)
+                }
+            }
+            Setup.DXVK()
+            StartGameOperation.vanilla()
+            DispatchQueue.main.async {
+                self.tabView.selectNextTabViewItem(self)
+            }
         }
     }
     
@@ -191,9 +264,24 @@ class InstallerController: NSViewController {
     }
     
     private func setupObservers() {
-        Setup.observers()
+        //Setup.observers()
         NotificationCenter.default.addObserver(self,selector: #selector(depsDone(_:)),name: .depInstallDone, object: nil)
         NotificationCenter.default.addObserver(self,selector: #selector(updateStatus(_:)),name: .installStatusUpdate, object: nil)
+    }
+    
+}
+
+extension InstallerController: URLSessionTaskDelegate, URLSessionDownloadDelegate {
+    
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+        downloadDone.signal()
+    }
+    
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
+        let progress = bar.maxValue * Double(totalBytesWritten) / Double(totalBytesExpectedToWrite)
+        DispatchQueue.main.async {
+            self.bar.doubleValue = progress
+        }
     }
     
 }

@@ -56,8 +56,9 @@ class LoginOperation: AsyncOperation {
             alert.addButton(withTitle: "Ok")
             alert.alertStyle = .critical
             alert.messageText = "Final Fantasy XIV is not installed!"
-            alert.informativeText = "Essential game files could not be found at \(FFXIVSettings.gamePath.path)"
+            alert.informativeText = "Essential game files could not be found.\nStarting Installer..."
             alert.runModal()
+            NotificationCenter.default.post(name: .startInstall, object: nil)
         case .success(_):
             print("Login Success!")
         }

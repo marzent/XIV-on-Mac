@@ -13,7 +13,7 @@ public struct FFXIVSettings {
     private static let platformKey = "Platform"
     static var platform: FFXIVPlatform {
         get {
-            FFXIVPlatform(rawValue: UInt32(storage.integer(forKey: platformKey))) ?? .mac
+            FFXIVPlatform(rawValue: Util.getSetting(settingKey: platformKey, defaultValue: FFXIVPlatform.mac.rawValue)) ?? .mac
         }
         set {
             storage.set(newValue.rawValue, forKey: platformKey)
@@ -22,9 +22,10 @@ public struct FFXIVSettings {
     }
     
     private static let gamePathKey = "GamePath"
+    static let defaultGameLoc = Wine.prefix.appendingPathComponent("drive_c/Program Files (x86)/SquareEnix/FINAL FANTASY XIV - A Realm Reborn")
     static var gamePath: URL {
         get {
-            URL(fileURLWithPath: Util.getSetting(settingKey: gamePathKey, defaultValue: Wine.prefix.appendingPathComponent("drive_c/Program Files (x86)/SquareEnix/FINAL FANTASY XIV - A Realm Reborn").path))
+            URL(string: Util.getSetting(settingKey: gamePathKey, defaultValue: defaultGameLoc.path)) ?? defaultGameLoc
         }
         set {
             storage.set(newValue.path, forKey: gamePathKey)

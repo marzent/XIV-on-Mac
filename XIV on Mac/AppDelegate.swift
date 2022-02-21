@@ -8,23 +8,19 @@
 import Cocoa
 import Sparkle
 
-@main class AppDelegate: NSObject, NSApplicationDelegate {
-    
-    let storyboard = NSStoryboard(name: "Main", bundle: nil)
-    var settingsWinController: NSWindowController?
-    var installerWinController: NSWindowController?
 
+@main class AppDelegate: NSObject, NSApplicationDelegate {
+    var settingsWinController: NSWindowController?
     @IBOutlet private var sparkle: SPUStandardUpdaterController!
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        let storyboard = NSStoryboard(name: "Main", bundle: nil)
         sparkle.updater.checkForUpdatesInBackground()
         settingsWinController = storyboard.instantiateController(withIdentifier: "SettingsWindow") as? NSWindowController
-        installerWinController = storyboard.instantiateController(withIdentifier: "InstallerWindow") as? NSWindowController
         Util.make(dir: Wine.xomData.path)
         Util.make(dir: Util.cache.path)
         SocialIntegration.discord.setPresence()
     }
-    
 
     func applicationWillTerminate(_ aNotification: Notification) {
         Wine.kill()
@@ -74,30 +70,12 @@ import Sparkle
         Setup.installDotNet48()
     }
     
-    @IBAction func installXL(_ sender: Any) {
-        Setup.XLConf()
-        Setup.XL()
-    }
-    
-    @IBAction func vanillaLauncher(_ sender: Any) {
-        Setup.vanillaConf()
-        Setup.vanillaLauncher()
-    }
-    
-    @IBAction func movieFix(_ sender: Any) {
-        Setup.movieFix()
-    }
-    
     @IBAction func installGShade(_ sender: Any) {
         GShade.install()
     }
     
     @IBAction func manualGShade(_ sender: Any) {
         GShade.manual()
-    }
-    
-    @IBAction func fullInstall(_ sender: Any) {
-        installerWinController?.showWindow(self)
     }
     
     @IBAction func regedit(_ sender: Any) {

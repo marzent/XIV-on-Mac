@@ -34,30 +34,27 @@ class FileDownloader {
     }
 
     
-    static func loadFileAsync(url: String, onFinish: @escaping (_: String) -> Void)
-    {
+    static func loadFileAsync(url: URL, semaphore: DispatchSemaphore) -> URLSessionDownloadTask? {
         let downloadUrl = Util.cache
-        let _url = URL(string: url)!
-        let destinationUrl = downloadUrl.appendingPathComponent(_url.lastPathComponent)
+        let destinationUrl = downloadUrl.appendingPathComponent(url.lastPathComponent)
 
         if FileManager().fileExists(atPath: destinationUrl.path)
         {
             print("File already exists [\(destinationUrl.path)]")
-            onFinish(url)
+            semaphore.signal()
+            return nil
         }
-        else {
-            let downloadTask = URLSession.shared.downloadTask(with: _url) {
-                urlOrNil, responseOrNil, errorOrNil in
-                guard let fileURL = urlOrNil else { return }
-                do {
-                    try FileManager.default.moveItem(at: fileURL, to: destinationUrl)
-                    onFinish(url)
-                } catch {
-                    print ("file error: \(error)")
-                }
+        let downloadTask = URLSession.shared.downloadTask(with: url) {
+            urlOrNil, responseOrNil, errorOrNil in
+            guard let fileURL = urlOrNil else { return }
+            do {
+                try FileManager.default.moveItem(at: fileURL, to: destinationUrl)
+            } catch {
+                print ("file error: \(error)")
             }
-            downloadTask.resume()
+            semaphore.signal()
         }
+        return downloadTask
     }
 
 }

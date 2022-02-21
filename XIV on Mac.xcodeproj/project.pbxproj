@@ -131,10 +131,7 @@
 				50511EC42770E085003A1E9F /* AppDelegate.swift */,
 				50F8A5F827BFA93800ADC0CB /* Patcher */,
 				509A62D527A58966001B203A /* Launcher */,
-				502A18E827AACEFE00144AB9 /* LaunchController.swift */,
-				50D30F9F27B92EDB007A9F66 /* OTP.swift */,
-				50BC73CE27C2BEAF006269AC /* ACT.swift */,
-				50BC73D227C2C3F3006269AC /* GShade.swift */,
+				50BC73D427C2C804006269AC /* AddOns */,
 				50511EC62770E085003A1E9F /* InstallerController.swift */,
 				50E5387A2779CF5C0038521A /* SettingsController.swift */,
 				50B2A2B427AC1BC400EFA0A2 /* LoginSheetController.swift */,
@@ -156,10 +153,11 @@
 		509A62D527A58966001B203A /* Launcher */ = {
 			isa = PBXGroup;
 			children = (
+				502A18E827AACEFE00144AB9 /* LaunchController.swift */,
+				50D30F9F27B92EDB007A9F66 /* OTP.swift */,
 				502A18E227AABFED00144AB9 /* AsyncOperation.swift */,
 				502A18D727AA8C0D00144AB9 /* FFXIVLoginServices.swift */,
 				5077A32B27C12A9100D4F1B8 /* FFXIVSettings.swift */,
-				50B2A2B827AC461800EFA0A2 /* Dalamud.swift */,
 				502A18D927AA8DD000144AB9 /* HTMLParser.swift */,
 				502A18DB27AA8E3E00144AB9 /* Login.swift */,
 				507607A027B149F600DDF3E6 /* Frontier.swift */,
@@ -168,6 +166,16 @@
 				502A18E427AAC05C00144AB9 /* StoredParse.swift */,
 			);
 			path = Launcher;
+			sourceTree = "<group>";
+		};
+		50BC73D427C2C804006269AC /* AddOns */ = {
+			isa = PBXGroup;
+			children = (
+				50BC73CE27C2BEAF006269AC /* ACT.swift */,
+				50B2A2B827AC461800EFA0A2 /* Dalamud.swift */,
+				50BC73D227C2C3F3006269AC /* GShade.swift */,
+			);
+			path = AddOns;
 			sourceTree = "<group>";
 		};
 		50F8A5F827BFA93800ADC0CB /* Patcher */ = {
@@ -466,7 +474,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = TQJJTJ6364;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -484,7 +492,7 @@
 					"$(PROJECT_DIR)/XIV\\ on\\ Mac/wine/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 2.99.5;
+				MARKETING_VERSION = 2.99.7;
 				PRODUCT_BUNDLE_IDENTIFIER = "dezent.XIV-on-Mac";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -503,7 +511,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = TQJJTJ6364;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -521,7 +529,7 @@
 					"$(PROJECT_DIR)/XIV\\ on\\ Mac/wine/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 2.99.5;
+				MARKETING_VERSION = 2.99.7;
 				PRODUCT_BUNDLE_IDENTIFIER = "dezent.XIV-on-Mac";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

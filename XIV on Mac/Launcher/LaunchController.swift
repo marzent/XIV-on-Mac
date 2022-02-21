@@ -10,6 +10,7 @@ import Cocoa
 class LaunchController: NSViewController, NSWindowDelegate {
     
     var loginSheetWinController: NSWindowController?
+    var installerWinController: NSWindowController?
     var newsTable: FrontierTableView!
     var topicsTable: FrontierTableView!
     var otp: OTP? = nil
@@ -26,6 +27,7 @@ class LaunchController: NSViewController, NSWindowDelegate {
     override func loadView() {
         super.loadView()
         setupOTP()
+        NotificationCenter.default.addObserver(self,selector: #selector(otpUpdate(_:)),name: .otpPush, object: nil)
         if #available(macOS 11.0, *) {
             newsTable = FrontierTableView(icon: NSImage(systemSymbolName: "newspaper", accessibilityDescription: nil)!)
             topicsTable = FrontierTableView(icon: NSImage(systemSymbolName: "newspaper.fill", accessibilityDescription: nil)!)
@@ -47,6 +49,7 @@ class LaunchController: NSViewController, NSWindowDelegate {
         super.viewDidAppear()
         update()
         loginSheetWinController = storyboard?.instantiateController(withIdentifier: "LoginSheet") as? NSWindowController
+        installerWinController = storyboard?.instantiateController(withIdentifier: "InstallerWindow") as? NSWindowController
         view.window?.delegate = self
         view.window?.isMovableByWindowBackground = true
     }
@@ -88,6 +91,11 @@ class LaunchController: NSViewController, NSWindowDelegate {
                 DispatchQueue.main.async {
                     self.loginSheetWinController?.window?.close()
                     self.otpField.stringValue = ""
+                }
+            case .noInstall:
+                DispatchQueue.main.async {
+                    self.loginSheetWinController?.window?.close()
+                    self.view.window?.beginSheet(self.installerWinController!.window!)
                 }
             default:
                 DispatchQueue.main.async {

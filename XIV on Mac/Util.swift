@@ -48,6 +48,10 @@ struct Util {
         }
     }
     
+    static func make(dir : URL) {
+        make(dir: dir.path)
+    }
+    
     static func launch(exec: URL, args: [String], blocking: Bool = false) {
         let task = Process()
         task.qualityOfService = QualityOfService.userInteractive

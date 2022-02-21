@@ -149,8 +149,12 @@ struct Dalamud {
             NotificationCenter.default.post(name: .loginInfo, object: nil, userInfo: [Notification.status.info: "Updating Dalamud"])
             purge()
         }
-        Setup.download(url: remote.distrib)
-        Setup.download(url: nativeLauncher.remote)
+        FileDownloader.loadFileSync(url: URL(string: remote.distrib)!) {(path, error) in
+            print("Downloaded Dalamud!\n")
+        }
+        FileDownloader.loadFileSync(url: URL(string: nativeLauncher.remote)!) {(path, error) in
+            print("Downloaded Natilve Launcher!\n")
+        }
         try? fm.copyItem(atPath: Util.cache.appendingPathComponent(nativeLauncher.exec).path, toPath: nativeLauncher.path)
         try? fm.unzipItem(at: Util.cache.appendingPathComponent("latest.zip"), to: path)
         guard let remoteAssets = remote.assets else {
@@ -173,8 +177,14 @@ struct Dalamud {
             return
         }
         let version = remote.version!.runtimeVersion
-        Setup.download(url: "https://dotnetcli.azureedge.net/dotnet/Runtime/\(version)/dotnet-runtime-\(version)-win-x64.zip")
-        Setup.download(url: "https://dotnetcli.azureedge.net/dotnet/WindowsDesktop/\(version)/windowsdesktop-runtime-\(version)-win-x64.zip")
+        let dotnetRuntime = URL(string: "https://dotnetcli.azureedge.net/dotnet/Runtime/\(version)/dotnet-runtime-\(version)-win-x64.zip")!
+        let windowsDesktopRuntime = URL(string: "https://dotnetcli.azureedge.net/dotnet/WindowsDesktop/\(version)/windowsdesktop-runtime-\(version)-win-x64.zip")!
+        FileDownloader.loadFileSync(url: dotnetRuntime) {(path, error) in
+            print("Downloaded Dotnet Runtime!\n")
+        }
+        FileDownloader.loadFileSync(url: windowsDesktopRuntime) {(path, error) in
+            print("Downloaded Windows Desktop Runtime!\n")
+        }
         try? fm.unzipItem(at: Util.cache.appendingPathComponent("dotnet-runtime-\(version)-win-x64.zip"), to: runtime)
         try? fm.unzipItem(at: Util.cache.appendingPathComponent("windowsdesktop-runtime-\(version)-win-x64.zip"), to: runtime)
     }
