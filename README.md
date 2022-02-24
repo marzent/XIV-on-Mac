@@ -1,4 +1,4 @@
-<h1><p align="center">XIV on Mac</p></h1>
+<p align="center"> <img src="https://www.xivmac.com/sites/default/files/spreadit.png"></a> </p>
 <p align="center"> <img src="https://raw.githubusercontent.com/marzent/XIV-on-Mac/main/xivmac2.png"></a> <br>
 Wine Wrapper, Setup tool and alternative launcher for FFXIV on MacOS.</p>
 
