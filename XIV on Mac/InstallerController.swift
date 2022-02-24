@@ -24,29 +24,9 @@ class InstallerController: NSViewController {
     @IBOutlet private var tabView: NSTabView!
     @IBOutlet private var bar: NSProgressIndicator!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupObservers()
-    }
-    
     override func viewWillAppear() {
         super.viewWillAppear()
         bar.usesThreadedAnimation = true
-    }
-    
-    @objc func depsDone(_ notif: Notification) {
-        DispatchQueue.main.async {
-            self.tabView.selectNextTabViewItem(self)
-        }
-    }
-    
-    @objc func updateStatus(_ notif: Notification) {
-        let header = notif.userInfo?[Notification.status.header]! as! String
-        let info = notif.userInfo?[Notification.status.info]! as! String
-        DispatchQueue.main.async {
-            self.status.stringValue = header
-            self.info.stringValue = info
-        }
     }
     
     @IBAction func nextTab(_ sender: Any) {
@@ -103,7 +83,7 @@ class InstallerController: NSViewController {
                 }
             case .point:
                 if let gamePath = await getGameDirectory() {
-                    FFXIVSettings.gamePath = URL(string: gamePath)!
+                    FFXIVSettings.gamePath = URL(fileURLWithPath: gamePath)
                     tabView.selectNextTabViewItem(sender)
                     install()
                 }
@@ -241,10 +221,27 @@ class InstallerController: NSViewController {
                 }
             }
             Setup.DXVK()
+            InstallerController.vanillaConf()
             StartGameOperation.vanilla()
             DispatchQueue.main.async {
                 self.tabView.selectNextTabViewItem(self)
             }
+        }
+    }
+    
+    private static func vanillaConf() {
+        let fm = FileManager.default
+        let content = "<FINAL FANTASY XIV Boot Config File>\n\n<Version>\nBrowser 1\nStartupCompleted 1"
+        let folder = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("My Games/FINAL FANTASY XIV - A Realm Reborn")
+        Util.make(dir: folder)
+        let file = folder.appendingPathComponent("FFXIV_BOOT.cfg")
+        do {
+            if fm.fileExists(atPath: file.path) {
+                try fm.removeItem(atPath: file.path)
+            }
+            try content.write(to: file, atomically: true, encoding: String.Encoding.utf8)
+        } catch {
+            print("Error writing ffxiv boot launcher config file\n", to: &Util.logger)
         }
     }
     
@@ -261,27 +258,6 @@ class InstallerController: NSViewController {
     
     @IBAction func closeWindow(_ sender: Any) {
         self.view.window?.close()
-    }
-    
-    private func setupObservers() {
-        //Setup.observers()
-        NotificationCenter.default.addObserver(self,selector: #selector(depsDone(_:)),name: .depInstallDone, object: nil)
-        NotificationCenter.default.addObserver(self,selector: #selector(updateStatus(_:)),name: .installStatusUpdate, object: nil)
-    }
-    
-}
-
-extension InstallerController: URLSessionTaskDelegate, URLSessionDownloadDelegate {
-    
-    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
-        downloadDone.signal()
-    }
-    
-    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
-        let progress = bar.maxValue * Double(totalBytesWritten) / Double(totalBytesExpectedToWrite)
-        DispatchQueue.main.async {
-            self.bar.doubleValue = progress
-        }
     }
     
 }

@@ -27,7 +27,6 @@ class LaunchController: NSViewController, NSWindowDelegate {
     override func loadView() {
         super.loadView()
         setupOTP()
-        NotificationCenter.default.addObserver(self,selector: #selector(otpUpdate(_:)),name: .otpPush, object: nil)
         if #available(macOS 11.0, *) {
             newsTable = FrontierTableView(icon: NSImage(systemSymbolName: "newspaper", accessibilityDescription: nil)!)
             topicsTable = FrontierTableView(icon: NSImage(systemSymbolName: "newspaper.fill", accessibilityDescription: nil)!)
@@ -57,7 +56,7 @@ class LaunchController: NSViewController, NSWindowDelegate {
     func windowShouldClose(_ sender: NSWindow) -> Bool {
             NSApp.hide(nil)
             return false
-        }
+    }
     
     private func populateNews(_ info: Frontier.Info) {
         DispatchQueue.main.async {

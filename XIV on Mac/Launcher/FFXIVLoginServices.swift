@@ -433,7 +433,6 @@ public struct FFXIVApp {
     let sqpackFolderURL: URL
     
     init() {
-        
         let boot = FFXIVSettings.gamePath.appendingPathComponent("boot")
         bootExeURL = boot.appendingPathComponent("ffxivboot.exe")
         bootExe64URL = boot.appendingPathComponent("ffxivboot64.exe")

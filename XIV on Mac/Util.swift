@@ -125,7 +125,6 @@ struct Util {
                    "compiler": true] //Shows shader compiler activity
         var hudScale = 1.0
         
-        
         init() {
             if let data = UserDefaults.standard.value(forKey: Util.DXVK.settingKey) as? Data {
                 let s = try? PropertyListDecoder().decode(Util.DXVK.self, from: data)
