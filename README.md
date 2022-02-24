@@ -10,7 +10,6 @@ Wine Wrapper, Setup tool and alternative launcher for FFXIV on MacOS.</p>
 <h3>Features:</h3>
 
 - User friendly setup
-- XIV Launcher Support w/ Dalamud Plugin injection
 - Mod support: ACT, Gshade, Dalamud and more!
 - Performance enhancments; Better FPS vs Native Mac launcher & Crossover, updated DXVK/MoltenVK libraries, PCAP support for ACT etc.
 - User Support in our <a href="https://discord.gg/dWN5bTC4Yv">Discord.</a> 
