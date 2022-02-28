@@ -36,14 +36,15 @@ class LoginOperation: AsyncOperation {
             alert.messageText = "Incorrect Credentials"
             alert.informativeText = "The login servers did not accept the provided credentials. Please make sure to select the correct license (Windows, Steam or Mac) in Settings."
             alert.runModal()
-        case .clientUpdate:
-            StartGameOperation.vanilla()
+        case .bootUpdate:
             let alert = NSAlert()
             alert.addButton(withTitle: "Ok")
             alert.alertStyle = .critical
-            alert.messageText = "Final Fantasy XIV Needs Updating!"
-            alert.informativeText = "XIV on Mac cannot patch Final Fantasy XIV yet. Please use the standard launcher to patch."
+            alert.messageText = "Final Fantasy XIV Needs Repairing!"
+            alert.informativeText = "Essential game files are corrupted. Press CMD + R to attempt a repair."
             alert.runModal()
+        case .clientUpdate(_):
+            ()
         case .networkError:
             let alert = NSAlert()
             alert.addButton(withTitle: "Ok")

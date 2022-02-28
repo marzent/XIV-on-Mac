@@ -2,15 +2,6 @@
   "object": {
     "pins": [
       {
-        "package": "Socket",
-        "repositoryURL": "https://github.com/Kitura/BlueSocket",
-        "state": {
-          "branch": null,
-          "revision": "dd924c3bc2c1c144c42b8dda3896f1a03115ded4",
-          "version": "2.0.2"
-        }
-      },
-      {
         "package": "CryptoSwift",
         "repositoryURL": "https://github.com/krzyzanowskim/CryptoSwift.git",
         "state": {
@@ -53,6 +44,15 @@
           "branch": null,
           "revision": "6b2aa2748a7881eebb9f84fb10c01293e15b52ca",
           "version": "0.5.0"
+        }
+      },
+      {
+        "package": "swift-collections",
+        "repositoryURL": "https://github.com/apple/swift-collections.git",
+        "state": {
+          "branch": null,
+          "revision": "48254824bb4248676bf7ce56014ff57b142b77eb",
+          "version": "1.0.2"
         }
       },
       {

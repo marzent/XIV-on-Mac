@@ -13,7 +13,7 @@ import SwiftOTP
 class OTP {
     private let loop: SelectorEventLoop
     private var server: DefaultHTTPServer? = nil
-    static private let keychain = Keychain(server: "https://secure.square-enix.com", protocolType: .https).synchronizable(true)
+    static private let keychain = Keychain(server: "https://secure.square-enix.com", protocolType: .https)
     private var generator: TOTP? = nil
     private var timer = Timer()
     

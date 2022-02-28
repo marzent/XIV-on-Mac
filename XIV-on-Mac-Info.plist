@@ -6,7 +6,21 @@
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
-			<key>ffxiv-login.square-enix.com</key>
+			<key>patch-dl.ffxiv.com</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<false/>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
+			<key>patch-bootver.ffxiv.com</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<false/>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
+			<key>patch-gamever.ffxiv.com</key>
 			<dict>
 				<key>NSExceptionMinimumTLSVersion</key>
 				<string>TLSv1.0</string>
@@ -16,8 +30,10 @@
 				<false/>
 				<key>NSRequiresCertificateTransparency</key>
 				<false/>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<false/>
 			</dict>
-			<key>patch-gamever.ffxiv.com</key>
+			<key>ffxiv-login.square-enix.com</key>
 			<dict>
 				<key>NSExceptionMinimumTLSVersion</key>
 				<string>TLSv1.0</string>

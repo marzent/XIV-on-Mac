@@ -10,6 +10,8 @@ import Cocoa
 struct GShade {
     @available(*, unavailable) private init() {}
     
+    //TODO: refactor this
+    
     static func install() {
         if #available(OSX 11.0, *) {
             Util.launch(exec: URL(string: "file:///usr/bin/open")!,

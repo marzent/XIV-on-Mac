@@ -16,7 +16,6 @@ class InstallerController: NSViewController {
         case point
     }
     
-    fileprivate let downloadDone = DispatchSemaphore(value: 0)
     private var action = GameFiles.download
     
     @IBOutlet private var status: NSTextField!
@@ -187,7 +186,12 @@ class InstallerController: NSViewController {
             let version = "1.0.5"
             let url = URL(string: "https://mac-dl.ffxiv.com/cw/finalfantasyxiv-\(version).zip")!
             var observation: NSKeyValueObservation?
-            if let task = FileDownloader.loadFileAsync(url: url, semaphore: self.downloadDone) {
+            let downloadDone = DispatchGroup()
+            downloadDone.enter()
+            let task = FileDownloader.loadFileAsync(url: url) { response in
+                downloadDone.leave()
+            }
+            if let task = task {
                 observation = task.progress.observe(\.fractionCompleted) { progress, _ in
                     DispatchQueue.main.async {
                         self.bar.doubleValue = self.bar.maxValue * progress.fractionCompleted
@@ -195,13 +199,13 @@ class InstallerController: NSViewController {
                 }
                 task.resume()
             }
-            self.downloadDone.wait()
+            downloadDone.wait()
             observation?.invalidate()
             DispatchQueue.main.async {
                 self.info.stringValue = "Extracting"
             }
             guard let archive = Archive(url: Util.cache.appendingPathComponent("finalfantasyxiv-\(version).zip"), accessMode: .read) else  {
-                print("Fatal error reading base game archive", to: &Util.logger)
+                print("Fatal error reading base game archive\n", to: &Util.logger)
                 return
             }
             let baseGamePath = "FINAL FANTASY XIV ONLINE.app/Contents/SharedSupport/finalfantasyxiv/support/published_Final_Fantasy/drive_c/Program Files (x86)/SquareEnix/FINAL FANTASY XIV - A Realm Reborn/"
@@ -222,7 +226,6 @@ class InstallerController: NSViewController {
             }
             Setup.DXVK()
             InstallerController.vanillaConf()
-            StartGameOperation.vanilla()
             DispatchQueue.main.async {
                 self.tabView.selectNextTabViewItem(self)
             }
@@ -258,6 +261,8 @@ class InstallerController: NSViewController {
     
     @IBAction func closeWindow(_ sender: Any) {
         self.view.window?.close()
+        self.tabView.selectTabViewItem(at: 0)
+        NotificationCenter.default.post(name: .installDone, object: nil)
     }
     
 }

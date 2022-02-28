@@ -189,6 +189,7 @@ struct Dalamud {
         try? fm.unzipItem(at: Util.cache.appendingPathComponent("windowsdesktop-runtime-\(version)-win-x64.zip"), to: runtime)
     }
     
+    //TODO: hash assets and compare with remote
     private static func needsUpdate() -> Bool {
         //Loosely inspired by https://github.com/redstrate/xivlauncher/ and even more janky :)
         do {

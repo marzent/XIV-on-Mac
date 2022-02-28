@@ -25,7 +25,7 @@ public struct FFXIVSettings {
     static let defaultGameLoc = Wine.prefix.appendingPathComponent("drive_c/Program Files (x86)/SquareEnix/FINAL FANTASY XIV - A Realm Reborn")
     static var gamePath: URL {
         get {
-            URL(string: Util.getSetting(settingKey: gamePathKey, defaultValue: defaultGameLoc.path)) ?? defaultGameLoc
+            URL(fileURLWithPath: Util.getSetting(settingKey: gamePathKey, defaultValue: defaultGameLoc.path))
         }
         set {
             storage.set(newValue.path, forKey: gamePathKey)

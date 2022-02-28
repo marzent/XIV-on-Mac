@@ -19,10 +19,9 @@ class StartGameOperation: AsyncOperation {
     }
     
     override func main() {
-        let app = FFXIVApp()
-        let args = arguments(app: app)
+        let args = arguments(app: FFXIVApp())
         if settings.dalamud {
-            Dalamud.launch(args: args, language: settings.language, gameVersion: app.gameVer)
+            Dalamud.launch(args: args, language: settings.language, gameVersion: FFXIVRepo.game.ver)
         }
         else {
             NotificationCenter.default.post(name: .loginInfo, object: nil, userInfo: [Notification.status.info: "Starting Wine"])
@@ -81,7 +80,7 @@ class StartGameOperation: AsyncOperation {
             ("/SYS.Region", "\(settings.region.rawValue)"),
             ("/language", "\(settings.language.rawValue)"),
             ("/IsSteam", settings.platform == .steam ? "1" : "0"),
-            ("/ver", "\(app.gameVer)")
+            ("/ver", "\(FFXIVRepo.game.ver)")
         ]
         return [
             app.dx11URL.path,

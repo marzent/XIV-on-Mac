@@ -11,6 +11,7 @@ class LaunchController: NSViewController, NSWindowDelegate {
     
     var loginSheetWinController: NSWindowController?
     var installerWinController: NSWindowController?
+    var patchWinController: NSWindowController?
     var newsTable: FrontierTableView!
     var topicsTable: FrontierTableView!
     var otp: OTP? = nil
@@ -27,6 +28,7 @@ class LaunchController: NSViewController, NSWindowDelegate {
     override func loadView() {
         super.loadView()
         setupOTP()
+        NotificationCenter.default.addObserver(self,selector: #selector(installDone(_:)),name: .installDone, object: nil)
         if #available(macOS 11.0, *) {
             newsTable = FrontierTableView(icon: NSImage(systemSymbolName: "newspaper", accessibilityDescription: nil)!)
             topicsTable = FrontierTableView(icon: NSImage(systemSymbolName: "newspaper.fill", accessibilityDescription: nil)!)
@@ -37,9 +39,34 @@ class LaunchController: NSViewController, NSWindowDelegate {
         }
         newsView.documentView = newsTable.tableView
         topicsView.documentView = topicsTable.tableView
+        DispatchQueue.global(qos: .userInitiated).async {
+            FFXIVSettings.checkBoot { patches in
+                if let patches = patches {
+                    self.startPatch(patches)
+                }
+                DispatchQueue.main.async {
+                    self.loginButton.isEnabled = true
+                }
+            }
+        }
         DispatchQueue.global(qos: .userInteractive).async {
             if let frontier = Frontier.info {
                 self.populateNews(frontier)
+            }
+        }
+    }
+    
+    @objc func installDone(_ notif: Notification) {
+        checkBoot()
+    }
+    
+    func checkBoot() {
+        FFXIVSettings.checkBoot { patches in
+            if let patches = patches {
+                self.startPatch(patches)
+            }
+            DispatchQueue.main.async {
+                self.loginButton.isEnabled = true
             }
         }
     }
@@ -49,13 +76,14 @@ class LaunchController: NSViewController, NSWindowDelegate {
         update()
         loginSheetWinController = storyboard?.instantiateController(withIdentifier: "LoginSheet") as? NSWindowController
         installerWinController = storyboard?.instantiateController(withIdentifier: "InstallerWindow") as? NSWindowController
+        patchWinController = storyboard?.instantiateController(withIdentifier: "PatchSheet") as? NSWindowController
         view.window?.delegate = self
         view.window?.isMovableByWindowBackground = true
     }
     
     func windowShouldClose(_ sender: NSWindow) -> Bool {
-            NSApp.hide(nil)
-            return false
+        NSApp.hide(nil)
+        return false
     }
     
     private func populateNews(_ info: Frontier.Info) {
@@ -91,6 +119,13 @@ class LaunchController: NSViewController, NSWindowDelegate {
                     self.loginSheetWinController?.window?.close()
                     self.otpField.stringValue = ""
                 }
+            case .clientUpdate(let patches):
+                DispatchQueue.main.async {
+                    self.loginSheetWinController?.window?.close()
+                    DispatchQueue.global(qos: .userInteractive).async {
+                        self.startPatch(patches)
+                    }
+                }
             case .noInstall:
                 DispatchQueue.main.async {
                     self.loginSheetWinController?.window?.close()
@@ -103,6 +138,14 @@ class LaunchController: NSViewController, NSWindowDelegate {
             }
         }
         queue.addOperation(op)
+    }
+    
+    func startPatch(_ patches: [Patch]) {
+        DispatchQueue.main.async {
+            self.view.window?.beginSheet(self.patchWinController!.window!)
+            let patchController = self.patchWinController!.contentViewController! as! PatchController
+            patchController.install(patches)
+        }
     }
     
     func startGame(sid: String) {
