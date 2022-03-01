@@ -19,7 +19,7 @@ class PatchController: NSViewController {
     @IBOutlet private var downloadPatchBar: NSProgressIndicator!
     @IBOutlet private var installBar: NSProgressIndicator!
     
-    let installQueue = DispatchQueue(label: "patch.installer.serial.queue")
+    let installQueue = DispatchQueue(label: "patch.installer.serial.queue", qos: .utility, attributes: [], autoreleaseFrequency: .workItem)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,11 +36,14 @@ class PatchController: NSViewController {
     }
     
     func install(_ patches: [Patch]) {
-        DispatchQueue.global(qos: .userInitiated).async {
+        DispatchQueue.global(qos: .utility).async {
             Wine.kill()
             let totalSizeMB = Patch.totalLengthMB(patches)
-            DispatchQueue.global(qos: .userInitiated).async {
+            self.installQueue.async {
                 PatchInstaller.update()
+                DispatchQueue.main.async {
+                    self.installPatch.stringValue = "XIVLauncher.PatchInstaller is ready"
+                }
             }
             DispatchQueue.main.async {
                 self.installStatus.stringValue = "0/\(patches.count) Patches"
@@ -53,6 +56,13 @@ class PatchController: NSViewController {
                 }
                 let partialSizeMB = Patch.totalLengthMB(patches[...(i - 1)])
                 self.download(patch, totalSizeMB: totalSizeMB, partialSizeMB: partialSizeMB)
+                DispatchQueue.main.async {
+                    let downloadedMB = partialSizeMB + patch.lengthMB
+                    self.downloadStatus.stringValue = "\(self.toGB(downloadedMB))/\(self.toGB(totalSizeMB)) GB"
+                    self.downloadBar.doubleValue = self.downloadBar.maxValue * downloadedMB / totalSizeMB
+                    self.downloadPatchBar.doubleValue = self.downloadPatchBar.maxValue
+                    self.downloadPatchStatus.stringValue = "\(Int(patch.lengthMB))/\(Int(patch.lengthMB)) MB"
+                }
                 self.installQueue.async {
                     DispatchQueue.main.async {
                         self.installPatch.stringValue = patch.path
@@ -104,11 +114,7 @@ class PatchController: NSViewController {
     }
     
     @IBAction func quit(_ sender: Any) {
-        let app = NSApplication.shared
-        for window in app.windows {
-            window.close()
-        }
-        app.terminate(sender)
+        Util.quit()
     }
-    
+ 
 }

@@ -1209,7 +1209,7 @@ Gw
                                                     </connections>
                                                 </textField>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Je-zP-ZQk">
-                                                    <rect key="frame" x="174" y="21" width="229" height="18"/>
+                                                    <rect key="frame" x="198" y="21" width="229" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="check" title="Contribute to Crowd-Source Data" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="l28-q2-Rck">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1278,7 +1278,7 @@ Gw
                                                     </textFieldCell>
                                                 </textField>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vuf-22-gMN">
-                                                    <rect key="frame" x="321" y="21" width="55" height="16"/>
+                                                    <rect key="frame" x="261" y="22" width="55" height="16"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="License:" id="KR1-HA-AnN">
                                                         <font key="font" metaFont="system"/>
@@ -1305,8 +1305,19 @@ Gw
                                                         <action selector="saveState:" target="GIg-v3-M8h" id="1Vb-W6-uYD"/>
                                                     </connections>
                                                 </popUpButton>
+                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jmh-Hz-ux7">
+                                                    <rect key="frame" x="499" y="21" width="109" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="check" title="Keep Patches" bezelStyle="regularSquare" imagePosition="left" inset="2" id="aRR-m7-gaN">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="saveState:" target="GIg-v3-M8h" id="Kic-gE-rIV"/>
+                                                    </connections>
+                                                </button>
                                                 <popUpButton wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eWT-Ny-Sac">
-                                                    <rect key="frame" x="379" y="15" width="150" height="25"/>
+                                                    <rect key="frame" x="319" y="15" width="150" height="25"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <popUpButtonCell key="cell" type="push" title="Windows" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="qRO-Pi-PbC" id="IMg-2Z-eZx">
                                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -1357,7 +1368,7 @@ Gw
                                                     </connections>
                                                 </textField>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bVO-QG-s4L">
-                                                    <rect key="frame" x="325" y="21" width="82" height="16"/>
+                                                    <rect key="frame" x="325" y="22" width="82" height="16"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Wine Debug:" id="nXs-Qb-iRe">
                                                         <font key="font" metaFont="system"/>
@@ -1631,6 +1642,7 @@ Gw
                         <outlet property="fps" destination="Ogm-ZO-E2w" id="OPW-hm-cEk"/>
                         <outlet property="frametimes" destination="DSc-kA-8q1" id="NQ8-Yx-XTB"/>
                         <outlet property="gpuload" destination="4Fq-Sz-2ZL" id="kpD-xR-1mP"/>
+                        <outlet property="keepPatches" destination="Jmh-Hz-ux7" id="f2H-IH-dMq"/>
                         <outlet property="language" destination="tOj-q2-gaD" id="YA2-qM-B6g"/>
                         <outlet property="license" destination="eWT-Ny-Sac" id="MFZ-zh-TaL"/>
                         <outlet property="maxFPS" destination="0PH-1i-0UA" id="3Y1-La-IoX"/>
@@ -2001,7 +2013,7 @@ Gw
                                     <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aXz-Px-Lvr">
                                         <rect key="frame" x="-2" y="208" width="567" height="16"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="0.0/100 GB" id="HQX-r7-1tH">
+                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="0.00/0.00 GB" id="HQX-r7-1tH">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -2010,7 +2022,7 @@ Gw
                                     <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7K3-oF-rhi">
                                         <rect key="frame" x="-2" y="134" width="567" height="16"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="0.0/100 MB" id="OFS-xw-3KL">
+                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="0/0 MB" id="OFS-xw-3KL">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -2032,7 +2044,7 @@ Gw
                                     <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M7J-KH-TOB">
                                         <rect key="frame" x="-2" y="15" width="567" height="16"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" id="LLv-Yk-R7e">
+                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Initializing XIVLauncher.PatchInstaller" id="LLv-Yk-R7e">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>

@@ -10,6 +10,7 @@ import Cocoa
 class SettingsController: NSViewController {
     @IBOutlet private var language: NSPopUpButton!
     @IBOutlet private var license: NSPopUpButton!
+    @IBOutlet private var keepPatches: NSButton!
     
     @IBOutlet private var devinfo: NSButton!
     @IBOutlet private var fps: NSButton!
@@ -111,6 +112,7 @@ class SettingsController: NSViewController {
         
         language.selectItem(at: Int(FFXIVSettings.language.rawValue))
         license.selectItem(at: Int(FFXIVSettings.platform.rawValue))
+        keepPatches.state = Patch.keep ? NSControl.StateValue.on : NSControl.StateValue.off
     }
     
     func saveState() {
@@ -134,6 +136,7 @@ class SettingsController: NSViewController {
         
         FFXIVSettings.language = FFXIVLanguage(rawValue: UInt32(language.indexOfSelectedItem)) ?? .english
         FFXIVSettings.platform = FFXIVPlatform(rawValue: UInt32(license.indexOfSelectedItem)) ?? .mac
+        Patch.keep = (keepPatches.state == NSControl.StateValue.on) ? true : false
     }
 
 }

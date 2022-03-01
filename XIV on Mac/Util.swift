@@ -206,4 +206,12 @@ struct Util {
         }
         return mbytes
     }
+    
+    static func quit() {
+        let app = NSApplication.shared
+        for window in app.windows {
+            window.close()
+        }
+        app.terminate(nil)
+    }
 }

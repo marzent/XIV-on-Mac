@@ -249,9 +249,7 @@ class InstallerController: NSViewController {
     }
     
     @IBAction func cancelInstall(_ sender: Any) {
-        DispatchQueue.main.async {
-            NSApplication.shared.terminate(sender)
-        }
+        Util.quit()
     }
 
     @IBAction func openFAQ(_ sender: Any) {

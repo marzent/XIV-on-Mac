@@ -47,7 +47,8 @@ public class Patch {
         url.pathComponents.dropFirst().joined(separator: "/")
     }
     var repo: FFXIVRepo {
-        FFXIVRepo(rawValue: url.pathComponents[1].replacingOccurrences(of: "boot", with: "ffxivboot")) ?? .game
+        FFXIVRepo(rawValue: url.pathComponents[2]) ??
+        (url.pathComponents[1] == "boot" ? .boot : .game)
     }
     
     static func parse(patches: String) -> [Patch] {
@@ -65,8 +66,8 @@ public class Patch {
         totalLengthMB(Array(patches))
     }
     
-    private let keepKey = "KeepPatches"
-    var keep: Bool {
+    static private let keepKey = "KeepPatches"
+    static var keep: Bool {
         get {
             UserDefaults.standard.bool(forKey: keepKey)
         }
