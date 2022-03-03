@@ -486,7 +486,7 @@ public struct FFXIVApp {
     }
 
     func versionList(maxEx: UInt32) -> String {
-        let expansions = FFXIVRepo.array(maxEx).dropFirst(2).map({"\($0.rawValue)\t\($0.ver)"})
+        let expansions = FFXIVRepo.expansions(max: maxEx).map({"\($0.rawValue)\t\($0.ver)"})
         return "\(FFXIVRepo.boot.ver)=\(bootHash)\n\(expansions.joined(separator: "\n"))"
     }
     

@@ -12,10 +12,7 @@ fileprivate let baseVer = "2012.01.01.0000.0000"
 public enum FFXIVRepo: String {
     case boot = "ffxivboot"
     case game = "ffxivgame"
-    case ex1 = "ex1"
-    case ex2 = "ex2"
-    case ex3 = "ex3"
-    case ex4 = "ex4"
+    case ex1, ex2, ex3, ex4
     
     var ver: String {
         get {
@@ -57,8 +54,8 @@ public enum FFXIVRepo: String {
         }
     }
     
-    static func array(_ maxExpansion: UInt32) -> [FFXIVRepo] {
-        return [.boot, .game, .ex1, .ex2, .ex3, .ex4].dropLast(4 - Int(maxExpansion))
+    static func expansions(max: UInt32) -> [FFXIVRepo] {
+        [.ex1, .ex2, .ex3, .ex4].dropLast(4 - Int(max))
     }
     
     var baseURL: URL {

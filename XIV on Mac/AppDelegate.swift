@@ -12,9 +12,13 @@ import Sparkle
 @main class AppDelegate: NSObject, NSApplicationDelegate {
     var settingsWinController: NSWindowController?
     @IBOutlet private var sparkle: SPUStandardUpdaterController!
-
+    @IBOutlet private var actAutoLaunch: NSMenuItem!
+    @IBOutlet private var bhAutoLaunch: NSMenuItem!
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         let storyboard = NSStoryboard(name: "Main", bundle: nil)
+        actAutoLaunch.state = ACT.autoLaunch ? .on : .off
+        bhAutoLaunch.state = ACT.autoLaunchBH ? .on : .off
         sparkle.updater.checkForUpdatesInBackground()
         settingsWinController = storyboard.instantiateController(withIdentifier: "SettingsWindow") as? NSWindowController
         Util.make(dir: Wine.xomData.path)
@@ -35,39 +39,54 @@ import Sparkle
         return true
     }
     
+    @IBAction func startACT(_ sender: Any) {
+        ACT.launch()
+    }
+    
+    @IBAction func toggleACT(_ sender: Any) {
+        ACT.autoLaunch = !ACT.autoLaunch
+        actAutoLaunch.state = ACT.autoLaunch ? .on : .off
+    }
+    
+    @IBAction func startBH(_ sender: Any) {
+        ACT.launchBH()
+    }
+    
+    @IBAction func toggleBH(_ sender: Any) {
+        ACT.autoLaunchBH = !ACT.autoLaunchBH
+        bhAutoLaunch.state = ACT.autoLaunchBH ? .on : .off
+    }
+    
     @IBAction func installDXVK(_ sender: Any) {
-        Setup.DXVK()
+        DXVK.install()
     }
     
     @IBAction func installMSVC32(_ sender: Any) {
-        Setup.installMSVC32()
+        Dotnet.installMSVC32()
     }
     
     @IBAction func installMSVC64(_ sender: Any) {
-        Setup.installMSVC64()
+        Dotnet.installMSVC64()
     }
     
     @IBAction func installDotNet40(_ sender: Any) {
-        Setup.installDotNet40()
+        Dotnet.installDotNet40()
     }
     
     @IBAction func installDotNet462(_ sender: Any) {
-        Setup.installDotNet462()
+        Dotnet.installDotNet462()
     }
     
     @IBAction func installDotNet472(_ sender: Any) {
-        Setup.installDotNet472()
+        Dotnet.installDotNet472()
     }
     
     @IBAction func installDotNet48(_ sender: Any) {
-        Setup.installDotNet48()
+        Dotnet.installDotNet48()
     }
     
     @IBAction func installDotNet(_ sender: Any) {
-        Setup.installDotNet40()
-        Setup.installDotNet462()
-        Setup.installDotNet472()
-        Setup.installDotNet48()
+        Dotnet.install()
     }
     
     @IBAction func installGShade(_ sender: Any) {

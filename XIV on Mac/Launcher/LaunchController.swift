@@ -28,6 +28,7 @@ class LaunchController: NSViewController, NSWindowDelegate {
     override func loadView() {
         super.loadView()
         setupOTP()
+        ACT.observe()
         NotificationCenter.default.addObserver(self,selector: #selector(installDone(_:)),name: .installDone, object: nil)
         if #available(macOS 11.0, *) {
             newsTable = FrontierTableView(icon: NSImage(systemSymbolName: "newspaper", accessibilityDescription: nil)!)

@@ -19,7 +19,8 @@ class PatchController: NSViewController {
     @IBOutlet private var downloadPatchBar: NSProgressIndicator!
     @IBOutlet private var installBar: NSProgressIndicator!
     
-    let installQueue = DispatchQueue(label: "patch.installer.serial.queue", qos: .utility, attributes: [], autoreleaseFrequency: .workItem)
+    let installQueue = DispatchQueue(label: "installer.serial.queue", qos: .utility, attributes: [], autoreleaseFrequency: .workItem)
+    let patchQueue = DispatchQueue(label: "patch.installer.serial.queue", qos: .utility, attributes: [], autoreleaseFrequency: .workItem)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,46 +37,49 @@ class PatchController: NSViewController {
     }
     
     func install(_ patches: [Patch]) {
-        DispatchQueue.global(qos: .utility).async {
-            Wine.kill()
-            let totalSizeMB = Patch.totalLengthMB(patches)
-            self.installQueue.async {
-                PatchInstaller.update()
-                DispatchQueue.main.async {
-                    self.installPatch.stringValue = "XIVLauncher.PatchInstaller is ready"
-                }
+        Wine.kill()
+        let totalSizeMB = Patch.totalLengthMB(patches)
+        patchQueue.async {
+            PatchInstaller.update()
+            DispatchQueue.main.async { [self] in
+                installPatch.stringValue = "XIVLauncher.PatchInstaller is ready"
             }
-            DispatchQueue.main.async {
-                self.installStatus.stringValue = "0/\(patches.count) Patches"
-                self.installBar.doubleValue = 0
-                self.installBar.maxValue = Double(patches.count)
+        }
+        installStatus.stringValue = "0/\(patches.count) Patches"
+        installBar.doubleValue = 0
+        installBar.maxValue = Double(patches.count)
+        for (patchNum, _) in patches.enumerated() {
+            installQueue.async { [self] in
+                install(patchNum: patchNum, patches: patches, totalSizeMB: totalSizeMB)
             }
-            for (i, patch) in patches.enumerated() {
-                DispatchQueue.main.async {
-                    self.downloadPatch.stringValue = patch.name
-                }
-                let partialSizeMB = Patch.totalLengthMB(patches[...(i - 1)])
-                self.download(patch, totalSizeMB: totalSizeMB, partialSizeMB: partialSizeMB)
-                DispatchQueue.main.async {
-                    let downloadedMB = partialSizeMB + patch.lengthMB
-                    self.downloadStatus.stringValue = "\(self.toGB(downloadedMB))/\(self.toGB(totalSizeMB)) GB"
-                    self.downloadBar.doubleValue = self.downloadBar.maxValue * downloadedMB / totalSizeMB
-                    self.downloadPatchBar.doubleValue = self.downloadPatchBar.maxValue
-                    self.downloadPatchStatus.stringValue = "\(Int(patch.lengthMB))/\(Int(patch.lengthMB)) MB"
-                }
-                self.installQueue.async {
-                    DispatchQueue.main.async {
-                        self.installPatch.stringValue = patch.path
-                    }
-                    PatchInstaller.install(patch)
-                    DispatchQueue.main.async {
-                        let installsDone = i + 1
-                        self.installBar.doubleValue = Double(installsDone)
-                        self.installStatus.stringValue = "\(installsDone)/\(patches.count) Patches"
-                        if installsDone == patches.count {
-                            self.view.window?.close() //all done
-                        }
-                    }
+        }
+    }
+    
+    private func install(patchNum: Int, patches: [Patch], totalSizeMB: Double) {
+        let patch = patches[patchNum]
+        DispatchQueue.main.async { [self] in
+            downloadPatch.stringValue = patch.name
+        }
+        let partialSizeMB = Patch.totalLengthMB(patches[...(patchNum - 1)])
+        download(patch, totalSizeMB: totalSizeMB, partialSizeMB: partialSizeMB)
+        DispatchQueue.main.async { [self] in
+            let downloadedMB = partialSizeMB + patch.lengthMB
+            downloadStatus.stringValue = "\(toGB(downloadedMB))/\(toGB(totalSizeMB)) GB"
+            downloadBar.doubleValue = downloadBar.maxValue * downloadedMB / totalSizeMB
+            downloadPatchBar.doubleValue = downloadPatchBar.maxValue
+            downloadPatchStatus.stringValue = "\(Int(patch.lengthMB))/\(Int(patch.lengthMB)) MB"
+        }
+        patchQueue.async {
+            DispatchQueue.main.async { [self] in
+                installPatch.stringValue = patch.path
+            }
+            PatchInstaller.install(patch)
+            DispatchQueue.main.async { [self] in
+                let installsDone = patchNum + 1
+                installBar.doubleValue = Double(installsDone)
+                installStatus.stringValue = "\(installsDone)/\(patches.count) Patches"
+                if installsDone == patches.count {
+                    view.window?.close() //all done
                 }
             }
         }
@@ -100,11 +104,11 @@ class PatchController: NSViewController {
             observation = task.progress.observe(\.fractionCompleted) { progress, _ in
                 let completedSizeMB = patch.lengthMB * progress.fractionCompleted
                 let totalCompletedSizeMB = partialSizeMB + completedSizeMB
-                DispatchQueue.main.async {
-                    self.downloadStatus.stringValue = "\(self.toGB(totalCompletedSizeMB))/\(self.toGB(totalSizeMB)) GB"
-                    self.downloadPatchStatus.stringValue = "\(Int(completedSizeMB))/\(Int(patch.lengthMB)) MB"
-                    self.downloadBar.doubleValue = self.downloadBar.maxValue * totalCompletedSizeMB / totalSizeMB
-                    self.downloadPatchBar.doubleValue = self.downloadPatchBar.maxValue * progress.fractionCompleted
+                DispatchQueue.main.async { [self] in
+                    downloadStatus.stringValue = "\(toGB(totalCompletedSizeMB))/\(toGB(totalSizeMB)) GB"
+                    downloadPatchStatus.stringValue = "\(Int(completedSizeMB))/\(Int(patch.lengthMB)) MB"
+                    downloadBar.doubleValue = downloadBar.maxValue * totalCompletedSizeMB / totalSizeMB
+                    downloadPatchBar.doubleValue = downloadPatchBar.maxValue * progress.fractionCompleted
                 }
             }
             task.resume()

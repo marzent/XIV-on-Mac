@@ -90,15 +90,15 @@ class SettingsController: NSViewController {
     }
     
     func updateView() {
-        for (option, enabled) in Util.dxvkOptions.hud {
+        for (option, enabled) in DXVK.options.hud {
             mapping[option]?.state = enabled ? NSControl.StateValue.on : NSControl.StateValue.off
         }
-        async.state = Util.dxvkOptions.async ? NSControl.StateValue.on : NSControl.StateValue.off
-        let limited = Util.dxvkOptions.maxFramerate != 0
+        async.state = DXVK.options.async ? NSControl.StateValue.on : NSControl.StateValue.off
+        let limited = DXVK.options.maxFramerate != 0
         maxFPS.state = limited ? NSControl.StateValue.on : NSControl.StateValue.off
         maxFPSField.isEnabled = limited
-        maxFPSField.stringValue = String(Util.dxvkOptions.maxFramerate)
-        scale.doubleValue = Util.dxvkOptions.hudScale
+        maxFPSField.stringValue = String(DXVK.options.maxFramerate)
+        scale.doubleValue = DXVK.options.hudScale
         
         discord.state = SocialIntegration.discord.enabled ? NSControl.StateValue.on : NSControl.StateValue.off
         
@@ -117,12 +117,12 @@ class SettingsController: NSViewController {
     
     func saveState() {
         for (name, button) in mapping {
-            Util.dxvkOptions.hud[name] = (button.state == NSControl.StateValue.on) ? true : false
+            DXVK.options.hud[name] = (button.state == NSControl.StateValue.on) ? true : false
         }
-        Util.dxvkOptions.async = (async.state == NSControl.StateValue.on) ? true : false
-        Util.dxvkOptions.maxFramerate = maxFPSField.isEnabled ? Int(maxFPSField.stringValue) ?? 0 : 0
-        Util.dxvkOptions.hudScale = scale.doubleValue
-        Util.dxvkOptions.save()
+        DXVK.options.async = (async.state == NSControl.StateValue.on) ? true : false
+        DXVK.options.maxFramerate = maxFPSField.isEnabled ? Int(maxFPSField.stringValue) ?? 0 : 0
+        DXVK.options.hudScale = scale.doubleValue
+        DXVK.options.save()
         
         Wine.esync = (esync.state == NSControl.StateValue.on) ? true : false
         Wine.debug = wineDebugField.stringValue

@@ -224,7 +224,7 @@ class InstallerController: NSViewController {
                     self.bar.doubleValue = self.bar.maxValue * Double(i + 1) / Double(baseGameFiles.count)
                 }
             }
-            Setup.DXVK()
+            DXVK.install()
             InstallerController.vanillaConf()
             DispatchQueue.main.async {
                 self.tabView.selectNextTabViewItem(self)
