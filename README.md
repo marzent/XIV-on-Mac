@@ -32,4 +32,13 @@ You can read our depreciated Crossover setup guide <a href="https://github.com/s
 
 ---
 
+<b>Special Thanks:</b><br>
+
+  <h5><a href="https://github.com/Gcenx">Gcenx</a></h5><h6 style="margin-top: 0px;">For keeping wine single-handedly alive on macOS and helping out a lot with packaging our custom wine</h6>
+<h5><a href="https://github.com/goaaats">goaaats</a></h5><h6>For the amazing <a href="https://github.com/goatcorp/FFXIVQuickLauncher/">XIVLauncher</a> and cross-platform efforts, which allowed me to shamelessly port XIVLauncher.PatchInstaller to Mac for this project</h6>
+<h5><a href="https://github.com/redstrate">redstrate</a></h5><h6>For his <a href="https://github.com/redstrate/nativelauncher">nativelauncher</a> which made dalamud injection very easy to implement without .net framework and his <a href="https://github.com/redstrate/astra">Astra</a> launcher which inspired me to write a native Cocoa launcher in the first place</h6>
+<h5><a href="https://github.com/tyrone-sudeium">tyrone-sudeium</a></h5><h6>For his <a href="https://github.com/tyrone-sudeium/LaunchXIV">LaunchXIV</a> App, upon which most of the login flow code was based upon</h6>
+
+---
+
 <div align="center"><b>FINAL FANTASY is a registered trademark of Square Enix Holdings Co., Ltd.</b></div>
