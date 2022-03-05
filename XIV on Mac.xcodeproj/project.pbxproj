@@ -10,24 +10,61 @@
 		2B7159B7277C526000945A24 /* Socket in Frameworks */ = {isa = PBXBuildFile; productRef = 2B7159B6277C526000945A24 /* Socket */; };
 		2B7159BA277C529300945A24 /* SwordRPC in Frameworks */ = {isa = PBXBuildFile; productRef = 2B7159B9277C529300945A24 /* SwordRPC */; };
 		2B7C95D2277C6C6000A3CA89 /* SocialIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7C95D1277C6C6000A3CA89 /* SocialIntegration.swift */; };
+		5020957927C9611A00BD76CC /* Patch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5020957827C9611A00BD76CC /* Patch.swift */; };
+		502A18D827AA8C0D00144AB9 /* FFXIVLoginServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A18D727AA8C0D00144AB9 /* FFXIVLoginServices.swift */; };
+		502A18DA27AA8DD000144AB9 /* HTMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A18D927AA8DD000144AB9 /* HTMLParser.swift */; };
+		502A18DC27AA8E3E00144AB9 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A18DB27AA8E3E00144AB9 /* Login.swift */; };
+		502A18DE27AA8EA700144AB9 /* SidParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A18DD27AA8EA700144AB9 /* SidParse.swift */; };
+		502A18E127AABF8400144AB9 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 502A18E027AABF8400144AB9 /* KeychainAccess */; };
+		502A18E327AABFED00144AB9 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A18E227AABFED00144AB9 /* AsyncOperation.swift */; };
+		502A18E527AAC05C00144AB9 /* StoredParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A18E427AAC05C00144AB9 /* StoredParse.swift */; };
+		502A18E727AAC12800144AB9 /* StartGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A18E627AAC12800144AB9 /* StartGame.swift */; };
+		502A18E927AACEFE00144AB9 /* LaunchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A18E827AACEFE00144AB9 /* LaunchController.swift */; };
 		5043E36C27728BA300E59127 /* wine in Resources */ = {isa = PBXBuildFile; fileRef = 5043E36B27728BA300E59127 /* wine */; };
 		50511EC52770E085003A1E9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50511EC42770E085003A1E9F /* AppDelegate.swift */; };
 		50511EC72770E085003A1E9F /* InstallerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50511EC62770E085003A1E9F /* InstallerController.swift */; };
 		50511EC92770E087003A1E9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50511EC82770E087003A1E9F /* Assets.xcassets */; };
 		50511ECC2770E087003A1E9F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50511ECA2770E087003A1E9F /* Main.storyboard */; };
 		505C0D9B277333920008A344 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505C0D9A277333920008A344 /* Util.swift */; };
+		50692C8927B3D13700945593 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 50692C8827B3D13700945593 /* Sparkle */; };
+		50692C8B27B3E48B00945593 /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = 50692C8A27B3E48B00945593 /* Credits.html */; };
+		507607A127B149F600DDF3E6 /* Frontier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507607A027B149F600DDF3E6 /* Frontier.swift */; };
+		5077A32C27C12A9100D4F1B8 /* FFXIVSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5077A32B27C12A9100D4F1B8 /* FFXIVSettings.swift */; };
+		507C5FFF27CA9F2E00BA3CC2 /* PatchInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507C5FFE27CA9F2E00BA3CC2 /* PatchInstaller.swift */; };
+		507C600127CAA72000BA3CC2 /* PatchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507C600027CAA72000BA3CC2 /* PatchController.swift */; };
+		507C824527BE40CB004CC48B /* CryptoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 507C824427BE40CB004CC48B /* CryptoSwift */; };
 		507CFBF62781C780007ADEC9 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 507CFBF52781C780007ADEC9 /* ZIPFoundation */; };
 		507D8F2127766F52000F0CB0 /* dxvk in Resources */ = {isa = PBXBuildFile; fileRef = 507D8F2027766F52000F0CB0 /* dxvk */; };
+		50B1C5B827D25620006DA54E /* SeeURL in Frameworks */ = {isa = PBXBuildFile; productRef = 50B1C5B727D25620006DA54E /* SeeURL */; };
+		50B2A2B527AC1BC400EFA0A2 /* LoginSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A2B427AC1BC400EFA0A2 /* LoginSheetController.swift */; };
+		50B2A2B927AC461800EFA0A2 /* Dalamud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A2B827AC461800EFA0A2 /* Dalamud.swift */; };
+		50BC73CF27C2BEAF006269AC /* ACT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BC73CE27C2BEAF006269AC /* ACT.swift */; };
+		50BC73D327C2C3F3006269AC /* GShade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BC73D227C2C3F3006269AC /* GShade.swift */; };
 		50BD278727785418002B0D1F /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BD278627785418002B0D1F /* Notifications.swift */; };
+		50D30FA027B92EDB007A9F66 /* OTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D30F9F27B92EDB007A9F66 /* OTP.swift */; };
+		50D30FA327B93359007A9F66 /* Embassy in Frameworks */ = {isa = PBXBuildFile; productRef = 50D30FA227B93359007A9F66 /* Embassy */; };
+		50DF1F8527CCB83300DE9DA5 /* FFXIVRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DF1F8427CCB83300DE9DA5 /* FFXIVRepo.swift */; };
+		50DF1F8827CD261A00DE9DA5 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 50DF1F8727CD261A00DE9DA5 /* OrderedCollections */; };
 		50DF45992795C53300E3D22F /* GShade in Resources */ = {isa = PBXBuildFile; fileRef = 50DF45982795C53300E3D22F /* GShade */; };
 		50E5387B2779CF5C0038521A /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E5387A2779CF5C0038521A /* SettingsController.swift */; };
-		50ED0DB32773C619002E9854 /* Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ED0DB22773C619002E9854 /* Setup.swift */; };
-		50ED0DB52773CA8C002E9854 /* FileDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ED0DB42773CA8C002E9854 /* FileDownloader.swift */; };
+		50ED0DB32773C619002E9854 /* Dotnet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ED0DB22773C619002E9854 /* Dotnet.swift */; };
+		50ED0DB52773CA8C002E9854 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ED0DB42773CA8C002E9854 /* Networking.swift */; };
+		50ED768727BA417200A348F9 /* SwiftOTP in Frameworks */ = {isa = PBXBuildFile; productRef = 50ED768627BA417200A348F9 /* SwiftOTP */; };
+		50F4BD2427CFA70A00FB165D /* DXVK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F4BD2327CFA70A00FB165D /* DXVK.swift */; };
 		50F6CBAA27A975A000013301 /* Wine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F6CBA927A975A000013301 /* Wine.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2B7C95D1277C6C6000A3CA89 /* SocialIntegration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialIntegration.swift; sourceTree = "<group>"; };
+		5020957827C9611A00BD76CC /* Patch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patch.swift; sourceTree = "<group>"; };
+		502A18D727AA8C0D00144AB9 /* FFXIVLoginServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFXIVLoginServices.swift; sourceTree = "<group>"; };
+		502A18D927AA8DD000144AB9 /* HTMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLParser.swift; sourceTree = "<group>"; };
+		502A18DB27AA8E3E00144AB9 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		502A18DD27AA8EA700144AB9 /* SidParse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidParse.swift; sourceTree = "<group>"; };
+		502A18E227AABFED00144AB9 /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
+		502A18E427AAC05C00144AB9 /* StoredParse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredParse.swift; sourceTree = "<group>"; };
+		502A18E627AAC12800144AB9 /* StartGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGame.swift; sourceTree = "<group>"; };
+		502A18E827AACEFE00144AB9 /* LaunchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchController.swift; sourceTree = "<group>"; };
 		5043E36B27728BA300E59127 /* wine */ = {isa = PBXFileReference; lastKnownFileType = folder; path = wine; sourceTree = "<group>"; };
 		50511EC12770E085003A1E9F /* XIV on Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "XIV on Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50511EC42770E085003A1E9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -36,12 +73,25 @@
 		50511ECB2770E087003A1E9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		50511ECD2770E087003A1E9F /* XIV_on_Mac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = XIV_on_Mac.entitlements; sourceTree = "<group>"; };
 		505C0D9A277333920008A344 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		50692C8A27B3E48B00945593 /* Credits.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Credits.html; sourceTree = "<group>"; };
+		507607A027B149F600DDF3E6 /* Frontier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frontier.swift; sourceTree = "<group>"; };
+		5077A32B27C12A9100D4F1B8 /* FFXIVSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFXIVSettings.swift; sourceTree = "<group>"; };
+		507C5FFE27CA9F2E00BA3CC2 /* PatchInstaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchInstaller.swift; sourceTree = "<group>"; };
+		507C600027CAA72000BA3CC2 /* PatchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchController.swift; sourceTree = "<group>"; };
 		507D8F2027766F52000F0CB0 /* dxvk */ = {isa = PBXFileReference; lastKnownFileType = folder; path = dxvk; sourceTree = "<group>"; };
+		50B2A2B327ABEF6800EFA0A2 /* XIV-on-Mac-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "XIV-on-Mac-Info.plist"; sourceTree = SOURCE_ROOT; };
+		50B2A2B427AC1BC400EFA0A2 /* LoginSheetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSheetController.swift; sourceTree = "<group>"; };
+		50B2A2B827AC461800EFA0A2 /* Dalamud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dalamud.swift; sourceTree = "<group>"; };
+		50BC73CE27C2BEAF006269AC /* ACT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACT.swift; sourceTree = "<group>"; };
+		50BC73D227C2C3F3006269AC /* GShade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GShade.swift; sourceTree = "<group>"; };
 		50BD278627785418002B0D1F /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		50D30F9F27B92EDB007A9F66 /* OTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTP.swift; sourceTree = "<group>"; };
+		50DF1F8427CCB83300DE9DA5 /* FFXIVRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFXIVRepo.swift; sourceTree = "<group>"; };
 		50DF45982795C53300E3D22F /* GShade */ = {isa = PBXFileReference; lastKnownFileType = folder; path = GShade; sourceTree = "<group>"; };
 		50E5387A2779CF5C0038521A /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
-		50ED0DB22773C619002E9854 /* Setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setup.swift; sourceTree = "<group>"; };
-		50ED0DB42773CA8C002E9854 /* FileDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDownloader.swift; sourceTree = "<group>"; };
+		50ED0DB22773C619002E9854 /* Dotnet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dotnet.swift; sourceTree = "<group>"; };
+		50ED0DB42773CA8C002E9854 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		50F4BD2327CFA70A00FB165D /* DXVK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DXVK.swift; sourceTree = "<group>"; };
 		50F6CBA927A975A000013301 /* Wine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wine.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -50,7 +100,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50B1C5B827D25620006DA54E /* SeeURL in Frameworks */,
+				50692C8927B3D13700945593 /* Sparkle in Frameworks */,
+				507C824527BE40CB004CC48B /* CryptoSwift in Frameworks */,
+				502A18E127AABF8400144AB9 /* KeychainAccess in Frameworks */,
 				2B7159BA277C529300945A24 /* SwordRPC in Frameworks */,
+				50ED768727BA417200A348F9 /* SwiftOTP in Frameworks */,
+				50DF1F8827CD261A00DE9DA5 /* OrderedCollections in Frameworks */,
+				50D30FA327B93359007A9F66 /* Embassy in Frameworks */,
 				2B7159B7277C526000945A24 /* Socket in Frameworks */,
 				507CFBF62781C780007ADEC9 /* ZIPFoundation in Frameworks */,
 			);
@@ -78,16 +135,22 @@
 		50511EC32770E085003A1E9F /* XIV on Mac */ = {
 			isa = PBXGroup;
 			children = (
+				50B2A2B327ABEF6800EFA0A2 /* XIV-on-Mac-Info.plist */,
 				505C0D9A277333920008A344 /* Util.swift */,
 				50F6CBA927A975A000013301 /* Wine.swift */,
+				50F4BD2327CFA70A00FB165D /* DXVK.swift */,
 				50511EC42770E085003A1E9F /* AppDelegate.swift */,
+				50F8A5F827BFA93800ADC0CB /* Patcher */,
+				509A62D527A58966001B203A /* Launcher */,
+				50BC73D427C2C804006269AC /* AddOns */,
 				50511EC62770E085003A1E9F /* InstallerController.swift */,
 				50E5387A2779CF5C0038521A /* SettingsController.swift */,
-				50ED0DB22773C619002E9854 /* Setup.swift */,
+				50B2A2B427AC1BC400EFA0A2 /* LoginSheetController.swift */,
 				50BD278627785418002B0D1F /* Notifications.swift */,
-				50ED0DB42773CA8C002E9854 /* FileDownloader.swift */,
+				50ED0DB42773CA8C002E9854 /* Networking.swift */,
 				2B7C95D1277C6C6000A3CA89 /* SocialIntegration.swift */,
 				50511EC82770E087003A1E9F /* Assets.xcassets */,
+				50692C8A27B3E48B00945593 /* Credits.html */,
 				50511ECA2770E087003A1E9F /* Main.storyboard */,
 				50511ECD2770E087003A1E9F /* XIV_on_Mac.entitlements */,
 				50DF45982795C53300E3D22F /* GShade */,
@@ -95,6 +158,46 @@
 				5043E36B27728BA300E59127 /* wine */,
 			);
 			path = "XIV on Mac";
+			sourceTree = "<group>";
+		};
+		509A62D527A58966001B203A /* Launcher */ = {
+			isa = PBXGroup;
+			children = (
+				502A18E827AACEFE00144AB9 /* LaunchController.swift */,
+				50D30F9F27B92EDB007A9F66 /* OTP.swift */,
+				502A18E227AABFED00144AB9 /* AsyncOperation.swift */,
+				502A18D727AA8C0D00144AB9 /* FFXIVLoginServices.swift */,
+				5077A32B27C12A9100D4F1B8 /* FFXIVSettings.swift */,
+				502A18D927AA8DD000144AB9 /* HTMLParser.swift */,
+				502A18DB27AA8E3E00144AB9 /* Login.swift */,
+				507607A027B149F600DDF3E6 /* Frontier.swift */,
+				502A18DD27AA8EA700144AB9 /* SidParse.swift */,
+				502A18E627AAC12800144AB9 /* StartGame.swift */,
+				502A18E427AAC05C00144AB9 /* StoredParse.swift */,
+			);
+			path = Launcher;
+			sourceTree = "<group>";
+		};
+		50BC73D427C2C804006269AC /* AddOns */ = {
+			isa = PBXGroup;
+			children = (
+				50ED0DB22773C619002E9854 /* Dotnet.swift */,
+				50BC73CE27C2BEAF006269AC /* ACT.swift */,
+				50B2A2B827AC461800EFA0A2 /* Dalamud.swift */,
+				50BC73D227C2C3F3006269AC /* GShade.swift */,
+			);
+			path = AddOns;
+			sourceTree = "<group>";
+		};
+		50F8A5F827BFA93800ADC0CB /* Patcher */ = {
+			isa = PBXGroup;
+			children = (
+				507C600027CAA72000BA3CC2 /* PatchController.swift */,
+				5020957827C9611A00BD76CC /* Patch.swift */,
+				507C5FFE27CA9F2E00BA3CC2 /* PatchInstaller.swift */,
+				50DF1F8427CCB83300DE9DA5 /* FFXIVRepo.swift */,
+			);
+			path = Patcher;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -118,6 +221,13 @@
 				2B7159B6277C526000945A24 /* Socket */,
 				2B7159B9277C529300945A24 /* SwordRPC */,
 				507CFBF52781C780007ADEC9 /* ZIPFoundation */,
+				502A18E027AABF8400144AB9 /* KeychainAccess */,
+				50692C8827B3D13700945593 /* Sparkle */,
+				50D30FA227B93359007A9F66 /* Embassy */,
+				50ED768627BA417200A348F9 /* SwiftOTP */,
+				507C824427BE40CB004CC48B /* CryptoSwift */,
+				50DF1F8727CD261A00DE9DA5 /* OrderedCollections */,
+				50B1C5B727D25620006DA54E /* SeeURL */,
 			);
 			productName = "XIV on Mac";
 			productReference = 50511EC12770E085003A1E9F /* XIV on Mac.app */;
@@ -151,6 +261,13 @@
 				2B7159B5277C526000945A24 /* XCRemoteSwiftPackageReference "BlueSocket" */,
 				2B7159B8277C529300945A24 /* XCRemoteSwiftPackageReference "SwordRPC" */,
 				507CFBF42781C780007ADEC9 /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
+				502A18DF27AABF8400144AB9 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+				50692C8727B3D13700945593 /* XCRemoteSwiftPackageReference "Sparkle" */,
+				50D30FA127B93359007A9F66 /* XCRemoteSwiftPackageReference "Embassy" */,
+				50ED768527BA417200A348F9 /* XCRemoteSwiftPackageReference "SwiftOTP" */,
+				507C824327BE40CB004CC48B /* XCRemoteSwiftPackageReference "CryptoSwift" */,
+				50DF1F8627CD261A00DE9DA5 /* XCRemoteSwiftPackageReference "swift-collections" */,
+				50B1C5B627D25620006DA54E /* XCRemoteSwiftPackageReference "swift-seeurl" */,
 			);
 			productRefGroup = 50511EC22770E085003A1E9F /* Products */;
 			projectDirPath = "";
@@ -167,6 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50DF45992795C53300E3D22F /* GShade in Resources */,
+				50692C8B27B3E48B00945593 /* Credits.html in Resources */,
 				50511EC92770E087003A1E9F /* Assets.xcassets in Resources */,
 				507D8F2127766F52000F0CB0 /* dxvk in Resources */,
 				50511ECC2770E087003A1E9F /* Main.storyboard in Resources */,
@@ -203,14 +321,34 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B7C95D2277C6C6000A3CA89 /* SocialIntegration.swift in Sources */,
+				5077A32C27C12A9100D4F1B8 /* FFXIVSettings.swift in Sources */,
+				50B2A2B927AC461800EFA0A2 /* Dalamud.swift in Sources */,
 				50BD278727785418002B0D1F /* Notifications.swift in Sources */,
+				502A18E727AAC12800144AB9 /* StartGame.swift in Sources */,
+				502A18DE27AA8EA700144AB9 /* SidParse.swift in Sources */,
+				5020957927C9611A00BD76CC /* Patch.swift in Sources */,
+				50DF1F8527CCB83300DE9DA5 /* FFXIVRepo.swift in Sources */,
+				507C600127CAA72000BA3CC2 /* PatchController.swift in Sources */,
+				50BC73D327C2C3F3006269AC /* GShade.swift in Sources */,
 				50F6CBAA27A975A000013301 /* Wine.swift in Sources */,
 				505C0D9B277333920008A344 /* Util.swift in Sources */,
+				50F4BD2427CFA70A00FB165D /* DXVK.swift in Sources */,
 				50511EC72770E085003A1E9F /* InstallerController.swift in Sources */,
+				502A18E327AABFED00144AB9 /* AsyncOperation.swift in Sources */,
+				50D30FA027B92EDB007A9F66 /* OTP.swift in Sources */,
+				507C5FFF27CA9F2E00BA3CC2 /* PatchInstaller.swift in Sources */,
+				502A18DC27AA8E3E00144AB9 /* Login.swift in Sources */,
+				50B2A2B527AC1BC400EFA0A2 /* LoginSheetController.swift in Sources */,
+				502A18E927AACEFE00144AB9 /* LaunchController.swift in Sources */,
+				502A18D827AA8C0D00144AB9 /* FFXIVLoginServices.swift in Sources */,
+				502A18E527AAC05C00144AB9 /* StoredParse.swift in Sources */,
 				50E5387B2779CF5C0038521A /* SettingsController.swift in Sources */,
+				50BC73CF27C2BEAF006269AC /* ACT.swift in Sources */,
 				50511EC52770E085003A1E9F /* AppDelegate.swift in Sources */,
-				50ED0DB32773C619002E9854 /* Setup.swift in Sources */,
-				50ED0DB52773CA8C002E9854 /* FileDownloader.swift in Sources */,
+				502A18DA27AA8DD000144AB9 /* HTMLParser.swift in Sources */,
+				50ED0DB32773C619002E9854 /* Dotnet.swift in Sources */,
+				507607A127B149F600DDF3E6 /* Frontier.swift in Sources */,
+				50ED0DB52773CA8C002E9854 /* Networking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,7 +371,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = x86_64;
-				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -296,7 +434,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = x86_64;
-				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -356,10 +494,11 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = TQJJTJ6364;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "XIV-on-Mac-Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.role-playing-games";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
@@ -373,12 +512,13 @@
 					"$(PROJECT_DIR)/XIV\\ on\\ Mac/wine/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 2.4;
+				MARKETING_VERSION = 2.99.12;
 				PRODUCT_BUNDLE_IDENTIFIER = "dezent.XIV-on-Mac";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "";
 			};
 			name = Debug;
 		};
@@ -391,10 +531,11 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = TQJJTJ6364;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "XIV-on-Mac-Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.role-playing-games";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
@@ -408,12 +549,13 @@
 					"$(PROJECT_DIR)/XIV\\ on\\ Mac/wine/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 2.4;
+				MARKETING_VERSION = 2.99.12;
 				PRODUCT_BUNDLE_IDENTIFIER = "dezent.XIV-on-Mac";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "";
 			};
 			name = Release;
 		};
@@ -457,12 +599,68 @@
 				kind = branch;
 			};
 		};
+		502A18DF27AABF8400144AB9 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		50692C8727B3D13700945593 /* XCRemoteSwiftPackageReference "Sparkle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparkle-project/Sparkle";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		507C824327BE40CB004CC48B /* XCRemoteSwiftPackageReference "CryptoSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/krzyzanowskim/CryptoSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		507CFBF42781C780007ADEC9 /* XCRemoteSwiftPackageReference "ZIPFoundation" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/weichsel/ZIPFoundation.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 0.9.9;
+			};
+		};
+		50B1C5B627D25620006DA54E /* XCRemoteSwiftPackageReference "swift-seeurl" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/marzent/swift-seeurl.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		50D30FA127B93359007A9F66 /* XCRemoteSwiftPackageReference "Embassy" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/envoy/Embassy.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+		50DF1F8627CD261A00DE9DA5 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-collections.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		50ED768527BA417200A348F9 /* XCRemoteSwiftPackageReference "SwiftOTP" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lachlanbell/SwiftOTP.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -478,10 +676,45 @@
 			package = 2B7159B8277C529300945A24 /* XCRemoteSwiftPackageReference "SwordRPC" */;
 			productName = SwordRPC;
 		};
+		502A18E027AABF8400144AB9 /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 502A18DF27AABF8400144AB9 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+		50692C8827B3D13700945593 /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 50692C8727B3D13700945593 /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
+		};
+		507C824427BE40CB004CC48B /* CryptoSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 507C824327BE40CB004CC48B /* XCRemoteSwiftPackageReference "CryptoSwift" */;
+			productName = CryptoSwift;
+		};
 		507CFBF52781C780007ADEC9 /* ZIPFoundation */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 507CFBF42781C780007ADEC9 /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
 			productName = ZIPFoundation;
+		};
+		50B1C5B727D25620006DA54E /* SeeURL */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 50B1C5B627D25620006DA54E /* XCRemoteSwiftPackageReference "swift-seeurl" */;
+			productName = SeeURL;
+		};
+		50D30FA227B93359007A9F66 /* Embassy */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 50D30FA127B93359007A9F66 /* XCRemoteSwiftPackageReference "Embassy" */;
+			productName = Embassy;
+		};
+		50DF1F8727CD261A00DE9DA5 /* OrderedCollections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 50DF1F8627CD261A00DE9DA5 /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = OrderedCollections;
+		};
+		50ED768627BA417200A348F9 /* SwiftOTP */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 50ED768527BA417200A348F9 /* XCRemoteSwiftPackageReference "SwiftOTP" */;
+			productName = SwiftOTP;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

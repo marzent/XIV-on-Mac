@@ -13,6 +13,7 @@ struct Wine {
     static let wine64 = Bundle.main.url(forResource: "wine64", withExtension: nil, subdirectory: "wine/bin")!
     static let wineserver = Bundle.main.url(forResource: "wineserver", withExtension: nil, subdirectory: "wine/bin")!
     static let prefix = Util.applicationSupport.appendingPathComponent("game")
+    static let xomData = prefix.appendingPathComponent("drive_c/Program Files/XIV on Mac")
 
     static var logger = Util.Log(name: "wine.log")
     
@@ -69,6 +70,18 @@ struct Wine {
             addReg(key: "HKEY_CURRENT_USER\\Software\\Wine\\Mac Driver", value: "RetinaMode", data: _retina ? "y" : "n")
             UserDefaults.standard.set(_retina, forKey: retinaSettingKey)
         }
+    }
+    
+    private static var timebase: mach_timebase_info = mach_timebase_info()
+    static var tickCount: UInt64 {
+        if timebase.denom == 0 {
+            mach_timebase_info(&timebase)
+        }
+        let machtime = mach_continuous_time() //maybe mach_absolute_time for older wine versions?
+        let numer = UInt64(timebase.numer)
+        let denom = UInt64(timebase.denom)
+        let monotonic_time = machtime * numer / denom / 100
+        return monotonic_time / 10000
     }
     
 }

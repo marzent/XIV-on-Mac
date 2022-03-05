@@ -6,36 +6,24 @@
 //
 
 import Cocoa
+import Sparkle
 
-@main
-class AppDelegate: NSObject, NSApplicationDelegate {
-    
-    let licenseSettingKey = "LicenseType"
-    let storyboard = NSStoryboard(name: "Main", bundle: nil)
+
+@main class AppDelegate: NSObject, NSApplicationDelegate {
     var settingsWinController: NSWindowController?
-    var installerWinController: NSWindowController?
-
-    @IBOutlet private var macButton: NSMenuItem!
-    @IBOutlet private var winButton: NSMenuItem!
-
+    @IBOutlet private var sparkle: SPUStandardUpdaterController!
+    @IBOutlet private var actAutoLaunch: NSMenuItem!
+    @IBOutlet private var bhAutoLaunch: NSMenuItem!
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        let storyboard = NSStoryboard(name: "Main", bundle: nil)
+        actAutoLaunch.state = ACT.autoLaunch ? .on : .off
+        bhAutoLaunch.state = ACT.autoLaunchBH ? .on : .off
+        sparkle.updater.checkForUpdatesInBackground()
         settingsWinController = storyboard.instantiateController(withIdentifier: "SettingsWindow") as? NSWindowController
-        installerWinController = storyboard.instantiateController(withIdentifier: "InstallerWindow") as? NSWindowController
-        Util.make(dir: Wine.prefix.path)
+        Util.make(dir: Wine.xomData.path)
         Util.make(dir: Util.cache.path)
-        if Util.getSetting(settingKey: licenseSettingKey, defaultValue: "Mac") == "Mac" {
-            macLicense()
-        }
-        else {
-            winLicense()
-        }
         SocialIntegration.discord.setPresence()
-        if FileManager.default.fileExists(atPath: Util.launchPath) {
-            Util.launchExec()
-        }
-        else {
-            installerWinController?.showWindow(self)
-        }
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -51,139 +39,62 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return true
     }
     
-    func relaunch() {
-        let alert = NSAlert()
-        alert.messageText = "Do you want to restart XIV on Mac?"
-        alert.informativeText = "An application restart is required in order to change the license configuration"
-        alert.alertStyle = .warning
-        alert.addButton(withTitle: "Yes")
-        alert.addButton(withTitle: "No")
-        if alert.runModal() == NSApplication.ModalResponse.alertFirstButtonReturn {
-            let task = Process()
-            task.launchPath = "/bin/sh"
-            task.arguments = ["-c", "sleep 5; open \"\(Bundle.main.bundlePath)\""]
-            task.launch()
-            DispatchQueue.main.async {
-                NSApplication.shared.terminate(nil)
-            }
-        }
-    }
-
-    @IBAction func winLicense(_ sender: Any) {
-        winLicense()
-        relaunch()
+    @IBAction func startACT(_ sender: Any) {
+        ACT.launch()
     }
     
-    func winLicense() {
-        Wine.addReg(key: "HKEY_CURRENT_USER\\Software\\Wine", value: "HideWineExports", data: "1")
-        macButton.state = .off
-        winButton.state = .on
-        UserDefaults.standard.set("Win", forKey: licenseSettingKey)
-    }
-	
-    @IBAction func macLicense(_ sender: Any) {
-        macLicense()
-        relaunch()
+    @IBAction func toggleACT(_ sender: Any) {
+        ACT.autoLaunch = !ACT.autoLaunch
+        actAutoLaunch.state = ACT.autoLaunch ? .on : .off
     }
     
-    func macLicense() {
-        Wine.addReg(key: "HKEY_CURRENT_USER\\Software\\Wine", value: "HideWineExports", data: "0")
-        macButton.state = .on
-        winButton.state = .off
-        UserDefaults.standard.set("Mac", forKey: licenseSettingKey)
+    @IBAction func startBH(_ sender: Any) {
+        ACT.launchBH()
     }
     
-    @IBAction func play(_ sender: Any) {
-        Util.launchExec(terminating: false)
+    @IBAction func toggleBH(_ sender: Any) {
+        ACT.autoLaunchBH = !ACT.autoLaunchBH
+        bhAutoLaunch.state = ACT.autoLaunchBH ? .on : .off
     }
     
     @IBAction func installDXVK(_ sender: Any) {
-        Setup.DXVK()
+        DXVK.install()
     }
     
     @IBAction func installMSVC32(_ sender: Any) {
-        Setup.installMSVC32()
+        Dotnet.installMSVC32()
     }
     
     @IBAction func installMSVC64(_ sender: Any) {
-        Setup.installMSVC64()
+        Dotnet.installMSVC64()
     }
     
     @IBAction func installDotNet40(_ sender: Any) {
-        Setup.installDotNet40()
+        Dotnet.installDotNet40()
     }
     
     @IBAction func installDotNet462(_ sender: Any) {
-        Setup.installDotNet462()
+        Dotnet.installDotNet462()
     }
     
     @IBAction func installDotNet472(_ sender: Any) {
-        Setup.installDotNet472()
+        Dotnet.installDotNet472()
     }
     
     @IBAction func installDotNet48(_ sender: Any) {
-        Setup.installDotNet48()
+        Dotnet.installDotNet48()
     }
     
     @IBAction func installDotNet(_ sender: Any) {
-        Setup.installDotNet40()
-        Setup.installDotNet462()
-        Setup.installDotNet472()
-        Setup.installDotNet48()
-    }
-    
-    @IBAction func installXL(_ sender: Any) {
-        Setup.XLConf()
-        Setup.XL()
-    }
-    
-    @IBAction func vanillaLauncher(_ sender: Any) {
-        Setup.vanillaConf()
-        Setup.vanillaLauncher()
-    }
-    
-    @IBAction func movieFix(_ sender: Any) {
-        Setup.movieFix()
+        Dotnet.install()
     }
     
     @IBAction func installGShade(_ sender: Any) {
-        if #available(OSX 11.0, *) {
-            Util.launch(exec: URL(string: "file:///usr/bin/open")!,
-                        args: ["-n", "-b", "com.apple.Terminal",
-                               Bundle.main.url(forResource: "install_gshade", withExtension: "sh", subdirectory: "GShade")!.path,
-                               "--env", "WINEPATH=\( Bundle.main.url(forResource: "bin", withExtension: nil, subdirectory: "wine")!.path)",
-                               "--env", "WINEESYNC=\(Wine.esync ? "1" : "0")",
-                               "--env", "WINEPREFIX=\(Wine.prefix.path)"])
-        } else {
-            let alert = NSAlert()
-            alert.messageText = "Catalina is not supported by the automatic GShade installer"
-            alert.informativeText = "You can still manually run the GShade Linux install script"
-            alert.alertStyle = .critical
-            alert.addButton(withTitle: "OK")
-            alert.runModal()
-        }
+        GShade.install()
     }
     
     @IBAction func manualGShade(_ sender: Any) {
-        if #available(OSX 11.0, *) {
-            Util.launch(exec: URL(string: "file:///usr/bin/open")!,
-                        args: ["-n", "-b", "com.apple.Terminal",
-                               Bundle.main.url(forResource: "manual_gshade", withExtension: "sh", subdirectory: "GShade")!.path,
-                               "--env", "WINEPATH=\( Bundle.main.url(forResource: "bin", withExtension: nil, subdirectory: "wine")!.path)",
-                               "--env", "WINEESYNC=\(Wine.esync ? "1" : "0")",
-                               "--env", "WINEPREFIX=\(Wine.prefix.path)"])
-        } else {
-            let alert = NSAlert()
-            alert.messageText = "When running Catalina you must have wine or CrossOver installed"
-            alert.informativeText = "You can also manually add the wine version bundled with the XIV on Mac.app to your $PATH"
-            alert.alertStyle = .warning
-            alert.addButton(withTitle: "OK")
-            alert.runModal()
-        }
-    }
-    
-    @IBAction func fullInstall(_ sender: Any) {
-        installerWinController?.showWindow(self)
+        GShade.manual()
     }
     
     @IBAction func regedit(_ sender: Any) {
@@ -206,22 +117,35 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         settingsWinController?.showWindow(self)
     }
 	
-    @IBAction func selectExec(_ sender: Any) {
+    @IBAction func selectGamePath(_ sender: Any) {
         let openPanel = NSOpenPanel()
-        openPanel.title = "Choose the executable to start on App launch"
+        openPanel.title = "Choose the folder FFXIV is located in"
         if #available(macOS 11.0, *) {
-            openPanel.subtitle = "It should end on .exe"
+            openPanel.subtitle = #"It should contain the folders "game" and "boot""#
         }
         openPanel.showsResizeIndicator = true
         openPanel.showsHiddenFiles = true
-        openPanel.canChooseDirectories = false
-        openPanel.canChooseFiles = true
+        openPanel.canChooseDirectories = true
+        openPanel.canChooseFiles = false
         openPanel.canCreateDirectories = false
         openPanel.allowsMultipleSelection = false
         openPanel.begin() { (response) in
             if response == .OK {
+                if InstallerController.isValidGameDirectory(gamePath: openPanel.url!.path) {
+                    FFXIVSettings.gamePath = openPanel.url!
+                    openPanel.close()
+                    return
+                }
+                let alert = NSAlert()
+                alert.messageText = "The folder you chose for your game install does not seem to be valid"
+                alert.informativeText = "Do you still want to use it?"
+                alert.alertStyle = .warning
+                alert.addButton(withTitle: "Yes")
+                alert.addButton(withTitle: "No")
+                if alert.runModal() == .alertFirstButtonReturn {
+                    FFXIVSettings.gamePath = openPanel.url!
+                }
                 openPanel.close()
-                Util.launchPath = openPanel.url!.path
             }
         }
     }

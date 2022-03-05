@@ -48,8 +48,13 @@ struct Util {
         }
     }
     
+    static func make(dir : URL) {
+        make(dir: dir.path)
+    }
+    
     static func launch(exec: URL, args: [String], blocking: Bool = false) {
         let task = Process()
+        task.qualityOfService = QualityOfService.userInteractive
         task.environment = enviroment
         task.executableURL = exec
         task.arguments = args
@@ -75,94 +80,47 @@ struct Util {
         }
     }
     
-    private static let launchSettingKey = "LaunchPath"
-    static var launchPath: String {
-        get {
-            return Util.getSetting(settingKey: launchSettingKey, defaultValue: "")
-        }
-        set(newPath) {
-            UserDefaults.standard.set(newPath, forKey: launchSettingKey)
-        }
-    }
-    
-    static func launchExec(terminating: Bool = true) {
-        Wine.launch(args : [launchPath], blocking: false)
-        if terminating {
-            DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 10.0) {
-                Wine.wait()
-                DispatchQueue.main.async {
-                    NSApplication.shared.terminate(nil)
-                }
-            }
-        }
-    }
-    
-    class DXVK: Codable {
-        static let settingKey = "DXVK_OPTIONS"
-        var async = true
-        var maxFramerate = 0
-        var hud = ["devinfo": false, //Displays the name of the GPU and the driver version.
-                   "fps": false, //Shows the current frame rate.
-                   "frametimes": false, //Shows a frame time graph.
-                   "submissions": false, //Shows the number of command buffers submitted per frame.
-                   "drawcalls": false, //Shows the number of draw calls and render passes per frame.
-                   "pipelines": false, //Shows the total number of graphics and compute pipelines.
-                   "memory": false, //Shows the amount of device memory allocated and used.
-                   "gpuload": false, //Shows estimated GPU load. May be inaccurate.
-                   "version": false, //Shows DXVK version.
-                   "api": false, //Shows the D3D feature level used by the application.
-                   "compiler": true] //Shows shader compiler activity
-        var hudScale = 1.0
-        
-        
-        init() {
-            if let data = UserDefaults.standard.value(forKey: Util.DXVK.settingKey) as? Data {
-                let s = try? PropertyListDecoder().decode(Util.DXVK.self, from: data)
-                async = s!.async
-                maxFramerate = s!.maxFramerate
-                hud = s!.hud
-                hudScale = s!.hudScale
-                
+    static func launchToString(exec: URL, args: [String]) -> String {
+        var ret = ""
+        let task = Process()
+        task.qualityOfService = QualityOfService.userInteractive
+        task.environment = enviroment
+        task.executableURL = exec
+        task.arguments = args
+        let pipe = Pipe()
+        task.standardOutput = pipe
+        task.standardError = pipe
+        let outHandle = pipe.fileHandleForReading
+        outHandle.readabilityHandler = { pipe in
+            if let line = String(data: pipe.availableData, encoding: String.Encoding.utf8) {
+                ret.append(contentsOf: line)
             } else {
-                save()
+                print("Error decoding data: \(pipe.availableData)\n", to: &logger)
             }
         }
-        
-        func getAsync() -> String {
-            return self.async ? "1": "0"
+        do {
+            try task.run()
         }
-        
-        func getMaxFramerate() -> String {
-            return String(self.maxFramerate)
+        catch {
+            print("Error starting subprocess", to: &logger)
         }
-        
-        func getHud() -> String {
-            var params = ["scale=\(hudScale)"]
-            for (option, enabled) in hud {
-                if enabled {
-                    params.append(option)
-                }
-            }
-            return params.joined(separator: ",")
-        }
-        
-        func save() {
-            UserDefaults.standard.set(try? PropertyListEncoder().encode(self), forKey: Util.DXVK.settingKey)
-        }
+        task.waitUntilExit()
+        return ret
     }
-    
-    
-    static var dxvkOptions = DXVK()
     
     static var enviroment : [String : String] {
         var env = ProcessInfo.processInfo.environment
+        if FFXIVSettings.platform == .steam {
+            env["IS_FFXIV_LAUNCH_FROM_STEAM"] = "1"
+        }
         env["LANG"] = "en_US" //needed to run when system language is set to 日本語
         env["WINEESYNC"] = Wine.esync ? "1" : "0"
         env["WINEPREFIX"] = Wine.prefix.path
         env["WINEDEBUG"] = Wine.debug
-        env["DXVK_HUD"] = dxvkOptions.getHud()
-        env["DXVK_ASYNC"] = dxvkOptions.getAsync()
-        env["DXVK_FRAME_RATE"] = dxvkOptions.getMaxFramerate()
+        env["DXVK_HUD"] = DXVK.options.getHud()
+        env["DXVK_ASYNC"] = DXVK.options.getAsync()
+        env["DXVK_FRAME_RATE"] = DXVK.options.getMaxFramerate()
+        env["DALAMUD_RUNTIME"] = "C:\\Program Files\\XIV on Mac\\dotNET Runtime"
         env["XL_WINEONLINUX"] = "true"
         env["XL_WINEONMAC"] = "true"
         env["MVK_CONFIG_FULL_IMAGE_VIEW_SWIZZLE"] = "0"
@@ -181,5 +139,23 @@ struct Util {
             return defaultValue
         }
         return setting as! T
+    }
+    
+    static func swapByteOrder32(_ bytes: [UInt8]) -> [UInt8]{
+        var mbytes = bytes
+        for i in stride(from: 0, to: bytes.count, by: 4) {
+            for j in 0 ..< 4 {
+                mbytes[i + j] = bytes[i + 3 - j]
+            }
+        }
+        return mbytes
+    }
+    
+    static func quit() {
+        let app = NSApplication.shared
+        for window in app.windows {
+            window.close()
+        }
+        app.terminate(nil)
     }
 }
