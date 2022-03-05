@@ -7,6 +7,7 @@
 
 import Cocoa
 import ZIPFoundation
+import SeeURL
 
 class InstallerController: NSViewController {
     
@@ -182,27 +183,29 @@ class InstallerController: NSViewController {
     }
     
     func install() {
-        DispatchQueue.global(qos: .userInitiated).async {
+        DispatchQueue.global(qos: .userInitiated).async { [self] in
             let version = "1.0.5"
             let url = URL(string: "https://mac-dl.ffxiv.com/cw/finalfantasyxiv-\(version).zip")!
-            var observation: NSKeyValueObservation?
-            let downloadDone = DispatchGroup()
-            downloadDone.enter()
-            let task = FileDownloader.loadFileAsync(url: url) { response in
-                downloadDone.leave()
-            }
-            if let task = task {
-                observation = task.progress.observe(\.fractionCompleted) { progress, _ in
-                    DispatchQueue.main.async {
-                        self.bar.doubleValue = self.bar.maxValue * progress.fractionCompleted
+            do {
+                try HTTPClient.fetchFile(url: url) { total, now in
+                    DispatchQueue.main.async { [self] in
+                        bar.doubleValue = bar.maxValue * (now/total)
                     }
                 }
-                task.resume()
             }
-            downloadDone.wait()
-            observation?.invalidate()
-            DispatchQueue.main.async {
-                self.info.stringValue = "Extracting"
+            catch {
+                DispatchQueue.main.sync {
+                    let alert = NSAlert()
+                    alert.addButton(withTitle: "Close")
+                    alert.alertStyle = .critical
+                    alert.messageText = "Download Error"
+                    alert.informativeText = "XIV on Mac could not download the base game archive"
+                    alert.runModal()
+                    closeWindow(self)
+                }
+            }
+            DispatchQueue.main.async { [self] in
+                info.stringValue = "Extracting"
             }
             guard let archive = Archive(url: Util.cache.appendingPathComponent("finalfantasyxiv-\(version).zip"), accessMode: .read) else  {
                 print("Fatal error reading base game archive\n", to: &Util.logger)
@@ -211,8 +214,8 @@ class InstallerController: NSViewController {
             let baseGamePath = "FINAL FANTASY XIV ONLINE.app/Contents/SharedSupport/finalfantasyxiv/support/published_Final_Fantasy/drive_c/Program Files (x86)/SquareEnix/FINAL FANTASY XIV - A Realm Reborn/"
             let baseGameFiles = archive.filter({ $0.path.starts(with: baseGamePath) })
             Util.make(dir: FFXIVSettings.gamePath.deletingLastPathComponent())
-            DispatchQueue.main.async {
-                self.bar.doubleValue = 0.0
+            DispatchQueue.main.async { [self] in
+                bar.doubleValue = 0.0
             }
             for (i, file) in baseGameFiles.enumerated() {
                 let components = URL(fileURLWithPath: file.path).pathComponents
@@ -220,8 +223,8 @@ class InstallerController: NSViewController {
                 let destination = URL(fileURLWithPath: relDestination, relativeTo: FFXIVSettings.gamePath.deletingLastPathComponent())
                 Util.make(dir: destination.deletingLastPathComponent())
                 try? _ = archive.extract(file, to: destination)
-                DispatchQueue.main.async {
-                    self.bar.doubleValue = self.bar.maxValue * Double(i + 1) / Double(baseGameFiles.count)
+                DispatchQueue.main.async { [self] in
+                    bar.doubleValue = bar.maxValue * Double(i + 1) / Double(baseGameFiles.count)
                 }
             }
             DXVK.install()

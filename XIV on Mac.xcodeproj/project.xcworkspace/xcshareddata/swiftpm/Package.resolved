@@ -65,6 +65,15 @@
         }
       },
       {
+        "package": "SeeURL",
+        "repositoryURL": "https://github.com/marzent/swift-seeurl.git",
+        "state": {
+          "branch": "master",
+          "revision": "ae3dcb6ef64ebe7457bb4d3f993434a7ca28cad2",
+          "version": null
+        }
+      },
+      {
         "package": "SwiftOTP",
         "repositoryURL": "https://github.com/lachlanbell/SwiftOTP.git",
         "state": {

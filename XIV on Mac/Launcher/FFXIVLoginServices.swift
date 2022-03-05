@@ -11,6 +11,7 @@ import KeychainAccess
 import CryptoKit
 import AppKit
 import OrderedCollections
+import SeeURL
 
 
 public enum FFXIVPlatform: UInt32 {
@@ -195,19 +196,11 @@ private enum FFXIVLoginPageData {
     case loginError
 }
 
-private class FFXIVSSLDelegate: NSObject, URLSessionDelegate {
-    func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
-        // Always trust the Square Enix server. Yep, this can totally make us vulnerable to MITM, but you can
-        // blame SE for not setting up SSL correctly! The REAL launcher is vulnerable to MITM.
-        completionHandler(.useCredential, URLCredential(trust: challenge.protectionSpace.serverTrust!))
-    }
-}
 
 struct FFXIVLogin {
     typealias settings = FFXIVSettings
     static let userAgent = settings.platform == .mac ? "macSQEXAuthor/2.0.0(MacOSX; ja-jp)" : "SQEXAuthor/2.0.0(Windows 6.2; ja-jp; \(uniqueID))"
     static let userAgentPatch = settings.platform == .mac ? "FFXIV-MAC PATCH CLIENT" : "FFXIV PATCH CLIENT"
-    fileprivate let sslDelegate = FFXIVSSLDelegate()
     let authURL = URL(string: "https://ffxiv-login.square-enix.com/oauth/ffxivarr/login/login.send")!
     
     var loginURL: URL {
@@ -242,25 +235,28 @@ struct FFXIVLogin {
             "Connection"     : "Keep-Alive",
             "Cookie"         : #"_rsid="""#
         ]
-        fetch(headers: headers, url: loginURL, postBody: nil) { body, response in
-            guard let html = body else {
-                completion(.networkError)
-                return
-            }
-            let cookie = response?.allHeaderFields["Set-Cookie"] as? String
-            let op = StoredParseOperation(html: html)
-            let queue = OperationQueue()
-            op.completionBlock = {
-                DispatchQueue.main.async {
-                    guard case let .some(HTMLParseResult.result(result)) = op.result else {
-                        completion(.loginError)
-                        return
-                    }
-                    completion(.success(storedSid: result, cookie: cookie))
-                }
-            }
-            queue.addOperation(op)
+        guard let response = HTTPClient.fetch(url: loginURL, headers: headers) else {
+            completion(.networkError)
+            return
         }
+        guard let html = String(data: response.body, encoding: .utf8) else {
+            completion(.networkError)
+            return
+        }
+        let recvHeaders = OrderedDictionary(response.headers, uniquingKeysWith: {$1})
+        let cookie = recvHeaders["Set-Cookie"]
+        let op = StoredParseOperation(html: html)
+        let queue = OperationQueue()
+        op.completionBlock = {
+            DispatchQueue.main.async {
+                guard case let .some(HTMLParseResult.result(result)) = op.result else {
+                    completion(.loginError)
+                    return
+                }
+                completion(.success(storedSid: result, cookie: cookie))
+            }
+        }
+        queue.addOperation(op)
     }
     
     fileprivate func getTempSID(storedSID: String, cookie: String?, completion: @escaping ((FFXIVLoginResult) -> Void)) {
@@ -276,38 +272,41 @@ struct FFXIVLogin {
             "Cookie"         : cookie ?? #"_rsid="""#
         ]
         let postBody = settings.credentials!.loginData(storedSID: storedSID)
-        fetch(headers: headers, url: authURL, postBody: postBody) { body, response in
-            guard let html = body else {
-                completion(.networkError)
-                return
-            }
-            let cookie = response?.allHeaderFields["Set-Cookie"] as? String
-            let op = SidParseOperation(html: html)
-            let queue = OperationQueue()
-            op.completionBlock = {
-                DispatchQueue.main.async {
-                    guard case let .some(HTMLParseResult.result(result)) = op.result else {
-                        completion(.protocolError)
-                        return
-                    }
-                    guard let parsedResult = FFXIVServerLoginResponse(string: result) else {
-                        completion(.protocolError)
-                        return
-                    }
-                    if !parsedResult.authOk {
-                        completion(.incorrectCredentials)
-                        return
-                    }
-                    guard let sid = parsedResult.sid else {
-                        completion(.protocolError)
-                        return
-                    }
-                    settings.update(from: parsedResult)
-                    self.getFinalSID(tempSID: sid, cookie: cookie, completion: completion)
-                }
-            }
-            queue.addOperation(op)
+        guard let response = HTTPClient.fetch(url: authURL, headers: headers, postBody: postBody) else {
+            completion(.networkError)
+            return
         }
+        guard let html = String(data: response.body, encoding: .utf8) else {
+            completion(.networkError)
+            return
+        }
+        let recvHeaders = OrderedDictionary(response.headers, uniquingKeysWith: {$1})
+        let cookie = recvHeaders["Set-Cookie"]
+        let op = SidParseOperation(html: html)
+        let queue = OperationQueue()
+        op.completionBlock = {
+            DispatchQueue.main.async {
+                guard case let .some(HTMLParseResult.result(result)) = op.result else {
+                    completion(.protocolError)
+                    return
+                }
+                guard let parsedResult = FFXIVServerLoginResponse(string: result) else {
+                    completion(.protocolError)
+                    return
+                }
+                if !parsedResult.authOk {
+                    completion(.incorrectCredentials)
+                    return
+                }
+                guard let sid = parsedResult.sid else {
+                    completion(.protocolError)
+                    return
+                }
+                settings.update(from: parsedResult)
+                self.getFinalSID(tempSID: sid, cookie: cookie, completion: completion)
+            }
+        }
+        queue.addOperation(op)
     }
     
     fileprivate func getFinalSID(tempSID: String, cookie: String?, completion: @escaping ((FFXIVLoginResult) -> Void)) {
@@ -315,29 +314,32 @@ struct FFXIVLogin {
             "X-Hash-Check": "enabled",
             "User-Agent": FFXIVLogin.userAgentPatch
         ]
-        let postBody = FFXIVApp().versionList(maxEx: settings.expansionId.rawValue).data(using: .utf8)
-        fetch(headers: headers, url: sessionURL.appendingPathComponent(tempSID), postBody: postBody) { body, response in
-            if let unexpectedResponseBody = body, unexpectedResponseBody.count > 0 {
-                let status = response?.statusCode ?? 404
-                if status <= 299 {
-                    completion(.clientUpdate(patches: Patch.parse(patches: unexpectedResponseBody)))
-                } else if status == 409 { //this means a boot update is required although we checked for it before... install is probably broken af
-                    completion(.protocolError)
-                }
-                else {
-                    completion(.networkError)
-                }
-                return
-            }
-
-            // Apple changed allHeaderFields in newer SDKs to "canonicalize" headers. So on some OSes it'll be lowercase and others it won't... thanks.
-            if let finalSid = response?.allHeaderFields["X-Patch-Unique-Id"] as? String {
-                completion(.success(sid: finalSid))
-            } else if let finalSid = response?.allHeaderFields["x-patch-unique-id"] as? String {
-                completion(.success(sid: finalSid))
-            } else {
+        let url = sessionURL.appendingPathComponent(tempSID)
+        let postBody = FFXIVApp().versionList(maxEx: settings.expansionId.rawValue).data(using: .utf8)!
+        guard let response = HTTPClient.fetch(url: url, headers: headers, postBody: postBody) else {
+            completion(.networkError)
+            return
+        }
+        guard let html = String(data: response.body, encoding: .utf8) else {
+            completion(.networkError)
+            return
+        }
+        if html.count > 0 {
+            if response.statusCode <= 299 {
+                completion(.clientUpdate(patches: Patch.parse(patches: html)))
+            } else if response.statusCode == 409 { //this means a boot update is required although we checked for it before... install is probably broken af
                 completion(.protocolError)
             }
+            else {
+                completion(.networkError)
+            }
+            return
+        }
+        let recvHeaders = OrderedDictionary(response.headers, uniquingKeysWith: {$1})
+        if let finalSid = recvHeaders["X-Patch-Unique-Id"] {
+            completion(.success(sid: finalSid))
+        } else {
+            completion(.protocolError)
         }
     }
     
@@ -346,46 +348,15 @@ struct FFXIVLogin {
             "User-Agent": FFXIVLogin.userAgentPatch,
             "Host"      : "patch-bootver.ffxiv.com"
         ]
-        fetch(headers: headers, url: patchURL, postBody: nil) { body, response in
-            guard let html = body else {
-                completion([])
-                return
-            }
+        guard let response = HTTPClient.fetch(url: patchURL, headers: headers) else {
+            completion([])
+            return
+        }
+        if let html = String(data: response.body, encoding: .utf8) {
             completion(Patch.parse(patches: html))
+        } else {
+            completion([])
         }
-    }
-    
-    fileprivate func fetch(headers: OrderedDictionary<String, String>, url: URL, postBody: Data?, completion: @escaping ((_ body: String?, _ response: HTTPURLResponse?) -> Void)) {
-        let session = URLSession(configuration: .default, delegate: sslDelegate, delegateQueue: nil)
-        var req = URLRequest(url: url)
-        for (hdr, val) in headers {
-            req.addValue(val, forHTTPHeaderField: hdr)
-        }
-        if let uploadedBody = postBody {
-            req.httpBody = uploadedBody
-            req.httpMethod = "POST"
-        }
-        let task = session.dataTask(with: req) { (data, resp, err) in
-            guard let response = resp as? HTTPURLResponse else {
-                completion(nil, nil)
-                return
-            }
-            guard let data = data else {
-                completion(nil, response)
-                return
-            }
-            if response.statusCode != 200 || err != nil || data.count == 0 {
-                completion(nil, response)
-                return
-            }
-            
-            guard let html = String(data: data, encoding: .utf8) else {
-                completion(nil, response)
-                return
-            }
-            completion(html, response)
-        }
-        task.resume()
     }
     
     static var uniqueID: String {
@@ -413,12 +384,7 @@ extension FFXIVSettings {
         }
         let login = FFXIVLogin()
         login.getBootPatch() { patches in
-            if !patches.isEmpty {
-                completion(patches)
-            }
-            else {
-                completion(nil)
-            }
+            completion(patches.isEmpty ? nil : patches)
         }
     }
     

@@ -7,6 +7,7 @@
 
 import Cocoa
 import OrderedCollections
+import SeeURL
 
 class PatchController: NSViewController {
     
@@ -85,7 +86,7 @@ class PatchController: NSViewController {
         }
     }
     
-    private func download(_ patch: Patch, totalSizeMB: Double, partialSizeMB: Double) {
+    private func download(_ patch: Patch, totalSizeMB: Double, partialSizeMB: Double, tries: Int = 0, maxTries: Int = 3) {
         let headers: OrderedDictionary = [
             "User-Agent"     : FFXIVLogin.userAgentPatch,
             "Accept-Encoding": "*/*,application/metalink4+xml,application/metalink+xml",
@@ -94,27 +95,33 @@ class PatchController: NSViewController {
             "Want-Digest"    : "SHA-512;q=1, SHA-256;q=1, SHA;q=0.1"
         ]
         let destination = Patch.cache.appendingPathComponent(patch.path)
-        let downloadDone = DispatchGroup()
-        downloadDone.enter()
-        var observation: NSKeyValueObservation?
-        let task = FileDownloader.loadFileAsync(url: patch.url, headers: headers, destinationUrl: destination) { response in
-            downloadDone.leave()
-        }
-        if let task = task {
-            observation = task.progress.observe(\.fractionCompleted) { progress, _ in
-                let completedSizeMB = patch.lengthMB * progress.fractionCompleted
+        do {
+            try HTTPClient.fetchFile(url: patch.url, destinationUrl: destination, headers: headers) { total, now in
+                let completedSizeMB = patch.lengthMB * (now/total)
                 let totalCompletedSizeMB = partialSizeMB + completedSizeMB
                 DispatchQueue.main.async { [self] in
                     downloadStatus.stringValue = "\(toGB(totalCompletedSizeMB))/\(toGB(totalSizeMB)) GB"
                     downloadPatchStatus.stringValue = "\(Int(completedSizeMB))/\(Int(patch.lengthMB)) MB"
                     downloadBar.doubleValue = downloadBar.maxValue * totalCompletedSizeMB / totalSizeMB
-                    downloadPatchBar.doubleValue = downloadPatchBar.maxValue * progress.fractionCompleted
+                    downloadPatchBar.doubleValue = downloadPatchBar.maxValue * (now/total)
                 }
             }
-            task.resume()
         }
-        downloadDone.wait()
-        observation?.invalidate()
+        catch {
+            guard tries < maxTries else {
+                DispatchQueue.main.sync {
+                    let alert = NSAlert()
+                    alert.addButton(withTitle: "Close")
+                    alert.alertStyle = .critical
+                    alert.messageText = "Download Error"
+                    alert.informativeText = "XIV on Mac could not download \(patch.url) after \(maxTries) attempts"
+                    alert.runModal()
+                    Util.quit()
+                }
+                return
+            }
+            download(patch, totalSizeMB: totalSizeMB, partialSizeMB: partialSizeMB, tries: tries + 1, maxTries: maxTries)
+        }
     }
     
     @IBAction func quit(_ sender: Any) {

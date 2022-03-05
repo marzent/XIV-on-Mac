@@ -280,7 +280,7 @@ class FrontierTableView: NSObject {
     }
     
     @objc private func onItemClicked() {
-        if let url = URL(string: items[tableView.clickedRow].url) {
+        if let url = URL(string: items[abs(tableView.clickedRow)].url) {
             NSWorkspace.shared.open(url)
         }
     }

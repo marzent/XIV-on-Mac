@@ -7,14 +7,13 @@
 
 import Cocoa
 import ZIPFoundation
+import SeeURL
 
 class Dotnet {
     @available(*, unavailable) private init() {}
     
     static func download(url: String) {
-        FileDownloader.loadFileSync(url: URL(string: url)!) {(path, error) in
-            print("File downloaded to : \(path!)")
-        }
+        try? HTTPClient.fetchFile(url: URL(string: url)!)
     }
 
     static func install() {

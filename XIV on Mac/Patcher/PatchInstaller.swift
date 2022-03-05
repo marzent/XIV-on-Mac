@@ -6,6 +6,9 @@
 //
 
 import AppKit
+import Embassy
+import OrderedCollections
+import SeeURL
 
 class PatchInstaller {
     
@@ -44,9 +47,7 @@ class PatchInstaller {
             try? fm.removeItem(at: Util.cache.appendingPathComponent("PatchInstaller.zip"))
             try? fm.removeItem(at: Patch.dir.appendingPathComponent("XIVLauncher.PatchInstaller.app"))
         }
-        FileDownloader.loadFileSync(url: remoteURL.appendingPathComponent("PatchInstaller.zip")) {(path, error) in
-            print("Downloaded XIVLauncher.PatchInstaller.app!\n")
-        }
+        try? HTTPClient.fetchFile(url: remoteURL.appendingPathComponent("PatchInstaller.zip"))
         try? fm.unzipItem(at: Util.cache.appendingPathComponent("PatchInstaller.zip"), to: Patch.dir)
         try? fm.removeItem(at: Patch.dir.appendingPathComponent("__MACOSX"))
     }
