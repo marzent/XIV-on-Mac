@@ -10,26 +10,6 @@ import OrderedCollections
 import CcURLSwift
 import SeeURL
 
-fileprivate let progressNotification = NotificationCenter()
-
-private class ProgressObserver {
-    var callback: ((Double, Double) -> Void)?
-    
-    internal init(_ progPtr: UnsafeMutableRawPointer) {
-        progressNotification.addObserver(self, selector: #selector(self.observe(_:)), name: Notification.Name(rawValue: "\(progPtr)"), object: nil)
-    }
-    
-    @objc func observe(_ notif: Notification) {
-        guard let callback = callback else {
-            return
-        }
-        let dict = notif.userInfo! as Dictionary
-        let total = dict["total"] as! Double
-        let now = dict["now"] as! Double
-        callback(total, now)
-    }
-}
-
 extension HTTPClient {
     
     static func fetch(url: URL, headers: OrderedDictionary<String, String>? = nil, postBody: Data = Data(), proxy: String? = nil) -> Response? {
@@ -39,7 +19,16 @@ extension HTTPClient {
         return try? sendRequest(method: method, url: url.absoluteString, headers: headers, body: body)
     }
     
-    static func fetchFile(url: URL, destinationUrl: URL? = nil, headers: OrderedDictionary<String, String>? = nil, proxy: String? = nil, progressCallback: ((Double, Double) -> Void)? = nil) throws {
+    private class Progress {
+        internal init() {
+            self.total = 0
+            self.now = 0
+        }
+        var total: Double
+        var now: Double
+    }
+    
+    static func fetchFile(url: URL, destinationUrl: URL? = nil, headers: OrderedDictionary<String, String>? = nil, proxy: String? = nil, maxSpeed: Int = 0, progressCallback: ((Int64, Int64, Int64) -> Void)? = nil) throws {
         let destURL = destinationUrl ?? Util.cache.appendingPathComponent(url.lastPathComponent)
         if FileManager().fileExists(atPath: destURL.path) {
             print("File already exists [\(destURL.path)]")
@@ -60,6 +49,7 @@ extension HTTPClient {
         try curl.set(option: CURLOPT_FOLLOWLOCATION, true)
         try curl.set(option: CURLOPT_LOW_SPEED_TIME, 120)
         try curl.set(option: CURLOPT_LOW_SPEED_LIMIT, 30)
+        try curl.set(option: CURLOPT_MAX_RECV_SPEED_LARGE, maxSpeed)
         if let proxy = proxy {
             try curl.set(option: CURLOPT_PROXY, proxy)
         }
@@ -81,19 +71,36 @@ extension HTTPClient {
         try curl.set(option:CURLOPT_WRITEDATA, fileHandle)
         
         func updateProgress(ptr: UnsafeMutableRawPointer?, dltotal: Double, dlnow: Double, ultotal: Double, ulnow: Double) -> Int32 {
-            guard let progPtr = ptr, dltotal > 0, Int(dlnow) % 7 == 0 else {
+            guard let progPtr = ptr else {
                 return 0
             }
-            progressNotification.post(name: Notification.Name("\(progPtr)"), object: nil, userInfo: ["total": dltotal, "now": dlnow])
+            let progress = Unmanaged<Progress>.fromOpaque(progPtr).takeUnretainedValue()
+            progress.total = dltotal
+            progress.now = dlnow
             return 0
         }
-        let progData = cURL.WriteFunctionStorage()
-        let progressObserver = ProgressObserver(Unmanaged.passUnretained(progData).toOpaque())
-        if let progressCallback = progressCallback {
+        let progress = Progress()
+        var lastDownloadedBytes: Double = 0
+        var timer: Timer?
+        defer {
+            timer?.invalidate()
+        }
+        if let callback = progressCallback {
             try curl.set(option:CURLOPT_NOPROGRESS, false)
             try curl.set(option:CURLOPT_PROGRESSFUNCTION, updateProgress)
-            try curl.set(option:CURLOPT_XFERINFODATA, Unmanaged.passUnretained(progData))
-            progressObserver.callback = progressCallback
+            try curl.set(option:CURLOPT_XFERINFODATA, Unmanaged.passUnretained(progress))
+            DispatchQueue.main.async {
+                let updateInterval = 0.5
+                timer = Timer.scheduledTimer(withTimeInterval: updateInterval, repeats: true) { _ in
+                    guard progress.now > 0 else {
+                        return
+                    }
+                    let speed = (progress.now - lastDownloadedBytes) / updateInterval
+                    lastDownloadedBytes = progress.now
+                    callback(Int64(progress.total), Int64(progress.now), Int64(speed))
+                    
+                }
+            }
         }
         
         try curl.perform()

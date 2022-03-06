@@ -187,9 +187,9 @@ class InstallerController: NSViewController {
             let version = "1.0.5"
             let url = URL(string: "https://mac-dl.ffxiv.com/cw/finalfantasyxiv-\(version).zip")!
             do {
-                try HTTPClient.fetchFile(url: url) { total, now in
+                try HTTPClient.fetchFile(url: url) { total, now, _ in
                     DispatchQueue.main.async { [self] in
-                        bar.doubleValue = bar.maxValue * (now/total)
+                        bar.doubleValue = bar.maxValue * (Double(now)/Double(total))
                     }
                 }
             }

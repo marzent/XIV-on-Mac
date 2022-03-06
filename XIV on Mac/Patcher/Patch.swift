@@ -17,7 +17,7 @@ public class Patch {
         self.hashes = hasHash ? Hashes(type: input[5], blockSize: input[6], array: input[7]) : nil
         self.version = input[4]
         self.url = URL(string: hasHash ? input[8] : input[5])!
-        self.length = UInt64(input[0]) ?? 0
+        self.length = Int64(input[0]) ?? 0
     }
     
     struct Hashes {
@@ -35,11 +35,8 @@ public class Patch {
     let hashes: Hashes?
     let version: String
     let url: URL
-    let length: UInt64
+    let length: Int64
 
-    var lengthMB: Double {
-        Double(length) * 0.000001
-    }
     var name: String {
         [repo.rawValue, String(url.lastPathComponent.dropLast(6))].joined(separator: "/")
     }
@@ -58,12 +55,12 @@ public class Patch {
             .map {Patch($0.components(separatedBy: "\t"))}
     }
     
-    static func totalLengthMB(_ patches: [Patch]) -> Double {
-        Double(patches.map{$0.length}.reduce(0, +)) * 0.000001
+    static func totalLength(_ patches: [Patch]) -> Int64 {
+        patches.map{$0.length}.reduce(0, +)
     }
     
-    static func totalLengthMB(_ patches: ArraySlice<Patch>) -> Double {
-        totalLengthMB(Array(patches))
+    static func totalLength(_ patches: ArraySlice<Patch>) -> Int64 {
+        totalLength(Array(patches))
     }
     
     static private let keepKey = "KeepPatches"

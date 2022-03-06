@@ -378,7 +378,7 @@ struct FFXIVLogin {
 extension FFXIVSettings {
     
     static func checkBoot(completion: @escaping (([Patch]?) -> Void)) {
-        if !FFXIVApp().installed {
+        guard FFXIVApp().installed else {
             completion(nil)
             return
         }
@@ -389,11 +389,11 @@ extension FFXIVSettings {
     }
     
     static func login(completion: @escaping ((FFXIVLoginResult) -> Void)) {
-        if !FFXIVApp().installed {
+        guard FFXIVApp().installed else {
             completion(.noInstall)
             return
         }
-        if credentials == nil {
+        guard let _ = credentials else {
             completion(.incorrectCredentials)
             return
         }

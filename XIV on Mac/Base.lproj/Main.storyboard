@@ -2047,7 +2047,7 @@ Gw
                                     <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aXz-Px-Lvr">
                                         <rect key="frame" x="-2" y="208" width="567" height="16"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="0.00/0.00 GB" id="HQX-r7-1tH">
+                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="0.00 GB of 0.00 GB" id="HQX-r7-1tH">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -2056,7 +2056,7 @@ Gw
                                     <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7K3-oF-rhi">
                                         <rect key="frame" x="-2" y="134" width="567" height="16"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="0/0 MB" id="OFS-xw-3KL">
+                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="0.0 MB of 0.0 MB (0.0 MB/sec)" id="OFS-xw-3KL">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -2065,7 +2065,7 @@ Gw
                                     <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OI1-FP-5JX">
                                         <rect key="frame" x="-2" y="39" width="567" height="16"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="0/0 Patches" id="QxC-ZE-CiG">
+                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="0 out of 0 Patches installed" id="QxC-ZE-CiG">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>

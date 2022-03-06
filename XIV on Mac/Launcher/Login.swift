@@ -44,7 +44,7 @@ class LoginOperation: AsyncOperation {
             alert.informativeText = "Essential game files are corrupted. Press CMD + R to attempt a repair."
             alert.runModal()
         case .clientUpdate(_):
-            ()
+            print("Starting Patcher...")
         case .networkError:
             let alert = NSAlert()
             alert.addButton(withTitle: "Ok")
