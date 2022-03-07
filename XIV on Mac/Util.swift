@@ -123,7 +123,7 @@ struct Util {
         env["DALAMUD_RUNTIME"] = "C:\\Program Files\\XIV on Mac\\dotNET Runtime"
         env["XL_WINEONLINUX"] = "true"
         env["XL_WINEONMAC"] = "true"
-        env["MVK_CONFIG_FULL_IMAGE_VIEW_SWIZZLE"] = "0"
+        env["MVK_CONFIG_FULL_IMAGE_VIEW_SWIZZLE"] = "1"
         env["MVK_CONFIG_USE_METAL_ARGUMENT_BUFFERS"] = "1"
         //env["DYLD_PRINT_LIBRARIES"] = "YES"
         env["DYLD_FALLBACK_LIBRARY_PATH"] = Bundle.main.url(forResource: "lib", withExtension: "", subdirectory: "wine")!.path + ":/opt/local/lib:/usr/local/lib:/usr/lib:/usr/libexec:/usr/lib/system:/opt/X11/lib"

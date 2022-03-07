@@ -55,7 +55,7 @@ public enum FFXIVRepo: String {
     }
     
     static func expansions(max: UInt32) -> [FFXIVRepo] {
-        [.ex1, .ex2, .ex3, .ex4].dropLast(4 - Int(max))
+        Array([.ex1, .ex2, .ex3, .ex4].prefix(upTo: Int(max)))
     }
     
     var baseURL: URL {

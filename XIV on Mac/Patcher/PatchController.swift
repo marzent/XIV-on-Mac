@@ -66,7 +66,7 @@ class PatchController: NSViewController {
         DispatchQueue.main.async { [self] in
             downloadPatch.stringValue = patch.name
         }
-        let partialSize = Patch.totalLength(patches[...(patchNum - 1)])
+        let partialSize = Patch.totalLength(patches[..<patchNum])
         download(patch, totalSize: totalSize, partialSize: partialSize)
         self.updateProgress(totalCompletedSize: partialSize + patch.length, totalSize: totalSize, completedSize: patch.length, size: patch.length, speed: 0)
         patchQueue.async {
