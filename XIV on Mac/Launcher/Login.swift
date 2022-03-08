@@ -52,6 +52,13 @@ class LoginOperation: AsyncOperation {
             alert.messageText = "Network Error"
             alert.informativeText = "Check your internet connection, or try again later. Is FFXIV down?"
             alert.runModal()
+        case .maintenance:
+            let alert = NSAlert()
+            alert.addButton(withTitle: "Ok")
+            alert.alertStyle = .critical
+            alert.messageText = "Maintenance in progress"
+            alert.informativeText = "Please wait until maintenance finishes before logging in."
+            alert.runModal()
         case .noInstall:
             let alert = NSAlert()
             alert.addButton(withTitle: "Ok")

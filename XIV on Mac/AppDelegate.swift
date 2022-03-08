@@ -9,7 +9,7 @@ import Cocoa
 import Sparkle
 
 
-@main class AppDelegate: NSObject, NSApplicationDelegate {
+@main class AppDelegate: NSObject, NSApplicationDelegate, SPUUpdaterDelegate {
     var settingsWinController: NSWindowController?
     @IBOutlet private var sparkle: SPUStandardUpdaterController!
     @IBOutlet private var actAutoLaunch: NSMenuItem!
@@ -19,13 +19,21 @@ import Sparkle
         let storyboard = NSStoryboard(name: "Main", bundle: nil)
         actAutoLaunch.state = ACT.autoLaunch ? .on : .off
         bhAutoLaunch.state = ACT.autoLaunchBH ? .on : .off
+        Util.launch(exec: URL(fileURLWithPath: "/usr/sbin/softwareupdate"), args: ["--install-rosetta"])
         sparkle.updater.checkForUpdatesInBackground()
+        if DXVK.shouldUpdate {
+            DXVK.install()
+        }
         settingsWinController = storyboard.instantiateController(withIdentifier: "SettingsWindow") as? NSWindowController
         Util.make(dir: Wine.xomData.path)
         Util.make(dir: Util.cache.path)
         SocialIntegration.discord.setPresence()
     }
 
+    func updaterWillRelaunchApplication(_ updater: SPUUpdater) {
+        DXVK.shouldUpdate = true
+    }
+    
     func applicationWillTerminate(_ aNotification: Notification) {
         Wine.kill()
     }

@@ -12,6 +12,18 @@ import SeeURL
 
 extension HTTPClient {
     
+    static func fetch(url: URL, headers: OrderedDictionary<String, String?>? = nil, postBody: Data = Data(), proxy: String? = nil) -> Response? {
+        var headerDict: OrderedDictionary<String, String> = [:]
+        if let h = headers {
+            for (key, value) in h {
+                if let v = value {
+                    headerDict[key] = v
+                }
+            }
+        }
+        return fetch(url: url, headers: headerDict, postBody: postBody, proxy: proxy)
+    }
+    
     static func fetch(url: URL, headers: OrderedDictionary<String, String>? = nil, postBody: Data = Data(), proxy: String? = nil) -> Response? {
         let headers = headers?.map {key, value in (key,value)} ?? []
         let body = [UInt8](postBody)

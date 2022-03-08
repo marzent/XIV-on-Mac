@@ -10,9 +10,20 @@ import Foundation
 struct DXVK {
     @available(*, unavailable) private init() {}
     
+    private static let updateKey = "DXVKShouldUpdate"
+    static var shouldUpdate: Bool {
+        get {
+            return Util.getSetting(settingKey: updateKey, defaultValue: true)
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: updateKey)
+        }
+    }
+    
     static var options = Options()
     
     static func install() {
+        shouldUpdate = false
         let dxvk_path = Bundle.main.url(forResource: "dxvk", withExtension: nil, subdirectory: "")!
         let dx_dlls = ["d3d9.dll", "d3d10_1.dll", "d3d10.dll", "d3d10core.dll", "dxgi.dll", "d3d11.dll"]
         let system32 = Wine.prefix.appendingPathComponent("drive_c/windows/system32")

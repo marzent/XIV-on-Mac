@@ -101,14 +101,14 @@ class LaunchController: NSViewController, NSWindowDelegate {
     }
     
     @IBAction func doLogin(_ sender: Any) {
-        view.window?.beginSheet(loginSheetWinController!.window!)
-        FFXIVSettings.credentials = FFXIVLoginCredentials(username: userField.stringValue, password: passwdField.stringValue, oneTimePassword: otpField.stringValue)
         doLogin()
     }
     
     func doLogin() {
         let queue = OperationQueue()
         let op = LoginOperation()
+        view.window?.beginSheet(loginSheetWinController!.window!)
+        FFXIVSettings.credentials = FFXIVLoginCredentials(username: userField.stringValue, password: passwdField.stringValue, oneTimePassword: otpField.stringValue)
         op.completionBlock = {
             switch op.loginResult {
             case .success(let sid)?:

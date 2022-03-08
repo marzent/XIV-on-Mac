@@ -188,6 +188,7 @@ public enum FFXIVLoginResult {
     case protocolError
     case networkError
     case noInstall
+    case maintenance
 }
 
 private enum FFXIVLoginPageData {
@@ -207,13 +208,6 @@ struct FFXIVLogin {
         return URL(string: "https://ffxiv-login.square-enix.com/oauth/ffxivarr/login/top?lng=en&rgn=\(settings.region.rawValue)&isft=0&cssmode=1&isnew=1&launchver=3\(settings.platform == .steam ? "&issteam=1" : "")")!
     }
     
-    var frontierURL: URL {
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeZone = TimeZone(identifier: "UTC")
-        dateFormatter.dateFormat = "yyyy-MM-dd-HH"
-        return URL(string: "https://launcher.finalfantasyxiv.com/v600/index.html?rc_lang=\(settings.language.code)&time=\(dateFormatter.string(from: Date()))")!
-    }
-    
     var patchURL: URL {
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone(identifier: "UTC")
@@ -228,7 +222,7 @@ struct FFXIVLogin {
     fileprivate func getStored(completion: @escaping ((FFXIVLoginPageData) -> Void)) {
         let headers: OrderedDictionary = [
             "Accept"         : "image/gif, image/jpeg, image/pjpeg, application/x-ms-application, application/xaml+xml, application/x-ms-xbap, */*",
-            "Referer"        : frontierURL.absoluteString,
+            "Referer"        : Frontier.referer.absoluteString,
             "Accept-Encoding": "gzip, deflate",
             //"Accept-Language": ??? TODO: find out how this works and why
             "User-Agent"     : FFXIVLogin.userAgent,
@@ -395,6 +389,10 @@ extension FFXIVSettings {
         }
         guard let _ = credentials else {
             completion(.incorrectCredentials)
+            return
+        }
+        guard Frontier.checkGate() else {
+            completion(.maintenance)
             return
         }
         let login = FFXIVLogin()

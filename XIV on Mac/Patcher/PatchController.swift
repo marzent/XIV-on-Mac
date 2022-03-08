@@ -38,10 +38,6 @@ class PatchController: NSViewController {
         installBar.usesThreadedAnimation = true
     }
     
-    private func toGB(_ number: Double) -> Double {
-        return Double(round(number * 0.1) / 100)
-    }
-    
     func install(_ patches: [Patch]) {
         Wine.kill()
         let totalSize = Patch.totalLength(patches)

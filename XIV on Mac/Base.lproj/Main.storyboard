@@ -537,7 +537,11 @@
                     </connections>
                 </customObject>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
-                <customObject id="yc9-Mt-LbV" customClass="SPUStandardUpdaterController"/>
+                <customObject id="yc9-Mt-LbV" customClass="SPUStandardUpdaterController">
+                    <connections>
+                        <outlet property="updaterDelegate" destination="Voe-Tx-rLC" id="mXy-u1-5Eq"/>
+                    </connections>
+                </customObject>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="24" y="1058"/>
@@ -1360,7 +1364,7 @@ Gw
                                                             <items>
                                                                 <menuItem title="Windows" state="on" id="qRO-Pi-PbC"/>
                                                                 <menuItem title="Mac" id="8gA-hG-foX"/>
-                                                                <menuItem title="Steam" id="Azf-g8-OxM"/>
+                                                                <menuItem title="Steam" enabled="NO" id="Azf-g8-OxM"/>
                                                             </items>
                                                         </menu>
                                                     </popUpButtonCell>
