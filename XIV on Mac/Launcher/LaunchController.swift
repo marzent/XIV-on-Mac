@@ -29,6 +29,7 @@ class LaunchController: NSViewController, NSWindowDelegate {
         super.loadView()
         setupOTP()
         ACT.observe()
+        print(Steam.ticket?.0)
         NotificationCenter.default.addObserver(self,selector: #selector(installDone(_:)),name: .installDone, object: nil)
         if #available(macOS 11.0, *) {
             newsTable = FrontierTableView(icon: NSImage(systemSymbolName: "newspaper", accessibilityDescription: nil)!)

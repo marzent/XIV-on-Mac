@@ -6,6 +6,7 @@
 //
 
 import Cocoa
+import CryptoSwift
 
 struct Util {
     @available(*, unavailable) private init() {}
@@ -139,6 +140,14 @@ struct Util {
             return defaultValue
         }
         return setting as! T
+    }
+    
+    static func zeroPadArray(array: [UInt8]) -> [UInt8] {
+        let zeroes = Blowfish.blockSize - (array.count % Blowfish.blockSize)
+        if zeroes > 0 {
+            return array + [UInt8](repeating: 0, count: zeroes)
+        }
+        return array
     }
     
     static func swapByteOrder32(_ bytes: [UInt8]) -> [UInt8]{

@@ -66,8 +66,10 @@ class StartGameOperation: AsyncOperation {
             let (key, value) = tuple
             result += " \(doubleSpaceify(key)) =\(doubleSpaceify(value))"
         }
-        let cipherText = try! Blowfish(key: keyBytes, blockMode: ECB(), padding: .zeroPadding).brokenSquareEncrypt(argStr)
-        return "//**sqex0003\(cipherText)\(check)**//"
+        let bigEndianBytes = Util.swapByteOrder32(Util.zeroPadArray(array: [UInt8](argStr.utf8)))
+        let cipherText = try! Blowfish(key: keyBytes, blockMode: ECB(), padding: .zeroPadding).encrypt(bigEndianBytes)
+        let bigEndianCipher = Data(Util.swapByteOrder32(cipherText)).squareBase64EncodedString()
+        return "//**sqex0003\(bigEndianCipher)\(check)**//"
     }
     
     func arguments(app: FFXIVApp) -> [String] {
@@ -86,22 +88,5 @@ class StartGameOperation: AsyncOperation {
             app.dx11URL.path,
             StartGameOperation.encryptedArgs(args: args, ticks: ticks)
         ]
-    }
-}
-
-extension Blowfish {
-    private func zeroPadArray(array: [UInt8]) -> [UInt8] {
-        let zeroes = Blowfish.blockSize - (array.count % Blowfish.blockSize)
-        if zeroes > 0 {
-            return array + [UInt8](repeating: 0, count: zeroes)
-        }
-        return array
-    }
-    
-    func brokenSquareEncrypt(_ data: String) throws -> String {
-        let bigEndianBytes = Util.swapByteOrder32(zeroPadArray(array: [UInt8](data.utf8)))
-        let cipherText = try self.encrypt(bigEndianBytes)
-        let bigEndianCipher = Data(Util.swapByteOrder32(cipherText)).base64EncodedString()
-        return bigEndianCipher.replacingOccurrences(of: "+", with: "-").replacingOccurrences(of: "/", with: "_") //thx square
     }
 }

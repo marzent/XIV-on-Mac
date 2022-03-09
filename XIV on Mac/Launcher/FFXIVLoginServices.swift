@@ -185,6 +185,8 @@ public enum FFXIVLoginResult {
     case bootUpdate(patches: [Patch])
     case clientUpdate(patches: [Patch])
     case incorrectCredentials
+    case noSteamTicket
+    case steamUserError
     case protocolError
     case networkError
     case noInstall
@@ -192,7 +194,7 @@ public enum FFXIVLoginResult {
 }
 
 private enum FFXIVLoginPageData {
-    case success(storedSid: String, cookie: String?)
+    case success(storedSid: String, cookie: String?, squexid: String? = nil)
     case networkError
     case loginError
 }
@@ -203,9 +205,15 @@ struct FFXIVLogin {
     static let userAgent = settings.platform == .mac ? "macSQEXAuthor/2.0.0(MacOSX; ja-jp)" : "SQEXAuthor/2.0.0(Windows 6.2; ja-jp; \(uniqueID))"
     static let userAgentPatch = settings.platform == .mac ? "FFXIV-MAC PATCH CLIENT" : "FFXIV PATCH CLIENT"
     let authURL = URL(string: "https://ffxiv-login.square-enix.com/oauth/ffxivarr/login/login.send")!
+    let ticket = Steam.ticket
     
     var loginURL: URL {
-        return URL(string: "https://ffxiv-login.square-enix.com/oauth/ffxivarr/login/top?lng=en&rgn=\(settings.region.rawValue)&isft=0&cssmode=1&isnew=1&launchver=3\(settings.platform == .steam ? "&issteam=1" : "")")!
+        let base = "https://ffxiv-login.square-enix.com/oauth/ffxivarr/login/top?lng=en&rgn=\(settings.region.rawValue)&isft=0&cssmode=1&isnew=1&launchver=3"
+        guard let ticket = ticket, settings.platform == .steam else {
+            return URL(string: base)!
+        }
+        let steamParams = "&issteam=1&session_ticket=\(ticket.text)&ticket_size=\(ticket.length)"
+        return URL(string: base + steamParams)!
     }
     
     var patchURL: URL {
@@ -219,7 +227,7 @@ struct FFXIVLogin {
         return URL(string: "https://patch-gamever.ffxiv.com/http/win32/ffxivneo_release_game/\(FFXIVRepo.game.ver)")!
     }
     
-    fileprivate func getStored(completion: @escaping ((FFXIVLoginPageData) -> Void)) {
+    fileprivate func getStored() -> FFXIVLoginPageData {
         let headers: OrderedDictionary = [
             "Accept"         : "image/gif, image/jpeg, image/pjpeg, application/x-ms-application, application/xaml+xml, application/x-ms-xbap, */*",
             "Referer"        : Frontier.referer.absoluteString,
@@ -230,30 +238,28 @@ struct FFXIVLogin {
             "Cookie"         : #"_rsid="""#
         ]
         guard let response = HTTPClient.fetch(url: loginURL, headers: headers) else {
-            completion(.networkError)
-            return
+            return .networkError
         }
         guard let html = String(data: response.body, encoding: .utf8) else {
-            completion(.networkError)
-            return
+            return .networkError
         }
         let recvHeaders = OrderedDictionary(response.headers, uniquingKeysWith: {$1})
         let cookie = recvHeaders["Set-Cookie"]
-        let op = StoredParseOperation(html: html)
-        let queue = OperationQueue()
-        op.completionBlock = {
-            DispatchQueue.main.async {
-                guard case let .some(HTMLParseResult.result(result)) = op.result else {
-                    completion(.loginError)
-                    return
-                }
-                completion(.success(storedSid: result, cookie: cookie))
-            }
+        guard let storedRange = html.range(of: #"(?<=name="_STORED_" value=").*(?=">)"#, options: .regularExpression) else {
+            return .loginError
         }
-        queue.addOperation(op)
+        let storedSid = String(html[storedRange])
+        guard settings.platform == .steam else {
+            return .success(storedSid: storedSid, cookie: cookie)
+        }
+        guard let steamRange = html.range(of: #"(?<=<input name="sqexid" type="hidden" value=").*(?=">)"#, options: .regularExpression) else {
+            return .loginError
+        }
+        let squexid = String(html[steamRange])
+        return .success(storedSid: storedSid, cookie: cookie, squexid: squexid)
     }
     
-    fileprivate func getTempSID(storedSID: String, cookie: String?, completion: @escaping ((FFXIVLoginResult) -> Void)) {
+    fileprivate func getTempSID(storedSID: String, cookie: String?, squexid: String?, completion: @escaping ((FFXIVLoginResult) -> Void)) {
         let headers: OrderedDictionary = [
             "Accept"         : "image/gif, image/jpeg, image/pjpeg, application/x-ms-application, application/xaml+xml, application/x-ms-xbap, */*",
             "Referer"        : loginURL.absoluteString,
@@ -265,6 +271,22 @@ struct FFXIVLogin {
             "Cache-Control"  : "no-cache",
             "Cookie"         : cookie ?? #"_rsid="""#
         ]
+        guard ticket != nil || settings.platform != .steam else {
+            completion(.noSteamTicket)
+            return
+        }
+        if let squexid = squexid {
+            guard settings.credentials!.username == squexid else {
+                completion(.steamUserError)
+                return
+            }
+        }
+        else {
+            guard settings.platform != .steam else {
+                completion(.steamUserError)
+                return
+            }
+        }
         let postBody = settings.credentials!.loginData(storedSID: storedSID)
         guard let response = HTTPClient.fetch(url: authURL, headers: headers, postBody: postBody) else {
             completion(.networkError)
@@ -396,15 +418,13 @@ extension FFXIVSettings {
             return
         }
         let login = FFXIVLogin()
-        login.getStored() { result in
-            switch result {
-            case .networkError:
-                completion(.networkError)
-            case .loginError:
-                completion(.protocolError)
-            case .success(let storedSid, let cookie):
-                login.getTempSID(storedSID: storedSid, cookie: cookie, completion: completion)
-            }
+        switch login.getStored() {
+        case .networkError:
+            completion(.networkError)
+        case .loginError:
+            completion(.protocolError)
+        case .success(let storedSid, let cookie, let squexid):
+            login.getTempSID(storedSID: storedSid, cookie: cookie, squexid: squexid, completion: completion)
         }
     }
     

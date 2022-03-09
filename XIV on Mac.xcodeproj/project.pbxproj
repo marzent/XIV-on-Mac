@@ -41,6 +41,13 @@
 		50BC73CF27C2BEAF006269AC /* ACT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BC73CE27C2BEAF006269AC /* ACT.swift */; };
 		50BC73D327C2C3F3006269AC /* GShade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BC73D227C2C3F3006269AC /* GShade.swift */; };
 		50BD278727785418002B0D1F /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BD278627785418002B0D1F /* Notifications.swift */; };
+		50C45AB027D8A30A00572977 /* libsdkencryptedappticket.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C45A7E27D8A30900572977 /* libsdkencryptedappticket.dylib */; };
+		50C45AB127D8A30A00572977 /* libsteam_api.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C45A7F27D8A30900572977 /* libsteam_api.dylib */; };
+		50C45AB227D8A30A00572977 /* Steamworks.mm in Sources */ = {isa = PBXBuildFile; fileRef = 50C45A8127D8A30A00572977 /* Steamworks.mm */; };
+		50C45AB427D8A30E00572977 /* libsdkencryptedappticket.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 50C45A7E27D8A30900572977 /* libsdkencryptedappticket.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		50C45AB627D8A31000572977 /* libsteam_api.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 50C45A7F27D8A30900572977 /* libsteam_api.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		50C45ABB27D8B4CB00572977 /* steam_appid.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50C45AB927D8B3FD00572977 /* steam_appid.txt */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		50C45ABD27D8E9FC00572977 /* Steamworks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C45ABC27D8E9FC00572977 /* Steamworks.swift */; };
 		50D30FA027B92EDB007A9F66 /* OTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D30F9F27B92EDB007A9F66 /* OTP.swift */; };
 		50D30FA327B93359007A9F66 /* Embassy in Frameworks */ = {isa = PBXBuildFile; productRef = 50D30FA227B93359007A9F66 /* Embassy */; };
 		50DF1F8527CCB83300DE9DA5 /* FFXIVRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DF1F8427CCB83300DE9DA5 /* FFXIVRepo.swift */; };
@@ -53,6 +60,31 @@
 		50F4BD2427CFA70A00FB165D /* DXVK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F4BD2327CFA70A00FB165D /* DXVK.swift */; };
 		50F6CBAA27A975A000013301 /* Wine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F6CBA927A975A000013301 /* Wine.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		50C45AB527D8A30E00572977 /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 6;
+			files = (
+				50C45AB627D8A31000572977 /* libsteam_api.dylib in Embed Libraries */,
+				50C45AB427D8A30E00572977 /* libsdkencryptedappticket.dylib in Embed Libraries */,
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50C45AB827D8B3CA00572977 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 6;
+			files = (
+				50C45ABB27D8B4CB00572977 /* steam_appid.txt in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2B7C95D1277C6C6000A3CA89 /* SocialIntegration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialIntegration.swift; sourceTree = "<group>"; };
@@ -85,6 +117,58 @@
 		50BC73CE27C2BEAF006269AC /* ACT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACT.swift; sourceTree = "<group>"; };
 		50BC73D227C2C3F3006269AC /* GShade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GShade.swift; sourceTree = "<group>"; };
 		50BD278627785418002B0D1F /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		50C45A7E27D8A30900572977 /* libsdkencryptedappticket.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libsdkencryptedappticket.dylib; sourceTree = "<group>"; };
+		50C45A7F27D8A30900572977 /* libsteam_api.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libsteam_api.dylib; sourceTree = "<group>"; };
+		50C45A8027D8A30900572977 /* Steamworks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Steamworks.h; sourceTree = "<group>"; };
+		50C45A8127D8A30A00572977 /* Steamworks.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Steamworks.mm; sourceTree = "<group>"; };
+		50C45A8327D8A30A00572977 /* steam_api_flat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = steam_api_flat.h; sourceTree = "<group>"; };
+		50C45A8427D8A30A00572977 /* steam_api.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = steam_api.json; sourceTree = "<group>"; };
+		50C45A8527D8A30A00572977 /* isteamvideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = isteamvideo.h; sourceTree = "<group>"; };
+		50C45A8627D8A30A00572977 /* isteamremotestorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = isteamremotestorage.h; sourceTree = "<group>"; };
+		50C45A8727D8A30A00572977 /* isteammusicremote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = isteammusicremote.h; sourceTree = "<group>"; };
+		50C45A8827D8A30A00572977 /* isteamugc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = isteamugc.h; sourceTree = "<group>"; };
+		50C45A8927D8A30A00572977 /* isteamnetworkingutils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = isteamnetworkingutils.h; sourceTree = "<group>"; };
+		50C45A8A27D8A30A00572977 /* isteamapps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = isteamapps.h; sourceTree = "<group>"; };
+		50C45A8B27D8A30A00572977 /* steamnetworkingfakeip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = steamnetworkingfakeip.h; sourceTree = "<group>"; };
+		50C45A8C27D8A30A00572977 /* steam_api_common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = steam_api_common.h; sourceTree = "<group>"; };
+		50C45A8D27D8A30A00572977 /* isteamscreenshots.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = isteamscreenshots.h; sourceTree = "<group>"; };
+		50C45A8E27D8A30A00572977 /* isteamnetworkingsockets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = isteamnetworkingsockets.h; sourceTree = "<group>"; };
+		50C45A8F27D8A30A00572977 /* isteamhtmlsurface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = isteamhtmlsurface.h; sourceTree = "<group>"; };
+		50C45A9027D8A30A00572977 /* matchmakingtypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = matchmakingtypes.h; sourceTree = "<group>"; };
+		50C45A9127D8A30A00572977 /* steamps3params.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = steamps3params.h; sourceTree = "<group>"; };
+		50C45A9227D8A30A00572977 /* steamuniverse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = steamuniverse.h; sourceTree = "<group>"; };
+		50C45A9327D8A30A00572977 /* steamtypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = steamtypes.h; sourceTree = "<group>"; };
+		50C45A9427D8A30A00572977 /* isteamgameserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = isteamgameserver.h; sourceTree = "<group>"; };
+		50C45A9527D8A30A00572977 /* isteamuser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = isteamuser.h; sourceTree = "<group>"; };
+		50C45A9627D8A30A00572977 /* isteamremoteplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = isteamremoteplay.h; sourceTree = "<group>"; };
+		50C45A9727D8A30A00572977 /* steam_api.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = steam_api.h; sourceTree = "<group>"; };
+		50C45A9827D8A30A00572977 /* isteamgameserverstats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = isteamgameserverstats.h; sourceTree = "<group>"; };
+		50C45A9927D8A30A00572977 /* isteamps3overlayrenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = isteamps3overlayrenderer.h; sourceTree = "<group>"; };
+		50C45A9A27D8A30A00572977 /* isteamcontroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = isteamcontroller.h; sourceTree = "<group>"; };
+		50C45A9B27D8A30A00572977 /* isteammatchmaking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = isteammatchmaking.h; sourceTree = "<group>"; };
+		50C45A9C27D8A30A00572977 /* isteamfriends.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = isteamfriends.h; sourceTree = "<group>"; };
+		50C45A9D27D8A30A00572977 /* isteaminput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = isteaminput.h; sourceTree = "<group>"; };
+		50C45A9E27D8A30A00572977 /* isteamutils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = isteamutils.h; sourceTree = "<group>"; };
+		50C45A9F27D8A30A00572977 /* isteamapplist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = isteamapplist.h; sourceTree = "<group>"; };
+		50C45AA027D8A30A00572977 /* isteammusic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = isteammusic.h; sourceTree = "<group>"; };
+		50C45AA127D8A30A00572977 /* steamnetworkingtypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = steamnetworkingtypes.h; sourceTree = "<group>"; };
+		50C45AA227D8A30A00572977 /* isteaminventory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = isteaminventory.h; sourceTree = "<group>"; };
+		50C45AA327D8A30A00572977 /* steamencryptedappticket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = steamencryptedappticket.h; sourceTree = "<group>"; };
+		50C45AA427D8A30A00572977 /* steam_gameserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = steam_gameserver.h; sourceTree = "<group>"; };
+		50C45AA527D8A30A00572977 /* isteamnetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = isteamnetworking.h; sourceTree = "<group>"; };
+		50C45AA627D8A30A00572977 /* steamhttpenums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = steamhttpenums.h; sourceTree = "<group>"; };
+		50C45AA727D8A30A00572977 /* isteamclient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = isteamclient.h; sourceTree = "<group>"; };
+		50C45AA827D8A30A00572977 /* steam_api_internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = steam_api_internal.h; sourceTree = "<group>"; };
+		50C45AA927D8A30A00572977 /* steamclientpublic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = steamclientpublic.h; sourceTree = "<group>"; };
+		50C45AAA27D8A30A00572977 /* isteamappticket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = isteamappticket.h; sourceTree = "<group>"; };
+		50C45AAB27D8A30A00572977 /* isteamgamecoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = isteamgamecoordinator.h; sourceTree = "<group>"; };
+		50C45AAC27D8A30A00572977 /* isteamnetworkingmessages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = isteamnetworkingmessages.h; sourceTree = "<group>"; };
+		50C45AAD27D8A30A00572977 /* isteamparentalsettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = isteamparentalsettings.h; sourceTree = "<group>"; };
+		50C45AAE27D8A30A00572977 /* isteamhttp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = isteamhttp.h; sourceTree = "<group>"; };
+		50C45AAF27D8A30A00572977 /* isteamuserstats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = isteamuserstats.h; sourceTree = "<group>"; };
+		50C45AB727D8A33F00572977 /* XIV on Mac-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XIV on Mac-Bridging-Header.h"; sourceTree = "<group>"; };
+		50C45AB927D8B3FD00572977 /* steam_appid.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = steam_appid.txt; sourceTree = "<group>"; };
+		50C45ABC27D8E9FC00572977 /* Steamworks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Steamworks.swift; sourceTree = "<group>"; };
 		50D30F9F27B92EDB007A9F66 /* OTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTP.swift; sourceTree = "<group>"; };
 		50DF1F8427CCB83300DE9DA5 /* FFXIVRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFXIVRepo.swift; sourceTree = "<group>"; };
 		50DF45982795C53300E3D22F /* GShade */ = {isa = PBXFileReference; lastKnownFileType = folder; path = GShade; sourceTree = "<group>"; };
@@ -105,6 +189,8 @@
 				507C824527BE40CB004CC48B /* CryptoSwift in Frameworks */,
 				502A18E127AABF8400144AB9 /* KeychainAccess in Frameworks */,
 				2B7159BA277C529300945A24 /* SwordRPC in Frameworks */,
+				50C45AB027D8A30A00572977 /* libsdkencryptedappticket.dylib in Frameworks */,
+				50C45AB127D8A30A00572977 /* libsteam_api.dylib in Frameworks */,
 				50ED768727BA417200A348F9 /* SwiftOTP in Frameworks */,
 				50DF1F8827CD261A00DE9DA5 /* OrderedCollections in Frameworks */,
 				50D30FA327B93359007A9F66 /* Embassy in Frameworks */,
@@ -144,6 +230,7 @@
 				509A62D527A58966001B203A /* Launcher */,
 				50BC73D427C2C804006269AC /* AddOns */,
 				50511EC62770E085003A1E9F /* InstallerController.swift */,
+				50C45A0C27D8A08D00572977 /* Steamworks */,
 				50E5387A2779CF5C0038521A /* SettingsController.swift */,
 				50B2A2B427AC1BC400EFA0A2 /* LoginSheetController.swift */,
 				50BD278627785418002B0D1F /* Notifications.swift */,
@@ -189,6 +276,81 @@
 			path = AddOns;
 			sourceTree = "<group>";
 		};
+		50C45A0C27D8A08D00572977 /* Steamworks */ = {
+			isa = PBXGroup;
+			children = (
+				50C45A8227D8A30A00572977 /* Headers */,
+				50C45A7D27D8A30900572977 /* lib */,
+				50C45A8027D8A30900572977 /* Steamworks.h */,
+				50C45A8127D8A30A00572977 /* Steamworks.mm */,
+				50C45ABC27D8E9FC00572977 /* Steamworks.swift */,
+				50C45AB727D8A33F00572977 /* XIV on Mac-Bridging-Header.h */,
+				50C45AB927D8B3FD00572977 /* steam_appid.txt */,
+			);
+			path = Steamworks;
+			sourceTree = "<group>";
+		};
+		50C45A7D27D8A30900572977 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				50C45A7E27D8A30900572977 /* libsdkencryptedappticket.dylib */,
+				50C45A7F27D8A30900572977 /* libsteam_api.dylib */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		50C45A8227D8A30A00572977 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				50C45A8327D8A30A00572977 /* steam_api_flat.h */,
+				50C45A8427D8A30A00572977 /* steam_api.json */,
+				50C45A8527D8A30A00572977 /* isteamvideo.h */,
+				50C45A8627D8A30A00572977 /* isteamremotestorage.h */,
+				50C45A8727D8A30A00572977 /* isteammusicremote.h */,
+				50C45A8827D8A30A00572977 /* isteamugc.h */,
+				50C45A8927D8A30A00572977 /* isteamnetworkingutils.h */,
+				50C45A8A27D8A30A00572977 /* isteamapps.h */,
+				50C45A8B27D8A30A00572977 /* steamnetworkingfakeip.h */,
+				50C45A8C27D8A30A00572977 /* steam_api_common.h */,
+				50C45A8D27D8A30A00572977 /* isteamscreenshots.h */,
+				50C45A8E27D8A30A00572977 /* isteamnetworkingsockets.h */,
+				50C45A8F27D8A30A00572977 /* isteamhtmlsurface.h */,
+				50C45A9027D8A30A00572977 /* matchmakingtypes.h */,
+				50C45A9127D8A30A00572977 /* steamps3params.h */,
+				50C45A9227D8A30A00572977 /* steamuniverse.h */,
+				50C45A9327D8A30A00572977 /* steamtypes.h */,
+				50C45A9427D8A30A00572977 /* isteamgameserver.h */,
+				50C45A9527D8A30A00572977 /* isteamuser.h */,
+				50C45A9627D8A30A00572977 /* isteamremoteplay.h */,
+				50C45A9727D8A30A00572977 /* steam_api.h */,
+				50C45A9827D8A30A00572977 /* isteamgameserverstats.h */,
+				50C45A9927D8A30A00572977 /* isteamps3overlayrenderer.h */,
+				50C45A9A27D8A30A00572977 /* isteamcontroller.h */,
+				50C45A9B27D8A30A00572977 /* isteammatchmaking.h */,
+				50C45A9C27D8A30A00572977 /* isteamfriends.h */,
+				50C45A9D27D8A30A00572977 /* isteaminput.h */,
+				50C45A9E27D8A30A00572977 /* isteamutils.h */,
+				50C45A9F27D8A30A00572977 /* isteamapplist.h */,
+				50C45AA027D8A30A00572977 /* isteammusic.h */,
+				50C45AA127D8A30A00572977 /* steamnetworkingtypes.h */,
+				50C45AA227D8A30A00572977 /* isteaminventory.h */,
+				50C45AA327D8A30A00572977 /* steamencryptedappticket.h */,
+				50C45AA427D8A30A00572977 /* steam_gameserver.h */,
+				50C45AA527D8A30A00572977 /* isteamnetworking.h */,
+				50C45AA627D8A30A00572977 /* steamhttpenums.h */,
+				50C45AA727D8A30A00572977 /* isteamclient.h */,
+				50C45AA827D8A30A00572977 /* steam_api_internal.h */,
+				50C45AA927D8A30A00572977 /* steamclientpublic.h */,
+				50C45AAA27D8A30A00572977 /* isteamappticket.h */,
+				50C45AAB27D8A30A00572977 /* isteamgamecoordinator.h */,
+				50C45AAC27D8A30A00572977 /* isteamnetworkingmessages.h */,
+				50C45AAD27D8A30A00572977 /* isteamparentalsettings.h */,
+				50C45AAE27D8A30A00572977 /* isteamhttp.h */,
+				50C45AAF27D8A30A00572977 /* isteamuserstats.h */,
+			);
+			path = Headers;
+			sourceTree = "<group>";
+		};
 		50F8A5F827BFA93800ADC0CB /* Patcher */ = {
 			isa = PBXGroup;
 			children = (
@@ -211,6 +373,8 @@
 				50511EBE2770E085003A1E9F /* Frameworks */,
 				50511EBF2770E085003A1E9F /* Resources */,
 				5592FEB42778D3CB00FA304B /* Fix Codesign (Runtime) */,
+				50C45AB527D8A30E00572977 /* Embed Libraries */,
+				50C45AB827D8B3CA00572977 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -245,6 +409,7 @@
 				TargetAttributes = {
 					50511EC02770E085003A1E9F = {
 						CreatedOnToolsVersion = 13.2;
+						LastSwiftMigration = 1320;
 					};
 				};
 			};
@@ -325,6 +490,7 @@
 				50B2A2B927AC461800EFA0A2 /* Dalamud.swift in Sources */,
 				50BD278727785418002B0D1F /* Notifications.swift in Sources */,
 				502A18E727AAC12800144AB9 /* StartGame.swift in Sources */,
+				50C45AB227D8A30A00572977 /* Steamworks.mm in Sources */,
 				502A18DE27AA8EA700144AB9 /* SidParse.swift in Sources */,
 				5020957927C9611A00BD76CC /* Patch.swift in Sources */,
 				50DF1F8527CCB83300DE9DA5 /* FFXIVRepo.swift in Sources */,
@@ -348,6 +514,7 @@
 				502A18DA27AA8DD000144AB9 /* HTMLParser.swift in Sources */,
 				50ED0DB32773C619002E9854 /* Dotnet.swift in Sources */,
 				507607A127B149F600DDF3E6 /* Frontier.swift in Sources */,
+				50C45ABD27D8E9FC00572977 /* Steamworks.swift in Sources */,
 				50ED0DB52773CA8C002E9854 /* Networking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -490,11 +657,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "XIV on Mac/XIV_on_Mac.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = TQJJTJ6364;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -506,17 +674,25 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/XIV\\ on\\ Mac/wine/lib",
+					"$(PROJECT_DIR)/XIV\\ on\\ Mac/Steamworks/lib",
+					"$(PROJECT_DIR)/XIV\\ on\\ Mac/Steamworks/lib",
+					"$(PROJECT_DIR)/XIV\\ on\\ Mac/Steamworks/lib",
+					"$(PROJECT_DIR)/XIV\\ on\\ Mac/Steamworks/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 3.0.0;
+				MARKETING_VERSION = 3.0.2;
+				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = "dezent.XIV-on-Mac";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "XIV on Mac/Steamworks/XIV on Mac-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "";
 			};
@@ -527,11 +703,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "XIV on Mac/XIV_on_Mac.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = TQJJTJ6364;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -543,17 +720,24 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/XIV\\ on\\ Mac/wine/lib",
+					"$(PROJECT_DIR)/XIV\\ on\\ Mac/Steamworks/lib",
+					"$(PROJECT_DIR)/XIV\\ on\\ Mac/Steamworks/lib",
+					"$(PROJECT_DIR)/XIV\\ on\\ Mac/Steamworks/lib",
+					"$(PROJECT_DIR)/XIV\\ on\\ Mac/Steamworks/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 3.0.0;
+				MARKETING_VERSION = 3.0.2;
+				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = "dezent.XIV-on-Mac";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "XIV on Mac/Steamworks/XIV on Mac-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "";
 			};

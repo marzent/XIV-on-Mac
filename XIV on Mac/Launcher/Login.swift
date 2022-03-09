@@ -22,19 +22,32 @@ class LoginOperation: AsyncOperation {
         loginResult = result
         switch result {
         case .protocolError:
-            StartGameOperation.vanilla()
             let alert = NSAlert()
             alert.addButton(withTitle: "Ok")
             alert.alertStyle = .critical
             alert.messageText = "Login system error"
-            alert.informativeText = "The login servers did not present the login challenge the way we were expecting. It may have changed on the server. Please check for an update to XIV on Mac to fix this. In the meantime please use the default launcher."
+            alert.informativeText = "The login servers did not accept the request. Please make sure to have an active subsricption and select the correct license (Windows, Steam or Mac) in Settings."
             alert.runModal()
         case .incorrectCredentials:
             let alert = NSAlert()
             alert.addButton(withTitle: "Ok")
             alert.alertStyle = .critical
             alert.messageText = "Incorrect Credentials"
-            alert.informativeText = "The login servers did not accept the provided credentials. Please make sure to select the correct license (Windows, Steam or Mac) in Settings."
+            alert.informativeText = "The login servers did not accept the provided credentials. "
+            alert.runModal()
+        case .noSteamTicket:
+            let alert = NSAlert()
+            alert.addButton(withTitle: "Ok")
+            alert.alertStyle = .critical
+            alert.messageText = "Could not connect to Steam"
+            alert.informativeText = "XIV on Mac could not obtain a valid Steam Ticket for Final Fantasy XIV. Make sure Steam is runnning, you are logged in and that you linked your Steam Account."
+            alert.runModal()
+        case .steamUserError:
+            let alert = NSAlert()
+            alert.addButton(withTitle: "Ok")
+            alert.alertStyle = .critical
+            alert.messageText = "Steam Error"
+            alert.informativeText = "Ther is a mismatch between the provided username and Steam account."
             alert.runModal()
         case .bootUpdate:
             let alert = NSAlert()
