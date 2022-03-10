@@ -277,7 +277,7 @@ struct FFXIVLogin {
             return
         }
         if let squexid = squexid {
-            guard settings.credentials!.username == squexid else {
+            guard settings.credentials!.username.caseInsensitiveCompare(squexid) == .orderedSame else {
                 completion(.steamUserError)
                 return
             }

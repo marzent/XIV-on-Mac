@@ -47,7 +47,6 @@
 		50C45AB227D8A30A00572977 /* Steamworks.mm in Sources */ = {isa = PBXBuildFile; fileRef = 50C45A8127D8A30A00572977 /* Steamworks.mm */; };
 		50C45AB427D8A30E00572977 /* libsdkencryptedappticket.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 50C45A7E27D8A30900572977 /* libsdkencryptedappticket.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		50C45AB627D8A31000572977 /* libsteam_api.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 50C45A7F27D8A30900572977 /* libsteam_api.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		50C45ABB27D8B4CB00572977 /* steam_appid.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50C45AB927D8B3FD00572977 /* steam_appid.txt */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		50C45ABD27D8E9FC00572977 /* Steamworks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C45ABC27D8E9FC00572977 /* Steamworks.swift */; };
 		50D30FA027B92EDB007A9F66 /* OTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D30F9F27B92EDB007A9F66 /* OTP.swift */; };
 		50D30FA327B93359007A9F66 /* Embassy in Frameworks */ = {isa = PBXBuildFile; productRef = 50D30FA227B93359007A9F66 /* Embassy */; };
@@ -73,16 +72,6 @@
 				50C45AB427D8A30E00572977 /* libsdkencryptedappticket.dylib in Embed Libraries */,
 			);
 			name = "Embed Libraries";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		50C45AB827D8B3CA00572977 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 6;
-			files = (
-				50C45ABB27D8B4CB00572977 /* steam_appid.txt in CopyFiles */,
-			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -169,7 +158,6 @@
 		50C45AAE27D8A30A00572977 /* isteamhttp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = isteamhttp.h; sourceTree = "<group>"; };
 		50C45AAF27D8A30A00572977 /* isteamuserstats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = isteamuserstats.h; sourceTree = "<group>"; };
 		50C45AB727D8A33F00572977 /* XIV on Mac-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XIV on Mac-Bridging-Header.h"; sourceTree = "<group>"; };
-		50C45AB927D8B3FD00572977 /* steam_appid.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = steam_appid.txt; sourceTree = "<group>"; };
 		50C45ABC27D8E9FC00572977 /* Steamworks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Steamworks.swift; sourceTree = "<group>"; };
 		50D30F9F27B92EDB007A9F66 /* OTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTP.swift; sourceTree = "<group>"; };
 		50DF1F8427CCB83300DE9DA5 /* FFXIVRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFXIVRepo.swift; sourceTree = "<group>"; };
@@ -288,7 +276,6 @@
 				50C45A8127D8A30A00572977 /* Steamworks.mm */,
 				50C45ABC27D8E9FC00572977 /* Steamworks.swift */,
 				50C45AB727D8A33F00572977 /* XIV on Mac-Bridging-Header.h */,
-				50C45AB927D8B3FD00572977 /* steam_appid.txt */,
 			);
 			path = Steamworks;
 			sourceTree = "<group>";
@@ -377,7 +364,6 @@
 				50511EBF2770E085003A1E9F /* Resources */,
 				5592FEB42778D3CB00FA304B /* Fix Codesign (Runtime) */,
 				50C45AB527D8A30E00572977 /* Embed Libraries */,
-				50C45AB827D8B3CA00572977 /* CopyFiles */,
 				07B529DA27D98CBF005B78BF /* Fix Install Rosetta Script Permissions */,
 			);
 			buildRules = (
@@ -622,6 +608,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CODE_SIGN_FLAGS = "--deep";
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -678,6 +665,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_CODE_SIGN_FLAGS = "--deep";
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";

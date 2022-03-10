@@ -14,6 +14,8 @@
 
 - (id)init {
     if (self = [super init]) {
+        putenv((char*)"SteamAppId=39210");
+        putenv((char*)"SteamGameId=39210");
         _initSuccess = SteamAPI_Init();
     }
     return self;
