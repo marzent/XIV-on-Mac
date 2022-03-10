@@ -19,7 +19,7 @@ import Sparkle
         let storyboard = NSStoryboard(name: "Main", bundle: nil)
         actAutoLaunch.state = ACT.autoLaunch ? .on : .off
         bhAutoLaunch.state = ACT.autoLaunchBH ? .on : .off
-        Util.launch(exec: URL(fileURLWithPath: "/usr/sbin/softwareupdate"), args: ["--install-rosetta"])
+        checkForRosetta()
         sparkle.updater.checkForUpdatesInBackground()
         if DXVK.shouldUpdate {
             DXVK.install()
@@ -45,6 +45,30 @@ import Sparkle
     func application(_ sender: NSApplication, openFile filename: String) -> Bool {
         Wine.launch(args: [filename])
         return true
+    }
+    
+    func checkForRosetta() {
+    #if arch(arm64)
+        // No need to do any of this on Intel.
+        if (Util.rosettaIsInstalled())
+        {
+            let alert: NSAlert = NSAlert()
+            alert.messageText = NSLocalizedString("ROSETTA_REQUIRED", comment: "")
+            alert.informativeText = NSLocalizedString("ROSETTA_REQUIRED_INFORMATIVE", comment: "")
+            alert.alertStyle = .warning
+            alert.addButton(withTitle:NSLocalizedString("ROSETTA_REQUIRED_INSTALL_BUTTON", comment: ""))
+            alert.addButton(withTitle:NSLocalizedString("ROSETTA_REQUIRED_CANCEL_BUTTON", comment: ""))
+            let result = alert.runModal()
+            if result == .alertFirstButtonReturn {
+                let rosettaCommand = Bundle.main.url(forResource: "installRosetta", withExtension: "command")
+                if (rosettaCommand != nil) {
+                    // We could launch Terminal directly, but this should work more nicely for people who use 3rd party
+                    // terminal apps.
+                    Util.launch(exec: URL(fileURLWithPath: "/usr/bin/open"), args: [rosettaCommand!.path])
+                }
+            }
+        }
+    #endif
     }
     
     @IBAction func startACT(_ sender: Any) {

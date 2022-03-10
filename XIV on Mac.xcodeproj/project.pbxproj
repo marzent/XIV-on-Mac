@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07B529D527D97D2B005B78BF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 07B529D727D97D2B005B78BF /* Localizable.strings */; };
+		07B529D927D97F26005B78BF /* installRosetta.command in Resources */ = {isa = PBXBuildFile; fileRef = 07B529D827D97F26005B78BF /* installRosetta.command */; };
 		2B7159B7277C526000945A24 /* Socket in Frameworks */ = {isa = PBXBuildFile; productRef = 2B7159B6277C526000945A24 /* Socket */; };
 		2B7159BA277C529300945A24 /* SwordRPC in Frameworks */ = {isa = PBXBuildFile; productRef = 2B7159B9277C529300945A24 /* SwordRPC */; };
 		2B7C95D2277C6C6000A3CA89 /* SocialIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7C95D1277C6C6000A3CA89 /* SocialIntegration.swift */; };
@@ -87,6 +89,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		07B529D627D97D2B005B78BF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		07B529D827D97F26005B78BF /* installRosetta.command */ = {isa = PBXFileReference; lastKnownFileType = text; path = installRosetta.command; sourceTree = "<group>"; };
 		2B7C95D1277C6C6000A3CA89 /* SocialIntegration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialIntegration.swift; sourceTree = "<group>"; };
 		5020957827C9611A00BD76CC /* Patch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patch.swift; sourceTree = "<group>"; };
 		502A18D727AA8C0D00144AB9 /* FFXIVLoginServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFXIVLoginServices.swift; sourceTree = "<group>"; };
@@ -243,6 +247,8 @@
 				50DF45982795C53300E3D22F /* GShade */,
 				507D8F2027766F52000F0CB0 /* dxvk */,
 				5043E36B27728BA300E59127 /* wine */,
+				07B529D727D97D2B005B78BF /* Localizable.strings */,
+				07B529D827D97F26005B78BF /* installRosetta.command */,
 			);
 			path = "XIV on Mac";
 			sourceTree = "<group>";
@@ -375,6 +381,7 @@
 				5592FEB42778D3CB00FA304B /* Fix Codesign (Runtime) */,
 				50C45AB527D8A30E00572977 /* Embed Libraries */,
 				50C45AB827D8B3CA00572977 /* CopyFiles */,
+				07B529DA27D98CBF005B78BF /* Fix Install Rosetta Script Permissions */,
 			);
 			buildRules = (
 			);
@@ -451,6 +458,8 @@
 				50DF45992795C53300E3D22F /* GShade in Resources */,
 				50692C8B27B3E48B00945593 /* Credits.html in Resources */,
 				50511EC92770E087003A1E9F /* Assets.xcassets in Resources */,
+				07B529D527D97D2B005B78BF /* Localizable.strings in Resources */,
+				07B529D927D97F26005B78BF /* installRosetta.command in Resources */,
 				507D8F2127766F52000F0CB0 /* dxvk in Resources */,
 				50511ECC2770E087003A1E9F /* Main.storyboard in Resources */,
 				5043E36C27728BA300E59127 /* wine in Resources */,
@@ -460,6 +469,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		07B529DA27D98CBF005B78BF /* Fix Install Rosetta Script Permissions */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Fix Install Rosetta Script Permissions";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nchmod u+x \"${TARGET_BUILD_DIR}\"/\"${UNLOCALIZED_RESOURCES_FOLDER_PATH}\"/installRosetta.command\n";
+		};
 		5592FEB42778D3CB00FA304B /* Fix Codesign (Runtime) */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -522,6 +550,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		07B529D727D97D2B005B78BF /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				07B529D627D97D2B005B78BF /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		50511ECA2770E087003A1E9F /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
