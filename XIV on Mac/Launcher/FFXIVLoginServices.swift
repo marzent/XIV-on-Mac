@@ -197,6 +197,7 @@ private enum FFXIVLoginPageData {
     case success(storedSid: String, cookie: String?, squexid: String? = nil)
     case networkError
     case loginError
+    case steamError
 }
 
 
@@ -253,7 +254,7 @@ struct FFXIVLogin {
             return .success(storedSid: storedSid, cookie: cookie)
         }
         guard let steamRange = html.range(of: #"(?<=<input name="sqexid" type="hidden" value=").*(?=")"#, options: .regularExpression) else {
-            return .loginError
+            return .steamError
         }
         let squexid = String(html[steamRange])
         return .success(storedSid: storedSid, cookie: cookie, squexid: squexid)
@@ -422,6 +423,8 @@ extension FFXIVSettings {
             completion(.networkError)
         case .loginError:
             completion(.protocolError)
+        case .steamError:
+            completion(.noSteamTicket)
         case .success(let storedSid, let cookie, let squexid):
             login.getTempSID(storedSID: storedSid, cookie: cookie, squexid: squexid, completion: completion)
         }

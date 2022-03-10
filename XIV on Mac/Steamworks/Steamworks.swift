@@ -52,13 +52,12 @@ struct Steam {
             garbage[Int(i)] = randChar
             fuckedSum &+= UInt32(randChar)
         }
-        var finalBytes = withUnsafeBytes(of: ticketSum, Array.init) + rawTicket + garbage
+        var finalBytes = withUnsafeBytes(of: fuckedSum, Array.init) + Array(rawTicket.dropFirst(2)) + garbage
         finalBytes.swapAt(0, 1)
         let keyBytes = [UInt8](blowfishKey.utf8)
-        let bigEndianBytes = Util.swapByteOrder32(Util.zeroPadArray(array: finalBytes))
-        let cipherText = try! Blowfish(key: keyBytes, blockMode: ECB(), padding: .zeroPadding).encrypt(bigEndianBytes)
-        let bigEndianCipher = Data(Util.swapByteOrder32(cipherText)).squareBase64EncodedString()
-        let components = bigEndianCipher.components(withMaxLength: 300)
+        let cipherText = try! Blowfish(key: keyBytes, blockMode: ECB(), padding: .zeroPadding).encrypt(finalBytes)
+        let encodedCipher = Data(cipherText).squareBase64EncodedString()
+        let components = encodedCipher.components(withMaxLength: 300)
         let finalString = components.joined(separator: ",")
         return (text: finalString, length: finalString.count - (components.count - 1))
     }
