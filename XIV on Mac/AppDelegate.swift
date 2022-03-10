@@ -50,7 +50,7 @@ import Sparkle
     func checkForRosetta() {
     #if arch(arm64)
         // No need to do any of this on Intel.
-        if (Util.rosettaIsInstalled())
+        if (!Util.rosettaIsInstalled())
         {
             let alert: NSAlert = NSAlert()
             alert.messageText = NSLocalizedString("ROSETTA_REQUIRED", comment: "")

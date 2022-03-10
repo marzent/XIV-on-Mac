@@ -37,9 +37,9 @@ struct Steam {
         let ticketString = rawTicketSteam.map { String(format: "%02hhx", $0) }.joined()
         let rawTicket = ticketString.compactMap { $0.asciiValue } + [0]
         let ticketSum = rawTicket.map { UInt16($0) }.reduce(0, &+)
-        let ticketSumTruncated = Int16(truncating: NSNumber(value: ticketSum))
+        let ticketSumTruncated = Int32(Int16(truncating: NSNumber(value: ticketSum)))
         let time = 60 * ((steamworks.serverRealTime - 5) / 60);
-        let rand = CrtRand(seed: time ^ UInt32(ticketSumTruncated))
+        let rand = CrtRand(seed: time ^ UInt32(bitPattern: ticketSumTruncated))
         let blowfishKey = String(format: "%08x#un@e=x>", time)
         let numRandomBytes = (UInt64(rawTicket.count + 9) & 0xFFFFFFFFFFFFFFF8) - 2 - UInt64(rawTicket.count)
         let fuckedBytes = withUnsafeBytes(of: ticketSum, Array.init) + rawTicket
