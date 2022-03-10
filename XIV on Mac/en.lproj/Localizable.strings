@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  XIV on Mac
+
+  Created by Chris Backas on 3/9/22.
+  
+*/
+
+"ROSETTA_REQUIRED" = "Rosetta 2 is Required.";
+"ROSETTA_REQUIRED_INFORMATIVE" = "XIV On Mac requires Apple's Rosetta 2 to be installed in order to function on your Apple Silicon Mac. If you choose not to install, your game will not start. Would you like to start the Rosetta installer now?";
+"ROSETTA_REQUIRED_INSTALL_BUTTON" = "Install Rosetta";
+"ROSETTA_REQUIRED_CANCEL_BUTTON" = "Cancel";

@@ -1,6 +1,6 @@
-# XIV on Mac
-<img src="https://i.imgur.com/L2EETYx.png" alt="XIVonMAC" width="256" height="256"> 
-Wine Wrapper, Setup tool and alternative launcher for FFXIV on MacOS.
+<p align="center"> <img src="https://www.xivmac.com/sites/default/files/spreadit.png"></a> </p>
+<p align="center"> <img src="https://github.com/marzent/XIV-on-Mac/blob/main/xivonmacmoving.gif"></a> <br><br>
+Wine Wrapper, Setup tool and alternative launcher for FFXIV on MacOS.</p>
 
 ---
 
@@ -10,7 +10,6 @@ Wine Wrapper, Setup tool and alternative launcher for FFXIV on MacOS.
 <h3>Features:</h3>
 
 - User friendly setup
-- XIV Launcher Support w/ Dalamud Plugin injection
 - Mod support: ACT, Gshade, Dalamud and more!
 - Performance enhancments; Better FPS vs Native Mac launcher & Crossover, updated DXVK/MoltenVK libraries, PCAP support for ACT etc.
 - User Support in our <a href="https://discord.gg/dWN5bTC4Yv">Discord.</a> 
@@ -30,6 +29,15 @@ You can read our depreciated Crossover setup guide <a href="https://github.com/s
 <b>Marzent (ウサギ)</b> (Head Developer, Technical Support)<br>
 <b>Seathasky</b> (Project Manager, Support)<br>
 <b>FleetAdmiralButter</b> (Web Developer, Support)<br><br>
+
+---
+
+<b>Special Thanks:</b><br>
+
+  <h5><a href="https://github.com/Gcenx">Gcenx</a></h5><h6 style="margin-top: 0px;">For keeping wine single-handedly alive on macOS and helping out a lot with packaging our custom wine</h6>
+<h5><a href="https://github.com/goaaats">goaaats</a></h5><h6>For the amazing <a href="https://github.com/goatcorp/FFXIVQuickLauncher/">XIVLauncher</a> and cross-platform efforts, which allowed me to shamelessly port XIVLauncher.PatchInstaller to Mac for this project</h6>
+<h5><a href="https://github.com/redstrate">redstrate</a></h5><h6>For his <a href="https://github.com/redstrate/nativelauncher">nativelauncher</a> which made dalamud injection very easy to implement without .net framework and his <a href="https://github.com/redstrate/astra">Astra</a> launcher which inspired me to write a native Cocoa launcher in the first place</h6>
+<h5><a href="https://github.com/tyrone-sudeium">tyrone-sudeium</a></h5><h6>For his <a href="https://github.com/tyrone-sudeium/LaunchXIV">LaunchXIV</a> App, upon which most of the login flow code was based upon</h6>
 
 ---
 

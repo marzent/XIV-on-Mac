@@ -8,6 +8,10 @@
 import Cocoa
 
 class SettingsController: NSViewController {
+    @IBOutlet private var language: NSPopUpButton!
+    @IBOutlet private var license: NSPopUpButton!
+    @IBOutlet private var keepPatches: NSButton!
+    
     @IBOutlet private var devinfo: NSButton!
     @IBOutlet private var fps: NSButton!
     @IBOutlet private var frametimes: NSButton!
@@ -23,8 +27,15 @@ class SettingsController: NSViewController {
     @IBOutlet private var maxFPS: NSButton!
     @IBOutlet private var maxFPSField: NSTextField!
     @IBOutlet private var async: NSButton!
+    
     @IBOutlet private var esync: NSButton!
     @IBOutlet private var wineDebugField: NSTextField!
+    @IBOutlet private var wineRetina: NSButton!
+    
+    @IBOutlet private var dalamud: NSButton!
+    @IBOutlet private var delay: NSTextField!
+    @IBOutlet private var crowdSource: NSButton!
+    
     @IBOutlet weak var discord: NSButton!
     
     private var mapping: [String : NSButton] = [:]
@@ -74,35 +85,58 @@ class SettingsController: NSViewController {
         saveState()
     }
     
+    @IBAction func updateRetina(_ sender: NSButton) {
+        Wine.retina = (sender.state == NSControl.StateValue.on)
+    }
+    
     func updateView() {
-        for (option, enabled) in Util.dxvkOptions.hud {
+        for (option, enabled) in DXVK.options.hud {
             mapping[option]?.state = enabled ? NSControl.StateValue.on : NSControl.StateValue.off
         }
-        async.state = Util.dxvkOptions.async ? NSControl.StateValue.on : NSControl.StateValue.off
-        let limited = Util.dxvkOptions.maxFramerate != 0
+        async.state = DXVK.options.async ? NSControl.StateValue.on : NSControl.StateValue.off
+        let limited = DXVK.options.maxFramerate != 0
         maxFPS.state = limited ? NSControl.StateValue.on : NSControl.StateValue.off
         maxFPSField.isEnabled = limited
-        maxFPSField.stringValue = String(Util.dxvkOptions.maxFramerate)
+        maxFPSField.stringValue = String(DXVK.options.maxFramerate)
+        scale.doubleValue = DXVK.options.hudScale
+        
         discord.state = SocialIntegration.discord.enabled ? NSControl.StateValue.on : NSControl.StateValue.off
-        scale.doubleValue = Util.dxvkOptions.hudScale
-        esync.state = Util.esync ? NSControl.StateValue.on : NSControl.StateValue.off
-        wineDebugField.stringValue = Util.wineDebug
+        
+        esync.state = Wine.esync ? NSControl.StateValue.on : NSControl.StateValue.off
+        wineRetina.state = Wine.retina ? NSControl.StateValue.on : NSControl.StateValue.off
+        wineDebugField.stringValue = Wine.debug
+        
+        dalamud.state = FFXIVSettings.dalamud ? NSControl.StateValue.on : NSControl.StateValue.off
+        crowdSource.state = Dalamud.mbCollection ? NSControl.StateValue.on : NSControl.StateValue.off
+        delay.stringValue = "\(Dalamud.delay)"
+        
+        language.selectItem(at: Int(FFXIVSettings.language.rawValue))
+        license.selectItem(at: Int(FFXIVSettings.platform.rawValue))
+        keepPatches.state = Patch.keep ? NSControl.StateValue.on : NSControl.StateValue.off
     }
     
     func saveState() {
         for (name, button) in mapping {
-            Util.dxvkOptions.hud[name] = (button.state == NSControl.StateValue.on) ? true : false
+            DXVK.options.hud[name] = (button.state == NSControl.StateValue.on) ? true : false
         }
-        Util.dxvkOptions.async = (async.state == NSControl.StateValue.on) ? true : false
-        Util.dxvkOptions.maxFramerate = maxFPSField.isEnabled ? Int(maxFPSField.stringValue) ?? 0 : 0
-        Util.dxvkOptions.hudScale = scale.doubleValue
-        Util.dxvkOptions.save()
+        DXVK.options.async = (async.state == NSControl.StateValue.on) ? true : false
+        DXVK.options.maxFramerate = maxFPSField.isEnabled ? Int(maxFPSField.stringValue) ?? 0 : 0
+        DXVK.options.hudScale = scale.doubleValue
+        DXVK.options.save()
         
-        Util.esync = (esync.state == NSControl.StateValue.on) ? true : false
-        Util.wineDebug = wineDebugField.stringValue
+        Wine.esync = (esync.state == NSControl.StateValue.on) ? true : false
+        Wine.debug = wineDebugField.stringValue
         
         SocialIntegration.discord.enabled = (discord.state == NSControl.StateValue.on) ? true : false
         SocialIntegration.discord.save()
+        
+        FFXIVSettings.dalamud = (dalamud.state == NSControl.StateValue.on) ? true : false
+        Dalamud.mbCollection = (crowdSource.state == NSControl.StateValue.on) ? true : false
+        Dalamud.delay = Double(delay.stringValue) ?? 7.0
+        
+        FFXIVSettings.language = FFXIVLanguage(rawValue: UInt32(language.indexOfSelectedItem)) ?? .english
+        FFXIVSettings.platform = FFXIVPlatform(rawValue: UInt32(license.indexOfSelectedItem)) ?? .mac
+        Patch.keep = (keepPatches.state == NSControl.StateValue.on) ? true : false
     }
 
 }

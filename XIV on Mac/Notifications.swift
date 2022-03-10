@@ -8,10 +8,13 @@
 import Foundation
 
 extension Notification.Name {
+    static let startInstall = Notification.Name("StartInstallNotification")
     static let depInstall = Notification.Name("DepInstallNotification")
-    static let depInstallDone = Notification.Name("DepInstallDoneNotification")
-    static let depDownloadDone = Notification.Name("DepDownloadDoneNotification")
+    static let installDone = Notification.Name("InstallDoneNotification")
     static let installStatusUpdate = Notification.Name("InstallStatusUpdateNotification")
+    static let loginInfo = Notification.Name("LoginInfoNotification")
+    static let gameStarted = Notification.Name("GameStartedNotification")
+    static let otpPush = Notification.Name("OTPPushNotification")
 }
 
 extension Notification {

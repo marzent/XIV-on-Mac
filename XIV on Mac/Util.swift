@@ -6,16 +6,15 @@
 //
 
 import Cocoa
+import CryptoSwift
 
 struct Util {
     @available(*, unavailable) private init() {}
     
     static let applicationSupport = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).last!.appendingPathComponent("XIV on Mac")
-    static let wine = Bundle.main.url(forResource: "wine64", withExtension: nil, subdirectory: "wine/bin")!
-    static let wineserver = Bundle.main.url(forResource: "wineserver", withExtension: nil, subdirectory: "wine/bin")!
-    static let prefix = applicationSupport.appendingPathComponent("game")
     static let cache = applicationSupport.appendingPathComponent("cache")
-    
+    static let appleReceiptsPath = URL(fileURLWithPath: "/Library/Apple/System/Library/Receipts/")
+
     class Log: TextOutputStream {
         var logName: String
         
@@ -39,7 +38,6 @@ struct Util {
     }
 
     static var logger = Log(name: "app.log")
-    static var wineLogger = Log(name: "wine.log")
     
     static func make(dir : String) {
         if !FileManager.default.fileExists(atPath: dir) {
@@ -52,8 +50,13 @@ struct Util {
         }
     }
     
+    static func make(dir : URL) {
+        make(dir: dir.path)
+    }
+    
     static func launch(exec: URL, args: [String], blocking: Bool = false) {
         let task = Process()
+        task.qualityOfService = QualityOfService.userInteractive
         task.environment = enviroment
         task.executableURL = exec
         task.arguments = args
@@ -63,7 +66,7 @@ struct Util {
         let outHandle = pipe.fileHandleForReading
         outHandle.readabilityHandler = { pipe in
             if let line = String(data: pipe.availableData, encoding: String.Encoding.utf8) {
-                print(line, to: &wineLogger)
+                print(line, to: &Wine.logger)
             } else {
                 print("Error decoding data: \(pipe.availableData)\n", to: &logger)
             }
@@ -79,127 +82,50 @@ struct Util {
         }
     }
     
-    static func launchWine(args: [String], blocking: Bool = false) {
-        launch(exec: wine, args : args, blocking: blocking)
-    }
-    
-    private static let launchSettingKey = "LaunchPath"
-    static var launchPath: String {
-        get {
-            return Util.getSetting(settingKey: launchSettingKey, defaultValue: "")
-        }
-        set(newPath) {
-            UserDefaults.standard.set(newPath, forKey: launchSettingKey)
-        }
-    }
-    
-    private static let esyncSettingKey = "EsyncSetting"
-    static var esync: Bool {
-        get {
-            return Util.getSetting(settingKey: esyncSettingKey, defaultValue: true)
-        }
-        set(newPath) {
-            UserDefaults.standard.set(newPath, forKey: esyncSettingKey)
-        }
-    }
-    
-    private static let wineDebugSettingKey = "WineDebugSetting"
-    static var wineDebug: String {
-        get {
-            return Util.getSetting(settingKey: wineDebugSettingKey, defaultValue: "-all")
-        }
-        set(newPath) {
-            UserDefaults.standard.set(newPath, forKey: wineDebugSettingKey)
-        }
-    }
-    
-    static func launchGame(blocking: Bool = false) {
-        launchWine(args : [launchPath], blocking: blocking)
-        DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 10.0) {
-            waitWine()
-            DispatchQueue.main.async {
-                NSApplication.shared.terminate(nil)
-            }
-        }
-    }
-    
-    static func killWine() {
-        launch(exec: wineserver, args: ["-k"], blocking: true)
-    }
-    
-    static func waitWine() {
-        launch(exec: wineserver, args: ["-w"], blocking: true)
-    }
-    
-    class DXVK: Codable {
-        static let settingKey = "DXVK_OPTIONS"
-        var async = true
-        var maxFramerate = 0
-        var hud = ["devinfo": false, //Displays the name of the GPU and the driver version.
-                   "fps": false, //Shows the current frame rate.
-                   "frametimes": false, //Shows a frame time graph.
-                   "submissions": false, //Shows the number of command buffers submitted per frame.
-                   "drawcalls": false, //Shows the number of draw calls and render passes per frame.
-                   "pipelines": false, //Shows the total number of graphics and compute pipelines.
-                   "memory": false, //Shows the amount of device memory allocated and used.
-                   "gpuload": false, //Shows estimated GPU load. May be inaccurate.
-                   "version": false, //Shows DXVK version.
-                   "api": false, //Shows the D3D feature level used by the application.
-                   "compiler": true] //Shows shader compiler activity
-        var hudScale = 1.0
-        
-        
-        init() {
-            if let data = UserDefaults.standard.value(forKey: Util.DXVK.settingKey) as? Data {
-                let s = try? PropertyListDecoder().decode(Util.DXVK.self, from: data)
-                async = s!.async
-                maxFramerate = s!.maxFramerate
-                hud = s!.hud
-                hudScale = s!.hudScale
-                
+    static func launchToString(exec: URL, args: [String]) -> String {
+        var ret = ""
+        let task = Process()
+        task.qualityOfService = QualityOfService.userInteractive
+        task.environment = enviroment
+        task.executableURL = exec
+        task.arguments = args
+        let pipe = Pipe()
+        task.standardOutput = pipe
+        task.standardError = pipe
+        let outHandle = pipe.fileHandleForReading
+        outHandle.readabilityHandler = { pipe in
+            if let line = String(data: pipe.availableData, encoding: String.Encoding.utf8) {
+                ret.append(contentsOf: line)
             } else {
-                save()
+                print("Error decoding data: \(pipe.availableData)\n", to: &logger)
             }
         }
-        
-        func getAsync() -> String {
-            return self.async ? "1": "0"
+        do {
+            try task.run()
         }
-        
-        func getMaxFramerate() -> String {
-            return String(self.maxFramerate)
+        catch {
+            print("Error starting subprocess", to: &logger)
         }
-        
-        func getHud() -> String {
-            var params = ["scale=\(hudScale)"]
-            for (option, enabled) in hud {
-                if enabled {
-                    params.append(option)
-                }
-            }
-            return params.joined(separator: ",")
-        }
-        
-        func save() {
-            UserDefaults.standard.set(try? PropertyListEncoder().encode(self), forKey: Util.DXVK.settingKey)
-        }
+        task.waitUntilExit()
+        return ret
     }
-    
-    
-    static var dxvkOptions = DXVK()
     
     static var enviroment : [String : String] {
         var env = ProcessInfo.processInfo.environment
+        if FFXIVSettings.platform == .steam {
+            env["IS_FFXIV_LAUNCH_FROM_STEAM"] = "1"
+        }
         env["LANG"] = "en_US" //needed to run when system language is set to 日本語
-        env["WINEESYNC"] = esync ? "1" : "0"
-        env["WINEPREFIX"] = prefix.path
-        env["WINEDEBUG"] = wineDebug
-        env["DXVK_HUD"] = dxvkOptions.getHud()
-        env["DXVK_ASYNC"] = dxvkOptions.getAsync()
-        env["DXVK_FRAME_RATE"] = dxvkOptions.getMaxFramerate()
+        env["WINEESYNC"] = Wine.esync ? "1" : "0"
+        env["WINEPREFIX"] = Wine.prefix.path
+        env["WINEDEBUG"] = Wine.debug
+        env["DXVK_HUD"] = DXVK.options.getHud()
+        env["DXVK_ASYNC"] = DXVK.options.getAsync()
+        env["DXVK_FRAME_RATE"] = DXVK.options.getMaxFramerate()
+        env["DALAMUD_RUNTIME"] = "C:\\Program Files\\XIV on Mac\\dotNET Runtime"
         env["XL_WINEONLINUX"] = "true"
         env["XL_WINEONMAC"] = "true"
-        env["MVK_CONFIG_FULL_IMAGE_VIEW_SWIZZLE"] = "0"
+        env["MVK_CONFIG_FULL_IMAGE_VIEW_SWIZZLE"] = "1"
         env["MVK_CONFIG_USE_METAL_ARGUMENT_BUFFERS"] = "1"
         //env["DYLD_PRINT_LIBRARIES"] = "YES"
         env["DYLD_FALLBACK_LIBRARY_PATH"] = Bundle.main.url(forResource: "lib", withExtension: "", subdirectory: "wine")!.path + ":/opt/local/lib:/usr/local/lib:/usr/lib:/usr/libexec:/usr/lib/system:/opt/X11/lib"
@@ -215,5 +141,44 @@ struct Util {
             return defaultValue
         }
         return setting as! T
+    }
+    
+    static func zeroPadArray(array: [UInt8]) -> [UInt8] {
+        let zeroes = Blowfish.blockSize - (array.count % Blowfish.blockSize)
+        if zeroes > 0 {
+            return array + [UInt8](repeating: 0, count: zeroes)
+        }
+        return array
+    }
+    
+    static func swapByteOrder32(_ bytes: [UInt8]) -> [UInt8]{
+        var mbytes = bytes
+        for i in stride(from: 0, to: bytes.count, by: 4) {
+            for j in 0 ..< 4 {
+                mbytes[i + j] = bytes[i + 3 - j]
+            }
+        }
+        return mbytes
+    }
+    
+    static func quit() {
+        let app = NSApplication.shared
+        for window in app.windows {
+            window.close()
+        }
+        app.terminate(nil)
+    }
+    
+    static func rosettaIsInstalled() -> Bool {
+    #if arch(arm64)
+        // Rosetta's package ID is fixed, so it's safer to check for its receipt than to look for any individual file it's known to install.
+        let rosettaReceiptPath = appleReceiptsPath.appendingPathComponent("com.apple.pkg.RosettaUpdateAuto.plist");
+        do{
+            let receiptExists : Bool = try rosettaReceiptPath.checkResourceIsReachable()
+            return receiptExists
+        }catch{
+        }
+    #endif
+        return false
     }
 }
