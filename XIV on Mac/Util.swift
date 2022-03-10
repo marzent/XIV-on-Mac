@@ -13,7 +13,8 @@ struct Util {
     
     static let applicationSupport = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).last!.appendingPathComponent("XIV on Mac")
     static let cache = applicationSupport.appendingPathComponent("cache")
-    
+    static let appleReceiptsPath = URL(fileURLWithPath: "/Library/Apple/System/Library/Receipts/")
+
     class Log: TextOutputStream {
         var logName: String
         
@@ -166,5 +167,18 @@ struct Util {
             window.close()
         }
         app.terminate(nil)
+    }
+    
+    static func rosettaIsInstalled() -> Bool {
+    #if arch(arm64)
+        // Rosetta's package ID is fixed, so it's safer to check for its receipt than to look for any individual file it's known to install.
+        let rosettaReceiptPath = appleReceiptsPath.appendingPathComponent("com.apple.pkg.RosettaUpdateAuto.plist");
+        do{
+            let receiptExists : Bool = try rosettaReceiptPath.checkResourceIsReachable()
+            return receiptExists
+        }catch{
+        }
+    #endif
+        return false
     }
 }
