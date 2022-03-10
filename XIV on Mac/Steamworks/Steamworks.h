@@ -12,6 +12,7 @@
 @interface Steamworks : NSObject
 @property (readonly, copy) NSData *authSessionTicket;
 @property (readonly) uint32 serverRealTime;
+@property (readonly) bool initSuccess;
 @end
 
 #endif /* Header_h */

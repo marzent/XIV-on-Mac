@@ -29,16 +29,21 @@ struct DXVK {
         let system32 = Wine.prefix.appendingPathComponent("drive_c/windows/system32")
         let fm = FileManager.default
         for dll in dx_dlls {
-            do {
-                let dll_path = system32.appendingPathComponent(dll).path
-                if fm.fileExists(atPath: dll_path) {
+            Wine.override(dll: dll.components(separatedBy: ".")[0], type: "native")
+            let dll_path = system32.appendingPathComponent(dll).path
+            if fm.fileExists(atPath: dll_path) {
+                do {
                     try fm.removeItem(atPath: dll_path)
                 }
+                catch {
+                    print("DXVK: error deleting wine dx dll \(dll_path)\n\(error)\n", to: &Util.logger)
+                }
+            }
+            do {
                 try fm.copyItem(atPath: dxvk_path.appendingPathComponent(dll).path, toPath: dll_path)
-                Wine.override(dll: dll.components(separatedBy: ".")[0], type: "native")
             }
             catch {
-                print("error setting up dxvk dll \(dll)\n", to: &Util.logger)
+                print("DXVK: error copying dxvk dll \(error)\n", to: &Util.logger)
             }
         }
     }

@@ -77,12 +77,12 @@ class StartGameOperation: AsyncOperation {
         let args = [
             ("/DEV.DataPathType", "1"),
             ("/DEV.MaxEntitledExpansionID", "\(settings.expansionId.rawValue)"),
-            ("/DEV.TestSID", "\(sid)"),
+            ("/DEV.TestSID", sid),
             ("/DEV.UseSqPack", "1"),
             ("/SYS.Region", "\(settings.region.rawValue)"),
             ("/language", "\(settings.language.rawValue)"),
             ("/IsSteam", settings.platform == .steam ? "1" : "0"),
-            ("/ver", "\(FFXIVRepo.game.ver)")
+            ("/ver", FFXIVRepo.game.ver)
         ]
         return [
             app.dx11URL.path,

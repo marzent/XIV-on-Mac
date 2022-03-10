@@ -14,7 +14,7 @@
 
 - (id)init {
     if (self = [super init]) {
-        SteamAPI_Init();
+        _initSuccess = SteamAPI_Init();
     }
     return self;
 }
@@ -24,6 +24,11 @@
 }
 
 - (NSData *)authSessionTicket {
+    if (!_initSuccess) {
+        if (!(_initSuccess = SteamAPI_Init())) {
+            return NULL;
+        }
+    }
     HAuthTicket m_hAuthTicket;
     char rgchToken[1024];
     uint32 unTokenLen = 0;
@@ -34,6 +39,8 @@
 }
 
 - (uint32)serverRealTime {
+    if (!_initSuccess)
+        return 0;
     return SteamUtils()->GetServerRealTime();
 }
 

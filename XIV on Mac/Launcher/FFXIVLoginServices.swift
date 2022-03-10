@@ -216,7 +216,7 @@ struct FFXIVLogin {
         return URL(string: base + steamParams)!
     }
     
-    var patchURL: URL {
+    static var patchURL: URL {
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone(identifier: "UTC")
         dateFormatter.dateFormat = "yyyy-MM-dd-HH-mm"
@@ -252,7 +252,7 @@ struct FFXIVLogin {
         guard settings.platform == .steam else {
             return .success(storedSid: storedSid, cookie: cookie)
         }
-        guard let steamRange = html.range(of: #"(?<=<input name="sqexid" type="hidden" value=").*(?=">)"#, options: .regularExpression) else {
+        guard let steamRange = html.range(of: #"(?<=<input name="sqexid" type="hidden" value=").*(?=")"#, options: .regularExpression) else {
             return .loginError
         }
         let squexid = String(html[steamRange])
@@ -359,7 +359,7 @@ struct FFXIVLogin {
         }
     }
     
-    fileprivate func getBootPatch(completion: @escaping (([Patch]) -> Void))  {
+    fileprivate static func getBootPatch(completion: @escaping (([Patch]) -> Void))  {
         let headers: OrderedDictionary = [
             "User-Agent": FFXIVLogin.userAgentPatch,
             "Host"      : "patch-bootver.ffxiv.com"
@@ -398,8 +398,7 @@ extension FFXIVSettings {
             completion(nil)
             return
         }
-        let login = FFXIVLogin()
-        login.getBootPatch() { patches in
+        FFXIVLogin.getBootPatch() { patches in
             completion(patches.isEmpty ? nil : patches)
         }
     }

@@ -19,7 +19,6 @@
 		502A18DE27AA8EA700144AB9 /* SidParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A18DD27AA8EA700144AB9 /* SidParse.swift */; };
 		502A18E127AABF8400144AB9 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 502A18E027AABF8400144AB9 /* KeychainAccess */; };
 		502A18E327AABFED00144AB9 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A18E227AABFED00144AB9 /* AsyncOperation.swift */; };
-		502A18E527AAC05C00144AB9 /* StoredParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A18E427AAC05C00144AB9 /* StoredParse.swift */; };
 		502A18E727AAC12800144AB9 /* StartGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A18E627AAC12800144AB9 /* StartGame.swift */; };
 		502A18E927AACEFE00144AB9 /* LaunchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A18E827AACEFE00144AB9 /* LaunchController.swift */; };
 		5043E36C27728BA300E59127 /* wine in Resources */ = {isa = PBXBuildFile; fileRef = 5043E36B27728BA300E59127 /* wine */; };
@@ -98,7 +97,6 @@
 		502A18DB27AA8E3E00144AB9 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		502A18DD27AA8EA700144AB9 /* SidParse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidParse.swift; sourceTree = "<group>"; };
 		502A18E227AABFED00144AB9 /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
-		502A18E427AAC05C00144AB9 /* StoredParse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredParse.swift; sourceTree = "<group>"; };
 		502A18E627AAC12800144AB9 /* StartGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGame.swift; sourceTree = "<group>"; };
 		502A18E827AACEFE00144AB9 /* LaunchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchController.swift; sourceTree = "<group>"; };
 		5043E36B27728BA300E59127 /* wine */ = {isa = PBXFileReference; lastKnownFileType = folder; path = wine; sourceTree = "<group>"; };
@@ -266,7 +264,6 @@
 				507607A027B149F600DDF3E6 /* Frontier.swift */,
 				502A18DD27AA8EA700144AB9 /* SidParse.swift */,
 				502A18E627AAC12800144AB9 /* StartGame.swift */,
-				502A18E427AAC05C00144AB9 /* StoredParse.swift */,
 			);
 			path = Launcher;
 			sourceTree = "<group>";
@@ -535,7 +532,6 @@
 				50B2A2B527AC1BC400EFA0A2 /* LoginSheetController.swift in Sources */,
 				502A18E927AACEFE00144AB9 /* LaunchController.swift in Sources */,
 				502A18D827AA8C0D00144AB9 /* FFXIVLoginServices.swift in Sources */,
-				502A18E527AAC05C00144AB9 /* StoredParse.swift in Sources */,
 				50E5387B2779CF5C0038521A /* SettingsController.swift in Sources */,
 				50BC73CF27C2BEAF006269AC /* ACT.swift in Sources */,
 				50511EC52770E085003A1E9F /* AppDelegate.swift in Sources */,
