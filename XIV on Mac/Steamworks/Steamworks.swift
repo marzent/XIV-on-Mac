@@ -11,6 +11,18 @@ import CryptoSwift
 struct Steam {
     @available(*, unavailable) private init() {}
     
+    private static var steamworks: Steamworks?
+    
+    static func initAPI() {
+        let appId = FFXIVSettings.freeTrial ? 312060 : 39210
+        if let steamworks = steamworks {
+            steamworks.reinit(withAppId: appId)
+        }
+        else {
+            steamworks = Steamworks(appId: appId)
+        }
+    }
+    
     private class CrtRand {
         internal init(seed: UInt32) {
             self.seed = seed
@@ -26,26 +38,25 @@ struct Steam {
     
     typealias Ticket = (text: String, length: Int)
     
-    private static let steamworks = Steamworks()
     
     static var ticket: Ticket? {
         //snoat was here
         //all credits go to the XL team for reverse engineering this, I do not even own a steam license :)
-        guard let rawTicketSteam = steamworks.authSessionTicket else {
+        guard let rawTicketSteam = steamworks?.authSessionTicket else {
             return nil
         }
         let ticketString = rawTicketSteam.map { String(format: "%02hhx", $0) }.joined()
         let rawTicket = ticketString.compactMap { $0.asciiValue } + [0]
         let ticketSum = rawTicket.map { UInt16($0) }.reduce(0, &+)
-        let ticketSumTruncated = Int32(Int16(truncating: NSNumber(value: ticketSum)))
-        let time = 60 * ((steamworks.serverRealTime - 5) / 60);
+        let ticketSumTruncated = Int32(Int16(truncatingIfNeeded: ticketSum))
+        let time = 60 * ((steamworks!.serverRealTime - 5) / 60);
         let rand = CrtRand(seed: time ^ UInt32(bitPattern: ticketSumTruncated))
         let blowfishKey = String(format: "%08x#un@e=x>", time)
         let numRandomBytes = (UInt64(rawTicket.count + 9) & 0xFFFFFFFFFFFFFFF8) - 2 - UInt64(rawTicket.count)
         let fuckedBytes = withUnsafeBytes(of: ticketSum, Array.init) + rawTicket
         let fuckedGarbageAlphabet = Array("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-_")
             .compactMap { $0.asciiValue }
-        var fuckedSum = Data(bytes: fuckedBytes, count: 4).toUInt32(start: 0)
+        var fuckedSum = Data(bytes: fuckedBytes, count: 4).toUInt32()
         var garbage = [UInt8](repeating: 0, count: Int(numRandomBytes))
         for i in 0..<numRandomBytes {
             let randChar = fuckedGarbageAlphabet[Int(Int32(fuckedSum &+ rand.number) & 0x3F)]
@@ -65,12 +76,10 @@ struct Steam {
 }
 
 extension Data {
-    func toUInt32(start: Int) -> UInt32 {
-      let intBits = self.withUnsafeBytes({(bytePointer: UnsafePointer<UInt8>) -> UInt32 in
-        bytePointer.advanced(by: start).withMemoryRebound(to: UInt32.self, capacity: 4) { pointer in
-          return pointer.pointee
-        }
-      })
+    func toUInt32() -> UInt32 {
+        let intBits = self.bytes.withUnsafeBufferPointer {
+            ($0.baseAddress!.withMemoryRebound(to: UInt32.self, capacity: 1) { $0 })
+        }.pointee
       return UInt32(littleEndian: intBits)
     }
     

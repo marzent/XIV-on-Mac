@@ -73,6 +73,17 @@ public struct FFXIVSettings {
         }
     }
     
+    private static let freeTrialKey = "FreeTrial"
+    static var freeTrial: Bool {
+        get {
+            storage.bool(forKey: freeTrialKey)
+        }
+        set {
+            storage.set(newValue, forKey: freeTrialKey)
+            Steam.initAPI()
+        }
+    }
+    
     private static let usesOneTimePasswordKey = "UsesOneTimePassword"
     static var usesOneTimePassword: Bool {
         get {

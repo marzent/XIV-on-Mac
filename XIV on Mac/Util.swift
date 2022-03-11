@@ -54,9 +54,9 @@ struct Util {
         make(dir: dir.path)
     }
     
-    static func launch(exec: URL, args: [String], blocking: Bool = false) {
+    static func launch(exec: URL, args: [String], blocking: Bool = false, wineLog: Bool = false) {
         let task = Process()
-        task.qualityOfService = QualityOfService.userInteractive
+        task.qualityOfService = .userInteractive
         task.environment = enviroment
         task.executableURL = exec
         task.arguments = args
@@ -66,7 +66,7 @@ struct Util {
         let outHandle = pipe.fileHandleForReading
         outHandle.readabilityHandler = { pipe in
             if let line = String(data: pipe.availableData, encoding: String.Encoding.utf8) {
-                print(line, to: &Wine.logger)
+                wineLog ? print(line, to: &Wine.logger) : print(line, to: &logger)
             } else {
                 print("Error decoding data: \(pipe.availableData)\n", to: &logger)
             }
@@ -76,6 +76,11 @@ struct Util {
         }
         catch {
             print("Error starting subprocess", to: &logger)
+            return
+        }
+        DispatchQueue.global(qos: .background).async {
+            task.waitUntilExit()
+            try? outHandle.close()
         }
         if blocking {
             task.waitUntilExit()
@@ -107,6 +112,7 @@ struct Util {
             print("Error starting subprocess", to: &logger)
         }
         task.waitUntilExit()
+        try? outHandle.close()
         return ret
     }
     

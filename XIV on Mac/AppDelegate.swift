@@ -20,6 +20,7 @@ import Sparkle
         actAutoLaunch.state = ACT.autoLaunch ? .on : .off
         bhAutoLaunch.state = ACT.autoLaunchBH ? .on : .off
         checkForRosetta()
+        Steam.initAPI()
         sparkle.updater.checkForUpdatesInBackground()
         if DXVK.shouldUpdate {
             DXVK.install()

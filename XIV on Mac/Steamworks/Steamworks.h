@@ -13,6 +13,12 @@
 @property (readonly, copy) NSData *authSessionTicket;
 @property (readonly) uint32 serverRealTime;
 @property (readonly) bool initSuccess;
+@property (readonly) char *appStr;
+@property (readonly) char *gameStr;
+
+- (instancetype)initWithAppId: (long)appId;
+- (void)reinitWithAppId: (long)appId;
+
 @end
 
 #endif /* Header_h */

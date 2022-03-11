@@ -12,13 +12,26 @@
 
 @implementation Steamworks : NSObject
 
-- (id)init {
+- (instancetype)initWithAppId: (long)appId {
     if (self = [super init]) {
-        putenv((char*)"SteamAppId=39210");
-        putenv((char*)"SteamGameId=39210");
+        _appStr = (char*) malloc((50)*sizeof(char));
+        _gameStr = (char*) malloc((50)*sizeof(char));
+        sprintf(_appStr, "SteamAppId=%ld", appId);
+        sprintf(_gameStr, "SteamGameId=%ld", appId);
+        putenv(_appStr);
+        putenv(_gameStr);
         _initSuccess = SteamAPI_Init();
     }
     return self;
+}
+
+- (void)reinitWithAppId: (long)appId {
+    SteamAPI_Shutdown();
+    sprintf(_appStr, "SteamAppId=%ld", appId);
+    sprintf(_gameStr, "SteamGameId=%ld", appId);
+    putenv(_appStr);
+    putenv(_gameStr);
+    _initSuccess = SteamAPI_Init();
 }
 
 - (void)dealloc {
@@ -27,6 +40,8 @@
 
 - (NSData *)authSessionTicket {
     if (!_initSuccess) {
+        putenv(_appStr);
+        putenv(_gameStr);
         if (!(_initSuccess = SteamAPI_Init())) {
             return NULL;
         }
