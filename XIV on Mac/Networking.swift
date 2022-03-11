@@ -40,7 +40,7 @@ extension HTTPClient {
         var now: Double
     }
     
-    static func fetchFile(url: URL, destinationUrl: URL? = nil, headers: OrderedDictionary<String, String>? = nil, proxy: String? = nil, maxSpeed: Int = 0, progressCallback: ((Int64, Int64, Int64) -> Void)? = nil) throws {
+    static func fetchFile(url: URL, destinationUrl: URL? = nil, headers: OrderedDictionary<String, String>? = nil, proxy: String? = nil, progressCallback: ((Int64, Int64, Int64) -> Void)? = nil) throws {
         let destURL = destinationUrl ?? Util.cache.appendingPathComponent(url.lastPathComponent)
         if FileManager().fileExists(atPath: destURL.path) {
             print("File already exists [\(destURL.path)]")
@@ -61,7 +61,7 @@ extension HTTPClient {
         try curl.set(option: CURLOPT_FOLLOWLOCATION, true)
         try curl.set(option: CURLOPT_LOW_SPEED_TIME, 120)
         try curl.set(option: CURLOPT_LOW_SPEED_LIMIT, 30)
-        try curl.set(option: CURLOPT_MAX_RECV_SPEED_LARGE, maxSpeed)
+        try curl.set(option: CURLOPT_MAX_RECV_SPEED_LARGE, Int(HTTPClient.maxSpeed * 1000000))
         if let proxy = proxy {
             try curl.set(option: CURLOPT_PROXY, proxy)
         }
@@ -122,6 +122,16 @@ extension HTTPClient {
         }
         else {
             throw cURL.Error.CouldNotConnect
+        }
+    }
+    
+    private static let maxSpeedKey = "MaxDownloadSpeed"
+    static var maxSpeed: Double {
+        get {
+            return Util.getSetting(settingKey: maxSpeedKey, defaultValue: 0.0)
+        }
+        set(newDelay) {
+            UserDefaults.standard.set(newDelay, forKey: maxSpeedKey)
         }
     }
     

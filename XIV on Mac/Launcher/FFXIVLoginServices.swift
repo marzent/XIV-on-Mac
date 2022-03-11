@@ -209,7 +209,7 @@ struct FFXIVLogin {
     let ticket = Steam.ticket
     
     var loginURL: URL {
-        let base = "https://ffxiv-login.square-enix.com/oauth/ffxivarr/login/top?lng=en&rgn=\(settings.region.rawValue)&isft=0&cssmode=1&isnew=1&launchver=3"
+        let base = "https://ffxiv-login.square-enix.com/oauth/ffxivarr/login/top?lng=en&rgn=\(settings.region.rawValue)&isft=\(settings.freeTrial ? "1" : "0")&cssmode=1&isnew=1&launchver=3"
         guard let ticket = ticket, settings.platform == .steam else {
             return URL(string: base)!
         }

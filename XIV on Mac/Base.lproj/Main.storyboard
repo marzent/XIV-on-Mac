@@ -1254,7 +1254,7 @@ Gw
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
                                                     <connections>
-                                                        <action selector="updateRetina:" target="GIg-v3-M8h" id="5Km-ai-97d"/>
+                                                        <action selector="saveState:" target="GIg-v3-M8h" id="LkF-Z8-nFy"/>
                                                     </connections>
                                                 </button>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YDL-Cb-Q7P">
@@ -1700,7 +1700,7 @@ Gw
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
                                                     <connections>
-                                                        <action selector="updateRetina:" target="GIg-v3-M8h" id="CqN-DD-ioK"/>
+                                                        <action selector="updateMaxDownload:" target="GIg-v3-M8h" id="hwO-qI-k1T"/>
                                                     </connections>
                                                 </button>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ts9-EP-Wqa">
@@ -1732,10 +1732,13 @@ Gw
                         <outlet property="esync" destination="5oa-uD-168" id="ZSN-V1-stL"/>
                         <outlet property="fps" destination="Ogm-ZO-E2w" id="OPW-hm-cEk"/>
                         <outlet property="frametimes" destination="DSc-kA-8q1" id="NQ8-Yx-XTB"/>
+                        <outlet property="freeTrial" destination="Jmh-Hz-ux7" id="iOI-mm-OQz"/>
                         <outlet property="gpuload" destination="4Fq-Sz-2ZL" id="kpD-xR-1mP"/>
-                        <outlet property="keepPatches" destination="Jmh-Hz-ux7" id="f2H-IH-dMq"/>
+                        <outlet property="keepPatches" destination="7H0-sz-e1J" id="YlN-6O-4uM"/>
                         <outlet property="language" destination="tOj-q2-gaD" id="YA2-qM-B6g"/>
                         <outlet property="license" destination="eWT-Ny-Sac" id="MFZ-zh-TaL"/>
+                        <outlet property="maxDownload" destination="eVo-GZ-iwf" id="FQD-t0-4Zm"/>
+                        <outlet property="maxDownloadField" destination="zft-mL-IyQ" id="dkM-y6-tfo"/>
                         <outlet property="maxFPS" destination="0PH-1i-0UA" id="3Y1-La-IoX"/>
                         <outlet property="maxFPSField" destination="uQd-FB-xmH" id="pew-u4-IUq"/>
                         <outlet property="memory" destination="HvH-pN-nVO" id="69Q-ki-iMz"/>

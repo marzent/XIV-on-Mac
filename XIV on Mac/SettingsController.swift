@@ -6,10 +6,15 @@
 //
 
 import Cocoa
+import SeeURL
 
 class SettingsController: NSViewController {
     @IBOutlet private var language: NSPopUpButton!
     @IBOutlet private var license: NSPopUpButton!
+    @IBOutlet private var freeTrial: NSButton!
+    
+    @IBOutlet private var maxDownload: NSButton!
+    @IBOutlet private var maxDownloadField: NSTextField!
     @IBOutlet private var keepPatches: NSButton!
     
     @IBOutlet private var devinfo: NSButton!
@@ -85,6 +90,12 @@ class SettingsController: NSViewController {
         saveState()
     }
     
+    @IBAction func updateMaxDownload(_ sender: Any) {
+        let button = sender as! NSButton
+        maxDownloadField.isEnabled = (button.state == NSControl.StateValue.on) ? true : false
+        saveState()
+    }
+    
     @IBAction func updateRetina(_ sender: NSButton) {
         Wine.retina = (sender.state == NSControl.StateValue.on)
     }
@@ -112,6 +123,12 @@ class SettingsController: NSViewController {
         
         language.selectItem(at: Int(FFXIVSettings.language.rawValue))
         license.selectItem(at: Int(FFXIVSettings.platform.rawValue))
+        freeTrial.state = FFXIVSettings.freeTrial ? NSControl.StateValue.on : NSControl.StateValue.off
+        
+        let limitedDown = HTTPClient.maxSpeed > 0
+        maxDownload.state = limitedDown ? NSControl.StateValue.on : NSControl.StateValue.off
+        maxDownloadField.isEnabled = limitedDown
+        maxDownloadField.stringValue = String(HTTPClient.maxSpeed)
         keepPatches.state = Patch.keep ? NSControl.StateValue.on : NSControl.StateValue.off
     }
     
@@ -136,6 +153,9 @@ class SettingsController: NSViewController {
         
         FFXIVSettings.language = FFXIVLanguage(rawValue: UInt32(language.indexOfSelectedItem)) ?? .english
         FFXIVSettings.platform = FFXIVPlatform(rawValue: UInt32(license.indexOfSelectedItem)) ?? .mac
+        FFXIVSettings.freeTrial = (freeTrial.state == NSControl.StateValue.on) ? true : false
+        
+        HTTPClient.maxSpeed = maxDownloadField.isEnabled ? Double(maxDownloadField.stringValue) ?? 0.0 : 0.0
         Patch.keep = (keepPatches.state == NSControl.StateValue.on) ? true : false
     }
 
