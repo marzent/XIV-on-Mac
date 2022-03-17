@@ -18,26 +18,40 @@ struct Wine {
     static var logger = Util.Log(name: "wine.log")
     
     static func launch(args: [String], blocking: Bool = false) {
-        Util.launch(exec: wine64, args : args, blocking: blocking)
+        Util.launch(exec: wine64, args : args, blocking: blocking, wineLog: true)
+    }
+    
+    static var processes: [(pid: Int, name: String)] {
+        let infoProc = Util.launchToString(exec: wine64, args: ["winedbg", "--command", "info proc"])
+        let lines = infoProc.replacingOccurrences(of: "\\_", with: "").components(separatedBy: "\n")
+        guard let headerIndex = lines.firstIndex(of: " pid      threads  executable (all id:s are in hex)") else {
+            return []
+        }
+        let procLines = lines.dropFirst(headerIndex + 1).dropLast().map {$0.split(separator: " ")}
+        return procLines.filter {$0.count == 3}.map {(pid: Int($0[0], radix: 16) ?? 0, name: String($0[2].dropFirst().dropLast())) }
+    }
+    
+    static func pidOf(processName: String) -> Int {
+        processes.filter {$0.name == processName}.first?.pid ?? 0
     }
     
     private static let esyncSettingKey = "EsyncSetting"
     static var esync: Bool {
         get {
-            return Util.getSetting(settingKey: esyncSettingKey, defaultValue: true)
+            Util.getSetting(settingKey: esyncSettingKey, defaultValue: true)
         }
-        set(newPath) {
-            UserDefaults.standard.set(newPath, forKey: esyncSettingKey)
+        set {
+            UserDefaults.standard.set(newValue, forKey: esyncSettingKey)
         }
     }
     
     private static let wineDebugSettingKey = "WineDebugSetting"
     static var debug: String {
         get {
-            return Util.getSetting(settingKey: wineDebugSettingKey, defaultValue: "-all")
+            Util.getSetting(settingKey: wineDebugSettingKey, defaultValue: "-all")
         }
-        set(newPath) {
-            UserDefaults.standard.set(newPath, forKey: wineDebugSettingKey)
+        set {
+            UserDefaults.standard.set(newValue, forKey: wineDebugSettingKey)
         }
     }
 
@@ -64,7 +78,7 @@ struct Wine {
     private static let retinaSettingKey = "RetinaMode"
     static var retina: Bool {
         get {
-            return Util.getSetting(settingKey: retinaSettingKey, defaultValue: false)
+            Util.getSetting(settingKey: retinaSettingKey, defaultValue: false)
         }
         set(_retina) {
             addReg(key: "HKEY_CURRENT_USER\\Software\\Wine\\Mac Driver", value: "RetinaMode", data: _retina ? "y" : "n")

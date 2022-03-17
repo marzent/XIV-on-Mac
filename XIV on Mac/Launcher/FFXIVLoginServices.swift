@@ -209,17 +209,19 @@ struct FFXIVLogin {
     let ticket = Steam.ticket
     
     var loginURL: URL {
-        let base = "https://ffxiv-login.square-enix.com/oauth/ffxivarr/login/top?lng=en&rgn=\(settings.region.rawValue)&isft=\(settings.freeTrial ? "1" : "0")&cssmode=1&isnew=1&launchver=3"
-        guard let ticket = ticket, settings.platform == .steam else {
+        let isSteam = settings.platform == .steam
+        let base = "https://ffxiv-login.square-enix.com/oauth/ffxivarr/login/top?lng=en&rgn=\(settings.region.rawValue)&isft=\(settings.freeTrial ? "1" : "0")&cssmode=1&isnew=1&launchver=3&issteam=\(isSteam ? 1 : 0)"
+        guard let ticket = ticket, isSteam else {
             return URL(string: base)!
         }
-        let steamParams = "&issteam=1&session_ticket=\(ticket.text)&ticket_size=\(ticket.length)"
+        let steamParams = "&session_ticket=\(ticket.text)&ticket_size=\(ticket.length)"
         return URL(string: base + steamParams)!
     }
     
     static var patchURL: URL {
         let dateFormatter = DateFormatter()
-        dateFormatter.timeZone = TimeZone(identifier: "UTC")
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd-HH-mm"
         return URL(string: "http://patch-bootver.ffxiv.com/http/win32/ffxivneo_release_boot/\(FFXIVRepo.boot.ver)/?time=\(dateFormatter.string(from: Date()))")! //yes http this is not a mistake
     }
@@ -230,11 +232,11 @@ struct FFXIVLogin {
     
     fileprivate func getStored() -> FFXIVLoginPageData {
         let headers: OrderedDictionary = [
-            "Accept"         : "image/gif, image/jpeg, image/pjpeg, application/x-ms-application, application/xaml+xml, application/x-ms-xbap, */*",
-            "Referer"        : Frontier.referer.absoluteString,
-            "Accept-Encoding": "gzip, deflate",
-            //"Accept-Language": ??? TODO: find out how this works and why
+            "Accept"         : "*/*",
+            "Host"           : "ffxiv-login.square-enix.com",
             "User-Agent"     : FFXIVLogin.userAgent,
+            "Referer"        : "about:blank",
+            "Accept-Encoding": "gzip, deflate",
             "Connection"     : "Keep-Alive",
             "Cookie"         : #"_rsid="""#
         ]
@@ -262,12 +264,12 @@ struct FFXIVLogin {
     
     fileprivate func getTempSID(storedSID: String, cookie: String?, squexid: String?, completion: @escaping ((FFXIVLoginResult) -> Void)) {
         let headers: OrderedDictionary = [
-            "Accept"         : "image/gif, image/jpeg, image/pjpeg, application/x-ms-application, application/xaml+xml, application/x-ms-xbap, */*",
-            "Referer"        : loginURL.absoluteString,
-            //"Accept-Language": ??? TODO: find out how this works and why
-            "User-Agent"     : FFXIVLogin.userAgent,
-            "Accept-Encoding": "gzip, deflate",
+            "Accept"         : "*/*",
             "Host"           : "ffxiv-login.square-enix.com",
+            "User-Agent"     : FFXIVLogin.userAgent,
+            "Referer"        : loginURL.absoluteString,
+            "Content-Type"   : "application/x-www-form-urlencoded",
+            "Accept-Encoding": "gzip, deflate",
             "Connection"     : "Keep-Alive",
             "Cache-Control"  : "no-cache",
             "Cookie"         : cookie ?? #"_rsid="""#

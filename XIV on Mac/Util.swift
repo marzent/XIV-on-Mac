@@ -56,7 +56,6 @@ struct Util {
     
     static func launch(exec: URL, args: [String], blocking: Bool = false, wineLog: Bool = false) {
         let task = Process()
-        task.qualityOfService = .userInteractive
         task.environment = enviroment
         task.executableURL = exec
         task.arguments = args
@@ -90,7 +89,6 @@ struct Util {
     static func launchToString(exec: URL, args: [String]) -> String {
         var ret = ""
         let task = Process()
-        task.qualityOfService = QualityOfService.userInteractive
         task.environment = enviroment
         task.executableURL = exec
         task.arguments = args
@@ -132,6 +130,8 @@ struct Util {
         env["XL_WINEONLINUX"] = "true"
         env["XL_WINEONMAC"] = "true"
         env["MVK_CONFIG_FULL_IMAGE_VIEW_SWIZZLE"] = "1"
+        env["MVK_CONFIG_RESUME_LOST_DEVICE"] = "1"
+        env["MVK_ALLOW_METAL_FENCES"] = "1"
         env["MVK_CONFIG_USE_METAL_ARGUMENT_BUFFERS"] = "1"
         //env["DYLD_PRINT_LIBRARIES"] = "YES"
         env["DYLD_FALLBACK_LIBRARY_PATH"] = Bundle.main.url(forResource: "lib", withExtension: "", subdirectory: "wine")!.path + ":/opt/local/lib:/usr/local/lib:/usr/lib:/usr/libexec:/usr/lib/system:/opt/X11/lib"
@@ -149,7 +149,7 @@ struct Util {
         return setting as! T
     }
     
-    static func zeroPadArray(array: [UInt8]) -> [UInt8] {
+    static func zeroPad(array: [UInt8]) -> [UInt8] {
         let zeroes = Blowfish.blockSize - (array.count % Blowfish.blockSize)
         if zeroes > 0 {
             return array + [UInt8](repeating: 0, count: zeroes)

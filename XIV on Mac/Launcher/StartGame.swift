@@ -66,10 +66,10 @@ class StartGameOperation: AsyncOperation {
             let (key, value) = tuple
             result += " \(doubleSpaceify(key)) =\(doubleSpaceify(value))"
         }
-        let bigEndianBytes = Util.swapByteOrder32(Util.zeroPadArray(array: [UInt8](argStr.utf8)))
-        let cipherText = try! Blowfish(key: keyBytes, blockMode: ECB(), padding: .zeroPadding).encrypt(bigEndianBytes)
-        let bigEndianCipher = Data(Util.swapByteOrder32(cipherText)).squareBase64EncodedString()
-        return "//**sqex0003\(bigEndianCipher)\(check)**//"
+        let bigEndianBytes = Util.swapByteOrder32(Util.zeroPad(array: [UInt8](argStr.utf8)))
+        let cipherBytes = try! Blowfish(key: keyBytes, blockMode: ECB(), padding: .zeroPadding).encrypt(bigEndianBytes)
+        let cipherText = Data(Util.swapByteOrder32(cipherBytes)).squareBase64EncodedString()
+        return "//**sqex0003\(cipherText)\(check)**//"
     }
     
     func arguments(app: FFXIVApp) -> [String] {

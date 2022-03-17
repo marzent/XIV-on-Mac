@@ -12,7 +12,7 @@ import SeeURL
 
 extension HTTPClient {
     
-    static func fetch(url: URL, headers: OrderedDictionary<String, String?>? = nil, postBody: Data = Data(), proxy: String? = nil) -> Response? {
+    static func fetch(url: URL, headers: OrderedDictionary<String, String?>? = nil, postBody: Data = Data()) -> Response? {
         var headerDict: OrderedDictionary<String, String> = [:]
         if let h = headers {
             for (key, value) in h {
@@ -21,14 +21,16 @@ extension HTTPClient {
                 }
             }
         }
-        return fetch(url: url, headers: headerDict, postBody: postBody, proxy: proxy)
+        return fetch(url: url, headers: headerDict, postBody: postBody)
     }
     
-    static func fetch(url: URL, headers: OrderedDictionary<String, String>? = nil, postBody: Data = Data(), proxy: String? = nil) -> Response? {
+    static func fetch(url: URL, headers: OrderedDictionary<String, String>? = nil, postBody: Data = Data()) -> Response? {
         let headers = headers?.map {key, value in (key,value)} ?? []
         let body = [UInt8](postBody)
         let method = body.isEmpty ? "GET" : "POST"
-        return try? sendRequest(method: method, url: url.absoluteString, headers: headers, body: body)
+        var option = Option()
+        option.proxy = nil//"127.0.0.1:8866"
+        return try? sendRequest(method: method, url: url.absoluteString, headers: headers, body: body, option: option)
     }
     
     private class Progress {

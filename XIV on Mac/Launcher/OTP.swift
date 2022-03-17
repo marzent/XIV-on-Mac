@@ -121,28 +121,25 @@ extension LaunchController {
             return
         }
         settings.usesOneTimePassword = true
-        if let username = settings.credentials?.username{
-            if !OTP.secretStored(username: username) {
-                let msg = NSAlert()
-                msg.addButton(withTitle: "OK")
-                msg.addButton(withTitle: "Cancel")
-                msg.messageText = "OTP Secret"
-                msg.informativeText = "If you trust your local Keychain you can let XIV on Mac handle OTP generation for you if you provide a BASE32 encoded secret below:"
-                let txt = NSTextField(frame: NSRect(x: 0, y: 0, width: 200, height: 24))
-                msg.accessoryView = txt
-                if msg.runModal() == .alertFirstButtonReturn {
-                    OTP.store(username: username, secret: txt.stringValue)
-                }
-                txt.stringValue = ""
+        let username = userField.stringValue
+        if !OTP.secretStored(username: username) {
+            let msg = NSAlert()
+            msg.addButton(withTitle: "OK")
+            msg.addButton(withTitle: "Cancel")
+            msg.messageText = "OTP Secret for user \"\(username)\""
+            msg.informativeText = "If you trust your local Keychain you can let XIV on Mac handle OTP generation for you if you provide a BASE32 encoded secret below:"
+            let txt = NSTextField(frame: NSRect(x: 0, y: 0, width: 200, height: 24))
+            msg.accessoryView = txt
+            if msg.runModal() == .alertFirstButtonReturn {
+                OTP.store(username: username, secret: txt.stringValue)
             }
+            txt.stringValue = ""
         }
         enableOTP()
     }
     
     func enableOTP() {
-        if let username = settings.credentials?.username {
-            otp = OTP(username: username)
-        }
+        otp = OTP(username: userField.stringValue)
     }
 
 }

@@ -14,8 +14,8 @@
 
 - (instancetype)initWithAppId: (long)appId {
     if (self = [super init]) {
-        _appStr = (char*) malloc((50)*sizeof(char));
-        _gameStr = (char*) malloc((50)*sizeof(char));
+        _appStr = (char*) malloc((22)*sizeof(char));
+        _gameStr = (char*) malloc((23)*sizeof(char));
         sprintf(_appStr, "SteamAppId=%ld", appId);
         sprintf(_gameStr, "SteamGameId=%ld", appId);
         putenv(_appStr);
@@ -36,6 +36,8 @@
 
 - (void)dealloc {
     SteamAPI_Shutdown();
+    free(_appStr);
+    free(_gameStr);
 }
 
 - (NSData *)authSessionTicket {
