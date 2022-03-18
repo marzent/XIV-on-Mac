@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import CryptoSwift
 
 struct Steam {
     @available(*, unavailable) private init() {}
@@ -65,30 +64,13 @@ struct Steam {
         }
         var finalBytes = withUnsafeBytes(of: fuckedSum, Array.init) + Array(rawTicket.dropFirst(2)) + garbage
         finalBytes.swapAt(0, 1)
-        let keyBytes = [UInt8](blowfishKey.utf8)
-        let cipherText = try! Blowfish(key: keyBytes, blockMode: ECB(), padding: .zeroPadding).encrypt(finalBytes)
-        let encodedCipher = Data(cipherText).squareBase64EncodedString()
+        let cipher = Encryption.blowfish(key: blowfishKey, toEncrypt: finalBytes)
+        let encodedCipher = Data(cipher).squareBase64EncodedString()
         let components = encodedCipher.components(withMaxLength: 300)
         let finalString = components.joined(separator: ",")
         return (text: finalString, length: finalString.count - (components.count - 1))
     }
     
-}
-
-extension Data {
-    func toUInt32() -> UInt32 {
-        let intBits = self.bytes.withUnsafeBufferPointer {
-            ($0.baseAddress!.withMemoryRebound(to: UInt32.self, capacity: 1) { $0 })
-        }.pointee
-      return UInt32(littleEndian: intBits)
-    }
-    
-    func squareBase64EncodedString() -> String {
-        self.base64EncodedString()
-            .replacingOccurrences(of: "+", with: "-")
-            .replacingOccurrences(of: "/", with: "_")
-            .replacingOccurrences(of: "=", with: "*")
-    }
 }
 
 extension String {

@@ -16,7 +16,7 @@ struct Util {
     static let appleReceiptsPath = URL(fileURLWithPath: "/Library/Apple/System/Library/Receipts/")
 
     class Log: TextOutputStream {
-        var logName: String
+        let logName: String
         
         init(name: String) {
             logName = name
@@ -126,6 +126,7 @@ struct Util {
         env["DXVK_HUD"] = DXVK.options.getHud()
         env["DXVK_ASYNC"] = DXVK.options.getAsync()
         env["DXVK_FRAME_RATE"] = DXVK.options.getMaxFramerate()
+        env["DXVK_STATE_CACHE_PATH"] = "C:\\"
         env["DALAMUD_RUNTIME"] = "C:\\Program Files\\XIV on Mac\\dotNET Runtime"
         env["XL_WINEONLINUX"] = "true"
         env["XL_WINEONMAC"] = "true"
@@ -147,24 +148,6 @@ struct Util {
             return defaultValue
         }
         return setting as! T
-    }
-    
-    static func zeroPad(array: [UInt8]) -> [UInt8] {
-        let zeroes = Blowfish.blockSize - (array.count % Blowfish.blockSize)
-        if zeroes > 0 {
-            return array + [UInt8](repeating: 0, count: zeroes)
-        }
-        return array
-    }
-    
-    static func swapByteOrder32(_ bytes: [UInt8]) -> [UInt8]{
-        var mbytes = bytes
-        for i in stride(from: 0, to: bytes.count, by: 4) {
-            for j in 0 ..< 4 {
-                mbytes[i + j] = bytes[i + 3 - j]
-            }
-        }
-        return mbytes
     }
     
     static func quit() {

@@ -45,19 +45,19 @@ class Frontier {
         let status: Int
     }
     
-    static func checkGate() -> Bool {
+    static var maintenance: Bool {
         let url = URL(string: "https://frontier.ffxiv.com/worldStatus/gate_status.json?\(squareTime)")!
         guard let response = fetch(url: url) else {
-            return false
+            return true
         }
-        guard let data = String(decoding: response.body, as: UTF8.self).unescapingUnicodeCharacters.data(using: .utf8) else {
-            return false
+        guard response.statusCode == 200 else {
+            return true
         }
         let jsonDecoder = JSONDecoder()
         do {
-            return try jsonDecoder.decode(Gate.self, from: data).status == 1
+            return try jsonDecoder.decode(Gate.self, from: response.body).status != 1
         } catch {
-            return false
+            return true
         }
     }
     

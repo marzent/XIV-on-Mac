@@ -42,14 +42,7 @@ class LaunchController: NSViewController, NSWindowDelegate {
         newsView.documentView = newsTable.tableView
         topicsView.documentView = topicsTable.tableView
         DispatchQueue.global(qos: .userInitiated).async {
-            FFXIVSettings.checkBoot { patches in
-                if let patches = patches {
-                    self.startPatch(patches)
-                }
-                DispatchQueue.main.async {
-                    self.loginButton.isEnabled = true
-                }
-            }
+            self.checkBoot()
         }
         DispatchQueue.global(qos: .userInteractive).async {
             if let frontier = Frontier.info {
@@ -63,13 +56,11 @@ class LaunchController: NSViewController, NSWindowDelegate {
     }
     
     func checkBoot() {
-        FFXIVSettings.checkBoot { patches in
-            if let patches = patches {
-                self.startPatch(patches)
-            }
-            DispatchQueue.main.async {
-                self.loginButton.isEnabled = true
-            }
+        if let bootPatches = try? FFXIVLogin.bootPatches, !bootPatches.isEmpty {
+            startPatch(bootPatches)
+        }
+        DispatchQueue.main.async {
+            self.loginButton.isEnabled = true
         }
     }
     
@@ -105,40 +96,32 @@ class LaunchController: NSViewController, NSWindowDelegate {
     }
     
     func doLogin() {
-        let queue = OperationQueue()
-        let op = LoginOperation()
         view.window?.beginSheet(loginSheetWinController!.window!)
         FFXIVSettings.credentials = FFXIVLoginCredentials(username: userField.stringValue, password: passwdField.stringValue, oneTimePassword: otpField.stringValue)
-        op.completionBlock = {
-            switch op.loginResult {
-            case .success(let sid)?:
-                DispatchQueue.main.async {
-                    self.startGame(sid: sid)
+        do {
+            let (uid, patches) = try FFXIVLogin().result
+            guard patches.isEmpty else {
+                loginSheetWinController?.window?.close()
+                DispatchQueue.global(qos: .userInteractive).async {
+                    self.startPatch(patches)
                 }
-            case .incorrectCredentials:
-                DispatchQueue.main.async {
-                    self.loginSheetWinController?.window?.close()
-                    self.otpField.stringValue = ""
-                }
-            case .clientUpdate(let patches):
-                DispatchQueue.main.async {
-                    self.loginSheetWinController?.window?.close()
-                    DispatchQueue.global(qos: .userInteractive).async {
-                        self.startPatch(patches)
-                    }
-                }
-            case .noInstall:
-                DispatchQueue.main.async {
-                    self.loginSheetWinController?.window?.close()
-                    self.view.window?.beginSheet(self.installerWinController!.window!)
-                }
-            default:
-                DispatchQueue.main.async {
-                    self.loginSheetWinController?.window?.close()
-                }
+                return
             }
+            FFXIVApp().start(sid: uid)
+            return
+        } catch FFXIVLoginError.noInstall {
+            loginSheetWinController?.window?.close()
+            view.window?.beginSheet(self.installerWinController!.window!)
+        } catch {
+            loginSheetWinController?.window?.close()
+            let error = error as! LocalizedError
+            let alert = NSAlert()
+            alert.addButton(withTitle: "Ok")
+            alert.alertStyle = .critical
+            alert.messageText = error.failureReason ?? "Error"
+            alert.informativeText = error.localizedDescription
+            alert.runModal()
         }
-        queue.addOperation(op)
     }
     
     func startPatch(_ patches: [Patch]) {
@@ -147,12 +130,6 @@ class LaunchController: NSViewController, NSWindowDelegate {
             let patchController = self.patchWinController!.contentViewController! as! PatchController
             patchController.install(patches)
         }
-    }
-    
-    func startGame(sid: String) {
-        let queue = OperationQueue()
-        let op = StartGameOperation(sid: sid)
-        queue.addOperation(op)
     }
 
 }
