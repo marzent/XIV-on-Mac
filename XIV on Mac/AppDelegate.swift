@@ -22,12 +22,12 @@ import Sparkle
         checkForRosetta()
         Steam.initAPI()
         sparkle.updater.checkForUpdatesInBackground()
+        Util.make(dir: Wine.xomData.path)
+        Util.make(dir: Util.cache.path)
         if DXVK.shouldUpdate {
             DXVK.install()
         }
         settingsWinController = storyboard.instantiateController(withIdentifier: "SettingsWindow") as? NSWindowController
-        Util.make(dir: Wine.xomData.path)
-        Util.make(dir: Util.cache.path)
         SocialIntegration.discord.setPresence()
     }
 
