@@ -125,6 +125,9 @@ struct FFXIVLogin {
     
     var result: (uid: String, patches: [Patch]) {
         get throws {
+            guard FFXIVApp().installed else {
+                throw FFXIVLoginError.noInstall
+            }
             if Frontier.maintenance {
                 throw FFXIVLoginError.maintenance
             }

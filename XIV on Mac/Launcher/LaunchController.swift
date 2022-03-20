@@ -92,35 +92,40 @@ class LaunchController: NSViewController, NSWindowDelegate {
     }
     
     @IBAction func doLogin(_ sender: Any) {
-        doLogin()
+        self.doLogin()
     }
     
     func doLogin() {
         view.window?.beginSheet(loginSheetWinController!.window!)
         FFXIVSettings.credentials = FFXIVLoginCredentials(username: userField.stringValue, password: passwdField.stringValue, oneTimePassword: otpField.stringValue)
-        do {
-            let (uid, patches) = try FFXIVLogin().result
-            guard patches.isEmpty else {
-                loginSheetWinController?.window?.close()
-                DispatchQueue.global(qos: .userInteractive).async {
+        DispatchQueue.global(qos: .default).async {
+            do {
+                let (uid, patches) = try FFXIVLogin().result
+                guard patches.isEmpty else {
+                    DispatchQueue.main.async { [self] in
+                        loginSheetWinController?.window?.close()
+                    }
                     self.startPatch(patches)
+                    return
                 }
-                return
+                FFXIVApp().start(sid: uid)
+            } catch FFXIVLoginError.noInstall {
+                DispatchQueue.main.async { [self] in
+                    loginSheetWinController?.window?.close()
+                    view.window?.beginSheet(self.installerWinController!.window!)
+                }
+            } catch {
+                DispatchQueue.main.async { [self] in
+                    loginSheetWinController?.window?.close()
+                    let error = error as! LocalizedError
+                    let alert = NSAlert()
+                    alert.addButton(withTitle: "Ok")
+                    alert.alertStyle = .critical
+                    alert.messageText = error.failureReason ?? "Error"
+                    alert.informativeText = error.localizedDescription
+                    alert.runModal()
+                }
             }
-            FFXIVApp().start(sid: uid)
-            return
-        } catch FFXIVLoginError.noInstall {
-            loginSheetWinController?.window?.close()
-            view.window?.beginSheet(self.installerWinController!.window!)
-        } catch {
-            loginSheetWinController?.window?.close()
-            let error = error as! LocalizedError
-            let alert = NSAlert()
-            alert.addButton(withTitle: "Ok")
-            alert.alertStyle = .critical
-            alert.messageText = error.failureReason ?? "Error"
-            alert.informativeText = error.localizedDescription
-            alert.runModal()
         }
     }
     
