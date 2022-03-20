@@ -12,8 +12,10 @@
 "NO_STEAM_TICKET" = "XIV on Mac could not obtain a valid Steam Ticket for Final Fantasy XIV. Make sure Steam is runnning, you are logged in and that you linked your Steam Account.";
 "STEAM_USER_ERROR_SHORT" = "Steam Error";
 "STEAM_USER_ERROR" = "There is a mismatch between the provided username and Steam account.";
+"NOT_PLAYABLE_SHORT" = "Licensing error";
+"NOT_PLAYABLE" = "The login servers response indicates that you cannot play the game currently. Please make sure to have an active subsricption and select the correct license (Windows, Steam or Mac) in Settings.";
 "PROTOCOL_ERROR_SHORT" = "Login system error";
-"PROTOCOL_ERROR" = "The login servers did not accept the request. Please make sure to have an active subsricption and select the correct license (Windows, Steam or Mac) in Settings.";
+"PROTOCOL_ERROR" = "The login servers did not accept the request. Please make sure you have a stable network connection to the FFXIV servers.";
 "NETWORK_ERROR_SHORT" = "Network Error";
 "NETWORK_ERROR" = "Check your internet connection, or try again later. Is FFXIV down?";
 "NO_INSTALL_SHORT" = "Final Fantasy XIV is not installed!";

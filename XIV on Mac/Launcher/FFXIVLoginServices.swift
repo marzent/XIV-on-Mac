@@ -115,6 +115,12 @@ struct FFXIVLogin {
             guard parsedResult.authOk else {
                 throw FFXIVLoginError.incorrectCredentials
             }
+            guard let playable = parsedResult.playable else {
+                throw FFXIVLoginError.protocolError
+            }
+            guard playable == 1 else {
+                throw FFXIVLoginError.notPlayable
+            }
             guard let sid = parsedResult.sid else {
                 throw FFXIVLoginError.protocolError
             }
