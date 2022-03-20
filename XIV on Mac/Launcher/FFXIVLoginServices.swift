@@ -161,6 +161,9 @@ struct FFXIVLogin {
                 "User-Agent": FFXIVLogin.userAgentPatch,
                 "Host"      : "patch-bootver.ffxiv.com"
             ]
+            guard FFXIVApp().installed else {
+                throw FFXIVLoginError.noInstall
+            }
             guard let response = HTTPClient.fetch(url: patchURL, headers: headers) else {
                 throw FFXIVLoginError.networkError
             }
