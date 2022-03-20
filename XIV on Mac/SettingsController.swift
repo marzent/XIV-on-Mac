@@ -121,7 +121,7 @@ class SettingsController: NSViewController {
         maxFPSField.stringValue = String(DXVK.options.maxFramerate)
         scale.doubleValue = DXVK.options.hudScale
         
-        discord.state = SocialIntegration.discord.enabled ? NSControl.StateValue.on : NSControl.StateValue.off
+        discord.state = DiscordBridge.enabled ? NSControl.StateValue.on : NSControl.StateValue.off
         
         esync.state = Wine.esync ? NSControl.StateValue.on : NSControl.StateValue.off
         wineRetina.state = Wine.retina ? NSControl.StateValue.on : NSControl.StateValue.off
@@ -155,8 +155,7 @@ class SettingsController: NSViewController {
             Wine.esync = (esync.state == NSControl.StateValue.on) ? true : false
             Wine.debug = wineDebugField.stringValue
             
-            SocialIntegration.discord.enabled = (discord.state == NSControl.StateValue.on) ? true : false
-            SocialIntegration.discord.save()
+            DiscordBridge.enabled = (discord.state == NSControl.StateValue.on) ? true : false
             
             FFXIVSettings.dalamud = (dalamud.state == NSControl.StateValue.on) ? true : false
             Dalamud.mbCollection = (crowdSource.state == NSControl.StateValue.on) ? true : false

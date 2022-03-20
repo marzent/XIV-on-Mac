@@ -35,6 +35,18 @@ struct Wine {
         processes.filter {$0.name == processName}.first?.pid ?? 0
     }
     
+    static func taskKill(pid: Int) {
+        launch(args: ["taskkill", "/f", "/pid", "\(pid)"], blocking: true)
+    }
+    
+    static func taskKill(processName: String) {
+        launch(args: ["taskkill", "/f", "/im" , processName], blocking: true)
+    }
+    
+    static func touchDocuments() {
+        launch(args: ["cmd", "/c", "dir", "%userprofile%/My Documents", ">", "nul"])
+    }
+    
     private static let esyncSettingKey = "EsyncSetting"
     static var esync: Bool {
         get {

@@ -58,9 +58,46 @@ struct Encryption {
     }
 }
 
+public class TOTP {
+    internal init(secret: Data) {
+        self.secret = secret
+    }
+    
+    private let secret: Data
+    private let period = TimeInterval(30)
+    private let digits = 6
+    
+    public var token: String {
+        var counter = UInt64(Date().timeIntervalSince1970 / period).bigEndian
+        let counterData = withUnsafeBytes(of: &counter) { Array($0) }
+        let key = Data(bytes: &counter, count: MemoryLayout.size(ofValue: counter))
+        let (hashAlgorithm, hashLength) = (CCHmacAlgorithm(kCCHmacAlgSHA1), Int(CC_SHA1_DIGEST_LENGTH))
+        let hashPtr = UnsafeMutablePointer<Any>.allocate(capacity: Int(hashLength))
+        defer {
+            hashPtr.deallocate()
+        }
+        secret.withUnsafeBytes { secretBytes in
+            // Generate the key from the counter value.
+            counterData.withUnsafeBytes { counterBytes in
+                CCHmac(hashAlgorithm, secretBytes.baseAddress, secret.count, counterBytes.baseAddress, key.count, hashPtr)
+            }
+        }
+        let hash = Data(bytes: hashPtr, count: Int(hashLength))
+        var truncatedHash = hash.withUnsafeBytes { ptr -> UInt32 in
+            let offset = ptr[hash.count - 1] & 0x0F
+            let truncatedHashPtr = ptr.baseAddress! + Int(offset)
+            return truncatedHashPtr.bindMemory(to: UInt32.self, capacity: 1).pointee
+        }
+        truncatedHash = UInt32(bigEndian: truncatedHash)
+        truncatedHash = truncatedHash & 0x7FFF_FFFF
+        truncatedHash = truncatedHash % UInt32(pow(10, Float(digits)))
+        return String(format: "%0*u", digits, truncatedHash)
+    }
+}
+
 extension Data {
     func toUInt32() -> UInt32 {
-        let intBits = self.bytes.withUnsafeBufferPointer {
+        let intBits = [UInt8](self).withUnsafeBufferPointer {
             ($0.baseAddress!.withMemoryRebound(to: UInt32.self, capacity: 1) { $0 })
         }.pointee
       return UInt32(littleEndian: intBits)
@@ -74,6 +111,6 @@ extension Data {
     }
     
     var hexStr: String {
-        return self.bytes.map { String(format: "%02hhx", $0) }.joined()
+        return [UInt8](self).map { String(format: "%02hhx", $0) }.joined()
     }
 }

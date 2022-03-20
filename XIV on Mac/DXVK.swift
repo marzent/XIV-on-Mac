@@ -24,28 +24,32 @@ struct DXVK {
     
     static func install() {
         shouldUpdate = false
-        let dxvk_path = Bundle.main.url(forResource: "dxvk", withExtension: nil, subdirectory: "")!
-        let dx_dlls = ["d3d9.dll", "d3d10_1.dll", "d3d10.dll", "d3d10core.dll", "dxgi.dll", "d3d11.dll"]
+        let dxvkPath = Bundle.main.url(forResource: "dxvk", withExtension: nil, subdirectory: "")!
+        let dxDlls = ["d3d9.dll", "d3d10_1.dll", "d3d10.dll", "d3d10core.dll", "dxgi.dll", "d3d11.dll"]
         let system32 = Wine.prefix.appendingPathComponent("drive_c/windows/system32")
         let fm = FileManager.default
-        for dll in dx_dlls {
+        for dll in dxDlls {
             Wine.override(dll: dll.components(separatedBy: ".")[0], type: "native")
-            let dll_path = system32.appendingPathComponent(dll).path
-            if fm.fileExists(atPath: dll_path) {
+            let dllPath = system32.appendingPathComponent(dll).path
+            if fm.fileExists(atPath: dllPath) {
                 do {
-                    try fm.removeItem(atPath: dll_path)
+                    try fm.removeItem(atPath: dllPath)
                 }
                 catch {
-                    print("DXVK: error deleting wine dx dll \(dll_path)\n\(error)\n", to: &Util.logger)
+                    print("DXVK: error deleting wine dx dll \(dllPath)\n\(error)\n", to: &Util.logger)
                 }
             }
             do {
-                try fm.copyItem(atPath: dxvk_path.appendingPathComponent(dll).path, toPath: dll_path)
+                try fm.copyItem(atPath: dxvkPath.appendingPathComponent(dll).path, toPath: dllPath)
             }
             catch {
                 print("DXVK: error copying dxvk dll \(error)\n", to: &Util.logger)
             }
         }
+        let stateCacheName = "ffxiv_dx11.dxvk-cache"
+        let stateCacheBundled = dxvkPath.appendingPathComponent(stateCacheName)
+        let stateCachePrefix = Wine.prefix.appendingPathComponent("drive_c/" + stateCacheName)
+        try? fm.copyItem(at: stateCacheBundled, to: stateCachePrefix)
     }
     
     class Options: Codable {

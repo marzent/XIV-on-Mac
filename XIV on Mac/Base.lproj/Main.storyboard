@@ -439,24 +439,6 @@
                                                 <action selector="installDXVK:" target="Voe-Tx-rLC" id="khF-r7-Kz1"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="XIVLauncher" id="9zs-Nn-Dcm">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="installXL:" target="Voe-Tx-rLC" id="Bza-ng-89u"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Vanilla Launcher" id="rp2-Zf-JOT">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="vanillaLauncher:" target="Voe-Tx-rLC" id="aXS-oe-ci8"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="ARR Cutcenes" id="9oO-6y-dqi">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="movieFix:" target="Voe-Tx-rLC" id="Ti0-d7-yh6"/>
-                                            </connections>
-                                        </menuItem>
                                         <menuItem title="GShade" id="9VN-cs-jNP">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <menu key="submenu" title="GShade" id="AgC-OX-7rb">
@@ -475,13 +457,6 @@
                                                     </menuItem>
                                                 </items>
                                             </menu>
-                                        </menuItem>
-                                        <menuItem isSeparatorItem="YES" id="8ME-M6-Hmm"/>
-                                        <menuItem title="Run Install Wizard" id="WUo-tp-nqk">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="fullInstall:" target="Voe-Tx-rLC" id="cNe-qd-BDD"/>
-                                            </connections>
                                         </menuItem>
                                     </items>
                                 </menu>
@@ -1286,9 +1261,9 @@ Gw
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LP2-JT-YsT">
-                                                    <rect key="frame" x="18" y="21" width="163" height="18"/>
+                                                    <rect key="frame" x="18" y="21" width="240" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <buttonCell key="cell" type="check" title="Discord Rich Presence" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="EJl-D1-TzE">
+                                                    <buttonCell key="cell" type="check" title="Discord Rich Presence Wine Bridge" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="EJl-D1-TzE">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>

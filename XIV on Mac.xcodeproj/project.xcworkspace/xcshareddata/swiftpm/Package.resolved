@@ -1,12 +1,12 @@
 {
   "pins" : [
     {
-      "identity" : "bluesocket",
+      "identity" : "base32",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Kitura/BlueSocket",
+      "location" : "https://github.com/std-swift/Base32.git",
       "state" : {
-        "revision" : "dd924c3bc2c1c144c42b8dda3896f1a03115ded4",
-        "version" : "2.0.2"
+        "revision" : "3bf2b4dc874c615645ad81f4bcc2ced37ac5c9ca",
+        "version" : "3.0.0"
       }
     },
     {
@@ -16,6 +16,15 @@
       "state" : {
         "revision" : "065b6ce52596bd06b867cfe17fea2c56dcb53b30",
         "version" : "4.1.3"
+      }
+    },
+    {
+      "identity" : "encoding",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/std-swift/Encoding.git",
+      "state" : {
+        "revision" : "bd0dac5c17e8af9c6f85ec3186db07f91b263471",
+        "version" : "2.0.3"
       }
     },
     {
@@ -37,15 +46,6 @@
       }
     },
     {
-      "identity" : "swift-argument-parser",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/apple/swift-argument-parser",
-      "state" : {
-        "revision" : "6b2aa2748a7881eebb9f84fb10c01293e15b52ca",
-        "version" : "0.5.0"
-      }
-    },
-    {
       "identity" : "swift-collections",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-collections.git",
@@ -55,39 +55,12 @@
       }
     },
     {
-      "identity" : "swift-crypto",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/apple/swift-crypto.git",
-      "state" : {
-        "revision" : "ddb07e896a2a8af79512543b1c7eb9797f8898a5",
-        "version" : "1.1.7"
-      }
-    },
-    {
       "identity" : "swift-seeurl",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/marzent/swift-seeurl.git",
       "state" : {
         "branch" : "master",
         "revision" : "ae3dcb6ef64ebe7457bb4d3f993434a7ca28cad2"
-      }
-    },
-    {
-      "identity" : "swiftotp",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/lachlanbell/SwiftOTP.git",
-      "state" : {
-        "revision" : "315acdb759083fd8f3c37b02fc021321c8934f9c",
-        "version" : "3.0.0"
-      }
-    },
-    {
-      "identity" : "swordrpc",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/PKBeam/SwordRPC.git",
-      "state" : {
-        "branch" : "master",
-        "revision" : "f9831261fcbe6a17243f8839921fb7820e99fa6e"
       }
     },
     {

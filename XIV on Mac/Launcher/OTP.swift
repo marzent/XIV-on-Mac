@@ -8,7 +8,7 @@
 import Cocoa
 import Embassy
 import KeychainAccess
-import SwiftOTP
+import Base32
 
 class OTP {
     private let loop: SelectorEventLoop
@@ -50,7 +50,9 @@ class OTP {
     
     static func store(username: String, secret: String) {
         let cleanSecret = secret.components(separatedBy: .whitespaces).joined()
-        keychain[data: "\(username)(OTP secret)"] = base32DecodeToData(cleanSecret)
+        var decoder = Base32Decoder()
+        decoder.decode(cleanSecret)
+        keychain[data: "\(username)(OTP secret)"] = Data(decoder.finalize())
     }
     
     private func retrieve(username: String) -> TOTP? {
@@ -81,10 +83,10 @@ class OTP {
     func start() {
         startServer()
         if generator != nil {
-            self.push(otp: self.generator?.generate(time: Date()))
+            self.push(otp: self.generator?.token)
             timer.invalidate()
             timer = Timer.scheduledTimer(withTimeInterval: 30, repeats: true, block: { _ in
-                self.push(otp: self.generator?.generate(time: Date()))
+                self.push(otp: self.generator?.token)
             })
         }
     }

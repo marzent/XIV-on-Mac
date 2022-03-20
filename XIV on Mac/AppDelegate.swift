@@ -25,10 +25,12 @@ import Sparkle
         Util.make(dir: Wine.xomData.path)
         Util.make(dir: Util.cache.path)
         if DXVK.shouldUpdate {
-            DXVK.install()
+            DispatchQueue.global(qos: .utility).async {
+                DXVK.install()
+            }
         }
+        Wine.touchDocuments()
         settingsWinController = storyboard.instantiateController(withIdentifier: "SettingsWindow") as? NSWindowController
-        SocialIntegration.discord.setPresence()
     }
 
     func updaterWillRelaunchApplication(_ updater: SPUUpdater) {

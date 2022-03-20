@@ -222,6 +222,7 @@ struct Dalamud {
                                   optOutMBCollection: !mbCollection,
                                   delayInitializeMS: 0) //we handle delay ourselves
         let encodedStartInfo = try! JSONEncoder().encode(startInfo).base64EncodedString()
+        DiscordBridge.setPresence()
         DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
             print("Starting Dalamud with StartInfo:\n", encodedStartInfo, "\n", to: &Util.logger)
             NotificationCenter.default.post(name: .loginInfo, object: nil, userInfo: [Notification.status.info: "Injecting Dalamud"])
