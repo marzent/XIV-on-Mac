@@ -37,7 +37,6 @@ struct Steam {
     
     typealias Ticket = (text: String, length: Int)
     
-    
     static var ticket: Ticket? {
         //snoat was here
         //all credits go to the XL team for reverse engineering this, I do not even own a steam license :)

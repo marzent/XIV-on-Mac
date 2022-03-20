@@ -5,8 +5,7 @@
 //  Created by Marc-Aurel Zent on 22.12.21.
 //
 
-import Cocoa
-import CryptoSwift
+import AppKit
 
 struct Util {
     @available(*, unavailable) private init() {}

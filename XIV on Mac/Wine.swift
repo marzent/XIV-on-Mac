@@ -5,7 +5,7 @@
 //  Created by Marc-Aurel Zent on 01.02.22.
 //
 
-import Cocoa
+import Foundation
 
 struct Wine {
     @available(*, unavailable) private init() {}
