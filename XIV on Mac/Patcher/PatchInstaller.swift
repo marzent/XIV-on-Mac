@@ -14,7 +14,7 @@ class PatchInstaller {
     
     private static let dir = Patch.dir.appendingPathComponent("XIVLauncher.PatchInstaller.app/Contents/Resources")
     private static let exec = dir.appendingPathComponent("XIVLauncher.PatchInstaller")
-    private static let remoteURL = URL(string: "https://www.xivmac.com/sites/default/files/seventh_dawn")!
+    private static let remoteURL = URL(string: "https://softwareupdate.xivmac.com/sites/default/files/seventh_dawn")!
     
     static func install(_ patch: Patch) {
         let patchPath = Patch.cache.appendingPathComponent(patch.path).path
