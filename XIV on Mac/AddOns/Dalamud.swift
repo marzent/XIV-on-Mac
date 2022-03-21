@@ -12,21 +12,28 @@ import SeeURL
 struct Dalamud {
     @available(*, unavailable) private init() {}
     
-    struct nativeLauncher {
-        static let exec = "NativeLauncher.exe"
-        static let path = Wine.xomData.appendingPathComponent(exec).path
-        static let remote = "https://github.com/redstrate/nativelauncher/releases/download/v1.0.0/" + exec
-    }
-    
     struct Version: Codable {
-        let assemblyVersion, supportedGameVer, runtimeVersion: String
+        
+        struct Changelog: Codable {
+            
+            struct Change: Codable {
+                let message, author, sha, date: String
+            }
+            
+            let date, version: String
+            let changes: [Change]
+        }
+        
+        let key: String?
+        let track, assemblyVersion, runtimeVersion: String
         let runtimeRequired: Bool
-
+        let supportedGameVer: String
+        let changelog: Changelog?
+        let downloadURL: String
+        
         enum CodingKeys: String, CodingKey {
-            case assemblyVersion = "AssemblyVersion"
-            case supportedGameVer = "SupportedGameVer"
-            case runtimeVersion = "RuntimeVersion"
-            case runtimeRequired = "RuntimeRequired"
+            case key, track, assemblyVersion, runtimeVersion, runtimeRequired, supportedGameVer, changelog
+            case downloadURL = "downloadUrl"
         }
     }
     
@@ -36,21 +43,10 @@ struct Dalamud {
             let url: String
             let fileName: String
             let hash: String?
-
-            enum CodingKeys: String, CodingKey {
-                case url = "Url"
-                case fileName = "FileName"
-                case hash = "Hash"
-            }
         }
         
         let version: Int
         let assets: [Asset]
-
-        enum CodingKeys: String, CodingKey {
-            case version = "Version"
-            case assets = "Assets"
-        }
     }
     
     struct StartInfo: Codable {
@@ -76,16 +72,15 @@ struct Dalamud {
     
     static let fm = FileManager.default
     static let path = Wine.xomData.appendingPathComponent("Dalamud")
+    static let dalamudDownload = Util.cache.appendingPathComponent("dalamud.zip")
     static let localAssets = Wine.xomData.appendingPathComponent("Dalamud Assets")
     static let runtime = Wine.xomData.appendingPathComponent("dotNET Runtime")
     
-    private struct remote {
-        
-        static let distrib = "https://goatcorp.github.io/dalamud-distrib/latest.zip"
+    private struct Remote {
         
         static var assets: Assets? {
             var ret: Assets?
-            let url = URL(string: "https://goatcorp.github.io/DalamudAssets/asset.json")!
+            let url = URL(string: "https://kamori.goats.dev/Dalamud/Asset/Meta?appId=xom")!
             let semaphore = DispatchSemaphore(value: 0)
             let task = URLSession.shared.dataTask(with: url) { data, response, error in
                 if let data = data {
@@ -105,7 +100,7 @@ struct Dalamud {
         
         static var version: Version? {
             var ret: Version?
-            let url = URL(string: "https://goatcorp.github.io/dalamud-distrib/version")!
+            let url = URL(string: "https://kamori.goats.dev/Dalamud/Release/VersionInfo\(staging ? "/stg" : "")?appId=xom")!
             let semaphore = DispatchSemaphore(value: 0)
             let task = URLSession.shared.dataTask(with: url) { data, response, error in
                 if let data = data {
@@ -130,8 +125,8 @@ struct Dalamud {
         get {
             return Util.getSetting(settingKey: injectionSettingKey, defaultValue: 7.0)
         }
-        set(newDelay) {
-            UserDefaults.standard.set(newDelay, forKey: injectionSettingKey)
+        set {
+            UserDefaults.standard.set(newValue, forKey: injectionSettingKey)
         }
     }
     
@@ -140,56 +135,65 @@ struct Dalamud {
         get {
             return Util.getSetting(settingKey: mbCollectionSettingKey, defaultValue: true)
         }
-        set(collect) {
-            UserDefaults.standard.set(collect, forKey: mbCollectionSettingKey)
+        set {
+            UserDefaults.standard.set(newValue, forKey: mbCollectionSettingKey)
+        }
+    }
+    
+    private static let stagingKey = "DalamudStaging"
+    static var staging: Bool {
+        get {
+            return Util.getSetting(settingKey: stagingKey, defaultValue: false)
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: stagingKey)
         }
     }
     
     private static func install() {
-        if needsUpdate() {
+        guard let version = Remote.version else {
+            print("Could not check for Dalamud due to network error\n", to: &Util.logger)
+            return
+        }
+        if needsUpdate(version) {
             NotificationCenter.default.post(name: .loginInfo, object: nil, userInfo: [Notification.status.info: "Updating Dalamud"])
             purge()
         }
-        try? HTTPClient.fetchFile(url: URL(string: remote.distrib)!)
-        try? HTTPClient.fetchFile(url: URL(string: nativeLauncher.remote)!)
-        try? fm.copyItem(atPath: Util.cache.appendingPathComponent(nativeLauncher.exec).path, toPath: nativeLauncher.path)
-        try? fm.unzipItem(at: Util.cache.appendingPathComponent("latest.zip"), to: path)
-        guard let remoteAssets = remote.assets else {
-            print("Could not get Dalamud Assets", to: &Util.logger)
+        try? HTTPClient.fetchFile(url: URL(string: version.downloadURL)!, destinationUrl: dalamudDownload)
+        try? fm.unzipItem(at: dalamudDownload, to: path)
+        guard let remoteAssets = Remote.assets else {
+            print("Could not get Dalamud Assets\n", to: &Util.logger)
             return
         }
         for asset in remoteAssets.assets {
             try? HTTPClient.fetchFile(url: URL(string: asset.url)!,
                                      destinationUrl: URL(fileURLWithPath: localAssets.path + "/" + asset.fileName))
         }
-        installRuntime()
+        installRuntime(version)
     }
     
-    private static func installRuntime() {
-        if !remote.version!.runtimeRequired {
+    private static func installRuntime(_ version: Version) {
+        guard version.runtimeRequired else {
             return
         }
-        let version = remote.version!.runtimeVersion
-        let dotnetRuntime = URL(string: "https://dotnetcli.azureedge.net/dotnet/Runtime/\(version)/dotnet-runtime-\(version)-win-x64.zip")!
-        let windowsDesktopRuntime = URL(string: "https://dotnetcli.azureedge.net/dotnet/WindowsDesktop/\(version)/windowsdesktop-runtime-\(version)-win-x64.zip")!
+        let netVersion = version.runtimeVersion
+        let dotnetRuntime = URL(string: "https://dotnetcli.azureedge.net/dotnet/Runtime/\(netVersion)/dotnet-runtime-\(netVersion)-win-x64.zip")!
+        let windowsDesktopRuntime = URL(string: "https://dotnetcli.azureedge.net/dotnet/WindowsDesktop/\(netVersion)/windowsdesktop-runtime-\(netVersion)-win-x64.zip")!
         try? HTTPClient.fetchFile(url: dotnetRuntime)
         try? HTTPClient.fetchFile(url: windowsDesktopRuntime)
-        try? fm.unzipItem(at: Util.cache.appendingPathComponent("dotnet-runtime-\(version)-win-x64.zip"), to: runtime)
-        try? fm.unzipItem(at: Util.cache.appendingPathComponent("windowsdesktop-runtime-\(version)-win-x64.zip"), to: runtime)
+        try? fm.unzipItem(at: Util.cache.appendingPathComponent("dotnet-runtime-\(netVersion)-win-x64.zip"), to: runtime)
+        try? fm.unzipItem(at: Util.cache.appendingPathComponent("windowsdesktop-runtime-\(netVersion)-win-x64.zip"), to: runtime)
     }
     
     //TODO: hash assets and compare with remote
-    private static func needsUpdate() -> Bool {
+    private static func needsUpdate(_ version: Version) -> Bool {
         //Loosely inspired by https://github.com/redstrate/xivlauncher/ and even more janky :)
         do {
             let deps = try String(contentsOf: path.appendingPathComponent("Dalamud.deps.json"), encoding: .utf8)
             let head = String(deps.prefix(300))
             if let range = head.range(of: #"(?<=Dalamud\/).*(?=":)"#, options: .regularExpression) {
                 let localVersion = head[range]
-                if let remoteVersion = remote.version {
-                    return localVersion != remoteVersion.assemblyVersion
-                }
-                return false
+                return localVersion != version.assemblyVersion
             }
         }
         catch {
@@ -199,10 +203,7 @@ struct Dalamud {
     }
     
     private static func purge() {
-        for toRemove in [Util.cache.appendingPathComponent("latest.zip"),
-                         localAssets,
-                         path,
-                         runtime] {
+        for toRemove in [dalamudDownload, localAssets, path, runtime] {
             try? fm.removeItem(at: toRemove)
         }
     }
@@ -210,7 +211,8 @@ struct Dalamud {
     static func launch(args: [String], language: FFXIVLanguage, gameVersion: String) {
         install()
         NotificationCenter.default.post(name: .loginInfo, object: nil, userInfo: [Notification.status.info: "Starting Wine"])
-        let output = Util.launchToString(exec: Wine.wine64, args: [nativeLauncher.path] + args)
+        let dalamudHelper = Bundle.main.url(forResource: "dalamud_helper", withExtension: "exe", subdirectory: "")!
+        let output = Util.launchToString(exec: Wine.wine64, args: [dalamudHelper.path] + args)
         let pid = String(output.split(separator: "\n").last!)
         let startInfo = StartInfo(workingDirectory: nil,
                                   configurationPath: "C:\\Program Files\\XIV on Mac\\dalamudConfig.json",

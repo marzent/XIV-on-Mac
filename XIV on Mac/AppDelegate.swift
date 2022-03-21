@@ -19,7 +19,6 @@ import AppMover
         let storyboard = NSStoryboard(name: "Main", bundle: nil)
         actAutoLaunch.state = ACT.autoLaunch ? .on : .off
         bhAutoLaunch.state = ACT.autoLaunchBH ? .on : .off
-        AppMover.moveIfNecessary()
         checkForRosetta()
         Steam.initAPI()
         sparkle.updater.checkForUpdatesInBackground()
@@ -31,6 +30,11 @@ import AppMover
             }
         }
         Wine.touchDocuments()
+        #if DEBUG
+        print("Running in debug mode")
+        #else
+        AppMover.moveIfNecessary()
+        #endif
         settingsWinController = storyboard.instantiateController(withIdentifier: "SettingsWindow") as? NSWindowController
     }
 
