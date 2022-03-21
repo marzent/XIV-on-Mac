@@ -9,20 +9,15 @@
 /* Begin PBXBuildFile section */
 		07B529D527D97D2B005B78BF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 07B529D727D97D2B005B78BF /* Localizable.strings */; };
 		07B529D927D97F26005B78BF /* installRosetta.command in Resources */ = {isa = PBXBuildFile; fileRef = 07B529D827D97F26005B78BF /* installRosetta.command */; };
-		2B7159B7277C526000945A24 /* Socket in Frameworks */ = {isa = PBXBuildFile; productRef = 2B7159B6277C526000945A24 /* Socket */; };
-		2B7159BA277C529300945A24 /* SwordRPC in Frameworks */ = {isa = PBXBuildFile; productRef = 2B7159B9277C529300945A24 /* SwordRPC */; };
 		2B7C95D2277C6C6000A3CA89 /* SocialIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7C95D1277C6C6000A3CA89 /* SocialIntegration.swift */; };
+		5010EFE427E4CE40001D2FEC /* Encryption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5010EFE327E4CE40001D2FEC /* Encryption.swift */; };
 		5020957927C9611A00BD76CC /* Patch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5020957827C9611A00BD76CC /* Patch.swift */; };
 		502A18D827AA8C0D00144AB9 /* FFXIVLoginServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A18D727AA8C0D00144AB9 /* FFXIVLoginServices.swift */; };
-		502A18DA27AA8DD000144AB9 /* HTMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A18D927AA8DD000144AB9 /* HTMLParser.swift */; };
-		502A18DC27AA8E3E00144AB9 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A18DB27AA8E3E00144AB9 /* Login.swift */; };
-		502A18DE27AA8EA700144AB9 /* SidParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A18DD27AA8EA700144AB9 /* SidParse.swift */; };
 		502A18E127AABF8400144AB9 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 502A18E027AABF8400144AB9 /* KeychainAccess */; };
-		502A18E327AABFED00144AB9 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A18E227AABFED00144AB9 /* AsyncOperation.swift */; };
-		502A18E527AAC05C00144AB9 /* StoredParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A18E427AAC05C00144AB9 /* StoredParse.swift */; };
-		502A18E727AAC12800144AB9 /* StartGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A18E627AAC12800144AB9 /* StartGame.swift */; };
 		502A18E927AACEFE00144AB9 /* LaunchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A18E827AACEFE00144AB9 /* LaunchController.swift */; };
 		5043E36C27728BA300E59127 /* wine in Resources */ = {isa = PBXBuildFile; fileRef = 5043E36B27728BA300E59127 /* wine */; };
+		5046F7EF27E74AC9006C34E1 /* discord_bridge.exe in Resources */ = {isa = PBXBuildFile; fileRef = 5046F7EE27E74A9A006C34E1 /* discord_bridge.exe */; };
+		5046F7F527E754E9006C34E1 /* Base32 in Frameworks */ = {isa = PBXBuildFile; productRef = 5046F7F427E754E9006C34E1 /* Base32 */; };
 		50511EC52770E085003A1E9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50511EC42770E085003A1E9F /* AppDelegate.swift */; };
 		50511EC72770E085003A1E9F /* InstallerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50511EC62770E085003A1E9F /* InstallerController.swift */; };
 		50511EC92770E087003A1E9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50511EC82770E087003A1E9F /* Assets.xcassets */; };
@@ -34,9 +29,10 @@
 		5077A32C27C12A9100D4F1B8 /* FFXIVSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5077A32B27C12A9100D4F1B8 /* FFXIVSettings.swift */; };
 		507C5FFF27CA9F2E00BA3CC2 /* PatchInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507C5FFE27CA9F2E00BA3CC2 /* PatchInstaller.swift */; };
 		507C600127CAA72000BA3CC2 /* PatchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507C600027CAA72000BA3CC2 /* PatchController.swift */; };
-		507C824527BE40CB004CC48B /* CryptoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 507C824427BE40CB004CC48B /* CryptoSwift */; };
 		507CFBF62781C780007ADEC9 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 507CFBF52781C780007ADEC9 /* ZIPFoundation */; };
 		507D8F2127766F52000F0CB0 /* dxvk in Resources */ = {isa = PBXBuildFile; fileRef = 507D8F2027766F52000F0CB0 /* dxvk */; };
+		509FE19A27E3654E008D56D6 /* FFXIVEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509FE19927E3654E008D56D6 /* FFXIVEnums.swift */; };
+		509FE19C27E39DCB008D56D6 /* FFXIVApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509FE19B27E39DCB008D56D6 /* FFXIVApp.swift */; };
 		50B1C5B827D25620006DA54E /* SeeURL in Frameworks */ = {isa = PBXBuildFile; productRef = 50B1C5B727D25620006DA54E /* SeeURL */; };
 		50B2A2B527AC1BC400EFA0A2 /* LoginSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A2B427AC1BC400EFA0A2 /* LoginSheetController.swift */; };
 		50B2A2B927AC461800EFA0A2 /* Dalamud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A2B827AC461800EFA0A2 /* Dalamud.swift */; };
@@ -48,7 +44,6 @@
 		50C45AB227D8A30A00572977 /* Steamworks.mm in Sources */ = {isa = PBXBuildFile; fileRef = 50C45A8127D8A30A00572977 /* Steamworks.mm */; };
 		50C45AB427D8A30E00572977 /* libsdkencryptedappticket.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 50C45A7E27D8A30900572977 /* libsdkencryptedappticket.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		50C45AB627D8A31000572977 /* libsteam_api.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 50C45A7F27D8A30900572977 /* libsteam_api.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		50C45ABB27D8B4CB00572977 /* steam_appid.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50C45AB927D8B3FD00572977 /* steam_appid.txt */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		50C45ABD27D8E9FC00572977 /* Steamworks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C45ABC27D8E9FC00572977 /* Steamworks.swift */; };
 		50D30FA027B92EDB007A9F66 /* OTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D30F9F27B92EDB007A9F66 /* OTP.swift */; };
 		50D30FA327B93359007A9F66 /* Embassy in Frameworks */ = {isa = PBXBuildFile; productRef = 50D30FA227B93359007A9F66 /* Embassy */; };
@@ -58,7 +53,6 @@
 		50E5387B2779CF5C0038521A /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E5387A2779CF5C0038521A /* SettingsController.swift */; };
 		50ED0DB32773C619002E9854 /* Dotnet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ED0DB22773C619002E9854 /* Dotnet.swift */; };
 		50ED0DB52773CA8C002E9854 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ED0DB42773CA8C002E9854 /* Networking.swift */; };
-		50ED768727BA417200A348F9 /* SwiftOTP in Frameworks */ = {isa = PBXBuildFile; productRef = 50ED768627BA417200A348F9 /* SwiftOTP */; };
 		50F4BD2427CFA70A00FB165D /* DXVK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F4BD2327CFA70A00FB165D /* DXVK.swift */; };
 		50F6CBAA27A975A000013301 /* Wine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F6CBA927A975A000013301 /* Wine.swift */; };
 /* End PBXBuildFile section */
@@ -76,32 +70,18 @@
 			name = "Embed Libraries";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		50C45AB827D8B3CA00572977 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 6;
-			files = (
-				50C45ABB27D8B4CB00572977 /* steam_appid.txt in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		07B529D627D97D2B005B78BF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		07B529D827D97F26005B78BF /* installRosetta.command */ = {isa = PBXFileReference; lastKnownFileType = text; path = installRosetta.command; sourceTree = "<group>"; };
 		2B7C95D1277C6C6000A3CA89 /* SocialIntegration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialIntegration.swift; sourceTree = "<group>"; };
+		5010EFE327E4CE40001D2FEC /* Encryption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encryption.swift; sourceTree = "<group>"; };
 		5020957827C9611A00BD76CC /* Patch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patch.swift; sourceTree = "<group>"; };
 		502A18D727AA8C0D00144AB9 /* FFXIVLoginServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFXIVLoginServices.swift; sourceTree = "<group>"; };
-		502A18D927AA8DD000144AB9 /* HTMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLParser.swift; sourceTree = "<group>"; };
-		502A18DB27AA8E3E00144AB9 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
-		502A18DD27AA8EA700144AB9 /* SidParse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidParse.swift; sourceTree = "<group>"; };
-		502A18E227AABFED00144AB9 /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
-		502A18E427AAC05C00144AB9 /* StoredParse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredParse.swift; sourceTree = "<group>"; };
-		502A18E627AAC12800144AB9 /* StartGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGame.swift; sourceTree = "<group>"; };
 		502A18E827AACEFE00144AB9 /* LaunchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchController.swift; sourceTree = "<group>"; };
 		5043E36B27728BA300E59127 /* wine */ = {isa = PBXFileReference; lastKnownFileType = folder; path = wine; sourceTree = "<group>"; };
+		5046F7EE27E74A9A006C34E1 /* discord_bridge.exe */ = {isa = PBXFileReference; lastKnownFileType = file; path = discord_bridge.exe; sourceTree = "<group>"; };
 		50511EC12770E085003A1E9F /* XIV on Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "XIV on Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50511EC42770E085003A1E9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50511EC62770E085003A1E9F /* InstallerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallerController.swift; sourceTree = "<group>"; };
@@ -115,6 +95,8 @@
 		507C5FFE27CA9F2E00BA3CC2 /* PatchInstaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchInstaller.swift; sourceTree = "<group>"; };
 		507C600027CAA72000BA3CC2 /* PatchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchController.swift; sourceTree = "<group>"; };
 		507D8F2027766F52000F0CB0 /* dxvk */ = {isa = PBXFileReference; lastKnownFileType = folder; path = dxvk; sourceTree = "<group>"; };
+		509FE19927E3654E008D56D6 /* FFXIVEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFXIVEnums.swift; sourceTree = "<group>"; };
+		509FE19B27E39DCB008D56D6 /* FFXIVApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFXIVApp.swift; sourceTree = "<group>"; };
 		50B2A2B327ABEF6800EFA0A2 /* XIV-on-Mac-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "XIV-on-Mac-Info.plist"; sourceTree = SOURCE_ROOT; };
 		50B2A2B427AC1BC400EFA0A2 /* LoginSheetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSheetController.swift; sourceTree = "<group>"; };
 		50B2A2B827AC461800EFA0A2 /* Dalamud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dalamud.swift; sourceTree = "<group>"; };
@@ -171,7 +153,6 @@
 		50C45AAE27D8A30A00572977 /* isteamhttp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = isteamhttp.h; sourceTree = "<group>"; };
 		50C45AAF27D8A30A00572977 /* isteamuserstats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = isteamuserstats.h; sourceTree = "<group>"; };
 		50C45AB727D8A33F00572977 /* XIV on Mac-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XIV on Mac-Bridging-Header.h"; sourceTree = "<group>"; };
-		50C45AB927D8B3FD00572977 /* steam_appid.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = steam_appid.txt; sourceTree = "<group>"; };
 		50C45ABC27D8E9FC00572977 /* Steamworks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Steamworks.swift; sourceTree = "<group>"; };
 		50D30F9F27B92EDB007A9F66 /* OTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTP.swift; sourceTree = "<group>"; };
 		50DF1F8427CCB83300DE9DA5 /* FFXIVRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFXIVRepo.swift; sourceTree = "<group>"; };
@@ -190,16 +171,13 @@
 			files = (
 				50B1C5B827D25620006DA54E /* SeeURL in Frameworks */,
 				50692C8927B3D13700945593 /* Sparkle in Frameworks */,
-				507C824527BE40CB004CC48B /* CryptoSwift in Frameworks */,
 				502A18E127AABF8400144AB9 /* KeychainAccess in Frameworks */,
-				2B7159BA277C529300945A24 /* SwordRPC in Frameworks */,
 				50C45AB027D8A30A00572977 /* libsdkencryptedappticket.dylib in Frameworks */,
 				50C45AB127D8A30A00572977 /* libsteam_api.dylib in Frameworks */,
-				50ED768727BA417200A348F9 /* SwiftOTP in Frameworks */,
 				50DF1F8827CD261A00DE9DA5 /* OrderedCollections in Frameworks */,
 				50D30FA327B93359007A9F66 /* Embassy in Frameworks */,
-				2B7159B7277C526000945A24 /* Socket in Frameworks */,
 				507CFBF62781C780007ADEC9 /* ZIPFoundation in Frameworks */,
+				5046F7F527E754E9006C34E1 /* Base32 in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,6 +208,7 @@
 				50F6CBA927A975A000013301 /* Wine.swift */,
 				50F4BD2327CFA70A00FB165D /* DXVK.swift */,
 				50511EC42770E085003A1E9F /* AppDelegate.swift */,
+				5010EFE327E4CE40001D2FEC /* Encryption.swift */,
 				50F8A5F827BFA93800ADC0CB /* Patcher */,
 				509A62D527A58966001B203A /* Launcher */,
 				50BC73D427C2C804006269AC /* AddOns */,
@@ -249,6 +228,7 @@
 				5043E36B27728BA300E59127 /* wine */,
 				07B529D727D97D2B005B78BF /* Localizable.strings */,
 				07B529D827D97F26005B78BF /* installRosetta.command */,
+				5046F7EE27E74A9A006C34E1 /* discord_bridge.exe */,
 			);
 			path = "XIV on Mac";
 			sourceTree = "<group>";
@@ -258,15 +238,11 @@
 			children = (
 				502A18E827AACEFE00144AB9 /* LaunchController.swift */,
 				50D30F9F27B92EDB007A9F66 /* OTP.swift */,
-				502A18E227AABFED00144AB9 /* AsyncOperation.swift */,
+				509FE19B27E39DCB008D56D6 /* FFXIVApp.swift */,
+				509FE19927E3654E008D56D6 /* FFXIVEnums.swift */,
 				502A18D727AA8C0D00144AB9 /* FFXIVLoginServices.swift */,
 				5077A32B27C12A9100D4F1B8 /* FFXIVSettings.swift */,
-				502A18D927AA8DD000144AB9 /* HTMLParser.swift */,
-				502A18DB27AA8E3E00144AB9 /* Login.swift */,
 				507607A027B149F600DDF3E6 /* Frontier.swift */,
-				502A18DD27AA8EA700144AB9 /* SidParse.swift */,
-				502A18E627AAC12800144AB9 /* StartGame.swift */,
-				502A18E427AAC05C00144AB9 /* StoredParse.swift */,
 			);
 			path = Launcher;
 			sourceTree = "<group>";
@@ -291,7 +267,6 @@
 				50C45A8127D8A30A00572977 /* Steamworks.mm */,
 				50C45ABC27D8E9FC00572977 /* Steamworks.swift */,
 				50C45AB727D8A33F00572977 /* XIV on Mac-Bridging-Header.h */,
-				50C45AB927D8B3FD00572977 /* steam_appid.txt */,
 			);
 			path = Steamworks;
 			sourceTree = "<group>";
@@ -380,7 +355,6 @@
 				50511EBF2770E085003A1E9F /* Resources */,
 				5592FEB42778D3CB00FA304B /* Fix Codesign (Runtime) */,
 				50C45AB527D8A30E00572977 /* Embed Libraries */,
-				50C45AB827D8B3CA00572977 /* CopyFiles */,
 				07B529DA27D98CBF005B78BF /* Fix Install Rosetta Script Permissions */,
 			);
 			buildRules = (
@@ -389,16 +363,13 @@
 			);
 			name = "XIV on Mac";
 			packageProductDependencies = (
-				2B7159B6277C526000945A24 /* Socket */,
-				2B7159B9277C529300945A24 /* SwordRPC */,
 				507CFBF52781C780007ADEC9 /* ZIPFoundation */,
 				502A18E027AABF8400144AB9 /* KeychainAccess */,
 				50692C8827B3D13700945593 /* Sparkle */,
 				50D30FA227B93359007A9F66 /* Embassy */,
-				50ED768627BA417200A348F9 /* SwiftOTP */,
-				507C824427BE40CB004CC48B /* CryptoSwift */,
 				50DF1F8727CD261A00DE9DA5 /* OrderedCollections */,
 				50B1C5B727D25620006DA54E /* SeeURL */,
+				5046F7F427E754E9006C34E1 /* Base32 */,
 			);
 			productName = "XIV on Mac";
 			productReference = 50511EC12770E085003A1E9F /* XIV on Mac.app */;
@@ -430,16 +401,13 @@
 			);
 			mainGroup = 50511EB82770E085003A1E9F;
 			packageReferences = (
-				2B7159B5277C526000945A24 /* XCRemoteSwiftPackageReference "BlueSocket" */,
-				2B7159B8277C529300945A24 /* XCRemoteSwiftPackageReference "SwordRPC" */,
 				507CFBF42781C780007ADEC9 /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
 				502A18DF27AABF8400144AB9 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				50692C8727B3D13700945593 /* XCRemoteSwiftPackageReference "Sparkle" */,
 				50D30FA127B93359007A9F66 /* XCRemoteSwiftPackageReference "Embassy" */,
-				50ED768527BA417200A348F9 /* XCRemoteSwiftPackageReference "SwiftOTP" */,
-				507C824327BE40CB004CC48B /* XCRemoteSwiftPackageReference "CryptoSwift" */,
 				50DF1F8627CD261A00DE9DA5 /* XCRemoteSwiftPackageReference "swift-collections" */,
 				50B1C5B627D25620006DA54E /* XCRemoteSwiftPackageReference "swift-seeurl" */,
+				5046F7F327E754E9006C34E1 /* XCRemoteSwiftPackageReference "Base32" */,
 			);
 			productRefGroup = 50511EC22770E085003A1E9F /* Products */;
 			projectDirPath = "";
@@ -455,6 +423,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5046F7EF27E74AC9006C34E1 /* discord_bridge.exe in Resources */,
 				50DF45992795C53300E3D22F /* GShade in Resources */,
 				50692C8B27B3E48B00945593 /* Credits.html in Resources */,
 				50511EC92770E087003A1E9F /* Assets.xcassets in Resources */,
@@ -517,9 +486,9 @@
 				5077A32C27C12A9100D4F1B8 /* FFXIVSettings.swift in Sources */,
 				50B2A2B927AC461800EFA0A2 /* Dalamud.swift in Sources */,
 				50BD278727785418002B0D1F /* Notifications.swift in Sources */,
-				502A18E727AAC12800144AB9 /* StartGame.swift in Sources */,
 				50C45AB227D8A30A00572977 /* Steamworks.mm in Sources */,
-				502A18DE27AA8EA700144AB9 /* SidParse.swift in Sources */,
+				509FE19A27E3654E008D56D6 /* FFXIVEnums.swift in Sources */,
+				5010EFE427E4CE40001D2FEC /* Encryption.swift in Sources */,
 				5020957927C9611A00BD76CC /* Patch.swift in Sources */,
 				50DF1F8527CCB83300DE9DA5 /* FFXIVRepo.swift in Sources */,
 				507C600127CAA72000BA3CC2 /* PatchController.swift in Sources */,
@@ -528,18 +497,15 @@
 				505C0D9B277333920008A344 /* Util.swift in Sources */,
 				50F4BD2427CFA70A00FB165D /* DXVK.swift in Sources */,
 				50511EC72770E085003A1E9F /* InstallerController.swift in Sources */,
-				502A18E327AABFED00144AB9 /* AsyncOperation.swift in Sources */,
 				50D30FA027B92EDB007A9F66 /* OTP.swift in Sources */,
 				507C5FFF27CA9F2E00BA3CC2 /* PatchInstaller.swift in Sources */,
-				502A18DC27AA8E3E00144AB9 /* Login.swift in Sources */,
 				50B2A2B527AC1BC400EFA0A2 /* LoginSheetController.swift in Sources */,
 				502A18E927AACEFE00144AB9 /* LaunchController.swift in Sources */,
 				502A18D827AA8C0D00144AB9 /* FFXIVLoginServices.swift in Sources */,
-				502A18E527AAC05C00144AB9 /* StoredParse.swift in Sources */,
 				50E5387B2779CF5C0038521A /* SettingsController.swift in Sources */,
+				509FE19C27E39DCB008D56D6 /* FFXIVApp.swift in Sources */,
 				50BC73CF27C2BEAF006269AC /* ACT.swift in Sources */,
 				50511EC52770E085003A1E9F /* AppDelegate.swift in Sources */,
-				502A18DA27AA8DD000144AB9 /* HTMLParser.swift in Sources */,
 				50ED0DB32773C619002E9854 /* Dotnet.swift in Sources */,
 				507607A127B149F600DDF3E6 /* Frontier.swift in Sources */,
 				50C45ABD27D8E9FC00572977 /* Steamworks.swift in Sources */,
@@ -626,6 +592,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CODE_SIGN_FLAGS = "--deep";
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -682,6 +649,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_CODE_SIGN_FLAGS = "--deep";
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -698,7 +666,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 28;
 				DEVELOPMENT_TEAM = TQJJTJ6364;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -721,7 +689,7 @@
 					"$(PROJECT_DIR)/XIV\\ on\\ Mac/Steamworks/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 3.0.2;
+				MARKETING_VERSION = 3.2.2;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = "dezent.XIV-on-Mac";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -744,7 +712,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 28;
 				DEVELOPMENT_TEAM = TQJJTJ6364;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -767,7 +735,7 @@
 					"$(PROJECT_DIR)/XIV\\ on\\ Mac/Steamworks/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 3.0.2;
+				MARKETING_VERSION = 3.2.2;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = "dezent.XIV-on-Mac";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -803,22 +771,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		2B7159B5277C526000945A24 /* XCRemoteSwiftPackageReference "BlueSocket" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Kitura/BlueSocket";
-			requirement = {
-				kind = exactVersion;
-				version = 2.0.2;
-			};
-		};
-		2B7159B8277C529300945A24 /* XCRemoteSwiftPackageReference "SwordRPC" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/PKBeam/SwordRPC.git";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 		502A18DF27AABF8400144AB9 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
@@ -827,20 +779,20 @@
 				kind = branch;
 			};
 		};
+		5046F7F327E754E9006C34E1 /* XCRemoteSwiftPackageReference "Base32" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/std-swift/Base32.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 		50692C8727B3D13700945593 /* XCRemoteSwiftPackageReference "Sparkle" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sparkle-project/Sparkle";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 2.0.0;
-			};
-		};
-		507C824327BE40CB004CC48B /* XCRemoteSwiftPackageReference "CryptoSwift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/krzyzanowskim/CryptoSwift.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
 			};
 		};
 		507CFBF42781C780007ADEC9 /* XCRemoteSwiftPackageReference "ZIPFoundation" */ = {
@@ -875,41 +827,23 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		50ED768527BA417200A348F9 /* XCRemoteSwiftPackageReference "SwiftOTP" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/lachlanbell/SwiftOTP.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		2B7159B6277C526000945A24 /* Socket */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2B7159B5277C526000945A24 /* XCRemoteSwiftPackageReference "BlueSocket" */;
-			productName = Socket;
-		};
-		2B7159B9277C529300945A24 /* SwordRPC */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2B7159B8277C529300945A24 /* XCRemoteSwiftPackageReference "SwordRPC" */;
-			productName = SwordRPC;
-		};
 		502A18E027AABF8400144AB9 /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 502A18DF27AABF8400144AB9 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
 			productName = KeychainAccess;
 		};
+		5046F7F427E754E9006C34E1 /* Base32 */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5046F7F327E754E9006C34E1 /* XCRemoteSwiftPackageReference "Base32" */;
+			productName = Base32;
+		};
 		50692C8827B3D13700945593 /* Sparkle */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 50692C8727B3D13700945593 /* XCRemoteSwiftPackageReference "Sparkle" */;
 			productName = Sparkle;
-		};
-		507C824427BE40CB004CC48B /* CryptoSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 507C824327BE40CB004CC48B /* XCRemoteSwiftPackageReference "CryptoSwift" */;
-			productName = CryptoSwift;
 		};
 		507CFBF52781C780007ADEC9 /* ZIPFoundation */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -930,11 +864,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 50DF1F8627CD261A00DE9DA5 /* XCRemoteSwiftPackageReference "swift-collections" */;
 			productName = OrderedCollections;
-		};
-		50ED768627BA417200A348F9 /* SwiftOTP */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 50ED768527BA417200A348F9 /* XCRemoteSwiftPackageReference "SwiftOTP" */;
-			productName = SwiftOTP;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

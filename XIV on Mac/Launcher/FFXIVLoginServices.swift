@@ -6,86 +6,210 @@
 //
 
 import Foundation
-import Security
 import KeychainAccess
-import CryptoKit
-import AppKit
 import OrderedCollections
 import SeeURL
 
-
-public enum FFXIVPlatform: UInt32 {
-    case windows = 0
-    case mac = 1
-    case steam = 2
-}
-
-public enum FFXIVExpansionLevel: UInt32 {
-    case aRealmReborn = 0
-    case heavensward = 1
-    case stormblood = 2
-    case shadowbringers = 3
-    case endwalker = 4
-}
-
-public enum FFXIVRegion: UInt32 {
-    case japanese = 0
-    case english = 2
-    case french = 1
-    case german = 3
+struct FFXIVLogin {
+    typealias settings = FFXIVSettings
+    static let userAgent = settings.platform == .mac ? "macSQEXAuthor/2.0.0(MacOSX; ja-jp)" : "SQEXAuthor/2.0.0(Windows 6.2; ja-jp; \(uniqueID))"
+    static let userAgentPatch = settings.platform == .mac ? "FFXIV-MAC PATCH CLIENT" : "FFXIV PATCH CLIENT"
+    let authURL = URL(string: "https://ffxiv-login.square-enix.com/oauth/ffxivarr/login/login.send")!
+    let ticket = Steam.ticket
     
-    static func guessFromLocale() -> FFXIVRegion {
-        switch Locale.current.languageCode {
-        case "ja"?:
-            return .japanese
-        case "en"?:
-            return .english
-        case "fr"?:
-            return .french
-        case "de"?:
-            return .german
-        default:
-            return .english
-        }
-    }
-    
-    var language: FFXIVLanguage {
-        switch self {
-        case .english:
-            return .english
-        case .french:
-            return .french
-        case .german:
-            return .german
-        case .japanese:
-            return .japanese
-        }
-    }
-}
-
-public enum FFXIVLanguage: UInt32 {
-    case japanese = 0
-    case english = 1
-    case french = 3
-    case german = 2
-    
-    var code: String {
-        switch self {
-        case .english:
-            switch TimeZone.current.identifier.split(separator: "/").first ?? "" {
-            case "America", "Antarctica", "Pacific":
-                return "en-us"
-            default:
-                return "en-gb"
+    var authTopURL: URL {
+        get throws {
+            let isSteam = settings.platform == .steam
+            let base = "https://ffxiv-login.square-enix.com/oauth/ffxivarr/login/top?lng=en&rgn=\(settings.region.rawValue)&isft=\(settings.freeTrial ? 1 : 0)&cssmode=1&isnew=1&launchver=3&issteam=\(isSteam ? 1 : 0)"
+            guard isSteam else {
+                return URL(string: base)!
             }
-        case .french:
-            return "fr"
-        case .german:
-            return "de"
-        case .japanese:
-            return "ja"
+            guard let ticket = ticket else {
+                throw FFXIVLoginError.noSteamTicket
+            }
+            let steamParams = "&session_ticket=\(ticket.text)&ticket_size=\(ticket.length)"
+            return URL(string: base + steamParams)!
         }
     }
+    
+    static var patchURL: URL {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd-HH-mm"
+        return URL(string: "http://patch-bootver.ffxiv.com/http/win32/ffxivneo_release_boot/\(FFXIVRepo.boot.ver)/?time=\(dateFormatter.string(from: Date()))")! //yes http this is not a mistake
+    }
+    
+    var sessionURL: URL {
+        return URL(string: "https://patch-gamever.ffxiv.com/http/win32/ffxivneo_release_game/\(FFXIVRepo.game.ver)")!
+    }
+    
+    private var authTop: (stored: String, cookie: String?, squexid: String?) {
+        get throws {
+            let headers: OrderedDictionary = [
+                "Accept"         : "*/*",
+                "Host"           : "ffxiv-login.square-enix.com",
+                "User-Agent"     : FFXIVLogin.userAgent,
+                "Referer"        : "about:blank",
+                "Accept-Encoding": "gzip, deflate",
+                "Connection"     : "Keep-Alive",
+                "Cookie"         : #"_rsid="""#
+            ]
+            guard let response = HTTPClient.fetch(url: try authTopURL, headers: headers) else {
+                throw FFXIVLoginError.networkError
+            }
+            guard let html = String(data: response.body, encoding: .utf8) else {
+                throw FFXIVLoginError.networkError
+            }
+            let recvHeaders = OrderedDictionary(response.headers, uniquingKeysWith: {$1})
+            let cookie = recvHeaders["Set-Cookie"]
+            guard let storedRange = html.range(of: #"(?<=name="_STORED_" value=").*(?=">)"#, options: .regularExpression) else {
+                throw FFXIVLoginError.protocolError
+            }
+            let stored = String(html[storedRange])
+            guard settings.platform == .steam else {
+                return (stored: stored, cookie: cookie, squexid: nil)
+            }
+            guard let steamRange = html.range(of: #"(?<=<input name="sqexid" type="hidden" value=").*(?=")"#, options: .regularExpression) else {
+                throw FFXIVLoginError.noSteamTicket
+            }
+            let squexid = String(html[steamRange])
+            return (stored: stored, cookie: cookie, squexid: squexid)
+        }
+    }
+    
+    private var sessionId: String {
+        get throws {
+            let (stored, cookie, squexid) = try authTop
+            let headers: OrderedDictionary = [
+                "Accept"         : "*/*",
+                "Host"           : "ffxiv-login.square-enix.com",
+                "User-Agent"     : FFXIVLogin.userAgent,
+                "Referer"        : try authTopURL.absoluteString,
+                "Content-Type"   : "application/x-www-form-urlencoded",
+                "Accept-Encoding": "gzip, deflate",
+                "Connection"     : "Keep-Alive",
+                "Cache-Control"  : "no-cache",
+                "Cookie"         : cookie ?? #"_rsid="""#
+            ]
+            if let squexid = squexid {
+                guard settings.credentials!.username.caseInsensitiveCompare(squexid) == .orderedSame else {
+                    throw FFXIVLoginError.steamUserError
+                }
+            }
+            else {
+                guard settings.platform != .steam else {
+                    throw FFXIVLoginError.steamUserError
+                }
+            }
+            let postBody = settings.credentials!.loginData(storedSID: stored)
+            guard let response = HTTPClient.fetch(url: authURL, headers: headers, postBody: postBody) else {
+                throw FFXIVLoginError.networkError
+            }
+            guard let html = String(data: response.body, encoding: .utf8) else {
+                throw FFXIVLoginError.networkError
+            }
+            guard let parsedResult = FFXIVServerLoginResponse(html: html) else {
+                throw FFXIVLoginError.protocolError
+            }
+            guard parsedResult.authOk else {
+                throw FFXIVLoginError.incorrectCredentials
+            }
+            guard let playable = parsedResult.playable else {
+                throw FFXIVLoginError.protocolError
+            }
+            guard playable == 1 else {
+                throw FFXIVLoginError.notPlayable
+            }
+            guard let sid = parsedResult.sid else {
+                throw FFXIVLoginError.protocolError
+            }
+            settings.update(from: parsedResult)
+            return sid
+        }
+    }
+    
+    var result: (uid: String, patches: [Patch]) {
+        get throws {
+            guard FFXIVApp().installed else {
+                throw FFXIVLoginError.noInstall
+            }
+            if Frontier.maintenance {
+                throw FFXIVLoginError.maintenance
+            }
+            let headers: OrderedDictionary = [
+                "X-Hash-Check": "enabled",
+                "User-Agent": FFXIVLogin.userAgentPatch
+            ]
+            let sid =  try sessionId
+            let url = sessionURL.appendingPathComponent(sid)
+            let postBody = FFXIVApp().versionList(maxEx: settings.expansionId.rawValue).data(using: .utf8)!
+            guard let response = HTTPClient.fetch(url: url, headers: headers, postBody: postBody) else {
+                throw FFXIVLoginError.networkError
+            }
+            if response.statusCode == 409 { //this means a boot update is required although we checked for it before... install is probably broken af
+                throw FFXIVLoginError.protocolError
+            }
+            guard let html = String(data: response.body, encoding: .utf8) else {
+                throw FFXIVLoginError.networkError
+            }
+            let recvHeaders = OrderedDictionary(response.headers, uniquingKeysWith: {$1})
+            guard let uid = recvHeaders["X-Patch-Unique-Id"] else {
+                throw FFXIVLoginError.protocolError
+            }
+            guard html.count == 0 else { //patching needed
+                return (uid: uid, patches: Patch.parse(patches: html))
+            }
+            return (uid: uid, patches: [])
+        }
+    }
+    
+    static var bootPatches: [Patch] {
+        get throws {
+            let headers: OrderedDictionary = [
+                "User-Agent": FFXIVLogin.userAgentPatch,
+                "Host"      : "patch-bootver.ffxiv.com"
+            ]
+            guard FFXIVApp().installed else {
+                throw FFXIVLoginError.noInstall
+            }
+            guard let response = HTTPClient.fetch(url: patchURL, headers: headers) else {
+                throw FFXIVLoginError.networkError
+            }
+            guard let html = String(data: response.body, encoding: .utf8) else {
+                throw FFXIVLoginError.networkError
+            }
+            return Patch.parse(patches: html)
+        }
+    }
+    
+    private static var uniqueID: String {
+        let platformExpert = IOServiceGetMatchingService(kIOMasterPortDefault, IOServiceMatching("IOPlatformExpertDevice") )
+        let fallbackID = "ecf4a84335"
+        
+        guard platformExpert > 0 else {
+            return fallbackID
+        }
+        guard let serialNumber = (IORegistryEntryCreateCFProperty(platformExpert, kIOPlatformSerialNumberKey as CFString, kCFAllocatorDefault, 0).takeUnretainedValue() as? String) else {
+            return fallbackID
+        }
+        IOObjectRelease(platformExpert)
+        
+        return String(serialNumber.lowercased().prefix(10))
+    }
+}
+
+extension FFXIVSettings {
+    
+    static func update(from response: FFXIVServerLoginResponse) {
+        if let rgnInt = response.region, let rgn = FFXIVRegion(rawValue: rgnInt) {
+            region = rgn
+        }
+        if let expInt = response.maxEx, let expId = FFXIVExpansionLevel(rawValue: expInt) {
+            expansionId = expId
+        }
+    }
+    
 }
 
 public struct FFXIVServerLoginResponse {
@@ -99,7 +223,11 @@ public struct FFXIVServerLoginResponse {
     public let maxEx: UInt32?
     public let product: UInt32?
     
-    public init?(string: String) {
+    public init?(html: String) {
+        guard let range = html.range(of: #"(?<=\twindow\.external\.user\(")login=auth.*(?="\);)"#, options: .regularExpression) else {
+            return nil
+        }
+        let string = String(html[range])
         guard let loginVal = string.split(separator: "=").last else {
             return nil
         }
@@ -177,322 +305,5 @@ public struct FFXIVLoginCredentials {
     
     public func deleteLogin() {
         FFXIVLoginCredentials.deleteLogin(username: username)
-    }
-}
-
-public enum FFXIVLoginResult {
-    case success(sid: String)
-    case bootUpdate(patches: [Patch])
-    case clientUpdate(patches: [Patch])
-    case incorrectCredentials
-    case noSteamTicket
-    case steamUserError
-    case protocolError
-    case networkError
-    case noInstall
-    case maintenance
-}
-
-private enum FFXIVLoginPageData {
-    case success(storedSid: String, cookie: String?, squexid: String? = nil)
-    case networkError
-    case loginError
-}
-
-
-struct FFXIVLogin {
-    typealias settings = FFXIVSettings
-    static let userAgent = settings.platform == .mac ? "macSQEXAuthor/2.0.0(MacOSX; ja-jp)" : "SQEXAuthor/2.0.0(Windows 6.2; ja-jp; \(uniqueID))"
-    static let userAgentPatch = settings.platform == .mac ? "FFXIV-MAC PATCH CLIENT" : "FFXIV PATCH CLIENT"
-    let authURL = URL(string: "https://ffxiv-login.square-enix.com/oauth/ffxivarr/login/login.send")!
-    let ticket = Steam.ticket
-    
-    var loginURL: URL {
-        let base = "https://ffxiv-login.square-enix.com/oauth/ffxivarr/login/top?lng=en&rgn=\(settings.region.rawValue)&isft=0&cssmode=1&isnew=1&launchver=3"
-        guard let ticket = ticket, settings.platform == .steam else {
-            return URL(string: base)!
-        }
-        let steamParams = "&issteam=1&session_ticket=\(ticket.text)&ticket_size=\(ticket.length)"
-        return URL(string: base + steamParams)!
-    }
-    
-    var patchURL: URL {
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeZone = TimeZone(identifier: "UTC")
-        dateFormatter.dateFormat = "yyyy-MM-dd-HH-mm"
-        return URL(string: "http://patch-bootver.ffxiv.com/http/win32/ffxivneo_release_boot/\(FFXIVRepo.boot.ver)/?time=\(dateFormatter.string(from: Date()))")! //yes http this is not a mistake
-    }
-    
-    var sessionURL: URL {
-        return URL(string: "https://patch-gamever.ffxiv.com/http/win32/ffxivneo_release_game/\(FFXIVRepo.game.ver)")!
-    }
-    
-    fileprivate func getStored() -> FFXIVLoginPageData {
-        let headers: OrderedDictionary = [
-            "Accept"         : "image/gif, image/jpeg, image/pjpeg, application/x-ms-application, application/xaml+xml, application/x-ms-xbap, */*",
-            "Referer"        : Frontier.referer.absoluteString,
-            "Accept-Encoding": "gzip, deflate",
-            //"Accept-Language": ??? TODO: find out how this works and why
-            "User-Agent"     : FFXIVLogin.userAgent,
-            "Connection"     : "Keep-Alive",
-            "Cookie"         : #"_rsid="""#
-        ]
-        guard let response = HTTPClient.fetch(url: loginURL, headers: headers) else {
-            return .networkError
-        }
-        guard let html = String(data: response.body, encoding: .utf8) else {
-            return .networkError
-        }
-        let recvHeaders = OrderedDictionary(response.headers, uniquingKeysWith: {$1})
-        let cookie = recvHeaders["Set-Cookie"]
-        guard let storedRange = html.range(of: #"(?<=name="_STORED_" value=").*(?=">)"#, options: .regularExpression) else {
-            return .loginError
-        }
-        let storedSid = String(html[storedRange])
-        guard settings.platform == .steam else {
-            return .success(storedSid: storedSid, cookie: cookie)
-        }
-        guard let steamRange = html.range(of: #"(?<=<input name="sqexid" type="hidden" value=").*(?=">)"#, options: .regularExpression) else {
-            return .loginError
-        }
-        let squexid = String(html[steamRange])
-        return .success(storedSid: storedSid, cookie: cookie, squexid: squexid)
-    }
-    
-    fileprivate func getTempSID(storedSID: String, cookie: String?, squexid: String?, completion: @escaping ((FFXIVLoginResult) -> Void)) {
-        let headers: OrderedDictionary = [
-            "Accept"         : "image/gif, image/jpeg, image/pjpeg, application/x-ms-application, application/xaml+xml, application/x-ms-xbap, */*",
-            "Referer"        : loginURL.absoluteString,
-            //"Accept-Language": ??? TODO: find out how this works and why
-            "User-Agent"     : FFXIVLogin.userAgent,
-            "Accept-Encoding": "gzip, deflate",
-            "Host"           : "ffxiv-login.square-enix.com",
-            "Connection"     : "Keep-Alive",
-            "Cache-Control"  : "no-cache",
-            "Cookie"         : cookie ?? #"_rsid="""#
-        ]
-        guard ticket != nil || settings.platform != .steam else {
-            completion(.noSteamTicket)
-            return
-        }
-        if let squexid = squexid {
-            guard settings.credentials!.username == squexid else {
-                completion(.steamUserError)
-                return
-            }
-        }
-        else {
-            guard settings.platform != .steam else {
-                completion(.steamUserError)
-                return
-            }
-        }
-        let postBody = settings.credentials!.loginData(storedSID: storedSID)
-        guard let response = HTTPClient.fetch(url: authURL, headers: headers, postBody: postBody) else {
-            completion(.networkError)
-            return
-        }
-        guard let html = String(data: response.body, encoding: .utf8) else {
-            completion(.networkError)
-            return
-        }
-        let recvHeaders = OrderedDictionary(response.headers, uniquingKeysWith: {$1})
-        let cookie = recvHeaders["Set-Cookie"]
-        let op = SidParseOperation(html: html)
-        let queue = OperationQueue()
-        op.completionBlock = {
-            DispatchQueue.main.async {
-                guard case let .some(HTMLParseResult.result(result)) = op.result else {
-                    completion(.protocolError)
-                    return
-                }
-                guard let parsedResult = FFXIVServerLoginResponse(string: result) else {
-                    completion(.protocolError)
-                    return
-                }
-                if !parsedResult.authOk {
-                    completion(.incorrectCredentials)
-                    return
-                }
-                guard let sid = parsedResult.sid else {
-                    completion(.protocolError)
-                    return
-                }
-                settings.update(from: parsedResult)
-                self.getFinalSID(tempSID: sid, cookie: cookie, completion: completion)
-            }
-        }
-        queue.addOperation(op)
-    }
-    
-    fileprivate func getFinalSID(tempSID: String, cookie: String?, completion: @escaping ((FFXIVLoginResult) -> Void)) {
-        let headers: OrderedDictionary = [
-            "X-Hash-Check": "enabled",
-            "User-Agent": FFXIVLogin.userAgentPatch
-        ]
-        let url = sessionURL.appendingPathComponent(tempSID)
-        let postBody = FFXIVApp().versionList(maxEx: settings.expansionId.rawValue).data(using: .utf8)!
-        guard let response = HTTPClient.fetch(url: url, headers: headers, postBody: postBody) else {
-            completion(.networkError)
-            return
-        }
-        guard let html = String(data: response.body, encoding: .utf8) else {
-            completion(.networkError)
-            return
-        }
-        if html.count > 0 {
-            if response.statusCode <= 299 {
-                completion(.clientUpdate(patches: Patch.parse(patches: html)))
-            } else if response.statusCode == 409 { //this means a boot update is required although we checked for it before... install is probably broken af
-                completion(.protocolError)
-            }
-            else {
-                completion(.networkError)
-            }
-            return
-        }
-        let recvHeaders = OrderedDictionary(response.headers, uniquingKeysWith: {$1})
-        if let finalSid = recvHeaders["X-Patch-Unique-Id"] {
-            completion(.success(sid: finalSid))
-        } else {
-            completion(.protocolError)
-        }
-    }
-    
-    fileprivate func getBootPatch(completion: @escaping (([Patch]) -> Void))  {
-        let headers: OrderedDictionary = [
-            "User-Agent": FFXIVLogin.userAgentPatch,
-            "Host"      : "patch-bootver.ffxiv.com"
-        ]
-        guard let response = HTTPClient.fetch(url: patchURL, headers: headers) else {
-            completion([])
-            return
-        }
-        if let html = String(data: response.body, encoding: .utf8) {
-            completion(Patch.parse(patches: html))
-        } else {
-            completion([])
-        }
-    }
-    
-    static var uniqueID: String {
-        let platformExpert = IOServiceGetMatchingService(kIOMasterPortDefault, IOServiceMatching("IOPlatformExpertDevice") )
-        let fallbackID = "ecf4a84335"
-        
-        guard platformExpert > 0 else {
-            return fallbackID
-        }
-        guard let serialNumber = (IORegistryEntryCreateCFProperty(platformExpert, kIOPlatformSerialNumberKey as CFString, kCFAllocatorDefault, 0).takeUnretainedValue() as? String) else {
-            return fallbackID
-        }
-        IOObjectRelease(platformExpert)
-        
-        return String(serialNumber.lowercased().prefix(10))
-    }
-}
-
-extension FFXIVSettings {
-    
-    static func checkBoot(completion: @escaping (([Patch]?) -> Void)) {
-        guard FFXIVApp().installed else {
-            completion(nil)
-            return
-        }
-        let login = FFXIVLogin()
-        login.getBootPatch() { patches in
-            completion(patches.isEmpty ? nil : patches)
-        }
-    }
-    
-    static func login(completion: @escaping ((FFXIVLoginResult) -> Void)) {
-        guard FFXIVApp().installed else {
-            completion(.noInstall)
-            return
-        }
-        guard let _ = credentials else {
-            completion(.incorrectCredentials)
-            return
-        }
-        guard Frontier.checkGate() else {
-            completion(.maintenance)
-            return
-        }
-        let login = FFXIVLogin()
-        switch login.getStored() {
-        case .networkError:
-            completion(.networkError)
-        case .loginError:
-            completion(.protocolError)
-        case .success(let storedSid, let cookie, let squexid):
-            login.getTempSID(storedSID: storedSid, cookie: cookie, squexid: squexid, completion: completion)
-        }
-    }
-    
-    static func update(from response: FFXIVServerLoginResponse) {
-        if let rgnInt = response.region, let rgn = FFXIVRegion(rawValue: rgnInt) {
-            region = rgn
-        }
-        if let expInt = response.maxEx, let expId = FFXIVExpansionLevel(rawValue: expInt) {
-            expansionId = expId
-        }
-    }
-    
-}
-
-public struct FFXIVApp {
-    let bootRepoURL, bootExeURL, bootExe64URL, launcherExeURL, launcherExe64URL, updaterExeURL, updaterExe64URL: URL
-    let gameRepoURL, dx9URL, dx11URL, sqpackFolderURL: URL
-    private let bootFiles: [URL]
-    
-    init() {
-        bootRepoURL = FFXIVSettings.gamePath.appendingPathComponent("boot")
-        bootExeURL = bootRepoURL.appendingPathComponent("ffxivboot.exe")
-        bootExe64URL = bootRepoURL.appendingPathComponent("ffxivboot64.exe")
-        launcherExeURL = bootRepoURL.appendingPathComponent("ffxivlauncher.exe")
-        launcherExe64URL = bootRepoURL.appendingPathComponent("ffxivlauncher64.exe")
-        updaterExeURL = bootRepoURL.appendingPathComponent("ffxivupdater.exe")
-        updaterExe64URL = bootRepoURL.appendingPathComponent("ffxivupdater64.exe")
-        
-        gameRepoURL = FFXIVSettings.gamePath.appendingPathComponent("game")
-        dx9URL = gameRepoURL.appendingPathComponent("ffxiv.exe")
-        dx11URL = gameRepoURL.appendingPathComponent("ffxiv_dx11.exe")
-        sqpackFolderURL = gameRepoURL.appendingPathComponent("sqpack")
-        
-        bootFiles = [bootExeURL, bootExe64URL, launcherExeURL, launcherExe64URL, updaterExeURL, updaterExe64URL]
-    }
-    
-    var installed: Bool {
-        bootFiles.allSatisfy({FileManager.default.fileExists(atPath: $0.path)})
-    }
-    
-    var bootHash: String {
-        bootFiles.map({(try? FFXIVApp.hashSegment(file: $0)) ?? ""}).joined(separator: ",")
-    }
-
-    func versionList(maxEx: UInt32) -> String {
-        let expansions = FFXIVRepo.expansions(max: maxEx).map({"\($0.rawValue)\t\($0.ver)"})
-        return "\(FFXIVRepo.boot.ver)=\(bootHash)\n\(expansions.joined(separator: "\n"))"
-    }
-    
-    private static func hashSegment(file: URL) throws -> String {
-        let (hash, len) = try FFXIVApp.sha1(file: file)
-        return "\(file.lastPathComponent)/\(len)/\(hash)"
-    }
-    
-    private static func sha1(file: URL) throws -> (String, Int) {
-        let data = try Data.init(contentsOf: file)
-        let digest = Insecure.SHA1.hash(data: data)
-        return (digest.hexStr, data.count)
-    }
-}
-
-extension Digest {
-    var bytes: [UInt8] { Array(makeIterator()) }
-    var hexStr: String {
-        var string = ""
-        for byte in self.bytes {
-            string += String(format: "%02x", byte)
-        }
-        return string
     }
 }

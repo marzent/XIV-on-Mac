@@ -6,67 +6,29 @@
 //
 
 import Foundation
-import SwordRPC
 
-struct SocialIntegration {
+struct DiscordBridge {
     @available(*, unavailable) private init() {}
     
-    class DiscordRichPresence {
-        let settingsKey = "Discord"
-        let discordAppId = "925647215421173820"
-        let iconName = "appicon-alpha"
-        let defaults = UserDefaults.standard
-        var connected = false
-        
-        var rpc: SwordRPC
-        var richPresence: RichPresence
-        var enabled: Bool
-        
-        init() {
-            if (defaults.object(forKey: settingsKey) == nil) {
-                defaults.set(true, forKey: settingsKey)
-            }
-            self.enabled = defaults.bool(forKey: settingsKey)
-            self.rpc = SwordRPC.init(appId: discordAppId)
-            self.richPresence = RichPresence()
-            
-            if (self.enabled) {
-                self.connected = connect(rpc: self.rpc)
-            } else {
-                self.connected = false
-            }
+    private static let bridge = Bundle.main.url(forResource: "discord_bridge", withExtension: "exe", subdirectory: "")!
+    
+    private static let updateKey = "Discord"
+    static var enabled: Bool {
+        get {
+            return Util.getSetting(settingKey: updateKey, defaultValue: false)
         }
-        
-        func setPresence() {
-            if (!self.connected) {
-                print("Discord not connected.")
-                return;
-            }
-            self.richPresence.assets.largeImage = iconName
-            self.richPresence.timestamps.start = Date()
-            rpc.setPresence(self.richPresence)
-        }
-        
-        func connect(rpc: SwordRPC) -> Bool {
-            return rpc.connect()
-        }
-        
-        func disconnect() -> Bool {
-            self.rpc.disconnect()
-            return false;
-        }
-        
-        func save() {
-            defaults.set(self.enabled, forKey: settingsKey)
-            if (self.enabled) {
-                self.rpc = SwordRPC.init(appId: discordAppId)
-                self.connected = connect(rpc: self.rpc)
-                setPresence()
-            } else {
-                self.connected = disconnect()
-            }
+        set {
+            UserDefaults.standard.set(newValue, forKey: updateKey)
+            setPresence()
         }
     }
     
-    static var discord = DiscordRichPresence()
+    static func setPresence() {
+        guard enabled else {
+            Wine.taskKill(processName: "discord_bridge.exe")
+            return
+        }
+        Wine.launch(args: [bridge.path])
+    }
+   
 }

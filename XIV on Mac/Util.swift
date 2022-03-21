@@ -5,8 +5,7 @@
 //  Created by Marc-Aurel Zent on 22.12.21.
 //
 
-import Cocoa
-import CryptoSwift
+import AppKit
 
 struct Util {
     @available(*, unavailable) private init() {}
@@ -16,7 +15,7 @@ struct Util {
     static let appleReceiptsPath = URL(fileURLWithPath: "/Library/Apple/System/Library/Receipts/")
 
     class Log: TextOutputStream {
-        var logName: String
+        let logName: String
         
         init(name: String) {
             logName = name
@@ -54,9 +53,8 @@ struct Util {
         make(dir: dir.path)
     }
     
-    static func launch(exec: URL, args: [String], blocking: Bool = false) {
+    static func launch(exec: URL, args: [String], blocking: Bool = false, wineLog: Bool = false) {
         let task = Process()
-        task.qualityOfService = QualityOfService.userInteractive
         task.environment = enviroment
         task.executableURL = exec
         task.arguments = args
@@ -66,7 +64,7 @@ struct Util {
         let outHandle = pipe.fileHandleForReading
         outHandle.readabilityHandler = { pipe in
             if let line = String(data: pipe.availableData, encoding: String.Encoding.utf8) {
-                print(line, to: &Wine.logger)
+                wineLog ? print(line, to: &Wine.logger) : print(line, to: &logger)
             } else {
                 print("Error decoding data: \(pipe.availableData)\n", to: &logger)
             }
@@ -76,6 +74,11 @@ struct Util {
         }
         catch {
             print("Error starting subprocess", to: &logger)
+            return
+        }
+        DispatchQueue.global(qos: .background).async {
+            task.waitUntilExit()
+            try? outHandle.close()
         }
         if blocking {
             task.waitUntilExit()
@@ -85,7 +88,6 @@ struct Util {
     static func launchToString(exec: URL, args: [String]) -> String {
         var ret = ""
         let task = Process()
-        task.qualityOfService = QualityOfService.userInteractive
         task.environment = enviroment
         task.executableURL = exec
         task.arguments = args
@@ -107,6 +109,7 @@ struct Util {
             print("Error starting subprocess", to: &logger)
         }
         task.waitUntilExit()
+        try? outHandle.close()
         return ret
     }
     
@@ -122,10 +125,13 @@ struct Util {
         env["DXVK_HUD"] = DXVK.options.getHud()
         env["DXVK_ASYNC"] = DXVK.options.getAsync()
         env["DXVK_FRAME_RATE"] = DXVK.options.getMaxFramerate()
+        env["DXVK_STATE_CACHE_PATH"] = "C:\\"
         env["DALAMUD_RUNTIME"] = "C:\\Program Files\\XIV on Mac\\dotNET Runtime"
         env["XL_WINEONLINUX"] = "true"
         env["XL_WINEONMAC"] = "true"
         env["MVK_CONFIG_FULL_IMAGE_VIEW_SWIZZLE"] = "1"
+        env["MVK_CONFIG_RESUME_LOST_DEVICE"] = "1"
+        env["MVK_ALLOW_METAL_FENCES"] = "1"
         env["MVK_CONFIG_USE_METAL_ARGUMENT_BUFFERS"] = "1"
         //env["DYLD_PRINT_LIBRARIES"] = "YES"
         env["DYLD_FALLBACK_LIBRARY_PATH"] = Bundle.main.url(forResource: "lib", withExtension: "", subdirectory: "wine")!.path + ":/opt/local/lib:/usr/local/lib:/usr/lib:/usr/libexec:/usr/lib/system:/opt/X11/lib"
@@ -141,24 +147,6 @@ struct Util {
             return defaultValue
         }
         return setting as! T
-    }
-    
-    static func zeroPadArray(array: [UInt8]) -> [UInt8] {
-        let zeroes = Blowfish.blockSize - (array.count % Blowfish.blockSize)
-        if zeroes > 0 {
-            return array + [UInt8](repeating: 0, count: zeroes)
-        }
-        return array
-    }
-    
-    static func swapByteOrder32(_ bytes: [UInt8]) -> [UInt8]{
-        var mbytes = bytes
-        for i in stride(from: 0, to: bytes.count, by: 4) {
-            for j in 0 ..< 4 {
-                mbytes[i + j] = bytes[i + 3 - j]
-            }
-        }
-        return mbytes
     }
     
     static func quit() {

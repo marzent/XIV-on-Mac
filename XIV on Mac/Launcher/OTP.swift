@@ -8,7 +8,7 @@
 import Cocoa
 import Embassy
 import KeychainAccess
-import SwiftOTP
+import Base32
 
 class OTP {
     private let loop: SelectorEventLoop
@@ -50,7 +50,9 @@ class OTP {
     
     static func store(username: String, secret: String) {
         let cleanSecret = secret.components(separatedBy: .whitespaces).joined()
-        keychain[data: "\(username)(OTP secret)"] = base32DecodeToData(cleanSecret)
+        var decoder = Base32Decoder()
+        decoder.decode(cleanSecret)
+        keychain[data: "\(username)(OTP secret)"] = Data(decoder.finalize())
     }
     
     private func retrieve(username: String) -> TOTP? {
@@ -81,10 +83,10 @@ class OTP {
     func start() {
         startServer()
         if generator != nil {
-            self.push(otp: self.generator?.generate(time: Date()))
+            self.push(otp: self.generator?.token)
             timer.invalidate()
             timer = Timer.scheduledTimer(withTimeInterval: 30, repeats: true, block: { _ in
-                self.push(otp: self.generator?.generate(time: Date()))
+                self.push(otp: self.generator?.token)
             })
         }
     }
@@ -121,28 +123,25 @@ extension LaunchController {
             return
         }
         settings.usesOneTimePassword = true
-        if let username = settings.credentials?.username{
-            if !OTP.secretStored(username: username) {
-                let msg = NSAlert()
-                msg.addButton(withTitle: "OK")
-                msg.addButton(withTitle: "Cancel")
-                msg.messageText = "OTP Secret"
-                msg.informativeText = "If you trust your local Keychain you can let XIV on Mac handle OTP generation for you if you provide a BASE32 encoded secret below:"
-                let txt = NSTextField(frame: NSRect(x: 0, y: 0, width: 200, height: 24))
-                msg.accessoryView = txt
-                if msg.runModal() == .alertFirstButtonReturn {
-                    OTP.store(username: username, secret: txt.stringValue)
-                }
-                txt.stringValue = ""
+        let username = userField.stringValue
+        if !OTP.secretStored(username: username) {
+            let msg = NSAlert()
+            msg.addButton(withTitle: "OK")
+            msg.addButton(withTitle: "Cancel")
+            msg.messageText = "OTP Secret for user \"\(username)\""
+            msg.informativeText = "If you trust your local Keychain you can let XIV on Mac handle OTP generation for you if you provide a BASE32 encoded secret below:"
+            let txt = NSTextField(frame: NSRect(x: 0, y: 0, width: 200, height: 24))
+            msg.accessoryView = txt
+            if msg.runModal() == .alertFirstButtonReturn {
+                OTP.store(username: username, secret: txt.stringValue)
             }
+            txt.stringValue = ""
         }
         enableOTP()
     }
     
     func enableOTP() {
-        if let username = settings.credentials?.username {
-            otp = OTP(username: username)
-        }
+        otp = OTP(username: userField.stringValue)
     }
 
 }

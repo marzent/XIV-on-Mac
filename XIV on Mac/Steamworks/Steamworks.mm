@@ -12,18 +12,42 @@
 
 @implementation Steamworks : NSObject
 
-- (id)init {
+- (instancetype)initWithAppId: (long)appId {
     if (self = [super init]) {
-        SteamAPI_Init();
+        _appStr = (char*) malloc((22)*sizeof(char));
+        _gameStr = (char*) malloc((23)*sizeof(char));
+        sprintf(_appStr, "SteamAppId=%ld", appId);
+        sprintf(_gameStr, "SteamGameId=%ld", appId);
+        putenv(_appStr);
+        putenv(_gameStr);
+        _initSuccess = SteamAPI_Init();
     }
     return self;
 }
 
+- (void)reinitWithAppId: (long)appId {
+    SteamAPI_Shutdown();
+    sprintf(_appStr, "SteamAppId=%ld", appId);
+    sprintf(_gameStr, "SteamGameId=%ld", appId);
+    putenv(_appStr);
+    putenv(_gameStr);
+    _initSuccess = SteamAPI_Init();
+}
+
 - (void)dealloc {
     SteamAPI_Shutdown();
+    free(_appStr);
+    free(_gameStr);
 }
 
 - (NSData *)authSessionTicket {
+    if (!_initSuccess) {
+        putenv(_appStr);
+        putenv(_gameStr);
+        if (!(_initSuccess = SteamAPI_Init())) {
+            return NULL;
+        }
+    }
     HAuthTicket m_hAuthTicket;
     char rgchToken[1024];
     uint32 unTokenLen = 0;
@@ -34,6 +58,8 @@
 }
 
 - (uint32)serverRealTime {
+    if (!_initSuccess)
+        return 0;
     return SteamUtils()->GetServerRealTime();
 }
 

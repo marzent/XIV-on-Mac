@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="SmX-cH-8Kr">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="SmX-cH-8Kr">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="20037"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -439,24 +439,6 @@
                                                 <action selector="installDXVK:" target="Voe-Tx-rLC" id="khF-r7-Kz1"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="XIVLauncher" id="9zs-Nn-Dcm">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="installXL:" target="Voe-Tx-rLC" id="Bza-ng-89u"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Vanilla Launcher" id="rp2-Zf-JOT">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="vanillaLauncher:" target="Voe-Tx-rLC" id="aXS-oe-ci8"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="ARR Cutcenes" id="9oO-6y-dqi">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="movieFix:" target="Voe-Tx-rLC" id="Ti0-d7-yh6"/>
-                                            </connections>
-                                        </menuItem>
                                         <menuItem title="GShade" id="9VN-cs-jNP">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <menu key="submenu" title="GShade" id="AgC-OX-7rb">
@@ -475,13 +457,6 @@
                                                     </menuItem>
                                                 </items>
                                             </menu>
-                                        </menuItem>
-                                        <menuItem isSeparatorItem="YES" id="8ME-M6-Hmm"/>
-                                        <menuItem title="Run Install Wizard" id="WUo-tp-nqk">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="fullInstall:" target="Voe-Tx-rLC" id="cNe-qd-BDD"/>
-                                            </connections>
                                         </menuItem>
                                     </items>
                                 </menu>
@@ -1209,12 +1184,12 @@ Gw
             <objects>
                 <viewController id="GIg-v3-M8h" customClass="SettingsController" customModule="XIV_on_Mac" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="Uy2-An-Xxz">
-                        <rect key="frame" x="0.0" y="0.0" width="668" height="707"/>
+                        <rect key="frame" x="0.0" y="0.0" width="668" height="787"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <visualEffectView fixedFrame="YES" blendingMode="behindWindow" material="appearanceBased" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="qGU-7d-wlK">
-                                <rect key="frame" x="0.0" y="0.0" width="668" height="707"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                            <visualEffectView fixedFrame="YES" blendingMode="behindWindow" material="underWindowBackground" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="qGU-7d-wlK">
+                                <rect key="frame" x="0.0" y="0.0" width="668" height="787"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <box fixedFrame="YES" title="Dalamud" translatesAutoresizingMaskIntoConstraints="NO" id="dQ2-hM-1k5">
                                         <rect key="frame" x="17" y="531" width="634" height="76"/>
@@ -1254,7 +1229,7 @@ Gw
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
                                                     <connections>
-                                                        <action selector="updateRetina:" target="GIg-v3-M8h" id="5Km-ai-97d"/>
+                                                        <action selector="saveState:" target="GIg-v3-M8h" id="LkF-Z8-nFy"/>
                                                     </connections>
                                                 </button>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YDL-Cb-Q7P">
@@ -1286,9 +1261,9 @@ Gw
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LP2-JT-YsT">
-                                                    <rect key="frame" x="18" y="21" width="163" height="18"/>
+                                                    <rect key="frame" x="18" y="21" width="240" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <buttonCell key="cell" type="check" title="Discord Rich Presence" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="EJl-D1-TzE">
+                                                    <buttonCell key="cell" type="check" title="Discord Rich Presence Wine Bridge" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="EJl-D1-TzE">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
@@ -1300,7 +1275,7 @@ Gw
                                         </view>
                                     </box>
                                     <box fixedFrame="YES" title="FFXIV" translatesAutoresizingMaskIntoConstraints="NO" id="9CE-y2-L8x">
-                                        <rect key="frame" x="17" y="611" width="634" height="76"/>
+                                        <rect key="frame" x="17" y="691" width="634" height="76"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <view key="contentView" id="MlF-Zi-8T3">
                                             <rect key="frame" x="3" y="3" width="628" height="58"/>
@@ -1344,9 +1319,9 @@ Gw
                                                     </connections>
                                                 </popUpButton>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jmh-Hz-ux7">
-                                                    <rect key="frame" x="499" y="21" width="109" height="18"/>
+                                                    <rect key="frame" x="499" y="21" width="82" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <buttonCell key="cell" type="check" title="Keep Patches" bezelStyle="regularSquare" imagePosition="left" inset="2" id="aRR-m7-gaN">
+                                                    <buttonCell key="cell" type="check" title="Free Trial" bezelStyle="regularSquare" imagePosition="left" inset="2" id="aRR-m7-gaN">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
@@ -1364,7 +1339,7 @@ Gw
                                                             <items>
                                                                 <menuItem title="Windows" state="on" id="qRO-Pi-PbC"/>
                                                                 <menuItem title="Mac" id="8gA-hG-foX"/>
-                                                                <menuItem title="Steam" enabled="NO" id="Azf-g8-OxM"/>
+                                                                <menuItem title="Steam" id="Azf-g8-OxM"/>
                                                             </items>
                                                         </menu>
                                                     </popUpButtonCell>
@@ -1662,6 +1637,59 @@ Gw
                                             </subviews>
                                         </view>
                                     </box>
+                                    <box fixedFrame="YES" title="Patching" translatesAutoresizingMaskIntoConstraints="NO" id="adX-qh-Z2m">
+                                        <rect key="frame" x="17" y="611" width="634" height="76"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <view key="contentView" id="zKH-mt-VJK">
+                                            <rect key="frame" x="3" y="3" width="628" height="58"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7H0-sz-e1J">
+                                                    <rect key="frame" x="18" y="21" width="109" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="check" title="Keep Patches" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="GI5-jN-ZaJ">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="saveState:" target="GIg-v3-M8h" id="jy1-oJ-joq"/>
+                                                    </connections>
+                                                </button>
+                                                <textField wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zft-mL-IyQ">
+                                                    <rect key="frame" x="384" y="20" width="81" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="bSx-F6-4H1">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                    <connections>
+                                                        <action selector="saveState:" target="GIg-v3-M8h" id="HsO-fn-w9T"/>
+                                                    </connections>
+                                                </textField>
+                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eVo-GZ-iwf">
+                                                    <rect key="frame" x="198" y="21" width="178" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="check" title="Limit Download Speed to" bezelStyle="regularSquare" imagePosition="left" inset="2" id="KSs-CO-Vc9">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="updateMaxDownload:" target="GIg-v3-M8h" id="hwO-qI-k1T"/>
+                                                    </connections>
+                                                </button>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ts9-EP-Wqa">
+                                                    <rect key="frame" x="471" y="22" width="49" height="16"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="MB/sec" id="ARN-hb-Lmx">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                            </subviews>
+                                        </view>
+                                    </box>
                                 </subviews>
                             </visualEffectView>
                         </subviews>
@@ -1679,10 +1707,13 @@ Gw
                         <outlet property="esync" destination="5oa-uD-168" id="ZSN-V1-stL"/>
                         <outlet property="fps" destination="Ogm-ZO-E2w" id="OPW-hm-cEk"/>
                         <outlet property="frametimes" destination="DSc-kA-8q1" id="NQ8-Yx-XTB"/>
+                        <outlet property="freeTrial" destination="Jmh-Hz-ux7" id="iOI-mm-OQz"/>
                         <outlet property="gpuload" destination="4Fq-Sz-2ZL" id="kpD-xR-1mP"/>
-                        <outlet property="keepPatches" destination="Jmh-Hz-ux7" id="f2H-IH-dMq"/>
+                        <outlet property="keepPatches" destination="7H0-sz-e1J" id="YlN-6O-4uM"/>
                         <outlet property="language" destination="tOj-q2-gaD" id="YA2-qM-B6g"/>
                         <outlet property="license" destination="eWT-Ny-Sac" id="MFZ-zh-TaL"/>
+                        <outlet property="maxDownload" destination="eVo-GZ-iwf" id="FQD-t0-4Zm"/>
+                        <outlet property="maxDownloadField" destination="zft-mL-IyQ" id="dkM-y6-tfo"/>
                         <outlet property="maxFPS" destination="0PH-1i-0UA" id="3Y1-La-IoX"/>
                         <outlet property="maxFPSField" destination="uQd-FB-xmH" id="pew-u4-IUq"/>
                         <outlet property="memory" destination="HvH-pN-nVO" id="69Q-ki-iMz"/>
@@ -1696,7 +1727,7 @@ Gw
                 </viewController>
                 <customObject id="tpD-0Q-AJh" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1029" y="1414.5"/>
+            <point key="canvasLocation" x="1029" y="1454.5"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="ImY-2l-0oe">
@@ -1821,7 +1852,7 @@ Gw
                                         </textFieldCell>
                                     </textField>
                                     <button wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cgh-yM-JG5">
-                                        <rect key="frame" x="676" y="144" width="276" height="40"/>
+                                        <rect key="frame" x="673" y="140" width="282" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="push" title="Login" bezelStyle="rounded" alignment="center" controlSize="large" enabled="NO" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="TON-Zk-2g1">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -2005,7 +2036,7 @@ Gw
                         <rect key="frame" x="0.0" y="0.0" width="563" height="306"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <visualEffectView fixedFrame="YES" blendingMode="behindWindow" material="appearanceBased" state="active" translatesAutoresizingMaskIntoConstraints="NO" id="Fdm-fc-Eae">
+                            <visualEffectView fixedFrame="YES" blendingMode="behindWindow" material="HUDWindow" state="active" translatesAutoresizingMaskIntoConstraints="NO" id="Fdm-fc-Eae">
                                 <rect key="frame" x="0.0" y="0.0" width="563" height="306"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>

@@ -20,14 +20,17 @@ import Sparkle
         actAutoLaunch.state = ACT.autoLaunch ? .on : .off
         bhAutoLaunch.state = ACT.autoLaunchBH ? .on : .off
         checkForRosetta()
+        Steam.initAPI()
         sparkle.updater.checkForUpdatesInBackground()
-        if DXVK.shouldUpdate {
-            DXVK.install()
-        }
-        settingsWinController = storyboard.instantiateController(withIdentifier: "SettingsWindow") as? NSWindowController
         Util.make(dir: Wine.xomData.path)
         Util.make(dir: Util.cache.path)
-        SocialIntegration.discord.setPresence()
+        if DXVK.shouldUpdate {
+            DispatchQueue.global(qos: .utility).async {
+                DXVK.install()
+            }
+        }
+        Wine.touchDocuments()
+        settingsWinController = storyboard.instantiateController(withIdentifier: "SettingsWindow") as? NSWindowController
     }
 
     func updaterWillRelaunchApplication(_ updater: SPUUpdater) {
@@ -50,7 +53,7 @@ import Sparkle
     func checkForRosetta() {
     #if arch(arm64)
         // No need to do any of this on Intel.
-        if (Util.rosettaIsInstalled())
+        if (!Util.rosettaIsInstalled())
         {
             let alert: NSAlert = NSAlert()
             alert.messageText = NSLocalizedString("ROSETTA_REQUIRED", comment: "")
