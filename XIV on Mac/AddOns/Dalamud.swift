@@ -78,6 +78,15 @@ struct Dalamud {
     static let path = Wine.xomData.appendingPathComponent("Dalamud")
     static let localAssets = Wine.xomData.appendingPathComponent("Dalamud Assets")
     static let runtime = Wine.xomData.appendingPathComponent("dotNET Runtime")
+    // Dalamud injection delay seems to be heavily system dependent for some reason.
+    // But, while the default 7 seems to work great on Intel system we've seen a lot of evidence
+    // in the Discord support channel that 2 works much better on Apple Silicon; so, it's easy enough to
+    // have two different defaults.
+#if arch(arm64)
+    static let defaultInjectionDelay = 2.0
+#else
+    static let defaultInjectionDelay = 7.0
+#endif
     
     private struct remote {
         
@@ -128,7 +137,7 @@ struct Dalamud {
     private static let injectionSettingKey = "InjectionDelaySetting"
     static var delay: Double {
         get {
-            return Util.getSetting(settingKey: injectionSettingKey, defaultValue: 7.0)
+            return Util.getSetting(settingKey: injectionSettingKey, defaultValue: Dalamud.defaultInjectionDelay)
         }
         set(newDelay) {
             UserDefaults.standard.set(newDelay, forKey: injectionSettingKey)

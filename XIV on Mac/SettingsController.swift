@@ -160,7 +160,7 @@ class SettingsController: NSViewController {
             
             FFXIVSettings.dalamud = (dalamud.state == NSControl.StateValue.on) ? true : false
             Dalamud.mbCollection = (crowdSource.state == NSControl.StateValue.on) ? true : false
-            Dalamud.delay = Double(delay.stringValue) ?? 7.0
+            Dalamud.delay = Double(delay.stringValue) ?? Dalamud.defaultInjectionDelay
             
             FFXIVSettings.language = FFXIVLanguage(rawValue: UInt32(language.indexOfSelectedItem)) ?? .english
             FFXIVSettings.platform = FFXIVPlatform(rawValue: UInt32(license.indexOfSelectedItem)) ?? .mac
