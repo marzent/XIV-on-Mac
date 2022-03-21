@@ -100,7 +100,7 @@ struct Dalamud {
         
         static var version: Version? {
             var ret: Version?
-            let url = URL(string: "https://kamori.goats.dev/Dalamud/Release/VersionInfo\(staging ? "/stg" : "")?appId=xom")!
+            let url = URL(string: "https://kamori.goats.dev/Dalamud/Release/VersionInfo?track=\(staging ? "stg" : "release")&appId=xom")!
             let semaphore = DispatchSemaphore(value: 0)
             let task = URLSession.shared.dataTask(with: url) { data, response, error in
                 if let data = data {
