@@ -7,7 +7,7 @@
 
 import Cocoa
 import Sparkle
-
+import AppMover
 
 @main class AppDelegate: NSObject, NSApplicationDelegate, SPUUpdaterDelegate {
     var settingsWinController: NSWindowController?
@@ -19,6 +19,7 @@ import Sparkle
         let storyboard = NSStoryboard(name: "Main", bundle: nil)
         actAutoLaunch.state = ACT.autoLaunch ? .on : .off
         bhAutoLaunch.state = ACT.autoLaunchBH ? .on : .off
+        AppMover.moveIfNecessary()
         checkForRosetta()
         Steam.initAPI()
         sparkle.updater.checkForUpdatesInBackground()

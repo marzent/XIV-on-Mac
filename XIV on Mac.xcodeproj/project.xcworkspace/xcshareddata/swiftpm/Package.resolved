@@ -1,6 +1,15 @@
 {
   "pins" : [
     {
+      "identity" : "appmover",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/iamcalledrob/AppMover",
+      "state" : {
+        "branch" : "master",
+        "revision" : "bd3aab60bcbe384421ade591c85ad884ae6d2106"
+      }
+    },
+    {
       "identity" : "base32",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/std-swift/Base32.git",

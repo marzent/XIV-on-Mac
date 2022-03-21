@@ -47,6 +47,7 @@
 		50C45ABD27D8E9FC00572977 /* Steamworks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C45ABC27D8E9FC00572977 /* Steamworks.swift */; };
 		50D30FA027B92EDB007A9F66 /* OTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D30F9F27B92EDB007A9F66 /* OTP.swift */; };
 		50D30FA327B93359007A9F66 /* Embassy in Frameworks */ = {isa = PBXBuildFile; productRef = 50D30FA227B93359007A9F66 /* Embassy */; };
+		50DC355927E8B6AD00DBA62C /* AppMover in Frameworks */ = {isa = PBXBuildFile; productRef = 50DC355827E8B6AD00DBA62C /* AppMover */; };
 		50DF1F8527CCB83300DE9DA5 /* FFXIVRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DF1F8427CCB83300DE9DA5 /* FFXIVRepo.swift */; };
 		50DF1F8827CD261A00DE9DA5 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 50DF1F8727CD261A00DE9DA5 /* OrderedCollections */; };
 		50DF45992795C53300E3D22F /* GShade in Resources */ = {isa = PBXBuildFile; fileRef = 50DF45982795C53300E3D22F /* GShade */; };
@@ -175,6 +176,7 @@
 				50C45AB027D8A30A00572977 /* libsdkencryptedappticket.dylib in Frameworks */,
 				50C45AB127D8A30A00572977 /* libsteam_api.dylib in Frameworks */,
 				50DF1F8827CD261A00DE9DA5 /* OrderedCollections in Frameworks */,
+				50DC355927E8B6AD00DBA62C /* AppMover in Frameworks */,
 				50D30FA327B93359007A9F66 /* Embassy in Frameworks */,
 				507CFBF62781C780007ADEC9 /* ZIPFoundation in Frameworks */,
 				5046F7F527E754E9006C34E1 /* Base32 in Frameworks */,
@@ -370,6 +372,7 @@
 				50DF1F8727CD261A00DE9DA5 /* OrderedCollections */,
 				50B1C5B727D25620006DA54E /* SeeURL */,
 				5046F7F427E754E9006C34E1 /* Base32 */,
+				50DC355827E8B6AD00DBA62C /* AppMover */,
 			);
 			productName = "XIV on Mac";
 			productReference = 50511EC12770E085003A1E9F /* XIV on Mac.app */;
@@ -408,6 +411,7 @@
 				50DF1F8627CD261A00DE9DA5 /* XCRemoteSwiftPackageReference "swift-collections" */,
 				50B1C5B627D25620006DA54E /* XCRemoteSwiftPackageReference "swift-seeurl" */,
 				5046F7F327E754E9006C34E1 /* XCRemoteSwiftPackageReference "Base32" */,
+				50DC355727E8B6AD00DBA62C /* XCRemoteSwiftPackageReference "AppMover" */,
 			);
 			productRefGroup = 50511EC22770E085003A1E9F /* Products */;
 			projectDirPath = "";
@@ -819,6 +823,14 @@
 				minimumVersion = 4.0.0;
 			};
 		};
+		50DC355727E8B6AD00DBA62C /* XCRemoteSwiftPackageReference "AppMover" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/iamcalledrob/AppMover";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		50DF1F8627CD261A00DE9DA5 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-collections.git";
@@ -859,6 +871,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 50D30FA127B93359007A9F66 /* XCRemoteSwiftPackageReference "Embassy" */;
 			productName = Embassy;
+		};
+		50DC355827E8B6AD00DBA62C /* AppMover */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 50DC355727E8B6AD00DBA62C /* XCRemoteSwiftPackageReference "AppMover" */;
+			productName = AppMover;
 		};
 		50DF1F8727CD261A00DE9DA5 /* OrderedCollections */ = {
 			isa = XCSwiftPackageProductDependency;
