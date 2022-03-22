@@ -12,10 +12,10 @@
     {
       "identity" : "base32",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/std-swift/Base32.git",
+      "location" : "https://github.com/norio-nomura/Base32",
       "state" : {
-        "revision" : "3bf2b4dc874c615645ad81f4bcc2ced37ac5c9ca",
-        "version" : "3.0.0"
+        "revision" : "c4bc0a49689999ae2c7c778f3830a6a6e694efb8",
+        "version" : "0.9.0"
       }
     },
     {
@@ -25,15 +25,6 @@
       "state" : {
         "revision" : "065b6ce52596bd06b867cfe17fea2c56dcb53b30",
         "version" : "4.1.3"
-      }
-    },
-    {
-      "identity" : "encoding",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/std-swift/Encoding.git",
-      "state" : {
-        "revision" : "bd0dac5c17e8af9c6f85ec3186db07f91b263471",
-        "version" : "2.0.3"
       }
     },
     {

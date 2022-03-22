@@ -50,9 +50,7 @@ class OTP {
     
     static func store(username: String, secret: String) {
         let cleanSecret = secret.components(separatedBy: .whitespaces).joined()
-        var decoder = Base32Decoder()
-        decoder.decode(cleanSecret)
-        keychain[data: "\(username)(OTP secret)"] = Data(decoder.finalize())
+        keychain[data: "\(username)(OTP secret)"] = base32DecodeToData(cleanSecret)
     }
     
     private func retrieve(username: String) -> TOTP? {
