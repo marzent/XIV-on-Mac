@@ -7,7 +7,7 @@
 
 import Cocoa
 
-class LaunchController: NSViewController, NSWindowDelegate {
+class LaunchController: NSViewController {
     
     var loginSheetWinController: NSWindowController?
     var installerWinController: NSWindowController?
@@ -31,6 +31,7 @@ class LaunchController: NSViewController, NSWindowDelegate {
         setupOTP()
         ACT.observe()
         NotificationCenter.default.addObserver(self,selector: #selector(installDone(_:)),name: .installDone, object: nil)
+        NotificationCenter.default.addObserver(self,selector: #selector(loginDone(_:)),name: .gameStarted, object: nil)
         if #available(macOS 11.0, *) {
             newsTable = FrontierTableView(icon: NSImage(systemSymbolName: "newspaper", accessibilityDescription: nil)!)
             topicsTable = FrontierTableView(icon: NSImage(systemSymbolName: "newspaper.fill", accessibilityDescription: nil)!)
@@ -69,13 +70,7 @@ class LaunchController: NSViewController, NSWindowDelegate {
         loginSheetWinController = storyboard?.instantiateController(withIdentifier: "LoginSheet") as? NSWindowController
         installerWinController = storyboard?.instantiateController(withIdentifier: "InstallerWindow") as? NSWindowController
         patchWinController = storyboard?.instantiateController(withIdentifier: "PatchSheet") as? NSWindowController
-        view.window?.delegate = self
         view.window?.isMovableByWindowBackground = true
-    }
-    
-    func windowShouldClose(_ sender: NSWindow) -> Bool {
-        NSApp.hide(nil)
-        return false
     }
     
     private func populateNews(_ info: Frontier.Info) {
@@ -129,10 +124,17 @@ class LaunchController: NSViewController, NSWindowDelegate {
         }
     }
     
+    @objc func loginDone(_ notif: Notification) {
+        DispatchQueue.main.async { [self] in
+            loginSheetWinController?.window?.close()
+            view.window?.close()
+        }
+    }
+    
     func startPatch(_ patches: [Patch]) {
-        DispatchQueue.main.async {
-            self.view.window?.beginSheet(self.patchWinController!.window!)
-            let patchController = self.patchWinController!.contentViewController! as! PatchController
+        DispatchQueue.main.async { [self] in
+            view.window?.beginSheet(patchWinController!.window!)
+            let patchController = patchWinController!.contentViewController! as! PatchController
             patchController.install(patches)
         }
     }
@@ -187,11 +189,15 @@ final class AnimatingScrollView: NSScrollView {
     }
     
     
-    private func startTimer() {
-        self.timer.invalidate()
-        self.timer = Timer.scheduledTimer(withTimeInterval: stayDuration, repeats: true, block: { _ in
+    func startTimer() {
+        stopTimer()
+        timer = Timer.scheduledTimer(withTimeInterval: stayDuration, repeats: true, block: { _ in
             self.animate()
             })
+    }
+    
+    func stopTimer() {
+        timer.invalidate()
     }
     
     // This will override and cancel any running scroll animations

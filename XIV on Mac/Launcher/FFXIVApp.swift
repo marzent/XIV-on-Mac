@@ -49,9 +49,14 @@ public struct FFXIVApp {
             NotificationCenter.default.post(name: .loginInfo, object: nil, userInfo: [Notification.status.info: "Starting Wine"])
             Wine.launch(args: args)
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 15.0) {
+        let maxGameStartTime = 15.0
+        DispatchQueue.main.asyncAfter(deadline: .now() + maxGameStartTime) {
             NotificationCenter.default.post(name: .gameStarted, object: nil)
         }
+    }
+    
+    static var running: Bool {
+        Wine.pidOf(processName: "ffxiv_dx11.exe") > 0
     }
 
     private static func doubleSpaceify(_ str: String) -> String {

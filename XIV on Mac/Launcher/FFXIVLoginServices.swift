@@ -12,10 +12,16 @@ import SeeURL
 
 struct FFXIVLogin {
     typealias settings = FFXIVSettings
-    static let userAgent = settings.platform == .mac ? "macSQEXAuthor/2.0.0(MacOSX; ja-jp)" : "SQEXAuthor/2.0.0(Windows 6.2; ja-jp; \(uniqueID))"
-    static let userAgentPatch = settings.platform == .mac ? "FFXIV-MAC PATCH CLIENT" : "FFXIV PATCH CLIENT"
-    let authURL = URL(string: "https://ffxiv-login.square-enix.com/oauth/ffxivarr/login/login.send")!
     let ticket = Steam.ticket
+    let authURL = URL(string: "https://ffxiv-login.square-enix.com/oauth/ffxivarr/login/login.send")!
+    
+    static var userAgent: String {
+        settings.platform == .mac ? "macSQEXAuthor/2.0.0(MacOSX; ja-jp)" : "SQEXAuthor/2.0.0(Windows 6.2; ja-jp; \(uniqueID))"
+    }
+    
+    static var userAgentPatch: String {
+        settings.platform == .mac ? "FFXIV-MAC PATCH CLIENT" : "FFXIV PATCH CLIENT"
+    }
     
     var authTopURL: URL {
         get throws {
@@ -133,6 +139,9 @@ struct FFXIVLogin {
         get throws {
             guard FFXIVApp().installed else {
                 throw FFXIVLoginError.noInstall
+            }
+            if FFXIVApp.running {
+                throw FFXIVLoginError.multibox
             }
             if Frontier.maintenance {
                 throw FFXIVLoginError.maintenance

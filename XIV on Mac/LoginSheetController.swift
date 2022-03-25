@@ -21,6 +21,7 @@ class LoginSheetController: NSViewController {
         super.viewWillAppear()
         spinner.usesThreadedAnimation = true
         spinner.startAnimation(self)
+        status.stringValue = "Logging In"
     }
     
     @objc func loginUpdate(_ notif: Notification) {
@@ -30,16 +31,8 @@ class LoginSheetController: NSViewController {
         }
     }
     
-    @objc func loginDone(_ notif: Notification) {
-        DispatchQueue.main.async {
-            self.status.stringValue = "Logging In"
-            self.view.window?.close()
-        }
-    }
-    
     private func setupObservers() {
         NotificationCenter.default.addObserver(self,selector: #selector(loginUpdate(_:)),name: .loginInfo, object: nil)
-        NotificationCenter.default.addObserver(self,selector: #selector(loginDone(_:)),name: .gameStarted, object: nil)
     }
     
 }

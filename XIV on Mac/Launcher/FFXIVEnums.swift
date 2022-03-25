@@ -90,6 +90,7 @@ public enum FFXIVLoginError: Error {
     case networkError
     case noInstall
     case maintenance
+    case multibox
     case unexpected(code: Int)
 }
 
@@ -112,6 +113,8 @@ extension FFXIVLoginError: LocalizedError {
             return NSLocalizedString("NO_INSTALL_SHORT", comment: "")
         case .maintenance:
             return NSLocalizedString("MAINTENANCE_SHORT", comment: "")
+        case .multibox:
+            return NSLocalizedString("MULTIBOX_SHORT", comment: "")
         case .unexpected(_):
             return NSLocalizedString("UNEXPECTED_SHORT", comment: "Unexpected Error Title")
         }
@@ -135,6 +138,8 @@ extension FFXIVLoginError: LocalizedError {
             return NSLocalizedString("NO_INSTALL", comment: "")
         case .maintenance:
             return NSLocalizedString("MAINTENANCE", comment: "")
+        case .multibox:
+            return NSLocalizedString("MULTIBOX", comment: "")
         case .unexpected(_):
             return NSLocalizedString("UNEXPECTED", comment: "Unexpected Error Description")
         }

@@ -150,11 +150,13 @@ struct Util {
     }
     
     static func quit() {
-        let app = NSApplication.shared
-        for window in app.windows {
-            window.close()
+        DispatchQueue.main.async {
+            let app = NSApplication.shared
+            for window in app.windows {
+                window.close()
+            }
+            app.terminate(nil)
         }
-        app.terminate(nil)
     }
     
     static func rosettaIsInstalled() -> Bool {
