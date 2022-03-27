@@ -11,6 +11,7 @@
 		07B529D927D97F26005B78BF /* installRosetta.command in Resources */ = {isa = PBXBuildFile; fileRef = 07B529D827D97F26005B78BF /* installRosetta.command */; };
 		2B7C95D2277C6C6000A3CA89 /* SocialIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7C95D1277C6C6000A3CA89 /* SocialIntegration.swift */; };
 		5010EFE427E4CE40001D2FEC /* Encryption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5010EFE327E4CE40001D2FEC /* Encryption.swift */; };
+		501956A327F04616003CB437 /* LaunchWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501956A227F04616003CB437 /* LaunchWindowController.swift */; };
 		5020957927C9611A00BD76CC /* Patch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5020957827C9611A00BD76CC /* Patch.swift */; };
 		502A18D827AA8C0D00144AB9 /* FFXIVLoginServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A18D727AA8C0D00144AB9 /* FFXIVLoginServices.swift */; };
 		502A18E127AABF8400144AB9 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 502A18E027AABF8400144AB9 /* KeychainAccess */; };
@@ -79,6 +80,7 @@
 		07B529D827D97F26005B78BF /* installRosetta.command */ = {isa = PBXFileReference; lastKnownFileType = text; path = installRosetta.command; sourceTree = "<group>"; };
 		2B7C95D1277C6C6000A3CA89 /* SocialIntegration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialIntegration.swift; sourceTree = "<group>"; };
 		5010EFE327E4CE40001D2FEC /* Encryption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encryption.swift; sourceTree = "<group>"; };
+		501956A227F04616003CB437 /* LaunchWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchWindowController.swift; sourceTree = "<group>"; };
 		5020957827C9611A00BD76CC /* Patch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patch.swift; sourceTree = "<group>"; };
 		502A18D727AA8C0D00144AB9 /* FFXIVLoginServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFXIVLoginServices.swift; sourceTree = "<group>"; };
 		502A18E827AACEFE00144AB9 /* LaunchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchController.swift; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				502A18E827AACEFE00144AB9 /* LaunchController.swift */,
+				501956A227F04616003CB437 /* LaunchWindowController.swift */,
 				50D30F9F27B92EDB007A9F66 /* OTP.swift */,
 				509FE19B27E39DCB008D56D6 /* FFXIVApp.swift */,
 				509FE19927E3654E008D56D6 /* FFXIVEnums.swift */,
@@ -509,6 +512,7 @@
 				507C5FFF27CA9F2E00BA3CC2 /* PatchInstaller.swift in Sources */,
 				50B2A2B527AC1BC400EFA0A2 /* LoginSheetController.swift in Sources */,
 				502A18E927AACEFE00144AB9 /* LaunchController.swift in Sources */,
+				501956A327F04616003CB437 /* LaunchWindowController.swift in Sources */,
 				502A18D827AA8C0D00144AB9 /* FFXIVLoginServices.swift in Sources */,
 				50E5387B2779CF5C0038521A /* SettingsController.swift in Sources */,
 				509FE19C27E39DCB008D56D6 /* FFXIVApp.swift in Sources */,

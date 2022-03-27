@@ -1731,8 +1731,8 @@ Gw
         <!--Window Controller-->
         <scene sceneID="ImY-2l-0oe">
             <objects>
-                <windowController storyboardIdentifier="LaunchWindow" id="SmX-cH-8Kr" sceneMemberID="viewController">
-                    <window key="window" identifier="XOMMainWindowPosition" title="XIV on Mac" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="msO-z3-Trw">
+                <windowController storyboardIdentifier="LaunchWindow" id="SmX-cH-8Kr" customClass="LaunchWindowController" customModule="XIV_on_Mac" customModuleProvider="target" sceneMemberID="viewController">
+                    <window key="window" title="XIV on Mac" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="msO-z3-Trw">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="425" y="462" width="163" height="137"/>

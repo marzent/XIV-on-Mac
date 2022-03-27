@@ -70,7 +70,6 @@ class LaunchController: NSViewController {
         loginSheetWinController = storyboard?.instantiateController(withIdentifier: "LoginSheet") as? NSWindowController
         installerWinController = storyboard?.instantiateController(withIdentifier: "InstallerWindow") as? NSWindowController
         patchWinController = storyboard?.instantiateController(withIdentifier: "PatchSheet") as? NSWindowController
-        view.window?.isMovableByWindowBackground = true
     }
     
     private func populateNews(_ info: Frontier.Info) {
