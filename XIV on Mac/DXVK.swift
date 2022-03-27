@@ -10,37 +10,31 @@ import Foundation
 struct DXVK {
     @available(*, unavailable) private init() {}
     
-    private static let updateKey = "DXVKShouldUpdate"
-    static var shouldUpdate: Bool {
-        get {
-            return Util.getSetting(settingKey: updateKey, defaultValue: true)
-        }
-        set {
-            UserDefaults.standard.set(newValue, forKey: updateKey)
-        }
-    }
-    
     static var options = Options()
     
     static func install() {
-        shouldUpdate = false
         let dxvkPath = Bundle.main.url(forResource: "dxvk", withExtension: nil, subdirectory: "")!
         let dxDlls = ["d3d9.dll", "d3d10_1.dll", "d3d10.dll", "d3d10core.dll", "dxgi.dll", "d3d11.dll"]
         let system32 = Wine.prefix.appendingPathComponent("drive_c/windows/system32")
         let fm = FileManager.default
         for dll in dxDlls {
+            let winDllPath = system32.appendingPathComponent(dll).path
+            let dxvkDllPath = dxvkPath.appendingPathComponent(dll).path
+            if fm.contentsEqual(atPath: winDllPath, andPath: dxvkDllPath) {
+                continue
+            }
+            NotificationCenter.default.post(name: .loginInfo, object: nil, userInfo: [Notification.status.info: "Installing DXVK"])
             Wine.override(dll: dll.components(separatedBy: ".")[0], type: "native")
-            let dllPath = system32.appendingPathComponent(dll).path
-            if fm.fileExists(atPath: dllPath) {
+            if fm.fileExists(atPath: winDllPath) {
                 do {
-                    try fm.removeItem(atPath: dllPath)
+                    try fm.removeItem(atPath: winDllPath)
                 }
                 catch {
-                    print("DXVK: error deleting wine dx dll \(dllPath)\n\(error)\n", to: &Util.logger)
+                    print("DXVK: error deleting wine dx dll \(winDllPath)\n\(error)\n", to: &Util.logger)
                 }
             }
             do {
-                try fm.copyItem(atPath: dxvkPath.appendingPathComponent(dll).path, toPath: dllPath)
+                try fm.copyItem(atPath: dxvkDllPath, toPath: winDllPath)
             }
             catch {
                 print("DXVK: error copying dxvk dll \(error)\n", to: &Util.logger)

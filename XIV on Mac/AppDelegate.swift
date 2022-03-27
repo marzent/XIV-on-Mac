@@ -28,21 +28,12 @@ import AppMover
         sparkle.updater.checkForUpdatesInBackground()
         Util.make(dir: Wine.xomData.path)
         Util.make(dir: Util.cache.path)
-        if DXVK.shouldUpdate {
-            DispatchQueue.global(qos: .utility).async {
-                DXVK.install()
-            }
-        }
         Wine.touchDocuments()
-        #if DEBUG
+    #if DEBUG
         print("Running in debug mode")
-        #else
+    #else
         AppMover.moveIfNecessary()
-        #endif
-    }
-
-    func updaterWillRelaunchApplication(_ updater: SPUUpdater) {
-        DXVK.shouldUpdate = true
+    #endif
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {
