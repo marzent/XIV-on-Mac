@@ -135,7 +135,8 @@ struct Util {
         env["MVK_CONFIG_USE_METAL_ARGUMENT_BUFFERS"] = "1"
         //env["DYLD_PRINT_LIBRARIES"] = "YES"
         let mvkPath = Bundle.main.url(forResource: DXVK.modernMVK ? "modern" : "stable", withExtension: "", subdirectory: "MoltenVK")!.path
-        env["DYLD_FALLBACK_LIBRARY_PATH"] = mvkPath + ":/opt/local/lib:/usr/local/lib:/usr/lib:/usr/libexec:/usr/lib/system:/opt/X11/lib"
+        let winePath = Bundle.main.url(forResource: "lib", withExtension: "", subdirectory: "wine")!.path
+        env["DYLD_FALLBACK_LIBRARY_PATH"] = [mvkPath, winePath, "/opt/local/lib", "/usr/local/lib", "/usr/lib", "/usr/libexec", "/usr/lib/system", "/opt/X11/lib"].joined(separator: ":")
         env["DYLD_VERSIONED_LIBRARY_PATH"] = env["DYLD_FALLBACK_LIBRARY_PATH"]
         return env
     }
