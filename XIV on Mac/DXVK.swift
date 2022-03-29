@@ -12,6 +12,16 @@ struct DXVK {
     
     static var options = Options()
     
+    private static let modernMVKKey = "ModernMoltenVK"
+    static var modernMVK: Bool {
+        get {
+            UserDefaults.standard.bool(forKey: modernMVKKey)
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: modernMVKKey)
+        }
+    }
+    
     static func install() {
         let dxvkPath = Bundle.main.url(forResource: "dxvk", withExtension: nil, subdirectory: "")!
         let dxDlls = ["d3d9.dll", "d3d10_1.dll", "d3d10.dll", "d3d10core.dll", "dxgi.dll", "d3d11.dll"]
