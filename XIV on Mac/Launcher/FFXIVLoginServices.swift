@@ -140,7 +140,7 @@ struct FFXIVLogin {
             guard FFXIVApp().installed else {
                 throw FFXIVLoginError.noInstall
             }
-            if FFXIVApp.running {
+            if FFXIVApp.instances >= 2 {
                 throw FFXIVLoginError.multibox
             }
             if Frontier.maintenance {

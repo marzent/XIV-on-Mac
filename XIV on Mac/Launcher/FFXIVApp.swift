@@ -57,7 +57,11 @@ public struct FFXIVApp {
     }
     
     static var running: Bool {
-        Wine.pidOf(processName: "ffxiv_dx11.exe") > 0
+        instances > 0
+    }
+    
+    static var instances: Int {
+        Wine.pidsOf(processName: "ffxiv_dx11.exe").count
     }
 
     private static func doubleSpaceify(_ str: String) -> String {

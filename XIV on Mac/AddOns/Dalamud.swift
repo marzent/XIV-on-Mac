@@ -88,43 +88,37 @@ struct Dalamud {
     private struct Remote {
         
         static var assets: Assets? {
-            var ret: Assets?
             let url = URL(string: "https://kamori.goats.dev/Dalamud/Asset/Meta?appId=xom")!
-            let semaphore = DispatchSemaphore(value: 0)
-            let task = URLSession.shared.dataTask(with: url) { data, response, error in
-                if let data = data {
-                    let jsonDecoder = JSONDecoder()
-                    do {
-                        ret = try jsonDecoder.decode(Assets.self, from: data)
-                    } catch {
-                        print(error, to: &Util.logger)
-                    }
-                }
-                semaphore.signal()
+            guard let response = HTTPClient.fetch(url: url) else {
+                return nil
             }
-            task.resume()
-            semaphore.wait()
-            return ret
+            guard response.statusCode == 200 else {
+                return nil
+            }
+            let jsonDecoder = JSONDecoder()
+            do {
+                return try jsonDecoder.decode(Assets.self, from: response.body)
+            } catch {
+                print(error, to: &Util.logger)
+                return nil
+            }
         }
         
         static var version: Version? {
-            var ret: Version?
             let url = URL(string: "https://kamori.goats.dev/Dalamud/Release/VersionInfo?track=\(staging ? "stg" : "release")&appId=xom")!
-            let semaphore = DispatchSemaphore(value: 0)
-            let task = URLSession.shared.dataTask(with: url) { data, response, error in
-                if let data = data {
-                    let jsonDecoder = JSONDecoder()
-                    do {
-                        ret = try jsonDecoder.decode(Version.self, from: data)
-                    } catch {
-                        print(error, to: &Util.logger)
-                    }
-                }
-                semaphore.signal()
+            guard let response = HTTPClient.fetch(url: url) else {
+                return nil
             }
-            task.resume()
-            semaphore.wait()
-            return ret
+            guard response.statusCode == 200 else {
+                return nil
+            }
+            let jsonDecoder = JSONDecoder()
+            do {
+                return try jsonDecoder.decode(Version.self, from: response.body)
+            } catch {
+                print(error, to: &Util.logger)
+                return nil
+            }
         }
     }
     
@@ -152,7 +146,7 @@ struct Dalamud {
     private static let stagingKey = "DalamudStaging"
     static var staging: Bool {
         get {
-            return Util.getSetting(settingKey: stagingKey, defaultValue: false)
+            UserDefaults.standard.bool(forKey: stagingKey)
         }
         set {
             UserDefaults.standard.set(newValue, forKey: stagingKey)
@@ -218,6 +212,7 @@ struct Dalamud {
     }
     
     static func launch(args: [String], language: FFXIVLanguage, gameVersion: String) {
+        staging = true
         install()
         NotificationCenter.default.post(name: .loginInfo, object: nil, userInfo: [Notification.status.info: "Starting Wine"])
         let dalamudHelper = Bundle.main.url(forResource: "dalamud_helper", withExtension: "exe", subdirectory: "")!

@@ -32,7 +32,11 @@ struct Wine {
     }
     
     static func pidOf(processName: String) -> Int {
-        processes.filter {$0.name == processName}.first?.pid ?? 0
+        pidsOf(processName: processName).first ?? 0
+    }
+    
+    static func pidsOf(processName: String) -> [Int] {
+        processes.filter {$0.name == processName}.map {$0.pid}
     }
     
     static func taskKill(pid: Int) {

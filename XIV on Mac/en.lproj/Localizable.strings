@@ -22,8 +22,8 @@
 "NO_INSTALL" = "Essential game files could not be found.\nStarting Installer...";
 "MAINTENANCE_SHORT" = "Maintenance in progress";
 "MAINTENANCE" = "Please wait until maintenance finishes before logging in.";
-"MULTIBOX_SHORT" = "Game already running";
-"MULTIBOX" = "Please close the old game instance before starting a new one.";
+"MULTIBOX_SHORT" = "Two game instances already running";
+"MULTIBOX" = "Please close one of your old game instances before starting a new one.";
 "UNEXPECTED_SHORT" = "Unexpected Error";
 "UNEXPECTED" = "An unexpected error occurred.";
 
