@@ -264,6 +264,7 @@ public struct FFXIVServerLoginResponse {
 }
 
 public struct FFXIVLoginCredentials {
+    static let squareServer = "https://secure.square-enix.com"
     let username: String
     let password: String
     var oneTimePassword: String? = nil
@@ -281,7 +282,7 @@ public struct FFXIVLoginCredentials {
     }
     
     static func storedLogin(username: String) -> FFXIVLoginCredentials? {
-        let keychain = Keychain(server: "https://secure.square-enix.com", protocolType: .https)
+        let keychain = Keychain(server: squareServer, protocolType: .https)
         // wtf Swift
         guard case let storedPassword?? = (((try? keychain.get(username)) as String??)) else {
             return nil
@@ -290,7 +291,7 @@ public struct FFXIVLoginCredentials {
     }
     
     static func deleteLogin(username: String) {
-        let keychain = Keychain(server: "https://secure.square-enix.com", protocolType: .https)
+        let keychain = Keychain(server: squareServer, protocolType: .https)
         keychain[username] = nil
     }
     
@@ -308,11 +309,17 @@ public struct FFXIVLoginCredentials {
     }
     
     public func saveLogin() {
-        let keychain = Keychain(server: "https://secure.square-enix.com", protocolType: .https)
+        let keychain = Keychain(server: FFXIVLoginCredentials.squareServer, protocolType: .https)
         keychain[username] = password
     }
     
     public func deleteLogin() {
         FFXIVLoginCredentials.deleteLogin(username: username)
     }
+    
+    static var accounts: [FFXIVLoginCredentials] {
+        let keychain = Keychain(server: squareServer, protocolType: .https)
+        return keychain.allKeys().compactMap {storedLogin(username:$0)}.filter {!$0.username.contains(" ")}
+    }
+    
 }

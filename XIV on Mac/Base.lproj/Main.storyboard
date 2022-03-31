@@ -1927,11 +1927,23 @@ Gw
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                     </scrollView>
+                                    <button wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R5T-I0-Kje">
+                                        <rect key="frame" x="922" y="358" width="23" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="NSTouchBarGoDownTemplate" imagePosition="only" alignment="center" refusesFirstResponder="YES" state="on" inset="2" id="gCP-mx-jfr">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="showAccounts:" target="sya-zo-KBW" id="N5K-q4-7F0"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </visualEffectView>
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="dicloseButton" destination="R5T-I0-Kje" id="Udv-uL-M5M"/>
                         <outlet property="loginButton" destination="Cgh-yM-JG5" id="gcf-Am-XLt"/>
                         <outlet property="newsView" destination="VFB-VA-Nbg" id="Joc-Vj-rNh"/>
                         <outlet property="otpCheck" destination="xhX-md-4MR" id="16N-02-2YO"/>
@@ -1939,10 +1951,12 @@ Gw
                         <outlet property="passwdField" destination="Bhg-a8-aUl" id="C2s-Nr-4j7"/>
                         <outlet property="scrollView" destination="kUd-Jw-ky7" id="GXL-go-HMw"/>
                         <outlet property="topicsView" destination="pE4-Pq-abN" id="8cB-5W-RZq"/>
-                        <outlet property="userField" destination="Oji-h2-frf" id="7yS-C3-q1w"/>
+                        <outlet property="userField" destination="Oji-h2-frf" id="tkE-H9-75G"/>
+                        <outlet property="userMenu" destination="NXC-jb-B44" id="Z9a-mA-A3D"/>
                     </connections>
                 </viewController>
                 <customObject id="0mb-fo-mzL" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <menu id="NXC-jb-B44"/>
             </objects>
             <point key="canvasLocation" x="80.5" y="1746.5"/>
         </scene>
@@ -2149,4 +2163,7 @@ Gw
             <point key="canvasLocation" x="-519.5" y="1215"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="NSTouchBarGoDownTemplate" width="16" height="9"/>
+    </resources>
 </document>

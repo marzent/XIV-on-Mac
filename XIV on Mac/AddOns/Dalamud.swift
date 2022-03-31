@@ -212,7 +212,6 @@ struct Dalamud {
     }
     
     static func launch(args: [String], language: FFXIVLanguage, gameVersion: String) {
-        staging = true
         install()
         NotificationCenter.default.post(name: .loginInfo, object: nil, userInfo: [Notification.status.info: "Starting Wine"])
         let dalamudHelper = Bundle.main.url(forResource: "dalamud_helper", withExtension: "exe", subdirectory: "")!

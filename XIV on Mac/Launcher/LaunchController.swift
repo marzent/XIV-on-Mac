@@ -18,6 +18,7 @@ class LaunchController: NSViewController {
     
     @IBOutlet private var loginButton: NSButton!
     @IBOutlet weak var userField: NSTextField!
+    @IBOutlet private var userMenu: NSMenu!
     @IBOutlet private var passwdField: NSTextField!
     @IBOutlet weak var otpField: NSTextField!
     @IBOutlet weak var otpCheck: NSButton!
@@ -28,18 +29,12 @@ class LaunchController: NSViewController {
     override func loadView() {
         super.loadView()
         update()
-        setupOTP()
         ACT.observe()
         NotificationCenter.default.addObserver(self,selector: #selector(installDone(_:)),name: .installDone, object: nil)
         NotificationCenter.default.addObserver(self,selector: #selector(loginDone(_:)),name: .gameStarted, object: nil)
-        if #available(macOS 11.0, *) {
-            newsTable = FrontierTableView(icon: NSImage(systemSymbolName: "newspaper", accessibilityDescription: nil)!)
-            topicsTable = FrontierTableView(icon: NSImage(systemSymbolName: "newspaper.fill", accessibilityDescription: nil)!)
-        }
-        else {
-            newsTable = FrontierTableView(icon: NSImage(size: NSSize(width: 20, height: 20)))
-            topicsTable = FrontierTableView(icon: NSImage(size: NSSize(width: 20, height: 20)))
-        }
+        userMenu.minimumWidth = 264
+        newsTable = FrontierTableView(icon: NSImage(systemSymbolName: "newspaper", accessibilityDescription: nil)!)
+        topicsTable = FrontierTableView(icon: NSImage(systemSymbolName: "newspaper.fill", accessibilityDescription: nil)!)
         newsView.documentView = newsTable.tableView
         topicsView.documentView = topicsTable.tableView
         DispatchQueue.global(qos: .userInitiated).async {
@@ -83,6 +78,24 @@ class LaunchController: NSViewController {
     private func update() {
         userField.stringValue = FFXIVSettings.credentials?.username ?? ""
         passwdField.stringValue = FFXIVSettings.credentials?.password ?? ""
+        setupOTP()
+    }
+    
+    @objc func update(_ sender: userMenuItem) {
+        userField.stringValue = sender.credentials.username
+        passwdField.stringValue = sender.credentials.password
+        setupOTP()
+    }
+    
+    @IBAction func showAccounts(_ sender: Any) {
+        userMenu.items = []
+        let accounts = FFXIVLoginCredentials.accounts
+        for account in accounts {
+            let item = userMenuItem(title: account.username, action: #selector(update(_:)), keyEquivalent: "")
+            item.credentials = account
+            userMenu.items += [item]
+        }
+        userMenu.popUp(positioning: userMenu.item(at: 0), at: NSPoint(x: 0, y: 29), in: userField)
     }
     
     @IBAction func doLogin(_ sender: Any) {
@@ -138,6 +151,10 @@ class LaunchController: NSViewController {
         }
     }
 
+}
+
+class userMenuItem: NSMenuItem {
+    var credentials: FFXIVLoginCredentials!
 }
 
 final class BannerView: NSImageView {
