@@ -50,9 +50,13 @@ struct DXVK {
                 print("DXVK: error copying dxvk dll \(error)\n", to: &Util.logger)
             }
         }
-        let stateCacheName = "ffxiv_dx11.dxvk-cache"
+        let stateCacheName = "ffxiv_dx11.dxvk-cache-base"
         let stateCacheBundled = dxvkPath.appendingPathComponent(stateCacheName)
         let stateCachePrefix = Wine.prefix.appendingPathComponent("drive_c/" + stateCacheName)
+        if fm.contentsEqual(atPath: stateCacheBundled.path, andPath: stateCachePrefix.path) {
+            return
+        }
+        try? fm.removeItem(at: stateCachePrefix)
         try? fm.copyItem(at: stateCacheBundled, to: stateCachePrefix)
     }
     
