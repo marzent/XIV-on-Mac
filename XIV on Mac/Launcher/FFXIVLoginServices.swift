@@ -304,7 +304,7 @@ public struct FFXIVLoginCredentials {
             URLQueryItem(name: "otppw", value: oneTimePassword ?? "")
         ]
         cmp.queryItems = queryItems
-        let str = cmp.percentEncodedQuery!
+        let str = cmp.percentEncodedQuery!.replacingOccurrences(of: "+", with: "%2B")
         return str.data(using: .utf8)!
     }
     
