@@ -126,6 +126,8 @@ struct Util {
         env["DXVK_ASYNC"] = DXVK.options.getAsync()
         env["DXVK_FRAME_RATE"] = DXVK.options.getMaxFramerate()
         env["DXVK_STATE_CACHE_PATH"] = "C:\\"
+        env["DXVK_LOG_PATH"] = "C:\\"
+        env["DXVK_CONFIG_FILE"] = "C:\\ffxiv_dx11.conf"
         env["DALAMUD_RUNTIME"] = "C:\\Program Files\\XIV on Mac\\dotNET Runtime"
         env["XL_WINEONLINUX"] = "true"
         env["XL_WINEONMAC"] = "true"
