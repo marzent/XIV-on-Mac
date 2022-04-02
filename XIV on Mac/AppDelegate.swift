@@ -80,6 +80,10 @@ import AppMover
     #endif
     }
     
+    @IBAction func openPrefix(_ sender: Any) {
+        NSWorkspace.shared.open(Wine.prefix)
+    }
+    
     @IBAction func startACT(_ sender: Any) {
         ACT.launch()
     }

@@ -77,7 +77,7 @@
                                         </menuItem>
                                         <menuItem title="Open Wine Prefix" keyEquivalent="p" id="Was-JA-tGl">
                                             <connections>
-                                                <action selector="play:" target="Voe-Tx-rLC" id="MG0-Wh-99r"/>
+                                                <action selector="openPrefix:" target="Voe-Tx-rLC" id="IgW-hh-Qq1"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Select Game Path" keyEquivalent="O" id="dxd-Xu-JNa">
@@ -85,11 +85,7 @@
                                                 <action selector="selectGamePath:" target="Voe-Tx-rLC" id="68k-0i-emw"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Repair Game Files" keyEquivalent="r" id="eHZ-Vy-9pF">
-                                            <connections>
-                                                <action selector="selectGamePath:" target="Voe-Tx-rLC" id="SPJ-s1-TSc"/>
-                                            </connections>
-                                        </menuItem>
+                                        <menuItem title="Repair Game Files" keyEquivalent="r" id="eHZ-Vy-9pF"/>
                                         <menuItem isSeparatorItem="YES" id="aJh-i4-bef"/>
                                         <menuItem title="Close" keyEquivalent="w" id="DVo-aG-piG">
                                             <connections>
