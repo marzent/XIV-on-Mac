@@ -70,14 +70,14 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="File" id="bib-Uj-vzu">
                                     <items>
-                                        <menuItem title="New Game Instance" keyEquivalent="n" id="Was-JA-tGl">
-                                            <connections>
-                                                <action selector="play:" target="Voe-Tx-rLC" id="MG0-Wh-99r"/>
-                                            </connections>
-                                        </menuItem>
                                         <menuItem title="Open…" keyEquivalent="o" id="IAo-SY-fd9">
                                             <connections>
                                                 <action selector="explorer:" target="Voe-Tx-rLC" id="yFN-JF-vol"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Open Wine Prefix" keyEquivalent="p" id="Was-JA-tGl">
+                                            <connections>
+                                                <action selector="play:" target="Voe-Tx-rLC" id="MG0-Wh-99r"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Select Game Path" keyEquivalent="O" id="dxd-Xu-JNa">

@@ -10,8 +10,8 @@ import Sparkle
 import AppMover
 
 @main class AppDelegate: NSObject, NSApplicationDelegate, SPUUpdaterDelegate {
-    private var settingsWinController: NSWindowController!
-    private var launchWinController: NSWindowController!
+    private var settingsWinController: NSWindowController?
+    private var launchWinController: NSWindowController?
     @IBOutlet private var sparkle: SPUStandardUpdaterController!
     @IBOutlet private var actAutoLaunch: NSMenuItem!
     @IBOutlet private var bhAutoLaunch: NSMenuItem!
@@ -20,7 +20,7 @@ import AppMover
         let storyboard = NSStoryboard(name: "Main", bundle: nil)
         settingsWinController = storyboard.instantiateController(withIdentifier: "SettingsWindow") as? NSWindowController
         launchWinController = storyboard.instantiateController(withIdentifier: "LaunchWindow") as? NSWindowController
-        launchWinController.showWindow(self)
+        launchWinController?.showWindow(self)
         actAutoLaunch.state = ACT.autoLaunch ? .on : .off
         bhAutoLaunch.state = ACT.autoLaunchBH ? .on : .off
         checkForRosetta()
@@ -46,7 +46,7 @@ import AppMover
     
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
         if !flag {
-            launchWinController.showWindow(self)
+            launchWinController?.showWindow(self)
         }
         return true
     }
