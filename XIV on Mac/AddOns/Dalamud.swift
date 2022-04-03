@@ -153,6 +153,28 @@ struct Dalamud {
         }
     }
     
+    private static let versionFile = path.appendingPathComponent("version.txt")
+    static var assemblyVersion: String {
+        get {
+            guard let data = try? Data.init(contentsOf: versionFile) else {
+                return ""
+            }
+            return String(data: data, encoding: .utf8) ?? ""
+        }
+        set {
+            Util.make(dir: path)
+            let fm = FileManager.default
+            do {
+                if fm.fileExists(atPath: versionFile.path) {
+                    try fm.removeItem(atPath: versionFile.path)
+                }
+                try newValue.write(to: versionFile, atomically: true, encoding: String.Encoding.utf8)
+            } catch {
+                print("Error writing Dalamud version file:\n\(error)\n", to: &Util.logger)
+            }
+        }
+    }
+    
     private static func install() {
         guard let version = Remote.version else {
             print("Could not check for Dalamud due to network error\n", to: &Util.logger)
@@ -161,6 +183,7 @@ struct Dalamud {
         if needsUpdate(version) {
             NotificationCenter.default.post(name: .loginInfo, object: nil, userInfo: [Notification.status.info: "Updating Dalamud"])
             purge()
+            assemblyVersion = version.assemblyVersion
         }
         try? HTTPClient.fetchFile(url: URL(string: version.downloadURL)!, destinationUrl: dalamudDownload)
         try? fm.unzipItem(at: dalamudDownload, to: path)
@@ -190,19 +213,7 @@ struct Dalamud {
     
     //TODO: hash assets and compare with remote
     private static func needsUpdate(_ version: Version) -> Bool {
-        //Loosely inspired by https://github.com/redstrate/xivlauncher/ and even more janky :)
-        do {
-            let deps = try String(contentsOf: path.appendingPathComponent("Dalamud.deps.json"), encoding: .utf8)
-            let head = String(deps.prefix(300))
-            if let range = head.range(of: #"(?<=Dalamud\/).*(?=":)"#, options: .regularExpression) {
-                let localVersion = head[range]
-                return localVersion != version.assemblyVersion
-            }
-        }
-        catch {
-            return true
-        }
-        return true
+        return assemblyVersion != version.assemblyVersion
     }
     
     private static func purge() {
