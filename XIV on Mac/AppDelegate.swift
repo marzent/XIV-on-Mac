@@ -12,7 +12,7 @@ import AppMover
 @main class AppDelegate: NSObject, NSApplicationDelegate, SPUUpdaterDelegate {
     private var settingsWinController: NSWindowController?
     private var launchWinController: NSWindowController?
-    private var firstAidController: NSWindowController?
+    private var firstAidWinController: NSWindowController?
     @IBOutlet private var sparkle: SPUStandardUpdaterController!
     @IBOutlet private var actAutoLaunch: NSMenuItem!
     @IBOutlet private var bhAutoLaunch: NSMenuItem!
@@ -20,6 +20,7 @@ import AppMover
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         let storyboard = NSStoryboard(name: "Main", bundle: nil)
         settingsWinController = storyboard.instantiateController(withIdentifier: "SettingsWindow") as? NSWindowController
+        firstAidWinController = storyboard.instantiateController(withIdentifier: "FirstAidWindow") as? NSWindowController
         launchWinController = storyboard.instantiateController(withIdentifier: "LaunchWindow") as? NSWindowController
         launchWinController?.showWindow(self)
         actAutoLaunch.state = ACT.autoLaunch ? .on : .off
@@ -197,25 +198,7 @@ import AppMover
     }
     
     @IBAction func openFirstAid(_ sender: Any){
-        if self.firstAidController == nil {
-            var nibObjects: NSArray?
-            if Bundle.main.loadNibNamed("FirstAid", owner: self, topLevelObjects: &nibObjects){
-                if (nibObjects != nil)
-                {
-                    for oneObject in nibObjects! {
-                        if oneObject is FirstAidWindowController{
-                            self.firstAidController = oneObject as! FirstAidWindowController;
-                            break;
-                        }
-                    }
-                }
-            }
-            if (self.firstAidController == nil){
-                print("Unable to load FirstAid nib")
-                return;
-            }
-        }
-        self.firstAidController?.window?.makeKeyAndOrderFront(self)
+        firstAidWinController?.showWindow(self)
     }
     
 }

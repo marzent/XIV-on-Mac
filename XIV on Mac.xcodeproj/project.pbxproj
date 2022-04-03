@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		079A342C27F90B910043BEEA /* FirstAid.xib in Resources */ = {isa = PBXBuildFile; fileRef = 079A342E27F90B910043BEEA /* FirstAid.xib */; };
-		079A343027F90F350043BEEA /* FirstAidWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079A342F27F90F350043BEEA /* FirstAidWindowController.swift */; };
+		079A343027F90F350043BEEA /* FirstAidController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079A342F27F90F350043BEEA /* FirstAidController.swift */; };
 		07B529D527D97D2B005B78BF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 07B529D727D97D2B005B78BF /* Localizable.strings */; };
 		07B529D927D97F26005B78BF /* installRosetta.command in Resources */ = {isa = PBXBuildFile; fileRef = 07B529D827D97F26005B78BF /* installRosetta.command */; };
 		2B7C95D2277C6C6000A3CA89 /* SocialIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7C95D1277C6C6000A3CA89 /* SocialIntegration.swift */; };
@@ -79,8 +78,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		079A342D27F90B910043BEEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/FirstAid.xib; sourceTree = "<group>"; };
-		079A342F27F90F350043BEEA /* FirstAidWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstAidWindowController.swift; sourceTree = "<group>"; };
+		079A342F27F90F350043BEEA /* FirstAidController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstAidController.swift; sourceTree = "<group>"; };
 		07B529D627D97D2B005B78BF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		07B529D827D97F26005B78BF /* installRosetta.command */ = {isa = PBXFileReference; lastKnownFileType = text; path = installRosetta.command; sourceTree = "<group>"; };
 		2B7C95D1277C6C6000A3CA89 /* SocialIntegration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialIntegration.swift; sourceTree = "<group>"; };
@@ -196,15 +194,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		079A342927F90A3C0043BEEA /* FirstAid */ = {
-			isa = PBXGroup;
-			children = (
-				079A342E27F90B910043BEEA /* FirstAid.xib */,
-				079A342F27F90F350043BEEA /* FirstAidWindowController.swift */,
-			);
-			path = FirstAid;
-			sourceTree = "<group>";
-		};
 		50511EB82770E085003A1E9F = {
 			isa = PBXGroup;
 			children = (
@@ -235,9 +224,9 @@
 				50BC73D427C2C804006269AC /* AddOns */,
 				50511EC62770E085003A1E9F /* InstallerController.swift */,
 				50C45A0C27D8A08D00572977 /* Steamworks */,
-				079A342927F90A3C0043BEEA /* FirstAid */,
 				50E5387A2779CF5C0038521A /* SettingsController.swift */,
 				50B2A2B427AC1BC400EFA0A2 /* LoginSheetController.swift */,
+				079A342F27F90F350043BEEA /* FirstAidController.swift */,
 				50BD278627785418002B0D1F /* Notifications.swift */,
 				50ED0DB42773CA8C002E9854 /* Networking.swift */,
 				2B7C95D1277C6C6000A3CA89 /* SocialIntegration.swift */,
@@ -453,7 +442,6 @@
 				5046F7EF27E74AC9006C34E1 /* discord_bridge.exe in Resources */,
 				50DF45992795C53300E3D22F /* GShade in Resources */,
 				50692C8B27B3E48B00945593 /* Credits.html in Resources */,
-				079A342C27F90B910043BEEA /* FirstAid.xib in Resources */,
 				50030AB927F303C300317496 /* MoltenVK in Resources */,
 				50511EC92770E087003A1E9F /* Assets.xcassets in Resources */,
 				07B529D527D97D2B005B78BF /* Localizable.strings in Resources */,
@@ -535,7 +523,7 @@
 				502A18D827AA8C0D00144AB9 /* FFXIVLoginServices.swift in Sources */,
 				50E5387B2779CF5C0038521A /* SettingsController.swift in Sources */,
 				509FE19C27E39DCB008D56D6 /* FFXIVApp.swift in Sources */,
-				079A343027F90F350043BEEA /* FirstAidWindowController.swift in Sources */,
+				079A343027F90F350043BEEA /* FirstAidController.swift in Sources */,
 				50BC73CF27C2BEAF006269AC /* ACT.swift in Sources */,
 				50511EC52770E085003A1E9F /* AppDelegate.swift in Sources */,
 				50ED0DB32773C619002E9854 /* Dotnet.swift in Sources */,
@@ -548,14 +536,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		079A342E27F90B910043BEEA /* FirstAid.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				079A342D27F90B910043BEEA /* Base */,
-			);
-			name = FirstAid.xib;
-			sourceTree = "<group>";
-		};
 		07B529D727D97D2B005B78BF /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

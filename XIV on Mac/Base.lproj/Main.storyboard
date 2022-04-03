@@ -2164,6 +2164,160 @@ Gw
             </objects>
             <point key="canvasLocation" x="-519.5" y="1215"/>
         </scene>
+        <!--Window Controller-->
+        <scene sceneID="t8p-ly-Rwt">
+            <objects>
+                <windowController storyboardIdentifier="FirstAidWindow" id="9fH-Td-5Py" sceneMemberID="viewController">
+                    <window key="window" title="Troubleshooting" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="oJM-9v-5CI">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="425" y="462" width="330" height="159"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
+                        <view key="contentView" id="UmU-vF-pQi">
+                            <rect key="frame" x="0.0" y="0.0" width="330" height="159"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </view>
+                        <connections>
+                            <outlet property="delegate" destination="9fH-Td-5Py" id="wLb-Uo-JXL"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="gW4-sa-1ZD" kind="relationship" relationship="window.shadowedContentViewController" id="3v2-75-ehw"/>
+                    </connections>
+                </windowController>
+                <customObject id="Bbe-89-mur" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-826" y="1568"/>
+        </scene>
+        <!--First Aid Controller-->
+        <scene sceneID="7fk-EP-g7V">
+            <objects>
+                <viewController id="gW4-sa-1ZD" customClass="FirstAidController" customModule="XIV_on_Mac" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="GAV-Qn-LkD">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <scrollView fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jJT-1m-nXY">
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <clipView key="contentView" drawsBackground="NO" id="oD0-1v-ELN">
+                                    <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <customView horizontalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="zPo-wB-7Zf">
+                                            <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                                            <subviews>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="YV0-ue-W3O">
+                                                    <rect key="frame" x="18" y="234" width="94" height="16"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="16" id="nJG-hj-iSk"/>
+                                                    </constraints>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Shader Cache" usesSingleLineMode="YES" id="Wum-vu-uC1">
+                                                        <font key="font" textStyle="headline" name=".SFNS-Bold"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="jmX-6w-PMl">
+                                                    <rect key="frame" x="18" y="110" width="135" height="16"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="16" id="ixb-hW-jlF"/>
+                                                    </constraints>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="FFXIV Configuration" usesSingleLineMode="YES" id="lrU-zH-Qo8">
+                                                        <font key="font" textStyle="headline" name=".SFNS-Bold"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Y7l-DK-6o6">
+                                                    <rect key="frame" x="33" y="127" width="194" height="32"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="gHn-T2-axV"/>
+                                                    </constraints>
+                                                    <buttonCell key="cell" type="push" title="Delete User Shader Cache" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bvg-G5-hBV">
+                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="pressedDeleteUserCache:" target="gW4-sa-1ZD" id="BaS-d3-sGi"/>
+                                                    </connections>
+                                                </button>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="100" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0NZ-kt-ZDd">
+                                                    <rect key="frame" x="38" y="162" width="424" height="64"/>
+                                                    <textFieldCell key="cell" selectable="YES" allowsUndo="NO" id="piU-pX-vSl">
+                                                        <font key="font" metaFont="system"/>
+                                                        <string key="title">If your game is freezing at startup, "Compiling Shaders…" forever, missing lighting or randomly freezing, the problem may be with your shader cache. Deleting it will cause a new one to be rebuilt, though it may result in occasional stutters during play initially.</string>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="100" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UVp-g0-V1n">
+                                                    <rect key="frame" x="38" y="54" width="424" height="48"/>
+                                                    <textFieldCell key="cell" selectable="YES" allowsUndo="NO" id="YxS-mf-FNj">
+                                                        <font key="font" metaFont="system"/>
+                                                        <string key="title">If you've misconfigured your game in a way that prevents you from playing it, such as a bad graphics setting, you can try resetting your configuration to default.</string>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vi7-zh-Dkz">
+                                                    <rect key="frame" x="33" y="19" width="156" height="32"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="jSD-bX-Lap"/>
+                                                    </constraints>
+                                                    <buttonCell key="cell" type="push" title="Reset Configuration" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AGp-z2-0Vw">
+                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="pressedResetConfiguration:" target="gW4-sa-1ZD" id="hpV-aL-LbB"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Y7l-DK-6o6" secondAttribute="trailing" constant="20" symbolic="YES" id="1ic-A5-smR"/>
+                                                <constraint firstItem="YV0-ue-W3O" firstAttribute="leading" secondItem="zPo-wB-7Zf" secondAttribute="leading" constant="20" symbolic="YES" id="70p-Ao-HAf"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="vi7-zh-Dkz" secondAttribute="trailing" constant="20" symbolic="YES" id="IBb-z8-xCI"/>
+                                                <constraint firstItem="0NZ-kt-ZDd" firstAttribute="top" secondItem="YV0-ue-W3O" secondAttribute="bottom" constant="8" symbolic="YES" id="Qdp-lh-MuT"/>
+                                                <constraint firstAttribute="trailing" secondItem="0NZ-kt-ZDd" secondAttribute="trailing" constant="20" symbolic="YES" id="aK2-Oo-srN"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="YV0-ue-W3O" secondAttribute="trailing" constant="20" symbolic="YES" id="ceY-f8-LiK"/>
+                                                <constraint firstItem="Y7l-DK-6o6" firstAttribute="leading" secondItem="0NZ-kt-ZDd" secondAttribute="leading" id="dFk-wQ-GLC"/>
+                                                <constraint firstItem="vi7-zh-Dkz" firstAttribute="top" secondItem="UVp-g0-V1n" secondAttribute="bottom" constant="8" symbolic="YES" id="dJg-3o-Ng7"/>
+                                                <constraint firstItem="vi7-zh-Dkz" firstAttribute="leading" secondItem="UVp-g0-V1n" secondAttribute="leading" id="eJY-Kj-Kfb"/>
+                                                <constraint firstItem="Y7l-DK-6o6" firstAttribute="top" secondItem="0NZ-kt-ZDd" secondAttribute="bottom" constant="8" symbolic="YES" id="fEa-sW-mAW"/>
+                                                <constraint firstItem="UVp-g0-V1n" firstAttribute="leading" secondItem="0NZ-kt-ZDd" secondAttribute="leading" id="fNc-p7-6sc"/>
+                                                <constraint firstItem="UVp-g0-V1n" firstAttribute="top" secondItem="jmX-6w-PMl" secondAttribute="bottom" constant="8" symbolic="YES" id="gGF-0J-Ds3"/>
+                                                <constraint firstItem="YV0-ue-W3O" firstAttribute="top" secondItem="zPo-wB-7Zf" secondAttribute="top" constant="20" symbolic="YES" id="h8s-uY-aZV"/>
+                                                <constraint firstItem="jmX-6w-PMl" firstAttribute="top" secondItem="Y7l-DK-6o6" secondAttribute="bottom" constant="8" symbolic="YES" id="huD-f9-3db"/>
+                                                <constraint firstItem="jmX-6w-PMl" firstAttribute="leading" secondItem="YV0-ue-W3O" secondAttribute="leading" id="v2m-dg-Ez1"/>
+                                                <constraint firstAttribute="trailing" secondItem="UVp-g0-V1n" secondAttribute="trailing" constant="20" symbolic="YES" id="w8K-lM-Fy6"/>
+                                                <constraint firstItem="0NZ-kt-ZDd" firstAttribute="leading" secondItem="zPo-wB-7Zf" secondAttribute="leading" constant="40" id="xsz-Bf-9W0"/>
+                                            </constraints>
+                                        </customView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="zPo-wB-7Zf" firstAttribute="top" secondItem="oD0-1v-ELN" secondAttribute="top" id="42V-FA-Cp3"/>
+                                        <constraint firstAttribute="trailing" secondItem="zPo-wB-7Zf" secondAttribute="trailing" id="Ifl-cu-pSv"/>
+                                        <constraint firstItem="zPo-wB-7Zf" firstAttribute="leading" secondItem="oD0-1v-ELN" secondAttribute="leading" id="cOO-jk-aT8"/>
+                                        <constraint firstAttribute="bottom" secondItem="zPo-wB-7Zf" secondAttribute="bottom" id="wvQ-f2-XgE"/>
+                                    </constraints>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="fhZ-Uu-u1b">
+                                    <rect key="frame" x="-100" y="-100" width="383" height="15"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="t4x-7P-42W">
+                                    <rect key="frame" x="385" y="0.0" width="15" height="225"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                        </subviews>
+                    </view>
+                </viewController>
+                <customObject id="iNz-lK-UFB" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-826" y="1937"/>
+        </scene>
     </scenes>
     <resources>
         <image name="NSTouchBarGoDownTemplate" width="16" height="9"/>

@@ -10,6 +10,7 @@ import Foundation
 struct DXVK {
     @available(*, unavailable) private init() {}
     
+    static let userCache = Wine.prefix.appendingPathComponent("drive_c/ffxiv_dx11.dxvk-cache")
     static var options = Options()
     
     private static let modernMVKKey = "ModernMoltenVK"

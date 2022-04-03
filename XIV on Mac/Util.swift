@@ -10,6 +10,7 @@ import AppKit
 struct Util {
     @available(*, unavailable) private init() {}
     
+    static let userHome = FileManager.default.homeDirectoryForCurrentUser
     static let applicationSupport = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).last!.appendingPathComponent("XIV on Mac")
     static let cache = applicationSupport.appendingPathComponent("cache")
     static let appleReceiptsPath = URL(fileURLWithPath: "/Library/Apple/System/Library/Receipts/")
