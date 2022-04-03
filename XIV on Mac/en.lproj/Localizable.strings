@@ -27,6 +27,21 @@
 "UNEXPECTED_SHORT" = "Unexpected Error";
 "UNEXPECTED" = "An unexpected error occurred.";
 
+"OK_BUTTON" = "OK";
+
+"FIRSTAID_GAME_RUNNING" = "Final Fantasy XIV is Running";
+"FIRSTAID_GAME_RUNNING_INFORMATIONAL" = "Please close any copies of Final Fantasy XIV that are running before taking any Troubleshooting actions.";
+
+"DXVK_USER_CACHE_DELETED" = "Shader Cache Deleted";
+"DXVK_USER_CACHE_DELETED_INFORMATIVE" = "The shader cache was deleted succesfully. Try starting the game to see if your problem has been addressed.";
+"DXVK_USER_CACHE_DELETE_FAILED" = "Deleting Shader Cache Failed";
+"DXVK_USER_CACHE_DELETE_FAILED_INFORMATIVE" = "Unable to delete the shader cache. You can try to manually delete it using File->Open Wine Prefix.";
+
+"GAME_CONFIG_RESET" = "Configuration Rest";
+"GAME_CONFIG_RESET_INFORMATIVE" = "Your game configuration was succesfully reset.";
+"GAME_CONFIG_RESET_FAILED" = "Resetting Configuration Failed";
+"GAME_CONFIG_RESET_FAILED_INFORMATIVE" = "Unable to reset configuration. You may need to grant XIV On Mac access to your Downloads folder in System Preferences, Security.";
+
 "ROSETTA_REQUIRED" = "Rosetta 2 is Required.";
 "ROSETTA_REQUIRED_INFORMATIVE" = "XIV On Mac requires Apple's Rosetta 2 to be installed in order to function on your Apple Silicon Mac. If you choose not to install, your game will not start. Would you like to start the Rosetta installer now?";
 "ROSETTA_REQUIRED_INSTALL_BUTTON" = "Install Rosetta";
