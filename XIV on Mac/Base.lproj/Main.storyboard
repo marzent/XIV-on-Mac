@@ -312,6 +312,12 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Tools" id="HyV-fh-RgO">
                                     <items>
+                                        <menuItem title="Troubleshooting…" id="nwX-vr-aWN">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="openFirstAid:" target="Voe-Tx-rLC" id="ND7-h7-De6"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem title="Edit Registry" id="snW-S8-Cw5">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>

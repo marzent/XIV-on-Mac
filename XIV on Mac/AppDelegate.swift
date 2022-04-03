@@ -12,6 +12,7 @@ import AppMover
 @main class AppDelegate: NSObject, NSApplicationDelegate, SPUUpdaterDelegate {
     private var settingsWinController: NSWindowController?
     private var launchWinController: NSWindowController?
+    private var firstAidController: NSWindowController?
     @IBOutlet private var sparkle: SPUStandardUpdaterController!
     @IBOutlet private var actAutoLaunch: NSMenuItem!
     @IBOutlet private var bhAutoLaunch: NSMenuItem!
@@ -194,5 +195,28 @@ import AppMover
             }
         }
     }
+    
+    @IBAction func openFirstAid(_ sender: Any){
+        if self.firstAidController == nil {
+            var nibObjects: NSArray?
+            if Bundle.main.loadNibNamed("FirstAid", owner: self, topLevelObjects: &nibObjects){
+                if (nibObjects != nil)
+                {
+                    for oneObject in nibObjects! {
+                        if oneObject is FirstAidWindowController{
+                            self.firstAidController = oneObject as! FirstAidWindowController;
+                            break;
+                        }
+                    }
+                }
+            }
+            if (self.firstAidController == nil){
+                print("Unable to load FirstAid nib")
+                return;
+            }
+        }
+        self.firstAidController?.window?.makeKeyAndOrderFront(self)
+    }
+    
 }
 
