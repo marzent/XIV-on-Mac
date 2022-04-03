@@ -7,21 +7,11 @@
 
 import Foundation
 
-struct DXVK {
+struct Dxvk {
     @available(*, unavailable) private init() {}
     
     static let userCache = Wine.prefix.appendingPathComponent("drive_c/ffxiv_dx11.dxvk-cache")
     static var options = Options()
-    
-    private static let modernMVKKey = "ModernMoltenVK"
-    static var modernMVK: Bool {
-        get {
-            UserDefaults.standard.bool(forKey: modernMVKKey)
-        }
-        set {
-            UserDefaults.standard.set(newValue, forKey: modernMVKKey)
-        }
-    }
     
     static func install() {
         let dxvkPath = Bundle.main.url(forResource: "dxvk", withExtension: nil, subdirectory: "")!
@@ -59,7 +49,27 @@ struct DXVK {
         }
         try? fm.removeItem(at: stateCachePrefix)
         try? fm.copyItem(at: stateCacheBundled, to: stateCachePrefix)
+        if isBad(cacheURL: userCache) {
+            try? fm.removeItem(at: userCache)
+        }
     }
+    
+    static func isBad(cacheURL: URL) -> Bool {
+        guard FileManager.default.fileExists(atPath: cacheURL.path) else {
+            return false
+        }
+        let zoeyEntryHash: [UInt8] = [153, 106, 41, 216, 87, 200, 23, 183, 42, 119, 59, 206, 160, 195, 34, 186, 3, 214, 205, 51]
+        do {
+            let cache = try DxvkStateCache(inputData: try Data(contentsOf: cacheURL))
+            return cache.entries.map {$0.sha1Hash}.contains(zoeyEntryHash)
+        } catch {
+            return true
+        }
+    }
+    
+//    static func repair(cache: DxvkStateCache) -> DxvkStateCache {
+//
+//    }
     
     class Options: Codable {
         static let settingKey = "DxvkOptions"
@@ -79,8 +89,8 @@ struct DXVK {
         var hudScale = 1.0
         
         init() {
-            if let data = UserDefaults.standard.value(forKey: DXVK.Options.settingKey) as? Data {
-                let s = try? PropertyListDecoder().decode(DXVK.Options.self, from: data)
+            if let data = UserDefaults.standard.value(forKey: Dxvk.Options.settingKey) as? Data {
+                let s = try? PropertyListDecoder().decode(Dxvk.Options.self, from: data)
                 async = s!.async
                 maxFramerate = s!.maxFramerate
                 hud = s!.hud
@@ -110,7 +120,18 @@ struct DXVK {
         }
         
         func save() {
-            UserDefaults.standard.set(try? PropertyListEncoder().encode(self), forKey: DXVK.Options.settingKey)
+            UserDefaults.standard.set(try? PropertyListEncoder().encode(self), forKey: Dxvk.Options.settingKey)
         }
     }
+    
+    private static let modernMVKKey = "ModernMoltenVK"
+    static var modernMVK: Bool {
+        get {
+            UserDefaults.standard.bool(forKey: modernMVKKey)
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: modernMVKKey)
+        }
+    }
+    
 }

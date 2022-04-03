@@ -44,7 +44,7 @@ public struct FFXIVApp {
             ("/ver", FFXIVRepo.game.ver)
         ]
         let args = [dx11URL.path, FFXIVApp.encryptedArgs(args: baseArgs)]
-        DXVK.install()
+        Dxvk.install()
         if settings.dalamud {
             Dalamud.launch(args: args, language: settings.language, gameVersion: FFXIVRepo.game.ver)
         }

@@ -123,9 +123,9 @@ struct Util {
         env["WINEESYNC"] = Wine.esync ? "1" : "0"
         env["WINEPREFIX"] = Wine.prefix.path
         env["WINEDEBUG"] = Wine.debug
-        env["DXVK_HUD"] = DXVK.options.getHud()
-        env["DXVK_ASYNC"] = DXVK.options.getAsync()
-        env["DXVK_FRAME_RATE"] = DXVK.options.getMaxFramerate()
+        env["DXVK_HUD"] = Dxvk.options.getHud()
+        env["DXVK_ASYNC"] = Dxvk.options.getAsync()
+        env["DXVK_FRAME_RATE"] = Dxvk.options.getMaxFramerate()
         env["DXVK_STATE_CACHE_PATH"] = "C:\\"
         env["DXVK_LOG_PATH"] = "C:\\"
         env["DXVK_CONFIG_FILE"] = "C:\\ffxiv_dx11.conf"
@@ -137,7 +137,7 @@ struct Util {
         env["MVK_ALLOW_METAL_FENCES"] = "1"
         env["MVK_CONFIG_USE_METAL_ARGUMENT_BUFFERS"] = "1"
         //env["DYLD_PRINT_LIBRARIES"] = "YES"
-        let mvkPath = Bundle.main.url(forResource: DXVK.modernMVK ? "modern" : "stable", withExtension: "", subdirectory: "MoltenVK")!.path
+        let mvkPath = Bundle.main.url(forResource: Dxvk.modernMVK ? "modern" : "stable", withExtension: "", subdirectory: "MoltenVK")!.path
         let winePath = Bundle.main.url(forResource: "lib", withExtension: "", subdirectory: "wine")!.path
         env["DYLD_FALLBACK_LIBRARY_PATH"] = [mvkPath, winePath, "/opt/local/lib", "/usr/local/lib", "/usr/lib", "/usr/libexec", "/usr/lib/system", "/opt/X11/lib"].joined(separator: ":")
         env["DYLD_VERSIONED_LIBRARY_PATH"] = env["DYLD_FALLBACK_LIBRARY_PATH"]

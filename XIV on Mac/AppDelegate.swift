@@ -105,7 +105,7 @@ import AppMover
     }
     
     @IBAction func installDXVK(_ sender: Any) {
-        DXVK.install()
+        Dxvk.install()
     }
     
     @IBAction func installMSVC32(_ sender: Any) {

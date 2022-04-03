@@ -58,8 +58,10 @@
 		50E5387B2779CF5C0038521A /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E5387A2779CF5C0038521A /* SettingsController.swift */; };
 		50ED0DB32773C619002E9854 /* Dotnet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ED0DB22773C619002E9854 /* Dotnet.swift */; };
 		50ED0DB52773CA8C002E9854 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ED0DB42773CA8C002E9854 /* Networking.swift */; };
-		50F4BD2427CFA70A00FB165D /* DXVK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F4BD2327CFA70A00FB165D /* DXVK.swift */; };
+		50F4BD2427CFA70A00FB165D /* Dxvk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F4BD2327CFA70A00FB165D /* Dxvk.swift */; };
 		50F6CBAA27A975A000013301 /* Wine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F6CBA927A975A000013301 /* Wine.swift */; };
+		50FC2DFF27F974D300871760 /* DxvkStateCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC2DFE27F974D300871760 /* DxvkStateCache.swift */; };
+		50FC2E0127F9751600871760 /* DxvkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC2E0027F9751600871760 /* DxvkError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -169,8 +171,10 @@
 		50E5387A2779CF5C0038521A /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		50ED0DB22773C619002E9854 /* Dotnet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dotnet.swift; sourceTree = "<group>"; };
 		50ED0DB42773CA8C002E9854 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
-		50F4BD2327CFA70A00FB165D /* DXVK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DXVK.swift; sourceTree = "<group>"; };
+		50F4BD2327CFA70A00FB165D /* Dxvk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dxvk.swift; sourceTree = "<group>"; };
 		50F6CBA927A975A000013301 /* Wine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wine.swift; sourceTree = "<group>"; };
+		50FC2DFE27F974D300871760 /* DxvkStateCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DxvkStateCache.swift; sourceTree = "<group>"; };
+		50FC2E0027F9751600871760 /* DxvkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DxvkError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,14 +220,14 @@
 				50B2A2B327ABEF6800EFA0A2 /* XIV-on-Mac-Info.plist */,
 				505C0D9A277333920008A344 /* Util.swift */,
 				50F6CBA927A975A000013301 /* Wine.swift */,
-				50F4BD2327CFA70A00FB165D /* DXVK.swift */,
 				50511EC42770E085003A1E9F /* AppDelegate.swift */,
 				5010EFE327E4CE40001D2FEC /* Encryption.swift */,
 				50F8A5F827BFA93800ADC0CB /* Patcher */,
 				509A62D527A58966001B203A /* Launcher */,
 				50BC73D427C2C804006269AC /* AddOns */,
-				50511EC62770E085003A1E9F /* InstallerController.swift */,
 				50C45A0C27D8A08D00572977 /* Steamworks */,
+				50FC2DFD27F9744700871760 /* DxvkUtils */,
+				50511EC62770E085003A1E9F /* InstallerController.swift */,
 				50E5387A2779CF5C0038521A /* SettingsController.swift */,
 				50B2A2B427AC1BC400EFA0A2 /* LoginSheetController.swift */,
 				079A342F27F90F350043BEEA /* FirstAidController.swift */,
@@ -355,6 +359,16 @@
 				50DF1F8427CCB83300DE9DA5 /* FFXIVRepo.swift */,
 			);
 			path = Patcher;
+			sourceTree = "<group>";
+		};
+		50FC2DFD27F9744700871760 /* DxvkUtils */ = {
+			isa = PBXGroup;
+			children = (
+				50F4BD2327CFA70A00FB165D /* Dxvk.swift */,
+				50FC2DFE27F974D300871760 /* DxvkStateCache.swift */,
+				50FC2E0027F9751600871760 /* DxvkError.swift */,
+			);
+			path = DxvkUtils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -508,14 +522,16 @@
 				509FE19A27E3654E008D56D6 /* FFXIVEnums.swift in Sources */,
 				5010EFE427E4CE40001D2FEC /* Encryption.swift in Sources */,
 				5020957927C9611A00BD76CC /* Patch.swift in Sources */,
+				50FC2DFF27F974D300871760 /* DxvkStateCache.swift in Sources */,
 				50DF1F8527CCB83300DE9DA5 /* FFXIVRepo.swift in Sources */,
 				507C600127CAA72000BA3CC2 /* PatchController.swift in Sources */,
 				50BC73D327C2C3F3006269AC /* GShade.swift in Sources */,
 				50F6CBAA27A975A000013301 /* Wine.swift in Sources */,
 				505C0D9B277333920008A344 /* Util.swift in Sources */,
-				50F4BD2427CFA70A00FB165D /* DXVK.swift in Sources */,
+				50F4BD2427CFA70A00FB165D /* Dxvk.swift in Sources */,
 				50511EC72770E085003A1E9F /* InstallerController.swift in Sources */,
 				50D30FA027B92EDB007A9F66 /* OTP.swift in Sources */,
+				50FC2E0127F9751600871760 /* DxvkError.swift in Sources */,
 				507C5FFF27CA9F2E00BA3CC2 /* PatchInstaller.swift in Sources */,
 				50B2A2B527AC1BC400EFA0A2 /* LoginSheetController.swift in Sources */,
 				502A18E927AACEFE00144AB9 /* LaunchController.swift in Sources */,

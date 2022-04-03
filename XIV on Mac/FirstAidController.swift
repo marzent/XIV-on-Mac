@@ -32,7 +32,7 @@ class FirstAidController: NSViewController {
         }
         let alert: NSAlert = NSAlert()
         do {
-            try FileManager.default.removeItem(at: DXVK.userCache)
+            try FileManager.default.removeItem(at: Dxvk.userCache)
             alert.alertStyle = .informational
             alert.messageText = NSLocalizedString("DXVK_USER_CACHE_DELETED", comment: "")
             alert.informativeText = NSLocalizedString("DXVK_USER_CACHE_DELETED_INFORMATIVE", comment: "")
