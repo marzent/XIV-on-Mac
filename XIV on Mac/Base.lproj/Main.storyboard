@@ -1794,7 +1794,7 @@ Gw
                                             <action selector="doLogin:" target="sya-zo-KBW" id="QrA-k5-7Zd"/>
                                         </connections>
                                     </secureTextField>
-                                    <textField wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" contentType="oneTimeCode" translatesAutoresizingMaskIntoConstraints="NO" id="hjj-4f-wNd">
+                                    <textField wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hjj-4f-wNd">
                                         <rect key="frame" x="681" y="240" width="190" height="27"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" controlSize="large" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="optional" drawsBackground="YES" id="5FC-rM-Oay">

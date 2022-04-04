@@ -10,7 +10,7 @@ import Foundation
 struct Dxvk {
     @available(*, unavailable) private init() {}
     
-    static let userCache = Wine.prefix.appendingPathComponent("drive_c/ffxiv_dx11.dxvk-cache")
+    static let userCacheURL = Wine.prefix.appendingPathComponent("drive_c/ffxiv_dx11.dxvk-cache")
     static var options = Options()
     
     static func install() {
@@ -41,35 +41,34 @@ struct Dxvk {
                 print("DXVK: error copying dxvk dll \(error)\n", to: &Util.logger)
             }
         }
-        let stateCacheName = "ffxiv_dx11.dxvk-cache-base"
-        let stateCacheBundled = dxvkPath.appendingPathComponent(stateCacheName)
-        let stateCachePrefix = Wine.prefix.appendingPathComponent("drive_c/" + stateCacheName)
-        if fm.contentsEqual(atPath: stateCacheBundled.path, andPath: stateCachePrefix.path) {
+        let baseCacheName = "ffxiv_dx11.dxvk-cache-base"
+        let baseCacheBundled = dxvkPath.appendingPathComponent(baseCacheName)
+        let baseCachePrefix = Wine.prefix.appendingPathComponent("drive_c/" + baseCacheName)
+        try? fm.removeItem(at: baseCachePrefix)
+        let userCache = try? DxvkStateCache(inputData: (try? Data(contentsOf: userCacheURL)) ?? Data())
+        guard let baseCache = try? DxvkStateCache(inputData: (try? Data(contentsOf: baseCacheBundled)) ?? Data()) else {
+            print("Corrupt base cache\n", to: &Util.logger)
             return
         }
-        try? fm.removeItem(at: stateCachePrefix)
-        try? fm.copyItem(at: stateCacheBundled, to: stateCachePrefix)
-        if isBad(cacheURL: userCache) {
-            try? fm.removeItem(at: userCache)
+        if let userCache = userCache {
+            guard userCache.header.version == baseCache.header.version else {
+                print("Base and user cache versions do not match\n", to: &Util.logger)
+                return
+            }
+            let zoeyEntryHash: [UInt8] = [153, 106, 41, 216, 87, 200, 23, 183, 42, 119, 59, 206, 160, 195, 34, 186, 3, 214, 205, 51]
+            if userCache.entries.map({$0.sha1Hash}).contains(zoeyEntryHash) {
+                print("WARN: you are having an entry in your user cache that is known to cause issues, consider deleting your user state cache\n", to: &Util.logger)
+            }
+            let mergedCache = DxvkStateCache(header: userCache.header, entries: Array(Set(userCache.entries + baseCache.entries)))
+            do {
+                try mergedCache.rawData.write(to: userCacheURL)
+            } catch {
+                print("\(error)\n", to: &Util.logger)
+            }
+        } else {
+            try? fm.copyItem(at: baseCacheBundled, to: userCacheURL)
         }
     }
-    
-    static func isBad(cacheURL: URL) -> Bool {
-        guard FileManager.default.fileExists(atPath: cacheURL.path) else {
-            return false
-        }
-        let zoeyEntryHash: [UInt8] = [153, 106, 41, 216, 87, 200, 23, 183, 42, 119, 59, 206, 160, 195, 34, 186, 3, 214, 205, 51]
-        do {
-            let cache = try DxvkStateCache(inputData: try Data(contentsOf: cacheURL))
-            return cache.entries.map {$0.sha1Hash}.contains(zoeyEntryHash)
-        } catch {
-            return true
-        }
-    }
-    
-//    static func repair(cache: DxvkStateCache) -> DxvkStateCache {
-//
-//    }
     
     class Options: Codable {
         static let settingKey = "DxvkOptions"
