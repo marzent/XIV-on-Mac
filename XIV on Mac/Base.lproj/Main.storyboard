@@ -1809,10 +1809,13 @@ Gw
                                     <button wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fhv-Eb-PmW">
                                         <rect key="frame" x="679" y="197" width="127" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="check" title="Auto-Login" bezelStyle="regularSquare" imagePosition="left" controlSize="large" enabled="NO" inset="2" id="J8n-OX-VtC">
+                                        <buttonCell key="cell" type="check" title="Auto-Login" bezelStyle="regularSquare" imagePosition="left" controlSize="large" inset="2" id="J8n-OX-VtC">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system" size="15"/>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="autoLoginStateChange:" target="sya-zo-KBW" id="vSI-5L-6cB"/>
+                                        </connections>
                                     </button>
                                     <button wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xhX-md-4MR">
                                         <rect key="frame" x="819" y="197" width="127" height="24"/>
@@ -1945,6 +1948,7 @@ Gw
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="autoLoginCheck" destination="fhv-Eb-PmW" id="ZbX-wj-4b6"/>
                         <outlet property="dicloseButton" destination="R5T-I0-Kje" id="Udv-uL-M5M"/>
                         <outlet property="loginButton" destination="Cgh-yM-JG5" id="gcf-Am-XLt"/>
                         <outlet property="newsView" destination="VFB-VA-Nbg" id="Joc-Vj-rNh"/>

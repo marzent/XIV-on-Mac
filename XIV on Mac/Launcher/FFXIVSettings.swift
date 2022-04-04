@@ -94,6 +94,16 @@ public struct FFXIVSettings {
         }
     }
     
+    private static let autoLoginKey = "AutoLogin"
+    static var autoLogin: Bool {
+        get {
+            storage.bool(forKey: autoLoginKey)
+        }
+        set {
+            storage.set(newValue, forKey: autoLoginKey)
+        }
+    }
+    
     private static let regionKey = "Region"
     static var region: FFXIVRegion {
         get {

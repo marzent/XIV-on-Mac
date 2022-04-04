@@ -22,6 +22,7 @@ class LaunchController: NSViewController {
     @IBOutlet private var passwdField: NSTextField!
     @IBOutlet weak var otpField: NSTextField!
     @IBOutlet weak var otpCheck: NSButton!
+    @IBOutlet weak var autoLoginCheck: NSButton!
     @IBOutlet private var scrollView: AnimatingScrollView!
     @IBOutlet private var newsView: NSScrollView!
     @IBOutlet private var topicsView: NSScrollView!
@@ -57,6 +58,9 @@ class LaunchController: NSViewController {
         }
         DispatchQueue.main.async {
             self.loginButton.isEnabled = true
+            if settings.autoLogin {
+                self.doLogin()
+            }
         }
     }
     
@@ -76,6 +80,7 @@ class LaunchController: NSViewController {
     }
     
     private func update() {
+        autoLoginCheck.state = FFXIVSettings.autoLogin ? .on : .off
         userField.stringValue = FFXIVSettings.credentials?.username ?? ""
         passwdField.stringValue = FFXIVSettings.credentials?.password ?? ""
         setupOTP()
@@ -96,6 +101,10 @@ class LaunchController: NSViewController {
             userMenu.items += [item]
         }
         userMenu.popUp(positioning: userMenu.item(at: 0), at: NSPoint(x: 0, y: 29), in: userField)
+    }
+    
+    @IBAction func autoLoginStateChange(_ sender: NSButton) {
+        FFXIVSettings.autoLogin = sender.state == .on
     }
     
     @IBAction func doLogin(_ sender: Any) {

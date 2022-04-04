@@ -65,7 +65,8 @@ struct Dxvk {
             } catch {
                 print("\(error)\n", to: &Util.logger)
             }
-        } else {
+        } else { //user cache non-existent or corrupt
+            try? fm.removeItem(at: userCacheURL)
             try? fm.copyItem(at: baseCacheBundled, to: userCacheURL)
         }
     }
