@@ -11,6 +11,7 @@
 		079A343227FA59D90043BEEA /* FFXIVCFGEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079A343127FA59D90043BEEA /* FFXIVCFGEncoder.swift */; };
 		07B529D527D97D2B005B78BF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 07B529D727D97D2B005B78BF /* Localizable.strings */; };
 		07B529D927D97F26005B78BF /* installRosetta.command in Resources */ = {isa = PBXBuildFile; fileRef = 07B529D827D97F26005B78BF /* installRosetta.command */; };
+		07FC7C2E28001EDA009A6FE0 /* FFXIVCFGCheckup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FC7C2D28001EDA009A6FE0 /* FFXIVCFGCheckup.swift */; };
 		2B7C95D2277C6C6000A3CA89 /* SocialIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7C95D1277C6C6000A3CA89 /* SocialIntegration.swift */; };
 		50030AB927F303C300317496 /* MoltenVK in Resources */ = {isa = PBXBuildFile; fileRef = 50030AB827F303C300317496 /* MoltenVK */; };
 		5010EFE427E4CE40001D2FEC /* Encryption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5010EFE327E4CE40001D2FEC /* Encryption.swift */; };
@@ -86,6 +87,7 @@
 		079A343127FA59D90043BEEA /* FFXIVCFGEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFXIVCFGEncoder.swift; sourceTree = "<group>"; };
 		07B529D627D97D2B005B78BF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		07B529D827D97F26005B78BF /* installRosetta.command */ = {isa = PBXFileReference; lastKnownFileType = text; path = installRosetta.command; sourceTree = "<group>"; };
+		07FC7C2D28001EDA009A6FE0 /* FFXIVCFGCheckup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFXIVCFGCheckup.swift; sourceTree = "<group>"; };
 		2B7C95D1277C6C6000A3CA89 /* SocialIntegration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialIntegration.swift; sourceTree = "<group>"; };
 		50030AB827F303C300317496 /* MoltenVK */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MoltenVK; sourceTree = "<group>"; };
 		5010EFE327E4CE40001D2FEC /* Encryption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encryption.swift; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 				50ED0DB42773CA8C002E9854 /* Networking.swift */,
 				2B7C95D1277C6C6000A3CA89 /* SocialIntegration.swift */,
 				079A343127FA59D90043BEEA /* FFXIVCFGEncoder.swift */,
+				07FC7C2D28001EDA009A6FE0 /* FFXIVCFGCheckup.swift */,
 				50511EC82770E087003A1E9F /* Assets.xcassets */,
 				50692C8A27B3E48B00945593 /* Credits.html */,
 				50511ECA2770E087003A1E9F /* Main.storyboard */,
@@ -551,6 +554,7 @@
 				50BC73CF27C2BEAF006269AC /* ACT.swift in Sources */,
 				50511EC52770E085003A1E9F /* AppDelegate.swift in Sources */,
 				50ED0DB32773C619002E9854 /* Dotnet.swift in Sources */,
+				07FC7C2E28001EDA009A6FE0 /* FFXIVCFGCheckup.swift in Sources */,
 				507607A127B149F600DDF3E6 /* Frontier.swift in Sources */,
 				50C45ABD27D8E9FC00572977 /* Steamworks.swift in Sources */,
 				50ED0DB52773CA8C002E9854 /* Networking.swift in Sources */,

@@ -7,6 +7,15 @@
 
 import Foundation
 
+public enum FFXIVCFGSectionLabel : String {
+    // Mac only supports DX11 currently, so we don't care about the regular Graphics Settings section which represents DX9
+    case Graphics = "Graphics Settings DX11"
+}
+
+public enum FFXIVCFGOptionKey : String {
+    case Graphics_SSAO = "SSAO_DX11"
+}
+
 public class FFXIVCFGEncoder {
     // We are going to try to write a file as close to identical as the game itself does as we possibly can, just in case
     // there's weird bugs in the game's own parser. That means copying every extraneous line and keeping things in the same order.
@@ -18,16 +27,20 @@ public class FFXIVCFGEncoder {
         
         var outputLines : [String] = [""] // CFG file always starts with an empty line
         
-        for oneSection in value.sectionOrder {
-            // Emit the name of the section
-            outputLines.append(String.init(format: "<\(oneSection.name)>"))
-            
-            for oneTuple in oneSection.contents {
-                outputLines.append(String.init(format: "\(oneTuple.key)\t\(oneTuple.value)"))
+        for oneSectionKey in value.sectionOrder {
+            if let oneSection : FFXIVCFGSection = value.sections[oneSectionKey] {
+                // Emit the name of the section
+                outputLines.append(String.init(format: "<\(oneSection.name)>"))
+                
+                for oneTupleKey in oneSection.contentOrder {
+                    if let oneValue : String = oneSection.contents[oneTupleKey] {
+                        outputLines.append(String.init(format: "\(oneTupleKey)\t\(oneValue)"))
+                    }
+                }
+                
+                // Each section ends with an empty line
+                outputLines.append("")
             }
-            
-            // Each section ends with an empty line
-            outputLines.append("")
         }
         
         return outputLines.joined(separator: "\r\n")
@@ -39,7 +52,7 @@ public class FFXIVCFGDecoder {
     
     public static func decode(_ value: String) -> FFXIVCFG
     {
-        var cfg : FFXIVCFG = FFXIVCFG(sectionMap: [:], sectionOrder: [])
+        var cfg : FFXIVCFG = FFXIVCFG(sections: [:], sectionOrder: [])
         
         // Get all the lines of the file. This isn't the most efficient method of parsing but
         // since this cfg file isn't particularly large we can keep it simple.
@@ -56,11 +69,11 @@ public class FFXIVCFGDecoder {
                 // New section
                 if currentSection != nil {
                     // Add the now-finished section to the config
-                    cfg.sectionOrder.append(currentSection!)
-                    cfg.sectionMap[currentSection!.name] = currentSection
+                    cfg.sectionOrder.append(currentSection!.name)
+                    cfg.sections[currentSection!.name] = currentSection
                 }
                 let titleRange = oneLine.index(range.lowerBound, offsetBy: 1)..<oneLine.index(range.upperBound, offsetBy: -1)
-                currentSection = FFXIVCFGSection(name:String(oneLine[titleRange]),contents: [])
+                currentSection = FFXIVCFGSection(name:String(oneLine[titleRange]),contents: [:], contentOrder: [])
             }
             else{
                 let keyValue = oneLine.components(separatedBy: "\t")
@@ -70,7 +83,7 @@ public class FFXIVCFGDecoder {
                     
                     if (currentSection != nil)
                     {
-                        currentSection!.contents.append(ffxivCfgTuple(key,value))
+                        currentSection!.contents[key] = value
                     }
                     else
                     {
@@ -82,8 +95,8 @@ public class FFXIVCFGDecoder {
         }
         if currentSection != nil {
             // Add the now-finished section to the config
-            cfg.sectionOrder.append(currentSection!)
-            cfg.sectionMap[currentSection!.name] = currentSection
+            cfg.sectionOrder.append(currentSection!.name)
+            cfg.sections[currentSection!.name] = currentSection
         }
 
         return cfg
@@ -92,17 +105,18 @@ public class FFXIVCFGDecoder {
     
 }
 
-typealias ffxivCfgTuple = (key: String, value: String)
-
 public struct FFXIVCFG {
     // These contain the same information, but the map is much more useful for reading/using, while the "order"
     // is neccesary for us to ultimately write this back to disk in the same order we got it.
-    var sectionMap : [String:FFXIVCFGSection]
-    var sectionOrder : [FFXIVCFGSection]
+    var sections : [String:FFXIVCFGSection]
+    // Keys to 'sections' in the order they originally appeared in the file
+    var sectionOrder : [String]
     
 }
 
 public struct FFXIVCFGSection {
     var name : String
-    var contents : [ffxivCfgTuple]
+    var contents : [String:String]
+    // Keys to 'contents' in the order they originally appeared in the file
+    var contentOrder : [String]
 }
