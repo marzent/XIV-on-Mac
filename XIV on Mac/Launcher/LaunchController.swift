@@ -135,7 +135,7 @@ class LaunchController: NSViewController {
                     loginSheetWinController?.window?.close()
                     let error = error as! LocalizedError
                     let alert = NSAlert()
-                    alert.addButton(withTitle: "Ok")
+                    alert.addButton(withTitle: NSLocalizedString("OK_BUTTON", comment: ""))
                     alert.alertStyle = .critical
                     alert.messageText = error.failureReason ?? "Error"
                     alert.informativeText = error.localizedDescription
@@ -148,7 +148,16 @@ class LaunchController: NSViewController {
     @objc func loginDone(_ notif: Notification) {
         DispatchQueue.main.async { [self] in
             loginSheetWinController?.window?.close()
-            view.window?.close()
+            if FFXIVApp.running {
+                view.window?.close()
+            } else {
+                let alert = NSAlert()
+                alert.addButton(withTitle: NSLocalizedString("OK_BUTTON", comment: ""))
+                alert.alertStyle = .critical
+                alert.messageText = NSLocalizedString("GAME_START_FAILURE", comment: "")
+                alert.informativeText = NSLocalizedString("GAME_START_FAILURE_INFORMATIONAL", comment: "")
+                alert.runModal()
+            }
         }
     }
     

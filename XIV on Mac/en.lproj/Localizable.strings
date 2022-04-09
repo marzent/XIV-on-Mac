@@ -29,6 +29,9 @@
 
 "OK_BUTTON" = "OK";
 
+"GAME_START_FAILURE" = "Final Fantasy XIV failed to start";
+"GAME_START_FAILURE_INFORMATIONAL" = "An error occured starting the game. Please try restarting XIV on Mac.";
+
 "FIRSTAID_GAME_RUNNING" = "Final Fantasy XIV is Running";
 "FIRSTAID_GAME_RUNNING_INFORMATIONAL" = "Please close any copies of Final Fantasy XIV that are running before taking any Troubleshooting actions.";
 
