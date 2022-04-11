@@ -70,11 +70,9 @@ struct Dalamud {
         }
     }
     
-    static let fm = FileManager.default
-    static let path = Wine.xomData.appendingPathComponent("Dalamud")
-    static let dalamudDownload = Util.cache.appendingPathComponent("dalamud.zip")
-    static let localAssets = Wine.xomData.appendingPathComponent("Dalamud Assets")
-    static let runtime = Wine.xomData.appendingPathComponent("dotNET Runtime")
+    private static let fm = FileManager.default
+    private static let path = Wine.xomData.appendingPathComponent("Dalamud")
+    private static let runtimeLocation = Wine.xomData.appendingPathComponent("dotNET Runtime")
     // Dalamud injection delay seems to be heavily system dependent for some reason.
     // But, while the default 7 seems to work great on Intel system we've seen a lot of evidence
     // in the Discord support channel that 2 works much better on Apple Silicon; so, it's easy enough to
@@ -175,33 +173,66 @@ struct Dalamud {
         }
     }
     
-    private static func install() {
+    private static let runtimeVersionFile = runtimeLocation.appendingPathComponent("version.txt")
+    static var runtimeVersion: String {
+        get {
+            guard let data = try? Data.init(contentsOf: runtimeVersionFile) else {
+                return ""
+            }
+            return String(data: data, encoding: .utf8) ?? ""
+        }
+        set {
+            Util.make(dir: runtimeLocation)
+            let fm = FileManager.default
+            do {
+                if fm.fileExists(atPath: runtimeVersionFile.path) {
+                    try fm.removeItem(atPath: runtimeVersionFile.path)
+                }
+                try newValue.write(to: runtimeVersionFile, atomically: true, encoding: String.Encoding.utf8)
+            } catch {
+                print("Error writing Dalamud runtime version file:\n\(error)\n", to: &Util.logger)
+            }
+        }
+    }
+    
+    private static func ensureInstall() {
         guard let version = Remote.version else {
             print("Could not check for Dalamud due to network error\n", to: &Util.logger)
             return
         }
-        if needsUpdate(version) {
-            NotificationCenter.default.post(name: .loginInfo, object: nil, userInfo: [Notification.status.info: "Updating Dalamud"])
-            purge()
-            assemblyVersion = version.assemblyVersion
+        if assemblyVersion == version.assemblyVersion {
+            return
         }
+        NotificationCenter.default.post(name: .loginInfo, object: nil, userInfo: [Notification.status.info: "Updating Dalamud"])
+        let dalamudDownload = Util.cache.appendingPathComponent("dalamud.zip")
+        try? fm.removeItem(at: dalamudDownload)
         try? HTTPClient.fetchFile(url: URL(string: version.downloadURL)!, destinationUrl: dalamudDownload)
+        try? fm.removeItem(at: path)
         try? fm.unzipItem(at: dalamudDownload, to: path)
         let buffersDllPath = path.appendingPathComponent("Reloaded.Memory.Buffers.dll").path
         let patchedBuffersDllPath = Bundle.main.url(forResource: "Reloaded.Memory.Buffers", withExtension: "dll", subdirectory: "")!.path
-        if !fm.contentsEqual(atPath: buffersDllPath, andPath: patchedBuffersDllPath) {
-            try? fm.removeItem(atPath: buffersDllPath)
-            try? fm.copyItem(atPath: patchedBuffersDllPath, toPath: buffersDllPath)
-        }
+        try? fm.removeItem(atPath: buffersDllPath)
+        try? fm.copyItem(atPath: patchedBuffersDllPath, toPath: buffersDllPath)
+        installRuntime(version)
+        assemblyVersion = version.assemblyVersion
+    }
+    
+    private static func updateAssets() {
+        let localAssets = Wine.xomData.appendingPathComponent("Dalamud Assets")
         guard let remoteAssets = Remote.assets else {
             print("Could not get Dalamud Assets\n", to: &Util.logger)
             return
         }
         for asset in remoteAssets.assets {
-            try? HTTPClient.fetchFile(url: URL(string: asset.url)!,
-                                     destinationUrl: URL(fileURLWithPath: localAssets.path + "/" + asset.fileName))
+            let localAsset = URL(fileURLWithPath: localAssets.path + "/" + asset.fileName)
+            let (localHash, _) = (try? Encryption.sha1(file: localAsset)) ?? ("", 0)
+            if let remoteHash = asset.hash {
+                if localHash.uppercased() != remoteHash {
+                    try? fm.removeItem(atPath: localAsset.path)
+                }
+            }
+            try? HTTPClient.fetchFile(url: URL(string: asset.url)!, destinationUrl: localAsset)
         }
-        installRuntime(version)
     }
     
     private static func installRuntime(_ version: Version) {
@@ -209,42 +240,40 @@ struct Dalamud {
             return
         }
         let netVersion = version.runtimeVersion
+        if runtimeVersion == netVersion {
+            return
+        }
         let dotnetRuntime = URL(string: "https://dotnetcli.azureedge.net/dotnet/Runtime/\(netVersion)/dotnet-runtime-\(netVersion)-win-x64.zip")!
         let windowsDesktopRuntime = URL(string: "https://dotnetcli.azureedge.net/dotnet/WindowsDesktop/\(netVersion)/windowsdesktop-runtime-\(netVersion)-win-x64.zip")!
         try? HTTPClient.fetchFile(url: dotnetRuntime)
         try? HTTPClient.fetchFile(url: windowsDesktopRuntime)
-        try? fm.unzipItem(at: Util.cache.appendingPathComponent("dotnet-runtime-\(netVersion)-win-x64.zip"), to: runtime)
-        try? fm.unzipItem(at: Util.cache.appendingPathComponent("windowsdesktop-runtime-\(netVersion)-win-x64.zip"), to: runtime)
+        try? fm.removeItem(at: runtimeLocation)
+        try? fm.unzipItem(at: Util.cache.appendingPathComponent("dotnet-runtime-\(netVersion)-win-x64.zip"), to: runtimeLocation)
+        try? fm.unzipItem(at: Util.cache.appendingPathComponent("windowsdesktop-runtime-\(netVersion)-win-x64.zip"), to: runtimeLocation)
+        runtimeVersion = netVersion
     }
     
-    //TODO: hash assets and compare with remote
-    private static func needsUpdate(_ version: Version) -> Bool {
-        return assemblyVersion != version.assemblyVersion
+    static func preLaunch() {
+        ensureInstall()
+        updateAssets()
+        DiscordBridge.setPresence()
     }
     
-    private static func purge() {
-        for toRemove in [dalamudDownload, localAssets, path, runtime] {
-            try? fm.removeItem(at: toRemove)
+    static func launch() {
+        guard Remote.version?.supportedGameVer == FFXIVRepo.game.ver else {
+            return
         }
-    }
-    
-    static func launch(args: [String], language: FFXIVLanguage, gameVersion: String) {
-        install()
-        NotificationCenter.default.post(name: .loginInfo, object: nil, userInfo: [Notification.status.info: "Starting Wine"])
-        let dalamudHelper = Bundle.main.url(forResource: "dalamud_helper", withExtension: "exe", subdirectory: "")!
-        let output = Util.launchToString(exec: Wine.wine64, args: [dalamudHelper.path] + args)
-        let pid = String(output.split(separator: "\n").last!)
+        let pid = String(Wine.pidOf(processName: "ffxiv_dx11.exe"))
         let startInfo = StartInfo(workingDirectory: nil,
                                   configurationPath: "C:\\Program Files\\XIV on Mac\\dalamudConfig.json",
                                   pluginDirectory: "C:\\Program Files\\XIV on Mac\\installedPlugins",
                                   defaultPluginDirectory: "C:\\Program Files\\XIV on Mac\\devPlugins",
                                   assetDirectory: "C:\\Program Files\\XIV on Mac\\Dalamud Assets",
-                                  language: Int(language.rawValue),
-                                  gameVersion: gameVersion,
+                                  language: Int(FFXIVSettings.language.rawValue),
+                                  gameVersion: FFXIVRepo.game.ver,
                                   optOutMBCollection: !mbCollection,
                                   delayInitializeMS: 0) //we handle delay ourselves
         let encodedStartInfo = try! JSONEncoder().encode(startInfo).base64EncodedString()
-        DiscordBridge.setPresence()
         DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
             print("Starting Dalamud with StartInfo:\n", encodedStartInfo, "\n", to: &Util.logger)
             NotificationCenter.default.post(name: .loginInfo, object: nil, userInfo: [Notification.status.info: "Injecting Dalamud"])
