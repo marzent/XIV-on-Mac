@@ -179,7 +179,7 @@ final class BannerView: NSImageView {
     
     var banner: Frontier.Info.Banner? {
         didSet {
-            self.image = NSImage(contentsOf: URL(string: banner!.lsbBanner)!)
+            self.image = Frontier.fetchImage(url: URL(string: banner!.lsbBanner)!)
         }
     }
     
@@ -214,7 +214,7 @@ final class AnimatingScrollView: NSScrollView {
             for (i, banner) in banners.enumerated() {
                 let bannerView = BannerView()
                 bannerView.frame = CGRect(x: CGFloat(i) * width, y: 0, width: width, height: height)
-                bannerView.imageScaling = .scaleNone
+                bannerView.imageScaling = .scaleProportionallyUpOrDown
                 bannerView.banner = banner
                 self.documentView?.addSubview(bannerView)
             }

@@ -41,6 +41,20 @@ class Frontier {
         return HTTPClient.fetch(url: url, headers: headers)
     }
     
+    static func fetchImage(url: URL, accept: String? = nil) -> NSImage? {
+        let headers: OrderedDictionary = [
+            "User-Agent"     : FFXIVLogin.userAgent,
+            "Accept"         : accept,
+            "Accept-Encoding": "gzip, deflate",
+            "Origin"         : "https://launcher.finalfantasyxiv.com",
+            "Referer"        : Frontier.referer.absoluteString
+        ]
+        guard let response = HTTPClient.fetch(url: url, headers: headers) else {
+            return nil
+        }
+        return NSImage(data: response.body)
+    }
+    
     struct Gate: Codable {
         let status: Int
     }
