@@ -18,6 +18,7 @@
 		502A18D827AA8C0D00144AB9 /* FFXIVLoginServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A18D727AA8C0D00144AB9 /* FFXIVLoginServices.swift */; };
 		502A18E127AABF8400144AB9 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 502A18E027AABF8400144AB9 /* KeychainAccess */; };
 		502A18E927AACEFE00144AB9 /* LaunchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A18E827AACEFE00144AB9 /* LaunchController.swift */; };
+		5034050E280414400040B466 /* Reloaded.Memory.Buffers.dll in Resources */ = {isa = PBXBuildFile; fileRef = 5034050D280414160040B466 /* Reloaded.Memory.Buffers.dll */; };
 		5043E36C27728BA300E59127 /* wine in Resources */ = {isa = PBXBuildFile; fileRef = 5043E36B27728BA300E59127 /* wine */; };
 		5046F7EF27E74AC9006C34E1 /* discord_bridge.exe in Resources */ = {isa = PBXBuildFile; fileRef = 5046F7EE27E74A9A006C34E1 /* discord_bridge.exe */; };
 		50511EC52770E085003A1E9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50511EC42770E085003A1E9F /* AppDelegate.swift */; };
@@ -90,6 +91,7 @@
 		5020957827C9611A00BD76CC /* Patch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patch.swift; sourceTree = "<group>"; };
 		502A18D727AA8C0D00144AB9 /* FFXIVLoginServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFXIVLoginServices.swift; sourceTree = "<group>"; };
 		502A18E827AACEFE00144AB9 /* LaunchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchController.swift; sourceTree = "<group>"; };
+		5034050D280414160040B466 /* Reloaded.Memory.Buffers.dll */ = {isa = PBXFileReference; lastKnownFileType = file; path = Reloaded.Memory.Buffers.dll; sourceTree = "<group>"; };
 		5043E36B27728BA300E59127 /* wine */ = {isa = PBXFileReference; lastKnownFileType = folder; path = wine; sourceTree = "<group>"; };
 		5046F7EE27E74A9A006C34E1 /* discord_bridge.exe */ = {isa = PBXFileReference; lastKnownFileType = file; path = discord_bridge.exe; sourceTree = "<group>"; };
 		50511EC12770E085003A1E9F /* XIV on Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "XIV on Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -246,6 +248,7 @@
 				07B529D827D97F26005B78BF /* installRosetta.command */,
 				5046F7EE27E74A9A006C34E1 /* discord_bridge.exe */,
 				50DC355A27E8CFC500DBA62C /* dalamud_helper.exe */,
+				5034050D280414160040B466 /* Reloaded.Memory.Buffers.dll */,
 			);
 			path = "XIV on Mac";
 			sourceTree = "<group>";
@@ -453,6 +456,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5034050E280414400040B466 /* Reloaded.Memory.Buffers.dll in Resources */,
 				5046F7EF27E74AC9006C34E1 /* discord_bridge.exe in Resources */,
 				50DF45992795C53300E3D22F /* GShade in Resources */,
 				50692C8B27B3E48B00945593 /* Credits.html in Resources */,

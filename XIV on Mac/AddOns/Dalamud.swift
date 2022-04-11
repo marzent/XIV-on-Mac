@@ -187,6 +187,12 @@ struct Dalamud {
         }
         try? HTTPClient.fetchFile(url: URL(string: version.downloadURL)!, destinationUrl: dalamudDownload)
         try? fm.unzipItem(at: dalamudDownload, to: path)
+        let buffersDllPath = path.appendingPathComponent("Reloaded.Memory.Buffers.dll").path
+        let patchedBuffersDllPath = Bundle.main.url(forResource: "Reloaded.Memory.Buffers", withExtension: "dll", subdirectory: "")!.path
+        if !fm.contentsEqual(atPath: buffersDllPath, andPath: patchedBuffersDllPath) {
+            try? fm.removeItem(atPath: buffersDllPath)
+            try? fm.copyItem(atPath: patchedBuffersDllPath, toPath: buffersDllPath)
+        }
         guard let remoteAssets = Remote.assets else {
             print("Could not get Dalamud Assets\n", to: &Util.logger)
             return
