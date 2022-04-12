@@ -15,14 +15,21 @@ class Frontier {
         Int64((Date().timeIntervalSince1970 * 1000.0).rounded())
     }
     
-    static var referer: URL {
+    private static func generateReferer(lang: FFXIVLanguage) -> URL {
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd-HH"
         let time = dateFormatter.string(from: Date())
-        let lang = FFXIVSettings.language.code
-        return URL(string: "https://launcher.finalfantasyxiv.com/v600/index.html?rc_lang=\(lang)&time=\(time)")!
+        return URL(string: "https://launcher.finalfantasyxiv.com/v600/index.html?rc_lang=\(lang.code)&time=\(time)")!
+    }
+    
+    static var referer: URL {
+        generateReferer(lang: FFXIVSettings.language)
+    }
+    
+    static var refererGlobal: URL {
+        generateReferer(lang: FFXIVLanguage.english)
     }
     
     static var headline: URL {
@@ -30,13 +37,13 @@ class Frontier {
         return URL(string: "https://frontier.ffxiv.com/news/headline.json?lang=\(lang)&media=pcapp&\(squareTime)")!
     }
     
-    static func fetch(url: URL, accept: String? = nil) -> HTTPClient.Response? {
+    static func fetch(url: URL, accept: String? = nil, global: Bool = false) -> HTTPClient.Response? {
         let headers: OrderedDictionary = [
             "User-Agent"     : FFXIVLogin.userAgent,
             "Accept"         : accept,
             "Accept-Encoding": "gzip, deflate",
             "Origin"         : "https://launcher.finalfantasyxiv.com",
-            "Referer"        : Frontier.referer.absoluteString
+            "Referer"        : (global ? refererGlobal : referer).absoluteString
         ]
         return HTTPClient.fetch(url: url, headers: headers)
     }
@@ -50,10 +57,16 @@ class Frontier {
     
     struct Gate: Codable {
         let status: Int
+        let message: [String]?
+        let news: [String]?
     }
     
-    static var maintenance: Bool {
-        let url = URL(string: "https://frontier.ffxiv.com/worldStatus/gate_status.json?\(squareTime)")!
+    struct Login: Codable {
+        let status: Int
+    }
+    
+    static var gameMaintenance: Bool {
+        let url = URL(string: "https://frontier.ffxiv.com/worldStatus/gate_status.json?lang=\(FFXIVSettings.language.code)&_=\(squareTime)")!
         guard let response = fetch(url: url) else {
             return true
         }
@@ -62,7 +75,25 @@ class Frontier {
         }
         let jsonDecoder = JSONDecoder()
         do {
-            return try jsonDecoder.decode(Gate.self, from: response.body).status != 1
+            let gate = try jsonDecoder.decode(Gate.self, from: response.body)
+            return gate.status != 1
+        } catch {
+            return true
+        }
+    }
+    
+    static var loginMaintenance: Bool {
+        let url = URL(string: "https://frontier.ffxiv.com/worldStatus/login_status.json?_=\(squareTime)")!
+        guard let response = fetch(url: url, global: true) else {
+            return true
+        }
+        guard response.statusCode == 200 else {
+            return true
+        }
+        let jsonDecoder = JSONDecoder()
+        do {
+            let login = try jsonDecoder.decode(Login.self, from: response.body)
+            return login.status != 1
         } catch {
             return true
         }

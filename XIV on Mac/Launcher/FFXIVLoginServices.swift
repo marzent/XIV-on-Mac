@@ -143,7 +143,7 @@ struct FFXIVLogin {
             if FFXIVApp.instances >= 2 {
                 throw FFXIVLoginError.multibox
             }
-            if Frontier.maintenance {
+            if Frontier.loginMaintenance {
                 throw FFXIVLoginError.maintenance
             }
             let headers: OrderedDictionary = [
@@ -168,6 +168,9 @@ struct FFXIVLogin {
             }
             guard html.count == 0 else { //patching needed
                 return (uid: uid, patches: Patch.parse(patches: html))
+            }
+            if Frontier.gameMaintenance {
+                throw FFXIVLoginError.maintenance
             }
             return (uid: uid, patches: [])
         }
