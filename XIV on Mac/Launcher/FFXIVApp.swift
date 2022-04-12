@@ -60,6 +60,10 @@ public struct FFXIVApp {
         }
     }
     
+    func startOfficialLauncher() {
+        Wine.launch(args: [bootExe64URL.path])
+    }
+    
     static var running: Bool {
         instances > 0
     }

@@ -24,6 +24,8 @@
 "MAINTENANCE" = "Please wait until maintenance finishes before logging in.";
 "MULTIBOX_SHORT" = "Two game instances already running";
 "MULTIBOX" = "Please close one of your old game instances before starting a new one.";
+"KILLSWITCH_SHORT" = "Login Process Changed";
+"KILLSWITCH" = "Due to changes to the login process made by Square Enix, we need to verify XIV on Mac works correctly and safely. Please use the official launcher in the meantime.";
 "UNEXPECTED_SHORT" = "Unexpected Error";
 "UNEXPECTED" = "An unexpected error occurred.";
 

@@ -173,6 +173,12 @@ struct FFXIVLogin {
             if Frontier.gameMaintenance {
                 throw FFXIVLoginError.maintenance
             }
+            if FFXIVRepo.boot.ver == "2022.03.25.0000.0001" {
+                if settings.platform != .steam {
+                    FFXIVApp().startOfficialLauncher()
+                }
+                throw FFXIVLoginError.killswitch
+            }
             return (uid: uid, patches: [])
         }
     }
