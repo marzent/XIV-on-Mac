@@ -19,9 +19,10 @@ class Frontier {
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "yyyy-MM-dd-HH"
+        dateFormatter.dateFormat = "yyyy-MM-dd-HH-mm"
         let time = dateFormatter.string(from: Date())
-        return URL(string: "https://launcher.finalfantasyxiv.com/v600/index.html?rc_lang=\(lang.code)&time=\(time)")!
+        let rcLang = lang.code.replacingOccurrences(of: "-", with: "_")
+        return URL(string: "https://launcher.finalfantasyxiv.com/v610/index.html?rc_lang=\(rcLang)&time=\(time)")!
     }
     
     static var referer: URL {
@@ -34,7 +35,7 @@ class Frontier {
     
     static var headline: URL {
         let lang = FFXIVSettings.language.code
-        return URL(string: "https://frontier.ffxiv.com/news/headline.json?lang=\(lang)&media=pcapp&\(squareTime)")!
+        return URL(string: "https://frontier.ffxiv.com/news/headline.json?lang=\(lang)&media=pcapp&_=\(squareTime)")!
     }
     
     static func fetch(url: URL, accept: String? = nil, global: Bool = false) -> HTTPClient.Response? {

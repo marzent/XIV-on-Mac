@@ -43,7 +43,8 @@ struct FFXIVLogin {
         dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd-HH-mm"
-        return URL(string: "http://patch-bootver.ffxiv.com/http/win32/ffxivneo_release_boot/\(FFXIVRepo.boot.ver)/?time=\(dateFormatter.string(from: Date()))")! //yes http this is not a mistake
+        let time = dateFormatter.string(from: Date()).dropLast() + "0"
+        return URL(string: "http://patch-bootver.ffxiv.com/http/win32/ffxivneo_release_boot/\(FFXIVRepo.boot.ver)/?time=\(time)")! //yes http this is not a mistake
     }
     
     var sessionURL: URL {
