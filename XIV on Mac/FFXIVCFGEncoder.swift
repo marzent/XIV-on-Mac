@@ -14,6 +14,7 @@ public enum FFXIVCFGSectionLabel : String {
 
 public enum FFXIVCFGOptionKey : String {
     case Graphics_SSAO = "SSAO_DX11"
+    case Graphics_Tesselation = "Tessellation_DX11"
 }
 
 public class FFXIVCFGEncoder {
@@ -52,7 +53,7 @@ public class FFXIVCFGDecoder {
     
     public static func decode(_ value: String) -> FFXIVCFG
     {
-        var cfg : FFXIVCFG = FFXIVCFG(sections: [:], sectionOrder: [])
+        let cfg : FFXIVCFG = FFXIVCFG()
         
         // Get all the lines of the file. This isn't the most efficient method of parsing but
         // since this cfg file isn't particularly large we can keep it simple.
@@ -73,7 +74,7 @@ public class FFXIVCFGDecoder {
                     cfg.sections[currentSection!.name] = currentSection
                 }
                 let titleRange = oneLine.index(range.lowerBound, offsetBy: 1)..<oneLine.index(range.upperBound, offsetBy: -1)
-                currentSection = FFXIVCFGSection(name:String(oneLine[titleRange]),contents: [:], contentOrder: [])
+                currentSection = FFXIVCFGSection(name:String(oneLine[titleRange]))
             }
             else{
                 let keyValue = oneLine.components(separatedBy: "\t")
@@ -84,6 +85,7 @@ public class FFXIVCFGDecoder {
                     if (currentSection != nil)
                     {
                         currentSection!.contents[key] = value
+                        currentSection!.contentOrder.append(key)
                     }
                     else
                     {
@@ -105,18 +107,31 @@ public class FFXIVCFGDecoder {
     
 }
 
-public struct FFXIVCFG {
+public class FFXIVCFG {
+    
     // These contain the same information, but the map is much more useful for reading/using, while the "order"
     // is neccesary for us to ultimately write this back to disk in the same order we got it.
     var sections : [String:FFXIVCFGSection]
     // Keys to 'sections' in the order they originally appeared in the file
     var sectionOrder : [String]
+
+    init(){
+        sections = [:]
+        sectionOrder = []
+    }
+
     
 }
 
-public struct FFXIVCFGSection {
+public class FFXIVCFGSection {
     var name : String
     var contents : [String:String]
     // Keys to 'contents' in the order they originally appeared in the file
     var contentOrder : [String]
+    
+    init(name:String){
+        self.name = name
+        contents = [:]
+        contentOrder = []
+    }
 }

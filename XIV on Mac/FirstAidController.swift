@@ -7,8 +7,56 @@
 
 import Cocoa
 
-class FirstAidController: NSViewController {
+class FirstAidController: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
 
+    @IBOutlet weak var cfgCheckTable : NSTableView?
+    @IBOutlet weak var cfgCheckResultImage : NSImageView?
+    @IBOutlet weak var cfgCheckResultLabel : NSTextField?
+
+    var cfgProblems : [FFXIVCfgCheckCondition] = [] {
+        didSet {
+            guard let cfgCheckTable = self.cfgCheckTable else { return }
+            cfgCheckTable.reloadData()
+            guard let cfgCheckResultImage = self.cfgCheckResultImage,
+                  let cfgCheckResultLabel = self.cfgCheckResultLabel else {
+                return
+            }
+            let worstIssueType : FFXIVCfgConditionType = cfgProblems.max(by:{$0.type.rawValue < $1.type.rawValue})?.type ?? FFXIVCfgConditionType.noissue
+            var resultImage : NSImage?
+            var resultText : String
+            switch worstIssueType {
+            case .noissue:
+                resultImage = NSImage(named: "CfgCheckGood.tiff")
+                resultText = NSLocalizedString("FIRSTAID_CFGCHECK_GOOD_RESULT", comment: "")
+            case .advisory:
+                resultImage = NSImage(named: "CfgCheckGood.tiff")
+                resultText = NSLocalizedString("FIRSTAID_CFGCHECK_ADVISORY_RESULT", comment: "")
+            case .recommendation:
+                resultImage = NSImage(named: "CfgCheckGood.tiff")
+                resultText = NSLocalizedString("FIRSTAID_CFGCHECK_RECOMMENDATION_RESULT", comment: "")
+            case .problem:
+                resultImage = NSImage(named: "CfgCheckProblems.tiff")
+                resultText = NSLocalizedString("FIRSTAID_CFGCHECK_PROBLEM_RESULT", comment: "")
+            }
+            
+            cfgCheckResultImage.image = resultImage
+            cfgCheckResultLabel.stringValue = resultText
+
+        }
+    }
+    
+    var ffxivCfg : FFXIVCFG?
+
+    override func viewWillAppear() {
+        super.viewWillAppear()
+        if ffxivCfg == nil {
+            // This will be nil if we're being loaded because the user voluntarily opened us. If, instead, we're opened because
+            // there's a "severe" issue preventing login, we don't want to load ALL issues, leave the list alone to focus on the major problem(s)
+            pressedCfgCheckup(self)
+        }
+    }
+
+    
     func checkIfRunning() -> Bool{
         // Since we're deleting or otherwise mucking with files the game may be using or may re-write,
         // we generally want no copies running.
@@ -73,4 +121,101 @@ class FirstAidController: NSViewController {
         alert.runModal()
     }
     
+    @IBAction func pressedCfgCheckup(_ sender: Any) {
+        // Force a re-read of the cfg file when the button is pressed
+        ffxivCfg = nil
+        let conditions : [FFXIVCfgCheckCondition] = cfgCheckConditions().filter({$0.type.rawValue >= FFXIVCfgConditionType.recommendation.rawValue})
+        _ = cfgCheckFilteredProblems(conditions:conditions)
+    }
+    
+    // Table View support
+    
+    func numberOfRows(in tableView: NSTableView) -> Int {
+        return cfgProblems.count
+        }
+    
+    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        guard let firstAidCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "FirstAidResult"), owner: self) as? FirstAidTableCellView else { return nil }
+        let problem : FFXIVCfgCheckCondition = cfgProblems[row]
+        
+        firstAidCell.condition = problem
+        firstAidCell.controller = self
+        firstAidCell.problemDescriptionLabel.stringValue = problem.explanation
+        firstAidCell.problemTitleLabel.stringValue = problem.title
+        firstAidCell.fixButton.isEnabled = true
+        switch problem.type {
+        case .advisory:
+            firstAidCell.problemSeverityIcon.image = NSImage(named: "CfgCheckAdvFailed.tiff")
+        case .problem:
+            firstAidCell.problemSeverityIcon.image = NSImage(named: "CfgCheckProbFailed.tiff")
+        default:
+            firstAidCell.problemSeverityIcon.image = NSImage(named: "CfgCheckGood.tiff")
+        }
+            
+        return firstAidCell
+    }
+    
+    func getCurrentCfg() -> FFXIVCFG {
+        if (ffxivCfg == nil) {
+            do {
+                let configFileContents = try String(contentsOf:FFXIVApp.configURL)
+                ffxivCfg = FFXIVCFGDecoder.decode(configFileContents)
+            }
+            catch {
+                print(error)
+                return FFXIVCFG()
+            }
+        }
+        return ffxivCfg!
+    }
+    
+    func writeCurrentCfg() {
+        guard let ffxivCfg = ffxivCfg else {
+            return
+        }
+
+        do {
+            let outputCfgString = try FFXIVCFGEncoder.encode(ffxivCfg)
+            try outputCfgString.write(to: FFXIVApp.configURL, atomically: true, encoding: .utf8)
+        }
+        catch {
+            print(error)
+        }
+    }
+    
+    func cfgCheckFilteredProblems(conditions: [FFXIVCfgCheckCondition]) -> Bool {
+        let config = getCurrentCfg()
+        var foundConditions : [FFXIVCfgCheckCondition] = []
+        
+        for oneCondition in conditions {
+            if oneCondition.conditionApplies(config: config) {
+                foundConditions.append(oneCondition)
+            }
+        }
+        
+        cfgProblems = foundConditions
+        
+        return foundConditions.count > 0
+    }
+    
+    func cfgCheckConditions() -> [FFXIVCfgCheckCondition] {
+        var allConditions : [FFXIVCfgCheckCondition] = FFXIVCheckupConditions
+        #if arch(arm64)
+        allConditions = allConditions + FFXIVCheckupConditions_AS
+        #else
+        allConditions = allConditions + FFXIVCheckupConditions_X64
+        #endif
+        return allConditions
+    }
+    
+    func cfgCheckSevereProblems() -> Bool {
+        let conditions : [FFXIVCfgCheckCondition] = cfgCheckConditions().filter({$0.type == .problem})
+        return cfgCheckFilteredProblems(conditions:conditions)
+    }
+    
+    func pressedFix(condition: FFXIVCfgCheckCondition){
+        var config = getCurrentCfg()
+        condition.applyProposedValueToConfig(config: &config)
+        writeCurrentCfg()
+    }
 }

@@ -12,6 +12,7 @@ class LaunchController: NSViewController {
     var loginSheetWinController: NSWindowController?
     var installerWinController: NSWindowController?
     var patchWinController: NSWindowController?
+    var firstAidWinController: NSWindowController?
     var newsTable: FrontierTableView!
     var topicsTable: FrontierTableView!
     var otp: OTP? = nil
@@ -69,6 +70,7 @@ class LaunchController: NSViewController {
         loginSheetWinController = storyboard?.instantiateController(withIdentifier: "LoginSheet") as? NSWindowController
         installerWinController = storyboard?.instantiateController(withIdentifier: "InstallerWindow") as? NSWindowController
         patchWinController = storyboard?.instantiateController(withIdentifier: "PatchSheet") as? NSWindowController
+        firstAidWinController = storyboard?.instantiateController(withIdentifier: "FirstAidWindow") as? NSWindowController
     }
     
     private func populateNews(_ info: Frontier.Info) {
@@ -111,7 +113,23 @@ class LaunchController: NSViewController {
         self.doLogin()
     }
     
+    func problemConfigurationCheck() -> Bool{
+        let firstAidController = firstAidWinController!.contentViewController! as! FirstAidController
+        if firstAidController.cfgCheckSevereProblems()
+        {
+            firstAidWinController!.window?.makeKeyAndOrderFront(self)
+            return true
+        }
+        return false
+    }
+    
     func doLogin() {
+        // Check for show stopping problems
+        if (self.problemConfigurationCheck()){
+            return
+        }
+        
+        /*
         view.window?.beginSheet(loginSheetWinController!.window!)
         FFXIVSettings.credentials = FFXIVLoginCredentials(username: userField.stringValue, password: passwdField.stringValue, oneTimePassword: otpField.stringValue)
         DispatchQueue.global(qos: .default).async {
@@ -143,6 +161,7 @@ class LaunchController: NSViewController {
                 }
             }
         }
+         */
     }
     
     @objc func loginDone(_ notif: Notification) {
