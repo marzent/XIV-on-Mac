@@ -51,3 +51,14 @@
 "ROSETTA_REQUIRED_INFORMATIVE" = "XIV On Mac requires Apple's Rosetta 2 to be installed in order to function on your Apple Silicon Mac. If you choose not to install, your game will not start. Would you like to start the Rosetta installer now?";
 "ROSETTA_REQUIRED_INSTALL_BUTTON" = "Install Rosetta";
 "ROSETTA_REQUIRED_CANCEL_BUTTON" = "Cancel";
+
+"FIRSTAID_CFGCHECK_GOOD_RESULT" = "Your configuration looks good!";
+"FIRSTAID_CFGCHECK_ADVISORY_RESULT" = "Your configuration looks good, but there are some items you might want to know about.";
+"FIRSTAID_CFGCHECK_RECOMMENDATION_RESULT" = "You may have better results or performance with a few changes.";
+"FIRSTAID_CFGCHECK_PROBLEM_RESULT" = "One or more problems was found with your configuration which are known to cause problems.";
+
+"FIRSTAID_CFGCHECK_FIXED" = "Fixed!";
+"FIRSTAID_CFGCHECK_HBAO_TITLE" = "SSAO Setting is Invalid";
+"FIRSTAID_CFGCHECK_HBAO_EXP" = "The HBAO levels of SSAO (Screen Space Ambient Occlusion) are not supported on the Mac, and can cause graphics to render with black holes.";
+"FIRSTAID_CFGCHECK_TESSELATION_TITLE" = "Tesselation";
+"FIRSTAID_CFGCHECK_TESSELATION_EXP" = "Values above \"Normal\" are known to cause severe performance problems on Apple Silicon Macs, while offering no visual improvement.";
