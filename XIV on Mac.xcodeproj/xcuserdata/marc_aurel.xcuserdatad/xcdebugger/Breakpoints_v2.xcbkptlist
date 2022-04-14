@@ -430,25 +430,9 @@
             filePath = "XIV on Mac/AddOns/Dalamud.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "235"
-            endingLineNumber = "235"
+            startingLineNumber = "231"
+            endingLineNumber = "231"
             landmarkName = "updateAssets()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "550856D8-EA83-43F5-B0B9-1EB3C62F5190"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "XIV on Mac/AddOns/Dalamud.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "267"
-            endingLineNumber = "267"
-            landmarkName = "launch()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

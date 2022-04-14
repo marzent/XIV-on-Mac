@@ -210,10 +210,6 @@ struct Dalamud {
         try? HTTPClient.fetchFile(url: URL(string: version.downloadURL)!, destinationUrl: dalamudDownload)
         try? fm.removeItem(at: path)
         try? fm.unzipItem(at: dalamudDownload, to: path)
-        let buffersDllPath = path.appendingPathComponent("Reloaded.Memory.Buffers.dll").path
-        let patchedBuffersDllPath = Bundle.main.url(forResource: "Reloaded.Memory.Buffers", withExtension: "dll", subdirectory: "")!.path
-        try? fm.removeItem(atPath: buffersDllPath)
-        try? fm.copyItem(atPath: patchedBuffersDllPath, toPath: buffersDllPath)
         installRuntime(version)
         assemblyVersion = version.assemblyVersion
     }
