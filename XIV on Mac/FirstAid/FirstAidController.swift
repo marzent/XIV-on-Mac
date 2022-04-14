@@ -9,21 +9,23 @@ import Cocoa
 
 class FirstAidController: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
 
-    @IBOutlet weak var cfgCheckTable : NSTableView?
-    @IBOutlet weak var cfgCheckResultImage : NSImageView?
-    @IBOutlet weak var cfgCheckResultLabel : NSTextField?
+    @IBOutlet weak var cfgCheckTable: NSTableView?
+    @IBOutlet weak var cfgCheckResultImage: NSImageView?
+    @IBOutlet weak var cfgCheckResultLabel: NSTextField?
 
-    var cfgProblems : [FFXIVCfgCheckCondition] = [] {
+    var cfgProblems: [FFXIVCfgCheckCondition] = [] {
         didSet {
-            guard let cfgCheckTable = self.cfgCheckTable else { return }
+            guard let cfgCheckTable = self.cfgCheckTable else {
+                return
+            }
             cfgCheckTable.reloadData()
             guard let cfgCheckResultImage = self.cfgCheckResultImage,
                   let cfgCheckResultLabel = self.cfgCheckResultLabel else {
                 return
             }
-            let worstIssueType : FFXIVCfgConditionType = cfgProblems.max(by:{$0.type.rawValue < $1.type.rawValue})?.type ?? FFXIVCfgConditionType.noissue
-            var resultImage : NSImage?
-            var resultText : String
+            let worstIssueType: FFXIVCfgConditionType = cfgProblems.max(by:{$0.type.rawValue < $1.type.rawValue})?.type ?? FFXIVCfgConditionType.noissue
+            var resultImage: NSImage?
+            var resultText: String
             switch worstIssueType {
             case .noissue:
                 resultImage = NSImage(named: "CfgCheckGood.tiff")
@@ -41,11 +43,10 @@ class FirstAidController: NSViewController, NSTableViewDelegate, NSTableViewData
             
             cfgCheckResultImage.image = resultImage
             cfgCheckResultLabel.stringValue = resultText
-
         }
     }
     
-    var ffxivCfg : FFXIVCFG?
+    var ffxivCfg: FFXIVCFG?
 
     override func viewWillAppear() {
         super.viewWillAppear()
@@ -57,18 +58,16 @@ class FirstAidController: NSViewController, NSTableViewDelegate, NSTableViewData
     }
 
     
-    func checkIfRunning() -> Bool{
+    func checkIfRunning() -> Bool {
         // Since we're deleting or otherwise mucking with files the game may be using or may re-write,
         // we generally want no copies running.
-        if (FFXIVApp.running)
-        {
+        if (FFXIVApp.running) {
             let alert: NSAlert = NSAlert()
             alert.alertStyle = .warning
             alert.messageText = NSLocalizedString("FIRSTAID_GAME_RUNNING", comment: "")
             alert.informativeText = NSLocalizedString("FIRSTAID_GAME_RUNNING", comment: "")
             alert.addButton(withTitle:NSLocalizedString("OK_BUTTON", comment: ""))
             alert.runModal()
-
             return true
         }
         return false
@@ -124,7 +123,7 @@ class FirstAidController: NSViewController, NSTableViewDelegate, NSTableViewData
     @IBAction func pressedCfgCheckup(_ sender: Any) {
         // Force a re-read of the cfg file when the button is pressed
         ffxivCfg = nil
-        let conditions : [FFXIVCfgCheckCondition] = cfgCheckConditions().filter({$0.type.rawValue >= FFXIVCfgConditionType.recommendation.rawValue})
+        let conditions : [FFXIVCfgCheckCondition] = cfgCheckConditions().filter {$0.type.rawValue >= FFXIVCfgConditionType.recommendation.rawValue}
         _ = cfgCheckFilteredProblems(conditions:conditions)
     }
     
@@ -132,11 +131,13 @@ class FirstAidController: NSViewController, NSTableViewDelegate, NSTableViewData
     
     func numberOfRows(in tableView: NSTableView) -> Int {
         return cfgProblems.count
-        }
+    }
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        guard let firstAidCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "FirstAidResult"), owner: self) as? FirstAidTableCellView else { return nil }
-        let problem : FFXIVCfgCheckCondition = cfgProblems[row]
+        guard let firstAidCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "FirstAidResult"), owner: self) as? FirstAidTableCellView else {
+            return nil
+        }
+        let problem: FFXIVCfgCheckCondition = cfgProblems[row]
         
         firstAidCell.condition = problem
         firstAidCell.controller = self
@@ -185,7 +186,7 @@ class FirstAidController: NSViewController, NSTableViewDelegate, NSTableViewData
     
     func cfgCheckFilteredProblems(conditions: [FFXIVCfgCheckCondition]) -> Bool {
         let config = getCurrentCfg()
-        var foundConditions : [FFXIVCfgCheckCondition] = []
+        var foundConditions: [FFXIVCfgCheckCondition] = []
         
         for oneCondition in conditions {
             if oneCondition.conditionApplies(config: config) {
@@ -199,7 +200,7 @@ class FirstAidController: NSViewController, NSTableViewDelegate, NSTableViewData
     }
     
     func cfgCheckConditions() -> [FFXIVCfgCheckCondition] {
-        var allConditions : [FFXIVCfgCheckCondition] = FFXIVCheckupConditions
+        var allConditions: [FFXIVCfgCheckCondition] = FFXIVCheckupConditions
         #if arch(arm64)
         allConditions = allConditions + FFXIVCheckupConditions_AS
         #else
@@ -209,11 +210,11 @@ class FirstAidController: NSViewController, NSTableViewDelegate, NSTableViewData
     }
     
     func cfgCheckSevereProblems() -> Bool {
-        let conditions : [FFXIVCfgCheckCondition] = cfgCheckConditions().filter({$0.type == .problem})
+        let conditions: [FFXIVCfgCheckCondition] = cfgCheckConditions().filter({$0.type == .problem})
         return cfgCheckFilteredProblems(conditions:conditions)
     }
     
-    func pressedFix(condition: FFXIVCfgCheckCondition){
+    func pressedFix(condition: FFXIVCfgCheckCondition) {
         var config = getCurrentCfg()
         condition.applyProposedValueToConfig(config: &config)
         writeCurrentCfg()

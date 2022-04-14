@@ -14,8 +14,8 @@ class FirstAidTableCellView: NSTableCellView {
     @IBOutlet weak var fixButton: NSButton!
     @IBOutlet weak var problemSeverityIcon: NSImageView!
 
-    var condition : FFXIVCfgCheckCondition?
-    var controller : FirstAidController?
+    var condition: FFXIVCfgCheckCondition?
+    var controller: FirstAidController?
     
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
@@ -46,6 +46,5 @@ class FirstAidTableCellView: NSTableCellView {
         if fixButton != nil {
             fixButton!.isEnabled = false
         }
-        
     }
 }

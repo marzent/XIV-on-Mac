@@ -128,8 +128,6 @@ class LaunchController: NSViewController {
         if (self.problemConfigurationCheck()){
             return
         }
-        
-        /*
         view.window?.beginSheet(loginSheetWinController!.window!)
         FFXIVSettings.credentials = FFXIVLoginCredentials(username: userField.stringValue, password: passwdField.stringValue, oneTimePassword: otpField.stringValue)
         DispatchQueue.global(qos: .default).async {
@@ -161,7 +159,6 @@ class LaunchController: NSViewController {
                 }
             }
         }
-         */
     }
     
     @objc func loginDone(_ notif: Notification) {

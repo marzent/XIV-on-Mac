@@ -7,21 +7,21 @@
 
 import Foundation
 
-let FFXIVCheckupConditions : [FFXIVCfgCheckCondition] = [
+let FFXIVCheckupConditions: [FFXIVCfgCheckCondition] = [
     FFXIVCfgCheckCondition(title: NSLocalizedString("FIRSTAID_CFGCHECK_HBAO_TITLE", comment: ""),
                            explanation: NSLocalizedString("FIRSTAID_CFGCHECK_HBAO_EXP", comment: ""),
                            type: .problem, sectionKey: FFXIVCFGSectionLabel.Graphics.rawValue, name: FFXIVCFGOptionKey.Graphics_SSAO.rawValue, comparisonValue: "4", proposedValue: "3", comparisonType: .lessthan)
 ]
 
 // Conditions which only apply to Apple Silicon
-let FFXIVCheckupConditions_AS : [FFXIVCfgCheckCondition] = [
+let FFXIVCheckupConditions_AS: [FFXIVCfgCheckCondition] = [
     FFXIVCfgCheckCondition(title: NSLocalizedString("FIRSTAID_CFGCHECK_TESSELATION_TITLE", comment: ""),
                            explanation: NSLocalizedString("FIRSTAID_CFGCHECK_TESSELATION_EXP", comment: ""),
                            type: .advisory, sectionKey: FFXIVCFGSectionLabel.Graphics.rawValue, name: FFXIVCFGOptionKey.Graphics_Tesselation.rawValue, comparisonValue: "3", proposedValue: "3", comparisonType: .lessthan)
 ]
 
 // Conditions which only apply to Intel
-let FFXIVCheckupConditions_X64 : [FFXIVCfgCheckCondition] = [
+let FFXIVCheckupConditions_X64: [FFXIVCfgCheckCondition] = [
 ]
 
 
@@ -45,36 +45,36 @@ public enum FFXIVCfgConditionComparisonType {
 
 
 public struct FFXIVCfgCheckCondition {
-    var title : String
-    var explanation : String
-    var type : FFXIVCfgConditionType
-    var sectionKey : String
-    var name : String
-    var comparisonValue : String
-    var proposedValue : String
-    var comparisonType : FFXIVCfgConditionComparisonType
+    var title: String
+    var explanation: String
+    var type: FFXIVCfgConditionType
+    var sectionKey: String
+    var name: String
+    var comparisonValue: String
+    var proposedValue: String
+    var comparisonType: FFXIVCfgConditionComparisonType
 
     public func applyProposedValueToConfig(config: inout FFXIVCFG){
-        if let cfgSection : FFXIVCFGSection = config.sections[sectionKey] {
+        if let cfgSection: FFXIVCFGSection = config.sections[sectionKey] {
             cfgSection.contents[name] = proposedValue
         }
     }
     
     public func conditionApplies(config:FFXIVCFG) -> Bool {
         // Trivial so far, but made this a function in case there's more complicated situations in the future
-        var applies : Bool = false
-        if let cfgSection : FFXIVCFGSection = config.sections[sectionKey] {
+        var applies: Bool = false
+        if let cfgSection: FFXIVCFGSection = config.sections[sectionKey] {
             switch comparisonType {
             case .equal:
                 applies = cfgSection.contents[name] == comparisonValue
             case .notequal:
                 applies = cfgSection.contents[name] != comparisonValue
             case .lessthan:
-                if let currentValue : Int = Int(cfgSection.contents[name]!), let comparisonInt : Int = Int(comparisonValue){
+                if let currentValue = Int(cfgSection.contents[name]!), let comparisonInt = Int(comparisonValue) {
                     applies = comparisonInt < currentValue
                 }
             case .greaterthan:
-                if let currentValue : Int = Int(cfgSection.contents[name]!), let comparisonInt : Int = Int(comparisonValue){
+                if let currentValue = Int(cfgSection.contents[name]!), let comparisonInt = Int(comparisonValue) {
                     applies = comparisonInt > currentValue
                 }
             }

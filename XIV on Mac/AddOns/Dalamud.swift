@@ -103,7 +103,8 @@ struct Dalamud {
         }
         
         static var version: Version? {
-            let url = URL(string: "https://kamori.goats.dev/Dalamud/Release/VersionInfo?track=\(staging ? "stg" : "release")&appId=xom")!
+            let stagingTrack = "net5"
+            let url = URL(string: "https://kamori.goats.dev/Dalamud/Release/VersionInfo?track=\(staging ? stagingTrack : "release")&appId=xom")!
             guard let response = HTTPClient.fetch(url: url) else {
                 return nil
             }
