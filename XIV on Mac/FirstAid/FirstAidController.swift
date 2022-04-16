@@ -158,12 +158,39 @@ class FirstAidController: NSViewController, NSTableViewDelegate, NSTableViewData
     
     func getCurrentCfg() -> FFXIVCFG {
         if (ffxivCfg == nil) {
+            var tryCreate = false
+            do {
+                tryCreate = try !FFXIVApp.configURL.checkResourceIsReachable()
+            }
+            catch let error as NSError {
+                if (error.domain == NSCocoaErrorDomain) && error.code == 260
+                {
+                    // No such file, might be the first launch.
+                    tryCreate = true
+                }
+                else
+                {
+                    print(error)
+                    return FFXIVCFG()
+                }
+            }
+            if (tryCreate)
+            {
+                do {
+                    try FileManager.default.createDirectory(atPath: FFXIVApp.configFolder.path, withIntermediateDirectories: true, attributes: nil)
+                    let defaultCfgURL = Bundle.main.url(forResource: "FFXIV-MacDefault", withExtension: "cfg")!
+                    try FileManager.default.copyItem(at: defaultCfgURL, to: FFXIVApp.configURL)
+                }
+                catch let createError as NSError {
+                    print (createError)
+                }
+            }
             do {
                 let configFileContents = try String(contentsOf:FFXIVApp.configURL)
                 ffxivCfg = FFXIVCFGDecoder.decode(configFileContents)
             }
             catch {
-                print(error)
+                print (error)
                 return FFXIVCFG()
             }
         }

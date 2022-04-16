@@ -10,7 +10,7 @@ import Foundation
 let FFXIVCheckupConditions: [FFXIVCfgCheckCondition] = [
     FFXIVCfgCheckCondition(title: NSLocalizedString("FIRSTAID_CFGCHECK_HBAO_TITLE", comment: ""),
                            explanation: NSLocalizedString("FIRSTAID_CFGCHECK_HBAO_EXP", comment: ""),
-                           type: .problem, sectionKey: FFXIVCFGSectionLabel.Graphics.rawValue, name: FFXIVCFGOptionKey.Graphics_SSAO.rawValue, comparisonValue: "4", proposedValue: "3", comparisonType: .lessthan)
+                           type: .problem, sectionKey: FFXIVCFGSectionLabel.Graphics.rawValue, name: FFXIVCFGOptionKey.Graphics_SSAO.rawValue, comparisonValue: "3", proposedValue: "2", comparisonType: .lessthan)
 ]
 
 // Conditions which only apply to Apple Silicon
@@ -71,7 +71,7 @@ public struct FFXIVCfgCheckCondition {
                 applies = cfgSection.contents[name] != comparisonValue
             case .lessthan:
                 if let currentValue = Int(cfgSection.contents[name]!), let comparisonInt = Int(comparisonValue) {
-                    applies = comparisonInt < currentValue
+                    applies = comparisonInt <= currentValue
                 }
             case .greaterthan:
                 if let currentValue = Int(cfgSection.contents[name]!), let comparisonInt = Int(comparisonValue) {
