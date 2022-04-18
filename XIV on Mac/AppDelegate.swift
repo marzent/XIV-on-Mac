@@ -132,9 +132,6 @@ import AppMover
         Dotnet.installDotNet48()
     }
     
-    @IBAction func installDotNet(_ sender: Any) {
-        Dotnet.install()
-    }
     
     @IBAction func installGShade(_ sender: Any) {
         GShade.install()
