@@ -424,7 +424,7 @@
                                                         </connections>
                                                     </menuItem>
                                                     <menuItem isSeparatorItem="YES" id="lj6-6S-wy9"/>
-                                                    <menuItem title="All" id="pHz-sa-9jf">
+                                                    <menuItem title="All" hidden="YES" enabled="NO" id="pHz-sa-9jf">
                                                         <modifierMask key="keyEquivalentModifierMask"/>
                                                         <connections>
                                                             <action selector="installDotNet:" target="Voe-Tx-rLC" id="EPD-TQ-v2I"/>
