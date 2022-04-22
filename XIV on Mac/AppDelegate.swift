@@ -25,6 +25,7 @@ import AppMover
         launchWinController?.showWindow(self)
         actAutoLaunch.state = ACT.autoLaunch ? .on : .off
         bhAutoLaunch.state = ACT.autoLaunchBH ? .on : .off
+        checkGPUSupported()
         checkForRosetta()
         Steam.initAPI()
         sparkle.updater.checkForUpdatesInBackground()
@@ -80,6 +81,23 @@ import AppMover
             }
         }
     #endif
+    }
+    
+    func checkGPUSupported() {
+        if (!Util.supportedGPU())
+        {
+            let alert: NSAlert = NSAlert()
+            alert.messageText = NSLocalizedString("UNSUPPORTED_GPU", comment: "")
+            alert.informativeText = NSLocalizedString("UNSUPPORTED_GPU_INFORMATIVE", comment: "")
+            alert.alertStyle = .critical
+            alert.addButton(withTitle:NSLocalizedString("OK_BUTTON", comment: ""))
+            alert.addButton(withTitle:NSLocalizedString("SEE_COMPATABILITY_BUTTON", comment: ""))
+            alert.icon = NSImage(named: "CfgCheckProbFailed.tiff")
+            let result = alert.runModal()
+            if result == .alertSecondButtonReturn {
+                NSWorkspace.shared.open(URL(string: "https://www.xivmac.com/compatibility-database")!)
+            }
+        }
     }
     
     @IBAction func openPrefix(_ sender: Any) {

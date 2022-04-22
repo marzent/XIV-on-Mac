@@ -47,6 +47,10 @@
 "GAME_CONFIG_RESET_FAILED" = "Resetting Configuration Failed";
 "GAME_CONFIG_RESET_FAILED_INFORMATIVE" = "Unable to reset configuration. You may need to grant XIV On Mac access to your Downloads folder in System Preferences, Security.";
 
+"UNSUPPORTED_GPU" = "No Supported GPU Found";
+"UNSUPPORTED_GPU_INFORMATIVE" = "XIV On Mac did not find any supported GPUs in your Mac. If you continue, the game may fail to function, crash, or otherwise perform in a substandard manner. For more details please see our Compatibility List.";
+"SEE_COMPATABILITY_BUTTON" = "Compatibility List";
+
 "ROSETTA_REQUIRED" = "Rosetta 2 is Required.";
 "ROSETTA_REQUIRED_INFORMATIVE" = "XIV On Mac requires Apple's Rosetta 2 to be installed in order to function on your Apple Silicon Mac. If you choose not to install, your game will not start. Would you like to start the Rosetta installer now?";
 "ROSETTA_REQUIRED_INSTALL_BUTTON" = "Install Rosetta";
