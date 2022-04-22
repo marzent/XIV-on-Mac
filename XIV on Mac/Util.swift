@@ -6,6 +6,7 @@
 //
 
 import AppKit
+import IOKit
 
 struct Util {
     @available(*, unavailable) private init() {}
@@ -176,4 +177,43 @@ struct Util {
     #endif
         return false
     }
+    
+    
+    static func supportedGPU() -> Bool {
+        var foundSupportedGPU : Bool = false
+    #if arch(arm64)
+        // On Apple Silicon to date, there is always a built-in GPU, and it is always supported. So we don't need to check anything.
+        foundSupportedGPU = true
+    #else
+        // On Intel, we need to find an AMD GPU. Intel iGPUs are not supported, and neither is nVidia or other oddities (USB video).
+        var deviceIterator : io_iterator_t = io_iterator_t()
+                                                                           
+        if IOServiceGetMatchingServices(kIOMasterPortDefault, IOServiceMatching(kIOAcceleratorClassName),&deviceIterator) == kIOReturnSuccess {
+            var entry : io_registry_entry_t = IOIteratorNext(deviceIterator)
+            while (entry != 0) && (!foundSupportedGPU) {
+                var properties : Unmanaged<CFMutableDictionary>? = nil
+                if IORegistryEntryCreateCFProperties(entry, &properties, kCFAllocatorDefault, 0) == kIOReturnSuccess {
+                    guard let propertiesDict = properties?.takeUnretainedValue() as? [String : AnyObject] else { continue }
+                    properties?.release()
+                    
+                    let ioClass = propertiesDict["IOClass"]
+                    if ioClass is String {
+                        let ioClassString = ioClass as! String
+                        if ioClassString.hasPrefix("AMDRadeon") {
+                            foundSupportedGPU = true
+                        }
+                    }
+                }
+                
+                IOObjectRelease(entry)
+                entry = IOIteratorNext(deviceIterator)
+            }
+            
+            IOObjectRelease(deviceIterator)
+        }
+        
+    #endif
+        return foundSupportedGPU
+    }
+    
 }

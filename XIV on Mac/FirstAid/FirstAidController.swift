@@ -106,6 +106,9 @@ class FirstAidController: NSViewController, NSTableViewDelegate, NSTableViewData
             }
             try FileManager.default.copyItem(at: FFXIVApp.configURL, to: xomConfigBackupURL)
             try FileManager.default.removeItem(at: FFXIVApp.configURL)
+            let defaultCfgURL = Bundle.main.url(forResource: "FFXIV-MacDefault", withExtension: "cfg")!
+            try FileManager.default.copyItem(at: defaultCfgURL, to: FFXIVApp.configURL)
+
             alert.alertStyle = .informational
             alert.messageText = NSLocalizedString("GAME_CONFIG_RESET", comment: "")
             alert.informativeText = NSLocalizedString("GAME_CONFIG_RESET_INFORMATIVE", comment: "")
