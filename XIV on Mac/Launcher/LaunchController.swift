@@ -13,6 +13,7 @@ class LaunchController: NSViewController {
     var installerWinController: NSWindowController?
     var patchWinController: NSWindowController?
     var firstAidWinController: NSWindowController?
+    var documentsPermissionsController: DocumentsPermissionsController?
     var newsTable: FrontierTableView!
     var topicsTable: FrontierTableView!
     var otp: OTP? = nil
@@ -71,6 +72,7 @@ class LaunchController: NSViewController {
         installerWinController = storyboard?.instantiateController(withIdentifier: "InstallerWindow") as? NSWindowController
         patchWinController = storyboard?.instantiateController(withIdentifier: "PatchSheet") as? NSWindowController
         firstAidWinController = storyboard?.instantiateController(withIdentifier: "FirstAidWindow") as? NSWindowController
+        documentsPermissionsController = storyboard?.instantiateController(withIdentifier: "DocumentsPermissionsController") as? DocumentsPermissionsController
     }
     
     private func populateNews(_ info: Frontier.Info) {
@@ -125,6 +127,11 @@ class LaunchController: NSViewController {
     
     func doLogin() {
         // Check for show stopping problems
+        if !Util.documentsFolderWritable() {
+            guard let permissionsController = documentsPermissionsController else { return }
+            self.presentAsSheet(permissionsController)
+            return
+        }
         if (self.problemConfigurationCheck()){
             return
         }
