@@ -1807,7 +1807,7 @@ Gw
                                         </connections>
                                     </textField>
                                     <button wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fhv-Eb-PmW">
-                                        <rect key="frame" x="679" y="198" width="127" height="23"/>
+                                        <rect key="frame" x="679" y="198.5" width="127" height="23"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="check" title="Auto-Login" bezelStyle="regularSquare" imagePosition="left" controlSize="large" inset="2" id="J8n-OX-VtC">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1818,7 +1818,7 @@ Gw
                                         </connections>
                                     </button>
                                     <button wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xhX-md-4MR">
-                                        <rect key="frame" x="819" y="198" width="127" height="23"/>
+                                        <rect key="frame" x="819" y="198.5" width="127" height="23"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="check" title="Auto-OTP" bezelStyle="regularSquare" imagePosition="left" controlSize="large" inset="2" id="hjS-RC-X85">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1933,7 +1933,7 @@ Gw
                                         </scroller>
                                     </scrollView>
                                     <button wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R5T-I0-Kje">
-                                        <rect key="frame" x="922" y="358" width="24" height="24"/>
+                                        <rect key="frame" x="922" y="358" width="24.5" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="NSTouchBarGoDownTemplate" imagePosition="only" alignment="center" refusesFirstResponder="YES" state="on" inset="2" id="gCP-mx-jfr">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1964,7 +1964,99 @@ Gw
                 <customObject id="0mb-fo-mzL" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <menu id="NXC-jb-B44"/>
             </objects>
-            <point key="canvasLocation" x="80.5" y="1746.5"/>
+            <point key="canvasLocation" x="81" y="1750"/>
+        </scene>
+        <!--Documents Permissions Controller-->
+        <scene sceneID="7EM-fy-Cui">
+            <objects>
+                <viewController storyboardIdentifier="DocumentsPermissionsController" id="QNQ-jO-Lf0" customClass="DocumentsPermissionsController" customModule="XIV_on_Mac" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="1SP-lM-yHF">
+                        <rect key="frame" x="0.0" y="0.0" width="965" height="377"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MM0-iT-wO4">
+                                <rect key="frame" x="18" y="326" width="472" height="31"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Document Folder Permissions" id="WL4-BM-XXS">
+                                    <font key="font" textStyle="largeTitle" name=".SFNS-Regular"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="uAg-pu-s01">
+                                <rect key="frame" x="18" y="254" width="472" height="64"/>
+                                <textFieldCell key="cell" selectable="YES" id="iuf-mj-hQA">
+                                    <font key="font" metaFont="system"/>
+                                    <string key="title">Final Fantasy XIV: A Realm Reborn stores certain information within your Documents folder. This information includes character data, and system configuration. This means that you must grant permission to access your Documents folder before the game can be played.</string>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <imageView horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="CpA-cl-7Bv">
+                                <rect key="frame" x="493" y="127" width="455" height="233"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="449" id="UCe-kp-EfT"/>
+                                    <constraint firstAttribute="height" constant="227" id="uMG-d2-Y46"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="groove" image="SecPrefpane" id="t0R-au-2Uj"/>
+                            </imageView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="d38-by-aiQ">
+                                <rect key="frame" x="622" y="83" width="197" height="32"/>
+                                <buttonCell key="cell" type="push" title="Open Security Preferences" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bE2-RL-ucx">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="pressedOpenSecPrefpane:" target="QNQ-jO-Lf0" id="foV-bP-uTF"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WWZ-5u-QXM">
+                                <rect key="frame" x="758" y="13" width="194" height="32"/>
+                                <buttonCell key="cell" type="push" title="Recheck Document Folder" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fAH-xS-08Q">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="pressedRecheck:" target="QNQ-jO-Lf0" id="RyA-mu-hgg"/>
+                                </connections>
+                            </button>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="DSL-BB-JXq">
+                                <rect key="frame" x="18" y="198" width="472" height="48"/>
+                                <textFieldCell key="cell" selectable="YES" id="ohW-b2-RiG">
+                                    <font key="font" metaFont="system"/>
+                                    <string key="title">XIV On Mac has detected that data cannot currently be written to the Documents folder. To correct this, please grant permissions in the Security pane within System Preferences, as seen on the right.</string>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="d38-by-aiQ" firstAttribute="centerX" secondItem="CpA-cl-7Bv" secondAttribute="centerX" id="2GR-6U-Zry"/>
+                            <constraint firstItem="DSL-BB-JXq" firstAttribute="leading" secondItem="1SP-lM-yHF" secondAttribute="leading" constant="20" symbolic="YES" id="5r8-Yt-xIF"/>
+                            <constraint firstItem="WWZ-5u-QXM" firstAttribute="top" relation="greaterThanOrEqual" secondItem="d38-by-aiQ" secondAttribute="bottom" constant="50" id="C21-r7-KwC"/>
+                            <constraint firstItem="CpA-cl-7Bv" firstAttribute="leading" secondItem="uAg-pu-s01" secondAttribute="trailing" constant="8" symbolic="YES" id="D3p-MS-A5q"/>
+                            <constraint firstItem="uAg-pu-s01" firstAttribute="top" secondItem="MM0-iT-wO4" secondAttribute="bottom" constant="8" symbolic="YES" id="FzC-QK-exz"/>
+                            <constraint firstItem="CpA-cl-7Bv" firstAttribute="leading" secondItem="uAg-pu-s01" secondAttribute="trailing" constant="8" symbolic="YES" id="JnU-eg-JfJ"/>
+                            <constraint firstItem="MM0-iT-wO4" firstAttribute="leading" secondItem="1SP-lM-yHF" secondAttribute="leading" constant="20" symbolic="YES" id="Jxb-Y2-ygM"/>
+                            <constraint firstAttribute="trailing" secondItem="WWZ-5u-QXM" secondAttribute="trailing" constant="20" symbolic="YES" id="L2j-Wa-WzP"/>
+                            <constraint firstItem="CpA-cl-7Bv" firstAttribute="leading" secondItem="MM0-iT-wO4" secondAttribute="trailing" constant="8" symbolic="YES" id="MhC-3z-pmm"/>
+                            <constraint firstItem="uAg-pu-s01" firstAttribute="leading" secondItem="1SP-lM-yHF" secondAttribute="leading" constant="20" symbolic="YES" id="QhW-TX-53Z"/>
+                            <constraint firstAttribute="trailing" secondItem="CpA-cl-7Bv" secondAttribute="trailing" constant="20" symbolic="YES" id="WPG-gT-TzP"/>
+                            <constraint firstAttribute="bottom" secondItem="WWZ-5u-QXM" secondAttribute="bottom" constant="20" symbolic="YES" id="Xq4-gJ-ezk"/>
+                            <constraint firstItem="uAg-pu-s01" firstAttribute="leading" secondItem="1SP-lM-yHF" secondAttribute="leading" constant="20" symbolic="YES" id="aXH-Lk-XUv"/>
+                            <constraint firstItem="CpA-cl-7Bv" firstAttribute="leading" secondItem="DSL-BB-JXq" secondAttribute="trailing" constant="8" symbolic="YES" id="ddN-jM-d35"/>
+                            <constraint firstItem="d38-by-aiQ" firstAttribute="top" secondItem="CpA-cl-7Bv" secondAttribute="bottom" constant="20" symbolic="YES" id="gBI-GS-UhX"/>
+                            <constraint firstItem="CpA-cl-7Bv" firstAttribute="top" secondItem="1SP-lM-yHF" secondAttribute="top" constant="20" symbolic="YES" id="kQ7-Ep-Qm2"/>
+                            <constraint firstItem="MM0-iT-wO4" firstAttribute="top" secondItem="1SP-lM-yHF" secondAttribute="top" constant="20" symbolic="YES" id="pdN-Kj-Lji"/>
+                            <constraint firstItem="DSL-BB-JXq" firstAttribute="top" secondItem="uAg-pu-s01" secondAttribute="bottom" constant="8" symbolic="YES" id="xaR-P1-d3F"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="explanatoryTextField" destination="DSL-BB-JXq" id="Vzg-r0-swo"/>
+                    </connections>
+                </viewController>
+                <customObject id="XNy-aq-x6e" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="80.5" y="2225.5"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="NXM-Q5-CJl">
@@ -2264,7 +2356,7 @@ Gw
                                                     </textFieldCell>
                                                 </textField>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vi7-zh-Dkz">
-                                                    <rect key="frame" x="33" y="649" width="156" height="32"/>
+                                                    <rect key="frame" x="33" y="649" width="155" height="32"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="jSD-bX-Lap"/>
                                                     </constraints>
@@ -2500,6 +2592,7 @@ Gw
     <resources>
         <image name="CfgCheckGood" width="96" height="96"/>
         <image name="CfgCheckProbFailed" width="96" height="96"/>
-        <image name="NSTouchBarGoDownTemplate" width="16" height="9"/>
+        <image name="NSTouchBarGoDownTemplate" width="15" height="9"/>
+        <image name="SecPrefpane" width="517.5" height="261"/>
     </resources>
 </document>

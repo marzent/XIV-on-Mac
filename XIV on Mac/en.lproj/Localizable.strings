@@ -47,6 +47,8 @@
 "GAME_CONFIG_RESET_FAILED" = "Resetting Configuration Failed";
 "GAME_CONFIG_RESET_FAILED_INFORMATIVE" = "Unable to reset configuration. You may need to grant XIV On Mac access to your Downloads folder in System Preferences, Security.";
 
+"DOCUMENTS_PERM_STILL_BAD" = "XIV On Mac is still unable to read and/or write to your Documents folder. If your Security Preference Pane shows the correct permissions, try deleting the entry and re-creating it.";
+
 "UNSUPPORTED_GPU" = "No Supported GPU Found";
 "UNSUPPORTED_GPU_INFORMATIVE" = "XIV On Mac did not find any supported GPUs in your Mac. If you continue, the game may fail to function, crash, or otherwise perform in a substandard manner. For more details please see our Compatibility List.";
 "SEE_COMPATABILITY_BUTTON" = "Compatibility List";
