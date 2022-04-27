@@ -24,22 +24,26 @@ You can read our depreciated Crossover setup guide <a href="https://github.com/s
 
 ---
 
-<b>Our current staff:</b><br>
-
-Marzent (ウサギ) (Head Developer, Technical Support)<br>
-Seathasky (Project Manager, Support)<br>
-FleetAdmiralButter (Web Developer, Support)<br>
-Zoey Cluff (Contributor, Support)<br>
-Wyldfire (Contributor, Mac Development, Support)<br><br>
+<h3>Our current staff:</h3>
+<h4><a href="https://github.com/Marzent">Marzent (ウサギ)</a> (Head Developer, Technical Support)<br>
+<a href="https://github.com/Seathasky">Seathasky</a> (Project Manager, Support)<br>
+<a href="https://github.com/FleetAdmiralButter">FleetAdmiralButter</a> (Web Developer, Support)<br>
+<a href="https://github.com/zoeysiadevelopment">Zoey Cluff</a> (Contributor, Support)<br>
+  <a href="https://github.com/cbackas42">Wyldfire</a> (Contributor, Mac Development, Support)<br></h4>
 
 ---
 
-<b>Special Thanks:</b><br>
+  <b><i>Special Thanks to:</i></b>
+<h6><a href="https://github.com/Gcenx">Gcenx</a> - for keeping wine single-handedly alive on macOS and helping out a lot with packaging our custom wine<br>
+<a href="https://github.com/goaaats">goaaats</a> - for the amazing XIVLauncher and cross-platform efforts.<br>
+<a href="https://github.com/redstrate">redstrate</a> - for his nativelauncher which made dalamud injection very easy to implement without .net framework and his Astra launcher.<br>
+<a href="https://github.com/tyrone-sudeium">tyrone-sudeium</a> - for his LaunchXIV App, upon which most of the login flow code was based upon.<br>
+<a href="https://github.com/reiichi001">Franz Renatus</a> - for helping out with support and his ever useful Franzbot.<br>
+<a href="https://www.quantcdn.io/">QuantCDN</a> - for letting us use their service free of charge to host our website and auto-update system.<br>
+<a href="https://www.codeweavers.com/">Codeweavers</a> - for giving us permission to use their MoltenVK dylib from Crossover.<br><br></h6>
+  
 
-  <h5><a href="https://github.com/Gcenx">Gcenx</a></h5><h6 style="margin-top: 0px;">For keeping wine single-handedly alive on macOS and helping out a lot with packaging our custom wine</h6>
-<h5><a href="https://github.com/goaaats">goaaats</a></h5><h6>For the amazing <a href="https://github.com/goatcorp/FFXIVQuickLauncher/">XIVLauncher</a> and cross-platform efforts, which allowed me to shamelessly port XIVLauncher.PatchInstaller to Mac for this project</h6>
-<h5><a href="https://github.com/redstrate">redstrate</a></h5><h6>For his <a href="https://github.com/redstrate/nativelauncher">nativelauncher</a> which made dalamud injection very easy to implement without .net framework and his <a href="https://github.com/redstrate/astra">Astra</a> launcher which inspired me to write a native Cocoa launcher in the first place</h6>
-<h5><a href="https://github.com/tyrone-sudeium">tyrone-sudeium</a></h5><h6>For his <a href="https://github.com/tyrone-sudeium/LaunchXIV">LaunchXIV</a> App, upon which most of the login flow code was based upon</h6>
+And very special thanks to our wonderful community and contributors. Without your love for this project, we would not exist!
 
 ---
 
