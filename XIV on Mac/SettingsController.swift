@@ -32,6 +32,7 @@ class SettingsController: NSViewController {
     @IBOutlet private var maxFPS: NSButton!
     @IBOutlet private var maxFPSField: NSTextField!
     @IBOutlet private var async: NSButton!
+    @IBOutlet private var modernMVK: NSButton!
     
     @IBOutlet private var esync: NSButton!
     @IBOutlet private var wineDebugField: NSTextField!
@@ -120,6 +121,7 @@ class SettingsController: NSViewController {
         maxFPSField.isEnabled = limited
         maxFPSField.stringValue = String(Dxvk.options.maxFramerate)
         scale.doubleValue = Dxvk.options.hudScale
+        modernMVK.state = Dxvk.modernMVK ? NSControl.StateValue.on : NSControl.StateValue.off
         
         discord.state = DiscordBridge.enabled ? NSControl.StateValue.on : NSControl.StateValue.off
         
@@ -147,26 +149,27 @@ class SettingsController: NSViewController {
             for (name, button) in mapping {
                 Dxvk.options.hud[name] = (button.state == NSControl.StateValue.on) ? true : false
             }
-            Dxvk.options.async = (async.state == NSControl.StateValue.on) ? true : false
+            Dxvk.options.async = async.state == NSControl.StateValue.on
             Dxvk.options.maxFramerate = maxFPSField.isEnabled ? Int(maxFPSField.stringValue) ?? 0 : 0
             Dxvk.options.hudScale = scale.doubleValue
             Dxvk.options.save()
+            Dxvk.modernMVK = modernMVK.state == NSControl.StateValue.on
             
-            Wine.esync = (esync.state == NSControl.StateValue.on) ? true : false
+            Wine.esync = esync.state == NSControl.StateValue.on
             Wine.debug = wineDebugField.stringValue
             
-            DiscordBridge.enabled = (discord.state == NSControl.StateValue.on) ? true : false
+            DiscordBridge.enabled = discord.state == NSControl.StateValue.on
             
-            FFXIVSettings.dalamud = (dalamud.state == NSControl.StateValue.on) ? true : false
-            Dalamud.mbCollection = (crowdSource.state == NSControl.StateValue.on) ? true : false
+            FFXIVSettings.dalamud = dalamud.state == NSControl.StateValue.on
+            Dalamud.mbCollection = crowdSource.state == NSControl.StateValue.on
             Dalamud.delay = Double(delay.stringValue) ?? Dalamud.defaultInjectionDelay
             
             FFXIVSettings.language = FFXIVLanguage(rawValue: UInt32(language.indexOfSelectedItem)) ?? .english
             FFXIVSettings.platform = FFXIVPlatform(rawValue: UInt32(license.indexOfSelectedItem)) ?? .mac
-            FFXIVSettings.freeTrial = (freeTrial.state == NSControl.StateValue.on) ? true : false
+            FFXIVSettings.freeTrial = freeTrial.state == NSControl.StateValue.on
             
             HTTPClient.maxSpeed = maxDownloadField.isEnabled ? Double(maxDownloadField.stringValue) ?? 0.0 : 0.0
-            Patch.keep = (keepPatches.state == NSControl.StateValue.on) ? true : false
+            Patch.keep = keepPatches.state == NSControl.StateValue.on
         }
     }
 
