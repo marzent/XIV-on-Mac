@@ -26,9 +26,11 @@ You can read our depreciated Crossover setup guide <a href="https://github.com/s
 
 <b>Our current staff:</b><br>
 
-<b>Marzent (ウサギ)</b> (Head Developer, Technical Support)<br>
-<b>Seathasky</b> (Project Manager, Support)<br>
-<b>FleetAdmiralButter</b> (Web Developer, Support)<br><br>
+Marzent (ウサギ) (Head Developer, Technical Support)<br>
+Seathasky (Project Manager, Support)<br>
+FleetAdmiralButter (Web Developer, Support)<br>
+Zoey Cluff (Contributor, Support)<br>
+Wyldfire (Contributor, Mac Development, Support)<br><br>
 
 ---
 
