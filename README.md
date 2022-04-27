@@ -36,7 +36,7 @@ You can read our depreciated Crossover setup guide <a href="https://github.com/s
   <b><i>Special Thanks to:</i></b>
 <h6><a href="https://github.com/Gcenx">Gcenx</a> - for keeping wine single-handedly alive on macOS and helping out a lot with packaging our custom wine<br>
 <a href="https://github.com/goaaats">goaaats</a> - for the amazing XIVLauncher and cross-platform efforts.<br>
-<a href="https://github.com/redstrate">redstrate</a> - for his nativelauncher which made dalamud injection very easy to implement without .net framework and his Astra launcher.<br>
+<a href="https://github.com/redstrate">redstrate</a> - for his nativelauncher which made dalamud injection easy to implement without .net framework<br>
 <a href="https://github.com/tyrone-sudeium">tyrone-sudeium</a> - for his LaunchXIV App, upon which most of the login flow code was based upon.<br>
 <a href="https://github.com/reiichi001">Franz Renatus</a> - for helping out with support and his ever useful Franzbot.<br>
 <a href="https://www.quantcdn.io/">QuantCDN</a> - for letting us use their service free of charge to host our website and auto-update system.<br>
