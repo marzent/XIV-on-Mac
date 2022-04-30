@@ -1240,17 +1240,6 @@ Gw
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
-                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Je-zP-ZQk">
-                                                    <rect key="frame" x="199" y="21" width="229" height="18"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <buttonCell key="cell" type="check" title="Contribute to Crowd-Source Data" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="l28-q2-Rck">
-                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                        <font key="font" metaFont="system"/>
-                                                    </buttonCell>
-                                                    <connections>
-                                                        <action selector="saveState:" target="GIg-v3-M8h" id="LkF-Z8-nFy"/>
-                                                    </connections>
-                                                </button>
                                             </subviews>
                                         </view>
                                     </box>
@@ -1710,7 +1699,6 @@ Gw
                         <outlet property="api" destination="LpF-Gn-fld" id="wNx-c6-TfI"/>
                         <outlet property="async" destination="9Ej-Kx-qaB" id="sxa-Av-T1S"/>
                         <outlet property="compiler" destination="MGI-ae-PZ5" id="Teg-SF-zIN"/>
-                        <outlet property="crowdSource" destination="9Je-zP-ZQk" id="PLn-9s-xHU"/>
                         <outlet property="dalamud" destination="bm4-zN-Lc3" id="rxW-HU-O0X"/>
                         <outlet property="delay" destination="u9T-EJ-hgN" id="aJw-Ut-HSt"/>
                         <outlet property="devinfo" destination="jgR-xu-GBS" id="67u-Cw-3f3"/>

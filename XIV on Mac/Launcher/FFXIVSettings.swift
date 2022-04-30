@@ -63,16 +63,6 @@ public struct FFXIVSettings {
         }
     }
     
-    private static let dalamudKey = "DalamudEnabled"
-    static var dalamud: Bool {
-        get {
-            storage.bool(forKey: dalamudKey)
-        }
-        set {
-            storage.set(newValue, forKey: dalamudKey)
-        }
-    }
-    
     private static let freeTrialKey = "FreeTrial"
     static var freeTrial: Bool {
         get {

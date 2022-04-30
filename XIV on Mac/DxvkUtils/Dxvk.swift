@@ -15,7 +15,7 @@ struct Dxvk {
     
     static func install() {
         let dxvkPath = Bundle.main.url(forResource: "dxvk", withExtension: nil, subdirectory: "")!
-        let dxDlls = ["d3d9.dll", "d3d10_1.dll", "d3d10.dll", "d3d10core.dll", "dxgi.dll", "d3d11.dll"]
+        let dxDlls = ["d3d10_1.dll", "d3d10.dll", "d3d10core.dll", "dxgi.dll", "d3d11.dll"]
         let system32 = Wine.prefix.appendingPathComponent("drive_c/windows/system32")
         let fm = FileManager.default
         for dll in dxDlls {
@@ -24,8 +24,6 @@ struct Dxvk {
             if fm.contentsEqual(atPath: winDllPath, andPath: dxvkDllPath) {
                 continue
             }
-            NotificationCenter.default.post(name: .loginInfo, object: nil, userInfo: [Notification.status.info: "Installing DXVK"])
-            Wine.override(dll: dll.components(separatedBy: ".")[0], type: "native")
             if fm.fileExists(atPath: winDllPath) {
                 do {
                     try fm.removeItem(atPath: winDllPath)

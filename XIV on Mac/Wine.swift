@@ -51,6 +51,11 @@ struct Wine {
         launch(args: ["cmd", "/c", "dir", "%userprofile%/My Documents", ">", "nul"])
     }
     
+    static func path(of: String) -> String {
+        let output = Util.launchToString(exec: wine64, args: ["winepath", "--windows", of])
+        return output.components(separatedBy: "\n").dropLast().last ?? ""
+    }
+    
     private static let esyncSettingKey = "EsyncSetting"
     static var esync: Bool {
         get {
