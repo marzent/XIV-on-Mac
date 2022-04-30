@@ -43,17 +43,10 @@ public struct FFXIVApp {
             ("/IsSteam", settings.platform == .steam ? "1" : "0"),
             ("/ver", FFXIVRepo.game.ver)
         ]
-        let args = [dx11URL.path, FFXIVApp.encryptedArgs(args: baseArgs)]
         Dxvk.install()
-        let aclFixer = Bundle.main.url(forResource: "acl_fixer", withExtension: "exe", subdirectory: "")!
-        if settings.dalamud {
-            Dalamud.preLaunch()
-        }
+        Dalamud.preLaunch()
         NotificationCenter.default.post(name: .loginInfo, object: nil, userInfo: [Notification.status.info: "Starting Game"])
-        Wine.launch(args: [aclFixer.path] + args, blocking: true)
-        if settings.dalamud {
-            Dalamud.launch()
-        }
+        Dalamud.launchGame(gamePath: dx11URL.path, gameArgs: [FFXIVApp.encryptedArgs(args: baseArgs)])
         let maxGameStartTime = 15.0
         DispatchQueue.main.asyncAfter(deadline: .now() + maxGameStartTime) {
             NotificationCenter.default.post(name: .gameStarted, object: nil)

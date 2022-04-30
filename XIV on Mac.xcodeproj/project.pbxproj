@@ -62,7 +62,6 @@
 		50D30FA027B92EDB007A9F66 /* OTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D30F9F27B92EDB007A9F66 /* OTP.swift */; };
 		50D30FA327B93359007A9F66 /* Embassy in Frameworks */ = {isa = PBXBuildFile; productRef = 50D30FA227B93359007A9F66 /* Embassy */; };
 		50DC355927E8B6AD00DBA62C /* AppMover in Frameworks */ = {isa = PBXBuildFile; productRef = 50DC355827E8B6AD00DBA62C /* AppMover */; };
-		50DC355B27E8CFC500DBA62C /* acl_fixer.exe in Resources */ = {isa = PBXBuildFile; fileRef = 50DC355A27E8CFC500DBA62C /* acl_fixer.exe */; };
 		50DC355E27E9CEEE00DBA62C /* Base32 in Frameworks */ = {isa = PBXBuildFile; productRef = 50DC355D27E9CEEE00DBA62C /* Base32 */; };
 		50DF1F8527CCB83300DE9DA5 /* FFXIVRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DF1F8427CCB83300DE9DA5 /* FFXIVRepo.swift */; };
 		50DF1F8827CD261A00DE9DA5 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 50DF1F8727CD261A00DE9DA5 /* OrderedCollections */; };
@@ -189,7 +188,6 @@
 		50C45AB727D8A33F00572977 /* XIV on Mac-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XIV on Mac-Bridging-Header.h"; sourceTree = "<group>"; };
 		50C45ABC27D8E9FC00572977 /* Steamworks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Steamworks.swift; sourceTree = "<group>"; };
 		50D30F9F27B92EDB007A9F66 /* OTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTP.swift; sourceTree = "<group>"; };
-		50DC355A27E8CFC500DBA62C /* acl_fixer.exe */ = {isa = PBXFileReference; lastKnownFileType = file; path = acl_fixer.exe; sourceTree = "<group>"; };
 		50DF1F8427CCB83300DE9DA5 /* FFXIVRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFXIVRepo.swift; sourceTree = "<group>"; };
 		50DF45982795C53300E3D22F /* GShade */ = {isa = PBXFileReference; lastKnownFileType = folder; path = GShade; sourceTree = "<group>"; };
 		50E5387A2779CF5C0038521A /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
@@ -286,7 +284,6 @@
 				07C876DC280B7DD500CB0D8E /* FFXIV-MacDefault.cfg */,
 				07B529D827D97F26005B78BF /* installRosetta.command */,
 				5046F7EE27E74A9A006C34E1 /* discord_bridge.exe */,
-				50DC355A27E8CFC500DBA62C /* acl_fixer.exe */,
 			);
 			path = "XIV on Mac";
 			sourceTree = "<group>";
@@ -516,7 +513,6 @@
 				50511EC92770E087003A1E9F /* Assets.xcassets in Resources */,
 				07BF3AFA2806507800794155 /* CfgCheckAdvFailed.tiff in Resources */,
 				07B529D527D97D2B005B78BF /* Localizable.strings in Resources */,
-				50DC355B27E8CFC500DBA62C /* acl_fixer.exe in Resources */,
 				07B529D927D97F26005B78BF /* installRosetta.command in Resources */,
 				07C876E12813864600CB0D8E /* SecPrefpane.png in Resources */,
 				07A3498B2805689200A9D7D0 /* CfgCheckGood.tiff in Resources */,
@@ -766,7 +762,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 47;
+				CURRENT_PROJECT_VERSION = 48;
 				DEVELOPMENT_TEAM = TQJJTJ6364;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -791,7 +787,7 @@
 					"$(PROJECT_DIR)/XIV\\ on\\ Mac/MoltenVK/modern",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 3.5.7;
+				MARKETING_VERSION = 3.5.8;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = "dezent.XIV-on-Mac";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -814,7 +810,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 47;
+				CURRENT_PROJECT_VERSION = 48;
 				DEVELOPMENT_TEAM = TQJJTJ6364;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -839,7 +835,7 @@
 					"$(PROJECT_DIR)/XIV\\ on\\ Mac/MoltenVK/modern",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 3.5.7;
+				MARKETING_VERSION = 3.5.8;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = "dezent.XIV-on-Mac";
 				PRODUCT_NAME = "$(TARGET_NAME)";

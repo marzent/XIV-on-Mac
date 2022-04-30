@@ -24,8 +24,6 @@ struct Dxvk {
             if fm.contentsEqual(atPath: winDllPath, andPath: dxvkDllPath) {
                 continue
             }
-            NotificationCenter.default.post(name: .loginInfo, object: nil, userInfo: [Notification.status.info: "Installing DXVK"])
-            Wine.override(dll: dll.components(separatedBy: ".")[0], type: "native")
             if fm.fileExists(atPath: winDllPath) {
                 do {
                     try fm.removeItem(atPath: winDllPath)

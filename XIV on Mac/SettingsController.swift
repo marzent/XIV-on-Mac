@@ -40,7 +40,6 @@ class SettingsController: NSViewController {
     
     @IBOutlet private var dalamud: NSButton!
     @IBOutlet private var delay: NSTextField!
-    @IBOutlet private var crowdSource: NSButton!
     
     @IBOutlet weak var discord: NSButton!
     
@@ -129,8 +128,7 @@ class SettingsController: NSViewController {
         wineRetina.state = Wine.retina ? NSControl.StateValue.on : NSControl.StateValue.off
         wineDebugField.stringValue = Wine.debug
         
-        dalamud.state = FFXIVSettings.dalamud ? NSControl.StateValue.on : NSControl.StateValue.off
-        crowdSource.state = Dalamud.mbCollection ? NSControl.StateValue.on : NSControl.StateValue.off
+        dalamud.state = Dalamud.enabled ? NSControl.StateValue.on : NSControl.StateValue.off
         delay.stringValue = "\(Dalamud.delay)"
         
         language.selectItem(at: Int(FFXIVSettings.language.rawValue))
@@ -147,7 +145,7 @@ class SettingsController: NSViewController {
     func saveState() {
         DispatchQueue.main.async { [self] in
             for (name, button) in mapping {
-                Dxvk.options.hud[name] = (button.state == NSControl.StateValue.on) ? true : false
+                Dxvk.options.hud[name] = button.state == NSControl.StateValue.on
             }
             Dxvk.options.async = async.state == NSControl.StateValue.on
             Dxvk.options.maxFramerate = maxFPSField.isEnabled ? Int(maxFPSField.stringValue) ?? 0 : 0
@@ -160,8 +158,7 @@ class SettingsController: NSViewController {
             
             DiscordBridge.enabled = discord.state == NSControl.StateValue.on
             
-            FFXIVSettings.dalamud = dalamud.state == NSControl.StateValue.on
-            Dalamud.mbCollection = crowdSource.state == NSControl.StateValue.on
+            Dalamud.enabled = dalamud.state == NSControl.StateValue.on
             Dalamud.delay = Double(delay.stringValue) ?? Dalamud.defaultInjectionDelay
             
             FFXIVSettings.language = FFXIVLanguage(rawValue: UInt32(language.indexOfSelectedItem)) ?? .english
