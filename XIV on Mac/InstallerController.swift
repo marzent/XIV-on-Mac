@@ -38,7 +38,7 @@ class InstallerController: NSViewController {
     }
     
     @IBAction func versionSelect(_ sender: NSButton) {
-        FFXIVSettings.dalamud = (sender.identifier == NSUserInterfaceItemIdentifier("withDalamud"))
+        Dalamud.enabled = (sender.identifier == NSUserInterfaceItemIdentifier("withDalamud"))
     }
     
     @IBAction func licenseSelect(_ sender: NSButton) {

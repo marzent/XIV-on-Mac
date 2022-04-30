@@ -49,29 +49,9 @@ struct Dalamud {
         let assets: [Asset]
     }
     
-    struct StartInfo: Codable {
-        let workingDirectory: String?
-        let configurationPath, pluginDirectory, defaultPluginDirectory, assetDirectory: String
-        let language: Int
-        let gameVersion: String
-        let optOutMBCollection: Bool
-        let delayInitializeMS: Int
-
-        enum CodingKeys: String, CodingKey {
-            case workingDirectory = "WorkingDirectory"
-            case configurationPath = "ConfigurationPath"
-            case pluginDirectory = "PluginDirectory"
-            case defaultPluginDirectory = "DefaultPluginDirectory"
-            case assetDirectory = "AssetDirectory"
-            case language = "Language"
-            case gameVersion = "GameVersion"
-            case optOutMBCollection = "OptOutMbCollection"
-            case delayInitializeMS = "DelayInitializeMs"
-        }
-    }
-    
     private static let fm = FileManager.default
     private static let path = Wine.xomData.appendingPathComponent("Dalamud")
+    private static let injector = path.appendingPathComponent("Dalamud.Injector.exe")
     private static let runtimeLocation = Wine.xomData.appendingPathComponent("dotNET Runtime")
     // Dalamud injection delay seems to be heavily system dependent for some reason.
     // But, while the default 7 seems to work great on Intel system we've seen a lot of evidence
@@ -121,6 +101,15 @@ struct Dalamud {
         }
     }
     
+    private static let dalamudSettingsKey = "DalamudEnabled"
+    static var enabled: Bool {
+        get {
+            UserDefaults.standard.bool(forKey: dalamudSettingsKey)
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: dalamudSettingsKey)
+        }
+    }
     
     private static let injectionSettingKey = "InjectionDelaySetting"
     static var delay: Double {
@@ -129,16 +118,6 @@ struct Dalamud {
         }
         set {
             UserDefaults.standard.set(newValue, forKey: injectionSettingKey)
-        }
-    }
-    
-    private static let mbCollectionSettingKey = "MBCollectionSetting"
-    static var mbCollection: Bool {
-        get {
-            return Util.getSetting(settingKey: mbCollectionSettingKey, defaultValue: true)
-        }
-        set {
-            UserDefaults.standard.set(newValue, forKey: mbCollectionSettingKey)
         }
     }
     
@@ -201,7 +180,7 @@ struct Dalamud {
             print("Could not check for Dalamud due to network error\n", to: &Util.logger)
             return
         }
-        if assemblyVersion == version.assemblyVersion {
+        if assemblyVersion == version.assemblyVersion && fm.fileExists(atPath: injector.path){
             return
         }
         NotificationCenter.default.post(name: .loginInfo, object: nil, userInfo: [Notification.status.info: "Updating Dalamud"])
@@ -256,26 +235,21 @@ struct Dalamud {
         DiscordBridge.setPresence()
     }
     
-    static func launch() {
+    static func launchGame(gamePath: String, gameArgs: [String]) {
         guard Remote.version?.supportedGameVer == FFXIVRepo.game.ver else {
             return
         }
-        let pid = String(Wine.pidOf(processName: "ffxiv_dx11.exe"))
-        let startInfo = StartInfo(workingDirectory: nil,
-                                  configurationPath: "C:\\Program Files\\XIV on Mac\\dalamudConfig.json",
-                                  pluginDirectory: "C:\\Program Files\\XIV on Mac\\installedPlugins",
-                                  defaultPluginDirectory: "C:\\Program Files\\XIV on Mac\\devPlugins",
-                                  assetDirectory: "C:\\Program Files\\XIV on Mac\\Dalamud Assets",
-                                  language: Int(FFXIVSettings.language.rawValue),
-                                  gameVersion: FFXIVRepo.game.ver,
-                                  optOutMBCollection: !mbCollection,
-                                  delayInitializeMS: 0) //we handle delay ourselves
-        let encodedStartInfo = try! JSONEncoder().encode(startInfo).base64EncodedString()
-        DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
-            print("Starting Dalamud with StartInfo:\n", encodedStartInfo, "\n", to: &Util.logger)
-            NotificationCenter.default.post(name: .loginInfo, object: nil, userInfo: [Notification.status.info: "Injecting Dalamud"])
-            Wine.launch(args: [path.appendingPathComponent("Dalamud.Injector.exe").path, pid, encodedStartInfo])
-        }
+        let args = ["launch", "-m", "inject",
+                    "--game=\(Wine.path(of: gamePath))",
+                    "--dalamud-configuration-path=C:\\Program Files\\XIV on Mac\\dalamudConfig.json",
+                    "--dalamud-plugin-directory=C:\\Program Files\\XIV on Mac\\installedPlugins",
+                    "--dalamud-dev-plugin-directory=C:\\Program Files\\XIV on Mac\\devPlugins",
+                    "--dalamud-asset-directory=C:\\Program Files\\XIV on Mac\\Dalamud Assets",
+                    "--dalamud-client-language=\(FFXIVSettings.language.rawValue)",
+                    "--dalamud-delay-initialize=\(Int(delay * 1000))"] +
+                    (enabled ? [] : ["--without-dalamud"]) +
+                    ["--"] + gameArgs
+        Wine.launch(args: [injector.path] + args)
     }
     
 }

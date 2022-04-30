@@ -124,6 +124,7 @@ struct Util {
         env["WINEESYNC"] = Wine.esync ? "1" : "0"
         env["WINEPREFIX"] = Wine.prefix.path
         env["WINEDEBUG"] = Wine.debug
+        env["WINEDLLOVERRIDES"] = "d3d9,d3d11,d3d10core,dxgi,mscoree=n"
         env["DXVK_HUD"] = Dxvk.options.getHud()
         env["DXVK_ASYNC"] = Dxvk.options.getAsync()
         env["DXVK_FRAME_RATE"] = Dxvk.options.getMaxFramerate()
