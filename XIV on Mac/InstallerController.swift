@@ -199,7 +199,7 @@ class InstallerController: NSViewController {
                     alert.addButton(withTitle: "Close")
                     alert.alertStyle = .critical
                     alert.messageText = "Download Error"
-                    alert.informativeText = "XIV on Mac could not download the base game archive"
+                    alert.informativeText = "XIV on Mac could not download the base game archive. Please try again with a VPN"
                     alert.runModal()
                     closeWindow(self)
                 }

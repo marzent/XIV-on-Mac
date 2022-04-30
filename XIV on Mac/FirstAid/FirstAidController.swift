@@ -123,6 +123,33 @@ class FirstAidController: NSViewController, NSTableViewDelegate, NSTableViewData
         alert.runModal()
     }
     
+    @IBAction func pressedResetDalamudConfiguration(_ sender: Any) {
+        if self.checkIfRunning() {
+            return
+        }
+        
+        let alert: NSAlert = NSAlert()
+        do {
+           
+            
+            try FileManager.default.removeItem(at: FFXIVApp.dalamudFolder)
+            Dalamud.updateAssets()
+            
+           
+            alert.alertStyle = .informational
+            alert.messageText = NSLocalizedString("DALAMUD_CONFIG_RESET", comment: "")
+            alert.informativeText = NSLocalizedString("DALAMUD_CONFIG_RESET_INFORMATIVE", comment: "")
+
+        } catch {
+            print(error)
+            alert.alertStyle = .warning
+            alert.messageText = NSLocalizedString("DALAMUD_RESET_FAILED", comment: "")
+            alert.informativeText = NSLocalizedString("DALAMUD_RESET_FAILED_INFORMATIVE", comment: "")
+        }
+        alert.addButton(withTitle:NSLocalizedString("OK_BUTTON", comment: ""))
+        alert.runModal()
+    }
+    
     @IBAction func pressedCfgCheckup(_ sender: Any) {
         // Force a re-read of the cfg file when the button is pressed
         ffxivCfg = nil

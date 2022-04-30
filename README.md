@@ -39,7 +39,7 @@ You can read our depreciated Crossover setup guide <a href="https://github.com/s
 <a href="https://github.com/redstrate">redstrate</a> - for his nativelauncher which made Dalamud injection easy to implement without .net framework<br>
 <a href="https://github.com/tyrone-sudeium">tyrone-sudeium</a> - for his LaunchXIV App, upon which most of the login flow code was based upon.<br>
 <a href="https://github.com/reiichi001">Franz Renatus</a> - for helping out with support and his ever useful Franzbot.<br>
-<a href="https://www.quantcdn.io/">QuantCDN</a> - for letting us use their service free of charge to host our website and auto-update system.<br>
+<a href="https://www.quantcdn.io/">QuantCDN</a> - for letting us use their service free of charge to host our website.<br>
 <a href="https://www.codeweavers.com/">Codeweavers</a> - for giving us permission to use their MoltenVK dylib from Crossover.<br><br></h6>
 
 

@@ -2312,7 +2312,7 @@ Gw
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <customView horizontalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="zPo-wB-7Zf">
-                                            <rect key="frame" x="0.0" y="0.0" width="1609" height="820"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="700" height="820"/>
                                             <subviews>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="YV0-ue-W3O">
                                                     <rect key="frame" x="18" y="784" width="94" height="16"/>
@@ -2326,7 +2326,7 @@ Gw
                                                     </textFieldCell>
                                                 </textField>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="jmX-6w-PMl">
-                                                    <rect key="frame" x="18" y="708" width="135" height="16"/>
+                                                    <rect key="frame" x="18" y="572" width="135" height="16"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="16" id="ixb-hW-jlF"/>
                                                     </constraints>
@@ -2337,7 +2337,7 @@ Gw
                                                     </textFieldCell>
                                                 </textField>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Y7l-DK-6o6">
-                                                    <rect key="frame" x="33" y="725" width="194" height="32"/>
+                                                    <rect key="frame" x="33" y="693" width="194" height="32"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="gHn-T2-axV"/>
                                                     </constraints>
@@ -2350,7 +2350,7 @@ Gw
                                                     </connections>
                                                 </button>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="100" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0NZ-kt-ZDd">
-                                                    <rect key="frame" x="38" y="760" width="1553" height="16"/>
+                                                    <rect key="frame" x="38" y="728" width="644" height="48"/>
                                                     <textFieldCell key="cell" selectable="YES" allowsUndo="NO" id="piU-pX-vSl">
                                                         <font key="font" metaFont="system"/>
                                                         <string key="title">If your game is freezing at startup, "Compiling Shaders…" forever, missing lighting or randomly freezing, the problem may be with your shader cache. Deleting it will cause a new one to be rebuilt, though it may result in occasional stutters during play initially.</string>
@@ -2359,7 +2359,7 @@ Gw
                                                     </textFieldCell>
                                                 </textField>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="100" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UVp-g0-V1n">
-                                                    <rect key="frame" x="38" y="684" width="1553" height="16"/>
+                                                    <rect key="frame" x="38" y="532" width="644" height="32"/>
                                                     <textFieldCell key="cell" selectable="YES" allowsUndo="NO" id="YxS-mf-FNj">
                                                         <font key="font" metaFont="system"/>
                                                         <string key="title">If you've misconfigured your game in a way that prevents you from playing it, such as a bad graphics setting, you can try resetting your configuration to default.</string>
@@ -2367,8 +2367,17 @@ Gw
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="100" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1u7-1d-ed2">
+                                                    <rect key="frame" x="38" y="630" width="644" height="32"/>
+                                                    <textFieldCell key="cell" selectable="YES" allowsUndo="NO" id="HAL-hb-KvW">
+                                                        <font key="font" metaFont="system"/>
+                                                        <string key="title">If Dalamud is failing to launch reliably, deleting Dalamud and re-downloading it may help. This will delete your plugins and plugin configs (if any) in the process. Dalamud will reinstall on next launch.</string>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vi7-zh-Dkz">
-                                                    <rect key="frame" x="33" y="649" width="156" height="32"/>
+                                                    <rect key="frame" x="33" y="497" width="156" height="32"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="jSD-bX-Lap"/>
                                                     </constraints>
@@ -2380,8 +2389,21 @@ Gw
                                                         <action selector="pressedResetConfiguration:" target="gW4-sa-1ZD" id="hpV-aL-LbB"/>
                                                     </connections>
                                                 </button>
+                                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jwA-CS-9d3">
+                                                    <rect key="frame" x="33" y="595" width="126" height="32"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="zzR-2A-Zxl"/>
+                                                    </constraints>
+                                                    <buttonCell key="cell" type="push" title="Reset Dalamud" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="keV-5G-83q">
+                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                        <connections>
+                                                            <action selector="pressedResetDalamudConfiguration:" target="gW4-sa-1ZD" id="FhX-2D-4Oo"/>
+                                                        </connections>
+                                                    </buttonCell>
+                                                </button>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fpB-WZ-e9m">
-                                                    <rect key="frame" x="33" y="597" width="174" height="32"/>
+                                                    <rect key="frame" x="33" y="429" width="174" height="32"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="Laa-5b-4Jy"/>
                                                     </constraints>
@@ -2394,7 +2416,7 @@ Gw
                                                     </connections>
                                                 </button>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="100" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fto-YL-aGI">
-                                                    <rect key="frame" x="38" y="632" width="1553" height="16"/>
+                                                    <rect key="frame" x="38" y="464" width="644" height="32"/>
                                                     <textFieldCell key="cell" selectable="YES" allowsUndo="NO" id="Dv8-bd-owY">
                                                         <font key="font" metaFont="system"/>
                                                         <string key="title">XIV on Mac can identify potential problems, or make recommended changes to your FFXIV Configuration file to give you the best experience available on the Mac.</string>
@@ -2402,24 +2424,8 @@ Gw
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="100" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3UW-Y5-8SZ">
-                                                    <rect key="frame" x="94" y="552" width="1497" height="16"/>
-                                                    <textFieldCell key="cell" selectable="YES" allowsUndo="NO" title="Everything looks good!" id="m1p-mc-zbM">
-                                                        <font key="font" metaFont="system"/>
-                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                    </textFieldCell>
-                                                </textField>
-                                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ReA-HL-WO9">
-                                                    <rect key="frame" x="40" y="536" width="48" height="48"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="48" id="gz5-3J-6C4"/>
-                                                        <constraint firstAttribute="width" constant="48" id="j6F-RQ-Bll"/>
-                                                    </constraints>
-                                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="CfgCheckGood" id="MfP-RQ-mqi"/>
-                                                </imageView>
                                                 <scrollView horizontalHuggingPriority="1000" ambiguous="YES" borderType="line" autohidesScrollers="YES" horizontalLineScroll="75" horizontalPageScroll="10" verticalLineScroll="75" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iZn-7O-kDh">
-                                                    <rect key="frame" x="40" y="20" width="600" height="200"/>
+                                                    <rect key="frame" x="80" y="20" width="600" height="200"/>
                                                     <clipView key="contentView" ambiguous="YES" drawsBackground="NO" id="bWF-a3-vwG">
                                                         <rect key="frame" x="1" y="1" width="598" height="198"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2526,15 +2532,46 @@ Gw
                                                         <autoresizingMask key="autoresizingMask"/>
                                                     </scroller>
                                                 </scrollView>
+                                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ReA-HL-WO9">
+                                                    <rect key="frame" x="40" y="347" width="48" height="48"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="48" id="gz5-3J-6C4"/>
+                                                        <constraint firstAttribute="width" constant="48" id="j6F-RQ-Bll"/>
+                                                    </constraints>
+                                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="CfgCheckGood" id="MfP-RQ-mqi"/>
+                                                </imageView>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="ZoS-hH-x6r">
+                                                    <rect key="frame" x="18" y="532" width="62" height="160"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="16" id="XtD-qG-ul2"/>
+                                                        <constraint firstAttribute="height" constant="160" id="qtj-RO-yUA"/>
+                                                    </constraints>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Dalamud" usesSingleLineMode="YES" id="ceT-3I-Qzr">
+                                                        <font key="font" textStyle="headline" name=".SFNS-Bold"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="100" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3UW-Y5-8SZ">
+                                                    <rect key="frame" x="94" y="363" width="1497" height="16"/>
+                                                    <textFieldCell key="cell" selectable="YES" allowsUndo="NO" title="Everything looks good!" id="m1p-mc-zbM">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Y7l-DK-6o6" secondAttribute="trailing" constant="20" symbolic="YES" id="1ic-A5-smR"/>
                                                 <constraint firstItem="YV0-ue-W3O" firstAttribute="leading" secondItem="zPo-wB-7Zf" secondAttribute="leading" constant="20" symbolic="YES" id="70p-Ao-HAf"/>
-                                                <constraint firstItem="3UW-Y5-8SZ" firstAttribute="leading" secondItem="ReA-HL-WO9" secondAttribute="trailing" constant="8" symbolic="YES" id="7Zn-zy-47s"/>
+                                                <constraint firstItem="3UW-Y5-8SZ" firstAttribute="leading" secondItem="ReA-HL-WO9" secondAttribute="trailing" constant="8" id="7Zn-zy-47s"/>
+                                                <constraint firstItem="1u7-1d-ed2" firstAttribute="leading" secondItem="fpB-WZ-e9m" secondAttribute="leading" id="EBp-cy-PVU"/>
+                                                <constraint firstItem="jwA-CS-9d3" firstAttribute="top" secondItem="1u7-1d-ed2" secondAttribute="bottom" constant="8" id="FWH-CC-B9X"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="vi7-zh-Dkz" secondAttribute="trailing" constant="20" symbolic="YES" id="IBb-z8-xCI"/>
                                                 <constraint firstItem="fpB-WZ-e9m" firstAttribute="top" secondItem="fto-YL-aGI" secondAttribute="bottom" constant="8" symbolic="YES" id="KIq-KO-Rmo"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="jmX-6w-PMl" secondAttribute="trailing" constant="349" id="LMO-O7-Df2"/>
-                                                <constraint firstItem="ReA-HL-WO9" firstAttribute="top" secondItem="fpB-WZ-e9m" secondAttribute="bottom" constant="20" symbolic="YES" id="Pe3-fE-AaR"/>
+                                                <constraint firstItem="ZoS-hH-x6r" firstAttribute="leading" secondItem="jmX-6w-PMl" secondAttribute="leading" id="Lda-h9-93A"/>
+                                                <constraint firstItem="ReA-HL-WO9" firstAttribute="top" secondItem="fpB-WZ-e9m" secondAttribute="bottom" constant="41" id="Pe3-fE-AaR"/>
                                                 <constraint firstItem="0NZ-kt-ZDd" firstAttribute="top" secondItem="YV0-ue-W3O" secondAttribute="bottom" constant="8" symbolic="YES" id="Qdp-lh-MuT"/>
                                                 <constraint firstAttribute="trailing" secondItem="fto-YL-aGI" secondAttribute="trailing" constant="20" symbolic="YES" id="Qsk-AP-3vM"/>
                                                 <constraint firstItem="fto-YL-aGI" firstAttribute="leading" secondItem="vi7-zh-Dkz" secondAttribute="leading" id="YBX-m9-ApZ"/>
@@ -2542,21 +2579,24 @@ Gw
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="YV0-ue-W3O" secondAttribute="trailing" constant="20" symbolic="YES" id="ceY-f8-LiK"/>
                                                 <constraint firstItem="ReA-HL-WO9" firstAttribute="leading" secondItem="fpB-WZ-e9m" secondAttribute="leading" id="cyi-fF-NeQ"/>
                                                 <constraint firstItem="Y7l-DK-6o6" firstAttribute="leading" secondItem="0NZ-kt-ZDd" secondAttribute="leading" id="dFk-wQ-GLC"/>
-                                                <constraint firstItem="fto-YL-aGI" firstAttribute="top" secondItem="vi7-zh-Dkz" secondAttribute="bottom" constant="8" symbolic="YES" id="dGk-hh-ofu"/>
-                                                <constraint firstItem="vi7-zh-Dkz" firstAttribute="top" secondItem="UVp-g0-V1n" secondAttribute="bottom" constant="8" symbolic="YES" id="dJg-3o-Ng7"/>
+                                                <constraint firstItem="fto-YL-aGI" firstAttribute="top" secondItem="vi7-zh-Dkz" secondAttribute="bottom" constant="8" id="dGk-hh-ofu"/>
+                                                <constraint firstItem="vi7-zh-Dkz" firstAttribute="top" secondItem="UVp-g0-V1n" secondAttribute="bottom" constant="8" id="dJg-3o-Ng7"/>
                                                 <constraint firstItem="vi7-zh-Dkz" firstAttribute="leading" secondItem="UVp-g0-V1n" secondAttribute="leading" id="eJY-Kj-Kfb"/>
                                                 <constraint firstItem="Y7l-DK-6o6" firstAttribute="top" secondItem="0NZ-kt-ZDd" secondAttribute="bottom" constant="8" symbolic="YES" id="fEa-sW-mAW"/>
                                                 <constraint firstItem="UVp-g0-V1n" firstAttribute="leading" secondItem="0NZ-kt-ZDd" secondAttribute="leading" id="fNc-p7-6sc"/>
-                                                <constraint firstItem="iZn-7O-kDh" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ReA-HL-WO9" secondAttribute="bottom" constant="8" symbolic="YES" id="gAo-Xa-7Pt"/>
+                                                <constraint firstItem="iZn-7O-kDh" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ReA-HL-WO9" secondAttribute="bottom" constant="127" id="gAo-Xa-7Pt"/>
                                                 <constraint firstItem="UVp-g0-V1n" firstAttribute="top" secondItem="jmX-6w-PMl" secondAttribute="bottom" constant="8" symbolic="YES" id="gGF-0J-Ds3"/>
+                                                <constraint firstItem="1u7-1d-ed2" firstAttribute="top" secondItem="ZoS-hH-x6r" secondAttribute="bottom" constant="-130" id="gJ2-sn-VTg"/>
+                                                <constraint firstItem="1u7-1d-ed2" firstAttribute="trailing" secondItem="fto-YL-aGI" secondAttribute="trailing" id="h7s-Ue-fgi"/>
                                                 <constraint firstItem="YV0-ue-W3O" firstAttribute="top" secondItem="zPo-wB-7Zf" secondAttribute="top" constant="20" symbolic="YES" id="h8s-uY-aZV"/>
-                                                <constraint firstItem="jmX-6w-PMl" firstAttribute="top" secondItem="Y7l-DK-6o6" secondAttribute="bottom" constant="8" symbolic="YES" id="huD-f9-3db"/>
+                                                <constraint firstItem="jmX-6w-PMl" firstAttribute="top" secondItem="Y7l-DK-6o6" secondAttribute="bottom" constant="112" id="huD-f9-3db"/>
+                                                <constraint firstItem="ZoS-hH-x6r" firstAttribute="top" secondItem="fpB-WZ-e9m" secondAttribute="bottom" constant="-256" id="iXW-io-hDz"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fpB-WZ-e9m" secondAttribute="trailing" constant="20" symbolic="YES" id="jav-Kw-k3k"/>
                                                 <constraint firstItem="fpB-WZ-e9m" firstAttribute="leading" secondItem="vi7-zh-Dkz" secondAttribute="leading" id="jg4-Ep-sU1"/>
                                                 <constraint firstAttribute="trailing" secondItem="iZn-7O-kDh" secondAttribute="trailing" constant="20" symbolic="YES" id="ngV-Wb-DH4"/>
-                                                <constraint firstAttribute="trailing" secondItem="3UW-Y5-8SZ" secondAttribute="trailing" constant="20" symbolic="YES" id="qdm-tV-9gU"/>
+                                                <constraint firstAttribute="trailing" secondItem="3UW-Y5-8SZ" secondAttribute="trailing" constant="-889" id="qdm-tV-9gU"/>
                                                 <constraint firstItem="jmX-6w-PMl" firstAttribute="leading" secondItem="YV0-ue-W3O" secondAttribute="leading" id="v2m-dg-Ez1"/>
-                                                <constraint firstItem="iZn-7O-kDh" firstAttribute="leading" secondItem="ReA-HL-WO9" secondAttribute="leading" id="vOa-NL-x6L"/>
+                                                <constraint firstItem="fpB-WZ-e9m" firstAttribute="leading" secondItem="jwA-CS-9d3" secondAttribute="leading" id="vOa-NL-x6L"/>
                                                 <constraint firstItem="3UW-Y5-8SZ" firstAttribute="centerY" secondItem="ReA-HL-WO9" secondAttribute="centerY" id="vvO-Xz-1fM"/>
                                                 <constraint firstAttribute="trailing" secondItem="UVp-g0-V1n" secondAttribute="trailing" constant="20" symbolic="YES" id="w8K-lM-Fy6"/>
                                                 <constraint firstItem="0NZ-kt-ZDd" firstAttribute="leading" secondItem="zPo-wB-7Zf" secondAttribute="leading" constant="40" id="xsz-Bf-9W0"/>

@@ -42,10 +42,16 @@
 "DXVK_USER_CACHE_DELETE_FAILED" = "Deleting Shader Cache Failed";
 "DXVK_USER_CACHE_DELETE_FAILED_INFORMATIVE" = "Unable to delete the shader cache. You can try to manually delete it using File->Open Wine Prefix.";
 
-"GAME_CONFIG_RESET" = "Configuration Rest";
+"GAME_CONFIG_RESET" = "Configuration Reset";
 "GAME_CONFIG_RESET_INFORMATIVE" = "Your game configuration was succesfully reset.";
 "GAME_CONFIG_RESET_FAILED" = "Resetting Configuration Failed";
 "GAME_CONFIG_RESET_FAILED_INFORMATIVE" = "Unable to reset configuration. You may need to grant XIV On Mac access to your Downloads folder in System Preferences, Security.";
+
+// Dalamud reset
+"DALAMUD_CONFIG_RESET" = "Dalamud install Reset";
+"DALAMUD_CONFIG_RESET_INFORMATIVE" = "Your Dalamud install was succesfully reset.";
+"DALAMUD_CONFIG_RESET_FAILED" = "Resetting Dalamud Failed";
+"DALAMUD_CONFIG_RESET_FAILED_INFORMATIVE" = "Unable to reset Dalamud install. Please manually delete the contents of ~/Library/Application Support/XIV on Mac/game/drive_c/Program Files/XIV on Mac and restart XIV on Mac";
 
 "DOCUMENTS_PERM_STILL_BAD" = "XIV On Mac is still unable to read and/or write to your Documents folder. If your Security Preference Pane shows the correct permissions, try deleting the entry and re-creating it.";
 

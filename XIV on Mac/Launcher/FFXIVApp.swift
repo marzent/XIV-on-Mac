@@ -11,6 +11,7 @@ public struct FFXIVApp {
     typealias settings = FFXIVSettings
     static let configFolder = Util.userHome.appendingPathComponent("/Documents/My Games/FINAL FANTASY XIV - A Realm Reborn/")
     static let configURL = configFolder.appendingPathComponent("FFXIV.cfg")
+    static let dalamudFolder = Util.applicationSupport.appendingPathComponent("/game/drive_c/Program Files/XIV on Mac")
     let bootRepoURL, bootExeURL, bootExe64URL, launcherExeURL, launcherExe64URL, updaterExeURL, updaterExe64URL: URL
     let gameRepoURL, dx9URL, dx11URL, sqpackFolderURL: URL
     private let bootFiles: [URL]
