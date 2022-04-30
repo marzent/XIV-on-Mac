@@ -196,7 +196,7 @@ struct Dalamud {
         }
     }
     
-      static func ensureInstall() {
+      private static func ensureInstall() {
         guard let version = Remote.version else {
             print("Could not check for Dalamud due to network error\n", to: &Util.logger)
             return
