@@ -13,7 +13,7 @@
 "STEAM_USER_ERROR_SHORT" = "Steam Error";
 "STEAM_USER_ERROR" = "There is a mismatch between the provided username and Steam account.";
 "NOT_PLAYABLE_SHORT" = "Licensing error";
-"NOT_PLAYABLE" = "The login servers response indicates that you cannot play the game currently. Please make sure to have an active subsricption and select the correct license (Windows, Steam or Mac) in Settings.";
+"NOT_PLAYABLE" = "The login servers response indicates that you cannot play the game currently. Please make sure to have an active subscription and select the correct license (Windows, Steam or Mac) in Settings.";
 "PROTOCOL_ERROR_SHORT" = "Login system error";
 "PROTOCOL_ERROR" = "The login servers did not accept the request. Please make sure you have a stable network connection to the FFXIV servers.";
 "NETWORK_ERROR_SHORT" = "Network Error";
@@ -30,6 +30,7 @@
 "UNEXPECTED" = "An unexpected error occurred.";
 
 "OK_BUTTON" = "OK";
+"CANCEL_BUTTON" = "Cancel";
 
 "GAME_START_FAILURE" = "Final Fantasy XIV failed to start";
 "GAME_START_FAILURE_INFORMATIONAL" = "An error occured starting the game. Please try restarting XIV on Mac.";
@@ -52,6 +53,10 @@
 "UNSUPPORTED_GPU" = "No Supported GPU Found";
 "UNSUPPORTED_GPU_INFORMATIVE" = "XIV On Mac did not find any supported GPUs in your Mac. If you continue, the game may fail to function, crash, or otherwise perform in a substandard manner. For more details please see our Compatibility List.";
 "SEE_COMPATABILITY_BUTTON" = "Compatibility List";
+
+"RETINA_WARNING" = "Retina Performance";
+"RETINA_WARNING_INFORMATIVE" = "Retina mode increases the pixel count of the game 4x, which will take a heavy toll on your performance. You do not need this setting just because your Mac has a Retina screen.";
+"RETINA_ENABLE_BUTTON" = "Enable Retina";
 
 "ROSETTA_REQUIRED" = "Rosetta 2 is Required.";
 "ROSETTA_REQUIRED_INFORMATIVE" = "XIV On Mac requires Apple's Rosetta 2 to be installed in order to function on your Apple Silicon Mac. If you choose not to install, your game will not start. Would you like to start the Rosetta installer now?";

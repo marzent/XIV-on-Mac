@@ -28,6 +28,7 @@ class LaunchController: NSViewController {
     @IBOutlet private var scrollView: AnimatingScrollView!
     @IBOutlet private var newsView: NSScrollView!
     @IBOutlet private var topicsView: NSScrollView!
+    @IBOutlet weak var discloseButton: NSButton!
     
     override func loadView() {
         super.loadView()

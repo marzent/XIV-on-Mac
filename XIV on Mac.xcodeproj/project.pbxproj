@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		073649A5281E16D100DA41F7 /* SettingsGeneralController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073649A4281E16D100DA41F7 /* SettingsGeneralController.swift */; };
+		073649A7281E174400DA41F7 /* SettingsGraphicsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073649A6281E174400DA41F7 /* SettingsGraphicsController.swift */; };
+		073649A9281E189E00DA41F7 /* SettingsPluginsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073649A8281E189E00DA41F7 /* SettingsPluginsController.swift */; };
+		073649AB281E18B600DA41F7 /* SettingsAdvancedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073649AA281E18B600DA41F7 /* SettingsAdvancedController.swift */; };
+		073649AD281E35C700DA41F7 /* PrefsGraphics.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 073649AC281E35C700DA41F7 /* PrefsGraphics.tiff */; };
+		073649AF281E393000DA41F7 /* PrefsGeneral.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 073649AE281E393000DA41F7 /* PrefsGeneral.tiff */; };
 		079A343027F90F350043BEEA /* FirstAidController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079A342F27F90F350043BEEA /* FirstAidController.swift */; };
 		079A343227FA59D90043BEEA /* FFXIVCFGEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079A343127FA59D90043BEEA /* FFXIVCFGEncoder.swift */; };
 		07A3498B2805689200A9D7D0 /* CfgCheckGood.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 07A349892805689200A9D7D0 /* CfgCheckGood.tiff */; };
@@ -91,6 +97,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		073649A4281E16D100DA41F7 /* SettingsGeneralController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsGeneralController.swift; sourceTree = "<group>"; };
+		073649A6281E174400DA41F7 /* SettingsGraphicsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsGraphicsController.swift; sourceTree = "<group>"; };
+		073649A8281E189E00DA41F7 /* SettingsPluginsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPluginsController.swift; sourceTree = "<group>"; };
+		073649AA281E18B600DA41F7 /* SettingsAdvancedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAdvancedController.swift; sourceTree = "<group>"; };
+		073649AC281E35C700DA41F7 /* PrefsGraphics.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = PrefsGraphics.tiff; sourceTree = "<group>"; };
+		073649AE281E393000DA41F7 /* PrefsGeneral.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = PrefsGeneral.tiff; sourceTree = "<group>"; };
 		079A342F27F90F350043BEEA /* FirstAidController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstAidController.swift; sourceTree = "<group>"; };
 		079A343127FA59D90043BEEA /* FFXIVCFGEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFXIVCFGEncoder.swift; sourceTree = "<group>"; };
 		07A349892805689200A9D7D0 /* CfgCheckGood.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = CfgCheckGood.tiff; sourceTree = "<group>"; };
@@ -230,6 +242,8 @@
 				07BF3AF628063A8600794155 /* CfgCheckProbFixed.tiff */,
 				07BF3AF82806507800794155 /* CfgCheckAdvFailed.tiff */,
 				07BF3AF92806507800794155 /* CfgCheckAdvFixed.tiff */,
+				073649AC281E35C700DA41F7 /* PrefsGraphics.tiff */,
+				073649AE281E393000DA41F7 /* PrefsGeneral.tiff */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -266,6 +280,10 @@
 				5095B97A2806B20600364374 /* FirstAid */,
 				50511EC62770E085003A1E9F /* InstallerController.swift */,
 				50E5387A2779CF5C0038521A /* SettingsController.swift */,
+				073649A4281E16D100DA41F7 /* SettingsGeneralController.swift */,
+				073649A6281E174400DA41F7 /* SettingsGraphicsController.swift */,
+				073649A8281E189E00DA41F7 /* SettingsPluginsController.swift */,
+				073649AA281E18B600DA41F7 /* SettingsAdvancedController.swift */,
 				50B2A2B427AC1BC400EFA0A2 /* LoginSheetController.swift */,
 				07C876DE281380FF00CB0D8E /* DocumentsPermissionsController.swift */,
 				50BD278627785418002B0D1F /* Notifications.swift */,
@@ -506,11 +524,13 @@
 				5046F7EF27E74AC9006C34E1 /* discord_bridge.exe in Resources */,
 				50DF45992795C53300E3D22F /* GShade in Resources */,
 				07A3498C2805689200A9D7D0 /* CfgCheckProbFailed.tiff in Resources */,
+				073649AD281E35C700DA41F7 /* PrefsGraphics.tiff in Resources */,
 				07BF3AFB2806507800794155 /* CfgCheckAdvFixed.tiff in Resources */,
 				50692C8B27B3E48B00945593 /* Credits.html in Resources */,
 				50030AB927F303C300317496 /* MoltenVK in Resources */,
 				07BF3AF728063A8600794155 /* CfgCheckProbFixed.tiff in Resources */,
 				50511EC92770E087003A1E9F /* Assets.xcassets in Resources */,
+				073649AF281E393000DA41F7 /* PrefsGeneral.tiff in Resources */,
 				07BF3AFA2806507800794155 /* CfgCheckAdvFailed.tiff in Resources */,
 				07B529D527D97D2B005B78BF /* Localizable.strings in Resources */,
 				07B529D927D97F26005B78BF /* installRosetta.command in Resources */,
@@ -572,6 +592,8 @@
 			files = (
 				2B7C95D2277C6C6000A3CA89 /* SocialIntegration.swift in Sources */,
 				5077A32C27C12A9100D4F1B8 /* FFXIVSettings.swift in Sources */,
+				073649A9281E189E00DA41F7 /* SettingsPluginsController.swift in Sources */,
+				073649A7281E174400DA41F7 /* SettingsGraphicsController.swift in Sources */,
 				50B2A2B927AC461800EFA0A2 /* Dalamud.swift in Sources */,
 				50BD278727785418002B0D1F /* Notifications.swift in Sources */,
 				50C45AB227D8A30A00572977 /* Steamworks.mm in Sources */,
@@ -588,6 +610,7 @@
 				50F4BD2427CFA70A00FB165D /* Dxvk.swift in Sources */,
 				50511EC72770E085003A1E9F /* InstallerController.swift in Sources */,
 				50D30FA027B92EDB007A9F66 /* OTP.swift in Sources */,
+				073649AB281E18B600DA41F7 /* SettingsAdvancedController.swift in Sources */,
 				50FC2E0127F9751600871760 /* DxvkError.swift in Sources */,
 				507C5FFF27CA9F2E00BA3CC2 /* PatchInstaller.swift in Sources */,
 				50B2A2B527AC1BC400EFA0A2 /* LoginSheetController.swift in Sources */,
@@ -596,6 +619,7 @@
 				501956A327F04616003CB437 /* LaunchWindowController.swift in Sources */,
 				502A18D827AA8C0D00144AB9 /* FFXIVLoginServices.swift in Sources */,
 				50E5387B2779CF5C0038521A /* SettingsController.swift in Sources */,
+				073649A5281E16D100DA41F7 /* SettingsGeneralController.swift in Sources */,
 				509FE19C27E39DCB008D56D6 /* FFXIVApp.swift in Sources */,
 				079A343027F90F350043BEEA /* FirstAidController.swift in Sources */,
 				50BC73CF27C2BEAF006269AC /* ACT.swift in Sources */,
@@ -760,7 +784,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "XIV on Mac/XIV_on_Mac.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+                CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 48;
 				DEVELOPMENT_TEAM = TQJJTJ6364;
