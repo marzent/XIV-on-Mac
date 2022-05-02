@@ -7,7 +7,7 @@
 
 import Cocoa
 
-class SettingsAdvancedController: NSViewController {
+class SettingsAdvancedController: NSViewController, SettingsController {
 
     @IBOutlet private var keepPatches: NSButton!
     
@@ -32,6 +32,12 @@ class SettingsAdvancedController: NSViewController {
         keepPatches.state = Patch.keep ? NSControl.StateValue.on : NSControl.StateValue.off
     }
     
+    @IBAction func saveState(_ sender: Any) {
+        DispatchQueue.global(qos: .utility).async {
+            self.saveState()
+        }
+    }
+    
     func saveState() {
         DispatchQueue.main.async { [self] in
             Wine.esync = esync.state == NSControl.StateValue.on
@@ -40,5 +46,4 @@ class SettingsAdvancedController: NSViewController {
         }
     }
 
-    
 }

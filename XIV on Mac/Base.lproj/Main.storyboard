@@ -1249,7 +1249,7 @@ Gw
                                     </menu>
                                 </popUpButtonCell>
                                 <connections>
-                                    <action selector="updateLanguage:" target="0Rv-P7-893" id="TDg-z3-a7a"/>
+                                    <action selector="saveState:" target="0Rv-P7-893" id="VFs-Bg-NFd"/>
                                 </connections>
                             </popUpButton>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Jmh-Hz-ux7">
@@ -1259,7 +1259,7 @@ Gw
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="updateFreeTrial:" target="0Rv-P7-893" id="IiZ-bt-lKS"/>
+                                    <action selector="saveState:" target="0Rv-P7-893" id="up1-2I-s3E"/>
                                 </connections>
                             </button>
                             <popUpButton wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eWT-Ny-Sac">
@@ -1276,7 +1276,7 @@ Gw
                                     </menu>
                                 </popUpButtonCell>
                                 <connections>
-                                    <action selector="updateLicense:" target="0Rv-P7-893" id="4cD-FU-u63"/>
+                                    <action selector="saveState:" target="0Rv-P7-893" id="Nm7-KA-sjQ"/>
                                 </connections>
                             </popUpButton>
                             <textField wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zft-mL-IyQ">
@@ -1405,6 +1405,9 @@ Gw
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="saveState:" target="iZP-JQ-P1x" id="s3S-dg-U8J"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FN1-v6-SUN">
                                 <rect key="frame" x="18" y="450" width="135" height="18"/>
@@ -1412,6 +1415,9 @@ Gw
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="saveState:" target="iZP-JQ-P1x" id="oO5-fS-4fz"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0PH-1i-0UA">
                                 <rect key="frame" x="18" y="533" width="157" height="18"/>
@@ -1460,11 +1466,14 @@ Gw
                                             </textFieldCell>
                                         </textField>
                                         <slider wantsLayer="YES" horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Bvv-yo-MZ0">
-                                            <rect key="frame" x="63" y="190" width="424" height="28"/>
+                                            <rect key="frame" x="63" y="190" width="423" height="28"/>
                                             <sliderCell key="cell" state="on" alignment="left" maxValue="4" doubleValue="1" tickMarkPosition="above" numberOfTickMarks="5" sliderType="linear" id="Ya9-RG-5gd"/>
+                                            <connections>
+                                                <action selector="saveState:" target="iZP-JQ-P1x" id="aC0-gT-XAQ"/>
+                                            </connections>
                                         </slider>
                                         <button wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="c5y-dB-OzW">
-                                            <rect key="frame" x="486" y="189" width="69" height="32"/>
+                                            <rect key="frame" x="485" y="189" width="70" height="32"/>
                                             <buttonCell key="cell" type="push" title="Reset" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BHo-QR-6f8">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -1479,6 +1488,9 @@ Gw
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="saveState:" target="iZP-JQ-P1x" id="eyY-Ph-VKQ"/>
+                                            </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DSc-kA-8q1">
                                             <rect key="frame" x="18" y="127" width="138" height="18"/>
@@ -1486,6 +1498,9 @@ Gw
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="saveState:" target="iZP-JQ-P1x" id="TId-Zf-RIK"/>
+                                            </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SxV-dE-5eD">
                                             <rect key="frame" x="18" y="105" width="209" height="18"/>
@@ -1493,6 +1508,9 @@ Gw
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="saveState:" target="iZP-JQ-P1x" id="11H-nc-GJC"/>
+                                            </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XaY-6Q-Mvo">
                                             <rect key="frame" x="18" y="83" width="209" height="18"/>
@@ -1500,6 +1518,9 @@ Gw
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="saveState:" target="iZP-JQ-P1x" id="lbv-5E-Gg9"/>
+                                            </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KfF-g1-nNK">
                                             <rect key="frame" x="18" y="61" width="224" height="18"/>
@@ -1507,6 +1528,9 @@ Gw
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="saveState:" target="iZP-JQ-P1x" id="Uf4-Yy-cIp"/>
+                                            </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HvH-pN-nVO">
                                             <rect key="frame" x="18" y="39" width="111" height="18"/>
@@ -1514,6 +1538,9 @@ Gw
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="saveState:" target="iZP-JQ-P1x" id="bOO-0T-hXz"/>
+                                            </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4Fq-Sz-2ZL">
                                             <rect key="frame" x="335" y="171" width="87" height="18"/>
@@ -1521,6 +1548,9 @@ Gw
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="saveState:" target="iZP-JQ-P1x" id="se1-h1-3Nr"/>
+                                            </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PxN-EU-Qcp">
                                             <rect key="frame" x="335" y="149" width="110" height="18"/>
@@ -1528,6 +1558,9 @@ Gw
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="saveState:" target="iZP-JQ-P1x" id="iP0-ab-QPy"/>
+                                            </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LpF-Gn-fld">
                                             <rect key="frame" x="335" y="127" width="138" height="18"/>
@@ -1535,6 +1568,9 @@ Gw
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="saveState:" target="iZP-JQ-P1x" id="ZU8-sd-pBt"/>
+                                            </connections>
                                         </button>
                                         <button wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Y0j-0A-ZOj">
                                             <rect key="frame" x="330" y="27" width="108" height="32"/>
@@ -1547,7 +1583,7 @@ Gw
                                             </connections>
                                         </button>
                                         <button wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gvh-xg-ZgM">
-                                            <rect key="frame" x="330" y="59" width="91" height="32"/>
+                                            <rect key="frame" x="330" y="59" width="92" height="32"/>
                                             <buttonCell key="cell" type="push" title="Select All" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fgq-sv-nxT">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -1562,6 +1598,9 @@ Gw
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="saveState:" target="iZP-JQ-P1x" id="9Hr-N5-zAH"/>
+                                            </connections>
                                         </button>
                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="jCA-wz-ean">
                                             <rect key="frame" x="18" y="224" width="532" height="48"/>
@@ -1578,6 +1617,9 @@ Gw
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="saveState:" target="iZP-JQ-P1x" id="EhP-9o-ve5"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
@@ -1702,7 +1744,7 @@ Gw
                 </viewController>
                 <customObject id="TIU-QY-693" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1481" y="1723"/>
+            <point key="canvasLocation" x="1559" y="1700"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="ImY-2l-0oe">
@@ -1781,7 +1823,7 @@ Gw
                                         </connections>
                                     </textField>
                                     <button wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fhv-Eb-PmW">
-                                        <rect key="frame" x="679" y="199.5" width="127" height="22"/>
+                                        <rect key="frame" x="679" y="200" width="127" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="check" title="Auto-Login" bezelStyle="regularSquare" imagePosition="left" controlSize="large" inset="2" id="J8n-OX-VtC">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1792,7 +1834,7 @@ Gw
                                         </connections>
                                     </button>
                                     <button wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xhX-md-4MR">
-                                        <rect key="frame" x="819" y="199.5" width="127" height="22"/>
+                                        <rect key="frame" x="819" y="200" width="127" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="check" title="Auto-OTP" bezelStyle="regularSquare" imagePosition="left" controlSize="large" inset="2" id="hjS-RC-X85">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1907,7 +1949,7 @@ Gw
                                         </scroller>
                                     </scrollView>
                                     <button wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R5T-I0-Kje" userLabel="Disclose Button">
-                                        <rect key="frame" x="922" y="358" width="25.5" height="24"/>
+                                        <rect key="frame" x="922" y="358" width="26" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="NSTouchBarGoDownTemplate" imagePosition="only" alignment="center" refusesFirstResponder="YES" state="on" inset="2" id="gCP-mx-jfr">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1974,7 +2016,7 @@ Gw
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="groove" image="SecPrefpane" id="t0R-au-2Uj"/>
                             </imageView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="d38-by-aiQ">
-                                <rect key="frame" x="622" y="83" width="197" height="32"/>
+                                <rect key="frame" x="622" y="83" width="198" height="32"/>
                                 <buttonCell key="cell" type="push" title="Open Security Preferences" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bE2-RL-ucx">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -2330,7 +2372,7 @@ Gw
                                                     </textFieldCell>
                                                 </textField>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vi7-zh-Dkz">
-                                                    <rect key="frame" x="33" y="601" width="155" height="32"/>
+                                                    <rect key="frame" x="33" y="601" width="156" height="32"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="jSD-bX-Lap"/>
                                                     </constraints>
@@ -2577,6 +2619,9 @@ Gw
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="saveState:" target="A8Q-Gs-kK7" id="eZn-Al-Zcz"/>
+                                </connections>
                             </button>
                             <textField wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="u9T-EJ-hgN">
                                 <rect key="frame" x="60" y="155" width="50" height="21"/>
@@ -2588,6 +2633,9 @@ Gw
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <connections>
+                                    <action selector="saveState:" target="A8Q-Gs-kK7" id="gqf-Ri-rKm"/>
+                                </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YDL-Cb-Q7P">
                                 <rect key="frame" x="110" y="158" width="11" height="16"/>
@@ -2638,6 +2686,9 @@ https://github.com/goatcorp/Dalamud</string>
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="saveState:" target="A8Q-Gs-kK7" id="QpN-Rx-z7u"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>
@@ -2674,7 +2725,7 @@ https://github.com/goatcorp/Dalamud</string>
                 </viewController>
                 <customObject id="tAX-q5-jUH" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1604" y="2030"/>
+            <point key="canvasLocation" x="1663" y="2259"/>
         </scene>
         <!--Advanced-->
         <scene sceneID="O1T-hj-D8C">
@@ -2690,6 +2741,9 @@ https://github.com/goatcorp/Dalamud</string>
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="saveState:" target="4Nu-Eh-h4G" id="2no-d7-7e9"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5oa-uD-168">
                                 <rect key="frame" x="18" y="218" width="62" height="18"/>
@@ -2697,6 +2751,9 @@ https://github.com/goatcorp/Dalamud</string>
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="saveState:" target="4Nu-Eh-h4G" id="AmD-t7-Fsa"/>
+                                </connections>
                             </button>
                             <textField wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qGE-fd-l1u">
                                 <rect key="frame" x="106" y="193" width="500" height="21"/>
@@ -2708,6 +2765,9 @@ https://github.com/goatcorp/Dalamud</string>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <connections>
+                                    <action selector="saveState:" target="4Nu-Eh-h4G" id="gKq-PC-sGf"/>
+                                </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bVO-QG-s4L">
                                 <rect key="frame" x="18" y="195" width="82" height="16"/>
@@ -2752,13 +2812,13 @@ https://github.com/goatcorp/Dalamud</string>
                 </viewController>
                 <customObject id="8qe-2p-Jnk" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1563" y="2551"/>
+            <point key="canvasLocation" x="1560" y="2787"/>
         </scene>
     </scenes>
     <resources>
         <image name="CfgCheckGood" width="96" height="96"/>
         <image name="CfgCheckProbFailed" width="96" height="96"/>
-        <image name="NSTouchBarGoDownTemplate" width="15" height="9"/>
+        <image name="NSTouchBarGoDownTemplate" width="16" height="9"/>
         <image name="PrefsGeneral" width="96" height="96"/>
         <image name="PrefsGraphics" width="150.75" height="96"/>
         <image name="SecPrefpane" width="517.5" height="261"/>

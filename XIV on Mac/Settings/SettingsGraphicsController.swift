@@ -7,7 +7,7 @@
 
 import Cocoa
 
-class SettingsGraphicsController: NSViewController {
+class SettingsGraphicsController: NSViewController, SettingsController {
 
     @IBOutlet private var devinfo: NSButton!
     @IBOutlet private var fps: NSButton!
@@ -101,6 +101,12 @@ class SettingsGraphicsController: NSViewController {
         }
     }
 
+    @IBAction func saveState(_ sender: Any) {
+        DispatchQueue.global(qos: .utility).async {
+            self.saveState()
+        }
+    }
+    
     func saveState() {
         DispatchQueue.main.async { [self] in
             for (name, button) in mapping {

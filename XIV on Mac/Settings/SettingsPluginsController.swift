@@ -7,7 +7,7 @@
 
 import Cocoa
 
-class SettingsPluginsController: NSViewController {
+class SettingsPluginsController: NSViewController, SettingsController {
 
     @IBOutlet private var dalamud: NSButton!
     @IBOutlet private var delay: NSTextField!
@@ -19,6 +19,12 @@ class SettingsPluginsController: NSViewController {
         
         dalamud.state = Dalamud.enabled ? NSControl.StateValue.on : NSControl.StateValue.off
         delay.stringValue = "\(Dalamud.delay)"
+    }
+    
+    @IBAction func saveState(_ sender: Any) {
+        DispatchQueue.global(qos: .utility).async {
+            self.saveState()
+        }
     }
     
     func saveState() {

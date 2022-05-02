@@ -278,12 +278,8 @@
 				50C45A0C27D8A08D00572977 /* Steamworks */,
 				50FC2DFD27F9744700871760 /* DxvkUtils */,
 				5095B97A2806B20600364374 /* FirstAid */,
+				50E32256281FA4BB00695B2E /* Settings */,
 				50511EC62770E085003A1E9F /* InstallerController.swift */,
-				50E5387A2779CF5C0038521A /* SettingsController.swift */,
-				073649A4281E16D100DA41F7 /* SettingsGeneralController.swift */,
-				073649A6281E174400DA41F7 /* SettingsGraphicsController.swift */,
-				073649A8281E189E00DA41F7 /* SettingsPluginsController.swift */,
-				073649AA281E18B600DA41F7 /* SettingsAdvancedController.swift */,
 				50B2A2B427AC1BC400EFA0A2 /* LoginSheetController.swift */,
 				07C876DE281380FF00CB0D8E /* DocumentsPermissionsController.swift */,
 				50BD278627785418002B0D1F /* Notifications.swift */,
@@ -415,6 +411,18 @@
 				50C45AAF27D8A30A00572977 /* isteamuserstats.h */,
 			);
 			path = Headers;
+			sourceTree = "<group>";
+		};
+		50E32256281FA4BB00695B2E /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				50E5387A2779CF5C0038521A /* SettingsController.swift */,
+				073649A4281E16D100DA41F7 /* SettingsGeneralController.swift */,
+				073649A6281E174400DA41F7 /* SettingsGraphicsController.swift */,
+				073649A8281E189E00DA41F7 /* SettingsPluginsController.swift */,
+				073649AA281E18B600DA41F7 /* SettingsAdvancedController.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		50F8A5F827BFA93800ADC0CB /* Patcher */ = {

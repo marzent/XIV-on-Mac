@@ -8,7 +8,7 @@
 import Cocoa
 import SeeURL
 
-class SettingsGeneralController: NSViewController {
+class SettingsGeneralController: NSViewController, SettingsController {
 
     @IBOutlet private var language: NSPopUpButton!
     @IBOutlet private var license: NSPopUpButton!
@@ -26,33 +26,16 @@ class SettingsGeneralController: NSViewController {
             self.saveState()
         }
     }
-    
-    @IBAction func updateLanguage(_ sender: Any) {
-        DispatchQueue.global(qos: .utility).async {
-            self.saveState()
-        }
-    }
-    
-    @IBAction func updateLicense(_ sender: Any) {
-        DispatchQueue.global(qos: .utility).async {
-            self.saveState()
-        }
-    }
-    
-    @IBAction func updateFreeTrial(_ sender: Any) {
-        DispatchQueue.global(qos: .utility).async {
-            self.saveState()
-        }
-    }
-    
-    override func viewDidAppear() {
-        super.viewDidAppear()
-        updateView()
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
+    }
+    
+    @IBAction func saveState(_ sender: Any) {
+        DispatchQueue.global(qos: .utility).async {
+            self.saveState()
+        }
     }
     
     func saveState() {
