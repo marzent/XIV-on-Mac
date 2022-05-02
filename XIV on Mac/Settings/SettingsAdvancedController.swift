@@ -13,11 +13,6 @@ class SettingsAdvancedController: NSViewController, SettingsController {
     
     @IBOutlet private var esync: NSButton!
     @IBOutlet private var wineDebugField: NSTextField!
-
-    override func viewDidAppear() {
-        super.viewDidAppear()
-        updateView()
-    }
  
     func updateView() {
         

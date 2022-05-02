@@ -17,6 +17,17 @@ class SettingsGeneralController: NSViewController, SettingsController {
     @IBOutlet private var maxDownload: NSButton!
     @IBOutlet private var maxDownloadField: NSTextField!
 
+    func updateView() {
+        language.selectItem(at: Int(FFXIVSettings.language.rawValue))
+        license.selectItem(at: Int(FFXIVSettings.platform.rawValue))
+        freeTrial.state = FFXIVSettings.freeTrial ? NSControl.StateValue.on : NSControl.StateValue.off
+        
+        let limitedDown = HTTPClient.maxSpeed > 0
+        maxDownload.state = limitedDown ? NSControl.StateValue.on : NSControl.StateValue.off
+        maxDownloadField.isEnabled = limitedDown
+        maxDownloadField.stringValue = String(HTTPClient.maxSpeed)
+    }
+    
     @IBAction func updateMaxDownload(_ sender: Any) {
         if (sender is NSButton) {
             let button = sender as! NSButton
@@ -26,11 +37,6 @@ class SettingsGeneralController: NSViewController, SettingsController {
             self.saveState()
         }
     }
-    
-    override func viewDidAppear() {
-             super.viewDidAppear()
-             updateView()
-         }
     
     @IBAction func saveState(_ sender: Any) {
         DispatchQueue.global(qos: .utility).async {
@@ -47,17 +53,5 @@ class SettingsGeneralController: NSViewController, SettingsController {
             HTTPClient.maxSpeed = self.maxDownloadField.isEnabled ? Double(self.maxDownloadField.stringValue) ?? 0.0 : 0.0
         }
     }
-
-    func updateView() {
-        language.selectItem(at: Int(FFXIVSettings.language.rawValue))
-        license.selectItem(at: Int(FFXIVSettings.platform.rawValue))
-        freeTrial.state = FFXIVSettings.freeTrial ? NSControl.StateValue.on : NSControl.StateValue.off
-        
-        let limitedDown = HTTPClient.maxSpeed > 0
-        maxDownload.state = limitedDown ? NSControl.StateValue.on : NSControl.StateValue.off
-        maxDownloadField.isEnabled = limitedDown
-        maxDownloadField.stringValue = String(HTTPClient.maxSpeed)
-    }
-
     
 }

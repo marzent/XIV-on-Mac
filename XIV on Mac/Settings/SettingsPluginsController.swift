@@ -35,10 +35,5 @@ class SettingsPluginsController: NSViewController, SettingsController {
             Dalamud.delay = Double(delay.stringValue) ?? Dalamud.defaultInjectionDelay
         }
     }
-
-    override func viewDidAppear() {
-        super.viewDidAppear()
-        updateView()
-    }
     
 }

@@ -45,6 +45,21 @@ class SettingsGraphicsController: NSViewController, SettingsController {
                    "compiler": compiler] //Shows shader compiler activity
         updateView()
     }
+    
+    func updateView() {
+        for (option, enabled) in Dxvk.options.hud {
+            mapping[option]?.state = enabled ? NSControl.StateValue.on : NSControl.StateValue.off
+        }
+        async.state = Dxvk.options.async ? NSControl.StateValue.on : NSControl.StateValue.off
+        let limited = Dxvk.options.maxFramerate != 0
+        maxFPS.state = limited ? NSControl.StateValue.on : NSControl.StateValue.off
+        maxFPSField.isEnabled = limited
+        maxFPSField.stringValue = String(Dxvk.options.maxFramerate)
+        scale.doubleValue = Dxvk.options.hudScale
+        modernMVK.state = Dxvk.modernMVK ? NSControl.StateValue.on : NSControl.StateValue.off
+        
+        wineRetina.state = Wine.retina ? NSControl.StateValue.on : NSControl.StateValue.off
+    }
 
     @IBAction func resetScale(_ sender: Any) {
         scale.doubleValue = 1.0
@@ -118,21 +133,6 @@ class SettingsGraphicsController: NSViewController, SettingsController {
             Dxvk.options.save()
             Dxvk.modernMVK = modernMVK.state == NSControl.StateValue.on
         }
-    }
-    
-    func updateView() {
-        for (option, enabled) in Dxvk.options.hud {
-            mapping[option]?.state = enabled ? NSControl.StateValue.on : NSControl.StateValue.off
-        }
-        async.state = Dxvk.options.async ? NSControl.StateValue.on : NSControl.StateValue.off
-        let limited = Dxvk.options.maxFramerate != 0
-        maxFPS.state = limited ? NSControl.StateValue.on : NSControl.StateValue.off
-        maxFPSField.isEnabled = limited
-        maxFPSField.stringValue = String(Dxvk.options.maxFramerate)
-        scale.doubleValue = Dxvk.options.hudScale
-        modernMVK.state = Dxvk.modernMVK ? NSControl.StateValue.on : NSControl.StateValue.off
-        
-        wineRetina.state = Wine.retina ? NSControl.StateValue.on : NSControl.StateValue.off
     }
 
 }

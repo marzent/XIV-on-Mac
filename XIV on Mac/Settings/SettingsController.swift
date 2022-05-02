@@ -16,3 +16,12 @@ protocol SettingsController: NSViewController {
     func updateView()
     
 }
+
+
+extension SettingsController {
+    
+    func viewDidAppear() {
+        updateView()
+    }
+    
+}
