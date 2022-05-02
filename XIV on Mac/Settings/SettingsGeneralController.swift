@@ -26,11 +26,11 @@ class SettingsGeneralController: NSViewController, SettingsController {
             self.saveState()
         }
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do view setup here.
-    }
+    
+    override func viewDidAppear() {
+             super.viewDidAppear()
+             updateView()
+         }
     
     @IBAction func saveState(_ sender: Any) {
         DispatchQueue.global(qos: .utility).async {

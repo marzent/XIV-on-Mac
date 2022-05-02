@@ -40,10 +40,5 @@ class SettingsPluginsController: NSViewController, SettingsController {
         super.viewDidAppear()
         updateView()
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do view setup here.
-    }
     
 }

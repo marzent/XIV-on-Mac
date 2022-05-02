@@ -119,12 +119,6 @@ class SettingsGraphicsController: NSViewController, SettingsController {
             Dxvk.modernMVK = modernMVK.state == NSControl.StateValue.on
         }
     }
-
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do view setup here.
-    }
     
     func updateView() {
         for (option, enabled) in Dxvk.options.hud {
