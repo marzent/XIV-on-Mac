@@ -7,7 +7,7 @@
 
 import Cocoa
 
-protocol SettingsController: NSViewController {
+protocol SettingsControllerProtocol: NSViewController {
     
     func saveState(_ sender: Any)
     
@@ -17,11 +17,17 @@ protocol SettingsController: NSViewController {
     
 }
 
-
-extension SettingsController {
+class SettingsControllerClass: NSViewController {
     
-    func viewDidAppear() {
+    override func viewDidAppear() {
+        super.viewDidAppear()
         updateView()
     }
     
+    open func updateView() {
+        fatalError("updateView() not implemented")
+    }
+    
 }
+
+typealias SettingsController = SettingsControllerClass & SettingsControllerProtocol

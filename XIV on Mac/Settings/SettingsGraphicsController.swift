@@ -7,7 +7,7 @@
 
 import Cocoa
 
-class SettingsGraphicsController: NSViewController, SettingsController {
+class SettingsGraphicsController: SettingsController {
 
     @IBOutlet private var devinfo: NSButton!
     @IBOutlet private var fps: NSButton!
@@ -46,7 +46,7 @@ class SettingsGraphicsController: NSViewController, SettingsController {
         updateView()
     }
     
-    func updateView() {
+    override func updateView() {
         for (option, enabled) in Dxvk.options.hud {
             mapping[option]?.state = enabled ? NSControl.StateValue.on : NSControl.StateValue.off
         }

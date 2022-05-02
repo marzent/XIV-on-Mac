@@ -8,7 +8,7 @@
 import Cocoa
 import SeeURL
 
-class SettingsGeneralController: NSViewController, SettingsController {
+class SettingsGeneralController: SettingsController {
 
     @IBOutlet private var language: NSPopUpButton!
     @IBOutlet private var license: NSPopUpButton!
@@ -17,7 +17,7 @@ class SettingsGeneralController: NSViewController, SettingsController {
     @IBOutlet private var maxDownload: NSButton!
     @IBOutlet private var maxDownloadField: NSTextField!
 
-    func updateView() {
+    override func updateView() {
         language.selectItem(at: Int(FFXIVSettings.language.rawValue))
         license.selectItem(at: Int(FFXIVSettings.platform.rawValue))
         freeTrial.state = FFXIVSettings.freeTrial ? NSControl.StateValue.on : NSControl.StateValue.off

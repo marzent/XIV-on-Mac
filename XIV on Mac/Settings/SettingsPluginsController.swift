@@ -7,14 +7,14 @@
 
 import Cocoa
 
-class SettingsPluginsController: NSViewController, SettingsController {
+class SettingsPluginsController: SettingsController {
 
     @IBOutlet private var dalamud: NSButton!
     @IBOutlet private var delay: NSTextField!
     
     @IBOutlet weak var discord: NSButton!
 
-    func updateView() {
+    override func updateView() {
         discord.state = DiscordBridge.enabled ? NSControl.StateValue.on : NSControl.StateValue.off
         
         dalamud.state = Dalamud.enabled ? NSControl.StateValue.on : NSControl.StateValue.off

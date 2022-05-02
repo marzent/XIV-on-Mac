@@ -7,14 +7,14 @@
 
 import Cocoa
 
-class SettingsAdvancedController: NSViewController, SettingsController {
+class SettingsAdvancedController: SettingsController {
 
     @IBOutlet private var keepPatches: NSButton!
     
     @IBOutlet private var esync: NSButton!
     @IBOutlet private var wineDebugField: NSTextField!
  
-    func updateView() {
+    override func updateView() {
         
         esync.state = Wine.esync ? NSControl.StateValue.on : NSControl.StateValue.off
         wineDebugField.stringValue = Wine.debug
