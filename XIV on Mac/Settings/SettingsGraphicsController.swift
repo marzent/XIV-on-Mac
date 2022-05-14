@@ -58,7 +58,7 @@ class SettingsGraphicsController: SettingsController {
         scale.doubleValue = Dxvk.options.hudScale
         modernMVK.state = Dxvk.modernMVK ? NSControl.StateValue.on : NSControl.StateValue.off
         
-        wineRetina.state = Wine.retina ? NSControl.StateValue.on : NSControl.StateValue.off
+        wineRetina.state = !Wine.retina ? NSControl.StateValue.on : NSControl.StateValue.off
     }
 
     @IBAction func resetScale(_ sender: Any) {
@@ -95,25 +95,20 @@ class SettingsGraphicsController: SettingsController {
     }
 
     @IBAction func updateRetina(_ sender: NSButton) {
-        if (sender.state == NSControl.StateValue.on) {
-            // Retina has a heavy performance impact that they may not realize.
-            let alert: NSAlert = NSAlert()
-            alert.messageText = NSLocalizedString("RETINA_WARNING", comment: "")
-            alert.informativeText = NSLocalizedString("RETINA_WARNING_INFORMATIVE", comment: "")
-            alert.alertStyle = .warning
-            alert.addButton(withTitle:NSLocalizedString("RETINA_ENABLE_BUTTON", comment: ""))
-            alert.addButton(withTitle:NSLocalizedString("CANCEL_BUTTON", comment: ""))
-            let result = alert.runModal()
-            if result == .alertFirstButtonReturn {
-                Wine.retina = true
-            }
-            else {
-                sender.state = NSControl.StateValue.off
-            }
+        // Changing to and from retina can confuse the games internal reolution, warn the user about that.
+        // The exposed UI option is the opposite of the internal representation in order to avoid user confusion
+        let alert: NSAlert = NSAlert()
+        alert.messageText = NSLocalizedString("RETINA_WARNING", comment: "")
+        alert.informativeText = NSLocalizedString("RETINA_WARNING_INFORMATIVE", comment: "")
+        alert.alertStyle = .warning
+        alert.addButton(withTitle:NSLocalizedString("RETINA_ENABLE_BUTTON", comment: ""))
+        alert.addButton(withTitle:NSLocalizedString("CANCEL_BUTTON", comment: ""))
+        let result = alert.runModal()
+        guard result == .alertFirstButtonReturn else {
+            wineRetina.state = !Wine.retina ? NSControl.StateValue.on : NSControl.StateValue.off
+            return
         }
-        else{
-            Wine.retina = false
-        }
+        Wine.retina = sender.state == NSControl.StateValue.off
     }
 
     @IBAction func saveState(_ sender: Any) {
