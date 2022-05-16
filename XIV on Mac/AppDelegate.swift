@@ -60,27 +60,26 @@ import AppMover
     }
     
     func checkForRosetta() {
-    #if arch(arm64)
-        // No need to do any of this on Intel.
-        if (!Util.rosettaIsInstalled())
-        {
-            let alert: NSAlert = NSAlert()
-            alert.messageText = NSLocalizedString("ROSETTA_REQUIRED", comment: "")
-            alert.informativeText = NSLocalizedString("ROSETTA_REQUIRED_INFORMATIVE", comment: "")
-            alert.alertStyle = .warning
-            alert.addButton(withTitle:NSLocalizedString("ROSETTA_REQUIRED_INSTALL_BUTTON", comment: ""))
-            alert.addButton(withTitle:NSLocalizedString("ROSETTA_REQUIRED_CANCEL_BUTTON", comment: ""))
-            let result = alert.runModal()
-            if result == .alertFirstButtonReturn {
-                let rosettaCommand = Bundle.main.url(forResource: "installRosetta", withExtension: "command")
-                if (rosettaCommand != nil) {
-                    // We could launch Terminal directly, but this should work more nicely for people who use 3rd party
-                    // terminal apps.
-                    Util.launch(exec: URL(fileURLWithPath: "/usr/bin/open"), args: [rosettaCommand!.path])
+        if (Util.getXOMRuntimeEnvironment() == .appleSiliconNative) {        // No need to do any of this on Intel, and if we're already in Rosetta the answer is self-evident
+            if (!Util.rosettaIsInstalled())
+            {
+                let alert: NSAlert = NSAlert()
+                alert.messageText = NSLocalizedString("ROSETTA_REQUIRED", comment: "")
+                alert.informativeText = NSLocalizedString("ROSETTA_REQUIRED_INFORMATIVE", comment: "")
+                alert.alertStyle = .warning
+                alert.addButton(withTitle:NSLocalizedString("ROSETTA_REQUIRED_INSTALL_BUTTON", comment: ""))
+                alert.addButton(withTitle:NSLocalizedString("ROSETTA_REQUIRED_CANCEL_BUTTON", comment: ""))
+                let result = alert.runModal()
+                if result == .alertFirstButtonReturn {
+                    let rosettaCommand = Bundle.main.url(forResource: "installRosetta", withExtension: "command")
+                    if (rosettaCommand != nil) {
+                        // We could launch Terminal directly, but this should work more nicely for people who use 3rd party
+                        // terminal apps.
+                        Util.launch(exec: URL(fileURLWithPath: "/usr/bin/open"), args: [rosettaCommand!.path])
+                    }
                 }
             }
         }
-    #endif
     }
     
     func checkGPUSupported() {

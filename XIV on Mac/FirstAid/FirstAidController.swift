@@ -204,11 +204,12 @@ class FirstAidController: NSViewController, NSTableViewDelegate, NSTableViewData
     
     func cfgCheckConditions() -> [FFXIVCfgCheckCondition] {
         var allConditions: [FFXIVCfgCheckCondition] = FFXIVCheckupConditions
-        #if arch(arm64)
-        allConditions = allConditions + FFXIVCheckupConditions_AS
-        #else
-        allConditions = allConditions + FFXIVCheckupConditions_X64
-        #endif
+        if (Util.getXOMRuntimeEnvironment() != .x64Native) {
+            allConditions = allConditions + FFXIVCheckupConditions_AS
+        }
+        else {
+            allConditions = allConditions + FFXIVCheckupConditions_X64
+        }
         return allConditions
     }
     
