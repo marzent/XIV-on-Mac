@@ -167,15 +167,15 @@ struct Util {
     }
     
     static func rosettaIsInstalled() -> Bool {
-    #if arch(arm64)
-        // Rosetta's package ID is fixed, so it's safer to check for its receipt than to look for any individual file it's known to install.
-        let rosettaReceiptPath = appleReceiptsPath.appendingPathComponent("com.apple.pkg.RosettaUpdateAuto.plist");
-        do{
-            let receiptExists : Bool = try rosettaReceiptPath.checkResourceIsReachable()
-            return receiptExists
-        }catch{
+        if (Util.getXOMRuntimeEnvironment() == .appleSiliconNative) {
+            // Rosetta's package ID is fixed, so it's safer to check for its receipt than to look for any individual file it's known to install.
+            let rosettaReceiptPath = appleReceiptsPath.appendingPathComponent("com.apple.pkg.RosettaUpdateAuto.plist");
+            do{
+                let receiptExists : Bool = try rosettaReceiptPath.checkResourceIsReachable()
+                return receiptExists
+            }catch{
+            }
         }
-    #endif
         return false
     }
 
@@ -248,40 +248,72 @@ struct Util {
         return configFileContents
     }
     
+    public enum XOMRuntimeEnvironment: UInt32 {
+        case x64Native = 0
+        case appleSiliconRosetta = 1
+        case appleSiliconNative = 2
+    }
+    
+    static func getXOMRuntimeEnvironment() -> XOMRuntimeEnvironment {
+    #if arch(arm64)
+        return .appleSiliconNative
+    #else
+        let key = "sysctl.proc_translated"
+        var ret = Int32(0)
+        var size: Int = 0
+        sysctlbyname(key, nil, &size, nil, 0)
+        let result = sysctlbyname(key, &ret, &size, nil, 0)
+        if result == -1 {
+            if errno == ENOENT {
+                // Native process
+                return .x64Native
+            }
+            // An error occured... Assume native?
+            print("Error determining execution environment", to: &logger)
+            return .x64Native
+        }
+        if (ret == 1) {
+            return .appleSiliconRosetta
+        }
+        return .x64Native
+    #endif
+    }
+    
     static func supportedGPU() -> Bool {
         var foundSupportedGPU : Bool = false
-    #if arch(arm64)
-        // On Apple Silicon to date, there is always a built-in GPU, and it is always supported. So we don't need to check anything.
-        foundSupportedGPU = true
-    #else
-        // On Intel, we need to find an AMD GPU. Intel iGPUs are not supported, and neither is nVidia or other oddities (USB video).
-        var deviceIterator : io_iterator_t = io_iterator_t()
-                                                                           
-        if IOServiceGetMatchingServices(kIOMasterPortDefault, IOServiceMatching(kIOAcceleratorClassName),&deviceIterator) == kIOReturnSuccess {
-            var entry : io_registry_entry_t = IOIteratorNext(deviceIterator)
-            while (entry != 0) && (!foundSupportedGPU) {
-                var properties : Unmanaged<CFMutableDictionary>? = nil
-                if IORegistryEntryCreateCFProperties(entry, &properties, kCFAllocatorDefault, 0) == kIOReturnSuccess {
-                    guard let propertiesDict = properties?.takeUnretainedValue() as? [String : AnyObject] else { continue }
-                    properties?.release()
-                    
-                    let ioClass = propertiesDict["IOClass"]
-                    if ioClass is String {
-                        let ioClassString = ioClass as! String
-                        if ioClassString.hasPrefix("AMDRadeon") {
-                            foundSupportedGPU = true
+        if (Util.getXOMRuntimeEnvironment() != .x64Native) {
+            // On Apple Silicon to date, there is always a built-in GPU, and it is always supported. So we don't need to check anything.
+            foundSupportedGPU = true
+        }
+        else
+        {
+            // On Intel, we need to find an AMD GPU. Intel iGPUs are not supported, and neither is nVidia or other oddities (USB video).
+            var deviceIterator : io_iterator_t = io_iterator_t()
+                                                                               
+            if IOServiceGetMatchingServices(kIOMasterPortDefault, IOServiceMatching(kIOAcceleratorClassName),&deviceIterator) == kIOReturnSuccess {
+                var entry : io_registry_entry_t = IOIteratorNext(deviceIterator)
+                while (entry != 0) && (!foundSupportedGPU) {
+                    var properties : Unmanaged<CFMutableDictionary>? = nil
+                    if IORegistryEntryCreateCFProperties(entry, &properties, kCFAllocatorDefault, 0) == kIOReturnSuccess {
+                        guard let propertiesDict = properties?.takeUnretainedValue() as? [String : AnyObject] else { continue }
+                        properties?.release()
+                        
+                        let ioClass = propertiesDict["IOClass"]
+                        if ioClass is String {
+                            let ioClassString = ioClass as! String
+                            if ioClassString.hasPrefix("AMDRadeon") {
+                                foundSupportedGPU = true
+                            }
                         }
                     }
+                    
+                    IOObjectRelease(entry)
+                    entry = IOIteratorNext(deviceIterator)
                 }
                 
-                IOObjectRelease(entry)
-                entry = IOIteratorNext(deviceIterator)
+                IOObjectRelease(deviceIterator)
             }
-            
-            IOObjectRelease(deviceIterator)
         }
-        
-    #endif
         return foundSupportedGPU
     }
     
