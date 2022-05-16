@@ -336,7 +336,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "147"
             endingLineNumber = "147"
-            landmarkName = "regedit(_:)"
+            landmarkName = "installDotNet472(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

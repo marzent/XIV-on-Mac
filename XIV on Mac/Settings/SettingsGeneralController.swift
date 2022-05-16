@@ -8,7 +8,7 @@
 import Cocoa
 import SeeURL
 
-class SettingsGeneralController: NSViewController {
+class SettingsGeneralController: SettingsController {
 
     @IBOutlet private var language: NSPopUpButton!
     @IBOutlet private var license: NSPopUpButton!
@@ -17,6 +17,17 @@ class SettingsGeneralController: NSViewController {
     @IBOutlet private var maxDownload: NSButton!
     @IBOutlet private var maxDownloadField: NSTextField!
 
+    override func updateView() {
+        language.selectItem(at: Int(FFXIVSettings.language.rawValue))
+        license.selectItem(at: Int(FFXIVSettings.platform.rawValue))
+        freeTrial.state = FFXIVSettings.freeTrial ? NSControl.StateValue.on : NSControl.StateValue.off
+        
+        let limitedDown = HTTPClient.maxSpeed > 0
+        maxDownload.state = limitedDown ? NSControl.StateValue.on : NSControl.StateValue.off
+        maxDownloadField.isEnabled = limitedDown
+        maxDownloadField.stringValue = String(HTTPClient.maxSpeed)
+    }
+    
     @IBAction func updateMaxDownload(_ sender: Any) {
         if (sender is NSButton) {
             let button = sender as! NSButton
@@ -27,32 +38,10 @@ class SettingsGeneralController: NSViewController {
         }
     }
     
-    @IBAction func updateLanguage(_ sender: Any) {
+    @IBAction func saveState(_ sender: Any) {
         DispatchQueue.global(qos: .utility).async {
             self.saveState()
         }
-    }
-    
-    @IBAction func updateLicense(_ sender: Any) {
-        DispatchQueue.global(qos: .utility).async {
-            self.saveState()
-        }
-    }
-    
-    @IBAction func updateFreeTrial(_ sender: Any) {
-        DispatchQueue.global(qos: .utility).async {
-            self.saveState()
-        }
-    }
-    
-    override func viewDidAppear() {
-        super.viewDidAppear()
-        updateView()
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do view setup here.
     }
     
     func saveState() {
@@ -64,17 +53,5 @@ class SettingsGeneralController: NSViewController {
             HTTPClient.maxSpeed = self.maxDownloadField.isEnabled ? Double(self.maxDownloadField.stringValue) ?? 0.0 : 0.0
         }
     }
-
-    func updateView() {
-        language.selectItem(at: Int(FFXIVSettings.language.rawValue))
-        license.selectItem(at: Int(FFXIVSettings.platform.rawValue))
-        freeTrial.state = FFXIVSettings.freeTrial ? NSControl.StateValue.on : NSControl.StateValue.off
-        
-        let limitedDown = HTTPClient.maxSpeed > 0
-        maxDownload.state = limitedDown ? NSControl.StateValue.on : NSControl.StateValue.off
-        maxDownloadField.isEnabled = limitedDown
-        maxDownloadField.stringValue = String(HTTPClient.maxSpeed)
-    }
-
     
 }

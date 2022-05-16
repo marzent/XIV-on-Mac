@@ -7,29 +7,25 @@
 
 import Cocoa
 
-class SettingsAdvancedController: NSViewController {
+class SettingsAdvancedController: SettingsController {
 
     @IBOutlet private var keepPatches: NSButton!
     
     @IBOutlet private var esync: NSButton!
     @IBOutlet private var wineDebugField: NSTextField!
-
-    override func viewDidAppear() {
-        super.viewDidAppear()
-        updateView()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do view setup here.
-    }
  
-    func updateView() {
+    override func updateView() {
         
         esync.state = Wine.esync ? NSControl.StateValue.on : NSControl.StateValue.off
         wineDebugField.stringValue = Wine.debug
         
         keepPatches.state = Patch.keep ? NSControl.StateValue.on : NSControl.StateValue.off
+    }
+    
+    @IBAction func saveState(_ sender: Any) {
+        DispatchQueue.global(qos: .utility).async {
+            self.saveState()
+        }
     }
     
     func saveState() {
@@ -40,5 +36,4 @@ class SettingsAdvancedController: NSViewController {
         }
     }
 
-    
 }

@@ -7,7 +7,7 @@
 
 import Cocoa
 
-class SettingsGraphicsController: NSViewController {
+class SettingsGraphicsController: SettingsController {
 
     @IBOutlet private var devinfo: NSButton!
     @IBOutlet private var fps: NSButton!
@@ -45,6 +45,21 @@ class SettingsGraphicsController: NSViewController {
                    "compiler": compiler] //Shows shader compiler activity
         updateView()
     }
+    
+    override func updateView() {
+        for (option, enabled) in Dxvk.options.hud {
+            mapping[option]?.state = enabled ? NSControl.StateValue.on : NSControl.StateValue.off
+        }
+        async.state = Dxvk.options.async ? NSControl.StateValue.on : NSControl.StateValue.off
+        let limited = Dxvk.options.maxFramerate != 0
+        maxFPS.state = limited ? NSControl.StateValue.on : NSControl.StateValue.off
+        maxFPSField.isEnabled = limited
+        maxFPSField.stringValue = String(Dxvk.options.maxFramerate)
+        scale.doubleValue = Dxvk.options.hudScale
+        modernMVK.state = Dxvk.modernMVK ? NSControl.StateValue.on : NSControl.StateValue.off
+        
+        wineRetina.state = !Wine.retina ? NSControl.StateValue.on : NSControl.StateValue.off
+    }
 
     @IBAction func resetScale(_ sender: Any) {
         scale.doubleValue = 1.0
@@ -80,27 +95,28 @@ class SettingsGraphicsController: NSViewController {
     }
 
     @IBAction func updateRetina(_ sender: NSButton) {
-        if (sender.state == NSControl.StateValue.on) {
-            // Retina has a heavy performance impact that they may not realize.
-            let alert: NSAlert = NSAlert()
-            alert.messageText = NSLocalizedString("RETINA_WARNING", comment: "")
-            alert.informativeText = NSLocalizedString("RETINA_WARNING_INFORMATIVE", comment: "")
-            alert.alertStyle = .warning
-            alert.addButton(withTitle:NSLocalizedString("RETINA_ENABLE_BUTTON", comment: ""))
-            alert.addButton(withTitle:NSLocalizedString("CANCEL_BUTTON", comment: ""))
-            let result = alert.runModal()
-            if result == .alertFirstButtonReturn {
-                Wine.retina = true
-            }
-            else {
-                sender.state = NSControl.StateValue.off
-            }
+        // Changing to and from retina can confuse the games internal reolution, warn the user about that.
+        // The exposed UI option is the opposite of the internal representation in order to avoid user confusion
+        let alert: NSAlert = NSAlert()
+        alert.messageText = NSLocalizedString("RETINA_WARNING", comment: "")
+        alert.informativeText = NSLocalizedString("RETINA_WARNING_INFORMATIVE", comment: "")
+        alert.alertStyle = .warning
+        alert.addButton(withTitle:NSLocalizedString("RETINA_ENABLE_BUTTON", comment: ""))
+        alert.addButton(withTitle:NSLocalizedString("CANCEL_BUTTON", comment: ""))
+        let result = alert.runModal()
+        guard result == .alertFirstButtonReturn else {
+            wineRetina.state = !Wine.retina ? NSControl.StateValue.on : NSControl.StateValue.off
+            return
         }
-        else{
-            Wine.retina = false
-        }
+        Wine.retina = sender.state == NSControl.StateValue.off
     }
 
+    @IBAction func saveState(_ sender: Any) {
+        DispatchQueue.global(qos: .utility).async {
+            self.saveState()
+        }
+    }
+    
     func saveState() {
         DispatchQueue.main.async { [self] in
             for (name, button) in mapping {
@@ -112,27 +128,6 @@ class SettingsGraphicsController: NSViewController {
             Dxvk.options.save()
             Dxvk.modernMVK = modernMVK.state == NSControl.StateValue.on
         }
-    }
-
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do view setup here.
-    }
-    
-    func updateView() {
-        for (option, enabled) in Dxvk.options.hud {
-            mapping[option]?.state = enabled ? NSControl.StateValue.on : NSControl.StateValue.off
-        }
-        async.state = Dxvk.options.async ? NSControl.StateValue.on : NSControl.StateValue.off
-        let limited = Dxvk.options.maxFramerate != 0
-        maxFPS.state = limited ? NSControl.StateValue.on : NSControl.StateValue.off
-        maxFPSField.isEnabled = limited
-        maxFPSField.stringValue = String(Dxvk.options.maxFramerate)
-        scale.doubleValue = Dxvk.options.hudScale
-        modernMVK.state = Dxvk.modernMVK ? NSControl.StateValue.on : NSControl.StateValue.off
-        
-        wineRetina.state = Wine.retina ? NSControl.StateValue.on : NSControl.StateValue.off
     }
 
 }
