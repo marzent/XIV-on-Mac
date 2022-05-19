@@ -236,9 +236,7 @@ struct Dalamud {
     }
     
     static func launchGame(gamePath: String, gameArgs: [String]) {
-        guard Remote.version?.supportedGameVer == FFXIVRepo.game.ver else {
-            return
-        }
+        let willInject = (Remote.version?.supportedGameVer == FFXIVRepo.game.ver) && enabled
         let args = ["launch", "-m", "inject",
                     "--game=\(Wine.path(of: gamePath))",
                     "--dalamud-configuration-path=C:\\Program Files\\XIV on Mac\\dalamudConfig.json",
@@ -247,7 +245,7 @@ struct Dalamud {
                     "--dalamud-asset-directory=C:\\Program Files\\XIV on Mac\\Dalamud Assets",
                     "--dalamud-client-language=\(FFXIVSettings.language.rawValue)",
                     "--dalamud-delay-initialize=\(Int(delay * 1000))"] +
-                    (enabled ? [] : ["--without-dalamud"]) +
+                    (willInject ? [] : ["--without-dalamud"]) +
                     ["--"] + gameArgs
         Wine.launch(args: [injector.path] + args)
     }

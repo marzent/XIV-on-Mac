@@ -446,8 +446,8 @@
             filePath = "XIV on Mac/AddOns/Dalamud.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "242"
-            endingLineNumber = "242"
+            startingLineNumber = "240"
+            endingLineNumber = "240"
             landmarkName = "launchGame(gamePath:gameArgs:)"
             landmarkType = "7">
          </BreakpointContent>
