@@ -27,7 +27,8 @@ class SettingsGraphicsController: SettingsController {
     @IBOutlet private var modernMVK: NSButton!
 
     @IBOutlet private var wineRetina: NSButton!
-
+    @IBOutlet private var wineRetinaWorkaround: NSButton!
+    
     private var mapping: [String : NSButton] = [:]
     
     override func viewDidAppear() {
@@ -59,6 +60,9 @@ class SettingsGraphicsController: SettingsController {
         modernMVK.state = Dxvk.modernMVK ? NSControl.StateValue.on : NSControl.StateValue.off
         
         wineRetina.state = !Wine.retina ? NSControl.StateValue.on : NSControl.StateValue.off
+        wineRetinaWorkaround.state = Wine.retinaStartupBugWorkaround ? NSControl.StateValue.on : NSControl.StateValue.off
+        wineRetinaWorkaround.isHidden = !Wine.retina
+        
     }
 
     @IBAction func resetScale(_ sender: Any) {
@@ -109,8 +113,14 @@ class SettingsGraphicsController: SettingsController {
             return
         }
         Wine.retina = sender.state == NSControl.StateValue.off
+        updateView()
     }
 
+    @IBAction func updateRetinaWorkaround(_ sender: NSButton) {
+        Wine.retinaStartupBugWorkaround = sender.state == NSControl.StateValue.on;
+    }
+    
+    
     @IBAction func saveState(_ sender: Any) {
         DispatchQueue.global(qos: .utility).async {
             self.saveState()
