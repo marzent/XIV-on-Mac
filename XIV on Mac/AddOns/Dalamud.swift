@@ -219,8 +219,8 @@ struct Dalamud {
         if runtimeVersion == netVersion {
             return
         }
-        let dotnetRuntime = URL(string: "https://dotnetcli.azureedge.net/dotnet/Runtime/\(netVersion)/dotnet-runtime-\(netVersion)-win-x64.zip")!
-        let windowsDesktopRuntime = URL(string: "https://dotnetcli.azureedge.net/dotnet/WindowsDesktop/\(netVersion)/windowsdesktop-runtime-\(netVersion)-win-x64.zip")!
+        let dotnetRuntime = URL(string: "https://softwareupdate.xivmac.com/dotnet/Runtime/\(netVersion)/dotnet-runtime-\(netVersion)-win-x64.zip")!
+        let windowsDesktopRuntime = URL(string: "https://softwareupdate.xivmac.com/dotnet/WindowsDesktop/\(netVersion)/windowsdesktop-runtime-\(netVersion)-win-x64.zip")!
         try? HTTPClient.fetchFile(url: dotnetRuntime)
         try? HTTPClient.fetchFile(url: windowsDesktopRuntime)
         try? fm.removeItem(at: runtimeLocation)
