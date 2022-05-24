@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import XIVLauncher
 
 fileprivate let baseVer = "2012.01.01.0000.0000"
 
@@ -50,7 +51,7 @@ public enum FFXIVRepo: String {
             }
             try content.write(to: file, atomically: true, encoding: String.Encoding.utf8)
         } catch {
-            print("Error writing version/bck file \(to)\n", to: &Util.logger)
+            Log.error("Error writing version/bck file \(to)")
         }
     }
     

@@ -97,7 +97,7 @@ class OTP {
 
 extension LaunchController {
     
-    typealias settings = FFXIVSettings
+    typealias settings = Settings
     
     func setupOTP() {
         NotificationCenter.default.addObserver(self,selector: #selector(otpUpdate(_:)),name: .otpPush, object: nil)

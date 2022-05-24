@@ -6,29 +6,33 @@
 //
 
 import Foundation
+import CompatibilityTools
 
 struct Wine {
     @available(*, unavailable) private init() {}
     
-    static let wine64 = Bundle.main.url(forResource: "wine64", withExtension: nil, subdirectory: "wine/bin")!
-    static let wineserver = Bundle.main.url(forResource: "wineserver", withExtension: nil, subdirectory: "wine/bin")!
-    static let prefix = Util.applicationSupport.appendingPathComponent("game")
-    static let xomData = prefix.appendingPathComponent("drive_c/Program Files/XIV on Mac")
-
-    static var logger = Util.Log(name: "wine.log")
+    static let wineBinURL = Bundle.main.url(forResource: "bin", withExtension: nil, subdirectory: "wine")!
+    static let prefix = Util.applicationSupport.appendingPathComponent("wineprefix")
     
-    static func launch(args: [String], blocking: Bool = false) {
-        Util.launch(exec: wine64, args : args, blocking: blocking, wineLog: true)
+    static func setup() {
+        let mvkPath = Bundle.main.url(forResource: Dxvk.modernMVK ? "modern" : "stable", withExtension: "", subdirectory: "MoltenVK")!.path
+        let winePath = Bundle.main.url(forResource: "lib", withExtension: "", subdirectory: "wine")!.path
+        let libSearchPath = [mvkPath, winePath, "/opt/local/lib", "/usr/local/lib", "/usr/lib", "/usr/libexec", "/usr/lib/system", "/opt/X11/lib"].joined(separator: ":")
+        addEnviromentVariable("DYLD_FALLBACK_LIBRARY_PATH", libSearchPath)
+        addEnviromentVariable("DYLD_VERSIONED_LIBRARY_PATH", libSearchPath)
+        addEnviromentVariable("MVK_CONFIG_RESUME_LOST_DEVICE", "1")
+        //addEnviromentVariable("XL_WINEONLINUX", "true")
+        //addEnviromentVariable("XL_WINEONMAC", Settings.platform == .mac ? "true" : "false")
+        createCompatToolsInstance(Wine.wineBinURL.path, Wine.debug, Wine.esync)
     }
     
-    static var processes: [(pid: Int, name: String)] {
-        let infoProc = Util.launchToString(exec: wine64, args: ["winedbg", "--command", "info proc"])
-        let lines = infoProc.replacingOccurrences(of: "\\_", with: "").components(separatedBy: "\n")
-        guard let headerIndex = lines.firstIndex(of: " pid      threads  executable (all id:s are in hex)") else {
-            return []
+    static func launch(command: String, blocking: Bool = false) {
+        if blocking {
+            runInPrefixBlocking(command)
         }
-        let procLines = lines.dropFirst(headerIndex + 1).dropLast().map {$0.split(separator: " ")}
-        return procLines.filter {$0.count == 3}.map {(pid: Int($0[0], radix: 16) ?? 0, name: String($0[2].dropFirst().dropLast())) }
+        else {
+            runInPrefix(command)
+        }
     }
     
     static func pidOf(processName: String) -> Int {
@@ -36,24 +40,19 @@ struct Wine {
     }
     
     static func pidsOf(processName: String) -> [Int] {
-        processes.filter {$0.name == processName}.map {$0.pid}
+        Array(String(cString: getProcessIds(processName)).split(separator: " ").compactMap {Int($0)})
     }
     
     static func taskKill(pid: Int) {
-        launch(args: ["taskkill", "/f", "/pid", "\(pid)"], blocking: true)
+        launch(command: "taskkill /f /pid \(pid)", blocking: true)
     }
     
     static func taskKill(processName: String) {
-        launch(args: ["taskkill", "/f", "/im" , processName], blocking: true)
+        launch(command: "taskkill /f /im \(processName)", blocking: true)
     }
     
     static func touchDocuments() {
-        launch(args: ["cmd", "/c", "dir", "%userprofile%/My Documents", ">", "nul"])
-    }
-    
-    static func path(of: String) -> String {
-        let output = Util.launchToString(exec: wine64, args: ["winepath", "--windows", of])
-        return output.components(separatedBy: "\n").dropLast().last ?? ""
+        launch(command: "cmd /c dir \"%userprofile%/My Documents\" > nul")
     }
     
     private static let esyncSettingKey = "EsyncSetting"
@@ -63,6 +62,7 @@ struct Wine {
         }
         set {
             UserDefaults.standard.set(newValue, forKey: esyncSettingKey)
+            createCompatToolsInstance(Wine.wineBinURL.path, Wine.debug, Wine.esync)
         }
     }
     
@@ -73,19 +73,16 @@ struct Wine {
         }
         set {
             UserDefaults.standard.set(newValue, forKey: wineDebugSettingKey)
+            createCompatToolsInstance(Wine.wineBinURL.path, Wine.debug, Wine.esync)
         }
     }
-
-    static func kill() {
-        Util.launch(exec: wineserver, args: ["-k"], blocking: true)
-    }
     
-    static func wait() {
-        Util.launch(exec: wineserver, args: ["-w"], blocking: true)
+    static func kill() {
+        killWine()
     }
     
     static func addReg(key: String, value: String, data: String) {
-        launch(args: ["reg", "add", key, "/v", value, "/d", data, "/f"], blocking: true)
+        addRegistryKey(key, value, data)
     }
     
     static func override(dll: String, type: String) {
@@ -93,7 +90,7 @@ struct Wine {
     }
     
     static func set(version: String) {
-        launch(args: ["winecfg", "-v", version], blocking: true)
+        launch(command: "winecfg -v \(version)", blocking: true)
     }
     
     private static let retinaSettingKey = "RetinaMode"

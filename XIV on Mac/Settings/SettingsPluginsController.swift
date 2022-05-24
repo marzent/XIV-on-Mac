@@ -17,8 +17,8 @@ class SettingsPluginsController: SettingsController {
     override func updateView() {
         discord.state = DiscordBridge.enabled ? NSControl.StateValue.on : NSControl.StateValue.off
         
-        dalamud.state = Dalamud.enabled ? NSControl.StateValue.on : NSControl.StateValue.off
-        delay.stringValue = "\(Dalamud.delay)"
+        dalamud.state = Settings.dalamudEnabled ? NSControl.StateValue.on : NSControl.StateValue.off
+        delay.stringValue = "\(Settings.injectionDelay)"
     }
     
     @IBAction func saveState(_ sender: Any) {
@@ -31,8 +31,8 @@ class SettingsPluginsController: SettingsController {
         DispatchQueue.main.async { [self] in
             DiscordBridge.enabled = discord.state == NSControl.StateValue.on
             
-            Dalamud.enabled = dalamud.state == NSControl.StateValue.on
-            Dalamud.delay = Double(delay.stringValue) ?? Dalamud.defaultInjectionDelay
+            Settings.dalamudEnabled = dalamud.state == NSControl.StateValue.on
+            Settings.injectionDelay = Double(delay.stringValue) ?? Settings.defaultInjectionDelay
         }
     }
     

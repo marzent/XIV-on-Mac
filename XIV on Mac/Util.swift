@@ -15,30 +15,6 @@ struct Util {
     static let applicationSupport = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).last!.appendingPathComponent("XIV on Mac")
     static let cache = applicationSupport.appendingPathComponent("cache")
     static let appleReceiptsPath = URL(fileURLWithPath: "/Library/Apple/System/Library/Receipts/")
-
-    class Log: TextOutputStream {
-        let logName: String
-        
-        init(name: String) {
-            logName = name
-        }
-        
-        func write(_ string: String) {
-            if (string == "\n" || string == "") {
-                return
-            }
-            let log = applicationSupport.appendingPathComponent(logName)
-            if let handle = try? FileHandle(forWritingTo: log) {
-                handle.seekToEndOfFile()
-                handle.write(string.data(using: .utf8)!)
-                handle.closeFile()
-            } else {
-                try? string.data(using: .utf8)?.write(to: log)
-            }
-        }
-    }
-
-    static var logger = Log(name: "app.log")
     
     static func make(dir : String) {
         if !FileManager.default.fileExists(atPath: dir) {
@@ -46,7 +22,7 @@ struct Util {
                 try FileManager.default.createDirectory(atPath: dir, withIntermediateDirectories: true, attributes: nil)
             }
             catch {
-                print(error.localizedDescription)
+                Log.error(error.localizedDescription)
             }
         }
     }
@@ -63,24 +39,12 @@ struct Util {
         let pipe = Pipe()
         task.standardOutput = pipe
         task.standardError = pipe
-        let outHandle = pipe.fileHandleForReading
-        outHandle.readabilityHandler = { pipe in
-            if let line = String(data: pipe.availableData, encoding: String.Encoding.utf8) {
-                wineLog ? print(line, to: &Wine.logger) : print(line, to: &logger)
-            } else {
-                print("Error decoding data: \(pipe.availableData)\n", to: &logger)
-            }
-        }
         do {
             try task.run()
         }
         catch {
-            print("Error starting subprocess", to: &logger)
+            Log.error("Error starting subprocess")
             return
-        }
-        DispatchQueue.global(qos: .background).async {
-            task.waitUntilExit()
-            try? outHandle.close()
         }
         if blocking {
             task.waitUntilExit()
@@ -101,14 +65,14 @@ struct Util {
             if let line = String(data: pipe.availableData, encoding: String.Encoding.utf8) {
                 ret.append(contentsOf: line)
             } else {
-                print("Error decoding data: \(pipe.availableData)\n", to: &logger)
+                Log.error("Error decoding data: \(pipe.availableData)")
             }
         }
         do {
             try task.run()
         }
         catch {
-            print("Error starting subprocess", to: &logger)
+            Log.error("Error starting subprocess")
         }
         task.waitUntilExit()
         try? outHandle.close()
@@ -117,7 +81,7 @@ struct Util {
     
     static var enviroment : [String : String] {
         var env = ProcessInfo.processInfo.environment
-        if FFXIVSettings.platform == .steam {
+        if Settings.platform == .steam {
             env["IS_FFXIV_LAUNCH_FROM_STEAM"] = "1"
         }
         env["LANG"] = "en_US" //needed to run when system language is set to 日本語
@@ -199,7 +163,7 @@ struct Util {
             }
             catch {
                 // Write failed
-                print(error)
+                Log.error(error.localizedDescription)
             }
         }
         
@@ -222,7 +186,7 @@ struct Util {
             }
             else
             {
-                print(error)
+                Log.error(error.localizedDescription)
                 return nil
             }
         }
@@ -234,14 +198,14 @@ struct Util {
                 try FileManager.default.copyItem(at: defaultCfgURL, to: FFXIVApp.configURL)
             }
             catch let createError as NSError {
-                print (createError)
+                Log.error(createError.localizedDescription)
             }
         }
         do {
             configFileContents = try String(contentsOf:FFXIVApp.configURL)
         }
         catch {
-            print (error)
+            Log.error(error.localizedDescription)
             return nil
         }
 
@@ -269,7 +233,7 @@ struct Util {
                 return .x64Native
             }
             // An error occured... Assume native?
-            print("Error determining execution environment", to: &logger)
+            Log.error("Error determining execution environment")
             return .x64Native
         }
         if (ret == 1) {

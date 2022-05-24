@@ -18,9 +18,9 @@ class SettingsGeneralController: SettingsController {
     @IBOutlet private var maxDownloadField: NSTextField!
 
     override func updateView() {
-        language.selectItem(at: Int(FFXIVSettings.language.rawValue))
-        license.selectItem(at: Int(FFXIVSettings.platform.rawValue))
-        freeTrial.state = FFXIVSettings.freeTrial ? NSControl.StateValue.on : NSControl.StateValue.off
+        language.selectItem(at: Int(Settings.language.rawValue))
+        license.selectItem(at: Int(Settings.platform.rawValue))
+        freeTrial.state = Settings.freeTrial ? NSControl.StateValue.on : NSControl.StateValue.off
         
         let limitedDown = HTTPClient.maxSpeed > 0
         maxDownload.state = limitedDown ? NSControl.StateValue.on : NSControl.StateValue.off
@@ -46,9 +46,9 @@ class SettingsGeneralController: SettingsController {
     
     func saveState() {
         DispatchQueue.main.async {
-            FFXIVSettings.language = FFXIVLanguage(rawValue: UInt32(self.language.indexOfSelectedItem)) ?? .english
-            FFXIVSettings.platform = FFXIVPlatform(rawValue: UInt32(self.license.indexOfSelectedItem)) ?? .mac
-            FFXIVSettings.freeTrial = self.freeTrial.state == NSControl.StateValue.on
+            Settings.language = FFXIVLanguage(rawValue: UInt32(self.language.indexOfSelectedItem)) ?? .english
+            Settings.platform = FFXIVPlatform(rawValue: UInt32(self.license.indexOfSelectedItem)) ?? .mac
+            Settings.freeTrial = self.freeTrial.state == NSControl.StateValue.on
             
             HTTPClient.maxSpeed = self.maxDownloadField.isEnabled ? Double(self.maxDownloadField.stringValue) ?? 0.0 : 0.0
         }

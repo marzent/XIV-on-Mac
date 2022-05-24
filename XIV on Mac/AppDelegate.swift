@@ -8,6 +8,7 @@
 import Cocoa
 import Sparkle
 import AppMover
+import XIVLauncher
 
 @main class AppDelegate: NSObject, NSApplicationDelegate, SPUUpdaterDelegate {
     private var settingsWinController: NSWindowController?
@@ -16,6 +17,13 @@ import AppMover
     @IBOutlet private var sparkle: SPUStandardUpdaterController!
     @IBOutlet private var actAutoLaunch: NSMenuItem!
     @IBOutlet private var bhAutoLaunch: NSMenuItem!
+    
+    func applicationWillFinishLaunching(_ notification: Notification) {
+        loadConfig(Settings.acceptLanguage, Settings.gamePath.path, Settings.gameConfigPath.path, UInt8(Settings.language.rawValue), true, true, Settings.freeTrial, Patch.dir.path, 0, 0, true, 1, Int32(Settings.injectionDelay * 1000))
+        let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString")!
+        let build = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion")!
+        initXL("XIV on Mac \(version) build \(build)", Util.applicationSupport.path)
+    }
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         let storyboard = NSStoryboard(name: "Main", bundle: nil)
@@ -26,14 +34,11 @@ import AppMover
         actAutoLaunch.state = ACT.autoLaunch ? .on : .off
         bhAutoLaunch.state = ACT.autoLaunchBH ? .on : .off
         checkGPUSupported()
-        checkForRosetta()
-        Steam.initAPI()
+        Wine.setup()
         sparkle.updater.checkForUpdatesInBackground()
-        Util.make(dir: Wine.xomData.path)
         Util.make(dir: Util.cache.path)
-        Wine.touchDocuments()
     #if DEBUG
-        print("Running in debug mode")
+        Log.debug("Running in debug mode")
     #else
         AppMover.moveIfNecessary()
     #endif
@@ -55,7 +60,7 @@ import AppMover
     }
     
     func application(_ sender: NSApplication, openFile filename: String) -> Bool {
-        Wine.launch(args: [filename])
+        Wine.launch(command: "\"\(filename)\"")
         return true
     }
     
@@ -162,19 +167,19 @@ import AppMover
     }
     
     @IBAction func regedit(_ sender: Any) {
-        Wine.launch(args: ["regedit"])
+        Wine.launch(command: "regedit")
     }
     
     @IBAction func winecfg(_ sender: Any) {
-        Wine.launch(args: ["winecfg"])
+        Wine.launch(command: "winecfg")
     }
     
     @IBAction func explorer(_ sender: Any) {
-        Wine.launch(args: ["explorer"])
+        Wine.launch(command: "explorer")
     }
     
     @IBAction func cmd(_ sender: Any) {
-        Wine.launch(args: ["wineconsole"])
+        Wine.launch(command: "wineconsole")
     }
     
     @IBAction func dxvkSettings(_ sender: Any) {
@@ -196,7 +201,7 @@ import AppMover
         openPanel.begin() { (response) in
             if response == .OK {
                 if InstallerController.isValidGameDirectory(gamePath: openPanel.url!.path) {
-                    FFXIVSettings.gamePath = openPanel.url!
+                    Settings.gamePath = openPanel.url!
                     openPanel.close()
                     return
                 }
@@ -207,7 +212,7 @@ import AppMover
                 alert.addButton(withTitle: "Yes")
                 alert.addButton(withTitle: "No")
                 if alert.runModal() == .alertFirstButtonReturn {
-                    FFXIVSettings.gamePath = openPanel.url!
+                    Settings.gamePath = openPanel.url!
                 }
                 openPanel.close()
             }

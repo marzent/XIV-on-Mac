@@ -6,6 +6,7 @@
 //
 
 import Cocoa
+import XIVLauncher
 
 class LaunchController: NSViewController {
     
@@ -56,7 +57,7 @@ class LaunchController: NSViewController {
     }
     
     func checkBoot() {
-        if let bootPatches = try? FFXIVLogin.bootPatches, !bootPatches.isEmpty {
+        if let bootPatches = try? Patch.bootPatches, !bootPatches.isEmpty {
             startPatch(bootPatches)
         }
         DispatchQueue.main.async {
@@ -85,9 +86,9 @@ class LaunchController: NSViewController {
     }
     
     private func update() {
-        autoLoginCheck.state = FFXIVSettings.autoLogin ? .on : .off
-        userField.stringValue = FFXIVSettings.credentials?.username ?? ""
-        passwdField.stringValue = FFXIVSettings.credentials?.password ?? ""
+        autoLoginCheck.state = Settings.autoLogin ? .on : .off
+        userField.stringValue = Settings.credentials?.username ?? ""
+        passwdField.stringValue = Settings.credentials?.password ?? ""
         setupOTP()
     }
     
@@ -99,7 +100,7 @@ class LaunchController: NSViewController {
     
     @IBAction func showAccounts(_ sender: Any) {
         userMenu.items = []
-        let accounts = FFXIVLoginCredentials.accounts
+        let accounts = LoginCredentials.accounts
         for account in accounts {
             let item = userMenuItem(title: account.username, action: #selector(update(_:)), keyEquivalent: "")
             item.credentials = account
@@ -109,7 +110,7 @@ class LaunchController: NSViewController {
     }
     
     @IBAction func autoLoginStateChange(_ sender: NSButton) {
-        FFXIVSettings.autoLogin = sender.state == .on
+        Settings.autoLogin = sender.state == .on
     }
     
     @IBAction func doLogin(_ sender: Any) {
@@ -137,18 +138,20 @@ class LaunchController: NSViewController {
             return
         }
         view.window?.beginSheet(loginSheetWinController!.window!)
-        FFXIVSettings.credentials = FFXIVLoginCredentials(username: userField.stringValue, password: passwdField.stringValue, oneTimePassword: otpField.stringValue)
+        Settings.credentials = LoginCredentials(username: userField.stringValue, password: passwdField.stringValue, oneTimePassword: otpField.stringValue)
         DispatchQueue.global(qos: .default).async {
             do {
-                let (uid, patches) = try FFXIVLogin().result
-                guard patches.isEmpty else {
+                let loginResult = try LoginResult()
+                if !loginResult.pendingPatches.isEmpty {
                     DispatchQueue.main.async { [self] in
                         loginSheetWinController?.window?.close()
                     }
-                    self.startPatch(patches)
+                    self.startPatch(loginResult.pendingPatches)
                     return
                 }
-                FFXIVApp().start(sid: uid)
+                NotificationCenter.default.post(name: .loginInfo, object: nil, userInfo: [Notification.status.info: "Starting Game"])
+                try loginResult.startGame()
+                NotificationCenter.default.post(name: .gameStarted, object: nil)
             } catch FFXIVLoginError.noInstall {
                 DispatchQueue.main.async { [self] in
                     loginSheetWinController?.window?.close()
@@ -157,11 +160,11 @@ class LaunchController: NSViewController {
             } catch {
                 DispatchQueue.main.async { [self] in
                     loginSheetWinController?.window?.close()
-                    let error = error as! LocalizedError
+                    //let error = error as! LocalizedError
                     let alert = NSAlert()
                     alert.addButton(withTitle: NSLocalizedString("OK_BUTTON", comment: ""))
                     alert.alertStyle = .critical
-                    alert.messageText = error.failureReason ?? "Error"
+                    alert.messageText = "Error"
                     alert.informativeText = error.localizedDescription
                     alert.runModal()
                 }
@@ -196,7 +199,7 @@ class LaunchController: NSViewController {
 }
 
 class userMenuItem: NSMenuItem {
-    var credentials: FFXIVLoginCredentials!
+    var credentials: LoginCredentials!
 }
 
 final class BannerView: NSImageView {

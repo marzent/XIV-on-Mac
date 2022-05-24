@@ -42,9 +42,8 @@ class PatchController: NSViewController {
         Wine.kill()
         let totalSize = Patch.totalLength(patches)
         patchQueue.async {
-            PatchInstaller.update()
             DispatchQueue.main.async { [self] in
-                installPatch.stringValue = "XIVLauncher.PatchInstaller is ready"
+                installPatch.stringValue = "Waiting for download to finish..."
             }
         }
         installStatus.stringValue = "0 out of \(patches.count) Patches installed"
@@ -69,7 +68,7 @@ class PatchController: NSViewController {
             DispatchQueue.main.async { [self] in
                 installPatch.stringValue = patch.path
             }
-            PatchInstaller.install(patch)
+            patch.install()
             DispatchQueue.main.async { [self] in
                 let installsDone = patchNum + 1
                 installBar.doubleValue = Double(installsDone)
@@ -83,13 +82,13 @@ class PatchController: NSViewController {
     
     private func download(_ patch: Patch, totalSize: Int64, partialSize: Int64, tries: Int = 0, maxTries: Int = 3) {
         let headers: OrderedDictionary = [
-            "User-Agent"     : FFXIVLogin.userAgentPatch,
+            "User-Agent"     : Patch.userAgent,
             "Accept-Encoding": "*/*,application/metalink4+xml,application/metalink+xml",
             "Host"           : "patch-dl.ffxiv.com",
             "Connection"     : "Keep-Alive",
             "Want-Digest"    : "SHA-512;q=1, SHA-256;q=1, SHA;q=0.1"
         ]
-        let destination = Patch.cache.appendingPathComponent(patch.path)
+        let destination = Patch.dir.appendingPathComponent(patch.path)
         do {
             try HTTPClient.fetchFile(url: patch.url, destinationUrl: destination, headers: headers) { total, now, speed in
                 let totalCompletedSize = partialSize + now

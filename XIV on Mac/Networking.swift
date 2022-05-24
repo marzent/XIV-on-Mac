@@ -123,8 +123,8 @@ extension HTTPClient {
             try FileManager.default.moveItem(at: tempURL, to: destURL)
         }
         else {
-            print("Invalid response \(response) for file download \(url)!\n", to: &Util.logger)
-            try? print(Data(contentsOf: tempURL), to: &Util.logger)
+            Log.error("Invalid response \(response) for file download \(url)!\n")
+            try? Log.error(Data(contentsOf: tempURL))
             throw cURL.Error.CouldNotConnect
         }
     }

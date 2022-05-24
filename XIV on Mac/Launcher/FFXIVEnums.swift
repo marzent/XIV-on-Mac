@@ -13,21 +13,13 @@ public enum FFXIVPlatform: UInt32 {
     case steam = 2
 }
 
-public enum FFXIVExpansionLevel: UInt32 {
-    case aRealmReborn = 0
-    case heavensward = 1
-    case stormblood = 2
-    case shadowbringers = 3
-    case endwalker = 4
-}
-
-public enum FFXIVRegion: UInt32 {
+public enum FFXIVLanguage: UInt32 {
     case japanese = 0
-    case english = 2
-    case french = 1
-    case german = 3
+    case english = 1
+    case french = 3
+    case german = 2
     
-    static func guessFromLocale() -> FFXIVRegion {
+    static func guessFromLocale() -> FFXIVLanguage {
         switch Locale.current.languageCode {
         case "ja"?:
             return .japanese
@@ -41,26 +33,6 @@ public enum FFXIVRegion: UInt32 {
             return .english
         }
     }
-    
-    var language: FFXIVLanguage {
-        switch self {
-        case .english:
-            return .english
-        case .french:
-            return .french
-        case .german:
-            return .german
-        case .japanese:
-            return .japanese
-        }
-    }
-}
-
-public enum FFXIVLanguage: UInt32 {
-    case japanese = 0
-    case english = 1
-    case french = 3
-    case german = 2
     
     var code: String {
         switch self {
@@ -79,6 +51,10 @@ public enum FFXIVLanguage: UInt32 {
             return "ja"
         }
     }
+}
+
+public enum XLError: Error {
+    case runtimeError(String)
 }
 
 public enum FFXIVLoginError: Error {

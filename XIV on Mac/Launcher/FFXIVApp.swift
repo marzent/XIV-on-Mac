@@ -8,7 +8,7 @@
 import Foundation
 
 public struct FFXIVApp {
-    typealias settings = FFXIVSettings
+    typealias settings = Settings
     static let configFolder = Util.userHome.appendingPathComponent("/Documents/My Games/FINAL FANTASY XIV - A Realm Reborn/")
     static let configURL = configFolder.appendingPathComponent("FFXIV.cfg")
     let bootRepoURL, bootExeURL, bootExe64URL, launcherExeURL, launcherExe64URL, updaterExeURL, updaterExe64URL: URL
@@ -16,7 +16,7 @@ public struct FFXIVApp {
     private let bootFiles: [URL]
     
     init() {
-        bootRepoURL = FFXIVSettings.gamePath.appendingPathComponent("boot")
+        bootRepoURL = Settings.gamePath.appendingPathComponent("boot")
         bootExeURL = bootRepoURL.appendingPathComponent("ffxivboot.exe")
         bootExe64URL = bootRepoURL.appendingPathComponent("ffxivboot64.exe")
         launcherExeURL = bootRepoURL.appendingPathComponent("ffxivlauncher.exe")
@@ -24,7 +24,7 @@ public struct FFXIVApp {
         updaterExeURL = bootRepoURL.appendingPathComponent("ffxivupdater.exe")
         updaterExe64URL = bootRepoURL.appendingPathComponent("ffxivupdater64.exe")
         
-        gameRepoURL = FFXIVSettings.gamePath.appendingPathComponent("game")
+        gameRepoURL = Settings.gamePath.appendingPathComponent("game")
         dx9URL = gameRepoURL.appendingPathComponent("ffxiv.exe")
         dx11URL = gameRepoURL.appendingPathComponent("ffxiv_dx11.exe")
         sqpackFolderURL = gameRepoURL.appendingPathComponent("sqpack")
@@ -32,30 +32,9 @@ public struct FFXIVApp {
         bootFiles = [bootExeURL, bootExe64URL, launcherExeURL, launcherExe64URL, updaterExeURL, updaterExe64URL]
     }
     
-    func start(sid: String) {
-        let baseArgs = [
-            ("/DEV.DataPathType", "1"),
-            ("/DEV.MaxEntitledExpansionID", "\(settings.expansionId.rawValue)"),
-            ("/DEV.TestSID", sid),
-            ("/DEV.UseSqPack", "1"),
-            ("/SYS.Region", "\(settings.region.rawValue)"),
-            ("/language", "\(settings.language.rawValue)"),
-            ("/IsSteam", settings.platform == .steam ? "1" : "0"),
-            ("/ver", FFXIVRepo.game.ver)
-        ]
-        Dxvk.install()
-        Dalamud.preLaunch()
-        NotificationCenter.default.post(name: .loginInfo, object: nil, userInfo: [Notification.status.info: "Starting Game"])
-        Dalamud.launchGame(gamePath: dx11URL.path, gameArgs: [FFXIVApp.encryptedArgs(args: baseArgs)])
-        let maxGameStartTime = 15.0
-        DispatchQueue.main.asyncAfter(deadline: .now() + maxGameStartTime) {
-            NotificationCenter.default.post(name: .gameStarted, object: nil)
-        }
-    }
-    
-    func startOfficialLauncher() {
-        Wine.launch(args: [bootExe64URL.path])
-    }
+//    func startOfficialLauncher() {
+//        Wine.launch(args: [bootExe64URL.path])
+//    }
     
     static var running: Bool {
         instances > 0
@@ -95,19 +74,4 @@ public struct FFXIVApp {
     var installed: Bool {
         bootFiles.allSatisfy({FileManager.default.fileExists(atPath: $0.path)})
     }
-    
-    var bootHash: String {
-        bootFiles.map({(try? FFXIVApp.hashSegment(file: $0)) ?? ""}).joined(separator: ",")
-    }
-
-    func versionList(maxEx: UInt32) -> String {
-        let expansions = FFXIVRepo.expansions(max: maxEx).map({"\($0.rawValue)\t\($0.ver)"})
-        return "\(FFXIVRepo.boot.ver)=\(bootHash)\n\(expansions.joined(separator: "\n"))"
-    }
-    
-    private static func hashSegment(file: URL) throws -> String {
-        let (hash, len) = try Encryption.sha1(file: file)
-        return "\(file.lastPathComponent)/\(len)/\(hash)"
-    }
-    
 }

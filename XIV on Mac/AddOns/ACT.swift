@@ -53,7 +53,7 @@ class ACT {
     
     static func launch() {
         install()
-        Wine.launch(args: [exec.path])
+        Wine.launch(command: "\"\(exec.path)\"")
         if autoLaunchBH {
             DispatchQueue.global().asyncAfter(deadline: .now() + 12.0) {
                 launchBH()
@@ -68,7 +68,7 @@ class ACT {
     static func install() {
         Dotnet.download(url: remote.absoluteString)
         guard let archive = Archive(url: Util.cache.appendingPathComponent("ACTv3.zip"), accessMode: .read) else  {
-            print("Fatal error reading ACT archive\n", to: &Util.logger)
+            Log.fatal("Fatal error reading ACT archive")
             return
         }
         Util.make(dir: dir)

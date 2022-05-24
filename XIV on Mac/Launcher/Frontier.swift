@@ -26,7 +26,7 @@ class Frontier {
     }
     
     static var referer: URL {
-        generateReferer(lang: FFXIVSettings.language)
+        generateReferer(lang: Settings.language)
     }
     
     static var refererGlobal: URL {
@@ -34,13 +34,13 @@ class Frontier {
     }
     
     static var headline: URL {
-        let lang = FFXIVSettings.language.code
+        let lang = Settings.language.code
         return URL(string: "https://frontier.ffxiv.com/news/headline.json?lang=\(lang)&media=pcapp&_=\(squareTime)")!
     }
     
     static func fetch(url: URL, accept: String? = nil, global: Bool = false) -> HTTPClient.Response? {
         let headers: OrderedDictionary = [
-            "User-Agent"     : FFXIVLogin.userAgent,
+            //"User-Agent"     : FFXIVLogin.userAgent,
             "Accept"         : accept,
             "Accept-Encoding": "gzip, deflate",
             "Origin"         : "https://launcher.finalfantasyxiv.com",
@@ -67,7 +67,7 @@ class Frontier {
     }
     
     static var gameMaintenance: Bool {
-        let url = URL(string: "https://frontier.ffxiv.com/worldStatus/gate_status.json?lang=\(FFXIVSettings.language.code)&_=\(squareTime)")!
+        let url = URL(string: "https://frontier.ffxiv.com/worldStatus/gate_status.json?lang=\(Settings.language.code)&_=\(squareTime)")!
         guard let response = fetch(url: url) else {
             return true
         }

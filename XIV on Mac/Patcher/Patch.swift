@@ -5,22 +5,28 @@
 //  Created by Marc-Aurel Zent on 25.02.22.
 //
 
-import Foundation
+import AppKit
+import XIVLauncher
 
-public class Patch {
-    
-    static let dir = Util.applicationSupport.appendingPathComponent("patch")
-    static let cache = dir.appendingPathComponent("cache")
-    
-    init(_ input: [String]) {
-        let hasHash = input.count == 9
-        self.hashes = hasHash ? Hashes(type: input[5], blockSize: input[6], array: input[7]) : nil
-        self.version = input[4]
-        self.url = URL(string: hasHash ? input[8] : input[5])!
-        self.length = Int64(input[0]) ?? 0
+public struct Patch: Codable {
+    let version, hashType: String
+    private let _url: String
+    let hashBlockSize: Int
+    let hashes: [String]?
+    let length: Int64
+
+    enum CodingKeys: String, CodingKey {
+        case version = "VersionId"
+        case hashType = "HashType"
+        case _url = "Url"
+        case hashBlockSize = "HashBlockSize"
+        case hashes = "Hashes"
+        case length = "Length"
     }
     
-    struct Hashes {
+    static let dir = Util.applicationSupport.appendingPathComponent("patch")
+    
+    struct Hashes: Codable {
         internal init(type: String, blockSize: String, array: String) {
             self.type = type
             self.blockSize = UInt64(blockSize) ?? 0
@@ -31,12 +37,11 @@ public class Patch {
         let blockSize: UInt64
         let array: [String]
     }
-    
-    let hashes: Hashes?
-    let version: String
-    let url: URL
-    let length: Int64
 
+    var url: URL {
+        URL(string: _url)!
+    }
+    
     var name: String {
         [repo.rawValue, String(url.lastPathComponent.dropLast(6))].joined(separator: "/")
     }
@@ -46,13 +51,6 @@ public class Patch {
     var repo: FFXIVRepo {
         FFXIVRepo(rawValue: url.pathComponents[2]) ??
         (url.pathComponents[1] == "boot" ? .boot : .game)
-    }
-    
-    static func parse(patches: String) -> [Patch] {
-        patches.components(separatedBy: "\r\n")
-            .dropFirst(5)
-            .dropLast(2)
-            .map {Patch($0.components(separatedBy: "\t"))}
     }
     
     static func totalLength(_ patches: [Patch]) -> Int64 {
@@ -70,6 +68,46 @@ public class Patch {
         }
         set {
             UserDefaults.standard.set(newValue, forKey: keepKey)
+        }
+    }
+    
+    static var userAgent: String {
+        String(cString: getPatcherUserAgent())
+    }
+    
+    static var bootPatches: [Patch] {
+        get throws {
+            let patchesJSON = String(cString: getBootPatches())
+            do {
+                return try JSONDecoder().decode([Patch].self, from: patchesJSON.data(using: .utf8)!)
+            }
+            catch {
+                throw XLError.runtimeError(patchesJSON)
+            }
+        }
+    }
+    
+    func install() {
+        let patchPath = Patch.dir.appendingPathComponent(self.path).path
+        var repo = self.repo
+        let res = String(cString: installPatch(patchPath, repo.patchURL.path))
+        if res == "OK" {
+            repo.ver = self.version
+            Log.information("Updated ver to \(repo.ver)")
+        }
+        else {
+            DispatchQueue.main.sync {
+                let alert = NSAlert()
+                alert.addButton(withTitle: "Close")
+                alert.alertStyle = .critical
+                alert.messageText = "XIVLancher.PatchInstaller Error"
+                alert.informativeText = res
+                alert.runModal()
+                Util.quit()
+            }
+        }
+        if !Patch.keep {
+            try? FileManager.default.removeItem(atPath: patchPath)
         }
     }
 }

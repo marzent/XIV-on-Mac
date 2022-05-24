@@ -28,7 +28,7 @@ struct DiscordBridge {
             Wine.taskKill(processName: "discord_bridge.exe")
             return
         }
-        Wine.launch(args: [bridge.path])
+        Wine.launch(command: "\"\(bridge.path)\"")
     }
    
 }

@@ -38,22 +38,22 @@ class InstallerController: NSViewController {
     }
     
     @IBAction func versionSelect(_ sender: NSButton) {
-        Dalamud.enabled = (sender.identifier == NSUserInterfaceItemIdentifier("withDalamud"))
+        Settings.dalamudEnabled = (sender.identifier == NSUserInterfaceItemIdentifier("withDalamud"))
     }
     
     @IBAction func licenseSelect(_ sender: NSButton) {
         switch sender.identifier! {
         case NSUserInterfaceItemIdentifier("windowsLicense"):
             DispatchQueue.global(qos: .utility).async {
-                FFXIVSettings.platform = .windows
+                Settings.platform = .windows
             }
         case NSUserInterfaceItemIdentifier("steamLicense"):
             DispatchQueue.global(qos: .utility).async {
-                FFXIVSettings.platform = .steam
+                Settings.platform = .steam
             }
         default:
             DispatchQueue.global(qos: .utility).async {
-                FFXIVSettings.platform = .mac
+                Settings.platform = .mac
             }
         }
     }
@@ -83,7 +83,7 @@ class InstallerController: NSViewController {
                 }
             case .point:
                 if let gamePath = await getGameDirectory() {
-                    FFXIVSettings.gamePath = URL(fileURLWithPath: gamePath)
+                    Settings.gamePath = URL(fileURLWithPath: gamePath)
                     tabView.selectNextTabViewItem(sender)
                     install()
                 }
@@ -92,13 +92,13 @@ class InstallerController: NSViewController {
     }
     
     private func copyGame(gamePath: String) {
-        FFXIVSettings.gamePath = FFXIVSettings.defaultGameLoc
-        Util.make(dir: FFXIVSettings.defaultGameLoc.deletingLastPathComponent().path)
+        Settings.gamePath = Settings.defaultGameLoc
+        Util.make(dir: Settings.defaultGameLoc.deletingLastPathComponent().path)
         do {
-            try FileManager.default.copyItem(atPath: gamePath, toPath: FFXIVSettings.defaultGameLoc.path)
+            try FileManager.default.copyItem(atPath: gamePath, toPath: Settings.defaultGameLoc.path)
         }
         catch {
-            print("error copying game from \(gamePath)\n", to: &Util.logger)
+            Log.error("Error copying game from \(gamePath)")
         }
     }
     
@@ -208,19 +208,19 @@ class InstallerController: NSViewController {
                 info.stringValue = "Extracting"
             }
             guard let archive = Archive(url: Util.cache.appendingPathComponent("finalfantasyxiv-\(version).zip"), accessMode: .read) else  {
-                print("Fatal error reading base game archive\n", to: &Util.logger)
+                Log.fatal("Fatal error reading base game archive")
                 return
             }
             let baseGamePath = "FINAL FANTASY XIV ONLINE.app/Contents/SharedSupport/finalfantasyxiv/support/published_Final_Fantasy/drive_c/Program Files (x86)/SquareEnix/FINAL FANTASY XIV - A Realm Reborn/"
             let baseGameFiles = archive.filter({ $0.path.starts(with: baseGamePath) })
-            Util.make(dir: FFXIVSettings.gamePath.deletingLastPathComponent())
+            Util.make(dir: Settings.gamePath.deletingLastPathComponent())
             DispatchQueue.main.async { [self] in
                 bar.doubleValue = 0.0
             }
             for (i, file) in baseGameFiles.enumerated() {
                 let components = URL(fileURLWithPath: file.path).pathComponents
                 let relDestination = components[10...].joined(separator: "/")
-                let destination = URL(fileURLWithPath: relDestination, relativeTo: FFXIVSettings.gamePath.deletingLastPathComponent())
+                let destination = URL(fileURLWithPath: relDestination, relativeTo: Settings.gamePath.deletingLastPathComponent())
                 Util.make(dir: destination.deletingLastPathComponent())
                 try? _ = archive.extract(file, to: destination)
                 DispatchQueue.main.async { [self] in
@@ -246,7 +246,7 @@ class InstallerController: NSViewController {
             }
             try content.write(to: file, atomically: true, encoding: String.Encoding.utf8)
         } catch {
-            print("Error writing ffxiv boot launcher config file\n", to: &Util.logger)
+            Log.error("Error writing ffxiv boot launcher config file")
         }
     }
     

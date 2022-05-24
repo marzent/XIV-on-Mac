@@ -29,14 +29,14 @@ struct Dxvk {
                     try fm.removeItem(atPath: winDllPath)
                 }
                 catch {
-                    print("DXVK: error deleting wine dx dll \(winDllPath)\n\(error)\n", to: &Util.logger)
+                    Log.error("[DXVK] error deleting wine dx dll \(winDllPath)\n\(error)")
                 }
             }
             do {
                 try fm.copyItem(atPath: dxvkDllPath, toPath: winDllPath)
             }
             catch {
-                print("DXVK: error copying dxvk dll \(error)\n", to: &Util.logger)
+                Log.error("[DXVK] error copying dxvk dll \(error)")
             }
         }
         let baseCacheName = "ffxiv_dx11.dxvk-cache-base"
@@ -45,23 +45,23 @@ struct Dxvk {
         try? fm.removeItem(at: baseCachePrefix)
         let userCache = try? DxvkStateCache(inputData: (try? Data(contentsOf: userCacheURL)) ?? Data())
         guard let baseCache = try? DxvkStateCache(inputData: (try? Data(contentsOf: baseCacheBundled)) ?? Data()) else {
-            print("Corrupt base cache\n", to: &Util.logger)
+            Log.warning("[DXVK] Corrupt base cache")
             return
         }
         if let userCache = userCache {
             guard userCache.header.version == baseCache.header.version else {
-                print("Base and user cache versions do not match\n", to: &Util.logger)
+                Log.warning("[DXVK] Base and user cache versions do not match")
                 return
             }
             let zoeyEntryHash: [UInt8] = [153, 106, 41, 216, 87, 200, 23, 183, 42, 119, 59, 206, 160, 195, 34, 186, 3, 214, 205, 51]
             if userCache.entries.map({$0.sha1Hash}).contains(zoeyEntryHash) {
-                print("WARN: you are having an entry in your user cache that is known to cause issues, consider deleting your user state cache\n", to: &Util.logger)
+                Log.warning("[DXVK] You are having an entry in your user cache that is known to cause issues, consider deleting your user state cache")
             }
             let mergedCache = DxvkStateCache(header: userCache.header, entries: Array(Set(userCache.entries + baseCache.entries)))
             do {
                 try mergedCache.rawData.write(to: userCacheURL)
             } catch {
-                print("\(error)\n", to: &Util.logger)
+                Log.error(error.localizedDescription)
             }
         } else { //user cache non-existent or corrupt
             try? fm.removeItem(at: userCacheURL)

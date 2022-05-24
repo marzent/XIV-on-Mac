@@ -1,0 +1,14 @@
+module XIVLauncher {
+  header "XIVLauncher.h"
+  export *
+}
+
+module Serilog {
+  header "Serilog.h"
+  export *
+}
+
+module CompatibilityTools {
+  header "CompatibilityTools.h"
+  export *
+}

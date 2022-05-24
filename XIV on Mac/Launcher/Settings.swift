@@ -1,5 +1,5 @@
 //
-//  FFXIVSettings.swift
+//  Settings.swift
 //  XIV on Mac
 //
 //  Created by Marc-Aurel Zent on 19.02.22.
@@ -8,7 +8,7 @@
 import Foundation
 import XIVLauncher
 
-public struct FFXIVSettings {
+public struct Settings {
     private static let storage = UserDefaults.standard
     
     private static let platformKey = "Platform"
@@ -23,7 +23,7 @@ public struct FFXIVSettings {
     }
     
     private static let gamePathKey = "GamePath"
-    static let defaultGameLoc = Wine.prefix.appendingPathComponent("drive_c/Program Files (x86)/SquareEnix/FINAL FANTASY XIV - A Realm Reborn")
+    static let defaultGameLoc = Util.applicationSupport.appendingPathComponent("ffxiv")
     static var gamePath: URL {
         get {
             URL(fileURLWithPath: Util.getSetting(settingKey: gamePathKey, defaultValue: defaultGameLoc.path))
@@ -109,7 +109,9 @@ public struct FFXIVSettings {
     private static let languageKey = "Language"
     static var language: FFXIVLanguage {
         get {
-            FFXIVLanguage(rawValue: UInt32(Util.getSetting(settingKey: languageKey, defaultValue: region.language.rawValue))) ?? region.language
+            let guess = FFXIVLanguage.guessFromLocale()
+            let stored = UInt32(Util.getSetting(settingKey: languageKey, defaultValue: guess.rawValue))
+            return FFXIVLanguage(rawValue: stored) ?? guess
         }
         set {
             storage.set(newValue.rawValue, forKey: languageKey)
@@ -119,20 +121,21 @@ public struct FFXIVSettings {
     private static let dalamudSettingsKey = "DalamudEnabled"
     static var dalamudEnabled: Bool {
         get {
-            UserDefaults.standard.bool(forKey: dalamudSettingsKey)
+            storage.bool(forKey: dalamudSettingsKey)
         }
         set {
-            UserDefaults.standard.set(newValue, forKey: dalamudSettingsKey)
+            storage.set(newValue, forKey: dalamudSettingsKey)
         }
     }
     
+    public static let defaultInjectionDelay = 4.0
     private static let injectionSettingKey = "InjectionDelaySetting"
     static var injectionDelay: Double {
         get {
-            return Util.getSetting(settingKey: injectionSettingKey, defaultValue: Dalamud.defaultInjectionDelay)
+            return Util.getSetting(settingKey: injectionSettingKey, defaultValue: defaultInjectionDelay)
         }
         set {
-            UserDefaults.standard.set(newValue, forKey: injectionSettingKey)
+            storage.set(newValue, forKey: injectionSettingKey)
         }
     }
 }
