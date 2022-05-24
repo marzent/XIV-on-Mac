@@ -12,7 +12,6 @@ import SeeURL
 
 struct FFXIVLogin {
     typealias settings = FFXIVSettings
-    let ticket = Steam.ticket
     let authURL = URL(string: "https://ffxiv-login.square-enix.com/oauth/ffxivarr/login/login.send")!
     
     static var userAgent: String {
@@ -26,14 +25,11 @@ struct FFXIVLogin {
     var authTopURL: URL {
         get throws {
             let isSteam = settings.platform == .steam
-            let base = "https://ffxiv-login.square-enix.com/oauth/ffxivarr/login/top?lng=en&rgn=\(settings.region.rawValue)&isft=\(settings.freeTrial ? 1 : 0)&cssmode=1&isnew=1&launchver=3&issteam=\(isSteam ? 1 : 0)"
+            let base = "https://ffxiv-login.square-enix.com/oauth/ffxivarr/login/top?lng=en&rgn=\(0)&isft=\(settings.freeTrial ? 1 : 0)&cssmode=1&isnew=1&launchver=3&issteam=\(isSteam ? 1 : 0)"
             guard isSteam else {
                 return URL(string: base)!
             }
-            guard let ticket = ticket else {
-                throw FFXIVLoginError.noSteamTicket
-            }
-            let steamParams = "&session_ticket=\(ticket.text)&ticket_size=\(ticket.length)"
+            let steamParams = "&session_ticket="
             return URL(string: base + steamParams)!
         }
     }

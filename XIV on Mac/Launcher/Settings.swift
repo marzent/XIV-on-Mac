@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import XIVLauncher
 
 public struct FFXIVSettings {
     private static let storage = UserDefaults.standard
@@ -32,15 +33,26 @@ public struct FFXIVSettings {
         }
     }
     
+    private static let gameConfigPathKey = "GameConfigPath"
+    static let defaultGameConfigLoc = Util.applicationSupport.appendingPathComponent("ffxivConfig")
+    static var gameConfigPath: URL {
+        get {
+            URL(fileURLWithPath: Util.getSetting(settingKey: gameConfigPathKey, defaultValue: defaultGameConfigLoc.path))
+        }
+        set {
+            storage.set(newValue.path, forKey: gameConfigPathKey)
+        }
+    }
+    
     private static let usernameKey = "Username"
-    private static var credentialsCache: FFXIVLoginCredentials?
-    static var credentials: FFXIVLoginCredentials? {
+    private static var credentialsCache: LoginCredentials?
+    static var credentials: LoginCredentials? {
         get {
             if let creds = credentialsCache {
                 return creds
             }
             if let storedUsername = storage.string(forKey: usernameKey) {
-                return FFXIVLoginCredentials.storedLogin(username: storedUsername)
+                return LoginCredentials.storedLogin(username: storedUsername)
             }
             return nil
         }
@@ -53,16 +65,6 @@ public struct FFXIVSettings {
         }
     }
     
-    private static let expansionIdKey = "ExpansionId"
-    static var expansionId: FFXIVExpansionLevel {
-        get {
-            FFXIVExpansionLevel(rawValue: UInt32(storage.integer(forKey: expansionIdKey))) ?? .aRealmReborn
-        }
-        set {
-            storage.set(newValue.rawValue, forKey: expansionIdKey)
-        }
-    }
-    
     private static let freeTrialKey = "FreeTrial"
     static var freeTrial: Bool {
         get {
@@ -70,7 +72,6 @@ public struct FFXIVSettings {
         }
         set {
             storage.set(newValue, forKey: freeTrialKey)
-            Steam.initAPI()
         }
     }
     
@@ -94,14 +95,15 @@ public struct FFXIVSettings {
         }
     }
     
-    private static let regionKey = "Region"
-    static var region: FFXIVRegion {
-        get {
-            FFXIVRegion(rawValue: UInt32(Util.getSetting(settingKey: regionKey, defaultValue: FFXIVRegion.guessFromLocale().rawValue))) ?? FFXIVRegion.guessFromLocale()
+    private static let acceptLanguageKey = "AcceptLanguage"
+    static var acceptLanguage: String {
+        guard let storedAcceptLanguage = storage.object(forKey: acceptLanguageKey) else {
+            let seed = Int32.random(in: 0..<420)
+            let newAcceptLaungage = String(cString: generateAcceptLanguage(seed)!)
+            storage.set(newAcceptLaungage, forKey: acceptLanguageKey)
+            return newAcceptLaungage
         }
-        set {
-            storage.set(newValue.rawValue, forKey: regionKey)
-        }
+        return storedAcceptLanguage as! String
     }
     
     private static let languageKey = "Language"
@@ -114,4 +116,23 @@ public struct FFXIVSettings {
         }
     }
     
+    private static let dalamudSettingsKey = "DalamudEnabled"
+    static var dalamudEnabled: Bool {
+        get {
+            UserDefaults.standard.bool(forKey: dalamudSettingsKey)
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: dalamudSettingsKey)
+        }
+    }
+    
+    private static let injectionSettingKey = "InjectionDelaySetting"
+    static var injectionDelay: Double {
+        get {
+            return Util.getSetting(settingKey: injectionSettingKey, defaultValue: Dalamud.defaultInjectionDelay)
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: injectionSettingKey)
+        }
+    }
 }
