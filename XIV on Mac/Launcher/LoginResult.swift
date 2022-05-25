@@ -11,9 +11,9 @@ import XIVLauncher
 // MARK: - LoginResult
 struct LoginResult: Codable {
     let state: Int
-    let pendingPatches: [Patch]
-    let oauthLogin: OauthLogin
-    let uniqueID: String
+    let pendingPatches: [Patch]?
+    let oauthLogin: OauthLogin?
+    let uniqueID: String?
 
     enum CodingKeys: String, CodingKey {
         case state = "State"
@@ -23,7 +23,7 @@ struct LoginResult: Codable {
     }
     
     init() throws {
-        let loginResultJSON = String(cString: tryLoginToGame(Settings.credentials!.username, Settings.credentials!.password, Settings.credentials!.oneTimePassword, Settings.platform == .steam))
+        let loginResultJSON = String(cString: tryLoginToGame(Settings.credentials!.username, Settings.credentials!.password, Settings.credentials!.oneTimePassword))
         do {
             self = try JSONDecoder().decode(LoginResult.self, from: loginResultJSON.data(using: .utf8)!)
         }

@@ -22,7 +22,6 @@ struct Wine {
         addEnviromentVariable("DYLD_VERSIONED_LIBRARY_PATH", libSearchPath)
         addEnviromentVariable("MVK_CONFIG_RESUME_LOST_DEVICE", "1")
         addEnviromentVariable("XL_WINEONLINUX", "true")
-        addEnviromentVariable("XL_WINEONMAC", Settings.platform == .mac ? "true" : "false")
         addEnviromentVariable("DXVK_STATE_CACHE_PATH", "C:\\")
         addEnviromentVariable("DXVK_LOG_PATH", "C:\\")
         createCompatToolsInstance(Wine.wineBinURL.path, Wine.debug, Wine.esync)

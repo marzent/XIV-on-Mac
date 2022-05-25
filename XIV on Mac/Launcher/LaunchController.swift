@@ -146,11 +146,11 @@ class LaunchController: NSViewController {
                     Dxvk.install()
                 }
                 let loginResult = try LoginResult()
-                if !loginResult.pendingPatches.isEmpty {
+                if !(loginResult.pendingPatches?.isEmpty ?? true) {
                     DispatchQueue.main.async { [self] in
                         loginSheetWinController?.window?.close()
                     }
-                    self.startPatch(loginResult.pendingPatches)
+                    self.startPatch(loginResult.pendingPatches!)
                     DispatchQueue.main.async { [self] in
                         view.window?.beginSheet(loginSheetWinController!.window!)
                     }

@@ -46,8 +46,8 @@ class SettingsGeneralController: SettingsController {
     
     func saveState() {
         DispatchQueue.main.async {
-            Settings.language = FFXIVLanguage(rawValue: UInt32(self.language.indexOfSelectedItem)) ?? .english
-            Settings.platform = FFXIVPlatform(rawValue: UInt32(self.license.indexOfSelectedItem)) ?? .mac
+            Settings.language = FFXIVLanguage(rawValue: UInt8(self.language.indexOfSelectedItem)) ?? .english
+            Settings.platform = FFXIVPlatform(rawValue: UInt8(self.license.indexOfSelectedItem)) ?? .mac
             Settings.freeTrial = self.freeTrial.state == NSControl.StateValue.on
             
             HTTPClient.maxSpeed = self.maxDownloadField.isEnabled ? Double(self.maxDownloadField.stringValue) ?? 0.0 : 0.0

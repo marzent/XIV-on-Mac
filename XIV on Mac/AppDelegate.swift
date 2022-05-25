@@ -19,7 +19,7 @@ import XIVLauncher
     @IBOutlet private var bhAutoLaunch: NSMenuItem!
     
     func applicationWillFinishLaunching(_ notification: Notification) {
-        loadConfig(Settings.acceptLanguage, Settings.gamePath.path, Settings.gameConfigPath.path, UInt8(Settings.language.rawValue), true, true, Settings.freeTrial, Patch.dir.path, 0, 0, true, 1, Int32(Settings.injectionDelay * 1000))
+        Settings.syncToXL()
         let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString")!
         let build = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion")!
         initXL("XIV on Mac \(version) build \(build)", Util.applicationSupport.path)

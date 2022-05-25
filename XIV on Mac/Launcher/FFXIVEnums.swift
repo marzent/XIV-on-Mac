@@ -7,13 +7,13 @@
 
 import Foundation
 
-public enum FFXIVPlatform: UInt32 {
+public enum FFXIVPlatform: UInt8 {
     case windows = 0
     case mac = 1
     case steam = 2
 }
 
-public enum FFXIVLanguage: UInt32 {
+public enum FFXIVLanguage: UInt8 {
     case japanese = 0
     case english = 1
     case french = 3

@@ -11,6 +11,10 @@ import XIVLauncher
 public struct Settings {
     private static let storage = UserDefaults.standard
     
+    static func syncToXL() {
+        loadConfig(acceptLanguage, gamePath.path, gameConfigPath.path, language.rawValue, true, true, freeTrial, platform.rawValue, Patch.dir.path, 0, 0, true, dalamudEnabled ? 1 : 2, Int32(Settings.injectionDelay * 1000))
+    }
+    
     private static let platformKey = "Platform"
     static var platform: FFXIVPlatform {
         get {
@@ -18,7 +22,7 @@ public struct Settings {
         }
         set {
             storage.set(newValue.rawValue, forKey: platformKey)
-            Wine.setup()
+            syncToXL()
             Wine.addReg(key: "HKEY_CURRENT_USER\\Software\\Wine", value: "HideWineExports", data: newValue == .mac ? "0" : "1")
         }
     }
@@ -31,7 +35,7 @@ public struct Settings {
         }
         set {
             storage.set(newValue.path, forKey: gamePathKey)
-            loadConfig(acceptLanguage, gamePath.path, gameConfigPath.path, UInt8(language.rawValue), true, true, freeTrial, Patch.dir.path, 0, 0, true, dalamudEnabled ? 1 : 2, Int32(Settings.injectionDelay * 1000))
+            syncToXL()
         }
     }
     
@@ -43,7 +47,7 @@ public struct Settings {
         }
         set {
             storage.set(newValue.path, forKey: gameConfigPathKey)
-            loadConfig(acceptLanguage, gamePath.path, gameConfigPath.path, UInt8(language.rawValue), true, true, freeTrial, Patch.dir.path, 0, 0, true, dalamudEnabled ? 1 : 2, Int32(Settings.injectionDelay * 1000))
+            syncToXL()
         }
     }
     
@@ -75,7 +79,7 @@ public struct Settings {
         }
         set {
             storage.set(newValue, forKey: freeTrialKey)
-            loadConfig(acceptLanguage, gamePath.path, gameConfigPath.path, UInt8(language.rawValue), true, true, freeTrial, Patch.dir.path, 0, 0, true, dalamudEnabled ? 1 : 2, Int32(Settings.injectionDelay * 1000))
+            syncToXL()
         }
     }
     
@@ -114,12 +118,12 @@ public struct Settings {
     static var language: FFXIVLanguage {
         get {
             let guess = FFXIVLanguage.guessFromLocale()
-            let stored = UInt32(Util.getSetting(settingKey: languageKey, defaultValue: guess.rawValue))
+            let stored = UInt8(Util.getSetting(settingKey: languageKey, defaultValue: guess.rawValue))
             return FFXIVLanguage(rawValue: stored) ?? guess
         }
         set {
             storage.set(newValue.rawValue, forKey: languageKey)
-            loadConfig(acceptLanguage, gamePath.path, gameConfigPath.path, UInt8(language.rawValue), true, true, freeTrial, Patch.dir.path, 0, 0, true, dalamudEnabled ? 1 : 2, Int32(Settings.injectionDelay * 1000))
+            syncToXL()
         }
     }
     
@@ -130,7 +134,7 @@ public struct Settings {
         }
         set {
             storage.set(newValue, forKey: dalamudSettingsKey)
-            loadConfig(acceptLanguage, gamePath.path, gameConfigPath.path, UInt8(language.rawValue), true, true, freeTrial, Patch.dir.path, 0, 0, true, dalamudEnabled ? 1 : 2, Int32(Settings.injectionDelay * 1000))
+            syncToXL()
         }
     }
     
@@ -142,7 +146,7 @@ public struct Settings {
         }
         set {
             storage.set(newValue, forKey: injectionSettingKey)
-            loadConfig(acceptLanguage, gamePath.path, gameConfigPath.path, UInt8(language.rawValue), true, true, freeTrial, Patch.dir.path, 0, 0, true, dalamudEnabled ? 1 : 2, Int32(Settings.injectionDelay * 1000))
+            syncToXL()
         }
     }
 }
