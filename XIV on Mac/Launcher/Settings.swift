@@ -18,6 +18,7 @@ public struct Settings {
         }
         set {
             storage.set(newValue.rawValue, forKey: platformKey)
+            Wine.setup()
             Wine.addReg(key: "HKEY_CURRENT_USER\\Software\\Wine", value: "HideWineExports", data: newValue == .mac ? "0" : "1")
         }
     }
@@ -30,6 +31,7 @@ public struct Settings {
         }
         set {
             storage.set(newValue.path, forKey: gamePathKey)
+            loadConfig(acceptLanguage, gamePath.path, gameConfigPath.path, UInt8(language.rawValue), true, true, freeTrial, Patch.dir.path, 0, 0, true, dalamudEnabled ? 1 : 2, Int32(Settings.injectionDelay * 1000))
         }
     }
     
@@ -41,6 +43,7 @@ public struct Settings {
         }
         set {
             storage.set(newValue.path, forKey: gameConfigPathKey)
+            loadConfig(acceptLanguage, gamePath.path, gameConfigPath.path, UInt8(language.rawValue), true, true, freeTrial, Patch.dir.path, 0, 0, true, dalamudEnabled ? 1 : 2, Int32(Settings.injectionDelay * 1000))
         }
     }
     
@@ -72,6 +75,7 @@ public struct Settings {
         }
         set {
             storage.set(newValue, forKey: freeTrialKey)
+            loadConfig(acceptLanguage, gamePath.path, gameConfigPath.path, UInt8(language.rawValue), true, true, freeTrial, Patch.dir.path, 0, 0, true, dalamudEnabled ? 1 : 2, Int32(Settings.injectionDelay * 1000))
         }
     }
     
@@ -115,6 +119,7 @@ public struct Settings {
         }
         set {
             storage.set(newValue.rawValue, forKey: languageKey)
+            loadConfig(acceptLanguage, gamePath.path, gameConfigPath.path, UInt8(language.rawValue), true, true, freeTrial, Patch.dir.path, 0, 0, true, dalamudEnabled ? 1 : 2, Int32(Settings.injectionDelay * 1000))
         }
     }
     
@@ -125,6 +130,7 @@ public struct Settings {
         }
         set {
             storage.set(newValue, forKey: dalamudSettingsKey)
+            loadConfig(acceptLanguage, gamePath.path, gameConfigPath.path, UInt8(language.rawValue), true, true, freeTrial, Patch.dir.path, 0, 0, true, dalamudEnabled ? 1 : 2, Int32(Settings.injectionDelay * 1000))
         }
     }
     
@@ -136,6 +142,7 @@ public struct Settings {
         }
         set {
             storage.set(newValue, forKey: injectionSettingKey)
+            loadConfig(acceptLanguage, gamePath.path, gameConfigPath.path, UInt8(language.rawValue), true, true, freeTrial, Patch.dir.path, 0, 0, true, dalamudEnabled ? 1 : 2, Int32(Settings.injectionDelay * 1000))
         }
     }
 }
