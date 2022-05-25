@@ -20,6 +20,8 @@ class PatchController: NSViewController {
     @IBOutlet private var downloadPatchBar: NSProgressIndicator!
     @IBOutlet private var installBar: NSProgressIndicator!
     
+    var isPatching = DispatchSemaphore(value: 0)
+    
     let installQueue = DispatchQueue(label: "installer.serial.queue", qos: .utility, attributes: [], autoreleaseFrequency: .workItem)
     let patchQueue = DispatchQueue(label: "patch.installer.serial.queue", qos: .utility, attributes: [], autoreleaseFrequency: .workItem)
     let formatter = ByteCountFormatter()
@@ -41,19 +43,18 @@ class PatchController: NSViewController {
     func install(_ patches: [Patch]) {
         Wine.kill()
         let totalSize = Patch.totalLength(patches)
-        patchQueue.async {
-            DispatchQueue.main.async { [self] in
-                installPatch.stringValue = "Waiting for download to finish..."
-            }
+        DispatchQueue.main.async { [self] in
+            installPatch.stringValue = "Waiting for download to finish..."
+            installStatus.stringValue = "0 out of \(patches.count) Patches installed"
+            installBar.doubleValue = 0
+            installBar.maxValue = Double(patches.count)
         }
-        installStatus.stringValue = "0 out of \(patches.count) Patches installed"
-        installBar.doubleValue = 0
-        installBar.maxValue = Double(patches.count)
         for (patchNum, _) in patches.enumerated() {
             installQueue.async { [self] in
                 install(patchNum: patchNum, patches: patches, totalSize: totalSize)
             }
         }
+        isPatching.wait()
     }
     
     private func install(patchNum: Int, patches: [Patch], totalSize: Int64) {
@@ -74,6 +75,7 @@ class PatchController: NSViewController {
                 installBar.doubleValue = Double(installsDone)
                 installStatus.stringValue = "\(installsDone) out of \(patches.count) Patches installed"
                 if installsDone == patches.count {
+                    isPatching.signal()
                     view.window?.close() //all done
                 }
             }

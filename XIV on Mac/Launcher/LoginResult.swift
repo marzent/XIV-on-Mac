@@ -32,11 +32,11 @@ struct LoginResult: Codable {
         }
     }
     
-    func startGame() throws -> ProcessIdAndHandle {
+    func startGame() throws -> ProcessInformation {
         let loginResultJSON = String(data: try! JSONEncoder().encode(self), encoding: String.Encoding.utf8)!
         let ret = String(cString: XIVLauncher.startGame(loginResultJSON))
         do {
-            return try JSONDecoder().decode(ProcessIdAndHandle.self, from: loginResultJSON.data(using: .utf8)!)
+            return try JSONDecoder().decode(ProcessInformation.self, from: ret.data(using: .utf8)!)
         }
         catch {
             throw XLError.runtimeError(ret)
@@ -60,8 +60,12 @@ struct OauthLogin: Codable {
     }
 }
 
-// MARK: - ProcessIdAndHandle
-struct ProcessIdAndHandle: Codable {
+// MARK: - ProcessInformation
+struct ProcessInformation: Codable {
     let pid: Int32
     let handle: Int64
+    
+    var exitCode: Int32 {
+        getExitCode(pid)
+    }
 }

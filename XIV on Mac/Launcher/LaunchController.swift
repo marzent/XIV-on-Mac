@@ -6,7 +6,6 @@
 //
 
 import Cocoa
-import XIVLauncher
 
 class LaunchController: NSViewController {
     
@@ -14,6 +13,7 @@ class LaunchController: NSViewController {
     var installerWinController: NSWindowController?
     var patchWinController: NSWindowController?
     var firstAidWinController: NSWindowController?
+    var patchController: PatchController?
     var documentsPermissionsController: DocumentsPermissionsController?
     var newsTable: FrontierTableView!
     var topicsTable: FrontierTableView!
@@ -73,6 +73,7 @@ class LaunchController: NSViewController {
         loginSheetWinController = storyboard?.instantiateController(withIdentifier: "LoginSheet") as? NSWindowController
         installerWinController = storyboard?.instantiateController(withIdentifier: "InstallerWindow") as? NSWindowController
         patchWinController = storyboard?.instantiateController(withIdentifier: "PatchSheet") as? NSWindowController
+        patchController = patchWinController!.contentViewController! as? PatchController
         firstAidWinController = storyboard?.instantiateController(withIdentifier: "FirstAidWindow") as? NSWindowController
         documentsPermissionsController = storyboard?.instantiateController(withIdentifier: "DocumentsPermissionsController") as? DocumentsPermissionsController
     }
@@ -141,17 +142,24 @@ class LaunchController: NSViewController {
         Settings.credentials = LoginCredentials(username: userField.stringValue, password: passwdField.stringValue, oneTimePassword: otpField.stringValue)
         DispatchQueue.global(qos: .default).async {
             do {
+                DispatchQueue.global(qos: .userInitiated).async {
+                    Dxvk.install()
+                }
                 let loginResult = try LoginResult()
                 if !loginResult.pendingPatches.isEmpty {
                     DispatchQueue.main.async { [self] in
                         loginSheetWinController?.window?.close()
                     }
                     self.startPatch(loginResult.pendingPatches)
-                    return
+                    DispatchQueue.main.async { [self] in
+                        view.window?.beginSheet(loginSheetWinController!.window!)
+                    }
                 }
                 NotificationCenter.default.post(name: .loginInfo, object: nil, userInfo: [Notification.status.info: "Starting Game"])
-                try loginResult.startGame()
+                let process = try loginResult.startGame()
                 NotificationCenter.default.post(name: .gameStarted, object: nil)
+                let exitCode = process.exitCode
+                Log.information("Exit code: \(exitCode)")
             } catch FFXIVLoginError.noInstall {
                 DispatchQueue.main.async { [self] in
                     loginSheetWinController?.window?.close()
@@ -191,11 +199,9 @@ class LaunchController: NSViewController {
     func startPatch(_ patches: [Patch]) {
         DispatchQueue.main.async { [self] in
             view.window?.beginSheet(patchWinController!.window!)
-            let patchController = patchWinController!.contentViewController! as! PatchController
-            patchController.install(patches)
         }
+        patchController?.install(patches)
     }
-
 }
 
 class userMenuItem: NSMenuItem {
