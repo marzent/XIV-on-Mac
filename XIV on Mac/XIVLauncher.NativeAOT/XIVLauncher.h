@@ -12,7 +12,11 @@ const char *tryLoginToGame(const char *username, const char *password, const cha
 
 const char *startGame(const char *loginResult);
 
+const char *repairGame(const char *loginResult);
+
 int getExitCode(int pid);
+
+const char *getUserAgent();
 
 const char *getPatcherUserAgent();
 

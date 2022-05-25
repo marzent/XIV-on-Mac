@@ -85,7 +85,11 @@
                                                 <action selector="selectGamePath:" target="Voe-Tx-rLC" id="68k-0i-emw"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Repair Game Files" keyEquivalent="r" id="eHZ-Vy-9pF"/>
+                                        <menuItem title="Repair Game Files" keyEquivalent="r" id="eHZ-Vy-9pF">
+                                            <connections>
+                                                <action selector="doRepair:" target="Ady-hI-5gd" id="e7T-S8-fwl"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="aJh-i4-bef"/>
                                         <menuItem title="Close" keyEquivalent="w" id="DVo-aG-piG">
                                             <connections>

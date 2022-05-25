@@ -42,6 +42,11 @@ struct LoginResult: Codable {
             throw XLError.startError(ret)
         }
     }
+    
+    func repairGame() -> String {
+        let loginResultJSON = String(data: try! JSONEncoder().encode(self), encoding: String.Encoding.utf8)!
+        return String(cString: XIVLauncher.repairGame(loginResultJSON))
+    }
 }
 
 // MARK: - OauthLogin

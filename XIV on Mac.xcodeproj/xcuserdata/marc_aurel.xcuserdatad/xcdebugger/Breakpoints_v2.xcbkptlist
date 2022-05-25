@@ -350,9 +350,9 @@
             filePath = "XIV on Mac/Launcher/LaunchController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
-            landmarkName = "doLogin()"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
+            landmarkName = "doLogin(repair:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

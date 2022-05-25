@@ -114,6 +114,10 @@ class LaunchController: NSViewController {
         self.doLogin()
     }
     
+    @IBAction func doRepair(_ sender: Any) {
+        self.doLogin(repair: true)
+    }
+    
     func problemConfigurationCheck() -> Bool {
         let firstAidController = firstAidWinController!.contentViewController! as! FirstAidController
         if firstAidController.cfgCheckSevereProblems()
@@ -124,7 +128,7 @@ class LaunchController: NSViewController {
         return false
     }
     
-    func doLogin() {
+    func doLogin(repair: Bool = false) {
         // Check for show stopping problems
         if self.problemConfigurationCheck() {
             return
@@ -145,6 +149,20 @@ class LaunchController: NSViewController {
                     DispatchQueue.main.async { [self] in
                         view.window?.beginSheet(loginSheetWinController!.window!)
                     }
+                }
+                if repair {
+                    NotificationCenter.default.post(name: .loginInfo, object: nil, userInfo: [Notification.status.info: "Repairing Game"])
+                    let repairResult = loginResult.repairGame()
+                    DispatchQueue.main.async { [self] in
+                        loginSheetWinController?.window?.close()
+                        let alert = NSAlert()
+                        alert.addButton(withTitle: NSLocalizedString("OK_BUTTON", comment: ""))
+                        alert.alertStyle = .critical
+                        alert.messageText = NSLocalizedString("REPAIR_RESULT", comment: "")
+                        alert.informativeText = repairResult
+                        alert.runModal()
+                    }
+                    return
                 }
                 NotificationCenter.default.post(name: .loginInfo, object: nil, userInfo: [Notification.status.info: "Starting Game"])
                 let process = try loginResult.startGame()

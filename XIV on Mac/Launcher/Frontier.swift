@@ -8,6 +8,7 @@
 import Cocoa
 import OrderedCollections
 import SeeURL
+import XIVLauncher
 
 class Frontier {
     
@@ -40,7 +41,7 @@ class Frontier {
     
     static func fetch(url: URL, accept: String? = nil, global: Bool = false) -> HTTPClient.Response? {
         let headers: OrderedDictionary = [
-            //"User-Agent"     : FFXIVLogin.userAgent,
+            "User-Agent"     : String(cString: getUserAgent()),
             "Accept"         : accept,
             "Accept-Encoding": "gzip, deflate",
             "Origin"         : "https://launcher.finalfantasyxiv.com",

@@ -31,6 +31,8 @@
 "UNEXPECTED_SHORT" = "Unexpected Error";
 "UNEXPECTED" = "An unexpected error occurred.";
 
+"REPAIR_RESULT" = "Repair Result";
+
 "OK_BUTTON" = "OK";
 "CANCEL_BUTTON" = "Cancel";
 
