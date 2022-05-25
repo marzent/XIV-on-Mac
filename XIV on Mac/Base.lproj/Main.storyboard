@@ -1697,6 +1697,17 @@ Gw
                                 </constraints>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="PrefsGraphics" id="NnK-NI-q4i"/>
                             </imageView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dcJ-iB-Eb4">
+                                <rect key="frame" x="28" y="109" width="198" height="18"/>
+                                <string key="toolTip">Wine has a bug when starting up in Fullscreen modes with non-scaled set which makes the application difficult to interact with. This option will automatically change your game to Windowed mode on every startup, after which you can change back to fullscreen to avoid the bug.</string>
+                                <buttonCell key="cell" type="check" title="Bugfix for non-scaling mode" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="mSR-A7-gAD">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="updateRetinaWorkaround:" target="iZP-JQ-P1x" id="hh9-F9-pCr"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="huq-ok-Vjv" secondAttribute="trailing" constant="20" symbolic="YES" id="1DY-K3-5mt"/>
@@ -1704,6 +1715,8 @@ Gw
                             <constraint firstItem="Fq2-37-Vx7" firstAttribute="top" secondItem="FN1-v6-SUN" secondAttribute="bottom" constant="8" symbolic="YES" id="3AX-tY-OE2"/>
                             <constraint firstAttribute="trailing" secondItem="xqN-NE-ad6" secondAttribute="trailing" constant="20" symbolic="YES" id="5cj-VG-ThH"/>
                             <constraint firstItem="Fq2-37-Vx7" firstAttribute="leading" secondItem="R8D-o8-vGl" secondAttribute="leading" constant="20" symbolic="YES" id="7FS-Iu-hac"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="dcJ-iB-Eb4" secondAttribute="bottom" constant="20" symbolic="YES" id="8ts-HK-PnH"/>
+                            <constraint firstItem="dcJ-iB-Eb4" firstAttribute="top" secondItem="buc-8R-1Wp" secondAttribute="bottom" constant="6" symbolic="YES" id="AAn-iV-2xA"/>
                             <constraint firstItem="0PH-1i-0UA" firstAttribute="leading" secondItem="R8D-o8-vGl" secondAttribute="leading" constant="20" symbolic="YES" id="C00-LX-JXe"/>
                             <constraint firstItem="huq-ok-Vjv" firstAttribute="top" secondItem="uQd-FB-xmH" secondAttribute="bottom" constant="8" symbolic="YES" id="I7d-sI-Muq"/>
                             <constraint firstItem="2Ie-Yc-IY8" firstAttribute="leading" secondItem="uQd-FB-xmH" secondAttribute="trailing" constant="2" id="IO2-xE-9kZ"/>
@@ -1712,6 +1725,7 @@ Gw
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="9Ej-Kx-qaB" secondAttribute="trailing" constant="20" symbolic="YES" id="LcM-Ku-x8p"/>
                             <constraint firstAttribute="trailing" secondItem="Fq2-37-Vx7" secondAttribute="trailing" constant="20" symbolic="YES" id="N6D-Z9-Rhw"/>
                             <constraint firstItem="uQd-FB-xmH" firstAttribute="top" secondItem="R8D-o8-vGl" secondAttribute="top" constant="20" symbolic="YES" id="Ovb-nv-YKq"/>
+                            <constraint firstItem="xqN-NE-ad6" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dcJ-iB-Eb4" secondAttribute="trailing" constant="8" symbolic="YES" id="QSG-le-c7B"/>
                             <constraint firstItem="buc-8R-1Wp" firstAttribute="top" secondItem="Fq2-37-Vx7" secondAttribute="bottom" constant="8" symbolic="YES" id="SHA-6b-wci"/>
                             <constraint firstItem="FN1-v6-SUN" firstAttribute="top" secondItem="huq-ok-Vjv" secondAttribute="bottom" constant="8" symbolic="YES" id="XOS-jk-zf5"/>
                             <constraint firstItem="uQd-FB-xmH" firstAttribute="centerY" secondItem="0PH-1i-0UA" secondAttribute="centerY" id="bay-C8-tpN"/>
@@ -1720,8 +1734,8 @@ Gw
                             <constraint firstItem="2Ie-Yc-IY8" firstAttribute="centerY" secondItem="0PH-1i-0UA" secondAttribute="centerY" id="d6W-jc-d9y"/>
                             <constraint firstAttribute="bottom" secondItem="xqN-NE-ad6" secondAttribute="bottom" constant="20" symbolic="YES" id="dms-bz-iW9"/>
                             <constraint firstItem="FN1-v6-SUN" firstAttribute="leading" secondItem="R8D-o8-vGl" secondAttribute="leading" constant="20" symbolic="YES" id="eWu-pW-Jzv"/>
+                            <constraint firstItem="dcJ-iB-Eb4" firstAttribute="leading" secondItem="buc-8R-1Wp" secondAttribute="leading" constant="10" id="fsR-WH-PLf"/>
                             <constraint firstItem="buc-8R-1Wp" firstAttribute="leading" secondItem="R8D-o8-vGl" secondAttribute="leading" constant="20" symbolic="YES" id="gJS-3t-cmZ"/>
-                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="buc-8R-1Wp" secondAttribute="bottom" constant="20" symbolic="YES" id="gqU-Fi-D3Z"/>
                             <constraint firstItem="uQd-FB-xmH" firstAttribute="leading" secondItem="0PH-1i-0UA" secondAttribute="trailing" constant="2" id="h97-O2-euY"/>
                             <constraint firstItem="xqN-NE-ad6" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="buc-8R-1Wp" secondAttribute="trailing" constant="8" symbolic="YES" id="qI1-0k-Zj0"/>
                         </constraints>
@@ -1744,6 +1758,7 @@ Gw
                         <outlet property="submissions" destination="SxV-dE-5eD" id="CYK-fY-ZgS"/>
                         <outlet property="version" destination="PxN-EU-Qcp" id="RI5-h4-DQJ"/>
                         <outlet property="wineRetina" destination="buc-8R-1Wp" id="PQI-bG-x9v"/>
+                        <outlet property="wineRetinaWorkaround" destination="dcJ-iB-Eb4" id="HUc-uk-vfV"/>
                     </connections>
                 </viewController>
                 <customObject id="TIU-QY-693" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

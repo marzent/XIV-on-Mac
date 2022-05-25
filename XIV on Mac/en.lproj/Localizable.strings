@@ -64,6 +64,11 @@ If the issue persists, changing the in-game Display Mode is recommended. Disabli
 Do not enable this on non-retina displays, unless for screenshot purposes.";
 "RETINA_ENABLE_BUTTON" = "Understood";
 
+"RETINA_WORKAROUND_OPTIN" = "Fullscreen Bug Workaround";
+"RETINA_WORKAROUND_OPTIN_INFORMATIVE" = "Wine contains a bug which causes incorrect window size and mouse position on startup if Scaling Mode is disabled. XIV on Mac can help work around this problem by changing your game to Windowed mode on each launch, once the game starts you may switch back to your preferred mode. Would you like to enable this workaround? You can change this setting at any time in preferences.";
+"RETINA_WORKAROUND_OPTIN_ENABLE" = "Enable Workaround";
+"RETINA_WORKAROUND_OPTIN_DISABLE" = "Do Not Enable";
+
 "ROSETTA_REQUIRED" = "Rosetta 2 is Required.";
 "ROSETTA_REQUIRED_INFORMATIVE" = "XIV On Mac requires Apple's Rosetta 2 to be installed in order to function on your Apple Silicon Mac. If you choose not to install, your game will not start. Would you like to start the Rosetta installer now?";
 "ROSETTA_REQUIRED_INSTALL_BUTTON" = "Install Rosetta";

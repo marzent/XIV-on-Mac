@@ -10,11 +10,19 @@ import Foundation
 public enum FFXIVCFGSectionLabel : String {
     // Mac only supports DX11 currently, so we don't care about the regular Graphics Settings section which represents DX9
     case Graphics = "Graphics Settings DX11"
+    case Display = "Display Settings"
 }
 
 public enum FFXIVCFGOptionKey : String {
     case Graphics_SSAO = "SSAO_DX11"
     case Graphics_Tesselation = "Tessellation_DX11"
+    case Display_ScreenMode = "ScreenMode"
+}
+
+public enum FFXIVCFGDisplay_ScreenMode : String {
+    case Windowed = "0"
+    case Fullscreen = "1"
+    case Borderless = "2"
 }
 
 public class FFXIVCFGEncoder {

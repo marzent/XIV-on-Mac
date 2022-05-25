@@ -223,4 +223,46 @@ class FirstAidController: NSViewController, NSTableViewDelegate, NSTableViewData
         condition.applyProposedValueToConfig(config: &config)
         writeCurrentCfg()
     }
+    
+    private static let retinaWorkaroundAskedSettingKey = "AskedRetinaWorkaround"
+    
+    func applyRetinaWorkaround() {
+        if (Wine.retina) {
+            let config = getCurrentCfg()
+            if let section = config.sections[FFXIVCFGSectionLabel.Display.rawValue] {
+                if let screenMode = section.contents[FFXIVCFGOptionKey.Display_ScreenMode.rawValue]
+                {
+                    if screenMode != FFXIVCFGDisplay_ScreenMode.Windowed.rawValue {
+                        if (!Wine.retinaStartupBugWorkaround &&
+                            !Util.getSetting(settingKey: FirstAidController.retinaWorkaroundAskedSettingKey, defaultValue: false))
+                        {
+                            // If the bug workaround is off, *but* we've never asked to enable it, ask now
+                            let alert: NSAlert = NSAlert()
+                            alert.messageText = NSLocalizedString("RETINA_WORKAROUND_OPTIN", comment: "")
+                            alert.informativeText = NSLocalizedString("RETINA_WORKAROUND_OPTIN_INFORMATIVE", comment: "")
+                            alert.alertStyle = .warning
+                            alert.addButton(withTitle:NSLocalizedString("RETINA_WORKAROUND_OPTIN_ENABLE", comment: ""))
+                            alert.addButton(withTitle:NSLocalizedString("RETINA_WORKAROUND_OPTIN_DISABLE", comment: ""))
+                            let result = alert.runModal()
+                            if result == .alertFirstButtonReturn {
+                                Wine.retinaStartupBugWorkaround = true
+                            }
+                            
+                            // Regardless of response, note that we asked so we don't next time.
+                            UserDefaults.standard.set(true, forKey: FirstAidController.retinaWorkaroundAskedSettingKey)
+                        }
+                        
+                        // Check again now in case they enabled it above.
+                        if (Wine.retinaStartupBugWorkaround)
+                        {
+                            // Simply set the ScreenMode to windowed
+                            section.contents[FFXIVCFGOptionKey.Display_ScreenMode.rawValue] = FFXIVCFGDisplay_ScreenMode.Windowed.rawValue
+                            writeCurrentCfg()
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
 }
