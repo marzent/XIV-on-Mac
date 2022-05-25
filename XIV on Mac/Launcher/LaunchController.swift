@@ -165,10 +165,29 @@ class LaunchController: NSViewController {
                     loginSheetWinController?.window?.close()
                     view.window?.beginSheet(self.installerWinController!.window!)
                 }
+            } catch XLError.loginError(let errorMessage) {
+                DispatchQueue.main.async { [self] in
+                    loginSheetWinController?.window?.close()
+                    let alert = NSAlert()
+                    alert.addButton(withTitle: NSLocalizedString("OK_BUTTON", comment: ""))
+                    alert.alertStyle = .critical
+                    alert.messageText = NSLocalizedString("LOGIN_ERROR", comment: "")
+                    alert.informativeText = errorMessage
+                    alert.runModal()
+                }
+            } catch XLError.startError(let errorMessage) {
+                DispatchQueue.main.async { [self] in
+                    loginSheetWinController?.window?.close()
+                    let alert = NSAlert()
+                    alert.addButton(withTitle: NSLocalizedString("OK_BUTTON", comment: ""))
+                    alert.alertStyle = .critical
+                    alert.messageText = NSLocalizedString("START_ERROR", comment: "")
+                    alert.informativeText = errorMessage
+                    alert.runModal()
+                }
             } catch {
                 DispatchQueue.main.async { [self] in
                     loginSheetWinController?.window?.close()
-                    //let error = error as! LocalizedError
                     let alert = NSAlert()
                     alert.addButton(withTitle: NSLocalizedString("OK_BUTTON", comment: ""))
                     alert.alertStyle = .critical

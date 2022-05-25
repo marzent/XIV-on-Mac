@@ -54,6 +54,8 @@ public enum FFXIVLanguage: UInt32 {
 }
 
 public enum XLError: Error {
+    case loginError(String)
+    case startError(String)
     case runtimeError(String)
 }
 

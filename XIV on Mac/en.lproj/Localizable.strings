@@ -6,6 +6,8 @@
   
 */
 
+"LOGIN_ERROR" = "Login Error";
+"START_ERROR" = "Error starting FFXIV";
 "INCORRECT_CREDENTIALS_SHORT" = "Incorrect Credentials";
 "INCORRECT_CREDENTIALS" = "The login servers did not accept the provided credentials.";
 "NO_STEAM_TICKET_SHORT" = "Could not connect to Steam";
