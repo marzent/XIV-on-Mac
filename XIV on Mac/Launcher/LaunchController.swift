@@ -14,7 +14,6 @@ class LaunchController: NSViewController {
     var patchWinController: NSWindowController?
     var firstAidWinController: NSWindowController?
     var patchController: PatchController?
-    var documentsPermissionsController: DocumentsPermissionsController?
     var newsTable: FrontierTableView!
     var topicsTable: FrontierTableView!
     var otp: OTP? = nil
@@ -34,9 +33,7 @@ class LaunchController: NSViewController {
     override func loadView() {
         super.loadView()
         update()
-        ACT.observe()
         NotificationCenter.default.addObserver(self,selector: #selector(installDone(_:)),name: .installDone, object: nil)
-        NotificationCenter.default.addObserver(self,selector: #selector(loginDone(_:)),name: .gameStarted, object: nil)
         userMenu.minimumWidth = 264
         newsTable = FrontierTableView(icon: NSImage(systemSymbolName: "newspaper", accessibilityDescription: nil)!)
         topicsTable = FrontierTableView(icon: NSImage(systemSymbolName: "newspaper.fill", accessibilityDescription: nil)!)
@@ -75,7 +72,6 @@ class LaunchController: NSViewController {
         patchWinController = storyboard?.instantiateController(withIdentifier: "PatchSheet") as? NSWindowController
         patchController = patchWinController!.contentViewController! as? PatchController
         firstAidWinController = storyboard?.instantiateController(withIdentifier: "FirstAidWindow") as? NSWindowController
-        documentsPermissionsController = storyboard?.instantiateController(withIdentifier: "DocumentsPermissionsController") as? DocumentsPermissionsController
     }
     
     private func populateNews(_ info: Frontier.Info) {
@@ -118,7 +114,7 @@ class LaunchController: NSViewController {
         self.doLogin()
     }
     
-    func problemConfigurationCheck() -> Bool{
+    func problemConfigurationCheck() -> Bool {
         let firstAidController = firstAidWinController!.contentViewController! as! FirstAidController
         if firstAidController.cfgCheckSevereProblems()
         {
@@ -130,12 +126,7 @@ class LaunchController: NSViewController {
     
     func doLogin() {
         // Check for show stopping problems
-        if !Util.documentsFolderWritable() {
-            guard let permissionsController = documentsPermissionsController else { return }
-            self.presentAsSheet(permissionsController)
-            return
-        }
-        if (self.problemConfigurationCheck()){
+        if self.problemConfigurationCheck() {
             return
         }
         view.window?.beginSheet(loginSheetWinController!.window!)
@@ -157,9 +148,23 @@ class LaunchController: NSViewController {
                 }
                 NotificationCenter.default.post(name: .loginInfo, object: nil, userInfo: [Notification.status.info: "Starting Game"])
                 let process = try loginResult.startGame()
-                NotificationCenter.default.post(name: .gameStarted, object: nil)
+                DispatchQueue.main.async { [self] in
+                    loginSheetWinController?.window?.close()
+                    view.window?.close()
+                }
+                ACT.launchNotify()
                 let exitCode = process.exitCode
-                Log.information("Exit code: \(exitCode)")
+                Log.information("Game exited with exit code \(exitCode)")
+                DispatchQueue.main.async {
+                    if exitCode != 0 {
+                        let alert = NSAlert()
+                        alert.addButton(withTitle: NSLocalizedString("OK_BUTTON", comment: ""))
+                        alert.alertStyle = .critical
+                        alert.messageText = NSLocalizedString("GAME_START_FAILURE", comment: "")
+                        alert.informativeText = NSLocalizedString("GAME_START_FAILURE_INFORMATIONAL", comment: "")
+                        alert.runModal()
+                    }
+                }
             } catch FFXIVLoginError.noInstall {
                 DispatchQueue.main.async { [self] in
                     loginSheetWinController?.window?.close()
@@ -195,22 +200,6 @@ class LaunchController: NSViewController {
                     alert.informativeText = error.localizedDescription
                     alert.runModal()
                 }
-            }
-        }
-    }
-    
-    @objc func loginDone(_ notif: Notification) {
-        DispatchQueue.main.async { [self] in
-            loginSheetWinController?.window?.close()
-            if FFXIVApp.running {
-                view.window?.close()
-            } else {
-                let alert = NSAlert()
-                alert.addButton(withTitle: NSLocalizedString("OK_BUTTON", comment: ""))
-                alert.alertStyle = .critical
-                alert.messageText = NSLocalizedString("GAME_START_FAILURE", comment: "")
-                alert.informativeText = NSLocalizedString("GAME_START_FAILURE_INFORMATIONAL", comment: "")
-                alert.runModal()
             }
         }
     }

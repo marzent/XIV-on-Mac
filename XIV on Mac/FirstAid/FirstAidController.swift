@@ -61,7 +61,7 @@ class FirstAidController: NSViewController, NSTableViewDelegate, NSTableViewData
     func checkIfRunning() -> Bool {
         // Since we're deleting or otherwise mucking with files the game may be using or may re-write,
         // we generally want no copies running.
-        if (FFXIVApp.running) {
+        if (Wine.running(processName: "ffxiv_dx11.exe")) {
             let alert: NSAlert = NSAlert()
             alert.alertStyle = .warning
             alert.messageText = NSLocalizedString("FIRSTAID_GAME_RUNNING", comment: "")

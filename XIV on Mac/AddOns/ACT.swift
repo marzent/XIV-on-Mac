@@ -35,7 +35,7 @@ class ACT {
     
     private static let remote = URL(string: "https://github.com/EQAditu/AdvancedCombatTracker/releases/download/3.6.0.275/ACTv3.zip")!
     
-    @objc static func launch(_ notif: Notification) {
+    static func launchNotify() {
         if autoLaunch {
             launch()
         }
@@ -59,10 +59,6 @@ class ACT {
                 launchBH()
             }
         }
-    }
-    
-    static func observe() {
-        NotificationCenter.default.addObserver(self,selector: #selector(launch(_:)),name: .gameStarted, object: nil)
     }
     
     static func install() {

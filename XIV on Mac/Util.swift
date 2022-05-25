@@ -106,33 +106,6 @@ struct Util {
         }
         return false
     }
-
-    static func documentsFolderWritable() -> Bool {
-        var writable : Bool = false
-        // We're trying to check for TCC write permissions here, but there's no API (as far as I know) to test this. So, we're using "can we write something"
-        // as a reasonable proxy. Since, if we can't it sorta doesn't matter if the reason is actually TCC or not - things won't work just the same!
-        
-        // If we can load the cfg file, we have read permission which PROBABLY means we're good from a TCC POV as it doesn't distinguish read vs write.
-        // Bonus, the loadCfgFile() method will handle creating the folder and a default cfg for us if need be.
-        // If this call returns nil, then we definitely don't have the permission we need.
-        if (loadCfgFile() != nil)
-        {
-            // However, the game *requires* write, so let's check for it explicitly.
-            let writeTestURL : URL = FFXIVApp.configFolder.appendingPathComponent("WritabilityTest")
-            do {
-                try "Writability Test, feel free to delete".write(to: writeTestURL, atomically: true, encoding: .utf8)
-                try FileManager.default.removeItem(at: writeTestURL)
-                // If we get here, we seem to be good!
-                writable = true
-            }
-            catch {
-                // Write failed
-                Log.error(error.localizedDescription)
-            }
-        }
-        
-        return writable
-    }
     
     /// Attempt to load the FFXIV.cfg file (raw contents) from disk. If it does not yet exist, we attempt to create it with default values, as well as its containing folders.
     ///  - Returns: The contents of the cfg file, or nil if it cannot be read and a default could not be created.
@@ -157,7 +130,7 @@ struct Util {
         if (tryCreate)
         {
             do {
-                try FileManager.default.createDirectory(atPath: FFXIVApp.configFolder.path, withIntermediateDirectories: true, attributes: nil)
+                try FileManager.default.createDirectory(atPath: Settings.gameConfigPath.path, withIntermediateDirectories: true, attributes: nil)
                 let defaultCfgURL = Bundle.main.url(forResource: "FFXIV-MacDefault", withExtension: "cfg")!
                 try FileManager.default.copyItem(at: defaultCfgURL, to: FFXIVApp.configURL)
             }

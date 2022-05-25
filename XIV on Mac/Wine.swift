@@ -44,6 +44,10 @@ struct Wine {
         Array(String(cString: getProcessIds(processName)).split(separator: " ").compactMap {Int($0)})
     }
     
+    static func running(processName: String) -> Bool {
+        pidsOf(processName: processName).count > 0
+    }
+    
     static func taskKill(pid: Int) {
         launch(command: "taskkill /f /pid \(pid)", blocking: true)
     }
