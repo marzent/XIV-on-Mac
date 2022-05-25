@@ -31,14 +31,10 @@ struct Util {
         make(dir: dir.path)
     }
     
-    static func launch(exec: URL, args: [String], blocking: Bool = false, wineLog: Bool = false) {
+    static func launch(exec: URL, args: [String], blocking: Bool = false) {
         let task = Process()
-        task.environment = enviroment
         task.executableURL = exec
         task.arguments = args
-        let pipe = Pipe()
-        task.standardOutput = pipe
-        task.standardError = pipe
         do {
             try task.run()
         }
@@ -49,34 +45,6 @@ struct Util {
         if blocking {
             task.waitUntilExit()
         }
-    }
-    
-    static func launchToString(exec: URL, args: [String]) -> String {
-        var ret = ""
-        let task = Process()
-        task.environment = enviroment
-        task.executableURL = exec
-        task.arguments = args
-        let pipe = Pipe()
-        task.standardOutput = pipe
-        task.standardError = pipe
-        let outHandle = pipe.fileHandleForReading
-        outHandle.readabilityHandler = { pipe in
-            if let line = String(data: pipe.availableData, encoding: String.Encoding.utf8) {
-                ret.append(contentsOf: line)
-            } else {
-                Log.error("Error decoding data: \(pipe.availableData)")
-            }
-        }
-        do {
-            try task.run()
-        }
-        catch {
-            Log.error("Error starting subprocess")
-        }
-        task.waitUntilExit()
-        try? outHandle.close()
-        return ret
     }
     
     static var enviroment : [String : String] {
@@ -134,11 +102,7 @@ struct Util {
         if (Util.getXOMRuntimeEnvironment() == .appleSiliconNative) {
             // Rosetta's package ID is fixed, so it's safer to check for its receipt than to look for any individual file it's known to install.
             let rosettaReceiptPath = appleReceiptsPath.appendingPathComponent("com.apple.pkg.RosettaUpdateAuto.plist");
-            do{
-                let receiptExists : Bool = try rosettaReceiptPath.checkResourceIsReachable()
-                return receiptExists
-            }catch{
-            }
+            return (try? rosettaReceiptPath.checkResourceIsReachable()) ?? false
         }
         return false
     }
@@ -212,7 +176,7 @@ struct Util {
         return configFileContents
     }
     
-    public enum XOMRuntimeEnvironment: UInt32 {
+    public enum XOMRuntimeEnvironment: UInt8 {
         case x64Native = 0
         case appleSiliconRosetta = 1
         case appleSiliconNative = 2
@@ -249,8 +213,7 @@ struct Util {
             // On Apple Silicon to date, there is always a built-in GPU, and it is always supported. So we don't need to check anything.
             foundSupportedGPU = true
         }
-        else
-        {
+        else {
             // On Intel, we need to find an AMD GPU. Intel iGPUs are not supported, and neither is nVidia or other oddities (USB video).
             var deviceIterator : io_iterator_t = io_iterator_t()
                                                                                

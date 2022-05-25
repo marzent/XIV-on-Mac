@@ -105,7 +105,7 @@ import XIVLauncher
     }
     
     @IBAction func openPrefix(_ sender: Any) {
-        NSWorkspace.shared.open(Wine.prefix)
+        NSWorkspace.shared.open(Util.applicationSupport)
     }
     
     @IBAction func startACT(_ sender: Any) {
