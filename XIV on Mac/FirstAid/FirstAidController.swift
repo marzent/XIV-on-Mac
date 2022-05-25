@@ -84,7 +84,7 @@ class FirstAidController: NSViewController, NSTableViewDelegate, NSTableViewData
             alert.messageText = NSLocalizedString("DXVK_USER_CACHE_DELETED", comment: "")
             alert.informativeText = NSLocalizedString("DXVK_USER_CACHE_DELETED_INFORMATIVE", comment: "")
         } catch {
-            print(error)
+            Log.error(error.localizedDescription)
             alert.alertStyle = .warning
             alert.messageText = NSLocalizedString("DXVK_USER_CACHE_DELETE_FAILED", comment: "")
             alert.informativeText = NSLocalizedString("DXVK_USER_CACHE_DELETE_FAILED_INFORMATIVE", comment: "")
@@ -114,7 +114,7 @@ class FirstAidController: NSViewController, NSTableViewDelegate, NSTableViewData
             alert.informativeText = NSLocalizedString("GAME_CONFIG_RESET_INFORMATIVE", comment: "")
 
         } catch {
-            print(error)
+            Log.error(error.localizedDescription)
             alert.alertStyle = .warning
             alert.messageText = NSLocalizedString("GAME_CONFIG_RESET_FAILED", comment: "")
             alert.informativeText = NSLocalizedString("GAME_CONFIG_RESET_FAILED_INFORMATIVE", comment: "")
@@ -183,7 +183,7 @@ class FirstAidController: NSViewController, NSTableViewDelegate, NSTableViewData
             try outputCfgString.write(to: FFXIVApp.configURL, atomically: true, encoding: .utf8)
         }
         catch {
-            print(error)
+            Log.error(error.localizedDescription)
         }
     }
     

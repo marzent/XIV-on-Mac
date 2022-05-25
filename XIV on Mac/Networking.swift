@@ -45,7 +45,7 @@ extension HTTPClient {
     static func fetchFile(url: URL, destinationUrl: URL? = nil, headers: OrderedDictionary<String, String>? = nil, proxy: String? = nil, progressCallback: ((Int64, Int64, Int64) -> Void)? = nil) throws {
         let destURL = destinationUrl ?? Util.cache.appendingPathComponent(url.lastPathComponent)
         if FileManager().fileExists(atPath: destURL.path) {
-            print("File already exists [\(destURL.path)]")
+            Log.information("File already exists [\(destURL.path)]")
             return
         }
         let tempURL = URL(fileURLWithPath: NSTemporaryDirectory() + "/" + UUID().uuidString)

@@ -84,7 +84,7 @@ public class FFXIVCFGDecoder {
                         currentSection!.contentOrder.append(key)
                     }
                     else {
-                        print("Found a value tuple before a section header!")
+                        Log.warning("Found a value tuple before a section header!")
                     }
                 }
             }
