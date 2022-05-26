@@ -15,6 +15,7 @@ struct Util {
     static let applicationSupport = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).last!.appendingPathComponent("XIV on Mac")
     static let cache = applicationSupport.appendingPathComponent("cache")
     static let appleReceiptsPath = URL(fileURLWithPath: "/Library/Apple/System/Library/Receipts/")
+    static let seGameConfigPath = userHome.appendingPathComponent("/Documents/My Games/FINAL FANTASY XIV - A Realm Reborn/", isDirectory: true)
     
     static func make(dir : String) {
         if !FileManager.default.fileExists(atPath: dir) {
@@ -107,37 +108,81 @@ struct Util {
         return false
     }
     
-    /// Attempt to load the FFXIV.cfg file (raw contents) from disk. If it does not yet exist, we attempt to create it with default values, as well as its containing folders.
-    ///  - Returns: The contents of the cfg file, or nil if it cannot be read and a default could not be created.
-    static func loadCfgFile() -> String? {
-        var configFileContents : String? = nil
-        var tryCreate = false
+    static func pathExists(path: URL) -> Bool {
+        var exists : Bool = false
         do {
-            tryCreate = try !FFXIVApp.configURL.checkResourceIsReachable()
+            exists = try path.checkResourceIsReachable();
         }
         catch let error as NSError {
             if (error.domain == NSCocoaErrorDomain) && error.code == 260
             {
                 // No such file, might be the first launch.
-                tryCreate = true
+                // The default is false, this path mainly exists to document that this is the EXPECTED 'doesn't exist' error,
+                // anything else should be logged/investigated.
+                exists = false
             }
             else
             {
                 Log.error(error.localizedDescription)
-                return nil
             }
         }
-        if (tryCreate)
+        return exists;
+    }
+    
+    static private func createConfigDirectory() {
+        // Do we need to create the config directory itself?
+        if (!Util.pathExists(path: Settings.gameConfigPath)) {
+            Log.information("Cfg: Game Config path doesn't exist.")
+            // Ok, so, it may be our first launch, or our prefix was wiped etc. However, there might be an existing install from either an older XOM or
+            // the SE client. See if that cfg location exists.
+            if (Util.pathExists(path: seGameConfigPath))
+            {
+                Log.information("Cfg: Found existing game Cfg path to import.")
+                // It does exist. Copy theirs to ours.
+                do {
+                    try FileManager.default.copyItem(at: seGameConfigPath, to: Settings.gameConfigPath)
+                }
+                catch let createError as NSError {
+                    Log.error("Cfg: Could not import existing Cfg: \(createError.localizedDescription)")
+                }
+
+            }
+            else
+            {
+                Log.information("Cfg: No existing game Cfg found.")
+                // SE version does not exist. Just create the directory.
+                do {
+                    try FileManager.default.createDirectory(atPath: Settings.gameConfigPath.path, withIntermediateDirectories: true, attributes: nil)
+                }
+                catch let createError as NSError {
+                    Log.error("Cfg: Could not create Cfg directory: \(createError.localizedDescription)")
+                }
+            }
+        }
+    }
+    
+    /// Attempt to load the FFXIV.cfg file (raw contents) from disk. If it does not yet exist, we attempt to create it with default values, as well as its containing folders.
+    ///  - Returns: The contents of the cfg file, or nil if it cannot be read and a default could not be created.
+    static func loadCfgFile() -> String? {
+        var configFileContents : String? = nil
+        if (!Util.pathExists(path: FFXIVApp.configURL))
         {
+            createConfigDirectory();
+        }
+        // One way or another we should have a config folder now. IF we copied the SE one, we might also now have a .cfg file. Check again.
+        if (!Util.pathExists(path: FFXIVApp.configURL))
+        {
+            // .cfg still doesn't exist, so let's copy in our Mac default one.
+            Log.information("Cfg: No existing game configuration, establishing Mac default settings.")
             do {
-                try FileManager.default.createDirectory(atPath: Settings.gameConfigPath.path, withIntermediateDirectories: true, attributes: nil)
                 let defaultCfgURL = Bundle.main.url(forResource: "FFXIV-MacDefault", withExtension: "cfg")!
                 try FileManager.default.copyItem(at: defaultCfgURL, to: FFXIVApp.configURL)
             }
             catch let createError as NSError {
-                Log.error(createError.localizedDescription)
+                Log.error("Cfg: Could not create default Mac settings: \(createError.localizedDescription)")
             }
         }
+
         do {
             configFileContents = try String(contentsOf:FFXIVApp.configURL)
         }
