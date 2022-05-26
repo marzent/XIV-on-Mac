@@ -26,6 +26,8 @@ import XIVLauncher
     }
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        // Do this first so that nothing loads data or otherwise touches the prefix first!
+        PrefixMigrator.migratePrefixIfNeeded()
         let storyboard = NSStoryboard(name: "Main", bundle: nil)
         settingsWinController = storyboard.instantiateController(withIdentifier: "SettingsWindow") as? NSWindowController
         firstAidWinController = storyboard.instantiateController(withIdentifier: "FirstAidWindow") as? NSWindowController
