@@ -19,6 +19,7 @@
 		07A3498C2805689200A9D7D0 /* CfgCheckProbFailed.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 07A3498A2805689200A9D7D0 /* CfgCheckProbFailed.tiff */; };
 		07A3498E28056A2800A9D7D0 /* FirstAidTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A3498D28056A2800A9D7D0 /* FirstAidTableCellView.swift */; };
 		07A3499028056C7600A9D7D0 /* CfgCheckProblems.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 07A3498F28056C7600A9D7D0 /* CfgCheckProblems.tiff */; };
+		07AAF894283F3D08003C10FA /* PrefixMigrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AAF893283F3D08003C10FA /* PrefixMigrator.swift */; };
 		07B529D527D97D2B005B78BF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 07B529D727D97D2B005B78BF /* Localizable.strings */; };
 		07B529D927D97F26005B78BF /* installRosetta.command in Resources */ = {isa = PBXBuildFile; fileRef = 07B529D827D97F26005B78BF /* installRosetta.command */; };
 		07BF3AF728063A8600794155 /* CfgCheckProbFixed.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 07BF3AF628063A8600794155 /* CfgCheckProbFixed.tiff */; };
@@ -106,6 +107,7 @@
 		07A3498A2805689200A9D7D0 /* CfgCheckProbFailed.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = CfgCheckProbFailed.tiff; sourceTree = "<group>"; };
 		07A3498D28056A2800A9D7D0 /* FirstAidTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstAidTableCellView.swift; sourceTree = "<group>"; };
 		07A3498F28056C7600A9D7D0 /* CfgCheckProblems.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = CfgCheckProblems.tiff; sourceTree = "<group>"; };
+		07AAF893283F3D08003C10FA /* PrefixMigrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefixMigrator.swift; sourceTree = "<group>"; };
 		07B529D627D97D2B005B78BF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		07B529D827D97F26005B78BF /* installRosetta.command */ = {isa = PBXFileReference; lastKnownFileType = text; path = installRosetta.command; sourceTree = "<group>"; };
 		07BF3AF628063A8600794155 /* CfgCheckProbFixed.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = CfgCheckProbFixed.tiff; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 				50BD278627785418002B0D1F /* Notifications.swift */,
 				50ED0DB42773CA8C002E9854 /* Networking.swift */,
 				2B7C95D1277C6C6000A3CA89 /* SocialIntegration.swift */,
+				07AAF893283F3D08003C10FA /* PrefixMigrator.swift */,
 				50511EC82770E087003A1E9F /* Assets.xcassets */,
 				50692C8A27B3E48B00945593 /* Credits.html */,
 				50511ECA2770E087003A1E9F /* Main.storyboard */,
@@ -528,6 +531,7 @@
 				50DF1F8527CCB83300DE9DA5 /* FFXIVRepo.swift in Sources */,
 				5049B9B0283BF89400463A2B /* LoginResult.swift in Sources */,
 				507C600127CAA72000BA3CC2 /* PatchController.swift in Sources */,
+				07AAF894283F3D08003C10FA /* PrefixMigrator.swift in Sources */,
 				50BC73D327C2C3F3006269AC /* GShade.swift in Sources */,
 				50F6CBAA27A975A000013301 /* Wine.swift in Sources */,
 				505C0D9B277333920008A344 /* Util.swift in Sources */,
