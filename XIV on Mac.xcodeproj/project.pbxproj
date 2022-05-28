@@ -69,6 +69,7 @@
 		50DF1F8827CD261A00DE9DA5 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 50DF1F8727CD261A00DE9DA5 /* OrderedCollections */; };
 		50DF45992795C53300E3D22F /* GShade in Resources */ = {isa = PBXBuildFile; fileRef = 50DF45982795C53300E3D22F /* GShade */; };
 		50E5387B2779CF5C0038521A /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E5387A2779CF5C0038521A /* SettingsController.swift */; };
+		50E980DE2840A65000050151 /* RepairController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E980DD2840A65000050151 /* RepairController.swift */; };
 		50ED0DB32773C619002E9854 /* Dotnet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ED0DB22773C619002E9854 /* Dotnet.swift */; };
 		50ED0DB52773CA8C002E9854 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ED0DB42773CA8C002E9854 /* Networking.swift */; };
 		50F4BD2427CFA70A00FB165D /* Dxvk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F4BD2327CFA70A00FB165D /* Dxvk.swift */; };
@@ -153,6 +154,7 @@
 		50DF1F8427CCB83300DE9DA5 /* FFXIVRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFXIVRepo.swift; sourceTree = "<group>"; };
 		50DF45982795C53300E3D22F /* GShade */ = {isa = PBXFileReference; lastKnownFileType = folder; path = GShade; sourceTree = "<group>"; };
 		50E5387A2779CF5C0038521A /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		50E980DD2840A65000050151 /* RepairController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepairController.swift; sourceTree = "<group>"; };
 		50ED0DB22773C619002E9854 /* Dotnet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dotnet.swift; sourceTree = "<group>"; };
 		50ED0DB42773CA8C002E9854 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		50F4BD2327CFA70A00FB165D /* Dxvk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dxvk.swift; sourceTree = "<group>"; };
@@ -326,6 +328,7 @@
 			isa = PBXGroup;
 			children = (
 				507C600027CAA72000BA3CC2 /* PatchController.swift */,
+				50E980DD2840A65000050151 /* RepairController.swift */,
 				5020957827C9611A00BD76CC /* Patch.swift */,
 				50DF1F8427CCB83300DE9DA5 /* FFXIVRepo.swift */,
 			);
@@ -520,6 +523,7 @@
 				509FE19A27E3654E008D56D6 /* FFXIVEnums.swift in Sources */,
 				5010EFE427E4CE40001D2FEC /* Encryption.swift in Sources */,
 				5020957927C9611A00BD76CC /* Patch.swift in Sources */,
+				50E980DE2840A65000050151 /* RepairController.swift in Sources */,
 				50FC2DFF27F974D300871760 /* DxvkStateCache.swift in Sources */,
 				50DF1F8527CCB83300DE9DA5 /* FFXIVRepo.swift in Sources */,
 				5049B9B0283BF89400463A2B /* LoginResult.swift in Sources */,
@@ -705,7 +709,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 58;
+				CURRENT_PROJECT_VERSION = 63;
 				DEVELOPMENT_TEAM = TQJJTJ6364;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -751,7 +755,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 58;
+				CURRENT_PROJECT_VERSION = 63;
 				DEVELOPMENT_TEAM = TQJJTJ6364;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;

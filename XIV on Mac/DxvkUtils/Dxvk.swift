@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CompatibilityTools
 
 struct Dxvk {
     @available(*, unavailable) private init() {}
@@ -119,6 +120,7 @@ struct Dxvk {
         
         func save() {
             UserDefaults.standard.set(try? PropertyListEncoder().encode(self), forKey: Dxvk.Options.settingKey)
+            Wine.setup()
         }
     }
     

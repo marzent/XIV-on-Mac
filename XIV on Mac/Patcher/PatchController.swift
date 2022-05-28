@@ -41,7 +41,7 @@ class PatchController: NSViewController {
     }
     
     func install(_ patches: [Patch]) {
-        Wine.kill()
+        //Wine.kill()
         let totalSize = Patch.totalLength(patches)
         DispatchQueue.main.async { [self] in
             installPatch.stringValue = "Waiting for download to finish..."

@@ -2189,14 +2189,14 @@ Gw
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="downloadBar" destination="eyd-GX-zBh" id="WTe-gY-Rcj"/>
-                        <outlet property="downloadPatch" destination="7QA-PP-W0F" id="8IB-KB-elO"/>
-                        <outlet property="downloadPatchBar" destination="qc8-1a-Ivc" id="vV6-JG-k0b"/>
-                        <outlet property="downloadPatchStatus" destination="7K3-oF-rhi" id="EVP-ag-OYW"/>
-                        <outlet property="downloadStatus" destination="aXz-Px-Lvr" id="6Tc-tY-ccV"/>
-                        <outlet property="installBar" destination="u2N-qE-KmW" id="c7m-ZA-Fzz"/>
-                        <outlet property="installPatch" destination="M7J-KH-TOB" id="s9S-JX-bIt"/>
-                        <outlet property="installStatus" destination="OI1-FP-5JX" id="BIa-fv-d2y"/>
+                        <outlet property="downloadBar" destination="eyd-GX-zBh" id="ZuZ-xn-H8a"/>
+                        <outlet property="downloadPatch" destination="7QA-PP-W0F" id="jUE-KA-sX8"/>
+                        <outlet property="downloadPatchBar" destination="qc8-1a-Ivc" id="3AF-cw-Kbi"/>
+                        <outlet property="downloadPatchStatus" destination="7K3-oF-rhi" id="w2X-mR-7Zb"/>
+                        <outlet property="downloadStatus" destination="aXz-Px-Lvr" id="in5-Sk-NKx"/>
+                        <outlet property="installBar" destination="u2N-qE-KmW" id="Fjm-uG-bmb"/>
+                        <outlet property="installPatch" destination="M7J-KH-TOB" id="c0d-24-NaW"/>
+                        <outlet property="installStatus" destination="OI1-FP-5JX" id="ea1-DY-es1"/>
                     </connections>
                 </viewController>
                 <customObject id="x0X-1Q-DQw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -2740,6 +2740,99 @@ https://github.com/goatcorp/Dalamud</string>
                 <customObject id="8qe-2p-Jnk" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1560" y="2787"/>
+        </scene>
+        <!--Repair Controller-->
+        <scene sceneID="10b-qv-gVU">
+            <objects>
+                <viewController id="Ght-L5-Zxl" customClass="RepairController" customModule="XIV_on_Mac" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="sI5-MB-sUe">
+                        <rect key="frame" x="0.0" y="0.0" width="563" height="142"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <visualEffectView fixedFrame="YES" blendingMode="behindWindow" material="HUDWindow" state="active" translatesAutoresizingMaskIntoConstraints="NO" id="Pt4-W0-5vh">
+                                <rect key="frame" x="0.0" y="0.0" width="563" height="142"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PRg-i6-frw">
+                                        <rect key="frame" x="-2" y="94" width="567" height="28"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Repairing" id="FSD-me-yOd">
+                                            <font key="font" metaFont="system" size="24"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <progressIndicator fixedFrame="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="FSF-dS-fBF">
+                                        <rect key="frame" x="20" y="67" width="523" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    </progressIndicator>
+                                    <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="few-QQ-cSf">
+                                        <rect key="frame" x="-2" y="44" width="567" height="16"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Current Step" id="Uem-xO-XvC">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <button wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m89-0V-Gmt">
+                                        <rect key="frame" x="13" y="110" width="72" height="18"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="inline" title="Quit" bezelStyle="inline" alignment="center" borderStyle="border" inset="2" id="cHd-1O-1aa">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="smallSystemBold"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="quit:" target="Ght-L5-Zxl" id="ael-Du-owJ"/>
+                                        </connections>
+                                    </button>
+                                    <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="obG-p9-A2J">
+                                        <rect key="frame" x="-2" y="20" width="567" height="16"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Current File" id="OHo-zg-md7">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
+                            </visualEffectView>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="currentFile" destination="obG-p9-A2J" id="4x6-tq-hAL"/>
+                        <outlet property="repairBar" destination="FSF-dS-fBF" id="TMC-zC-FEH"/>
+                        <outlet property="repairStatus" destination="few-QQ-cSf" id="irj-WN-E4t"/>
+                    </connections>
+                </viewController>
+                <customObject id="CQT-da-Zt5" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-789.5" y="871"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="KAt-is-nI2">
+            <objects>
+                <windowController storyboardIdentifier="RepairSheet" id="Wiq-Rq-mdC" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="ZbU-CB-bBy">
+                        <windowStyleMask key="styleMask" titled="YES" fullSizeContentView="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="425" y="462" width="155" height="106"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
+                        <view key="contentView" id="ONN-jq-pZa">
+                            <rect key="frame" x="0.0" y="0.0" width="155" height="106"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </view>
+                        <connections>
+                            <outlet property="delegate" destination="Wiq-Rq-mdC" id="qxz-aU-g2c"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="Ght-L5-Zxl" kind="relationship" relationship="window.shadowedContentViewController" id="fZK-i8-v5g"/>
+                    </connections>
+                </windowController>
+                <customObject id="N1G-Dg-knr" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1227" y="889"/>
         </scene>
     </scenes>
     <resources>

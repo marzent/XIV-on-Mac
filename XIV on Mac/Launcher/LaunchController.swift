@@ -12,8 +12,10 @@ class LaunchController: NSViewController {
     var loginSheetWinController: NSWindowController?
     var installerWinController: NSWindowController?
     var patchWinController: NSWindowController?
+    var repairWinController: NSWindowController?
     var firstAidWinController: NSWindowController?
     var patchController: PatchController?
+    var repairController: RepairController?
     var newsTable: FrontierTableView!
     var topicsTable: FrontierTableView!
     var otp: OTP? = nil
@@ -70,7 +72,9 @@ class LaunchController: NSViewController {
         loginSheetWinController = storyboard?.instantiateController(withIdentifier: "LoginSheet") as? NSWindowController
         installerWinController = storyboard?.instantiateController(withIdentifier: "InstallerWindow") as? NSWindowController
         patchWinController = storyboard?.instantiateController(withIdentifier: "PatchSheet") as? NSWindowController
+        repairWinController = storyboard?.instantiateController(withIdentifier: "RepairSheet") as? NSWindowController
         patchController = patchWinController!.contentViewController! as? PatchController
+        repairController = repairWinController!.contentViewController! as? RepairController
         firstAidWinController = storyboard?.instantiateController(withIdentifier: "FirstAidWindow") as? NSWindowController
     }
     
@@ -142,7 +146,15 @@ class LaunchController: NSViewController {
                 DispatchQueue.global(qos: .userInitiated).async {
                     Dxvk.install()
                 }
-                let loginResult = try LoginResult()
+                let loginResult = try LoginResult(repair)
+                if repair {
+                    DispatchQueue.main.async { [self] in
+                        loginSheetWinController?.window?.close()
+                        view.window?.beginSheet(repairWinController!.window!)
+                        repairController?.repair(loginResult)
+                    }
+                    return
+                }
                 if !(loginResult.pendingPatches?.isEmpty ?? true) {
                     DispatchQueue.main.async { [self] in
                         loginSheetWinController?.window?.close()
@@ -151,20 +163,6 @@ class LaunchController: NSViewController {
                     DispatchQueue.main.async { [self] in
                         view.window?.beginSheet(loginSheetWinController!.window!)
                     }
-                }
-                if repair {
-                    NotificationCenter.default.post(name: .loginInfo, object: nil, userInfo: [Notification.status.info: "Repairing Game"])
-                    let repairResult = loginResult.repairGame()
-                    DispatchQueue.main.async { [self] in
-                        loginSheetWinController?.window?.close()
-                        let alert = NSAlert()
-                        alert.addButton(withTitle: NSLocalizedString("OK_BUTTON", comment: ""))
-                        alert.alertStyle = .critical
-                        alert.messageText = NSLocalizedString("REPAIR_RESULT", comment: "")
-                        alert.informativeText = repairResult
-                        alert.runModal()
-                    }
-                    return
                 }
                 NotificationCenter.default.post(name: .loginInfo, object: nil, userInfo: [Notification.status.info: "Starting Game"])
                 let process = try loginResult.startGame()
