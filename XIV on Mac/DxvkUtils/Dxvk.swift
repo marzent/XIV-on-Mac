@@ -18,6 +18,7 @@ struct Dxvk {
         let dxvkPath = Bundle.main.url(forResource: "dxvk", withExtension: nil, subdirectory: "")!
         let dxDlls = ["d3d10_1.dll", "d3d10.dll", "d3d10core.dll", "dxgi.dll", "d3d11.dll"]
         let system32 = Wine.prefix.appendingPathComponent("drive_c/windows/system32")
+        Util.make(dir: system32)
         let fm = FileManager.default
         for dll in dxDlls {
             let winDllPath = system32.appendingPathComponent(dll).path

@@ -12,13 +12,14 @@ import XIVLauncher
 // MARK: - RepairProgress
 fileprivate struct RepairProgress: Codable {
     let currentStep, currentFile: String
-    let total, progress: Int
+    let total, progress, speed: Int64
 
     enum CodingKeys: String, CodingKey {
         case currentStep = "CurrentStep"
         case currentFile = "CurrentFile"
         case total = "Total"
         case progress = "Progress"
+        case speed = "Speed"
     }
     
     init() throws {
@@ -42,9 +43,14 @@ class RepairController: NSViewController {
     @IBOutlet private var repairBar: NSProgressIndicator!
     
     private var timer: Timer?
+    let formatter = ByteCountFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        formatter.allowedUnits = .useAll
+        formatter.countStyle = .file
+        formatter.includesUnit = true
+        formatter.isAdaptive = true
     }
     
     override func viewWillAppear() {
@@ -81,7 +87,7 @@ class RepairController: NSViewController {
             return
         }
         DispatchQueue.main.async { [self] in
-            repairStatus.stringValue = repairProgress.currentStep
+            repairStatus.stringValue = repairProgress.currentStep + " (\(formatter.string(fromByteCount: repairProgress.speed))/sec)"
             currentFile.stringValue = repairProgress.currentFile
             repairBar.doubleValue = Double(repairProgress.progress)
             repairBar.maxValue = Double(repairProgress.total)

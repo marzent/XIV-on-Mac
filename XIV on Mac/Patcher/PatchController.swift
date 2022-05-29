@@ -20,7 +20,7 @@ class PatchController: NSViewController {
     @IBOutlet private var downloadPatchBar: NSProgressIndicator!
     @IBOutlet private var installBar: NSProgressIndicator!
     
-    var isPatching = DispatchSemaphore(value: 0)
+    static var isPatching = DispatchSemaphore(value: 0)
     
     let installQueue = DispatchQueue(label: "installer.serial.queue", qos: .utility, attributes: [], autoreleaseFrequency: .workItem)
     let patchQueue = DispatchQueue(label: "patch.installer.serial.queue", qos: .utility, attributes: [], autoreleaseFrequency: .workItem)
@@ -54,7 +54,7 @@ class PatchController: NSViewController {
                 install(patchNum: patchNum, patches: patches, totalSize: totalSize)
             }
         }
-        isPatching.wait()
+        PatchController.isPatching.wait()
     }
     
     private func install(patchNum: Int, patches: [Patch], totalSize: Int64) {
@@ -75,7 +75,7 @@ class PatchController: NSViewController {
                 installBar.doubleValue = Double(installsDone)
                 installStatus.stringValue = "\(installsDone) out of \(patches.count) Patches installed"
                 if installsDone == patches.count {
-                    isPatching.signal()
+                    PatchController.isPatching.signal()
                     view.window?.close() //all done
                 }
             }

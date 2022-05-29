@@ -37,6 +37,7 @@ import XIVLauncher
         bhAutoLaunch.state = ACT.autoLaunchBH ? .on : .off
         checkGPUSupported()
         Wine.setup()
+        Wine.launch(command: "wineboot -u")
         sparkle.updater.checkForUpdatesInBackground()
         Util.make(dir: Util.cache.path)
     #if DEBUG

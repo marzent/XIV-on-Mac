@@ -144,6 +144,7 @@ class LaunchController: NSViewController {
         DispatchQueue.global(qos: .default).async {
             do {
                 DispatchQueue.global(qos: .userInitiated).async {
+                    DiscordBridge.setPresence()
                     Dxvk.install()
                 }
                 let loginResult = try LoginResult(repair)

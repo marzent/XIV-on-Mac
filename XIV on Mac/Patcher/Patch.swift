@@ -100,7 +100,7 @@ public struct Patch: Codable {
                 let alert = NSAlert()
                 alert.addButton(withTitle: "Close")
                 alert.alertStyle = .critical
-                alert.messageText = "XIVLancher.PatchInstaller Error"
+                alert.messageText = "Patch Installer Error"
                 alert.informativeText = res
                 alert.runModal()
                 Util.quit()
