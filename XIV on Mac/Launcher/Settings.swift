@@ -39,6 +39,11 @@ public struct Settings {
         }
     }
     
+    static func setDefaultGamepath() {
+        storage.removeObject(forKey: gamePathKey)
+        syncToXL()
+    }
+    
     private static let gameConfigPathKey = "GameConfigPath"
     static let defaultGameConfigLoc = Util.applicationSupport.appendingPathComponent("ffxivConfig")
     static var gameConfigPath: URL {
