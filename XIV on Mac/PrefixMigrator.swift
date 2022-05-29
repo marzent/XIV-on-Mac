@@ -33,6 +33,12 @@ class PrefixMigrator {
             }
         }
         
+        if Settings.gamePath.path.hasPrefix(Util.applicationSupport.appendingPathComponent("game/", isDirectory: true).path) {
+            Log.information("Prefix Migration: Setting GamePath to new default.")
+            // Preference was set to the default location explicitly previously
+            Settings.setDefaultGamepath()
+        }
+        
         // Clean up items (EG: old logs) from old location
         let deleteItems : [URL] = [Util.applicationSupport.appendingPathComponent("app.log", isDirectory: false),
                                    Util.applicationSupport.appendingPathComponent("wine.log", isDirectory: false)]
@@ -56,7 +62,7 @@ class PrefixMigrator {
             let oldProgramFilesXIVOnMacPath = oldPrefixPath.appendingPathComponent("drive_c/Program Files/XIV on Mac/", isDirectory: true)
             let itemsToRetrieve : [(URL,URL)] = [
                 // First we move the game data itself
-                (oldPrefixPath.appendingPathComponent("drive_c/Program Files (x86)/SquareEnix/", isDirectory: true),
+                (oldPrefixPath.appendingPathComponent("drive_c/Program Files (x86)/SquareEnix/FINAL FANTASY XIV - A Realm Reborn/", isDirectory: true),
                  Util.applicationSupport.appendingPathComponent("ffxiv/", isDirectory: true)
                 ),
                 
