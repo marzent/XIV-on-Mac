@@ -9,13 +9,13 @@ import Foundation
 
 class PrefixMigrator {
  
-    static func migratePrefixIfNeeded() {
+    static func migratePrefixIfNeeded() -> Bool {
         // Do we need to do anything? If there's a "game" folder in our prefix, then we need to migrate.
         let oldGameDirectory : URL = Util.applicationSupport.appendingPathComponent("game/", isDirectory: true)
         if (!Util.pathExists(path: oldGameDirectory))
         {
             Log.information("Prefix Migration: No migration required.")
-            return
+            return false
         }
         
         Log.information("Prefix Migration: Existing prefix needs migration.")
@@ -29,7 +29,7 @@ class PrefixMigrator {
             catch let createError as NSError {
                 Log.error("Prefix Migration: Failed to create new prefix \(newPrefixPath): \(createError.localizedDescription)")
                 // If this failed, the rest will not go well...
-                return
+                return true // This doesn't mean success, just that migration was needed/attempted
             }
         }
         
@@ -117,6 +117,16 @@ class PrefixMigrator {
         catch let migrationError as NSError {
             Log.error("Prefix Migration: Failed to migrate: \(migrationError.localizedDescription)")
         }
+        
         Log.information("Prefix Migration: Migration Complete.")
+        return true
+    }
+    
+    static func migrateWineRegistrySettings() {
+        // And finally, let's assert that preferences backed by registry keys need to have their keys re-set to match our preference files.
+        // Since the setters don't check that the value isn't changing, we can just set them to their current values to get the registry updated.
+        Wine.retina = Wine.retina
+        Settings.platform = Settings.platform
     }
 }
+
