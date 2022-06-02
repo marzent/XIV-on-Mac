@@ -27,7 +27,7 @@ import XIVLauncher
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Do this first so that nothing loads data or otherwise touches the prefix first!
-        PrefixMigrator.migratePrefixIfNeeded()
+        let migrated = PrefixMigrator.migratePrefixIfNeeded()
         let storyboard = NSStoryboard(name: "Main", bundle: nil)
         settingsWinController = storyboard.instantiateController(withIdentifier: "SettingsWindow") as? NSWindowController
         firstAidWinController = storyboard.instantiateController(withIdentifier: "FirstAidWindow") as? NSWindowController
@@ -38,6 +38,10 @@ import XIVLauncher
         checkGPUSupported()
         Wine.setup()
         Wine.launch(command: "wineboot -u")
+        if (migrated) {
+            // The final piece of migration has to happen after wine is ready for use.
+            PrefixMigrator.migrateWineRegistrySettings()
+        }
         sparkle.updater.checkForUpdatesInBackground()
         Util.make(dir: Util.cache.path)
     #if DEBUG
