@@ -213,14 +213,14 @@ class InstallerController: NSViewController {
             }
             let baseGamePath = "FINAL FANTASY XIV ONLINE.app/Contents/SharedSupport/finalfantasyxiv/support/published_Final_Fantasy/drive_c/Program Files (x86)/SquareEnix/FINAL FANTASY XIV - A Realm Reborn/"
             let baseGameFiles = archive.filter({ $0.path.starts(with: baseGamePath) })
-            Util.make(dir: Settings.gamePath.deletingLastPathComponent())
+            Util.make(dir: Settings.gamePath)
             DispatchQueue.main.async { [self] in
                 bar.doubleValue = 0.0
             }
             for (i, file) in baseGameFiles.enumerated() {
                 let components = URL(fileURLWithPath: file.path).pathComponents
-                let relDestination = components[10...].joined(separator: "/")
-                let destination = URL(fileURLWithPath: relDestination, relativeTo: Settings.gamePath.deletingLastPathComponent())
+                let relDestination = components[11...].joined(separator: "/")
+                let destination = URL(fileURLWithPath: relDestination, relativeTo: Settings.gamePath)
                 Util.make(dir: destination.deletingLastPathComponent())
                 try? _ = archive.extract(file, to: destination)
                 DispatchQueue.main.async { [self] in

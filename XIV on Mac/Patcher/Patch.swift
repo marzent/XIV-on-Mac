@@ -77,7 +77,7 @@ public struct Patch: Codable {
     
     func install() {
         let patchPath = Patch.dir.appendingPathComponent(self.path).path
-        let valid = checkPatchValidity(patchPath, Int(length), hashBlockSize, hashType, hashes?.joined(separator: ","))
+        let valid = checkPatchValidity(patchPath, Int(length), hashBlockSize, hashType, hashes?.joined(separator: ",") ?? "")
         guard valid else {
             DispatchQueue.main.sync {
                 let alert = NSAlert()
