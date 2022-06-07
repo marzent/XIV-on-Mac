@@ -25,18 +25,6 @@ public struct Patch: Codable {
     }
     
     static let dir = Util.applicationSupport.appendingPathComponent("patch")
-    
-    struct Hashes: Codable {
-        internal init(type: String, blockSize: String, array: String) {
-            self.type = type
-            self.blockSize = UInt64(blockSize) ?? 0
-            self.array = array.components(separatedBy: ",")
-        }
-        
-        let type: String
-        let blockSize: UInt64
-        let array: [String]
-    }
 
     var url: URL {
         URL(string: _url)!
@@ -89,6 +77,19 @@ public struct Patch: Codable {
     
     func install() {
         let patchPath = Patch.dir.appendingPathComponent(self.path).path
+        let valid = checkPatchValidity(patchPath, Int(length), hashBlockSize, hashType, hashes?.joined(separator: ","))
+        guard valid else {
+            DispatchQueue.main.sync {
+                let alert = NSAlert()
+                alert.addButton(withTitle: "Close")
+                alert.alertStyle = .critical
+                alert.messageText = "Patch Installer Error"
+                alert.informativeText = "Patch Verification failed"
+                alert.runModal()
+                Util.quit()
+            }
+            return
+        }
         var repo = self.repo
         let res = String(cString: installPatch(patchPath, repo.patchURL.path))
         if res == "OK" {

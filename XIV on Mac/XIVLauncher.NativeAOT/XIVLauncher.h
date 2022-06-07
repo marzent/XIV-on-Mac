@@ -25,3 +25,5 @@ const char *getPatcherUserAgent();
 const char *getBootPatches(void);
 
 const char *installPatch(const char *patch, const char *repo);
+
+bool checkPatchValidity(const char *path, long patchLength, long hashBlockSize, const char *hashType, const char *hashes);

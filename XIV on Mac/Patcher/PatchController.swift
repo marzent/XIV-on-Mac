@@ -75,6 +75,7 @@ class PatchController: NSViewController {
                 installBar.doubleValue = Double(installsDone)
                 installStatus.stringValue = "\(installsDone) out of \(patches.count) Patches installed"
                 if installsDone == patches.count {
+                    FFXIVRepo.verToBck()
                     PatchController.isPatching.signal()
                     view.window?.close() //all done
                 }

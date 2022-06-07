@@ -10,7 +10,7 @@ import XIVLauncher
 
 fileprivate let baseVer = "2012.01.01.0000.0000"
 
-public enum FFXIVRepo: String {
+public enum FFXIVRepo: String, CaseIterable {
     case boot = "ffxivboot"
     case game = "ffxivgame"
     case ex1, ex2, ex3, ex4
@@ -30,6 +30,12 @@ public enum FFXIVRepo: String {
         }
         set {
             write(to: bckURL, content: newValue)
+        }
+    }
+    
+    static func verToBck() {
+        for var repo in FFXIVRepo.allCases {
+            repo.bck = repo.ver
         }
     }
     
@@ -53,10 +59,6 @@ public enum FFXIVRepo: String {
         } catch {
             Log.error("Error writing version/bck file \(to)")
         }
-    }
-    
-    static func expansions(max: UInt32) -> [FFXIVRepo] {
-        Array([.ex1, .ex2, .ex3, .ex4].prefix(upTo: Int(max)))
     }
     
     var baseURL: URL {
