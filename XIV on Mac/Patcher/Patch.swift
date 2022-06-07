@@ -86,6 +86,7 @@ public struct Patch: Codable {
                 alert.messageText = "Patch Installer Error"
                 alert.informativeText = "Patch Verification failed"
                 alert.runModal()
+                try! FileManager.default.removeItem(atPath: patchPath)
                 Util.quit()
             }
             return
