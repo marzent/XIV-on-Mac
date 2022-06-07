@@ -56,7 +56,7 @@ class LaunchController: NSViewController {
     }
     
     func checkBoot() {
-        if let bootPatches = try? Patch.bootPatches, !bootPatches.isEmpty {
+        if let bootPatches = try? Patch.bootPatches, !bootPatches.isEmpty, FFXIVApp().installed {
             startPatch(bootPatches)
         }
         DispatchQueue.main.async {
@@ -143,6 +143,9 @@ class LaunchController: NSViewController {
         Settings.credentials = LoginCredentials(username: userField.stringValue, password: passwdField.stringValue, oneTimePassword: otpField.stringValue)
         DispatchQueue.global(qos: .default).async {
             do {
+                guard FFXIVApp().installed else {
+                    throw FFXIVLoginError.noInstall
+                }
                 DispatchQueue.global(qos: .userInitiated).async {
                     DiscordBridge.setPresence()
                     Dxvk.install()

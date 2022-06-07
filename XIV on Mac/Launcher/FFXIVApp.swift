@@ -29,4 +29,16 @@ public struct FFXIVApp {
         
         bootFiles = [bootExeURL, bootExe64URL, launcherExeURL, launcherExe64URL, updaterExeURL, updaterExe64URL]
     }
+    
+    static var running: Bool {
+        instances > 0
+    }
+    
+    static var instances: Int {
+        Wine.pidsOf(processName: "ffxiv_dx11.exe").count
+    }
+    
+    var installed: Bool {
+        bootFiles.allSatisfy({FileManager.default.fileExists(atPath: $0.path)})
+    }
 }
