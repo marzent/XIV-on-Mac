@@ -334,8 +334,8 @@
             filePath = "XIV on Mac/Launcher/LaunchController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
             landmarkName = "doLogin(repair:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -350,8 +350,8 @@
             filePath = "XIV on Mac/Launcher/LoginResult.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
             landmarkName = "init(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -433,6 +433,22 @@
             startingLineNumber = "81"
             endingLineNumber = "81"
             landmarkName = "install()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "326D0FDD-E99C-4C77-BBA8-217A183FAEC8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "XIV on Mac/Launcher/LaunchController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
+            landmarkName = "doLogin(repair:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

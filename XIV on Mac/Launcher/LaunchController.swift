@@ -151,6 +151,13 @@ class LaunchController: NSViewController {
                     Dxvk.install()
                 }
                 let loginResult = try LoginResult(repair)
+                guard loginResult.state != .NoService else {
+                    throw FFXIVLoginError.notPlayable
+                }
+                guard loginResult.state != .NoTerms else {
+                    Wine.launch(command: "\"\(FFXIVApp().bootExe64URL.path)\"")
+                    throw FFXIVLoginError.noTerms
+                }
                 if repair {
                     DispatchQueue.main.async { [self] in
                         loginSheetWinController?.window?.close()
@@ -212,7 +219,17 @@ class LaunchController: NSViewController {
                     alert.informativeText = errorMessage
                     alert.runModal()
                 }
-            } catch {
+            } catch let error as FFXIVLoginError {
+                DispatchQueue.main.async { [self] in
+                    loginSheetWinController?.window?.close()
+                    let alert = NSAlert()
+                    alert.addButton(withTitle: NSLocalizedString("OK_BUTTON", comment: ""))
+                    alert.alertStyle = .critical
+                    alert.messageText = error.failureReason ?? "Error"
+                    alert.informativeText = error.localizedDescription
+                    alert.runModal()
+                }
+            } catch { //should not reach
                 DispatchQueue.main.async { [self] in
                     loginSheetWinController?.window?.close()
                     let alert = NSAlert()

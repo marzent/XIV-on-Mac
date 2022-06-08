@@ -64,6 +64,7 @@ public enum FFXIVLoginError: Error {
     case noSteamTicket
     case steamUserError
     case notPlayable
+    case noTerms
     case protocolError
     case networkError
     case noInstall
@@ -84,6 +85,8 @@ extension FFXIVLoginError: LocalizedError {
             return NSLocalizedString("STEAM_USER_ERROR_SHORT", comment: "")
         case .notPlayable:
             return NSLocalizedString("NOT_PLAYABLE_SHORT", comment: "")
+        case .noTerms:
+            return NSLocalizedString("NO_TERMS_SHORT", comment: "")
         case .protocolError:
             return NSLocalizedString("PROTOCOL_ERROR_SHORT", comment: "")
         case .networkError:
@@ -111,6 +114,8 @@ extension FFXIVLoginError: LocalizedError {
             return NSLocalizedString("STEAM_USER_ERROR", comment: "")
         case .notPlayable:
             return NSLocalizedString("NOT_PLAYABLE", comment: "")
+        case .noTerms:
+            return NSLocalizedString("NO_TERMS", comment: "")
         case .protocolError:
             return NSLocalizedString("PROTOCOL_ERROR", comment: "")
         case .networkError:

@@ -10,16 +10,30 @@ import XIVLauncher
 
 // MARK: - LoginResult
 struct LoginResult: Codable {
-    let state: Int
+    private let _state: Int
     let pendingPatches: [Patch]?
     let oauthLogin: OauthLogin?
     let uniqueID: String?
 
     enum CodingKeys: String, CodingKey {
-        case state = "State"
+        case _state = "State"
         case pendingPatches = "PendingPatches"
         case oauthLogin = "OauthLogin"
         case uniqueID = "UniqueId"
+    }
+    
+    enum LoginState: Int {
+        case Unknown
+        case Ok
+        case NeedsPatchGame
+        case NeedsPatchBoot
+        case NoService
+        case NoTerms
+        case NoLogin
+    }
+    
+    var state: LoginState {
+        LoginState(rawValue: _state) ?? .Unknown
     }
     
     init(_ repair: Bool) throws {

@@ -16,6 +16,8 @@
 "STEAM_USER_ERROR" = "There is a mismatch between the provided username and Steam account.";
 "NOT_PLAYABLE_SHORT" = "Licensing error";
 "NOT_PLAYABLE" = "The login servers response indicates that you cannot play the game currently. Please make sure to have an active subscription and select the correct license (Windows, Steam or Mac) in Settings.";
+"NO_TERMS_SHORT" = "Login system error";
+"NO_TERMS" = "Please accept the Final Fantasy XIV Terms of Use in the official launcher.";
 "PROTOCOL_ERROR_SHORT" = "Login system error";
 "PROTOCOL_ERROR" = "The login servers did not accept the request. Please make sure you have a stable network connection to the FFXIV servers.";
 "NETWORK_ERROR_SHORT" = "Network Error";
