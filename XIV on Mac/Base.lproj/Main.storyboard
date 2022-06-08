@@ -2683,10 +2683,7 @@ https://github.com/goatcorp/Dalamud</string>
                                 </connections>
                             </button>
                             <textField wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qGE-fd-l1u">
-                                <rect key="frame" x="106" y="193" width="500" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="500" id="x3f-T2-eNg"/>
-                                </constraints>
+                                <rect key="frame" x="106" y="162" width="793" height="21"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="Wfl-gF-eSY">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -2696,8 +2693,8 @@ https://github.com/goatcorp/Dalamud</string>
                                     <action selector="saveState:" target="4Nu-Eh-h4G" id="gKq-PC-sGf"/>
                                 </connections>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bVO-QG-s4L">
-                                <rect key="frame" x="18" y="195" width="82" height="16"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="bVO-QG-s4L">
+                                <rect key="frame" x="18" y="165" width="82" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Wine Debug:" id="nXs-Qb-iRe">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -2705,41 +2702,57 @@ https://github.com/goatcorp/Dalamud</string>
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="WT6-Je-uwd">
-                                <rect key="frame" x="18" y="265" width="883" height="16"/>
+                                <rect key="frame" x="18" y="265" width="612" height="16"/>
                                 <textFieldCell key="cell" selectable="YES" title="These settings are mainly for troubleshooting purposes and generally shouldn't need to be changed." id="Fee-RW-Fzh">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="C1E-LB-oXh">
+                                <rect key="frame" x="18" y="196" width="182" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="zQD-X6-FjY"/>
+                                </constraints>
+                                <buttonCell key="cell" type="check" title="Encrypt Game Arguments" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Iv2-C2-31G">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="saveState:" target="4Nu-Eh-h4G" id="KE3-0z-sH7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="7H0-sz-e1J" firstAttribute="leading" secondItem="WT6-Je-uwd" secondAttribute="leading" id="3oH-M8-YDF"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="C1E-LB-oXh" secondAttribute="trailing" constant="20" symbolic="YES" id="4GR-19-Irg"/>
                             <constraint firstItem="7H0-sz-e1J" firstAttribute="top" secondItem="WT6-Je-uwd" secondAttribute="bottom" constant="8" symbolic="YES" id="4zo-UM-9nl"/>
                             <constraint firstItem="5oa-uD-168" firstAttribute="top" secondItem="7H0-sz-e1J" secondAttribute="bottom" constant="6" symbolic="YES" id="65r-UJ-gaY"/>
-                            <constraint firstAttribute="trailing" secondItem="WT6-Je-uwd" secondAttribute="trailing" constant="20" symbolic="YES" id="8zq-0I-3Vu"/>
-                            <constraint firstItem="qGE-fd-l1u" firstAttribute="leading" secondItem="bVO-QG-s4L" secondAttribute="trailing" constant="8" symbolic="YES" id="BkO-Kd-ETv"/>
-                            <constraint firstItem="7H0-sz-e1J" firstAttribute="leading" secondItem="2Yu-sf-t9l" secondAttribute="leading" constant="20" symbolic="YES" id="Db7-5V-JdZ"/>
-                            <constraint firstItem="WT6-Je-uwd" firstAttribute="leading" secondItem="2Yu-sf-t9l" secondAttribute="leading" constant="20" symbolic="YES" id="FSu-3G-9mM"/>
-                            <constraint firstItem="bVO-QG-s4L" firstAttribute="top" secondItem="5oa-uD-168" secondAttribute="bottom" constant="8" symbolic="YES" id="PZM-Jl-GJ3"/>
-                            <constraint firstItem="qGE-fd-l1u" firstAttribute="centerY" secondItem="bVO-QG-s4L" secondAttribute="centerY" id="SU7-ga-Dph"/>
-                            <constraint firstItem="5oa-uD-168" firstAttribute="leading" secondItem="2Yu-sf-t9l" secondAttribute="leading" constant="20" symbolic="YES" id="UEY-qe-ZtL"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="7H0-sz-e1J" secondAttribute="trailing" constant="20" symbolic="YES" id="Vd0-fZ-py6"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qGE-fd-l1u" secondAttribute="trailing" constant="20" symbolic="YES" id="YY8-HD-TbC"/>
-                            <constraint firstItem="WT6-Je-uwd" firstAttribute="top" secondItem="2Yu-sf-t9l" secondAttribute="top" constant="20" symbolic="YES" id="gDw-Lp-bih"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="5oa-uD-168" secondAttribute="trailing" constant="20" symbolic="YES" id="mKZ-w2-b1I"/>
-                            <constraint firstItem="bVO-QG-s4L" firstAttribute="leading" secondItem="2Yu-sf-t9l" secondAttribute="leading" constant="20" symbolic="YES" id="wot-35-ZLf"/>
-                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="qGE-fd-l1u" secondAttribute="bottom" constant="20" symbolic="YES" id="yma-OV-Dgd"/>
+                            <constraint firstItem="qGE-fd-l1u" firstAttribute="baseline" secondItem="bVO-QG-s4L" secondAttribute="baseline" id="E6O-gg-OAz"/>
+                            <constraint firstItem="C1E-LB-oXh" firstAttribute="top" secondItem="5oa-uD-168" secondAttribute="bottom" constant="6" symbolic="YES" id="HKe-6O-WTk"/>
+                            <constraint firstAttribute="trailing" secondItem="qGE-fd-l1u" secondAttribute="trailing" constant="20" symbolic="YES" id="IPj-DG-1CS"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="WT6-Je-uwd" secondAttribute="trailing" constant="20" symbolic="YES" id="KJl-UB-4Av"/>
+                            <constraint firstItem="7H0-sz-e1J" firstAttribute="leading" secondItem="2Yu-sf-t9l" secondAttribute="leading" constant="20" symbolic="YES" id="Od3-JN-bPr"/>
+                            <constraint firstItem="bVO-QG-s4L" firstAttribute="top" secondItem="C1E-LB-oXh" secondAttribute="bottom" constant="16" id="PZM-Jl-GJ3"/>
+                            <constraint firstItem="7H0-sz-e1J" firstAttribute="top" secondItem="2Yu-sf-t9l" secondAttribute="top" constant="44" id="cdz-WO-AD5"/>
+                            <constraint firstItem="C1E-LB-oXh" firstAttribute="leading" secondItem="5oa-uD-168" secondAttribute="leading" id="cgI-1o-EcA"/>
+                            <constraint firstItem="7H0-sz-e1J" firstAttribute="leading" secondItem="bVO-QG-s4L" secondAttribute="leading" id="fAL-he-HZR"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="5oa-uD-168" secondAttribute="trailing" constant="20" symbolic="YES" id="g86-DZ-hqY"/>
+                            <constraint firstItem="qGE-fd-l1u" firstAttribute="leading" secondItem="bVO-QG-s4L" secondAttribute="trailing" constant="8" symbolic="YES" id="lcP-Q4-Wkv"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="7H0-sz-e1J" secondAttribute="trailing" constant="20" symbolic="YES" id="n6C-bQ-ITe"/>
+                            <constraint firstItem="7H0-sz-e1J" firstAttribute="leading" secondItem="5oa-uD-168" secondAttribute="leading" id="nKN-zN-5lm"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="esync" destination="5oa-uD-168" id="PGe-Nh-Oq9"/>
-                        <outlet property="keepPatches" destination="7H0-sz-e1J" id="Rsj-C0-ctg"/>
+                        <outlet property="encrypted" destination="C1E-LB-oXh" id="ZSj-Dq-nQi"/>
+                        <outlet property="esync" destination="5oa-uD-168" id="Ly3-G7-giF"/>
+                        <outlet property="keepPatches" destination="7H0-sz-e1J" id="7b7-F0-hhl"/>
                         <outlet property="wineDebugField" destination="qGE-fd-l1u" id="adg-Ve-unK"/>
                     </connections>
                 </viewController>
                 <customObject id="8qe-2p-Jnk" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1560" y="2787"/>
+            <point key="canvasLocation" x="1559.5" y="2786.5"/>
         </scene>
         <!--Repair Controller-->
         <scene sceneID="10b-qv-gVU">

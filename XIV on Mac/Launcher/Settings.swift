@@ -12,7 +12,7 @@ public struct Settings {
     private static let storage = UserDefaults.standard
     
     static func syncToXL() {
-        loadConfig(acceptLanguage, gamePath.path, gameConfigPath.path, language.rawValue, true, true, freeTrial, platform.rawValue, Patch.dir.path, 0, 0, true, dalamudEnabled ? 1 : 2, Int32(Settings.injectionDelay * 1000))
+        loadConfig(acceptLanguage, gamePath.path, gameConfigPath.path, language.rawValue, true, encryptedArguments, freeTrial, platform.rawValue, Patch.dir.path, 0, 0, true, dalamudEnabled ? 1 : 2, Int32(Settings.injectionDelay * 1000))
     }
     
     private static let platformKey = "Platform"
@@ -128,6 +128,17 @@ public struct Settings {
         }
         set {
             storage.set(newValue.rawValue, forKey: languageKey)
+            syncToXL()
+        }
+    }
+    
+    private static let encryptedArgumentsKey = "EncryptedArguments"
+    static var encryptedArguments: Bool {
+        get {
+            Util.getSetting(settingKey: encryptedArgumentsKey, defaultValue: true)
+        }
+        set {
+            storage.set(newValue, forKey: encryptedArgumentsKey)
             syncToXL()
         }
     }
