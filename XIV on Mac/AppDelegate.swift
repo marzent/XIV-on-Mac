@@ -22,7 +22,8 @@ import XIVLauncher
         Settings.syncToXL()
         let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString")!
         let build = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion")!
-        initXL("XIV on Mac \(version) build \(build)", Util.applicationSupport.path)
+        let storagePath = FileManager.default.fileSystemRepresentation(withPath: Util.applicationSupport.path)
+        initXL("XIV on Mac \(version) build \(build)", storagePath)
     }
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {

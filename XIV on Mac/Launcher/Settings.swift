@@ -12,7 +12,10 @@ public struct Settings {
     private static let storage = UserDefaults.standard
     
     static func syncToXL() {
-        loadConfig(acceptLanguage, gamePath.path, gameConfigPath.path, language.rawValue, true, encryptedArguments, freeTrial, platform.rawValue, Patch.dir.path, 0, 0, true, dalamudEnabled ? 1 : 2, Int32(Settings.injectionDelay * 1000))
+        let gamePathCString = FileManager.default.fileSystemRepresentation(withPath: gamePath.path)
+        let gameConfigPathCString = FileManager.default.fileSystemRepresentation(withPath: gameConfigPath.path)
+        let patchDirCString = FileManager.default.fileSystemRepresentation(withPath: Patch.dir.path)
+        loadConfig(acceptLanguage, gamePathCString, gameConfigPathCString, language.rawValue, true, encryptedArguments, freeTrial, platform.rawValue, patchDirCString, 0, 0, true, dalamudEnabled ? 1 : 2, Int32(Settings.injectionDelay * 1000))
     }
     
     private static let platformKey = "Platform"

@@ -17,9 +17,24 @@ struct Wine {
     static func setup() {
         let mvkPath = Bundle.main.url(forResource: Dxvk.modernMVK ? "modern" : "stable", withExtension: "", subdirectory: "MoltenVK")!.path
         let winePath = Bundle.main.url(forResource: "lib", withExtension: "", subdirectory: "wine")!.path
-        let libSearchPath = [mvkPath, winePath, "/opt/local/lib", "/usr/local/lib", "/usr/lib", "/usr/libexec", "/usr/lib/system", "/opt/X11/lib"].joined(separator: ":")
-        addEnviromentVariable("DYLD_FALLBACK_LIBRARY_PATH", libSearchPath)
-        addEnviromentVariable("DYLD_VERSIONED_LIBRARY_PATH", libSearchPath)
+        let libSearchPaths = [mvkPath, winePath, "/opt/local/lib", "/usr/local/lib", "/usr/lib", "/usr/libexec", "/usr/lib/system", "/opt/X11/lib"]
+            .compactMap {FileManager.default.fileSystemRepresentation(withPath: $0)}
+        let colon = UnsafePointer(strdup(":")!)
+        defer {
+            free(UnsafeMutableRawPointer(mutating: colon))
+        }
+        let libSearchPathsSeparated = (0 ..< 2 * libSearchPaths.count - 1).map { $0 % 2 == 0 ? libSearchPaths[$0/2] : colon}
+        let libSearchPathsConcat = UnsafeMutablePointer<CChar>.allocate(capacity: libSearchPathsSeparated.map {strlen($0)}.reduce(1, +))
+        defer {
+            libSearchPathsConcat.deallocate()
+        }
+        strcpy(libSearchPathsConcat, "")
+        for libSearchPath in libSearchPathsSeparated {
+            strcat(libSearchPathsConcat, libSearchPath)
+        }
+        addEnviromentVariable("DYLD_FALLBACK_LIBRARY_PATH", libSearchPathsConcat)
+        addEnviromentVariable("DYLD_VERSIONED_LIBRARY_PATH", libSearchPathsConcat)
+        addEnviromentVariable("LANG", "en_US")
         addEnviromentVariable("MVK_CONFIG_RESUME_LOST_DEVICE", "1")
         addEnviromentVariable("DXVK_HUD", Dxvk.options.getHud())
         addEnviromentVariable("DXVK_ASYNC", Dxvk.options.getAsync())
@@ -27,7 +42,7 @@ struct Wine {
         addEnviromentVariable("DXVK_CONFIG_FILE", "C:\\dxvk.conf")
         addEnviromentVariable("DXVK_STATE_CACHE_PATH", "C:\\")
         addEnviromentVariable("DXVK_LOG_PATH", "C:\\")
-        createCompatToolsInstance(Wine.wineBinURL.path, Wine.debug, Wine.esync)
+        createCompatToolsInstance(FileManager.default.fileSystemRepresentation(withPath: wineBinURL.path), debug, esync)
     }
     
     static func launch(command: String, blocking: Bool = false) {

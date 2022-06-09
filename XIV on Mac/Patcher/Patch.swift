@@ -77,7 +77,8 @@ public struct Patch: Codable {
     
     func install() {
         let patchPath = Patch.dir.appendingPathComponent(self.path).path
-        let valid = checkPatchValidity(patchPath, Int(length), hashBlockSize, hashType, hashes?.joined(separator: ",") ?? "")
+        let patchPathCString = FileManager.default.fileSystemRepresentation(withPath: patchPath)
+        let valid = checkPatchValidity(patchPathCString, Int(length), hashBlockSize, hashType, hashes?.joined(separator: ",") ?? "")
         guard valid else {
             DispatchQueue.main.sync {
                 let alert = NSAlert()
@@ -92,7 +93,7 @@ public struct Patch: Codable {
             return
         }
         var repo = self.repo
-        let res = String(cString: installPatch(patchPath, repo.patchURL.path))
+        let res = String(cString: installPatch(patchPathCString, repo.patchURL.path))
         if res == "OK" {
             repo.ver = self.version
             Log.information("Updated ver to \(repo.ver)")
