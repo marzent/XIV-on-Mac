@@ -91,6 +91,16 @@ public struct Settings {
         }
     }
     
+    private static let verboseLoggingKey = "VerboseLogging"
+    static var verboseLogging: Bool {
+        get {
+            storage.bool(forKey: verboseLoggingKey)
+        }
+        set {
+            storage.set(newValue, forKey: verboseLoggingKey)
+        }
+    }
+    
     private static let usesOneTimePasswordKey = "UsesOneTimePassword"
     static var usesOneTimePassword: Bool {
         get {
