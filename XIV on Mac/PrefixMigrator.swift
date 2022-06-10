@@ -95,7 +95,19 @@ class PrefixMigrator {
             let newPath : URL = oneItem.1
             if (Util.pathExists(path: oldPath))
             {
-                Log.information("Prefix Migration: Retrieving \"\(oldPath.path)\" -> \"\(newPath.path)\"")
+                // Check if the parent path or our target exists
+                let newPathParent : URL = newPath.deletingLastPathComponent()
+                if (!Util.pathExists(path: newPathParent)) {
+                    Log.information("Prefix Migration: Need to create \"\(newPathParent.path)\"")
+                    do {
+                        try FileManager.default.createDirectory(at: newPathParent, withIntermediateDirectories: true)
+                    }
+                    catch let createError as NSError {
+                        Log.error("Prefix Migration: Failed to create \(newPathParent.path): \(createError.localizedDescription)")
+                        // Move on to the next item, the copy will fail if we try.
+                        continue
+                    }
+                }
                 // Get rid of an existing version at the destination
                 if (Util.pathExists(path: newPath))
                 {
@@ -108,6 +120,7 @@ class PrefixMigrator {
                     }
                 }
                 // If this fails we should try the other stuff. Better to make a best effort than the block the user entirely.
+                Log.information("Prefix Migration: Retrieving \"\(oldPath.path)\" -> \"\(newPath.path)\"")
                 do {
                     try FileManager.default.moveItem(at: oldPath, to: newPath)
                 }
