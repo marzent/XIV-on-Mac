@@ -491,7 +491,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/sh\n\ninstall_name_tool -id @executable_path/../Frameworks/XIVLauncher.NativeAOT.dylib \"$PROJECT_DIR\"/XIV\\ on\\ Mac/XIVLauncher.NativeAOT/XIVLauncher.NativeAOT.dylib\ninstall_name_tool -id @executable_path/../Frameworks/libsteam_api64.dylib \"$PROJECT_DIR\"/XIV\\ on\\ Mac/XIVLauncher.NativeAOT/libsteam_api64.dylib\n";
+			shellScript = "#!/bin/sh\n\ninstall_name_tool -id @executable_path/../Frameworks/XIVLauncher.NativeAOT.dylib \"$PROJECT_DIR\"/XIV\\ on\\ Mac/XIVLauncher.NativeAOT/XIVLauncher.NativeAOT.dylib\n#install_name_tool -id @executable_path/../Frameworks/libsteam_api64.dylib \"$PROJECT_DIR\"/XIV\\ on\\ Mac/XIVLauncher.NativeAOT/libsteam_api64.dylib\n";
 		};
 		5592FEB42778D3CB00FA304B /* Fix Codesign (Runtime) */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -713,7 +713,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 71;
+				CURRENT_PROJECT_VERSION = 72;
 				DEVELOPMENT_TEAM = TQJJTJ6364;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -735,7 +735,7 @@
 					"$(PROJECT_DIR)/XIV\\ on\\ Mac/XIVLauncher.NativeAOT",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 4.0.2;
+				MARKETING_VERSION = 4.0.3;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = "dezent.XIV-on-Mac";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -759,7 +759,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 71;
+				CURRENT_PROJECT_VERSION = 72;
 				DEVELOPMENT_TEAM = TQJJTJ6364;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -781,7 +781,7 @@
 					"$(PROJECT_DIR)/XIV\\ on\\ Mac/XIVLauncher.NativeAOT",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 4.0.2;
+				MARKETING_VERSION = 4.0.3;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = "dezent.XIV-on-Mac";
 				PRODUCT_NAME = "$(TARGET_NAME)";
