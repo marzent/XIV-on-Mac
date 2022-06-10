@@ -24,6 +24,7 @@ import XIVLauncher
         let build = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion")!
         let storagePath = FileManager.default.fileSystemRepresentation(withPath: Util.applicationSupport.path)
         initXL("XIV on Mac \(version) build \(build)", storagePath)
+        Wine.setup()
     }
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
@@ -37,7 +38,6 @@ import XIVLauncher
         actAutoLaunch.state = ACT.autoLaunch ? .on : .off
         bhAutoLaunch.state = ACT.autoLaunchBH ? .on : .off
         checkGPUSupported()
-        Wine.setup()
         Wine.launch(command: "wineboot -u")
         if (migrated) {
             // The final piece of migration has to happen after wine is ready for use.
