@@ -36,6 +36,7 @@ struct Wine {
         addEnviromentVariable("DYLD_VERSIONED_LIBRARY_PATH", libSearchPathsConcat)
         addEnviromentVariable("LANG", "en_US")
         addEnviromentVariable("MVK_CONFIG_RESUME_LOST_DEVICE", "1")
+        addEnviromentVariable("MVK_CONFIG_FULL_IMAGE_VIEW_SWIZZLE", "1")
         addEnviromentVariable("DXVK_HUD", Dxvk.options.getHud())
         addEnviromentVariable("DXVK_ASYNC", Dxvk.options.getAsync())
         addEnviromentVariable("DXVK_FRAME_RATE", Dxvk.options.getMaxFramerate())
