@@ -35,8 +35,9 @@ struct Wine {
         addEnviromentVariable("DYLD_FALLBACK_LIBRARY_PATH", libSearchPathsConcat)
         addEnviromentVariable("DYLD_VERSIONED_LIBRARY_PATH", libSearchPathsConcat)
         addEnviromentVariable("LANG", "en_US")
-        addEnviromentVariable("MVK_CONFIG_RESUME_LOST_DEVICE", "1")
-        addEnviromentVariable("MVK_CONFIG_FULL_IMAGE_VIEW_SWIZZLE", "1")
+        addEnviromentVariable("MVK_ALLOW_METAL_FENCES", "1")             // XXX Required by DXVK for Apple/NVidia GPUs (better FPS than CPU Emulation)
+        addEnviromentVariable("MVK_CONFIG_FULL_IMAGE_VIEW_SWIZZLE", "1") // XXX Required by DXVK for Intel/NVidia GPUs
+        addEnviromentVariable("MVK_CONFIG_RESUME_LOST_DEVICE", "1")      // XXX Required by WINE (doesn't handle VK_ERROR_DEVICE_LOST correctly)
         addEnviromentVariable("DXVK_HUD", Dxvk.options.getHud())
         addEnviromentVariable("DXVK_ASYNC", Dxvk.options.getAsync())
         addEnviromentVariable("DXVK_FRAME_RATE", Dxvk.options.getMaxFramerate())
