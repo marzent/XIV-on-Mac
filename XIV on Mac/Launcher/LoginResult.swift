@@ -14,8 +14,6 @@ struct LoginResult: Codable {
     let pendingPatches: [Patch]?
     let oauthLogin: OauthLogin?
     let uniqueID: String?
-    
-    var dalmaudOk = false
 
     enum CodingKeys: String, CodingKey {
         case _state = "State"
