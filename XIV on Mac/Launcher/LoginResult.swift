@@ -14,6 +14,8 @@ struct LoginResult: Codable {
     let pendingPatches: [Patch]?
     let oauthLogin: OauthLogin?
     let uniqueID: String?
+    
+    var dalmaudOk = false
 
     enum CodingKeys: String, CodingKey {
         case _state = "State"
@@ -48,9 +50,13 @@ struct LoginResult: Codable {
         }
     }
     
-    func startGame() throws -> ProcessInformation {
+    var dalamudOk: Bool {
+        getDalamudInstallState()
+    }
+    
+    func startGame(_ _dalamudOk: Bool) throws -> ProcessInformation {
         let loginResultJSON = String(data: try! JSONEncoder().encode(self), encoding: String.Encoding.utf8)!
-        let processInformationCString = XIVLauncher.startGame(loginResultJSON)!
+        let processInformationCString = XIVLauncher.startGame(loginResultJSON, _dalamudOk)!
         let processInformationJSON = String(cString: processInformationCString)
         free(UnsafeMutableRawPointer(mutating: processInformationCString))
         do {

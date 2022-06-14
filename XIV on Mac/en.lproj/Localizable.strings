@@ -38,6 +38,8 @@
 "OK_BUTTON" = "OK";
 "CANCEL_BUTTON" = "Cancel";
 
+"DALAMUD_START_FAILURE" = "Dalamud failed to install";
+"DALAMUD_START_FAILURE_INFORMATIONAL" = "An error occured downloading and installing Dalamud. Please check your network connection.";
 "GAME_START_FAILURE" = "Final Fantasy XIV failed to start";
 "GAME_START_FAILURE_INFORMATIONAL" = "An error occured starting the game. Please try restarting XIV on Mac.";
 

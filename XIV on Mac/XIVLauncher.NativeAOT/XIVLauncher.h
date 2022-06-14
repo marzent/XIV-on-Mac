@@ -10,7 +10,9 @@ void fakeLogin(void);
 
 const char *tryLoginToGame(const char *username, const char *password, const char *otp, bool repair);
 
-const char *startGame(const char *loginResult);
+bool getDalamudInstallState(void);
+
+const char *startGame(const char *loginResult, bool dalamudOk);
 
 const char *repairGame(const char *loginResult);
 

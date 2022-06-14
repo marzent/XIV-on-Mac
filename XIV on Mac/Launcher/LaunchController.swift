@@ -175,8 +175,20 @@ class LaunchController: NSViewController {
                         view.window?.beginSheet(loginSheetWinController!.window!)
                     }
                 }
+                NotificationCenter.default.post(name: .loginInfo, object: nil, userInfo: [Notification.status.info: "Updating Dalamud"])
+                let dalamudOk = loginResult.dalamudOk
+                DispatchQueue.main.async {
+                    if Settings.dalamudEnabled && !dalamudOk {
+                        let alert = NSAlert()
+                        alert.addButton(withTitle: NSLocalizedString("OK_BUTTON", comment: ""))
+                        alert.alertStyle = .critical
+                        alert.messageText = NSLocalizedString("DALAMUD_START_FAILURE", comment: "")
+                        alert.informativeText = NSLocalizedString("DALAMUD_START_FAILURE_INFORMATIONAL", comment: "")
+                        alert.runModal()
+                    }
+                }
                 NotificationCenter.default.post(name: .loginInfo, object: nil, userInfo: [Notification.status.info: "Starting Game"])
-                let process = try loginResult.startGame()
+                let process = try loginResult.startGame(dalamudOk)
                 DispatchQueue.main.async { [self] in
                     loginSheetWinController?.window?.close()
                     view.window?.close()
