@@ -150,6 +150,9 @@ class LaunchController: NSViewController {
                     DiscordBridge.setPresence()
                     Dxvk.install()
                 }
+                if Frontier.loginMaintenance {
+                    throw FFXIVLoginError.maintenance
+                }
                 let loginResult = try LoginResult(repair)
                 guard loginResult.state != .NoService else {
                     throw FFXIVLoginError.notPlayable
@@ -174,6 +177,9 @@ class LaunchController: NSViewController {
                     DispatchQueue.main.async { [self] in
                         view.window?.beginSheet(loginSheetWinController!.window!)
                     }
+                }
+                if Frontier.gameMaintenance {
+                    throw FFXIVLoginError.maintenance
                 }
                 NotificationCenter.default.post(name: .loginInfo, object: nil, userInfo: [Notification.status.info: "Updating Dalamud"])
                 let dalamudOk = loginResult.dalamudOk
