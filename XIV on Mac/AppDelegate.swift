@@ -116,6 +116,10 @@ import XIVLauncher
         NSWorkspace.shared.open(Util.applicationSupport)
     }
     
+    @IBAction func startAnamnesis(_ sender: Any) {
+        Anamnesis.launch()
+    }
+    
     @IBAction func startACT(_ sender: Any) {
         ACT.launch()
     }
@@ -160,6 +164,10 @@ import XIVLauncher
     
     @IBAction func installDotNet48(_ sender: Any) {
         Dotnet.installDotNet48()
+    }
+    
+    @IBAction func installDotNet60(_ sender: Any) {
+        Dotnet.installDotNet606()
     }
     
     @IBAction func installDotNet(_ sender: Any) {

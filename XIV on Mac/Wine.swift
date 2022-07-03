@@ -32,28 +32,23 @@ struct Wine {
         for libSearchPath in libSearchPathsSeparated {
             strcat(libSearchPathsConcat, libSearchPath)
         }
-        addEnviromentVariable("DYLD_FALLBACK_LIBRARY_PATH", libSearchPathsConcat)
-        addEnviromentVariable("DYLD_VERSIONED_LIBRARY_PATH", libSearchPathsConcat)
-        addEnviromentVariable("LANG", "en_US")
-        addEnviromentVariable("MVK_ALLOW_METAL_FENCES", "1")             // XXX Required by DXVK for Apple/NVidia GPUs (better FPS than CPU Emulation)
-        addEnviromentVariable("MVK_CONFIG_FULL_IMAGE_VIEW_SWIZZLE", "1") // XXX Required by DXVK for Intel/NVidia GPUs
-        addEnviromentVariable("MVK_CONFIG_RESUME_LOST_DEVICE", "1")      // XXX Required by WINE (doesn't handle VK_ERROR_DEVICE_LOST correctly)
-        addEnviromentVariable("DXVK_HUD", Dxvk.options.getHud())
-        addEnviromentVariable("DXVK_ASYNC", Dxvk.options.getAsync())
-        addEnviromentVariable("DXVK_FRAME_RATE", Dxvk.options.getMaxFramerate())
-        addEnviromentVariable("DXVK_CONFIG_FILE", "C:\\dxvk.conf")
-        addEnviromentVariable("DXVK_STATE_CACHE_PATH", "C:\\")
-        addEnviromentVariable("DXVK_LOG_PATH", "C:\\")
+        addEnvironmentVariable("DYLD_FALLBACK_LIBRARY_PATH", libSearchPathsConcat)
+        addEnvironmentVariable("DYLD_VERSIONED_LIBRARY_PATH", libSearchPathsConcat)
+        addEnvironmentVariable("LANG", "en_US")
+        addEnvironmentVariable("MVK_ALLOW_METAL_FENCES", "1")             // XXX Required by DXVK for Apple/NVidia GPUs (better FPS than CPU Emulation)
+        addEnvironmentVariable("MVK_CONFIG_FULL_IMAGE_VIEW_SWIZZLE", "1") // XXX Required by DXVK for Intel/NVidia GPUs
+        addEnvironmentVariable("MVK_CONFIG_RESUME_LOST_DEVICE", "1")      // XXX Required by WINE (doesn't handle VK_ERROR_DEVICE_LOST correctly)
+        addEnvironmentVariable("DXVK_HUD", Dxvk.options.getHud())
+        addEnvironmentVariable("DXVK_ASYNC", Dxvk.options.getAsync())
+        addEnvironmentVariable("DXVK_FRAME_RATE", Dxvk.options.getMaxFramerate())
+        addEnvironmentVariable("DXVK_CONFIG_FILE", "C:\\dxvk.conf")
+        addEnvironmentVariable("DXVK_STATE_CACHE_PATH", "C:\\")
+        addEnvironmentVariable("DXVK_LOG_PATH", "C:\\")
         createCompatToolsInstance(FileManager.default.fileSystemRepresentation(withPath: wineBinURL.path), debug, esync)
     }
     
-    static func launch(command: String, blocking: Bool = false) {
-        if blocking {
-            runInPrefixBlocking(command)
-        }
-        else {
-            runInPrefix(command)
-        }
+    static func launch(command: String, blocking: Bool = false, wineD3D: Bool = false) {
+        runInPrefix(command, blocking, wineD3D)
     }
     
     static func pidOf(processName: String) -> Int {

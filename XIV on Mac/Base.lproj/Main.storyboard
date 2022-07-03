@@ -344,9 +344,9 @@
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="ACT" id="ngK-lv-alc">
+                            <menuItem title="Add On" id="ngK-lv-alc">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="ACT" id="A9a-u7-hsU">
+                                <menu key="submenu" title="Add On" id="A9a-u7-hsU">
                                     <items>
                                         <menuItem title="Start ACT" id="Dbv-Cm-iXv">
                                             <modifierMask key="keyEquivalentModifierMask"/>
@@ -371,6 +371,13 @@
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="toggleBH:" target="Voe-Tx-rLC" id="JYB-PA-S2z"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="YMN-kQ-aNI"/>
+                                        <menuItem title="Start Anamnesis" id="yWN-Fm-lto">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="startAnamnesis:" target="Voe-Tx-rLC" id="8FE-y3-FrX"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -437,13 +444,13 @@
                                                 </items>
                                             </menu>
                                         </menuItem>
-                                        <menuItem isSeparatorItem="YES" id="gN7-LO-yfV"/>
-                                        <menuItem title="DXVK" id="MoI-ol-VfX">
+                                        <menuItem title="Microsoft .NET 6.0" id="c2g-j3-NbA">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="installDXVK:" target="Voe-Tx-rLC" id="khF-r7-Kz1"/>
+                                                <action selector="installDotNet60:" target="Voe-Tx-rLC" id="XvV-zv-hkq"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="gN7-LO-yfV"/>
                                         <menuItem title="GShade" id="9VN-cs-jNP">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <menu key="submenu" title="GShade" id="AgC-OX-7rb">
