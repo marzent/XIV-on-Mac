@@ -146,10 +146,6 @@ class LaunchController: NSViewController {
                 guard FFXIVApp().installed else {
                     throw FFXIVLoginError.noInstall
                 }
-                guard FFXIVRepo.boot.ver == "2022.03.25.0000.0001" else {
-                    Wine.launch(command: "\"\(FFXIVApp().bootExe64URL.path)\"")
-                    throw FFXIVLoginError.killswitch
-                }
                 DispatchQueue.global(qos: .userInitiated).async {
                     DiscordBridge.setPresence()
                     Dxvk.install()
