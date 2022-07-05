@@ -15,7 +15,7 @@ class Anamnesis {
     private static let exec = dir.appendingPathComponent("Anamnesis.exe")
     private static let versionFile = dir.appendingPathComponent("version.txt")
     
-    private static let version = "2022-05-31"
+    private static let version = "2022-07-05"
     private static let remote = URL(string: "https://github.com/imchillin/Anamnesis/releases/download/v\(version)/\(version).zip")!
     
     static func launch() {
