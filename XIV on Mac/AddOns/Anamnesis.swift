@@ -13,10 +13,7 @@ class Anamnesis {
     
     private static let dir = Wine.prefix.appendingPathComponent("/drive_c/Anamnesis")
     private static let exec = dir.appendingPathComponent("Anamnesis.exe")
-    private static let versionFile = dir.appendingPathComponent("version.txt")
-    
-    private static let version = "2022-07-05"
-    private static let remote = URL(string: "https://github.com/imchillin/Anamnesis/releases/download/v\(version)/\(version).zip")!
+    private static let remote = URL(string: "https://github.com/imchillin/Anamnesis/releases/latest/download/Anamnesis.zip")!
     
     static func launch() {
         install()
@@ -25,14 +22,11 @@ class Anamnesis {
     
     static func install() {
         let fm = FileManager.default
-        Dotnet.download(url: remote.absoluteString)
-        if let data = try? Data.init(contentsOf: versionFile) {
-            let readVersion = String(data: data, encoding: .utf8) ?? ""
-            if readVersion != version {
-                try? fm.removeItem(at: exec)
-            }
+        if !fm.fileExists(atPath: Wine.prefix.appendingPathComponent("/drive_c/Program Files/dotnet/dotnet.exe").path) {
+            Dotnet.installDotNet606()
         }
-        guard let archive = Archive(url: Util.cache.appendingPathComponent("\(version).zip"), accessMode: .read) else  {
+        Dotnet.download(url: remote.absoluteString)
+        guard let archive = Archive(url: Util.cache.appendingPathComponent("Anamnesis.zip"), accessMode: .read) else  {
             Log.fatal("Fatal error reading Anamnesis archive")
             return
         }
@@ -40,10 +34,6 @@ class Anamnesis {
         for file in archive {
             try? _ = archive.extract(file, to: dir.appendingPathComponent(file.path))
         }
-        if fm.fileExists(atPath: versionFile.path) {
-            try? fm.removeItem(at: versionFile)
-        }
-        try? version.write(to: versionFile, atomically: true, encoding: String.Encoding.utf8)
     }
     
 }

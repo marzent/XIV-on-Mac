@@ -67,7 +67,7 @@ class Dotnet {
     static func installDotNet606() {
         download(url: "https://download.visualstudio.microsoft.com/download/pr/9d6b6b34-44b5-4cf4-b924-79a00deb9795/2f17c30bdf42b6a8950a8552438cf8c1/windowsdesktop-runtime-6.0.6-win-x64.exe")
         Wine.set(version: "win10")
-        Wine.launch(command: "\"\(Util.cache.appendingPathComponent("windowsdesktop-runtime-6.0.6-win-x64.exe").path)\" /passive", blocking: true)
+        Wine.launch(command: "\"\(Util.cache.appendingPathComponent("windowsdesktop-runtime-6.0.6-win-x64.exe").path)\"", blocking: true)
     }
     
 }
