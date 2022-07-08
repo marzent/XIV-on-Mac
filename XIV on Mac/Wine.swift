@@ -47,6 +47,12 @@ struct Wine {
         createCompatToolsInstance(FileManager.default.fileSystemRepresentation(withPath: wineBinURL.path), debug, esync)
     }
     
+    static func boot() {
+        DispatchQueue.global(qos: .utility).async {
+            ensurePrefix()
+        }
+    }
+    
     static func launch(command: String, blocking: Bool = false, wineD3D: Bool = false) {
         runInPrefix(command, blocking, wineD3D)
     }

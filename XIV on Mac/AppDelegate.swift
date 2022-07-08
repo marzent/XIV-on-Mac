@@ -38,7 +38,7 @@ import XIVLauncher
         actAutoLaunch.state = ACT.autoLaunch ? .on : .off
         bhAutoLaunch.state = ACT.autoLaunchBH ? .on : .off
         checkGPUSupported()
-        Wine.launch(command: "wineboot -u")
+        Wine.boot()
         if (migrated) {
             // The final piece of migration has to happen after wine is ready for use.
             PrefixMigrator.migrateWineRegistrySettings()
