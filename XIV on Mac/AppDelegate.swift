@@ -53,7 +53,7 @@ import XIVLauncher
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {
-        Wine.kill()
+        //Wine.kill()
     }
 
     func applicationSupportsSecureRestorableState(_ app: NSApplication) -> Bool {

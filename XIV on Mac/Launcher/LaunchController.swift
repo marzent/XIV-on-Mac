@@ -211,6 +211,9 @@ class LaunchController: NSViewController {
                         alert.informativeText = NSLocalizedString("GAME_START_FAILURE_INFORMATIONAL", comment: "")
                         alert.runModal()
                     }
+                    else {
+                        Util.quit()
+                    }
                 }
             } catch FFXIVLoginError.noInstall {
                 DispatchQueue.main.async { [self] in
