@@ -97,7 +97,7 @@ struct Dxvk {
                 hudScale = s!.hudScale
                 
             } else {
-                save()
+                save(withSetup: false)
             }
         }
         
@@ -119,9 +119,11 @@ struct Dxvk {
             return params.joined(separator: ",")
         }
         
-        func save() {
+        func save(withSetup: Bool = true) {
             UserDefaults.standard.set(try? PropertyListEncoder().encode(self), forKey: Dxvk.Options.settingKey)
-            Wine.setup()
+            if withSetup {
+                Wine.setup()
+            }
         }
     }
     
