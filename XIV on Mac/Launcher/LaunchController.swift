@@ -199,7 +199,7 @@ class LaunchController: NSViewController {
                     loginSheetWinController?.window?.close()
                     view.window?.close()
                 }
-                ACT.launchNotify()
+                AddOn.launchNotify()
                 let exitCode = process.exitCode
                 Log.information("Game exited with exit code \(exitCode)")
                 DispatchQueue.main.async {

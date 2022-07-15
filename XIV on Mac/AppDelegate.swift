@@ -16,6 +16,7 @@ import XIVLauncher
     private var firstAidWinController: NSWindowController?
     @IBOutlet private var sparkle: SPUStandardUpdaterController!
     @IBOutlet private var actAutoLaunch: NSMenuItem!
+    @IBOutlet private var iinactAutoLaunch: NSMenuItem!
     @IBOutlet private var bhAutoLaunch: NSMenuItem!
     
     func applicationWillFinishLaunching(_ notification: Notification) {
@@ -36,7 +37,8 @@ import XIVLauncher
         launchWinController = storyboard.instantiateController(withIdentifier: "LaunchWindow") as? NSWindowController
         launchWinController?.showWindow(self)
         actAutoLaunch.state = ACT.autoLaunch ? .on : .off
-        bhAutoLaunch.state = ACT.autoLaunchBH ? .on : .off
+        iinactAutoLaunch.state = IINACT.autoLaunch ? .on : .off
+        bhAutoLaunch.state = BunnyHUD.autoLaunch ? .on : .off
         checkGPUSupported()
         Wine.boot()
         if (migrated) {
@@ -129,13 +131,22 @@ import XIVLauncher
         actAutoLaunch.state = ACT.autoLaunch ? .on : .off
     }
     
+    @IBAction func startIINACT(_ sender: Any) {
+        IINACT.launch()
+    }
+    
+    @IBAction func toggleIINACT(_ sender: Any) {
+        IINACT.autoLaunch = !IINACT.autoLaunch
+        iinactAutoLaunch.state = IINACT.autoLaunch ? .on : .off
+    }
+    
     @IBAction func startBH(_ sender: Any) {
-        ACT.launchBH()
+        BunnyHUD.launch()
     }
     
     @IBAction func toggleBH(_ sender: Any) {
-        ACT.autoLaunchBH = !ACT.autoLaunchBH
-        bhAutoLaunch.state = ACT.autoLaunchBH ? .on : .off
+        BunnyHUD.autoLaunch = !BunnyHUD.autoLaunch
+        bhAutoLaunch.state = BunnyHUD.autoLaunch ? .on : .off
     }
     
     @IBAction func installDXVK(_ sender: Any) {
@@ -167,11 +178,11 @@ import XIVLauncher
     }
     
     @IBAction func installDotNet60(_ sender: Any) {
-        Dotnet.installDotNet606()
+        Dotnet.installDotNet607()
     }
     
-    @IBAction func installDotNet(_ sender: Any) {
-        Dotnet.install()
+    @IBAction func installAspDotNet60(_ sender: Any) {
+        Dotnet.installAspDotNet607()
     }
     
     @IBAction func installGShade(_ sender: Any) {

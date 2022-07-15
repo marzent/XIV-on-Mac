@@ -8,7 +8,7 @@
 import Foundation
 import ZIPFoundation
 
-class Anamnesis {
+struct Anamnesis {
     @available(*, unavailable) private init() {}
     
     private static let dir = Wine.prefix.appendingPathComponent("/drive_c/Anamnesis")
@@ -23,7 +23,7 @@ class Anamnesis {
     static func install() {
         let fm = FileManager.default
         if !fm.fileExists(atPath: Wine.prefix.appendingPathComponent("/drive_c/Program Files/dotnet/dotnet.exe").path) {
-            Dotnet.installDotNet606()
+            Dotnet.installDotNet607()
         }
         Dotnet.download(url: remote.absoluteString)
         guard let archive = Archive(url: Util.cache.appendingPathComponent("Anamnesis.zip"), accessMode: .read) else  {

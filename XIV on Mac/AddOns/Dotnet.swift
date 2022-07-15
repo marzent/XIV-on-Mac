@@ -9,7 +9,7 @@ import Cocoa
 import ZIPFoundation
 import SeeURL
 
-class Dotnet {
+struct Dotnet {
     @available(*, unavailable) private init() {}
     
     static func download(url: String) {
@@ -64,10 +64,16 @@ class Dotnet {
         Wine.launch(command: "\"\(Util.cache.appendingPathComponent("ndp48-x86-x64-allos-enu.exe").path)\" /passive /norestart", blocking: true)
     }
     
-    static func installDotNet606() {
-        download(url: "https://download.visualstudio.microsoft.com/download/pr/9d6b6b34-44b5-4cf4-b924-79a00deb9795/2f17c30bdf42b6a8950a8552438cf8c1/windowsdesktop-runtime-6.0.6-win-x64.exe")
+    static func installDotNet607() {
+        download(url: "https://download.visualstudio.microsoft.com/download/pr/dc0e0e83-0115-4518-8b6a-590ed594f38a/65b63e41f6a80decb37fa3c5af79a53d/windowsdesktop-runtime-6.0.7-win-x64.exe")
         Wine.set(version: "win10")
-        Wine.launch(command: "\"\(Util.cache.appendingPathComponent("windowsdesktop-runtime-6.0.6-win-x64.exe").path)\"", blocking: true)
+        Wine.launch(command: "\"\(Util.cache.appendingPathComponent("windowsdesktop-runtime-6.0.7-win-x64.exe").path)\"", blocking: true)
+    }
+    
+    static func installAspDotNet607() {
+        download(url: "https://download.visualstudio.microsoft.com/download/pr/c4c86d02-a47b-4bd4-b73d-ec3be19e5245/76c673e22a120464c95f85bef342a361/aspnetcore-runtime-6.0.7-win-x64.exe")
+        Wine.set(version: "win10")
+        Wine.launch(command: "\"\(Util.cache.appendingPathComponent("aspnetcore-runtime-6.0.7-win-x64.exe").path)\"", blocking: true)
     }
     
 }

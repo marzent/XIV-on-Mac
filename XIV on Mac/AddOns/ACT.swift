@@ -8,7 +8,7 @@
 import Foundation
 import ZIPFoundation
 
-class ACT {
+struct ACT {
     @available(*, unavailable) private init() {}
     
     private static let dir = Wine.prefix.appendingPathComponent("/drive_c/Program Files (x86)/Advanced Combat Tracker")
@@ -23,15 +23,6 @@ class ACT {
             UserDefaults.standard.set(newValue, forKey: autoLaunchACTKey)
         }
     }
-    private static let autoLaunchBHKey = "AutoLaunchBH"
-    static var autoLaunchBH: Bool {
-        get {
-            return Util.getSetting(settingKey: autoLaunchBHKey, defaultValue: false)
-        }
-        set {
-            UserDefaults.standard.set(newValue, forKey: autoLaunchBHKey)
-        }
-    }
     
     private static let remote = URL(string: "https://github.com/EQAditu/AdvancedCombatTracker/releases/download/3.6.0.275/ACTv3.zip")!
     
@@ -40,23 +31,14 @@ class ACT {
             launch()
         }
     }
-    
-    static func launchBH() {
-        let bunnyPath = URL(fileURLWithPath: "/Applications/BunnyHUD.app").path
-        if FileManager.default.fileExists(atPath: bunnyPath) {
-            Util.launch(exec: URL(string: "file:///usr/bin/open")!, args: [bunnyPath])
-        }
-        else {
-            Util.launch(exec: URL(string: "file:///usr/bin/open")!, args: ["-b", "dezent.BunnyHUD"])
-        }
-    }
+
     
     static func launch() {
         install()
         Wine.launch(command: "\"\(exec.path)\"")
-        if autoLaunchBH {
+        if BunnyHUD.autoLaunch {
             DispatchQueue.global().asyncAfter(deadline: .now() + 12.0) {
-                launchBH()
+                BunnyHUD.launch()
             }
         }
     }

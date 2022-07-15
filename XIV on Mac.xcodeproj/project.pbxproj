@@ -30,6 +30,9 @@
 		2B7C95D2277C6C6000A3CA89 /* SocialIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7C95D1277C6C6000A3CA89 /* SocialIntegration.swift */; };
 		50030AB927F303C300317496 /* MoltenVK in Resources */ = {isa = PBXBuildFile; fileRef = 50030AB827F303C300317496 /* MoltenVK */; };
 		5010EFE427E4CE40001D2FEC /* Encryption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5010EFE327E4CE40001D2FEC /* Encryption.swift */; };
+		5015D4C528814047004BA6D8 /* IINACT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5015D4C428814047004BA6D8 /* IINACT.swift */; };
+		5015D4C72881E97C004BA6D8 /* BunnyHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5015D4C62881E97C004BA6D8 /* BunnyHUD.swift */; };
+		5015D4C92881EAF9004BA6D8 /* AddOn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5015D4C82881EAF9004BA6D8 /* AddOn.swift */; };
 		501956A327F04616003CB437 /* LaunchWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501956A227F04616003CB437 /* LaunchWindowController.swift */; };
 		5020957927C9611A00BD76CC /* Patch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5020957827C9611A00BD76CC /* Patch.swift */; };
 		502A18D827AA8C0D00144AB9 /* LoginCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A18D727AA8C0D00144AB9 /* LoginCredentials.swift */; };
@@ -119,6 +122,9 @@
 		2B7C95D1277C6C6000A3CA89 /* SocialIntegration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialIntegration.swift; sourceTree = "<group>"; };
 		50030AB827F303C300317496 /* MoltenVK */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MoltenVK; sourceTree = "<group>"; };
 		5010EFE327E4CE40001D2FEC /* Encryption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encryption.swift; sourceTree = "<group>"; };
+		5015D4C428814047004BA6D8 /* IINACT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IINACT.swift; sourceTree = "<group>"; };
+		5015D4C62881E97C004BA6D8 /* BunnyHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BunnyHUD.swift; sourceTree = "<group>"; };
+		5015D4C82881EAF9004BA6D8 /* AddOn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOn.swift; sourceTree = "<group>"; };
 		501956A227F04616003CB437 /* LaunchWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchWindowController.swift; sourceTree = "<group>"; };
 		5020957827C9611A00BD76CC /* Patch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patch.swift; sourceTree = "<group>"; };
 		502A18D727AA8C0D00144AB9 /* LoginCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCredentials.swift; sourceTree = "<group>"; };
@@ -310,9 +316,12 @@
 		50BC73D427C2C804006269AC /* AddOns */ = {
 			isa = PBXGroup;
 			children = (
+				5015D4C82881EAF9004BA6D8 /* AddOn.swift */,
 				50ED0DB22773C619002E9854 /* Dotnet.swift */,
 				509252E1287243FF00B00584 /* Anamnesis.swift */,
+				5015D4C62881E97C004BA6D8 /* BunnyHUD.swift */,
 				50BC73CE27C2BEAF006269AC /* ACT.swift */,
+				5015D4C428814047004BA6D8 /* IINACT.swift */,
 				50BC73D227C2C3F3006269AC /* GShade.swift */,
 			);
 			path = AddOns;
@@ -522,6 +531,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B7C95D2277C6C6000A3CA89 /* SocialIntegration.swift in Sources */,
+				5015D4C92881EAF9004BA6D8 /* AddOn.swift in Sources */,
 				5077A32C27C12A9100D4F1B8 /* Settings.swift in Sources */,
 				073649A9281E189E00DA41F7 /* SettingsPluginsController.swift in Sources */,
 				073649A7281E174400DA41F7 /* SettingsGraphicsController.swift in Sources */,
@@ -532,6 +542,7 @@
 				50E980DE2840A65000050151 /* RepairController.swift in Sources */,
 				50FC2DFF27F974D300871760 /* DxvkStateCache.swift in Sources */,
 				50DF1F8527CCB83300DE9DA5 /* FFXIVRepo.swift in Sources */,
+				5015D4C528814047004BA6D8 /* IINACT.swift in Sources */,
 				5049B9B0283BF89400463A2B /* LoginResult.swift in Sources */,
 				507C600127CAA72000BA3CC2 /* PatchController.swift in Sources */,
 				07AAF894283F3D08003C10FA /* PrefixMigrator.swift in Sources */,
@@ -544,6 +555,7 @@
 				073649AB281E18B600DA41F7 /* SettingsAdvancedController.swift in Sources */,
 				50FC2E0127F9751600871760 /* DxvkError.swift in Sources */,
 				5049B9AE283BAFE600463A2B /* Log.swift in Sources */,
+				5015D4C72881E97C004BA6D8 /* BunnyHUD.swift in Sources */,
 				50B2A2B527AC1BC400EFA0A2 /* LoginSheetController.swift in Sources */,
 				079A343227FA59D90043BEEA /* FFXIVCFGEncoder.swift in Sources */,
 				502A18E927AACEFE00144AB9 /* LaunchController.swift in Sources */,

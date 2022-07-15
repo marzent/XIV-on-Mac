@@ -13,7 +13,7 @@ class PrefixMigrator {
         // Do we need to do anything? If there's a "game" folder in our prefix, then we need to migrate.
         let oldGameDirectory : URL = Util.applicationSupport.appendingPathComponent("game/", isDirectory: true)
         if (!Util.pathExists(path: oldGameDirectory)) {
-            Log.information("Prefix Migration: No migration required.")
+            Log.debug("Prefix Migration: No migration required.")
             return false
         }
         

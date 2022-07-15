@@ -361,6 +361,19 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="AbC-rd-Zp7"/>
+                                        <menuItem title="Start IINACT" id="dC8-zW-bPm">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="startIINACT:" target="Voe-Tx-rLC" id="ljL-0e-Hbe"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Auto-Launch IINACT" id="jii-Yc-y26">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="toggleIINACT:" target="Voe-Tx-rLC" id="9Wf-sE-v2v"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="Ch7-7R-nko"/>
                                         <menuItem title="Start Bunny HUD" id="lTa-gf-Qso">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
@@ -450,6 +463,12 @@
                                                 <action selector="installDotNet60:" target="Voe-Tx-rLC" id="XvV-zv-hkq"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem title="Microsoft ASP.NET 6.0" id="rPG-F8-HwW">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="installAspDotNet60:" target="Voe-Tx-rLC" id="wp5-5H-Jzh"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="gN7-LO-yfV"/>
                                         <menuItem title="GShade" id="9VN-cs-jNP">
                                             <modifierMask key="keyEquivalentModifierMask"/>
@@ -520,6 +539,7 @@
                     <connections>
                         <outlet property="actAutoLaunch" destination="6JE-Fn-nLi" id="NMe-oE-26T"/>
                         <outlet property="bhAutoLaunch" destination="1Do-e8-DyE" id="Sif-eR-Xui"/>
+                        <outlet property="iinactAutoLaunch" destination="jii-Yc-y26" id="Ley-Ku-VPT"/>
                         <outlet property="sparkle" destination="yc9-Mt-LbV" id="5O3-N6-awX"/>
                     </connections>
                 </customObject>
