@@ -171,6 +171,8 @@
 		50F6CBA927A975A000013301 /* Wine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wine.swift; sourceTree = "<group>"; };
 		50FC2DFE27F974D300871760 /* DxvkStateCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DxvkStateCache.swift; sourceTree = "<group>"; };
 		50FC2E0027F9751600871760 /* DxvkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DxvkError.swift; sourceTree = "<group>"; };
+		FC2A0719289A5E4300C25C34 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
+		FC2A071A289A5E4300C25C34 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -417,6 +419,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = 50511EB82770E085003A1E9F;
 			packageReferences = (
@@ -583,6 +586,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				07B529D627D97D2B005B78BF /* en */,
+				FC2A071A289A5E4300C25C34 /* ja */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -591,6 +595,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				50511ECB2770E087003A1E9F /* Base */,
+				FC2A0719289A5E4300C25C34 /* ja */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -604,6 +609,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = x86_64;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -668,6 +674,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = x86_64;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -730,7 +737,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 83;
-				DEVELOPMENT_TEAM = TQJJTJ6364;
+				DEVELOPMENT_TEAM = KAU8AR2W6Q;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "XIV-on-Mac-Info.plist";
@@ -776,7 +783,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 83;
-				DEVELOPMENT_TEAM = TQJJTJ6364;
+				DEVELOPMENT_TEAM = KAU8AR2W6Q;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "XIV-on-Mac-Info.plist";
