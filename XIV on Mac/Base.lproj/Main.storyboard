@@ -561,7 +561,7 @@
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1512" height="944"/>
                         <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
                         </connections>
@@ -919,7 +919,7 @@ Gw
                                                                             </connections>
                                                                         </button>
                                                                         <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oeW-Qj-r9i">
-                                                                            <rect key="frame" x="248" y="199" width="194" height="16"/>
+                                                                            <rect key="frame" x="248" y="199" width="294" height="16"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Download and Install the game." id="uai-Rg-ZEO">
                                                                                 <font key="font" metaFont="system"/>
@@ -928,7 +928,7 @@ Gw
                                                                             </textFieldCell>
                                                                         </textField>
                                                                         <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WRE-k0-C6w">
-                                                                            <rect key="frame" x="248" y="151" width="296" height="16"/>
+                                                                            <rect key="frame" x="248" y="151" width="318" height="16"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Copy existing game data to &quot;XIV on Mac&quot; prefix." id="9yd-8A-qFs">
                                                                                 <font key="font" metaFont="system"/>
@@ -937,7 +937,7 @@ Gw
                                                                             </textFieldCell>
                                                                         </textField>
                                                                         <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XZQ-Qo-Clb">
-                                                                            <rect key="frame" x="248" y="103" width="260" height="16"/>
+                                                                            <rect key="frame" x="248" y="103" width="294" height="16"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                             <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="Point XIV on Mac towards a custom folder." id="0iQ-Qw-vtu">
                                                                                 <font key="font" metaFont="system"/>
@@ -1184,7 +1184,7 @@ Gw
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="19.5" y="765"/>
+            <point key="canvasLocation" x="19.5" y="764.5"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="Bjo-br-hCC">
@@ -1194,7 +1194,7 @@ Gw
                         <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="425" y="462" width="480" height="270"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1512" height="944"/>
                         <view key="contentView" id="fdK-HV-ayH">
                             <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                             <autoresizingMask key="autoresizingMask"/>
@@ -1497,14 +1497,14 @@ Gw
                                             </textFieldCell>
                                         </textField>
                                         <slider wantsLayer="YES" horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Bvv-yo-MZ0">
-                                            <rect key="frame" x="63" y="190" width="423" height="28"/>
+                                            <rect key="frame" x="63" y="190" width="424" height="28"/>
                                             <sliderCell key="cell" state="on" alignment="left" maxValue="4" doubleValue="1" tickMarkPosition="above" numberOfTickMarks="5" sliderType="linear" id="Ya9-RG-5gd"/>
                                             <connections>
                                                 <action selector="saveState:" target="iZP-JQ-P1x" id="aC0-gT-XAQ"/>
                                             </connections>
                                         </slider>
                                         <button wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="c5y-dB-OzW">
-                                            <rect key="frame" x="485" y="189" width="70" height="32"/>
+                                            <rect key="frame" x="486" y="189" width="69" height="32"/>
                                             <buttonCell key="cell" type="push" title="Reset" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BHo-QR-6f8">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -1614,7 +1614,7 @@ Gw
                                             </connections>
                                         </button>
                                         <button wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gvh-xg-ZgM">
-                                            <rect key="frame" x="330" y="59" width="92" height="32"/>
+                                            <rect key="frame" x="330" y="59" width="91" height="32"/>
                                             <buttonCell key="cell" type="push" title="Select All" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fgq-sv-nxT">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -1800,7 +1800,7 @@ Gw
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="425" y="462" width="163" height="137"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1512" height="944"/>
                         <view key="contentView" id="NeK-oL-gbq">
                             <rect key="frame" x="0.0" y="0.0" width="163" height="137"/>
                             <autoresizingMask key="autoresizingMask"/>
@@ -1869,7 +1869,7 @@ Gw
                                         </connections>
                                     </textField>
                                     <button wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fhv-Eb-PmW">
-                                        <rect key="frame" x="679" y="200" width="127" height="21"/>
+                                        <rect key="frame" x="679" y="199.5" width="127" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="check" title="Auto-Login" bezelStyle="regularSquare" imagePosition="left" controlSize="large" inset="2" id="J8n-OX-VtC">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1880,7 +1880,7 @@ Gw
                                         </connections>
                                     </button>
                                     <button wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xhX-md-4MR">
-                                        <rect key="frame" x="819" y="200" width="127" height="21"/>
+                                        <rect key="frame" x="819" y="199.5" width="127" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="check" title="Auto-OTP" bezelStyle="regularSquare" imagePosition="left" controlSize="large" inset="2" id="hjS-RC-X85">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1891,7 +1891,7 @@ Gw
                                         </connections>
                                     </button>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3uG-Aq-0R3">
-                                        <rect key="frame" x="680" y="386" width="80" height="14"/>
+                                        <rect key="frame" x="680" y="386" width="154" height="14"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" title="Square Enix ID" id="dYN-5e-LY1">
                                             <font key="font" metaFont="smallSystem"/>
@@ -1900,7 +1900,7 @@ Gw
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZqH-DU-gQT">
-                                        <rect key="frame" x="680" y="327" width="120" height="14"/>
+                                        <rect key="frame" x="680" y="327" width="193" height="14"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" title="Square Enix Password" id="P4p-qs-m93">
                                             <font key="font" metaFont="smallSystem"/>
@@ -1932,17 +1932,17 @@ Gw
                                         <rect key="frame" x="20" y="135" width="640" height="265"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <clipView key="contentView" drawsBackground="NO" id="3yp-No-o33">
-                                            <rect key="frame" x="0.0" y="0.0" width="640" height="250"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="640" height="265"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <view id="61N-YS-eDX">
-                                                    <rect key="frame" x="0.0" y="0.0" width="640" height="250"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="640" height="265"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </view>
                                             </subviews>
                                         </clipView>
                                         <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="pef-Df-QAE">
-                                            <rect key="frame" x="0.0" y="250" width="640" height="15"/>
+                                            <rect key="frame" x="0.0" y="249" width="640" height="16"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="vBl-QU-8g3">
@@ -1995,7 +1995,7 @@ Gw
                                         </scroller>
                                     </scrollView>
                                     <button wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R5T-I0-Kje" userLabel="Disclose Button">
-                                        <rect key="frame" x="922" y="358" width="26" height="24"/>
+                                        <rect key="frame" x="922" y="358" width="26.5" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="NSTouchBarGoDownTemplate" imagePosition="only" alignment="center" refusesFirstResponder="YES" state="on" inset="2" id="gCP-mx-jfr">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -2026,7 +2026,7 @@ Gw
                 <customObject id="0mb-fo-mzL" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <menu id="NXC-jb-B44"/>
             </objects>
-            <point key="canvasLocation" x="81" y="1750"/>
+            <point key="canvasLocation" x="80.5" y="1749.5"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="NXM-Q5-CJl">
@@ -2035,7 +2035,7 @@ Gw
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="cnG-sE-eCO">
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="425" y="462" width="215" height="20"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1512" height="944"/>
                         <view key="contentView" id="TVH-Jm-u9R">
                             <rect key="frame" x="0.0" y="0.0" width="215" height="20"/>
                             <autoresizingMask key="autoresizingMask"/>
@@ -2092,7 +2092,7 @@ Gw
                         <windowStyleMask key="styleMask" titled="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="425" y="462" width="155" height="106"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1512" height="944"/>
                         <view key="contentView" id="Awj-hn-yg9">
                             <rect key="frame" x="0.0" y="0.0" width="155" height="106"/>
                             <autoresizingMask key="autoresizingMask"/>
@@ -2238,7 +2238,7 @@ Gw
                         <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="425" y="462" width="330" height="159"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1512" height="944"/>
                         <view key="contentView" id="UmU-vF-pQi">
                             <rect key="frame" x="0.0" y="0.0" width="330" height="159"/>
                             <autoresizingMask key="autoresizingMask"/>
@@ -2326,7 +2326,7 @@ Gw
                                                     </textFieldCell>
                                                 </textField>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vi7-zh-Dkz">
-                                                    <rect key="frame" x="33" y="601" width="156" height="32"/>
+                                                    <rect key="frame" x="33" y="601" width="155" height="32"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="jSD-bX-Lap"/>
                                                     </constraints>
@@ -2857,7 +2857,7 @@ https://github.com/goatcorp/Dalamud</string>
                         <windowStyleMask key="styleMask" titled="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="425" y="462" width="155" height="106"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1512" height="944"/>
                         <view key="contentView" id="ONN-jq-pZa">
                             <rect key="frame" x="0.0" y="0.0" width="155" height="106"/>
                             <autoresizingMask key="autoresizingMask"/>
@@ -2878,7 +2878,7 @@ https://github.com/goatcorp/Dalamud</string>
     <resources>
         <image name="CfgCheckGood" width="96" height="96"/>
         <image name="CfgCheckProbFailed" width="96" height="96"/>
-        <image name="NSTouchBarGoDownTemplate" width="16" height="9"/>
+        <image name="NSTouchBarGoDownTemplate" width="15" height="9"/>
         <image name="PrefsGeneral" width="96" height="96"/>
         <image name="PrefsGraphics" width="150.75" height="96"/>
     </resources>

@@ -51,7 +51,7 @@
 "DXVK_USER_CACHE_DELETE_FAILED" = "Deleting Shader Cache Failed";
 "DXVK_USER_CACHE_DELETE_FAILED_INFORMATIVE" = "Unable to delete the shader cache. You can try to manually delete it using File->Open Wine Prefix.";
 
-"GAME_CONFIG_RESET" = "Configuration Rest";
+"GAME_CONFIG_RESET" = "Configuration Reset";
 "GAME_CONFIG_RESET_INFORMATIVE" = "Your game configuration was succesfully reset.";
 "GAME_CONFIG_RESET_FAILED" = "Resetting Configuration Failed";
 "GAME_CONFIG_RESET_FAILED_INFORMATIVE" = "Unable to reset configuration. You may need to grant XIV On Mac access to your Downloads folder in System Preferences, Security.";
