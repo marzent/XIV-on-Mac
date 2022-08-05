@@ -74,6 +74,8 @@ struct IINACT {
             }
         }
         else {
+            try? fm.removeItem(at: exec)
+            try? fm.removeItem(at: zipURL)
             try? (version ?? "").write(to: versionFile, atomically: true, encoding: String.Encoding.utf8)
         }
         Dotnet.download(url: remote.absoluteString)
