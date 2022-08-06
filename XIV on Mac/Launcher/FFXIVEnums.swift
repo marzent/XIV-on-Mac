@@ -77,6 +77,7 @@ public enum XLError: Error {
             default:
                 return self
             }
+        }
     }
 }
 
