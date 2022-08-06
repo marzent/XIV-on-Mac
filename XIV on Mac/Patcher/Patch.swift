@@ -70,7 +70,7 @@ public struct Patch: Codable {
                 return try JSONDecoder().decode([Patch].self, from: patchesJSON.data(using: .utf8)!)
             }
             catch {
-                throw XLError.runtimeError(patchesJSON)
+                throw XLError.runtimeError(patchesJSON).tryMap
             }
         }
     }

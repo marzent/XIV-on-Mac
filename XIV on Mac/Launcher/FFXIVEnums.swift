@@ -57,6 +57,27 @@ public enum XLError: Error {
     case loginError(String)
     case startError(String)
     case runtimeError(String)
+    
+    var tryMap: Error {
+        switch self {
+        case .loginError(let response):
+            switch response {
+            case "SteamAPI_Init() failed":
+                return FFXIVLoginError.noSteamTicket
+            default:
+                return self
+            }
+        case .startError(let response):
+            switch response {
+            default:
+                return self
+            }
+        case .runtimeError(let response):
+            switch response {
+            default:
+                return self
+            }
+    }
 }
 
 public enum FFXIVLoginError: Error {

@@ -44,7 +44,7 @@ struct LoginResult: Codable {
             self = try JSONDecoder().decode(LoginResult.self, from: loginResultJSON.data(using: .utf8)!)
         }
         catch {
-            throw XLError.loginError(loginResultJSON)
+            throw XLError.loginError(loginResultJSON).tryMap
         }
     }
     
@@ -61,7 +61,7 @@ struct LoginResult: Codable {
             return try JSONDecoder().decode(ProcessInformation.self, from: processInformationJSON.data(using: .utf8)!)
         }
         catch {
-            throw XLError.startError(processInformationJSON)
+            throw XLError.startError(processInformationJSON).tryMap
         }
     }
     

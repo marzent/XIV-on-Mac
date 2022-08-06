@@ -30,7 +30,7 @@ fileprivate struct RepairProgress: Codable {
             self = try JSONDecoder().decode(RepairProgress.self, from: repairProgressJSON.data(using: .utf8)!)
         }
         catch {
-            throw XLError.runtimeError(repairProgressJSON)
+            throw XLError.runtimeError(repairProgressJSON).tryMap
         }
     }
 }
