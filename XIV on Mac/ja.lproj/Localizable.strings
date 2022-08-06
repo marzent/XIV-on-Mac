@@ -1,0 +1,91 @@
+/* 
+  Localizable.strings
+  XIV on Mac
+
+  Created by Chris Backas on 3/9/22.
+  Japanese Localized by Umichang on Aug 5 2022
+  
+*/
+
+"LOGIN_ERROR" = "ログインエラー";
+"START_ERROR" = "FF14の起動に失敗";
+"INCORRECT_CREDENTIALS_SHORT" = "認証に失敗";
+"INCORRECT_CREDENTIALS" = "認証情報が正しくありません。";
+"NO_STEAM_TICKET_SHORT" = "Steamに接続できませんでした。";
+"NO_STEAM_TICKET" = "XIV on MacはFF14の有効なSteamチケット取得に失敗しました。Steamアプリが起動しログイン済みであることと、Mog StationにSteamアカウントをリンクしているかご確認ください。";
+"STEAM_USER_ERROR_SHORT" = "Steamエラー";
+"STEAM_USER_ERROR" = "ユーザー名とSteamアカウントが一致していません。";
+"NOT_PLAYABLE_SHORT" = "ライセンスエラー";
+"NOT_PLAYABLE" = "ログインサーバーがライセンス切れの応答を返しました。契約期間が有効かどうか確認し、設定から正しいライセンス（Windows、Steam、Mac）を選択してください。";
+"NO_TERMS_SHORT" = "ログインシステムエラー";
+"NO_TERMS" = "公式ランチャーにて「ファイナルファンタジーXIV利用規約」に同意してください。";
+"PROTOCOL_ERROR_SHORT" = "ログインシステムエラー";
+"PROTOCOL_ERROR" = "ログインサーバーがリクエストを受け付けませんでした。ネットワーク接続が安定していることをご確認ください。";
+"NETWORK_ERROR_SHORT" = "ネットワークエラー";
+"NETWORK_ERROR" = "インターネット接続を確認するか、しばらくしてもう一度お試しください。FF14のメンテナンス中かもしれません。";
+"NO_INSTALL_SHORT" = "FF14がインストールされていません！";
+"NO_INSTALL" = "重要なゲームファイルが見つかりませんでした。\nインストーラーを起動します…";
+"MAINTENANCE_SHORT" = "現在メンテナンス中です";
+"MAINTENANCE" = "メンテナンス終了までお待ちください。";
+"MULTIBOX_SHORT" = "クライアントが二重起動しています";
+"MULTIBOX" = "新しいゲームクライアントを起動する前に、古いゲームクライアントを終了させてください。";
+"KILLSWITCH_SHORT" = "ログインプロセスが変更されました";
+"KILLSWITCH" = "スクウェア・エニックス社がログイン方法を変更したことにより、XIV on Macが正しく安全に動作するか確認する必要があります。それまでの間は公式ランチャーをご利用ください。";
+"UNEXPECTED_SHORT" = "予期せぬエラー";
+"UNEXPECTED" = "予期せぬエラーが発生しました。";
+
+"REPAIR_RESULT" = "修復の結果";
+
+"OK_BUTTON" = "OK";
+"CANCEL_BUTTON" = "キャンセル";
+
+"DALAMUD_START_FAILURE" = "Dalamudの起動に失敗";
+"DALAMUD_START_FAILURE_INFORMATIONAL" = "Dalamudのダウンロードとインストールでエラーが発生しました。ネットワーク接続を確認し、Dalamudが現在のクライアントバージョンと互換性があるかご確認ください。";
+"GAME_START_FAILURE" = "ファイナルファンタジーXIVの起動失敗";
+"GAME_START_FAILURE_INFORMATIONAL" = "ゲーム開始時にエラーが発生しました。XIV on Macを再起動してみてください。";
+
+"FIRSTAID_GAME_RUNNING" = "ファイナルファンタジーXIVが実行されています";
+"FIRSTAID_GAME_RUNNING_INFORMATIONAL" = "トラブルシューティングを行う前に、起動中のゲームクライアントを終了させてください。";
+
+"DXVK_USER_CACHE_DELETED" = "シェーダーキャッシュの削除成功";
+"DXVK_USER_CACHE_DELETED_INFORMATIVE" = "シェーダーキャッシュを削除しました。ゲームを起動し、問題が解決されたかご確認ください。";
+"DXVK_USER_CACHE_DELETE_FAILED" = "シェーダーキャッシュ削除失敗";
+"DXVK_USER_CACHE_DELETE_FAILED_INFORMATIVE" = "シェーダーキャッシュを削除できません。ファイル→Wine Prefixを開く…を使用して手動で削除してみてください。";
+
+"GAME_CONFIG_RESET" = "設定ファイルをリセット";
+"GAME_CONFIG_RESET_INFORMATIVE" = "ゲームの設定ファイルのリセットに成功しました。";
+"GAME_CONFIG_RESET_FAILED" = "設定ファイルのリセット失敗";
+"GAME_CONFIG_RESET_FAILED_INFORMATIVE" = "設定ファイルのリセットができませんでした。システム環境設定のセキュリティとプライバシーで、XIV on Macにダウンロードフォルダへのアクセス許可を与える必要があります。";
+
+"DOCUMENTS_PERM_STILL_BAD" = "XIV on Macは書類フォルダへの読み書きが許可されていません。システム環境設定で正しく設定されている場合、一旦当該項目のチェックを外し、もう一度チェックを入れてみてください。";
+
+"UNSUPPORTED_GPU" = "GPUが対応していません";
+"UNSUPPORTED_GPU_INFORMATIVE" = "XIV on Macは、お使いのMac上にサポートされているGPUを見つけられませんでした。ゲームが正しく動作しなかったり、クラッシュする可能性があります。詳しくは互換性リストを参照してください。";
+"SEE_COMPATABILITY_BUTTON" = "互換性リスト";
+
+"RETINA_WARNING" = "警告";
+"RETINA_WARNING_INFORMATIVE" = "この設定を変更すると、ファイナルファンタジーXIVが全画面表示できない問題が発生することがあります。ゲーム起動中はこの設定を変更せず、変更後はXIV on Macを再起動してください。
+それでも問題が解決しない場合、ゲーム内の表示モードを変更することをお勧めします。アップスケーリングを無効にすると、ゲームのピクセル数が最大4倍まで増加するため、パフォーマンスに多大な影響が出ます。
+スクリーンショットを撮る用途でない限り、Retinaディスプレイ以外ではこの機能を有効にしないでください。";
+"RETINA_ENABLE_BUTTON" = "理解しました";
+
+"RETINA_WORKAROUND_OPTIN" = "全画面表示バグに関する回避策";
+"RETINA_WORKAROUND_OPTIN_INFORMATIVE" = "Wineにはスケーリングモードが無効の場合、起動時にウィンドウサイズとマウスポインタの位置が不正になるバグが存在します。XIV on Macでは、毎回起動時にゲームをウィンドウモードにすることにより、この問題を回避します。この回避策を有効にしますか？ 本機能は環境設定でいつでも変更可能です。";
+"RETINA_WORKAROUND_OPTIN_ENABLE" = "回避策を有効にする";
+"RETINA_WORKAROUND_OPTIN_DISABLE" = "利用しない";
+
+"ROSETTA_REQUIRED" = "Rosetta 2が必要です";
+"ROSETTA_REQUIRED_INFORMATIVE" = "XIV on Macは、Apple Siliconを搭載したMacで動作させるためにApple社のRosetta 2を利用します。Rosetta 2をインストールしなければゲームは起動しません。Rosetta 2のインストーラーを起動しますか？";
+"ROSETTA_REQUIRED_INSTALL_BUTTON" = "Rosetta 2をインストールする";
+"ROSETTA_REQUIRED_CANCEL_BUTTON" = "キャンセル";
+
+"FIRSTAID_CFGCHECK_GOOD_RESULT" = "設定に問題はありません";
+"FIRSTAID_CFGCHECK_ADVISORY_RESULT" = "設定には問題がないようですが、いくつか知っておいた方が良い項目があります。";
+"FIRSTAID_CFGCHECK_RECOMMENDATION_RESULT" = "少しの変更で、より良い結果やパフォーマンス向上が得られるかもしれません。";
+"FIRSTAID_CFGCHECK_PROBLEM_RESULT" = "設定にいくつかの問題が見つかりました";
+
+"FIRSTAID_CFGCHECK_FIXED" = "修復しました！";
+"FIRSTAID_CFGCHECK_HBAO_TITLE" = "SSAOは使用できません";
+"FIRSTAID_CFGCHECK_HBAO_EXP" = "SSAO(Screen Space Ambient Occlusion)はMacでサポートされていません。グラフィックが黒く描画されることがあります。";
+"FIRSTAID_CFGCHECK_TESSELATION_TITLE" = "テッセレーション";
+"FIRSTAID_CFGCHECK_TESSELATION_EXP" = "テッセレーションを「標準」以上に設定すると、Apple Silicon Macで深刻なパフォーマンス低下を引き起こし、視覚的な改善も得られません。";
