@@ -28,7 +28,7 @@ You can read our depreciated Crossover setup guide <a href="https://github.com/s
 <h4><a href="https://github.com/Marzent">Marzent (ウサギ)</a> (Head Developer, Technical Support)<br>
 <a href="https://github.com/Seathasky">Seathasky</a> (Project Manager, Support)<br>
 <a href="https://github.com/FleetAdmiralButter">FleetAdmiralButter</a> (Web Developer, Support)<br>
-<a href="https://github.com/zoeycluff">Zoey Cluff</a> (Contributor, Support)<br>
+<a href="https://github.com/zoeyrae">Zoey Ronain</a> (Contributor, Support)<br>
   <a href="https://github.com/cbackas42">Wyldfire</a> (Contributor, Mac Development, Support)<br></h4>
 
 ---
