@@ -60,20 +60,22 @@ public enum XLError: Error {
     
     var tryMap: Error {
         switch self {
-        case .loginError(let response):
-            switch response {
+        case .loginError(let errorMessage):
+            switch errorMessage {
             case "SteamAPI_Init() failed":
                 return FFXIVLoginError.noSteamTicket
+            case "ID or password is incorrect.":
+                return FFXIVLoginError.incorrectCredentials
             default:
                 return self
             }
-        case .startError(let response):
-            switch response {
+        case .startError(let errorMessage):
+            switch errorMessage {
             default:
                 return self
             }
-        case .runtimeError(let response):
-            switch response {
+        case .runtimeError(let errorMessage):
+            switch errorMessage {
             default:
                 return self
             }
