@@ -32,6 +32,14 @@ struct Util {
         make(dir: dir.path)
     }
     
+    static func removeBrokenSymlink(fileURL: URL) {
+        let fm = FileManager.default
+        if fm.fileExists(atPath: fileURL.path) {
+            return
+        }
+        try? fm.removeItem(at: fileURL)
+    }
+    
     static func launch(exec: URL, args: [String], blocking: Bool = false) {
         let task = Process()
         task.executableURL = exec

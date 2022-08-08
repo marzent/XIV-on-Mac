@@ -12,7 +12,7 @@ public struct FFXIVApp {
     let bootRepoURL, bootExeURL, bootExe64URL, launcherExeURL, launcherExe64URL, updaterExeURL, updaterExe64URL: URL
     let gameRepoURL, dx9URL, dx11URL, sqpackFolderURL: URL
     private let bootFiles: [URL]
-    private let movieFiles: [URL]
+    public let movieFiles: [URL]
     
     init() {
         bootRepoURL = Settings.gamePath.appendingPathComponent("boot")

@@ -217,6 +217,7 @@ class InstallerController: NSViewController {
             DispatchQueue.main.async { [self] in
                 bar.doubleValue = 0.0
             }
+            _ = FFXIVApp().movieFiles.map {Util.removeBrokenSymlink(fileURL: $0)} //thanks square
             for (i, file) in baseGameFiles.enumerated() {
                 let components = URL(fileURLWithPath: file.path).pathComponents
                 let relDestination = components[11...].joined(separator: "/")
