@@ -159,7 +159,7 @@
 "BOF-NM-1cW.title" = "環境設定…";
 
 /* Class = "NSButtonCell"; title = "Fix"; ObjectID = "CIy-Lt-yyH"; */
-"CIy-Lt-yyH.title" = "Fix";
+"CIy-Lt-yyH.title" = "修復";
 
 /* Class = "NSButtonCell"; title = "Copy existing install"; ObjectID = "CKg-pw-iZA"; */
 "CKg-pw-iZA.title" = "既存のインストールファイルをコピーする";
