@@ -238,7 +238,7 @@ class InstallerController: NSViewController {
         let fm = FileManager.default
         let content = "<FINAL FANTASY XIV Boot Config File>\n\n<Version>\nBrowser 1\nStartupCompleted 1"
         Util.make(dir: Settings.gameConfigPath)
-        let file = Settings.gameConfigPath.appendingPathComponent("FFXIV.cfg")
+        let file = Settings.gameConfigPath.appendingPathComponent("FFXIV_BOOT.cfg")
         do {
             if fm.fileExists(atPath: file.path) {
                 try fm.removeItem(atPath: file.path)
