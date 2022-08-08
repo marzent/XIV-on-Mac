@@ -714,7 +714,7 @@
 "y4B-9n-VX2.title" = "キャンセル";
 
 /* Class = "NSMenuItem"; title = "Start Anamnesis"; ObjectID = "yWN-Fm-lto"; */
-"yWN-Fm-lto.title" = "Anamnesisを開始";
+"yWN-Fm-lto.title" = "Anamnesisを起動";
 
 /* Class = "NSMenuItem"; title = "Show Substitutions"; ObjectID = "z6F-FW-3nz"; */
 "z6F-FW-3nz.title" = "自動置換を開始";
