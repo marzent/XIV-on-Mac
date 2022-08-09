@@ -159,7 +159,7 @@
 "BOF-NM-1cW.title" = "環境設定…";
 
 /* Class = "NSButtonCell"; title = "Fix"; ObjectID = "CIy-Lt-yyH"; */
-"CIy-Lt-yyH.title" = "Fix";
+"CIy-Lt-yyH.title" = "修復";
 
 /* Class = "NSButtonCell"; title = "Copy existing install"; ObjectID = "CKg-pw-iZA"; */
 "CKg-pw-iZA.title" = "既存のインストールファイルをコピーする";
@@ -252,7 +252,7 @@
 "Jbf-yx-ZQ7.title" = "Dalamudは後で追加することもできます";
 
 /* Class = "NSMenuItem"; title = "Check for Updates..."; ObjectID = "Jeg-Jn-PWU"; */
-"Jeg-Jn-PWU.title" = "アップデートをチェック中...";
+"Jeg-Jn-PWU.title" = "アップデートを確認...";
 
 /* Class = "NSMenuItem"; title = "4.0"; ObjectID = "K16-kg-NW2"; */
 "K16-kg-NW2.title" = "4.0";
@@ -267,7 +267,7 @@
 "Kd2-mp-pUS.title" = "すべてを表示";
 
 /* Class = "NSTextFieldCell"; title = "This is the normal Mac License"; ObjectID = "KhY-Wz-XDC"; */
-"KhY-Wz-XDC.title" = "これは標準のMacライセンスです";
+"KhY-Wz-XDC.title" = "これは標準のMac版ライセンスです";
 
 /* Class = "NSWindow"; title = "Window"; ObjectID = "Knf-sg-4vr"; */
 "Knf-sg-4vr.title" = "ウインドウ";
@@ -339,7 +339,7 @@
 "RHk-LT-kFy.title" = "DXVK Version";
 
 /* Class = "NSTextFieldCell"; title = "This is the normal non-Steam Windows License"; ObjectID = "RY6-Fp-v5E"; */
-"RY6-Fp-v5E.title" = "これは通常のWindowsライセンスです";
+"RY6-Fp-v5E.title" = "これは通常のWindows版ライセンスです";
 
 /* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "RlD-3e-c2c"; */
 "RlD-3e-c2c.title" = "キャンセル";
@@ -411,7 +411,7 @@
 "YOz-MM-jki.title" = "Device Info";
 
 /* Class = "NSTextFieldCell"; title = "MoltenVK is one of the graphics libraries used by Final Fantasy XIV. Different versions may be needed on certain Macs for best results. If you're finding that your game is crashing - particularly in Azys Lla - try changing this value."; ObjectID = "Ybh-kW-gyy"; */
-"Ybh-kW-gyy.title" = "MoltenVKはファイナルファンタジーXIVで使用されるグラフィックライブラリの1つです。Macによっては最良の結果を得るために異なるバージョンが必要な場合があります。特に魔大陸アジス・ラーでゲームがクラッシュするような場合、この値を変更してみてください。";
+"Ybh-kW-gyy.title" = "MoltenVKはファイナルファンタジーXIVで使用されるグラフィックライブラリの1つです。Macによっては最良の結果を得るために異なるバージョンが必要な場合があります。特に魔大陸アジス・ラーでゲームがクラッシュするような場合、以下のチェックボックスを変更してみてください。";
 
 /* Class = "NSMenuItem"; title = "Start Speaking"; ObjectID = "Ynk-f8-cLZ"; */
 "Ynk-f8-cLZ.title" = "読み上げを開始";
@@ -438,7 +438,7 @@
 "aRR-m7-gaN.title" = "フリートライアル";
 
 /* Class = "NSTextFieldCell"; title = "When using the Free Trial, you must choose the same license type you used when you signed up for the trial. Additionally, your Final Fantasy XIV account must already have an active trial, as XIV On Mac cannot sign you up automatically."; ObjectID = "aSj-n5-8bQ"; */
-"aSj-n5-8bQ.title" = "フリートライアルを利用する場合、フリートライアルに登録した時と同じライセンスタイプを選択してください。また、XIV on Macは自動的にサインアップできないため、あなたのファイナルファンタジーXIVのアカウントですでにトライアルを有効にしておく必要があります。";
+"aSj-n5-8bQ.title" = "フリートライアルを利用する場合、フリートライアルに登録した時と同じライセンスタイプを選択してください。また、XIV on Macは自動的にサインアップできないため、あなたのファイナルファンタジーXIVのアカウントで先にフリートライアルへの登録を済ませておく必要があります。";
 
 /* Class = "NSMenuItem"; title = "Window"; ObjectID = "aUF-d1-5bR"; */
 "aUF-d1-5bR.title" = "ウィンドウ";
@@ -474,7 +474,7 @@
 "cwL-P1-jid.title" = "スマートリンク";
 
 /* Class = "NSTextFieldCell"; title = "XIV On Mac can work with Mac, Windows, and Steam licenses. You must already own the license type you choose, if you are unsure you can check your account status through Mogstation. Steam accounts must have been previously linked to your Final Fantasy XIV service account by logging in on a Windows PC, and further require the macOS version of Steam to be running."; ObjectID = "d5H-SM-vjt"; */
-"d5H-SM-vjt.title" = "XIV on MacはMac、Windows、Steamのライセンスで動作可能です。選択したライセンスを所有している必要があります。不明な場合はMog Stationでアカウントの状況を確認できます。なお、SteamアカウントはWindows PCでログインし、ファイナルファンタジーXIVのサービスアカウントとリンクしている必要があり、さらにmacOS版のSteamをバックグラウンドで起動しておく必要があります。";
+"d5H-SM-vjt.title" = "XIV on MacはMac版、Windows版、Steam版のライセンスで動作可能です。選択したライセンスを所有している必要があります。不明な場合はMog Stationでアカウントの状況を確認できます。なお、Steam版はあらかじめWindows PCでSteamとファイナルファンタジーXIVのサービスアカウントをリンクしておく必要があり、さらにmacOS版のSteamアプリをバックグラウンドで起動しておく必要があります。";
 
 /* Class = "NSMenuItem"; title = "Make Lower Case"; ObjectID = "d9M-CD-aMd"; */
 "d9M-CD-aMd.title" = "小文字にする";
@@ -654,7 +654,7 @@
 "rDp-vS-WkQ.title" = "Modern MoltenVK";
 
 /* Class = "NSTextFieldCell"; title = "This is the special Steam-only Windows License"; ObjectID = "rFx-Wl-XRP"; */
-"rFx-Wl-XRP.title" = "これはSteam専用のWindowsライセンスです";
+"rFx-Wl-XRP.title" = "これはSteamで契約したWindows版ライセンスです";
 
 /* Class = "NSMenuItem"; title = "Microsoft ASP.NET 6.0"; ObjectID = "rPG-F8-HwW"; */
 "rPG-F8-HwW.title" = "Microsoft ASP.NET 6.0";
@@ -714,7 +714,7 @@
 "y4B-9n-VX2.title" = "キャンセル";
 
 /* Class = "NSMenuItem"; title = "Start Anamnesis"; ObjectID = "yWN-Fm-lto"; */
-"yWN-Fm-lto.title" = "Anamnesisを開始";
+"yWN-Fm-lto.title" = "Anamnesisを起動";
 
 /* Class = "NSMenuItem"; title = "Show Substitutions"; ObjectID = "z6F-FW-3nz"; */
 "z6F-FW-3nz.title" = "自動置換を開始";
