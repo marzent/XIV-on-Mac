@@ -48,7 +48,7 @@ struct IINACT {
         install()
         Wine.launch(command: "\"\(exec.path)\"")
         if BunnyHUD.autoLaunch {
-            DispatchQueue.global().asyncAfter(deadline: .now() + 12.0) {
+            DispatchQueue.global().asyncAfter(deadline: .now() + 15.0) {
                 BunnyHUD.launch()
             }
         }
