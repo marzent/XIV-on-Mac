@@ -101,6 +101,26 @@ public struct Settings {
         }
     }
     
+    private static let exitWithGameKey = "ExitWithGame"
+    static var exitWithGame: Bool {
+        get {
+            Util.getSetting(settingKey: exitWithGameKey, defaultValue: true)
+        }
+        set {
+            storage.set(newValue, forKey: exitWithGameKey)
+        }
+    }
+    
+    private static let nonZeroExitErrorKey = "NonZeroExitError"
+    static var nonZeroExitError: Bool {
+        get {
+            Util.getSetting(settingKey: nonZeroExitErrorKey, defaultValue: true)
+        }
+        set {
+            storage.set(newValue, forKey: nonZeroExitErrorKey)
+        }
+    }
+    
     private static let usesOneTimePasswordKey = "UsesOneTimePassword"
     static var usesOneTimePassword: Bool {
         get {

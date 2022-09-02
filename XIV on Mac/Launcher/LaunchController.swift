@@ -203,7 +203,7 @@ class LaunchController: NSViewController {
                 let exitCode = process.exitCode
                 Log.information("Game exited with exit code \(exitCode)")
                 DispatchQueue.main.async {
-                    if exitCode != 0 {
+                    if exitCode != 0 && Settings.nonZeroExitError {
                         let alert = NSAlert()
                         alert.addButton(withTitle: NSLocalizedString("OK_BUTTON", comment: ""))
                         alert.alertStyle = .critical
@@ -211,7 +211,7 @@ class LaunchController: NSViewController {
                         alert.informativeText = NSLocalizedString("GAME_START_FAILURE_INFORMATIONAL", comment: "")
                         alert.runModal()
                     }
-                    else {
+                    else if Settings.exitWithGame {
                         Util.quit()
                     }
                 }

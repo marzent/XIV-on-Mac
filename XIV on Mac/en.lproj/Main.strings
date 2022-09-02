@@ -113,6 +113,9 @@
 /* Class = "NSMenuItem"; title = "Substitutions"; ObjectID = "9ic-FL-obx"; */
 "9ic-FL-obx.title" = "Substitutions";
 
+/* Class = "NSButtonCell"; title = "Quit XIV on Mac upon game exit"; ObjectID = "9ie-LK-Dur"; */
+"9ie-LK-Dur.title" = "Quit XIV on Mac upon game exit";
+
 /* Class = "NSTextFieldCell"; title = "Copy existing game data to \"XIV on Mac\" prefix."; ObjectID = "9yd-8A-qFs"; */
 "9yd-8A-qFs.title" = "Copy existing game data to \"XIV on Mac\" prefix.";
 
@@ -470,6 +473,9 @@
 /* Class = "NSWindow"; title = "Window"; ObjectID = "cnG-sE-eCO"; */
 "cnG-sE-eCO.title" = "Window";
 
+/* Class = "NSButtonCell"; title = "Warn if game exits with non-zero exit code"; ObjectID = "cqe-Mq-QD3"; */
+"cqe-Mq-QD3.title" = "Warn if game exits with non-zero exit code";
+
 /* Class = "NSMenuItem"; title = "Smart Links"; ObjectID = "cwL-P1-jid"; */
 "cwL-P1-jid.title" = "Smart Links";
 
@@ -622,9 +628,6 @@
 
 /* Class = "NSButtonCell"; title = "Frame Rate"; ObjectID = "olm-gB-DgF"; */
 "olm-gB-DgF.title" = "Frame Rate";
-
-/* Class = "NSMenuItem"; title = "All"; ObjectID = "pHz-sa-9jf"; */
-"pHz-sa-9jf.title" = "All";
 
 /* Class = "NSMenuItem"; title = "Delete"; ObjectID = "pa3-QI-u2k"; */
 "pa3-QI-u2k.title" = "Delete";
