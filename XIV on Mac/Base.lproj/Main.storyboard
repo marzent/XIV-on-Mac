@@ -2703,7 +2703,7 @@ https://github.com/goatcorp/Dalamud</string>
                                 </connections>
                             </button>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="WT6-Je-uwd">
-                                <rect key="frame" x="18" y="265" width="612" height="16"/>
+                                <rect key="frame" x="18" y="265" width="883" height="16"/>
                                 <textFieldCell key="cell" selectable="YES" title="These settings are mainly for troubleshooting purposes and generally shouldn't need to be changed." id="Fee-RW-Fzh">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -2778,6 +2778,7 @@ https://github.com/goatcorp/Dalamud</string>
                             <constraint firstItem="Dpu-7g-uDc" firstAttribute="top" secondItem="C1E-LB-oXh" secondAttribute="bottom" constant="6" symbolic="YES" id="DNH-S1-cov"/>
                             <constraint firstItem="FBK-3a-Zmf" firstAttribute="top" secondItem="Dpu-7g-uDc" secondAttribute="bottom" constant="6" symbolic="YES" id="DSd-8O-Ug9"/>
                             <constraint firstItem="qGE-fd-l1u" firstAttribute="baseline" secondItem="bVO-QG-s4L" secondAttribute="baseline" id="E6O-gg-OAz"/>
+                            <constraint firstAttribute="trailing" secondItem="WT6-Je-uwd" secondAttribute="trailing" constant="20" symbolic="YES" id="ERe-bG-qU8"/>
                             <constraint firstItem="C1E-LB-oXh" firstAttribute="top" secondItem="5oa-uD-168" secondAttribute="bottom" constant="6" symbolic="YES" id="HKe-6O-WTk"/>
                             <constraint firstItem="C1E-LB-oXh" firstAttribute="leading" secondItem="Dpu-7g-uDc" secondAttribute="leading" id="OO8-2P-tmx"/>
                             <constraint firstItem="bVO-QG-s4L" firstAttribute="top" secondItem="C1E-LB-oXh" secondAttribute="bottom" constant="55" id="PZM-Jl-GJ3"/>
