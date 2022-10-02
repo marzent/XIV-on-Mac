@@ -28,7 +28,6 @@
 		07C876DD280B7DD500CB0D8E /* FFXIV-MacDefault.cfg in Resources */ = {isa = PBXBuildFile; fileRef = 07C876DC280B7DD500CB0D8E /* FFXIV-MacDefault.cfg */; };
 		07FC7C2E28001EDA009A6FE0 /* FFXIVCFGCheckup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FC7C2D28001EDA009A6FE0 /* FFXIVCFGCheckup.swift */; };
 		2B7C95D2277C6C6000A3CA89 /* SocialIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7C95D1277C6C6000A3CA89 /* SocialIntegration.swift */; };
-		50030AB927F303C300317496 /* MoltenVK in Resources */ = {isa = PBXBuildFile; fileRef = 50030AB827F303C300317496 /* MoltenVK */; };
 		5010EFE427E4CE40001D2FEC /* Encryption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5010EFE327E4CE40001D2FEC /* Encryption.swift */; };
 		5015D4C528814047004BA6D8 /* IINACT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5015D4C428814047004BA6D8 /* IINACT.swift */; };
 		5015D4C72881E97C004BA6D8 /* BunnyHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5015D4C62881E97C004BA6D8 /* BunnyHUD.swift */; };
@@ -120,7 +119,6 @@
 		07C876DC280B7DD500CB0D8E /* FFXIV-MacDefault.cfg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "FFXIV-MacDefault.cfg"; sourceTree = "<group>"; };
 		07FC7C2D28001EDA009A6FE0 /* FFXIVCFGCheckup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFXIVCFGCheckup.swift; sourceTree = "<group>"; };
 		2B7C95D1277C6C6000A3CA89 /* SocialIntegration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialIntegration.swift; sourceTree = "<group>"; };
-		50030AB827F303C300317496 /* MoltenVK */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MoltenVK; sourceTree = "<group>"; };
 		5010EFE327E4CE40001D2FEC /* Encryption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encryption.swift; sourceTree = "<group>"; };
 		5015D4C428814047004BA6D8 /* IINACT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IINACT.swift; sourceTree = "<group>"; };
 		5015D4C62881E97C004BA6D8 /* BunnyHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BunnyHUD.swift; sourceTree = "<group>"; };
@@ -277,7 +275,6 @@
 				50511ECA2770E087003A1E9F /* Main.storyboard */,
 				50511ECD2770E087003A1E9F /* XIV_on_Mac.entitlements */,
 				50DF45982795C53300E3D22F /* GShade */,
-				50030AB827F303C300317496 /* MoltenVK */,
 				507D8F2027766F52000F0CB0 /* dxvk */,
 				5043E36B27728BA300E59127 /* wine */,
 				07B529D727D97D2B005B78BF /* Localizable.strings */,
@@ -454,7 +451,6 @@
 				073649AD281E35C700DA41F7 /* PrefsGraphics.tiff in Resources */,
 				07BF3AFB2806507800794155 /* CfgCheckAdvFixed.tiff in Resources */,
 				50692C8B27B3E48B00945593 /* Credits.html in Resources */,
-				50030AB927F303C300317496 /* MoltenVK in Resources */,
 				07BF3AF728063A8600794155 /* CfgCheckProbFixed.tiff in Resources */,
 				50511EC92770E087003A1E9F /* Assets.xcassets in Resources */,
 				073649AF281E393000DA41F7 /* PrefsGeneral.tiff in Resources */,
@@ -738,7 +734,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 91;
+				CURRENT_PROJECT_VERSION = 93;
 				DEVELOPMENT_TEAM = TQJJTJ6364;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -760,7 +756,7 @@
 					"$(PROJECT_DIR)/XIV\\ on\\ Mac/XIVLauncher.NativeAOT",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 4.2.1;
+				MARKETING_VERSION = 4.2.3;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = "dezent.XIV-on-Mac";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -784,7 +780,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 91;
+				CURRENT_PROJECT_VERSION = 93;
 				DEVELOPMENT_TEAM = TQJJTJ6364;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -806,7 +802,7 @@
 					"$(PROJECT_DIR)/XIV\\ on\\ Mac/XIVLauncher.NativeAOT",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 4.2.1;
+				MARKETING_VERSION = 4.2.3;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = "dezent.XIV-on-Mac";
 				PRODUCT_NAME = "$(TARGET_NAME)";
