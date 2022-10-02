@@ -1410,11 +1410,11 @@ Gw
             <objects>
                 <viewController title="Graphics" id="iZP-JQ-P1x" customClass="SettingsGraphicsController" customModule="XIV_on_Mac" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="R8D-o8-vGl">
-                        <rect key="frame" x="0.0" y="0.0" width="608" height="572"/>
+                        <rect key="frame" x="0.0" y="0.0" width="608" height="480"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="buc-8R-1Wp">
-                                <rect key="frame" x="18" y="131" width="161" height="18"/>
+                            <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="buc-8R-1Wp">
+                                <rect key="frame" x="19" y="139" width="161" height="18"/>
                                 <buttonCell key="cell" type="check" title="Enable macOS scaling" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="7vx-YJ-IUo">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -1424,7 +1424,7 @@ Gw
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9Ej-Kx-qaB">
-                                <rect key="frame" x="297" y="533" width="63" height="18"/>
+                                <rect key="frame" x="297" y="441" width="63" height="18"/>
                                 <buttonCell key="cell" type="check" title="Async" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="4l9-XH-Dbl">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -1433,18 +1433,8 @@ Gw
                                     <action selector="saveState:" target="iZP-JQ-P1x" id="s3S-dg-U8J"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FN1-v6-SUN">
-                                <rect key="frame" x="18" y="450" width="135" height="18"/>
-                                <buttonCell key="cell" type="check" title="Modern MoltenVK" bezelStyle="regularSquare" imagePosition="left" inset="2" id="rDp-vS-WkQ">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="saveState:" target="iZP-JQ-P1x" id="oO5-fS-4fz"/>
-                                </connections>
-                            </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0PH-1i-0UA">
-                                <rect key="frame" x="18" y="533" width="157" height="18"/>
+                                <rect key="frame" x="18" y="441" width="157" height="18"/>
                                 <buttonCell key="cell" type="check" title="Maximum Frame Rate" bezelStyle="regularSquare" imagePosition="left" inset="2" id="qVB-Tz-GDg">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -1454,7 +1444,7 @@ Gw
                                 </connections>
                             </button>
                             <textField wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uQd-FB-xmH">
-                                <rect key="frame" x="177" y="531" width="50" height="21"/>
+                                <rect key="frame" x="177" y="439" width="50" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="vt6-AW-5jn"/>
                                 </constraints>
@@ -1468,21 +1458,21 @@ Gw
                                 </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2Ie-Yc-IY8">
-                                <rect key="frame" x="227" y="534" width="24" height="16"/>
+                                <rect key="frame" x="227" y="442" width="24" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="fps" id="BMg-PA-pZ1">
                                     <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <box verticalHuggingPriority="251" title="HUD" translatesAutoresizingMaskIntoConstraints="NO" id="Fq2-37-Vx7">
-                                <rect key="frame" x="17" y="152" width="574" height="291"/>
+                            <box verticalHuggingPriority="251" misplaced="YES" title="HUD" translatesAutoresizingMaskIntoConstraints="NO" id="Fq2-37-Vx7">
+                                <rect key="frame" x="17" y="160" width="574" height="271"/>
                                 <view key="contentView" id="qig-jS-TfQ">
-                                    <rect key="frame" x="3" y="3" width="568" height="273"/>
+                                    <rect key="frame" x="3" y="3" width="568" height="253"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pdF-ZL-8kZ">
-                                            <rect key="frame" x="18" y="198" width="41" height="16"/>
+                                            <rect key="frame" x="18" y="178" width="41" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Scale:" id="vsK-LN-gvZ">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1490,14 +1480,14 @@ Gw
                                             </textFieldCell>
                                         </textField>
                                         <slider wantsLayer="YES" horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Bvv-yo-MZ0">
-                                            <rect key="frame" x="63" y="190" width="423" height="28"/>
+                                            <rect key="frame" x="63" y="170" width="423" height="28"/>
                                             <sliderCell key="cell" state="on" alignment="left" maxValue="4" doubleValue="1" tickMarkPosition="above" numberOfTickMarks="5" sliderType="linear" id="Ya9-RG-5gd"/>
                                             <connections>
                                                 <action selector="saveState:" target="iZP-JQ-P1x" id="aC0-gT-XAQ"/>
                                             </connections>
                                         </slider>
                                         <button wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="c5y-dB-OzW">
-                                            <rect key="frame" x="485" y="189" width="70" height="32"/>
+                                            <rect key="frame" x="485" y="169" width="70" height="32"/>
                                             <buttonCell key="cell" type="push" title="Reset" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BHo-QR-6f8">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -1507,7 +1497,7 @@ Gw
                                             </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ogm-ZO-E2w">
-                                            <rect key="frame" x="18" y="149" width="95" height="18"/>
+                                            <rect key="frame" x="18" y="129" width="95" height="18"/>
                                             <buttonCell key="cell" type="check" title="Frame Rate" bezelStyle="regularSquare" imagePosition="left" inset="2" id="olm-gB-DgF">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -1517,7 +1507,7 @@ Gw
                                             </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DSc-kA-8q1">
-                                            <rect key="frame" x="18" y="127" width="138" height="18"/>
+                                            <rect key="frame" x="18" y="107" width="138" height="18"/>
                                             <buttonCell key="cell" type="check" title="Frame Time Graph" bezelStyle="regularSquare" imagePosition="left" inset="2" id="ti2-f2-LWe">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -1527,7 +1517,7 @@ Gw
                                             </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SxV-dE-5eD">
-                                            <rect key="frame" x="18" y="105" width="209" height="18"/>
+                                            <rect key="frame" x="18" y="85" width="209" height="18"/>
                                             <buttonCell key="cell" type="check" title="Command Buffer Submissions" bezelStyle="regularSquare" imagePosition="left" inset="2" id="8s1-ty-wL8">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -1537,7 +1527,7 @@ Gw
                                             </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XaY-6Q-Mvo">
-                                            <rect key="frame" x="18" y="83" width="209" height="18"/>
+                                            <rect key="frame" x="18" y="63" width="209" height="18"/>
                                             <buttonCell key="cell" type="check" title="Draw Calls and Render Passes" bezelStyle="regularSquare" imagePosition="left" inset="2" id="7xs-cj-Vij">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -1547,7 +1537,7 @@ Gw
                                             </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KfF-g1-nNK">
-                                            <rect key="frame" x="18" y="61" width="224" height="18"/>
+                                            <rect key="frame" x="18" y="41" width="224" height="18"/>
                                             <buttonCell key="cell" type="check" title="Graphics and Compute Pipelines" bezelStyle="regularSquare" imagePosition="left" inset="2" id="dkA-rO-6VD">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -1557,7 +1547,7 @@ Gw
                                             </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HvH-pN-nVO">
-                                            <rect key="frame" x="18" y="39" width="111" height="18"/>
+                                            <rect key="frame" x="18" y="19" width="111" height="18"/>
                                             <buttonCell key="cell" type="check" title="Memory Used" bezelStyle="regularSquare" imagePosition="left" inset="2" id="jUY-i2-XaI">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -1567,7 +1557,7 @@ Gw
                                             </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4Fq-Sz-2ZL">
-                                            <rect key="frame" x="335" y="171" width="87" height="18"/>
+                                            <rect key="frame" x="335" y="151" width="87" height="18"/>
                                             <buttonCell key="cell" type="check" title="GPU Load" bezelStyle="regularSquare" imagePosition="left" inset="2" id="h1g-uy-cTN">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -1577,7 +1567,7 @@ Gw
                                             </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PxN-EU-Qcp">
-                                            <rect key="frame" x="335" y="149" width="110" height="18"/>
+                                            <rect key="frame" x="335" y="129" width="110" height="18"/>
                                             <buttonCell key="cell" type="check" title="DXVK Version" bezelStyle="regularSquare" imagePosition="left" inset="2" id="RHk-LT-kFy">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -1587,7 +1577,7 @@ Gw
                                             </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LpF-Gn-fld">
-                                            <rect key="frame" x="335" y="127" width="138" height="18"/>
+                                            <rect key="frame" x="335" y="107" width="138" height="18"/>
                                             <buttonCell key="cell" type="check" title="D3D Feature Level" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Prr-45-dEP">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -1597,7 +1587,7 @@ Gw
                                             </connections>
                                         </button>
                                         <button wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Y0j-0A-ZOj">
-                                            <rect key="frame" x="330" y="27" width="108" height="32"/>
+                                            <rect key="frame" x="330" y="7" width="108" height="32"/>
                                             <buttonCell key="cell" type="push" title="Select None" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hhJ-G0-ma9">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -1607,7 +1597,7 @@ Gw
                                             </connections>
                                         </button>
                                         <button wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gvh-xg-ZgM">
-                                            <rect key="frame" x="330" y="59" width="92" height="32"/>
+                                            <rect key="frame" x="330" y="39" width="92" height="32"/>
                                             <buttonCell key="cell" type="push" title="Select All" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fgq-sv-nxT">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -1617,7 +1607,7 @@ Gw
                                             </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jgR-xu-GBS">
-                                            <rect key="frame" x="18" y="171" width="94" height="18"/>
+                                            <rect key="frame" x="18" y="151" width="94" height="18"/>
                                             <buttonCell key="cell" type="check" title="Device Info" bezelStyle="regularSquare" imagePosition="left" inset="2" id="YOz-MM-jki">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -1627,7 +1617,7 @@ Gw
                                             </connections>
                                         </button>
                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="jCA-wz-ean">
-                                            <rect key="frame" x="18" y="224" width="532" height="48"/>
+                                            <rect key="frame" x="18" y="204" width="532" height="48"/>
                                             <textFieldCell key="cell" selectable="YES" id="74A-cF-fLc">
                                                 <font key="font" metaFont="system"/>
                                                 <string key="title">HUD Options are informational items displayed in the upper left corner during play that can aid you in determining how in-game settings are affecting your performance. They are entirely optional.</string>
@@ -1636,7 +1626,7 @@ Gw
                                             </textFieldCell>
                                         </textField>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MGI-ae-PZ5">
-                                            <rect key="frame" x="335" y="105" width="176" height="18"/>
+                                            <rect key="frame" x="335" y="85" width="176" height="18"/>
                                             <buttonCell key="cell" type="check" title="Shader Compiler Activity" bezelStyle="regularSquare" imagePosition="left" inset="2" id="g1m-2P-tRE">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -1700,25 +1690,8 @@ Gw
                                     </constraints>
                                 </view>
                             </box>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="huq-ok-Vjv">
-                                <rect key="frame" x="18" y="475" width="572" height="48"/>
-                                <textFieldCell key="cell" selectable="YES" id="Ybh-kW-gyy">
-                                    <font key="font" metaFont="system"/>
-                                    <string key="title">MoltenVK is one of the graphics libraries used by Final Fantasy XIV. Different versions may be needed on certain Macs for best results. If you're finding that your game is crashing - particularly in Azys Lla - try changing this value.</string>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xqN-NE-ad6">
-                                <rect key="frame" x="387" y="20" width="201" height="128"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="cBp-TH-Iaj"/>
-                                    <constraint firstAttribute="width" constant="201" id="sjO-sc-S8Y"/>
-                                </constraints>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="PrefsGraphics" id="NnK-NI-q4i"/>
-                            </imageView>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dcJ-iB-Eb4">
-                                <rect key="frame" x="28" y="109" width="198" height="18"/>
+                            <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dcJ-iB-Eb4">
+                                <rect key="frame" x="29" y="117" width="198" height="18"/>
                                 <string key="toolTip">Wine has a bug when starting up in Fullscreen modes with non-scaled set which makes the application difficult to interact with. This option will automatically change your game to Windowed mode on every startup, after which you can change back to fullscreen to avoid the bug.</string>
                                 <buttonCell key="cell" type="check" title="Bugfix for non-scaling mode" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="mSR-A7-gAD">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1728,32 +1701,33 @@ Gw
                                     <action selector="updateRetinaWorkaround:" target="iZP-JQ-P1x" id="hh9-F9-pCr"/>
                                 </connections>
                             </button>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xqN-NE-ad6">
+                                <rect key="frame" x="387" y="20" width="201" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="cBp-TH-Iaj"/>
+                                    <constraint firstAttribute="width" constant="201" id="sjO-sc-S8Y"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="PrefsGraphics" id="NnK-NI-q4i"/>
+                            </imageView>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="huq-ok-Vjv" secondAttribute="trailing" constant="20" symbolic="YES" id="1DY-K3-5mt"/>
                             <constraint firstItem="xqN-NE-ad6" firstAttribute="top" secondItem="Fq2-37-Vx7" secondAttribute="bottom" constant="8" symbolic="YES" id="1Ot-9F-Z6J"/>
-                            <constraint firstItem="Fq2-37-Vx7" firstAttribute="top" secondItem="FN1-v6-SUN" secondAttribute="bottom" constant="8" symbolic="YES" id="3AX-tY-OE2"/>
                             <constraint firstAttribute="trailing" secondItem="xqN-NE-ad6" secondAttribute="trailing" constant="20" symbolic="YES" id="5cj-VG-ThH"/>
                             <constraint firstItem="Fq2-37-Vx7" firstAttribute="leading" secondItem="R8D-o8-vGl" secondAttribute="leading" constant="20" symbolic="YES" id="7FS-Iu-hac"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="dcJ-iB-Eb4" secondAttribute="bottom" constant="20" symbolic="YES" id="8ts-HK-PnH"/>
                             <constraint firstItem="dcJ-iB-Eb4" firstAttribute="top" secondItem="buc-8R-1Wp" secondAttribute="bottom" constant="6" symbolic="YES" id="AAn-iV-2xA"/>
                             <constraint firstItem="0PH-1i-0UA" firstAttribute="leading" secondItem="R8D-o8-vGl" secondAttribute="leading" constant="20" symbolic="YES" id="C00-LX-JXe"/>
-                            <constraint firstItem="huq-ok-Vjv" firstAttribute="top" secondItem="uQd-FB-xmH" secondAttribute="bottom" constant="8" symbolic="YES" id="I7d-sI-Muq"/>
                             <constraint firstItem="2Ie-Yc-IY8" firstAttribute="leading" secondItem="uQd-FB-xmH" secondAttribute="trailing" constant="2" id="IO2-xE-9kZ"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="FN1-v6-SUN" secondAttribute="trailing" constant="20" symbolic="YES" id="K3V-Js-XY2"/>
                             <constraint firstItem="9Ej-Kx-qaB" firstAttribute="leading" secondItem="2Ie-Yc-IY8" secondAttribute="trailing" constant="50" id="K7z-PJ-4fv"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="9Ej-Kx-qaB" secondAttribute="trailing" constant="20" symbolic="YES" id="LcM-Ku-x8p"/>
                             <constraint firstAttribute="trailing" secondItem="Fq2-37-Vx7" secondAttribute="trailing" constant="20" symbolic="YES" id="N6D-Z9-Rhw"/>
                             <constraint firstItem="uQd-FB-xmH" firstAttribute="top" secondItem="R8D-o8-vGl" secondAttribute="top" constant="20" symbolic="YES" id="Ovb-nv-YKq"/>
                             <constraint firstItem="xqN-NE-ad6" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dcJ-iB-Eb4" secondAttribute="trailing" constant="8" symbolic="YES" id="QSG-le-c7B"/>
                             <constraint firstItem="buc-8R-1Wp" firstAttribute="top" secondItem="Fq2-37-Vx7" secondAttribute="bottom" constant="8" symbolic="YES" id="SHA-6b-wci"/>
-                            <constraint firstItem="FN1-v6-SUN" firstAttribute="top" secondItem="huq-ok-Vjv" secondAttribute="bottom" constant="8" symbolic="YES" id="XOS-jk-zf5"/>
                             <constraint firstItem="uQd-FB-xmH" firstAttribute="centerY" secondItem="0PH-1i-0UA" secondAttribute="centerY" id="bay-C8-tpN"/>
-                            <constraint firstItem="huq-ok-Vjv" firstAttribute="leading" secondItem="R8D-o8-vGl" secondAttribute="leading" constant="20" symbolic="YES" id="bnx-ld-rpN"/>
                             <constraint firstItem="9Ej-Kx-qaB" firstAttribute="centerY" secondItem="0PH-1i-0UA" secondAttribute="centerY" id="ceS-9Q-xOY"/>
                             <constraint firstItem="2Ie-Yc-IY8" firstAttribute="centerY" secondItem="0PH-1i-0UA" secondAttribute="centerY" id="d6W-jc-d9y"/>
                             <constraint firstAttribute="bottom" secondItem="xqN-NE-ad6" secondAttribute="bottom" constant="20" symbolic="YES" id="dms-bz-iW9"/>
-                            <constraint firstItem="FN1-v6-SUN" firstAttribute="leading" secondItem="R8D-o8-vGl" secondAttribute="leading" constant="20" symbolic="YES" id="eWu-pW-Jzv"/>
                             <constraint firstItem="dcJ-iB-Eb4" firstAttribute="leading" secondItem="buc-8R-1Wp" secondAttribute="leading" constant="10" id="fsR-WH-PLf"/>
                             <constraint firstItem="buc-8R-1Wp" firstAttribute="leading" secondItem="R8D-o8-vGl" secondAttribute="leading" constant="20" symbolic="YES" id="gJS-3t-cmZ"/>
                             <constraint firstItem="uQd-FB-xmH" firstAttribute="leading" secondItem="0PH-1i-0UA" secondAttribute="trailing" constant="2" id="h97-O2-euY"/>
@@ -1772,7 +1746,6 @@ Gw
                         <outlet property="maxFPS" destination="0PH-1i-0UA" id="wpX-DM-3ch"/>
                         <outlet property="maxFPSField" destination="uQd-FB-xmH" id="lhm-io-xOT"/>
                         <outlet property="memory" destination="HvH-pN-nVO" id="dEg-Ut-YBN"/>
-                        <outlet property="modernMVK" destination="FN1-v6-SUN" id="fJz-bO-7wf"/>
                         <outlet property="pipelines" destination="KfF-g1-nNK" id="eo2-XV-1oo"/>
                         <outlet property="scale" destination="Bvv-yo-MZ0" id="PWI-iv-v2p"/>
                         <outlet property="submissions" destination="SxV-dE-5eD" id="CYK-fY-ZgS"/>
@@ -1783,7 +1756,7 @@ Gw
                 </viewController>
                 <customObject id="TIU-QY-693" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1559" y="1700"/>
+            <point key="canvasLocation" x="1559" y="1654"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="ImY-2l-0oe">

@@ -24,7 +24,6 @@ class SettingsGraphicsController: SettingsController {
     @IBOutlet private var maxFPS: NSButton!
     @IBOutlet private var maxFPSField: NSTextField!
     @IBOutlet private var async: NSButton!
-    @IBOutlet private var modernMVK: NSButton!
 
     @IBOutlet private var wineRetina: NSButton!
     @IBOutlet private var wineRetinaWorkaround: NSButton!
@@ -57,7 +56,6 @@ class SettingsGraphicsController: SettingsController {
         maxFPSField.isEnabled = limited
         maxFPSField.stringValue = String(Dxvk.options.maxFramerate)
         scale.doubleValue = Dxvk.options.hudScale
-        modernMVK.state = Dxvk.modernMVK ? NSControl.StateValue.on : NSControl.StateValue.off
         
         wineRetina.state = !Wine.retina ? NSControl.StateValue.on : NSControl.StateValue.off
         wineRetinaWorkaround.state = Wine.retinaStartupBugWorkaround ? NSControl.StateValue.on : NSControl.StateValue.off
@@ -136,7 +134,6 @@ class SettingsGraphicsController: SettingsController {
             Dxvk.options.maxFramerate = maxFPSField.isEnabled ? Int(maxFPSField.stringValue) ?? 0 : 0
             Dxvk.options.hudScale = scale.doubleValue
             Dxvk.options.save()
-            Dxvk.modernMVK = modernMVK.state == NSControl.StateValue.on
         }
     }
 
