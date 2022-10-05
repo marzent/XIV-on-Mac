@@ -15,6 +15,24 @@ struct Wine {
     static let prefix = Util.applicationSupport.appendingPathComponent("wineprefix")
     
     static func setup() {
+        let winePath = Bundle.main.url(forResource: "lib", withExtension: "", subdirectory: "wine")!.path
+        let libSearchPaths = [winePath, "/opt/local/lib", "/usr/local/lib", "/usr/lib", "/usr/libexec", "/usr/lib/system", "/opt/X11/lib"]
+            .compactMap {FileManager.default.fileSystemRepresentation(withPath: $0)}
+        let colon = UnsafePointer(strdup(":")!)
+        defer {
+            free(UnsafeMutableRawPointer(mutating: colon))
+        }
+        let libSearchPathsSeparated = (0 ..< 2 * libSearchPaths.count - 1).map { $0 % 2 == 0 ? libSearchPaths[$0/2] : colon}
+        let libSearchPathsConcat = UnsafeMutablePointer<CChar>.allocate(capacity: libSearchPathsSeparated.map {strlen($0)}.reduce(1, +))
+        defer {
+            libSearchPathsConcat.deallocate()
+        }
+        strcpy(libSearchPathsConcat, "")
+        for libSearchPath in libSearchPathsSeparated {
+            strcat(libSearchPathsConcat, libSearchPath)
+        }
+        addEnvironmentVariable("DYLD_FALLBACK_LIBRARY_PATH", libSearchPathsConcat)
+        addEnvironmentVariable("DYLD_VERSIONED_LIBRARY_PATH", libSearchPathsConcat)
         addEnvironmentVariable("LANG", "en_US")
         addEnvironmentVariable("MVK_ALLOW_METAL_FENCES", "1")             // XXX Required by DXVK for Apple/NVidia GPUs (better FPS than CPU Emulation)
         addEnvironmentVariable("MVK_CONFIG_FULL_IMAGE_VIEW_SWIZZLE", "1") // XXX Required by DXVK for Intel/NVidia GPUs
