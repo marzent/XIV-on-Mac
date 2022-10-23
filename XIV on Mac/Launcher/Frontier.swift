@@ -23,7 +23,7 @@ class Frontier {
         dateFormatter.dateFormat = "yyyy-MM-dd-HH-mm"
         let time = dateFormatter.string(from: Date())
         let rcLang = lang.code.replacingOccurrences(of: "-", with: "_")
-        return URL(string: "https://launcher.finalfantasyxiv.com/v610/index.html?rc_lang=\(rcLang)&time=\(time)")!
+        return URL(string: "https://launcher.finalfantasyxiv.com/v620/index.html?rc_lang=\(rcLang)&time=\(time)")!
     }
     
     static var referer: URL {
