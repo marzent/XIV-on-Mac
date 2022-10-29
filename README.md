@@ -40,7 +40,7 @@ You can read our depreciated Crossover setup guide <a href="https://github.com/s
 <a href="https://github.com/reiichi001">Franz Renatus</a> - for helping out with support and his ever useful Franzbot.<br>
 <a href="https://www.quantcdn.io/">QuantCDN</a> - for letting us use their service free of charge to host our website and auto-update system.<br>
 <a href="https://www.codeweavers.com/">Codeweavers</a> - for giving us permission to use their MoltenVK dylib from Crossover.<br>
-<a href="https://github.com/zoeyrae">Zoey Ronain</a> for her year long contribution to the project.<br><br></h6>
+<a href="https://github.com/zoeyrae">Zoey Ronain</a> - for her year long contribution to the project.<br><br></h6>
 
 
 And very special thanks to our wonderful community and contributors. Without your love for this project, we would not exist!
