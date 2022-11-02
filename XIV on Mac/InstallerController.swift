@@ -217,13 +217,19 @@ class InstallerController: NSViewController {
             DispatchQueue.main.async { [self] in
                 bar.doubleValue = 0.0
             }
-            _ = FFXIVApp().movieFiles.map {Util.removeBrokenSymlink(fileURL: $0)} //thanks square
             for (i, file) in baseGameFiles.enumerated() {
                 let components = URL(fileURLWithPath: file.path).pathComponents
                 let relDestination = components[11...].joined(separator: "/")
                 let destination = URL(fileURLWithPath: relDestination, relativeTo: Settings.gamePath)
+                Util.removeBrokenSymlink(fileURL: destination)
                 Util.make(dir: destination.deletingLastPathComponent())
-                try? _ = archive.extract(file, to: destination)
+                do {
+                    try _ = archive.extract(file, to: destination)
+                }
+                catch {
+                    Log.error("Installer: Failed to extract file \(destination.lastPathComponent) with error: \(error.localizedDescription)")
+                }
+                
                 DispatchQueue.main.async { [self] in
                     bar.doubleValue = bar.maxValue * Double(i + 1) / Double(baseGameFiles.count)
                 }
