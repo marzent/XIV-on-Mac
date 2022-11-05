@@ -367,7 +367,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 50511ED02770E087003A1E9F /* Build configuration list for PBXNativeTarget "XIV on Mac" */;
 			buildPhases = (
-				5049B9AB283B8E1300463A2B /* Fix  XIVLauncher.NativeAOT LC_ID_DYLIB */,
+				5049B9AB283B8E1300463A2B /* Build  XIVLauncher.NativeAOT */,
 				50511EBD2770E085003A1E9F /* Sources */,
 				50511EBE2770E085003A1E9F /* Frameworks */,
 				50511EBF2770E085003A1E9F /* Resources */,
@@ -487,7 +487,7 @@
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nchmod u+x \"${TARGET_BUILD_DIR}\"/\"${UNLOCALIZED_RESOURCES_FOLDER_PATH}\"/installRosetta.command\n";
 		};
-		5049B9AB283B8E1300463A2B /* Fix  XIVLauncher.NativeAOT LC_ID_DYLIB */ = {
+		5049B9AB283B8E1300463A2B /* Build  XIVLauncher.NativeAOT */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 12;
 			files = (
@@ -496,14 +496,14 @@
 			);
 			inputPaths = (
 			);
-			name = "Fix  XIVLauncher.NativeAOT LC_ID_DYLIB";
+			name = "Build  XIVLauncher.NativeAOT";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "#!/bin/sh\n\ninstall_name_tool -id @executable_path/../Frameworks/XIVLauncher.NativeAOT.dylib \"$PROJECT_DIR\"/XIV\\ on\\ Mac/XIVLauncher.NativeAOT/XIVLauncher.NativeAOT.dylib\n#install_name_tool -id @executable_path/../Frameworks/libsteam_api64.dylib \"$PROJECT_DIR\"/XIV\\ on\\ Mac/XIVLauncher.NativeAOT/libsteam_api64.dylib\n";
+			shellPath = /bin/zsh;
+			shellScript = "#!/bin/zsh\n\n#./\"$PROJECT_DIR\"/XIV\\ on\\ Mac/XIVLauncher.NativeAOT/build_dylib.sh\n";
 		};
 		5592FEB42778D3CB00FA304B /* Fix Codesign (Runtime) */ = {
 			isa = PBXShellScriptBuildPhase;
