@@ -15,7 +15,7 @@ public struct Settings {
         let gamePathCString = FileManager.default.fileSystemRepresentation(withPath: gamePath.path)
         let gameConfigPathCString = FileManager.default.fileSystemRepresentation(withPath: gameConfigPath.path)
         let patchDirCString = FileManager.default.fileSystemRepresentation(withPath: Patch.dir.path)
-        loadConfig(acceptLanguage, gamePathCString, gameConfigPathCString, language.rawValue, true, encryptedArguments, freeTrial, platform.rawValue, patchDirCString, 0, 0, true, dalamudEnabled ? 1 : 2, Int32(Settings.injectionDelay * 1000))
+        loadConfig(acceptLanguage, gamePathCString, gameConfigPathCString, language.rawValue, true, encryptedArguments, freeTrial, platform.rawValue, patchDirCString, 0, 0, true, dalamudEnabled ? 1 : 2, Int32(Settings.injectionDelay * 1000), autoLogin, Wine.retina)
     }
     
     private static let platformKey = "Platform"
