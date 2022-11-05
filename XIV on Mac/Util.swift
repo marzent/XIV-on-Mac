@@ -14,7 +14,6 @@ struct Util {
     static let userHome = FileManager.default.homeDirectoryForCurrentUser
     static let applicationSupport = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).last!.appendingPathComponent("XIV on Mac")
     static let cache = applicationSupport.appendingPathComponent("cache")
-    static let appleReceiptsPath = URL(fileURLWithPath: "/Library/Apple/System/Library/Receipts/")
     static let seGameConfigPath = userHome.appendingPathComponent("/Documents/My Games/FINAL FANTASY XIV - A Realm Reborn/", isDirectory: true)
     
     static func make(dir : String) {
@@ -101,15 +100,6 @@ struct Util {
             }
             app.terminate(nil)
         }
-    }
-    
-    static func rosettaIsInstalled() -> Bool {
-        if (Util.getXOMRuntimeEnvironment() == .appleSiliconNative) {
-            // Rosetta's package ID is fixed, so it's safer to check for its receipt than to look for any individual file it's known to install.
-            let rosettaReceiptPath = appleReceiptsPath.appendingPathComponent("com.apple.pkg.RosettaUpdateAuto.plist");
-            return (try? rosettaReceiptPath.checkResourceIsReachable()) ?? false
-        }
-        return false
     }
     
     static func pathExists(path: URL) -> Bool {

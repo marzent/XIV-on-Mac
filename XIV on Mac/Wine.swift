@@ -46,6 +46,13 @@ struct Wine {
         createCompatToolsInstance(FileManager.default.fileSystemRepresentation(withPath: wineBinURL.path), debug, esync)
     }
     
+    static var rosettaInstalled: Bool {
+        if (Util.getXOMRuntimeEnvironment() == .appleSiliconNative) {
+            return checkRosetta()
+        }
+        return false
+    }
+    
     static func boot() {
         DispatchQueue.global(qos: .utility).async {
             ensurePrefix()

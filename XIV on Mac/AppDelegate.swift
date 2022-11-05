@@ -76,7 +76,7 @@ import XIVLauncher
     
     func checkForRosetta() {
         if (Util.getXOMRuntimeEnvironment() == .appleSiliconNative) {        // No need to do any of this on Intel, and if we're already in Rosetta the answer is self-evident
-            if (!Util.rosettaIsInstalled())
+            if (!Wine.rosettaInstalled)
             {
                 let alert: NSAlert = NSAlert()
                 alert.messageText = NSLocalizedString("ROSETTA_REQUIRED", comment: "")
