@@ -1,0 +1,3 @@
+[submodule "XIV on Mac/XIVLauncher.NativeAOT/source"]
+	path = XIV on Mac/XIVLauncher.NativeAOT/source
+	url = https://github.com/marzent/FFXIVQuickLauncher
