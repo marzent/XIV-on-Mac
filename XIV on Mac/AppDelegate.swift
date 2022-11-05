@@ -39,6 +39,7 @@ import XIVLauncher
         actAutoLaunch.state = ACT.autoLaunch ? .on : .off
         iinactAutoLaunch.state = IINACT.autoLaunch ? .on : .off
         bhAutoLaunch.state = BunnyHUD.autoLaunch ? .on : .off
+        checkForRosetta()
         checkGPUSupported()
         Wine.boot()
         if (migrated) {
