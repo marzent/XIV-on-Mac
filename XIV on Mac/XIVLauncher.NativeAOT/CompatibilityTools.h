@@ -13,3 +13,5 @@ char *getProcessIds(const char *executableName);
 void addEnvironmentVariable(const char *key, const char *value);
 
 void killWine(void);
+
+bool checkRosetta(void);
