@@ -34,15 +34,15 @@
 "UNEXPECTED_SHORT" = "Erreur inattendue";
 "UNEXPECTED" = "Une erreur inattendue est survenue.";
 
-"REPAIR_RESULT" = "Repair Result";
+"REPAIR_RESULT" = "Résultat de la réparation";
 
-"OK_BUTTON" = "OK";
-"CANCEL_BUTTON" = "Cancel";
+"OK_BUTTON" = "Okay";
+"CANCEL_BUTTON" = "Annuler";
 
-"DALAMUD_START_FAILURE" = "Dalamud is not OK";
-"DALAMUD_START_FAILURE_INFORMATIONAL" = "An error occured downloading and installing Dalamud. Please check your network connection and make sure Dalamud is compatible with the current game version.";
-"GAME_START_FAILURE" = "Final Fantasy XIV failed to start";
-"GAME_START_FAILURE_INFORMATIONAL" = "An error occured starting the game. Please try restarting XIV on Mac.";
+"DALAMUD_START_FAILURE" = "Dalamud ne fonctionne pas";
+"DALAMUD_START_FAILURE_INFORMATIONAL" = "Une erreur est survenue lors du téléchargement et de l'installation de Dalamud. Vérifiez votre connexion et assurez-vous que Dalamud est compatible avec la version courante du jeu.";
+"GAME_START_FAILURE" = "Le lancement de Final Fantasy XIV a échoué";
+"GAME_START_FAILURE_INFORMATIONAL" = "Une erreur est survenue lors du lancement du jeu. Essayez de relancer XIV on MAC.";
 
 "FIRSTAID_GAME_RUNNING" = "Final Fantasy XIV is Running";
 "FIRSTAID_GAME_RUNNING_INFORMATIONAL" = "Please close any copies of Final Fantasy XIV that are running before taking any Troubleshooting actions.";
