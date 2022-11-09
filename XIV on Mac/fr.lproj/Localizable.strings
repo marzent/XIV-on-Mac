@@ -16,7 +16,7 @@
 "STEAM_USER_ERROR_SHORT" = "Erreur de Steam";
 "STEAM_USER_ERROR" = "Il y a une différence entre le nom d'utilisateur fourni et celui de votre compte Steam.";
 "NOT_PLAYABLE_SHORT" = "Erreur de licensement";
-"NOT_PLAYABLE" = "La réponse des serveurs d'identification indique que vous ne pouvez pas jouer. Assurez-vous d'avoir un abonnement actif et sélectionner votre type d'abonnement (Windows, Steam ou Mac) dans les paramètres."
+"NOT_PLAYABLE" = "La réponse des serveurs d'identification indique que vous ne pouvez pas jouer. Assurez-vous d'avoir un abonnement actif et sélectionner votre type d'abonnement (Windows, Steam ou Mac) dans les paramètres.";
 "NO_TERMS_SHORT" = "Erreur dand le système d'identification";
 "NO_TERMS" = "Accepter les conditions de services de Final Fantasy XIV ou utiliser le lanceur officiel.";
 "PROTOCOL_ERROR_SHORT" = "Erreur dans le système d'identification";
