@@ -170,6 +170,8 @@
 		50F6CBA927A975A000013301 /* Wine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wine.swift; sourceTree = "<group>"; };
 		50FC2DFE27F974D300871760 /* DxvkStateCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DxvkStateCache.swift; sourceTree = "<group>"; };
 		50FC2E0027F9751600871760 /* DxvkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DxvkError.swift; sourceTree = "<group>"; };
+		F46BBF18291C0494000C4672 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		F46BBF19291C0494000C4672 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FC2A0719289A5E4300C25C34 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
 		FC2A071A289A5E4300C25C34 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -418,6 +420,7 @@
 				en,
 				Base,
 				ja,
+				fr,
 			);
 			mainGroup = 50511EB82770E085003A1E9F;
 			packageReferences = (
@@ -584,6 +587,7 @@
 			children = (
 				07B529D627D97D2B005B78BF /* en */,
 				FC2A071A289A5E4300C25C34 /* ja */,
+				F46BBF19291C0494000C4672 /* fr */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -594,6 +598,7 @@
 				50511ECB2770E087003A1E9F /* Base */,
 				FC2A0719289A5E4300C25C34 /* ja */,
 				504DF38B28C2BEA000535ED4 /* en */,
+				F46BBF18291C0494000C4672 /* fr */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
