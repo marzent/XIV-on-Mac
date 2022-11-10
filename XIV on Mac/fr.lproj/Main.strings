@@ -78,7 +78,7 @@ Les plugins sont activés par un projet appelé Dalamud, qui permet des fonction
 "6dh-zS-Vam.title" = "Refaire";
 
 /* Class = "NSTextFieldCell"; title = "HUD Options are informational items displayed in the upper left corner during play that can aid you in determining how in-game settings are affecting your performance. They are entirely optional."; ObjectID = "74A-cF-fLc"; */
-"74A-cF-fLc.title" = "Les options HUD sont des éléments d'information affichés dans le coin supérieur gauche dans le jeu qui peuvent vous aider à déterminer comment les paramètres du jeu affectent vos performances. Ils sont entièrement facultatifs";
+"74A-cF-fLc.title" = "Les options HUD sont des éléments d'information affichés dans le coin supérieur gauche dans le jeu qui peuvent vous aider à déterminer comment les paramètres du jeu affectent vos performances. Ils sont entièrement facultatifs.";
 
 /* Class = "NSMenuItem"; title = "Correct Spelling Automatically"; ObjectID = "78Y-hA-62v"; */
 "78Y-hA-62v.title" = "Corriger l'orthographe automatiquement";
@@ -306,13 +306,13 @@ Les plugins sont activés par un projet appelé Dalamud, qui permet des fonction
 "NMo-om-nkz.title" = "Services";
 
 /* Class = "NSTextFieldCell"; title = "0.0 MB of 0.0 MB (0.0 MB/sec)"; ObjectID = "OFS-xw-3KL"; */
-"OFS-xw-3KL.title" = "0.0 MB of 0.0 MB (0.0 MB/sec)";
+"OFS-xw-3KL.title" = "0.0 Mo de 0.0 Mo (0.0 Mo/s)";
 
 /* Class = "NSTextFieldCell"; title = "Current File"; ObjectID = "OHo-zg-md7"; */
 "OHo-zg-md7.title" = "Current File";
 
 /* Class = "NSMenuItem"; title = "Minimize"; ObjectID = "OY7-WF-poV"; */
-"OY7-WF-poV.title" = "Minimize";
+"OY7-WF-poV.title" = "Réduire";
 
 /* Class = "NSMenuItem"; title = "Hide XIV on Mac"; ObjectID = "Olw-nP-bQN"; */
 "Olw-nP-bQN.title" = "Masquer XIV on Mac";
