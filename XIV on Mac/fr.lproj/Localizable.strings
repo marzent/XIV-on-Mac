@@ -44,48 +44,50 @@
 "GAME_START_FAILURE" = "Le lancement de Final Fantasy XIV a échoué";
 "GAME_START_FAILURE_INFORMATIONAL" = "Une erreur est survenue lors du lancement du jeu. Essayez de relancer XIV on MAC.";
 
-"FIRSTAID_GAME_RUNNING" = "Final Fantasy XIV is Running";
-"FIRSTAID_GAME_RUNNING_INFORMATIONAL" = "Please close any copies of Final Fantasy XIV that are running before taking any Troubleshooting actions.";
+"FIRSTAID_GAME_RUNNING" = "Final Fantasy XIV tourne";
+"FIRSTAID_GAME_RUNNING_INFORMATIONAL" = "Fermer les instances de Final Fantasy XIV déjà lancées avant d'entreprendre le Dépannage.";
 
-"DXVK_USER_CACHE_DELETED" = "Shader Cache Deleted";
-"DXVK_USER_CACHE_DELETED_INFORMATIVE" = "The shader cache was deleted succesfully. Try starting the game to see if your problem has been addressed.";
-"DXVK_USER_CACHE_DELETE_FAILED" = "Deleting Shader Cache Failed";
-"DXVK_USER_CACHE_DELETE_FAILED_INFORMATIVE" = "Unable to delete the shader cache. You can try to manually delete it using File->Open Wine Prefix.";
+"DXVK_USER_CACHE_DELETED" = "Shader Cache supprimé";
+"DXVK_USER_CACHE_DELETED_INFORMATIVE" = "Le Shader Cache a été supprimé. Démarrez le jeu et vérifiez si votre problème a été corrigé.";
+"DXVK_USER_CACHE_DELETE_FAILED" = "Suppression du Shader Cache échouée";
+"DXVK_USER_CACHE_DELETE_FAILED_INFORMATIVE" = "Incapable de supprimer le shader cache. Vous pouvez essayer de le supprimer manuellement avec Fichier->Ouvrir Wine Prefix.";
 
-"GAME_CONFIG_RESET" = "Configuration Reset";
-"GAME_CONFIG_RESET_INFORMATIVE" = "Your game configuration was succesfully reset.";
-"GAME_CONFIG_RESET_FAILED" = "Resetting Configuration Failed";
-"GAME_CONFIG_RESET_FAILED_INFORMATIVE" = "Unable to reset configuration. You may need to grant XIV On Mac access to your Downloads folder in System Preferences, Security.";
+"GAME_CONFIG_RESET" = "Configuration réinitialisée";
+"GAME_CONFIG_RESET_INFORMATIVE" = "Votre configuration de jeu a été réinitialisée.";
+"GAME_CONFIG_RESET_FAILED" = "Réinitialisation de la configuration échouée";
+"GAME_CONFIG_RESET_FAILED_INFORMATIVE" = "Incapable de réinitialiser la configuration. Vous pourriez autoriser XIV on Mac les droits d'accès à votre dossier de Téléchargement dans Préférences du système, Sécurité.";
 
-"DOCUMENTS_PERM_STILL_BAD" = "XIV On Mac is still unable to read and/or write to your Documents folder. If your Security Preference Pane shows the correct permissions, try deleting the entry and re-creating it.";
+"DOCUMENTS_PERM_STILL_BAD" = "XIV On Mac ne peut toujours pas lire ou écrire dans vos Documents. Si --Security Preference Pane-- affiche les bonnes permissions, supprimez l'entrée et recréer la permissions.";
 
-"UNSUPPORTED_GPU" = "No Supported GPU Found";
-"UNSUPPORTED_GPU_INFORMATIVE" = "XIV On Mac did not find any supported GPUs in your Mac. If you continue, the game may fail to function, crash, or otherwise perform in a substandard manner. For more details please see our Compatibility List.";
-"SEE_COMPATABILITY_BUTTON" = "Compatibility List";
+"UNSUPPORTED_GPU" = "Aucun GPU pris en charge trouvé";
+"UNSUPPORTED_GPU_INFORMATIVE" = "XIV on Mac n'a trouvé aucun GPU pris en charge sur votre Mac. Si vous continuez, le jeu pourrait ne pas fonctionner, planter ou fonctionner de manière inférieure. Pour plus de détails, veuillez consulter notre liste de compatibilité.";
+"SEE_COMPATABILITY_BUTTON" = "Liste de compatibilité";
 
-"RETINA_WARNING" = "Warning";
-"RETINA_WARNING_INFORMATIVE" = "Changing this setting can cause issues with Final Fantasy XIV not rendering at the full size of the screen. Please do not change this setting while the game is running and restart XIV on Mac after any change.
-If the issue persists, changing the in-game Display Mode is recommended. Disabling upscaling can increase the pixel count of the game up to 4x, which will take a heavy toll on your performance.
-Do not enable this on non-retina displays, unless for screenshot purposes.";
-"RETINA_ENABLE_BUTTON" = "Understood";
+"RETINA_WARNING" = "Avertissement";
+"RETINA_WARNING_INFORMATIVE" = "La modification de ce paramètre peut entraîner des problèmes avec Final Fantasy XIV ne s'affichant pas à la taille maximale de l'écran. Ne pas modifier pas ce paramètre pendant que le jeu est en cours d'exécution et redémarrez XIV on Mac après toute modification.
+Si le problème persiste, il est recommandé de changer le mode d'affichage dans le jeu. La désactivation de la mise à l'échelle peut augmenter le nombre de pixels du jeu jusqu'à 4x, ce qui pèsera lourdement sur vos performances.
+Ne l'activez pas sur les écrans autres que écrans Retina, sauf à des fins de capture d'écran.";
+"RETINA_ENABLE_BUTTON" = "J'ai compris";
 
-"RETINA_WORKAROUND_OPTIN" = "Fullscreen Bug Workaround";
-"RETINA_WORKAROUND_OPTIN_INFORMATIVE" = "Wine contains a bug which causes incorrect window size and mouse position on startup if Scaling Mode is disabled. XIV on Mac can help work around this problem by changing your game to Windowed mode on each launch, once the game starts you may switch back to your preferred mode. Would you like to enable this workaround? You can change this setting at any time in preferences.";
-"RETINA_WORKAROUND_OPTIN_ENABLE" = "Enable Workaround";
-"RETINA_WORKAROUND_OPTIN_DISABLE" = "Do Not Enable";
+"RETINA_WORKAROUND_OPTIN" = "Solution du bogue en plein écran";
+"RETINA_WORKAROUND_OPTIN_INFORMATIVE" = "Wine contient un bogue qui provoque une taille de fenêtre et une position de la souris incorrectes au démarrage si le mode de mise à l'échelle est désactivé. XIV on Mac peut aider à contourner ce problème en changeant votre jeu en mode fenêtré à chaque lancement. Une fois que le jeu démarre, vous pouvez revenir à votre mode préféré. Souhaitez-vous activer cette solution  ? Vous pouvez modifier ce paramètre à tout moment dans les préférences.";
+"RETINA_WORKAROUND_OPTIN_ENABLE" = "Activer la solution";
+"RETINA_WORKAROUND_OPTIN_DISABLE" = "Ne pas activer";
 
-"ROSETTA_REQUIRED" = "Rosetta 2 is Required.";
-"ROSETTA_REQUIRED_INFORMATIVE" = "XIV On Mac requires Apple's Rosetta 2 to be installed in order to function on your Apple Silicon Mac. If you choose not to install, your game will not start. Would you like to start the Rosetta installer now?";
-"ROSETTA_REQUIRED_INSTALL_BUTTON" = "Install Rosetta";
-"ROSETTA_REQUIRED_CANCEL_BUTTON" = "Cancel";
+"ROSETTA_REQUIRED" = "Rosetta 2 est requis.";
+"ROSETTA_REQUIRED_INFORMATIVE" = "XIV on Mac nécessite l'installation de Rosetta 2 d'Apple pour fonctionner sur votre Apple Silicon Mac. Si vous choisissez de ne pas installer, votre jeu ne démarrera pas. Souhaitez-vous lancer le programme d'installation de Rosetta maintenant ?";
+"ROSETTA_REQUIRED_INSTALL_BUTTON" = "Installer Rosetta";
+"ROSETTA_REQUIRED_CANCEL_BUTTON" = "Annuler";
 
-"FIRSTAID_CFGCHECK_GOOD_RESULT" = "Your configuration looks good!";
-"FIRSTAID_CFGCHECK_ADVISORY_RESULT" = "Your configuration looks good, but there are some items you might want to know about.";
-"FIRSTAID_CFGCHECK_RECOMMENDATION_RESULT" = "You may have better results or performance with a few changes.";
-"FIRSTAID_CFGCHECK_PROBLEM_RESULT" = "One or more problems was found with your configuration which are known to cause problems.";
+"FIRSTAID_CFGCHECK_GOOD_RESULT" = "Votre configuration semble fonctionnelle!";
+"FIRSTAID_CFGCHECK_ADVISORY_RESULT" = "Votre configuration semble bonne, mais devriez prendre connaissance de certains éléments.";
+"FIRSTAID_CFGCHECK_RECOMMENDATION_RESULT" = "Vous pouvez obtenir une meilleure perfomance de jeu avec quelques modifications.";
+"FIRSTAID_CFGCHECK_PROBLEM_RESULT" = "Un ou plusieurs problèmes ont été trouvés dans votre configuration qui peuvent causer des problèmes.";
 
-"FIRSTAID_CFGCHECK_FIXED" = "Fixed!";
-"FIRSTAID_CFGCHECK_HBAO_TITLE" = "SSAO Setting is Invalid";
-"FIRSTAID_CFGCHECK_HBAO_EXP" = "The HBAO levels of SSAO (Screen Space Ambient Occlusion) are not supported on the Mac, and can cause graphics to render with black holes.";
+"FIRSTAID_CFGCHECK_FIXED" = "Corrigé!";
+"FIRSTAID_CFGCHECK_HBAO_TITLE" = "Le paramètre SSAO n'est pas valide";
+"FIRSTAID_CFGCHECK_HBAO_EXP" = "Les niveaux HBAO de SSAO (Screen Space Ambient Occlusion) ne sont pas pris en charge sur Mac et peuvent causer des trous noirs dans le jeu.";
+
+
 "FIRSTAID_CFGCHECK_TESSELATION_TITLE" = "Tesselation";
-"FIRSTAID_CFGCHECK_TESSELATION_EXP" = "Values above \"Normal\" are known to cause severe performance problems on Apple Silicon Macs, while offering no visual improvement.";
+"FIRSTAID_CFGCHECK_TESSELATION_EXP" = "Les valeurs supérieures à \"Normal\" peuvent causer de graves problèmes de performances sur les Mac Apple Silicon, tout en n'offrant aucune amélioration visuelle.";
