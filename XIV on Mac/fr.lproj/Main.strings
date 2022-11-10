@@ -24,7 +24,7 @@
 "1b7-l0-nxx.title" = "Rechercher";
 
 /* Class = "NSWindow"; title = "Settings"; ObjectID = "2hl-BH-elL"; */
-"2hl-BH-elL.title" = "Settings";
+"2hl-BH-elL.title" = "Paramètres";
 
 /* Class = "NSMenuItem"; title = "Transformations"; ObjectID = "2oI-Rn-ZJC"; */
 "2oI-Rn-ZJC.title" = "Transformations";
@@ -39,10 +39,10 @@
 "4EN-yA-p0u.title" = "Rechercher";
 
 /* Class = "NSViewController"; title = "Advanced"; ObjectID = "4Nu-Eh-h4G"; */
-"4Nu-Eh-h4G.title" = "Advanced";
+"4Nu-Eh-h4G.title" = "Avancé";
 
 /* Class = "NSButtonCell"; title = "Quit"; ObjectID = "4W4-r3-YqJ"; */
-"4W4-r3-YqJ.title" = "Quit";
+"4W4-r3-YqJ.title" = "Fermer";
 
 /* Class = "NSButtonCell"; title = "Async"; ObjectID = "4l9-XH-Dbl"; */
 "4l9-XH-Dbl.title" = "Async";
@@ -81,13 +81,13 @@
 "78Y-hA-62v.title" = "Corriger l'orthographe automatiquement";
 
 /* Class = "NSTextFieldCell"; title = "Language:"; ObjectID = "7QP-ih-obw"; */
-"7QP-ih-obw.title" = "Language:";
+"7QP-ih-obw.title" = "Langue:";
 
 /* Class = "NSTabViewItem"; label = "Installing"; ObjectID = "7fh-eq-btc"; */
-"7fh-eq-btc.label" = "Installing";
+"7fh-eq-btc.label" = "Installer";
 
 /* Class = "NSButtonCell"; title = "Enable macOS scaling"; ObjectID = "7vx-YJ-IUo"; */
-"7vx-YJ-IUo.title" = "Enable macOS scaling";
+"7vx-YJ-IUo.title" = "Activer la mise à l'échelle macOS";
 
 /* Class = "NSButtonCell"; title = "Draw Calls and Render Passes"; ObjectID = "7xs-cj-Vij"; */
 "7xs-cj-Vij.title" = "Draw Calls and Render Passes";
@@ -135,7 +135,7 @@
 "AHs-hu-DAo.title" = "Download";
 
 /* Class = "NSTextFieldCell"; title = "MB/sec"; ObjectID = "ARN-hb-Lmx"; */
-"ARN-hb-Lmx.title" = "MB/sec";
+"ARN-hb-Lmx.title" = "Mo/s";
 
 /* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
 "AYu-sK-qS6.title" = "Main Menu";
@@ -249,7 +249,7 @@
 "J8n-OX-VtC.title" = "Connexion auto.";
 
 /* Class = "NSMenuItem"; title = "French"; ObjectID = "JVS-ez-96D"; */
-"JVS-ez-96D.title" = "French";
+"JVS-ez-96D.title" = "Français";
 
 /* Class = "NSTextFieldCell"; title = "You can chose to enable Dalamud later"; ObjectID = "Jbf-yx-ZQ7"; */
 "Jbf-yx-ZQ7.title" = "You can chose to enable Dalamud later";
@@ -264,7 +264,7 @@
 "KR1-HA-AnN.title" = "License:";
 
 /* Class = "NSButtonCell"; title = "Limit Download Speed to"; ObjectID = "KSs-CO-Vc9"; */
-"KSs-CO-Vc9.title" = "Limit Download Speed to";
+"KSs-CO-Vc9.title" = "Limiter la vitesse de téléchargement à";
 
 /* Class = "NSMenuItem"; title = "Show All"; ObjectID = "Kd2-mp-pUS"; */
 "Kd2-mp-pUS.title" = "Tout afficher";
@@ -438,10 +438,10 @@
 "a5q-2b-gk9.title" = "Microsoft Visual C++ Redistributables";
 
 /* Class = "NSButtonCell"; title = "Free Trial"; ObjectID = "aRR-m7-gaN"; */
-"aRR-m7-gaN.title" = "Free Trial";
+"aRR-m7-gaN.title" = "Essai gratuit";
 
 /* Class = "NSTextFieldCell"; title = "When using the Free Trial, you must choose the same license type you used when you signed up for the trial. Additionally, your Final Fantasy XIV account must already have an active trial, as XIV On Mac cannot sign you up automatically."; ObjectID = "aSj-n5-8bQ"; */
-"aSj-n5-8bQ.title" = "When using the Free Trial, you must choose the same license type you used when you signed up for the trial. Additionally, your Final Fantasy XIV account must already have an active trial, as XIV On Mac cannot sign you up automatically.";
+"aSj-n5-8bQ.title" = "Lorsque vous utilisez l'essai gratuit, vous devez choisir le même type de licence que celui que vous avez utilisé lors de votre inscription à l'essai. De plus, votre compte Final Fantasy XIV doit déjà avoir un essai actif, car XIV sur Mac ne peut pas vous inscrire automatiquement.";
 
 /* Class = "NSMenuItem"; title = "Window"; ObjectID = "aUF-d1-5bR"; */
 "aUF-d1-5bR.title" = "Window";
@@ -480,7 +480,7 @@
 "cwL-P1-jid.title" = "Liens intélligents";
 
 /* Class = "NSTextFieldCell"; title = "XIV On Mac can work with Mac, Windows, and Steam licenses. You must already own the license type you choose, if you are unsure you can check your account status through Mogstation. Steam accounts must have been previously linked to your Final Fantasy XIV service account by logging in on a Windows PC, and further require the macOS version of Steam to be running."; ObjectID = "d5H-SM-vjt"; */
-"d5H-SM-vjt.title" = "XIV On Mac can work with Mac, Windows, and Steam licenses. You must already own the license type you choose, if you are unsure you can check your account status through Mogstation. Steam accounts must have been previously linked to your Final Fantasy XIV service account by logging in on a Windows PC, and further require the macOS version of Steam to be running.";
+"d5H-SM-vjt.title" = "XIV on Mac peut fonctionner avec les licences Mac, Windows et Steam. Vous devez posséder le type de licence que vous choisissez. Si vous n'êtes pas sûr, vérifier l'état de votre compte via Mogstation. Les comptes Steam doivent avoir été précédemment liés à votre compte de service Final Fantasy XIV en vous connectant sur un PC Windows, et nécessitent en outre que la version macOS de Steam soit en cours d'exécution.";
 
 /* Class = "NSMenuItem"; title = "Make Lower Case"; ObjectID = "d9M-CD-aMd"; */
 "d9M-CD-aMd.title" = "Faire des minuscules";
@@ -564,10 +564,10 @@
 "i3J-kg-a1T.title" = "Install";
 
 /* Class = "NSViewController"; title = "Graphics"; ObjectID = "iZP-JQ-P1x"; */
-"iZP-JQ-P1x.title" = "Graphics";
+"iZP-JQ-P1x.title" = "Graphique";
 
 /* Class = "NSMenuItem"; title = "English"; ObjectID = "isk-p1-eED"; */
-"isk-p1-eED.title" = "English";
+"isk-p1-eED.title" = "Anglais";
 
 /* Class = "NSMenuItem"; title = "Microsoft Visual C++ Redistributables"; ObjectID = "jJ3-H2-GqS"; */
 "jJ3-H2-GqS.title" = "Microsoft Visual C++ Redistributables";
@@ -648,7 +648,7 @@
 "qM7-gN-uyd.title" = "Logging In";
 
 /* Class = "NSMenuItem"; title = "Windows"; ObjectID = "qRO-Pi-PbC"; */
-"qRO-Pi-PbC.title" = "Fenêtre";
+"qRO-Pi-PbC.title" = "Windows";
 
 /* Class = "NSButtonCell"; title = "Maximum Frame Rate"; ObjectID = "qVB-Tz-GDg"; */
 "qVB-Tz-GDg.title" = "Maximum Frame Rate";
