@@ -129,7 +129,7 @@
 "A9a-u7-hsU.title" = "Add On";
 
 /* Class = "NSButtonCell"; title = "Reset Configuration"; ObjectID = "AGp-z2-0Vw"; */
-"AGp-z2-0Vw.title" = "Reset Configuration";
+"AGp-z2-0Vw.title" = "Réinitialiser la configuration";
 
 /* Class = "NSButtonCell"; title = "Download"; ObjectID = "AHs-hu-DAo"; */
 "AHs-hu-DAo.title" = "Téléchargement";
@@ -183,7 +183,7 @@
 "Dv1-io-Yv7.title" = "Épellation et grammaire";
 
 /* Class = "NSTextFieldCell"; title = "XIV on Mac can identify potential problems, or make recommended changes to your FFXIV Configuration file to give you the best experience available on the Mac."; ObjectID = "Dv8-bd-owY"; */
-"Dv8-bd-owY.title" = "XIV on Mac can identify potential problems, or make recommended changes to your FFXIV Configuration file to give you the best experience available on the Mac.";
+"Dv8-bd-owY.title" = "XIV on Mac peut identifier des problèmes potentiels ou apporter des modifications recommandées à votre fichier de configuration FFXIV pour vous offrir la meilleure expérience disponible sur Mac.";
 
 /* Class = "NSButtonCell"; title = "Discord Rich Presence Wine Bridge"; ObjectID = "EJl-D1-TzE"; */
 "EJl-D1-TzE.title" = "Discord Rich Presence Wine Bridge";
@@ -327,7 +327,7 @@
 "Prr-45-dEP.title" = "D3D Feature Level";
 
 /* Class = "NSButtonCell"; title = "Configuration Checkup"; ObjectID = "QKx-3N-AcM"; */
-"QKx-3N-AcM.title" = "Configuration Checkup";
+"QKx-3N-AcM.title" = "Vérification de la configuration";
 
 /* Class = "NSButtonCell"; title = "Close Installer"; ObjectID = "Qa2-wP-4fw"; */
 "Qa2-wP-4fw.title" = "Fermer le programme d'installation";
@@ -456,7 +456,7 @@
 "buJ-ug-pKt.title" = "Utiliser la sélection pour la recherche";
 
 /* Class = "NSButtonCell"; title = "Delete User Shader Cache"; ObjectID = "bvg-G5-hBV"; */
-"bvg-G5-hBV.title" = "Delete User Shader Cache";
+"bvg-G5-hBV.title" = "Supprimer le \"User Shader Cache\"";
 
 /* Class = "NSMenu"; title = "Microsoft .NET Framework"; ObjectID = "c0q-Kl-Wr3"; */
 "c0q-Kl-Wr3.title" = "Microsoft .NET Framework";
@@ -624,7 +624,7 @@
 "o9I-0w-Ncp.title" = "Esync";
 
 /* Class = "NSWindow"; title = "Troubleshooting"; ObjectID = "oJM-9v-5CI"; */
-"oJM-9v-5CI.title" = "Troubleshooting";
+"oJM-9v-5CI.title" = "Dépannage";
 
 /* Class = "NSButtonCell"; title = "Frame Rate"; ObjectID = "olm-gB-DgF"; */
 "olm-gB-DgF.title" = "Fréquence d'images";
@@ -636,7 +636,7 @@
 "phh-fm-6OL.title" = "Suivant";
 
 /* Class = "NSTextFieldCell"; title = "If your game is freezing at startup, \"Compiling Shaders…\" forever, missing lighting or randomly freezing, the problem may be with your shader cache. Deleting it will cause a new one to be rebuilt, though it may result in occasional stutters during play initially."; ObjectID = "piU-pX-vSl"; */
-"piU-pX-vSl.title" = "If your game is freezing at startup, \"Compiling Shaders…\" forever, missing lighting or randomly freezing, the problem may be with your shader cache. Deleting it will cause a new one to be rebuilt, though it may result in occasional stutters during play initially.";
+"piU-pX-vSl.title" = "Si votre jeu se fige au démarrage, \"Compiling Shaders…\" pour toujours, manque d'éclairage ou se fige de manière aléatoire, le problème peut provenir de votre \"Shader Cache\". Le supprimer entraînera la reconstruction d'un nouveau "\Shader Cache\", bien que cela puisse entraîner des bégaiements occasionnels pendant le lancement initial.";
 
 /* Class = "NSMenuItem"; title = "Find Next"; ObjectID = "q09-fT-Sye"; */
 "q09-fT-Sye.title" = "Rechercher suivant";

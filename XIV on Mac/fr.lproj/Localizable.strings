@@ -79,7 +79,7 @@ Ne l'activez pas sur les écrans autres que écrans Retina, sauf à des fins de 
 "ROSETTA_REQUIRED_INSTALL_BUTTON" = "Installer Rosetta";
 "ROSETTA_REQUIRED_CANCEL_BUTTON" = "Annuler";
 
-"FIRSTAID_CFGCHECK_GOOD_RESULT" = "Votre configuration semble fonctionnelle!";
+"FIRSTAID_CFGCHECK_GOOD_RESULT" = "Votre configuration semble fonctionnelle !";
 "FIRSTAID_CFGCHECK_ADVISORY_RESULT" = "Votre configuration semble bonne, mais devriez prendre connaissance de certains éléments.";
 "FIRSTAID_CFGCHECK_RECOMMENDATION_RESULT" = "Vous pouvez obtenir une meilleure perfomance de jeu avec quelques modifications.";
 "FIRSTAID_CFGCHECK_PROBLEM_RESULT" = "Un ou plusieurs problèmes ont été trouvés dans votre configuration qui peuvent causer des problèmes.";
