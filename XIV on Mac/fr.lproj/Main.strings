@@ -162,10 +162,10 @@
 "BOF-NM-1cW.title" = "Préférences...";
 
 /* Class = "NSButtonCell"; title = "Fix"; ObjectID = "CIy-Lt-yyH"; */
-"CIy-Lt-yyH.title" = "Fix";
+"CIy-Lt-yyH.title" = "Réparer";
 
 /* Class = "NSButtonCell"; title = "Copy existing install"; ObjectID = "CKg-pw-iZA"; */
-"CKg-pw-iZA.title" = "Copy existing install";
+"CKg-pw-iZA.title" = "Copier une installation existante";
 
 /* Class = "NSButtonCell"; title = "Windows"; ObjectID = "CqV-50-MBO"; */
 "CqV-50-MBO.title" = "Windows";
@@ -228,10 +228,10 @@
 "HFQ-gK-NFA.title" = "Remplacement de texte";
 
 /* Class = "NSMenuItem"; title = "Show Spelling and Grammar"; ObjectID = "HFo-cy-zxI"; */
-"HFo-cy-zxI.title" = "Show Spelling and Grammar";
+"HFo-cy-zxI.title" = "Afficher l'orthographe et la grammaire";
 
 /* Class = "NSTextFieldCell"; title = "0.00 GB of 0.00 GB"; ObjectID = "HQX-r7-1tH"; */
-"HQX-r7-1tH.title" = "0.00 GB of 0.00 GB";
+"HQX-r7-1tH.title" = "0.00 Go/s de 0.00 Go/s";
 
 /* Class = "NSMenu"; title = "Tools"; ObjectID = "HyV-fh-RgO"; */
 "HyV-fh-RgO.title" = "Outils";
@@ -255,13 +255,13 @@
 "Jbf-yx-ZQ7.title" = "You can chose to enable Dalamud later";
 
 /* Class = "NSMenuItem"; title = "Check for Updates..."; ObjectID = "Jeg-Jn-PWU"; */
-"Jeg-Jn-PWU.title" = "Vérifier les mises à jour...";
+"Jeg-Jn-PWU.title" = "Vérifier les mises à jour…";
 
 /* Class = "NSMenuItem"; title = "4.0"; ObjectID = "K16-kg-NW2"; */
 "K16-kg-NW2.title" = "4.0";
 
 /* Class = "NSTextFieldCell"; title = "License:"; ObjectID = "KR1-HA-AnN"; */
-"KR1-HA-AnN.title" = "License:";
+"KR1-HA-AnN.title" = "Licence :";
 
 /* Class = "NSButtonCell"; title = "Limit Download Speed to"; ObjectID = "KSs-CO-Vc9"; */
 "KSs-CO-Vc9.title" = "Limiter la vitesse de téléchargement à";
@@ -279,19 +279,19 @@
 "LE2-aR-0XJ.title" = "Amenez tout au premier plan";
 
 /* Class = "NSTextFieldCell"; title = "Waiting for download to finish..."; ObjectID = "LLv-Yk-R7e"; */
-"LLv-Yk-R7e.title" = "Waiting for download to finish...";
+"LLv-Yk-R7e.title" = "En attente de fin de téléchargement…";
 
 /* Class = "NSTextFieldCell"; title = "You can disable Dalamud anytime"; ObjectID = "LPN-SN-8np"; */
-"LPN-SN-8np.title" = "You can disable Dalamud anytime";
+"LPN-SN-8np.title" = "Vous pouvez désactiver Dalamud à tout moment";
 
 /* Class = "NSButtonCell"; title = "Mac"; ObjectID = "LRc-OZ-739"; */
 "LRc-OZ-739.title" = "Mac";
 
 /* Class = "NSTextFieldCell"; title = "Select how you want to handle the game files:"; ObjectID = "LTb-VO-T18"; */
-"LTb-VO-T18.title" = "Select how you want to handle the game files:";
+"LTb-VO-T18.title" = "Sélectionnez la manière dont vous souhaitez gérer les fichiers du jeu :";
 
 /* Class = "NSButtonCell"; title = "Choose existing install"; ObjectID = "Loh-1J-Ipp"; */
-"Loh-1J-Ipp.title" = "Choose existing install";
+"Loh-1J-Ipp.title" = "Choisissez une installation existante";
 
 /* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "LsB-Af-NpT"; */
 "LsB-Af-NpT.title" = "Annuler";
@@ -306,7 +306,7 @@
 "OFS-xw-3KL.title" = "0.0 Mo de 0.0 Mo (0.0 Mo/s)";
 
 /* Class = "NSTextFieldCell"; title = "Current File"; ObjectID = "OHo-zg-md7"; */
-"OHo-zg-md7.title" = "Current File";
+"OHo-zg-md7.title" = "Fichier actuel";
 
 /* Class = "NSMenuItem"; title = "Minimize"; ObjectID = "OY7-WF-poV"; */
 "OY7-WF-poV.title" = "Réduire";
@@ -399,7 +399,7 @@
 "Wum-vu-uC1.title" = "Shader Cache";
 
 /* Class = "NSTextFieldCell"; title = "Installing..."; ObjectID = "X9z-xO-PQz"; */
-"X9z-xO-PQz.title" = "Installing...";
+"X9z-xO-PQz.title" = "Installation...";
 
 /* Class = "NSMenuItem"; title = "x86"; ObjectID = "XO2-yP-LkT"; */
 "XO2-yP-LkT.title" = "x86";
@@ -420,7 +420,7 @@
 "Ynk-f8-cLZ.title" = "Commencer à parler";
 
 /* Class = "NSTextFieldCell"; title = "If you've misconfigured your game in a way that prevents you from playing it, such as a bad graphics setting, you can try resetting your configuration to default."; ObjectID = "YxS-mf-FNj"; */
-"YxS-mf-FNj.title" = "If you've misconfigured your game in a way that prevents you from playing it, such as a bad graphics setting, you can try resetting your configuration to default.";
+"YxS-mf-FNj.title" = "Si vous avez configuré votre jeu d'une manière qui vous empêche d'y jouer, comme un mauvais réglage graphique, vous pouvez essayer de réinitialiser votre configuration.";
 
 /* Class = "NSMenuItem"; title = "Japanese"; ObjectID = "Z2I-xl-N2E"; */
 "Z2I-xl-N2E.title" = "Japonais";
@@ -561,7 +561,7 @@
 "hz9-B4-Xy5.title" = "Services";
 
 /* Class = "NSMenuItem"; title = "Install"; ObjectID = "i3J-kg-a1T"; */
-"i3J-kg-a1T.title" = "Install";
+"i3J-kg-a1T.title" = "Installer";
 
 /* Class = "NSViewController"; title = "Graphics"; ObjectID = "iZP-JQ-P1x"; */
 "iZP-JQ-P1x.title" = "Graphique";
@@ -579,10 +579,10 @@
 "jii-Yc-y26.title" = "Lancement automatique de IINACT";
 
 /* Class = "NSTextFieldCell"; title = "Installing"; ObjectID = "jlY-cG-zUT"; */
-"jlY-cG-zUT.title" = "Installing";
+"jlY-cG-zUT.title" = "Installation";
 
 /* Class = "NSButtonCell"; title = "Previous"; ObjectID = "k2T-TU-mVb"; */
-"k2T-TU-mVb.title" = "Previous";
+"k2T-TU-mVb.title" = "Précédent";
 
 /* Class = "NSMenuItem"; title = "Command Line"; ObjectID = "kIP-vf-haE"; */
 "kIP-vf-haE.title" = "Ligne de commande";
@@ -591,16 +591,16 @@
 "lTa-gf-Qso.title" = "Démarrer HUD";
 
 /* Class = "NSTextFieldCell"; title = "FFXIV Configuration"; ObjectID = "lrU-zH-Qo8"; */
-"lrU-zH-Qo8.title" = "FFXIV Configuration";
+"lrU-zH-Qo8.title" = "Configuration de FFXIV";
 
 /* Class = "NSTextFieldCell"; title = "Everything looks good!"; ObjectID = "m1p-mc-zbM"; */
-"m1p-mc-zbM.title" = "Everything looks good!";
+"m1p-mc-zbM.title" = "Tout a l'air bien !";
 
 /* Class = "NSMenuItem"; title = "Check Grammar With Spelling"; ObjectID = "mK6-2p-4JG"; */
 "mK6-2p-4JG.title" = "Vérifier la grammaire avec l'orthographe";
 
 /* Class = "NSButtonCell"; title = "Bugfix for non-scaling mode"; ObjectID = "mSR-A7-gAD"; */
-"mSR-A7-gAD.title" = "Bugfix for non-scaling mode";
+"mSR-A7-gAD.title" = "Correctif du bug pour le mode sans mise à l'échelle";
 
 /* Class = "NSWindow"; title = "XIV on Mac"; ObjectID = "msO-z3-Trw"; */
 "msO-z3-Trw.title" = "XIV on Mac";
@@ -627,13 +627,13 @@
 "oJM-9v-5CI.title" = "Troubleshooting";
 
 /* Class = "NSButtonCell"; title = "Frame Rate"; ObjectID = "olm-gB-DgF"; */
-"olm-gB-DgF.title" = "Frame Rate";
+"olm-gB-DgF.title" = "Fréquence d'images";
 
 /* Class = "NSMenuItem"; title = "Delete"; ObjectID = "pa3-QI-u2k"; */
 "pa3-QI-u2k.title" = "Supprimer";
 
 /* Class = "NSButtonCell"; title = "Next"; ObjectID = "phh-fm-6OL"; */
-"phh-fm-6OL.title" = "Next";
+"phh-fm-6OL.title" = "Suivant";
 
 /* Class = "NSTextFieldCell"; title = "If your game is freezing at startup, \"Compiling Shaders…\" forever, missing lighting or randomly freezing, the problem may be with your shader cache. Deleting it will cause a new one to be rebuilt, though it may result in occasional stutters during play initially."; ObjectID = "piU-pX-vSl"; */
 "piU-pX-vSl.title" = "If your game is freezing at startup, \"Compiling Shaders…\" forever, missing lighting or randomly freezing, the problem may be with your shader cache. Deleting it will cause a new one to be rebuilt, though it may result in occasional stutters during play initially.";
@@ -642,10 +642,10 @@
 "q09-fT-Sye.title" = "Rechercher suivant";
 
 /* Class = "NSButtonCell"; title = "Launch Vanilla Game"; ObjectID = "qDd-CO-Fjs"; */
-"qDd-CO-Fjs.title" = "Launch Vanilla Game";
+"qDd-CO-Fjs.title" = "Lancer le jeu vanille";
 
 /* Class = "NSTextFieldCell"; title = "Logging In"; ObjectID = "qM7-gN-uyd"; */
-"qM7-gN-uyd.title" = "Logging In";
+"qM7-gN-uyd.title" = "Connexion";
 
 /* Class = "NSMenuItem"; title = "Windows"; ObjectID = "qRO-Pi-PbC"; */
 "qRO-Pi-PbC.title" = "Windows";
@@ -690,19 +690,19 @@
 "uRl-iY-unG.title" = "Couper";
 
 /* Class = "NSTextFieldCell"; title = "Download and Install the game."; ObjectID = "uai-Rg-ZEO"; */
-"uai-Rg-ZEO.title" = "Download and Install the game.";
+"uai-Rg-ZEO.title" = "Télécharger et installer le jeu.";
 
 /* Class = "NSMenuItem"; title = "Make Upper Case"; ObjectID = "vmV-6d-7jI"; */
 "vmV-6d-7jI.title" = "Faire des majuscules";
 
 /* Class = "NSTextFieldCell"; title = "Scale:"; ObjectID = "vsK-LN-gvZ"; */
-"vsK-LN-gvZ.title" = "Scale:";
+"vsK-LN-gvZ.title" = "Échelle:";
 
 /* Class = "NSMenu"; title = "Install"; ObjectID = "w9C-j3-R4E"; */
 "w9C-j3-R4E.title" = "Installation";
 
 /* Class = "NSTextFieldCell"; title = "Problem Desc."; ObjectID = "wFT-bh-S63"; */
-"wFT-bh-S63.title" = "Problem Desc.";
+"wFT-bh-S63.title" = "Desc. du problème";
 
 /* Class = "NSMenuItem"; title = "Help"; ObjectID = "wpr-3q-Mcd"; */
 "wpr-3q-Mcd.title" = "Aide";
@@ -720,7 +720,7 @@
 "yWN-Fm-lto.title" = "Démarrer Anamnesis";
 
 /* Class = "NSMenuItem"; title = "Show Substitutions"; ObjectID = "z6F-FW-3nz"; */
-"z6F-FW-3nz.title" = "Show Substitutions";
+"z6F-FW-3nz.title" = "Afficher les substitutions";
 
 /* Class = "NSMenuItem"; title = "German"; ObjectID = "z71-AL-d6f"; */
 "z71-AL-d6f.title" = "Allemand";

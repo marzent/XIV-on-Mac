@@ -57,7 +57,7 @@
 "GAME_CONFIG_RESET_FAILED" = "Réinitialisation de la configuration échouée";
 "GAME_CONFIG_RESET_FAILED_INFORMATIVE" = "Incapable de réinitialiser la configuration. Vous pourriez autoriser XIV on Mac les droits d'accès à votre dossier de Téléchargement dans Préférences du système, Sécurité.";
 
-"DOCUMENTS_PERM_STILL_BAD" = "XIV On Mac ne peut toujours pas lire ou écrire dans vos Documents. Si --Security Preference Pane-- affiche les bonnes permissions, supprimez l'entrée et recréer la permissions.";
+"DOCUMENTS_PERM_STILL_BAD" = "XIV On Mac ne peut toujours pas lire ou écrire dans vos Documents. Si le volet des préférences de sécurité affiche les bonnes permissions, supprimez l'entrée et recréer la permission.";
 
 "UNSUPPORTED_GPU" = "Aucun GPU pris en charge trouvé";
 "UNSUPPORTED_GPU_INFORMATIVE" = "XIV on Mac n'a trouvé aucun GPU pris en charge sur votre Mac. Si vous continuez, le jeu pourrait ne pas fonctionner, planter ou fonctionner de manière inférieure. Pour plus de détails, veuillez consulter notre liste de compatibilité.";
