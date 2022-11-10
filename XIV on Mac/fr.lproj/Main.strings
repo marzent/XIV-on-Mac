@@ -54,7 +54,7 @@
 "4uL-Sg-0m9.title" = "Plugins are enabled by a project called Dalamud, which enables extra functionality in your game. If you do not know why you would want a plugin or do not wish to use them, you may safely leave this disabled. To learn more about Dalamud please visit:\nhttps://github.com/goatcorp/Dalamud";
 
 /* Class = "NSTextFieldCell"; placeholderString = "optional"; ObjectID = "5FC-rM-Oay"; */
-"5FC-rM-Oay.placeholderString" = "optional";
+"5FC-rM-Oay.placeholderString" = "optionnel";
 
 /* Class = "NSMenuItem"; title = "Edit"; ObjectID = "5QF-Oa-p0T"; */
 "5QF-Oa-p0T.title" = "Edit";
@@ -246,7 +246,7 @@
 "Iv2-C2-31G.title" = "Encrypt Game Arguments";
 
 /* Class = "NSButtonCell"; title = "Auto-Login"; ObjectID = "J8n-OX-VtC"; */
-"J8n-OX-VtC.title" = "Auto-Login";
+"J8n-OX-VtC.title" = "Connexion automatique";
 
 /* Class = "NSMenuItem"; title = "French"; ObjectID = "JVS-ez-96D"; */
 "JVS-ez-96D.title" = "French";
@@ -321,7 +321,7 @@
 "Oyz-dy-DGm.title" = "Stop Speaking";
 
 /* Class = "NSTextFieldCell"; title = "Square Enix Password"; ObjectID = "P4p-qs-m93"; */
-"P4p-qs-m93.title" = "Square Enix Password";
+"P4p-qs-m93.title" = "Mot de passe Square Enix";
 
 /* Class = "NSButtonCell"; title = "D3D Feature Level"; ObjectID = "Prr-45-dEP"; */
 "Prr-45-dEP.title" = "D3D Feature Level";
@@ -360,7 +360,7 @@
 "SYN-Tz-ix0.title" = "x64";
 
 /* Class = "NSButtonCell"; title = "Login"; ObjectID = "TON-Zk-2g1"; */
-"TON-Zk-2g1.title" = "Login";
+"TON-Zk-2g1.title" = "Connexion";
 
 /* Class = "NSMenuItem"; title = "Manual Install"; ObjectID = "Taa-Lw-mwf"; */
 "Taa-Lw-mwf.title" = "Manual Install";
@@ -372,7 +372,7 @@
 "TeW-Wy-5YR.title" = "Select an option:";
 
 /* Class = "NSSecureTextFieldCell"; placeholderString = "required"; ObjectID = "TfY-Li-gp6"; */
-"TfY-Li-gp6.placeholderString" = "required";
+"TfY-Li-gp6.placeholderString" = "requis";
 
 /* Class = "NSMenuItem"; title = "4.6.2"; ObjectID = "ThK-Bg-ZyU"; */
 "ThK-Bg-ZyU.title" = "4.6.2";
@@ -504,7 +504,7 @@
 "dRJ-4n-Yzg.title" = "Undo";
 
 /* Class = "NSTextFieldCell"; title = "Square Enix ID"; ObjectID = "dYN-5e-LY1"; */
-"dYN-5e-LY1.title" = "Square Enix ID";
+"dYN-5e-LY1.title" = "Identifiant Square Enix";
 
 /* Class = "NSButton"; ibShadowedToolTip = "Wine has a bug when starting up in Fullscreen modes with non-scaled set which makes the application difficult to interact with. This option will automatically change your game to Windowed mode on every startup, after which you can change back to fullscreen to avoid the bug."; ObjectID = "dcJ-iB-Eb4"; */
 "dcJ-iB-Eb4.ibShadowedToolTip" = "Wine has a bug when starting up in Fullscreen modes with non-scaled set which makes the application difficult to interact with. This option will automatically change your game to Windowed mode on every startup, after which you can change back to fullscreen to avoid the bug.";
@@ -552,7 +552,7 @@
 "hhJ-G0-ma9.title" = "Select None";
 
 /* Class = "NSButtonCell"; title = "Auto-OTP"; ObjectID = "hjS-RC-X85"; */
-"hjS-RC-X85.title" = "Auto-OTP";
+"hjS-RC-X85.title" = "OTP automatique";
 
 /* Class = "NSMenuItem"; title = "Check Document Now"; ObjectID = "hz2-CU-CR7"; */
 "hz2-CU-CR7.title" = "Check Document Now";
