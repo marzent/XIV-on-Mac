@@ -93,7 +93,7 @@ Les plugins sont activés par un projet appelé Dalamud, qui permet des fonction
 "7vx-YJ-IUo.title" = "Activer la mise à l'échelle macOS";
 
 /* Class = "NSButtonCell"; title = "Draw Calls and Render Passes"; ObjectID = "7xs-cj-Vij"; */
-"7xs-cj-Vij.title" = "Dessiner les appels et rendus des passes";
+"7xs-cj-Vij.title" = "Draw Calls and Render Passes";
 
 /* Class = "NSMenuItem"; title = "Auto Install"; ObjectID = "8FT-OM-tMB"; */
 "8FT-OM-tMB.title" = "Installation automatique";
@@ -279,7 +279,7 @@ Les plugins sont activés par un projet appelé Dalamud, qui permet des fonction
 "Knf-sg-4vr.title" = "Window";
 
 /* Class = "NSMenuItem"; title = "Bring All to Front"; ObjectID = "LE2-aR-0XJ"; */
-"LE2-aR-0XJ.title" = "Bring All to Front";
+"LE2-aR-0XJ.title" = "Amenez tout au premier plan";
 
 /* Class = "NSTextFieldCell"; title = "Waiting for download to finish..."; ObjectID = "LLv-Yk-R7e"; */
 "LLv-Yk-R7e.title" = "Waiting for download to finish...";
@@ -342,7 +342,7 @@ Les plugins sont activés par un projet appelé Dalamud, qui permet des fonction
 "R4o-n2-Eq4.title" = "Zoom";
 
 /* Class = "NSButtonCell"; title = "DXVK Version"; ObjectID = "RHk-LT-kFy"; */
-"RHk-LT-kFy.title" = "Version de DXVK";
+"RHk-LT-kFy.title" = "DXVK Version";
 
 /* Class = "NSTextFieldCell"; title = "This is the normal non-Steam Windows License"; ObjectID = "RY6-Fp-v5E"; */
 "RY6-Fp-v5E.title" = "This is the normal non-Steam Windows License";
@@ -366,7 +366,7 @@ Les plugins sont activés par un projet appelé Dalamud, qui permet des fonction
 "TON-Zk-2g1.title" = "Connexion";
 
 /* Class = "NSMenuItem"; title = "Manual Install"; ObjectID = "Taa-Lw-mwf"; */
-"Taa-Lw-mwf.title" = "Manual Install";
+"Taa-Lw-mwf.title" = "Installation manuelle";
 
 /* Class = "NSMenu"; title = "Window"; ObjectID = "Td7-aD-5lo"; */
 "Td7-aD-5lo.title" = "Window";
@@ -489,7 +489,7 @@ Les plugins sont activés par un projet appelé Dalamud, qui permet des fonction
 "d9M-CD-aMd.title" = "Faire des minuscules";
 
 /* Class = "NSMenuItem"; title = "Start IINACT"; ObjectID = "dC8-zW-bPm"; */
-"dC8-zW-bPm.title" = "Start IINACT";
+"dC8-zW-bPm.title" = "Démarrer IINACT";
 
 /* Class = "NSButtonCell"; title = "Next"; ObjectID = "dED-GZ-u7J"; */
 "dED-GZ-u7J.title" = "Next";
@@ -579,7 +579,7 @@ Les plugins sont activés par un projet appelé Dalamud, qui permet des fonction
 "jUY-i2-XaI.title" = "Memory Used";
 
 /* Class = "NSMenuItem"; title = "Auto-Launch IINACT"; ObjectID = "jii-Yc-y26"; */
-"jii-Yc-y26.title" = "Auto-Launch IINACT";
+"jii-Yc-y26.title" = "Lancement automatique de IINACT";
 
 /* Class = "NSTextFieldCell"; title = "Installing"; ObjectID = "jlY-cG-zUT"; */
 "jlY-cG-zUT.title" = "Installing";
@@ -588,10 +588,10 @@ Les plugins sont activés par un projet appelé Dalamud, qui permet des fonction
 "k2T-TU-mVb.title" = "Previous";
 
 /* Class = "NSMenuItem"; title = "Command Line"; ObjectID = "kIP-vf-haE"; */
-"kIP-vf-haE.title" = "Command Line";
+"kIP-vf-haE.title" = "Ligne de commande";
 
 /* Class = "NSMenuItem"; title = "Start Bunny HUD"; ObjectID = "lTa-gf-Qso"; */
-"lTa-gf-Qso.title" = "Start Bunny HUD";
+"lTa-gf-Qso.title" = "Démarrer HUD";
 
 /* Class = "NSTextFieldCell"; title = "FFXIV Configuration"; ObjectID = "lrU-zH-Qo8"; */
 "lrU-zH-Qo8.title" = "FFXIV Configuration";
@@ -615,7 +615,7 @@ Les plugins sont activés par un projet appelé Dalamud, qui permet des fonction
 "ngK-lv-alc.title" = "Add On";
 
 /* Class = "NSMenuItem"; title = "Troubleshooting…"; ObjectID = "nwX-vr-aWN"; */
-"nwX-vr-aWN.title" = "Troubleshooting…";
+"nwX-vr-aWN.title" = "Dépannage...";
 
 /* Class = "NSButtonCell"; title = "Next"; ObjectID = "o4g-vh-B1L"; */
 "o4g-vh-B1L.title" = "Next";
@@ -675,7 +675,7 @@ Les plugins sont activés par un projet appelé Dalamud, qui permet des fonction
 "sdf-Re-eaB.label" = "Done";
 
 /* Class = "NSMenuItem"; title = "Edit Registry"; ObjectID = "snW-S8-Cw5"; */
-"snW-S8-Cw5.title" = "Edit Registry";
+"snW-S8-Cw5.title" = "Modifier le registre";
 
 /* Class = "NSMenuItem"; title = "Data Detectors"; ObjectID = "tRr-pd-1PS"; */
 "tRr-pd-1PS.title" = "Détecteurs de données";
