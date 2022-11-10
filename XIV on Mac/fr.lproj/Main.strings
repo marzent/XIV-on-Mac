@@ -51,10 +51,7 @@
 "4sb-4s-VLi.title" = "Fermer XIV on Mac";
 
 /* Class = "NSTextFieldCell"; title = "Plugins are enabled by a project called Dalamud, which enables extra functionality in your game. If you do not know why you would want a plugin or do not wish to use them, you may safely leave this disabled. To learn more about Dalamud please visit:\nhttps://github.com/goatcorp/Dalamud"; ObjectID = "4uL-Sg-0m9"; */
-"4uL-Sg-0m9.title" = "Plugins are enabled by a project called Dalamud, which enables extra functionality in your game. If you do not know why you would want a plugin or do not wish to use them, you may safely leave this disabled. To learn more about Dalamud please visit:\nhttps://github.com/goatcorp/Dalamud
-Les plugins sont activés par un projet appelé Dalamud, qui permet des fonctionnalités supplémentaires dans votre jeu. Si vous ne savez pas pourquoi vous voudriez un plugin ou si vous ne souhaitez pas les utiliser, vous pouvez les laisser désactivés en toute sécurité. Pour en savoir plus sur Dalamud, veuillez visiter :\nhttps://github.com/goatcorp/Dalamud
-
-";
+"4uL-Sg-0m9.title" = "Les plugins sont activés par un projet appelé Dalamud, qui permet des fonctionnalités supplémentaires dans votre jeu. Si vous ne savez pas pourquoi vous voudriez un plugin ou si vous ne souhaitez pas les utiliser, vous pouvez les laisser désactivés en toute sécurité. Pour en savoir plus sur Dalamud, veuillez visiter :\nhttps://github.com/goatcorp/Dalamud";
 
 /* Class = "NSTextFieldCell"; placeholderString = "optional"; ObjectID = "5FC-rM-Oay"; */
 "5FC-rM-Oay.placeholderString" = "optionnel";
@@ -117,7 +114,7 @@ Les plugins sont activés par un projet appelé Dalamud, qui permet des fonction
 "9ic-FL-obx.title" = "Remplacements";
 
 /* Class = "NSButtonCell"; title = "Quit XIV on Mac upon game exit"; ObjectID = "9ie-LK-Dur"; */
-"9ie-LK-Dur.title" = "Quit XIV on Mac upon game exit";
+"9ie-LK-Dur.title" = "Quitter XIV on Mac à la sortie du jeu";
 
 /* Class = "NSTextFieldCell"; title = "Copy existing game data to \"XIV on Mac\" prefix."; ObjectID = "9yd-8A-qFs"; */
 "9yd-8A-qFs.title" = "Copy existing game data to \"XIV on Mac\" prefix.";
@@ -159,7 +156,7 @@ Les plugins sont activés par un projet appelé Dalamud, qui permet des fonction
 "BHo-QR-6f8.title" = "Réinitialiser";
 
 /* Class = "NSTextFieldCell"; title = "fps"; ObjectID = "BMg-PA-pZ1"; */
-"BMg-PA-pZ1.title" = "fps";
+"BMg-PA-pZ1.title" = "ips";
 
 /* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "BOF-NM-1cW"; */
 "BOF-NM-1cW.title" = "Préférences...";
@@ -213,16 +210,16 @@ Les plugins sont activés par un projet appelé Dalamud, qui permet des fonction
 "FeM-D8-WVr.title" = "Substitutions";
 
 /* Class = "NSTextFieldCell"; title = "These settings are mainly for troubleshooting purposes and generally shouldn't need to be changed."; ObjectID = "Fee-RW-Fzh"; */
-"Fee-RW-Fzh.title" = "These settings are mainly for troubleshooting purposes and generally shouldn't need to be changed.";
+"Fee-RW-Fzh.title" = "Ces paramètres sont principalement destinés à des fins de dépannage et ne doivent généralement pas être modifiés.";
 
 /* Class = "NSBox"; title = "HUD"; ObjectID = "Fq2-37-Vx7"; */
 "Fq2-37-Vx7.title" = "HUD";
 
 /* Class = "NSButtonCell"; title = "Keep Patches"; ObjectID = "GI5-jN-ZaJ"; */
-"GI5-jN-ZaJ.title" = "Keep Patches";
+"GI5-jN-ZaJ.title" = "Conserver les correctifs";
 
 /* Class = "NSTextFieldCell"; title = "The bridge enables the Discord Rich Presence Dalamud plugin to update your Discord status. If you do not plan to use this plugin, you can disable this setting."; ObjectID = "H7k-pX-G8j"; */
-"H7k-pX-G8j.title" = "The bridge enables the Discord Rich Presence Dalamud plugin to update your Discord status. If you do not plan to use this plugin, you can disable this setting.";
+"H7k-pX-G8j.title" = "Le \"Bridge\" permet au plugin \"Discord Rich Presence Dalamud\" de mettre à jour votre statut Discord. Si vous ne prévoyez pas d'utiliser ce plugin, vous pouvez désactiver ce paramètre.";
 
 /* Class = "NSMenuItem"; title = "Tools"; ObjectID = "H8h-7b-M4v"; */
 "H8h-7b-M4v.title" = "Outils";
@@ -246,7 +243,7 @@ Les plugins sont activés par un projet appelé Dalamud, qui permet des fonction
 "IQv-IB-iLA.title" = "Installer";
 
 /* Class = "NSButtonCell"; title = "Encrypt Game Arguments"; ObjectID = "Iv2-C2-31G"; */
-"Iv2-C2-31G.title" = "Encrypt Game Arguments";
+"Iv2-C2-31G.title" = "Chiffrer les arguments du jeu";
 
 /* Class = "NSButtonCell"; title = "Auto-Login"; ObjectID = "J8n-OX-VtC"; */
 "J8n-OX-VtC.title" = "Connexion auto.";
@@ -387,7 +384,7 @@ Les plugins sont activés par un projet appelé Dalamud, qui permet des fonction
 "Uem-xO-XvC.title" = "Current Step";
 
 /* Class = "NSTextFieldCell"; title = "If Dalamud is not loading succesfully, you can try adjusting the load delay up or down to find a value that works for your Mac."; ObjectID = "VZh-e3-0dP"; */
-"VZh-e3-0dP.title" = "If Dalamud is not loading succesfully, you can try adjusting the load delay up or down to find a value that works for your Mac.";
+"VZh-e3-0dP.title" = "Si Dalamud ne fonctionne pas correctement, vous pouvez essayer d'augmenter ou diminer le délais pour trouver une valeur qui fonctionne pour votre Mac.";
 
 /* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "Vdr-fp-XzO"; */
 "Vdr-fp-XzO.title" = "Masquer autres";
@@ -429,7 +426,7 @@ Les plugins sont activés par un projet appelé Dalamud, qui permet des fonction
 "Z2I-xl-N2E.title" = "Japonais";
 
 /* Class = "NSButtonCell"; title = "Enable Dalamud"; ObjectID = "Z8s-GL-J9H"; */
-"Z8s-GL-J9H.title" = "Enable Dalamud";
+"Z8s-GL-J9H.title" = "Activer Dalamud";
 
 /* Class = "NSWindow"; title = "Window"; ObjectID = "ZbU-CB-bBy"; */
 "ZbU-CB-bBy.title" = "Window";
@@ -477,7 +474,7 @@ Les plugins sont activés par un projet appelé Dalamud, qui permet des fonction
 "cnG-sE-eCO.title" = "Window";
 
 /* Class = "NSButtonCell"; title = "Warn if game exits with non-zero exit code"; ObjectID = "cqe-Mq-QD3"; */
-"cqe-Mq-QD3.title" = "Warn if game exits with non-zero exit code";
+"cqe-Mq-QD3.title" = "Avertir si le jeu se termine avec un code de sortie différent de zéro";
 
 /* Class = "NSMenuItem"; title = "Smart Links"; ObjectID = "cwL-P1-jid"; */
 "cwL-P1-jid.title" = "Liens intélligents";
@@ -525,7 +522,7 @@ Les plugins sont activés par un projet appelé Dalamud, qui permet des fonction
 "fgq-sv-nxT.title" = "Tout sélectionner";
 
 /* Class = "NSTextFieldCell"; title = "Delay:"; ObjectID = "fjk-PO-eLj"; */
-"fjk-PO-eLj.title" = "Delay:";
+"fjk-PO-eLj.title" = "Délais :";
 
 /* Class = "NSTextFieldCell"; title = "Downloading"; ObjectID = "fxE-2U-5uR"; */
 "fxE-2U-5uR.title" = "Downloading";
@@ -552,7 +549,7 @@ Les plugins sont activés par un projet appelé Dalamud, qui permet des fonction
 "hfH-NT-WKX.title" = "Select a License";
 
 /* Class = "NSButtonCell"; title = "Select None"; ObjectID = "hhJ-G0-ma9"; */
-"hhJ-G0-ma9.title" = "Select None";
+"hhJ-G0-ma9.title" = "Tout déselectionner";
 
 /* Class = "NSButtonCell"; title = "Auto-OTP"; ObjectID = "hjS-RC-X85"; */
 "hjS-RC-X85.title" = "OTP auto.";
@@ -609,7 +606,7 @@ Les plugins sont activés par un projet appelé Dalamud, qui permet des fonction
 "msO-z3-Trw.title" = "XIV on Mac";
 
 /* Class = "NSTextFieldCell"; title = "Wine Debug:"; ObjectID = "nXs-Qb-iRe"; */
-"nXs-Qb-iRe.title" = "Wine Debug:";
+"nXs-Qb-iRe.title" = "Débogage de Wine :";
 
 /* Class = "NSMenuItem"; title = "Add On"; ObjectID = "ngK-lv-alc"; */
 "ngK-lv-alc.title" = "Add On";
@@ -654,7 +651,7 @@ Les plugins sont activés par un projet appelé Dalamud, qui permet des fonction
 "qRO-Pi-PbC.title" = "Windows";
 
 /* Class = "NSButtonCell"; title = "Maximum Frame Rate"; ObjectID = "qVB-Tz-GDg"; */
-"qVB-Tz-GDg.title" = "Maximum Frame Rate";
+"qVB-Tz-GDg.title" = "Fréquence d'images maximale";
 
 /* Class = "NSButtonCell"; title = "Modern MoltenVK"; ObjectID = "rDp-vS-WkQ"; */
 "rDp-vS-WkQ.title" = "Modern MoltenVK";
