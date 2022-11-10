@@ -636,7 +636,7 @@
 "phh-fm-6OL.title" = "Suivant";
 
 /* Class = "NSTextFieldCell"; title = "If your game is freezing at startup, \"Compiling Shaders…\" forever, missing lighting or randomly freezing, the problem may be with your shader cache. Deleting it will cause a new one to be rebuilt, though it may result in occasional stutters during play initially."; ObjectID = "piU-pX-vSl"; */
-"piU-pX-vSl.title" = "Si votre jeu se fige au démarrage, \"Compiling Shaders…\" pour toujours, manque d'éclairage ou se fige de manière aléatoire, le problème peut provenir de votre \"Shader Cache\". Le supprimer entraînera la reconstruction d'un nouveau "\Shader Cache\", bien que cela puisse entraîner des bégaiements occasionnels pendant le lancement initial.";
+"piU-pX-vSl.title" = "Si votre jeu se fige au démarrage, \"Compiling Shaders…\" pour toujours, manque d'éclairage ou se fige de manière aléatoire, le problème peut provenir de votre \"Shader Cache\". Le supprimer entraînera la reconstruction d'un nouveau \"Shader Cache\", bien que cela puisse entraîner des bégaiements occasionnels pendant le lancement initial.";
 
 /* Class = "NSMenuItem"; title = "Find Next"; ObjectID = "q09-fT-Sye"; */
 "q09-fT-Sye.title" = "Rechercher suivant";
