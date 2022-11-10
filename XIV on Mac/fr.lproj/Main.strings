@@ -246,7 +246,7 @@
 "Iv2-C2-31G.title" = "Encrypt Game Arguments";
 
 /* Class = "NSButtonCell"; title = "Auto-Login"; ObjectID = "J8n-OX-VtC"; */
-"J8n-OX-VtC.title" = "Connexion automatique";
+"J8n-OX-VtC.title" = "Connexion auto.";
 
 /* Class = "NSMenuItem"; title = "French"; ObjectID = "JVS-ez-96D"; */
 "JVS-ez-96D.title" = "French";
@@ -552,7 +552,7 @@
 "hhJ-G0-ma9.title" = "Select None";
 
 /* Class = "NSButtonCell"; title = "Auto-OTP"; ObjectID = "hjS-RC-X85"; */
-"hjS-RC-X85.title" = "OTP automatique";
+"hjS-RC-X85.title" = "OTP auto.";
 
 /* Class = "NSMenuItem"; title = "Check Document Now"; ObjectID = "hz2-CU-CR7"; */
 "hz2-CU-CR7.title" = "Vérifier document maintenant";
