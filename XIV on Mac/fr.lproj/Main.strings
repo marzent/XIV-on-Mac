@@ -390,7 +390,7 @@
 "Vdr-fp-XzO.title" = "Masquer autres";
 
 /* Class = "NSMenu"; title = "Edit"; ObjectID = "W48-6f-4Dl"; */
-"W48-6f-4Dl.title" = "Edit";
+"W48-6f-4Dl.title" = "Édition";
 
 /* Class = "NSMenuItem"; title = "Open Install Folder"; ObjectID = "Was-JA-tGl"; */
 "Was-JA-tGl.title" = "Ouvrir le dossier d'installation";
@@ -504,7 +504,7 @@
 "dRJ-4n-Yzg.title" = "Undo";
 
 /* Class = "NSTextFieldCell"; title = "Square Enix ID"; ObjectID = "dYN-5e-LY1"; */
-"dYN-5e-LY1.title" = "Sélecteur de licence";
+"dYN-5e-LY1.title" = "Identifiant Square Enix";
 
 /* Class = "NSButton"; ibShadowedToolTip = "Wine has a bug when starting up in Fullscreen modes with non-scaled set which makes the application difficult to interact with. This option will automatically change your game to Windowed mode on every startup, after which you can change back to fullscreen to avoid the bug."; ObjectID = "dcJ-iB-Eb4"; */
 "dcJ-iB-Eb4.ibShadowedToolTip" = "Wine a un bogue lors du démarrage en mode plein écran avec un ensemble non mis à l'échelle qui rend l'application difficile à interagir avec. Cette option basculera automatiquement votre jeu en mode fenêtré à chaque démarrage, après quoi vous pourrez revenir en plein écran pour éviter le bug.";
@@ -627,7 +627,7 @@
 "oJM-9v-5CI.title" = "Dépannage";
 
 /* Class = "NSButtonCell"; title = "Frame Rate"; ObjectID = "olm-gB-DgF"; */
-"olm-gB-DgF.title" = "Fréquence d'images";
+"olm-gB-DgF.title" = "Frame Rate";
 
 /* Class = "NSMenuItem"; title = "Delete"; ObjectID = "pa3-QI-u2k"; */
 "pa3-QI-u2k.title" = "Supprimer";
