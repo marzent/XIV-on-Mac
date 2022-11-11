@@ -28,13 +28,13 @@ You can read our depreciated Crossover setup guide <a href="https://github.com/s
 <h4><a href="https://github.com/Marzent">Marzent (ウサギ)</a> (Head Developer, Technical Support)<br>
 <a href="https://github.com/Seathasky">Seathasky</a> (Project Manager, Support)<br>
 <a href="https://github.com/FleetAdmiralButter">FleetAdmiralButter</a> (Web Developer, Support)<br>
-<a href="https://github.com/cbackas42">Wyldfire</a> (Contributor, Mac Development, Support)<br></h4>
+<a href="https://github.com/cbackas42">Wyldfire</a> (Contributor, Mac Development, Support)<br>
+<a href="https://github.com/Gcenx">Gcenx</a> (Contributor, Head macOS Wine maintainer, Support)<br></h4>
 
 ---
 
   <b><i>Special Thanks to:</i></b>
-<h6><a href="https://github.com/Gcenx">Gcenx</a> - for keeping wine single-handedly alive on macOS and helping out a lot with packaging our custom wine<br>
-<a href="https://github.com/goaaats">goaaats</a> - for the amazing XIVLauncher and cross-platform efforts.<br>
+<h6><a href="https://github.com/goaaats">goaaats</a> - for the amazing XIVLauncher and cross-platform efforts.<br>
 <a href="https://github.com/redstrate">redstrate</a> - for his nativelauncher which made Dalamud injection easy to implement without .net framework<br>
 <a href="https://github.com/tyrone-sudeium">tyrone-sudeium</a> - for his LaunchXIV App, upon which most of the login flow code was based upon.<br>
 <a href="https://github.com/reiichi001">Franz Renatus</a> - for helping out with support and his ever useful Franzbot.<br>
