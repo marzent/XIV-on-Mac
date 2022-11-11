@@ -1,0 +1,93 @@
+/*
+  Localizable.strings
+  XIV on Mac
+
+  Created by Chris Backas on 3/9/22.
+  French translation by Simon St-Pierre on 11/8/22.
+ 
+*/
+
+"LOGIN_ERROR" = "Erreur d'identification";
+"START_ERROR" = "Erreur de démarrage de FFXIV";
+"INCORRECT_CREDENTIALS_SHORT" = "Identifiants incorrects";
+"INCORRECT_CREDENTIALS" = "Les serveurs d'identification n'ont pas acceptés les identifiants fourni";
+"NO_STEAM_TICKET_SHORT" = "N'a pas pu se connecter à Steam";
+"NO_STEAM_TICKET" = "XIV on Mac ne peut pas obtenir un Steam Ticket valide pour Final Fantasy XIV. Soyez sûr que Steam est ouvert, que vous êtes identifié et que vous avez associé votre compte Steam.";
+"STEAM_USER_ERROR_SHORT" = "Erreur de Steam";
+"STEAM_USER_ERROR" = "Il y a une différence entre le nom d'utilisateur fourni et celui de votre compte Steam.";
+"NOT_PLAYABLE_SHORT" = "Erreur de licensement";
+"NOT_PLAYABLE" = "La réponse des serveurs d'identification indique que vous ne pouvez pas jouer. Assurez-vous d'avoir un abonnement actif et sélectionner votre type d'abonnement (Windows, Steam ou Mac) dans les paramètres.";
+"NO_TERMS_SHORT" = "Erreur dand le système d'identification";
+"NO_TERMS" = "Accepter les conditions de services de Final Fantasy XIV ou utiliser le lanceur officiel.";
+"PROTOCOL_ERROR_SHORT" = "Erreur dans le système d'identification";
+"PROTOCOL_ERROR" = "Les serveurs d'idenfication n'ont pas accepté la requête. Soyez sûr d'avoir une connexion stable connectée sur les serveurs de FFXIV.";
+"NETWORK_ERROR_SHORT" = "Erreur de réseau";
+"NETWORK_ERROR" = "Vérifier votre connexion d'Internet, ou essayer plus tard. Est-ce que FFXIV souffre d'une panne?";
+"NO_INSTALL_SHORT" = "Final Fantasy XIV n'est pas installé!";
+"NO_INSTALL" = "Certains fichiers de jeu n'on pas été trouvés.\nDémarrage de l'installeur...";
+"MAINTENANCE_SHORT" = "Maintenance en cours";
+"MAINTENANCE" = "Attendez la fin de la maintenance avant de vous identifier.";
+"MULTIBOX_SHORT" = "Deux instances de jeu sont déjà démarrée";
+"MULTIBOX" = "Fermer l'une des instance de jeu avant d'en démarrer une autre.";
+"KILLSWITCH_SHORT" = "Le processus d'identification a changé";
+"KILLSWITCH" = "En raison des modifications apportées au processus de connexion par Square Enix, vous devez vérifier que XIV  Mac fonctionne correctement et en toute sécurité. Veuillez utiliser le lanceur officiel en attendant.";
+"UNEXPECTED_SHORT" = "Erreur inattendue";
+"UNEXPECTED" = "Une erreur inattendue est survenue.";
+
+"REPAIR_RESULT" = "Résultat de la réparation";
+
+"OK_BUTTON" = "Okay";
+"CANCEL_BUTTON" = "Annuler";
+
+"DALAMUD_START_FAILURE" = "Dalamud ne fonctionne pas";
+"DALAMUD_START_FAILURE_INFORMATIONAL" = "Une erreur est survenue lors du téléchargement et de l'installation de Dalamud. Vérifiez votre connexion et assurez-vous que Dalamud est compatible avec la version courante du jeu.";
+"GAME_START_FAILURE" = "Le lancement de Final Fantasy XIV a échoué";
+"GAME_START_FAILURE_INFORMATIONAL" = "Une erreur est survenue lors du lancement du jeu. Essayez de relancer XIV on MAC.";
+
+"FIRSTAID_GAME_RUNNING" = "Final Fantasy XIV tourne";
+"FIRSTAID_GAME_RUNNING_INFORMATIONAL" = "Fermer les instances de Final Fantasy XIV déjà lancées avant d'entreprendre le Dépannage.";
+
+"DXVK_USER_CACHE_DELETED" = "Shader Cache supprimé";
+"DXVK_USER_CACHE_DELETED_INFORMATIVE" = "Le Shader Cache a été supprimé. Démarrez le jeu et vérifiez si votre problème a été corrigé.";
+"DXVK_USER_CACHE_DELETE_FAILED" = "Suppression du Shader Cache échouée";
+"DXVK_USER_CACHE_DELETE_FAILED_INFORMATIVE" = "Incapable de supprimer le shader cache. Vous pouvez essayer de le supprimer manuellement avec Fichier->Ouvrir Wine Prefix.";
+
+"GAME_CONFIG_RESET" = "Configuration réinitialisée";
+"GAME_CONFIG_RESET_INFORMATIVE" = "Votre configuration de jeu a été réinitialisée.";
+"GAME_CONFIG_RESET_FAILED" = "Réinitialisation de la configuration échouée";
+"GAME_CONFIG_RESET_FAILED_INFORMATIVE" = "Incapable de réinitialiser la configuration. Vous pourriez autoriser XIV on Mac les droits d'accès à votre dossier de Téléchargement dans Préférences du système, Sécurité.";
+
+"DOCUMENTS_PERM_STILL_BAD" = "XIV On Mac ne peut toujours pas lire ou écrire dans vos Documents. Si le volet des préférences de sécurité affiche les bonnes permissions, supprimez l'entrée et recréer la permission.";
+
+"UNSUPPORTED_GPU" = "Aucun GPU pris en charge trouvé";
+"UNSUPPORTED_GPU_INFORMATIVE" = "XIV on Mac n'a trouvé aucun GPU pris en charge sur votre Mac. Si vous continuez, le jeu pourrait ne pas fonctionner, planter ou fonctionner de manière inférieure. Pour plus de détails, veuillez consulter notre liste de compatibilité.";
+"SEE_COMPATABILITY_BUTTON" = "Liste de compatibilité";
+
+"RETINA_WARNING" = "Avertissement";
+"RETINA_WARNING_INFORMATIVE" = "La modification de ce paramètre peut entraîner des problèmes avec Final Fantasy XIV ne s'affichant pas à la taille maximale de l'écran. Ne pas modifier pas ce paramètre pendant que le jeu est en cours d'exécution et redémarrez XIV on Mac après toute modification.
+Si le problème persiste, il est recommandé de changer le mode d'affichage dans le jeu. La désactivation de la mise à l'échelle peut augmenter le nombre de pixels du jeu jusqu'à 4x, ce qui pèsera lourdement sur vos performances.
+Ne l'activez pas sur les écrans autres que écrans Retina, sauf à des fins de capture d'écran.";
+"RETINA_ENABLE_BUTTON" = "J'ai compris";
+
+"RETINA_WORKAROUND_OPTIN" = "Solution du bogue en plein écran";
+"RETINA_WORKAROUND_OPTIN_INFORMATIVE" = "Wine contient un bogue qui provoque une taille de fenêtre et une position de la souris incorrectes au démarrage si le mode de mise à l'échelle est désactivé. XIV on Mac peut aider à contourner ce problème en changeant votre jeu en mode fenêtré à chaque lancement. Une fois que le jeu démarre, vous pouvez revenir à votre mode préféré. Souhaitez-vous activer cette solution  ? Vous pouvez modifier ce paramètre à tout moment dans les préférences.";
+"RETINA_WORKAROUND_OPTIN_ENABLE" = "Activer la solution";
+"RETINA_WORKAROUND_OPTIN_DISABLE" = "Ne pas activer";
+
+"ROSETTA_REQUIRED" = "Rosetta 2 est requis.";
+"ROSETTA_REQUIRED_INFORMATIVE" = "XIV on Mac nécessite l'installation de Rosetta 2 d'Apple pour fonctionner sur votre Apple Silicon Mac. Si vous choisissez de ne pas installer, votre jeu ne démarrera pas. Souhaitez-vous lancer le programme d'installation de Rosetta maintenant ?";
+"ROSETTA_REQUIRED_INSTALL_BUTTON" = "Installer Rosetta";
+"ROSETTA_REQUIRED_CANCEL_BUTTON" = "Annuler";
+
+"FIRSTAID_CFGCHECK_GOOD_RESULT" = "Votre configuration semble fonctionnelle !";
+"FIRSTAID_CFGCHECK_ADVISORY_RESULT" = "Votre configuration semble bonne, mais devriez prendre connaissance de certains éléments.";
+"FIRSTAID_CFGCHECK_RECOMMENDATION_RESULT" = "Vous pouvez obtenir une meilleure perfomance de jeu avec quelques modifications.";
+"FIRSTAID_CFGCHECK_PROBLEM_RESULT" = "Un ou plusieurs problèmes ont été trouvés dans votre configuration qui peuvent causer des problèmes.";
+
+"FIRSTAID_CFGCHECK_FIXED" = "Corrigé!";
+"FIRSTAID_CFGCHECK_HBAO_TITLE" = "Le paramètre SSAO n'est pas valide";
+"FIRSTAID_CFGCHECK_HBAO_EXP" = "Les niveaux HBAO de SSAO (Screen Space Ambient Occlusion) ne sont pas pris en charge sur Mac et peuvent causer des trous noirs dans le jeu.";
+
+
+"FIRSTAID_CFGCHECK_TESSELATION_TITLE" = "Tesselation";
+"FIRSTAID_CFGCHECK_TESSELATION_EXP" = "Les valeurs supérieures à \"Normal\" peuvent causer de graves problèmes de performances sur les Mac Apple Silicon, tout en n'offrant aucune amélioration visuelle.";
