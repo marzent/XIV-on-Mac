@@ -1,4 +1,4 @@
-# General
+.# General
 .DS_Store
 .AppleDouble
 .LSOverride
@@ -27,3 +27,6 @@ Temporary Items
 
 wine
 UserInterfaceState.xcuserstate
+
+# Personal user data files
+xcuserdata/
