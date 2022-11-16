@@ -44,9 +44,9 @@ class PatchController: NSViewController {
         //Wine.kill()
         let totalSize = Patch.totalLength(patches)
         DispatchQueue.main.async { [self] in
-            installPatch.stringValue = "Waiting for download to finish..."
-            installStatus.stringValue = "0 out of \(patches.count) Patches installed"
-            installBar.doubleValue = 0
+            installPatch.stringValue = NSLocalizedString("PATCH_INSTALLATION_WAITING", comment: "")
+            installStatus.stringValue = String(format: NSLocalizedString("PATCH_INSTALLATION_PROGRESS_INIT", comment: ""), patches.count)
+            installBar.doubleValue = 0;
             installBar.maxValue = Double(patches.count)
         }
         for (patchNum, _) in patches.enumerated() {
@@ -73,7 +73,7 @@ class PatchController: NSViewController {
             DispatchQueue.main.async { [self] in
                 let installsDone = patchNum + 1
                 installBar.doubleValue = Double(installsDone)
-                installStatus.stringValue = "\(installsDone) out of \(patches.count) Patches installed"
+                installStatus.stringValue = String(format: NSLocalizedString("PATCH_INSTALLATION_PROGRESS", comment: ""), installsDone, patches.count);
                 if installsDone == patches.count {
                     FFXIVRepo.verToBck()
                     PatchController.isPatching.signal()
@@ -102,10 +102,10 @@ class PatchController: NSViewController {
             guard tries < maxTries else {
                 DispatchQueue.main.sync {
                     let alert = NSAlert()
-                    alert.addButton(withTitle: "Close")
+                    alert.addButton(withTitle: NSLocalizedString("PATCH_INSTALLATION_ERROR_BUTTON", comment: ""))
                     alert.alertStyle = .critical
-                    alert.messageText = "Download Error"
-                    alert.informativeText = "XIV on Mac could not download \(patch.url) after \(maxTries) attempts"
+                    alert.messageText = NSLocalizedString("PATCH_INSTALLATION_ERROR_MESSAGE", comment: "")
+                    alert.informativeText = String(format: NSLocalizedString("PATCH_INSTALLATION_ERROR_INFORMATIVE", comment: ""), patch.url.absoluteString, maxTries)
                     alert.runModal()
                     Util.quit()
                 }
@@ -120,8 +120,8 @@ class PatchController: NSViewController {
             formatter.string(fromByteCount: value)
         }
         DispatchQueue.main.async { [self] in
-            downloadStatus.stringValue = "\(format(totalCompletedSize)) of \(format(totalSize))"
-            downloadPatchStatus.stringValue = "\(format(completedSize)) of \(format(size)) (\(format(speed))/sec)"
+            downloadStatus.stringValue = String(format: NSLocalizedString("PATCH_INSTALLATION_DOWNLOAD_STATUS", comment: ""), totalCompletedSize, totalSize)
+            downloadPatchStatus.stringValue = String(format: NSLocalizedString("PATCH_INSTALLATION_DOWNLOAD_STATUS_PATCH", comment: ""), completedSize, size, speed)
             downloadBar.doubleValue = downloadBar.maxValue * Double(totalCompletedSize) / Double(totalSize)
             downloadPatchBar.doubleValue = downloadPatchBar.maxValue * Double(completedSize) / Double(size)
         }

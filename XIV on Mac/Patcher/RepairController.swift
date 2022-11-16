@@ -73,7 +73,7 @@ class RepairController: NSViewController {
                 timer?.invalidate()
                 view.window?.close()
                 let alert = NSAlert()
-                alert.addButton(withTitle: NSLocalizedString("OK_BUTTON", comment: ""))
+                alert.addButton(withTitle: NSLocalizedString("BUTTON_OK", comment: ""))
                 alert.alertStyle = .critical
                 alert.messageText = NSLocalizedString("REPAIR_RESULT", comment: "")
                 alert.informativeText = repairResult

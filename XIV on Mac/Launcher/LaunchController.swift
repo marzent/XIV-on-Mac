@@ -186,7 +186,7 @@ class LaunchController: NSViewController {
                 DispatchQueue.main.async {
                     if Settings.dalamudEnabled && !dalamudOk {
                         let alert = NSAlert()
-                        alert.addButton(withTitle: NSLocalizedString("OK_BUTTON", comment: ""))
+                        alert.addButton(withTitle: NSLocalizedString("BUTTON_OK", comment: ""))
                         alert.alertStyle = .critical
                         alert.messageText = NSLocalizedString("DALAMUD_START_FAILURE", comment: "")
                         alert.informativeText = NSLocalizedString("DALAMUD_START_FAILURE_INFORMATIONAL", comment: "")
@@ -205,7 +205,7 @@ class LaunchController: NSViewController {
                 DispatchQueue.main.async {
                     if exitCode != 0 && Settings.nonZeroExitError {
                         let alert = NSAlert()
-                        alert.addButton(withTitle: NSLocalizedString("OK_BUTTON", comment: ""))
+                        alert.addButton(withTitle: NSLocalizedString("BUTTON_OK", comment: ""))
                         alert.alertStyle = .critical
                         alert.messageText = NSLocalizedString("GAME_START_FAILURE", comment: "")
                         alert.informativeText = NSLocalizedString("GAME_START_FAILURE_INFORMATIONAL", comment: "")
@@ -224,7 +224,7 @@ class LaunchController: NSViewController {
                 DispatchQueue.main.async { [self] in
                     loginSheetWinController?.window?.close()
                     let alert = NSAlert()
-                    alert.addButton(withTitle: NSLocalizedString("OK_BUTTON", comment: ""))
+                    alert.addButton(withTitle: NSLocalizedString("BUTTON_OK", comment: ""))
                     alert.alertStyle = .critical
                     alert.messageText = NSLocalizedString("LOGIN_ERROR", comment: "")
                     alert.informativeText = errorMessage
@@ -234,7 +234,7 @@ class LaunchController: NSViewController {
                 DispatchQueue.main.async { [self] in
                     loginSheetWinController?.window?.close()
                     let alert = NSAlert()
-                    alert.addButton(withTitle: NSLocalizedString("OK_BUTTON", comment: ""))
+                    alert.addButton(withTitle: NSLocalizedString("BUTTON_OK", comment: ""))
                     alert.alertStyle = .critical
                     alert.messageText = NSLocalizedString("START_ERROR", comment: "")
                     alert.informativeText = errorMessage
@@ -244,7 +244,7 @@ class LaunchController: NSViewController {
                 DispatchQueue.main.async { [self] in
                     loginSheetWinController?.window?.close()
                     let alert = NSAlert()
-                    alert.addButton(withTitle: NSLocalizedString("OK_BUTTON", comment: ""))
+                    alert.addButton(withTitle: NSLocalizedString("BUTTON_OK", comment: ""))
                     alert.alertStyle = .critical
                     alert.messageText = error.failureReason ?? "Error"
                     alert.informativeText = error.localizedDescription
@@ -254,7 +254,7 @@ class LaunchController: NSViewController {
                 DispatchQueue.main.async { [self] in
                     loginSheetWinController?.window?.close()
                     let alert = NSAlert()
-                    alert.addButton(withTitle: NSLocalizedString("OK_BUTTON", comment: ""))
+                    alert.addButton(withTitle: NSLocalizedString("BUTTON_OK", comment: ""))
                     alert.alertStyle = .critical
                     alert.messageText = "Error"
                     alert.informativeText = error.localizedDescription

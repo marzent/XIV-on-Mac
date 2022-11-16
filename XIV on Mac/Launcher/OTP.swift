@@ -124,10 +124,10 @@ extension LaunchController {
         let username = userField.stringValue
         if !OTP.secretStored(username: username) {
             let msg = NSAlert()
-            msg.addButton(withTitle: "OK")
-            msg.addButton(withTitle: "Cancel")
-            msg.messageText = "OTP Secret for user \"\(username)\""
-            msg.informativeText = "If you trust your local Keychain you can let XIV on Mac handle OTP generation for you if you provide a BASE32 encoded secret below:"
+            msg.addButton(withTitle: NSLocalizedString("BUTTON_OK", comment: ""))
+            msg.addButton(withTitle: NSLocalizedString("BUTTON_CANCEL", comment: ""))
+            msg.messageText = String(format: NSLocalizedString("OTP_MESSAGE", comment: ""), username)
+            msg.informativeText = NSLocalizedString("OTP_INFORMATIVE", comment: "")
             let txt = NSTextField(frame: NSRect(x: 0, y: 0, width: 200, height: 24))
             msg.accessoryView = txt
             if msg.runModal() == .alertFirstButtonReturn {

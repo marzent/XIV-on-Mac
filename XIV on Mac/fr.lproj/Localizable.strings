@@ -7,6 +7,11 @@
  
 */
 
+"BUTTON_YES" = "Oui";
+"BUTTON_NO" = "Non";
+"BUTTON_OK" = "Okay";
+"BUTTON_CANCEL" = "Annuler";
+
 "LOGIN_ERROR" = "Erreur d'identification";
 "START_ERROR" = "Erreur de démarrage de FFXIV";
 "INCORRECT_CREDENTIALS_SHORT" = "Identifiants incorrects";
@@ -35,9 +40,6 @@
 "UNEXPECTED" = "Une erreur inattendue est survenue.";
 
 "REPAIR_RESULT" = "Résultat de la réparation";
-
-"OK_BUTTON" = "Okay";
-"CANCEL_BUTTON" = "Annuler";
 
 "DALAMUD_START_FAILURE" = "Dalamud ne fonctionne pas";
 "DALAMUD_START_FAILURE_INFORMATIONAL" = "Une erreur est survenue lors du téléchargement et de l'installation de Dalamud. Vérifiez votre connexion et assurez-vous que Dalamud est compatible avec la version courante du jeu.";
@@ -91,3 +93,43 @@ Ne l'activez pas sur les écrans autres que écrans Retina, sauf à des fins de 
 
 "FIRSTAID_CFGCHECK_TESSELATION_TITLE" = "Tesselation";
 "FIRSTAID_CFGCHECK_TESSELATION_EXP" = "Les valeurs supérieures à \"Normal\" peuvent causer de graves problèmes de performances sur les Mac Apple Silicon, tout en n'offrant aucune amélioration visuelle.";
+
+"SELECT_GAME_PATH_PANEL_TITLE" = "Choose FFXIV install location";
+"SELECT_GAME_PATH_PANEL_SUBTITLE" = "It should contain the folders \"game\" and \"boot\"";
+"SELECT_GAME_PATH_ERROR_MESSAGE" = "The folder you chose for your game install does not seem to be valid";
+"SELECT_GAME_PATH_ERROR_INFORMATIVE" = "Do you still want to use it?";
+
+"PATCH_INSTALLATION_WAITING" = "Waiting for download to finish...";
+"PATCH_INSTALLATION_PROGRESS_INIT" = "0 out of %d Patches installed";
+"PATCH_INSTALLATION_PROGRESS" = "%d out of %d Patches installed";
+"PATCH_INSTALLATION_ERROR_BUTTON" = "Close";
+"PATCH_INSTALLATION_ERROR_MESSAGE" = "Download Error";
+"PATCH_INSTALLATION_ERROR_INFORMATIVE" = "XIV on Mac could not download %@ after %d attempts";
+"PATCH_INSTALLATION_DOWNLOAD_STATUS" = "%d of %d";
+"PATCH_INSTALLATION_DOWNLOAD_STATUS_PATCH" = "%d of %d (%d/sec)";
+
+"PATCH_ERROR_MESSAGE" = "Patch Installer Error";
+"PATCH_ERROR_INFORMATIVE" = "Patch Verification failed";
+"PATCH_ERROR_BUTTON" = "Close";
+
+"OTP_MESSAGE" = "OTP Secret for user \"%@\"";
+"OTP_INFORMATIVE" = "If you trust your local Keychain you can let XIV on Mac handle OTP generation for you if you provide a BASE32 encoded secret below:";
+
+"GSHADE_MESSAGE" = "When running Catalina you must have wine or CrossOver installed";
+"GSHADE_INFORMATIVE" = "You can also manually add the wine version bundled with the XIV on Mac.app to your $PATH";
+
+"INSTALLER_NOT_FOUND_MESSAGE" = "FINAL FANTASY XIV ONLINE install found!";
+"INSTALLER_NOT_FOUND_INFORMATIVE" = "Would you like to use the install located at %@?";
+"INSTALLER_NOT_DETECTED_MESSAGE" = "No FINAL FANTASY XIV ONLINE installs were detected...";
+"INSTALLER_NOT_DETECTED_INFORMATIVE" = "Would you like to manually choose a Folder?";
+
+"INSTALLER_PATH_TITLE" = "Choose the folder with the existing install";
+"INSTALLER_PATH_SUBTITLE" = "It should contain the folders \"game\" and \"boot\" and the game executable.";
+"INSTALLER_PATH_INVALID_MESSAGE" = "Invalid FFXIV Directory";
+"INSTALLER_PATH_INVALID_INFORMATIVE" = "It should contain the folders \"game\" and \"boot\" and the game executable.";
+"INSTALLER_PATH_INVALID_BUTTON" = "By the Twelve!";
+
+"INSTALLER_DOWNLOAD_ERROR_MESSAGE" = "Download Error";
+"INSTALLER_DOWNLOAD_ERROR_INFORMATIVE" = "XIV on Mac could not download the base game archive";
+
+"INSTALLER_EXTRACTING" = "Extracting";
