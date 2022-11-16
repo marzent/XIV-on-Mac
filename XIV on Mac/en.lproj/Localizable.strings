@@ -28,7 +28,7 @@
 "NETWORK_ERROR_SHORT" = "Network Error";
 "NETWORK_ERROR" = "Check your internet connection, or try again later. Is FFXIV down?";
 "NO_INSTALL_SHORT" = "Final Fantasy XIV is not installed!";
-"NO_INSTALL" = "Essential game files could not be found.\nStarting Installer...";
+"NO_INSTALL" = "Essential game files could not be found.\nStarting Installer…";
 "MAINTENANCE_SHORT" = "Maintenance in progress";
 "MAINTENANCE" = "Please wait until maintenance finishes before logging in.";
 "MULTIBOX_SHORT" = "Two game instances already running";
@@ -96,7 +96,7 @@ Do not enable this on non-retina displays, unless for screenshot purposes.";
 "SELECT_GAME_PATH_ERROR_MESSAGE" = "The folder you chose for your game install does not seem to be valid";
 "SELECT_GAME_PATH_ERROR_INFORMATIVE" = "Do you still want to use it?";
 
-"PATCH_INSTALLATION_WAITING" = "Waiting for download to finish...";
+"PATCH_INSTALLATION_WAITING" = "Waiting for download to finish…";
 "PATCH_INSTALLATION_PROGRESS_INIT" = "0 out of %d Patches installed";
 "PATCH_INSTALLATION_PROGRESS" = "%d out of %d Patches installed";
 "PATCH_INSTALLATION_ERROR_BUTTON" = "Close";
@@ -117,7 +117,7 @@ Do not enable this on non-retina displays, unless for screenshot purposes.";
 
 "INSTALLER_NOT_FOUND_MESSAGE" = "FINAL FANTASY XIV ONLINE install found!";
 "INSTALLER_NOT_FOUND_INFORMATIVE" = "Would you like to use the install located at %@?";
-"INSTALLER_NOT_DETECTED_MESSAGE" = "No FINAL FANTASY XIV ONLINE installs were detected...";
+"INSTALLER_NOT_DETECTED_MESSAGE" = "No FINAL FANTASY XIV ONLINE installs were detected…";
 "INSTALLER_NOT_DETECTED_INFORMATIVE" = "Would you like to manually choose a Folder?";
 
 "INSTALLER_PATH_TITLE" = "Choose the folder with the existing install";
@@ -130,3 +130,5 @@ Do not enable this on non-retina displays, unless for screenshot purposes.";
 "INSTALLER_DOWNLOAD_ERROR_INFORMATIVE" = "XIV on Mac could not download the base game archive";
 
 "INSTALLER_EXTRACTING" = "Extracting";
+
+"LOGGING_IN" = "Logging In";

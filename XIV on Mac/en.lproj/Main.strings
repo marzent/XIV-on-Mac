@@ -255,7 +255,7 @@
 "Jbf-yx-ZQ7.title" = "You can chose to enable Dalamud later";
 
 /* Class = "NSMenuItem"; title = "Check for Updates..."; ObjectID = "Jeg-Jn-PWU"; */
-"Jeg-Jn-PWU.title" = "Check for Updates...";
+"Jeg-Jn-PWU.title" = "Check for Updates…";
 
 /* Class = "NSMenuItem"; title = "4.0"; ObjectID = "K16-kg-NW2"; */
 "K16-kg-NW2.title" = "4.0";
@@ -279,7 +279,7 @@
 "LE2-aR-0XJ.title" = "Bring All to Front";
 
 /* Class = "NSTextFieldCell"; title = "Waiting for download to finish..."; ObjectID = "LLv-Yk-R7e"; */
-"LLv-Yk-R7e.title" = "Waiting for download to finish...";
+"LLv-Yk-R7e.title" = "Waiting for download to finish…";
 
 /* Class = "NSTextFieldCell"; title = "You can disable Dalamud anytime"; ObjectID = "LPN-SN-8np"; */
 "LPN-SN-8np.title" = "You can disable Dalamud anytime";
@@ -399,7 +399,7 @@
 "Wum-vu-uC1.title" = "Shader Cache";
 
 /* Class = "NSTextFieldCell"; title = "Installing..."; ObjectID = "X9z-xO-PQz"; */
-"X9z-xO-PQz.title" = "Installing...";
+"X9z-xO-PQz.title" = "Installing…";
 
 /* Class = "NSMenuItem"; title = "x86"; ObjectID = "XO2-yP-LkT"; */
 "XO2-yP-LkT.title" = "x86";
@@ -546,7 +546,7 @@
 "hQb-2v-fYv.title" = "Smart Quotes";
 
 /* Class = "NSTextFieldCell"; title = "Select a License"; ObjectID = "hfH-NT-WKX"; */
-"hfH-NT-WKX.title" = "Select a License";
+"hfH-NT-WKX.title" = "Select a License:";
 
 /* Class = "NSButtonCell"; title = "Select None"; ObjectID = "hhJ-G0-ma9"; */
 "hhJ-G0-ma9.title" = "Select None";

@@ -21,7 +21,7 @@ class LoginSheetController: NSViewController {
         super.viewWillAppear()
         spinner.usesThreadedAnimation = true
         spinner.startAnimation(self)
-        status.stringValue = "Logging In"
+        status.stringValue = NSLocalizedString("LOGGING_IN", comment: "")
     }
     
     @objc func loginUpdate(_ notif: Notification) {

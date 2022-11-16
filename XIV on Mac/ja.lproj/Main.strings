@@ -252,7 +252,7 @@
 "Jbf-yx-ZQ7.title" = "Dalamudは後で追加することもできます";
 
 /* Class = "NSMenuItem"; title = "Check for Updates..."; ObjectID = "Jeg-Jn-PWU"; */
-"Jeg-Jn-PWU.title" = "アップデートを確認...";
+"Jeg-Jn-PWU.title" = "アップデートを確認…";
 
 /* Class = "NSMenuItem"; title = "4.0"; ObjectID = "K16-kg-NW2"; */
 "K16-kg-NW2.title" = "4.0";
@@ -396,7 +396,7 @@
 "Wum-vu-uC1.title" = "シェーダーキャッシュ";
 
 /* Class = "NSTextFieldCell"; title = "Installing..."; ObjectID = "X9z-xO-PQz"; */
-"X9z-xO-PQz.title" = "インストール中...";
+"X9z-xO-PQz.title" = "インストール中…";
 
 /* Class = "NSMenuItem"; title = "x86"; ObjectID = "XO2-yP-LkT"; */
 "XO2-yP-LkT.title" = "x86";
@@ -633,7 +633,7 @@
 "phh-fm-6OL.title" = "次";
 
 /* Class = "NSTextFieldCell"; title = "If your game is freezing at startup, \"Compiling Shaders…\" forever, missing lighting or randomly freezing, the problem may be with your shader cache. Deleting it will cause a new one to be rebuilt, though it may result in occasional stutters during play initially."; ObjectID = "piU-pX-vSl"; */
-"piU-pX-vSl.title" = "起動時にフリーズしたり、Compiling Shaders... が無限に続いたり、ライトが欠けたり、ランダムにフリーズする場合は、シェーダーキャッシュに問題がある可能性があります。シェーダーキャッシュを削除すると新しいキャッシュが再構築されますが、初期状態ではプレイ中に時々カクカクすることがあります。";
+"piU-pX-vSl.title" = "起動時にフリーズしたり、Compiling Shaders… が無限に続いたり、ライトが欠けたり、ランダムにフリーズする場合は、シェーダーキャッシュに問題がある可能性があります。シェーダーキャッシュを削除すると新しいキャッシュが再構築されますが、初期状態ではプレイ中に時々カクカクすることがあります。";
 
 /* Class = "NSMenuItem"; title = "Find Next"; ObjectID = "q09-fT-Sye"; */
 "q09-fT-Sye.title" = "次を検索";

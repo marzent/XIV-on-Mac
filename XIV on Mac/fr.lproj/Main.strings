@@ -6,7 +6,7 @@
 "0ZX-g7-76H.title" = "Lancement avec la prise en charge du plugin Dalamud";
 
 /* Class = "NSTextFieldCell"; title = "Point XIV on Mac towards a custom folder."; ObjectID = "0iQ-Qw-vtu"; */
-"0iQ-Qw-vtu.title" = "Point XIV on Mac towards a custom folder.";
+"0iQ-Qw-vtu.title" = "Dirigez XIV on Mac vers un dossier personnalisé.";
 
 /* Class = "NSMenuItem"; title = "Auto-Launch Bunny HUD"; ObjectID = "1Do-e8-DyE"; */
 "1Do-e8-DyE.title" = "Lancement automatique de Bunny HUD";
@@ -159,7 +159,7 @@
 "BMg-PA-pZ1.title" = "ips";
 
 /* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "BOF-NM-1cW"; */
-"BOF-NM-1cW.title" = "Préférences...";
+"BOF-NM-1cW.title" = "Préférences…";
 
 /* Class = "NSButtonCell"; title = "Fix"; ObjectID = "CIy-Lt-yyH"; */
 "CIy-Lt-yyH.title" = "Réparer";
@@ -330,7 +330,7 @@
 "QKx-3N-AcM.title" = "Vérification de la configuration";
 
 /* Class = "NSButtonCell"; title = "Close Installer"; ObjectID = "Qa2-wP-4fw"; */
-"Qa2-wP-4fw.title" = "Fermer le programme d'installation";
+"Qa2-wP-4fw.title" = "Fermer";
 
 /* Class = "NSTextFieldCell"; title = "0 out of 0 Patches installed"; ObjectID = "QxC-ZE-CiG"; */
 "QxC-ZE-CiG.title" = "0 de 0 mises à jour installées";
@@ -369,7 +369,7 @@
 "Td7-aD-5lo.title" = "Fenêtre";
 
 /* Class = "NSTextFieldCell"; title = "Select an option:"; ObjectID = "TeW-Wy-5YR"; */
-"TeW-Wy-5YR.title" = "Sélectionner une option :";
+"TeW-Wy-5YR.title" = "Sélectionnez une option :";
 
 /* Class = "NSSecureTextFieldCell"; placeholderString = "required"; ObjectID = "TfY-Li-gp6"; */
 "TfY-Li-gp6.placeholderString" = "requis";
@@ -546,7 +546,7 @@
 "hQb-2v-fYv.title" = "Citations intélligentes";
 
 /* Class = "NSTextFieldCell"; title = "Select a License"; ObjectID = "hfH-NT-WKX"; */
-"hfH-NT-WKX.title" = "Sélectionnez une licence";
+"hfH-NT-WKX.title" = "Sélectionnez une licence :";
 
 /* Class = "NSButtonCell"; title = "Select None"; ObjectID = "hhJ-G0-ma9"; */
 "hhJ-G0-ma9.title" = "Tout déselectionner";
@@ -612,7 +612,7 @@
 "ngK-lv-alc.title" = "Compléments";
 
 /* Class = "NSMenuItem"; title = "Troubleshooting…"; ObjectID = "nwX-vr-aWN"; */
-"nwX-vr-aWN.title" = "Dépannage...";
+"nwX-vr-aWN.title" = "Dépannage…";
 
 /* Class = "NSButtonCell"; title = "Next"; ObjectID = "o4g-vh-B1L"; */
 "o4g-vh-B1L.title" = "Suivant";

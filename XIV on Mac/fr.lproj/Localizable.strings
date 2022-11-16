@@ -29,7 +29,7 @@
 "NETWORK_ERROR_SHORT" = "Erreur de réseau";
 "NETWORK_ERROR" = "Vérifier votre connexion d'Internet, ou essayer plus tard. Est-ce que FFXIV souffre d'une panne?";
 "NO_INSTALL_SHORT" = "Final Fantasy XIV n'est pas installé!";
-"NO_INSTALL" = "Certains fichiers de jeu n'on pas été trouvés.\nDémarrage de l'installeur...";
+"NO_INSTALL" = "Certains fichiers de jeu n'on pas été trouvés.\nDémarrage de l'installeur…";
 "MAINTENANCE_SHORT" = "Maintenance en cours";
 "MAINTENANCE" = "Attendez la fin de la maintenance avant de vous identifier.";
 "MULTIBOX_SHORT" = "Deux instances de jeu sont déjà démarrée";
@@ -99,8 +99,8 @@ Ne l'activez pas sur les écrans autres que écrans Retina, sauf à des fins de 
 "SELECT_GAME_PATH_ERROR_MESSAGE" = "Le dossier que vous avez choisi pour l'installation du jeu ne semble pas être valide.";
 "SELECT_GAME_PATH_ERROR_INFORMATIVE" = "Voulez-vous toujours l'utiliser ?";
 
-"PATCH_INSTALLATION_WAITING" = "Attendez la fin du téléchargement...";
-"PATCH_INSTALLATION_PROGRESS_INIT" = "0 de %d patchs installés";
+"PATCH_INSTALLATION_WAITING" = "Attendez la fin du téléchargement…";
+"PATCH_INSTALLATION_PROGRESS_INIT" = "0 de %d patch installé";
 "PATCH_INSTALLATION_PROGRESS" = "%d de %d patchs installés";
 "PATCH_INSTALLATION_ERROR_BUTTON" = "Fermer";
 "PATCH_INSTALLATION_ERROR_MESSAGE" = "Erreur de téléchargement";
@@ -119,7 +119,7 @@ Ne l'activez pas sur les écrans autres que écrans Retina, sauf à des fins de 
 
 "INSTALLER_NOT_FOUND_MESSAGE" = "Installation de FINAL FANTASY XIV ONLINE trouvée!";
 "INSTALLER_NOT_FOUND_INFORMATIVE" = "Souhaitez-vous utiliser l'installation située dans %@ ?";
-"INSTALLER_NOT_DETECTED_MESSAGE" = "Aucune installation de FINAL FANTASY XIV ONLINE n'a été détectée...";
+"INSTALLER_NOT_DETECTED_MESSAGE" = "Aucune installation de FINAL FANTASY XIV ONLINE n'a été détectée…";
 "INSTALLER_NOT_DETECTED_INFORMATIVE" = "Voulez-vous choisir manuellement un dossier ?";
 
 "INSTALLER_PATH_TITLE" = "Choisissez le dossier avec l'installation existante";
@@ -132,3 +132,5 @@ Ne l'activez pas sur les écrans autres que écrans Retina, sauf à des fins de 
 "INSTALLER_DOWNLOAD_ERROR_INFORMATIVE" = "XIV on Mac n'a pas pu télécharger l'archive du jeu de base";
 
 "INSTALLER_EXTRACTING" = "Extraction";
+
+"LOGGING_IN" = "Connexion";
