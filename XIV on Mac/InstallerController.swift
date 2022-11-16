@@ -111,8 +111,8 @@ class InstallerController: NSViewController {
                 let alertTask = Task { () -> Bool in
                     do {
                         let alert = NSAlert()
-                        alert.messageText = NSLocalizedString("INSTALLER_NOT_FOUND_MESSAGE", comment: "")
-                        alert.informativeText = String(format: NSLocalizedString("INSTALLER_NOT_FOUND_INFORMATIVE", comment: ""), gamePath)
+                        alert.messageText = NSLocalizedString("INSTALLER_FOUND_MESSAGE", comment: "")
+                        alert.informativeText = String(format: NSLocalizedString("INSTALLER_FOUND_INFORMATIVE", comment: ""), gamePath)
                         alert.alertStyle = .informational
                         alert.addButton(withTitle: NSLocalizedString("BUTTON_YES", comment: ""))
                         alert.addButton(withTitle: NSLocalizedString("BUTTON_NO", comment: ""))
@@ -128,8 +128,8 @@ class InstallerController: NSViewController {
         let alertTask = Task { () -> Bool in
             do {
                 let alert = NSAlert()
-                alert.messageText = NSLocalizedString("INSTALLER_NOT_FOUND_MESSAGE", comment: "")
-                alert.informativeText = NSLocalizedString("INSTALLER_NOT_FOUND_INFORMATIVE", comment: "")
+                alert.messageText = NSLocalizedString("NSTALLER_NOT_DETECTED_MESSAGE", comment: "")
+                alert.informativeText = NSLocalizedString("INSTALLER_NOT_DETECTED_INFORMATIVE", comment: "")
                 alert.alertStyle = .warning
                 alert.addButton(withTitle: NSLocalizedString("BUTTON_YES", comment: ""))
                 alert.addButton(withTitle: NSLocalizedString("BUTTON_NO", comment: ""))

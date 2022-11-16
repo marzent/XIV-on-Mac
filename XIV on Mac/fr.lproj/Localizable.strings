@@ -117,8 +117,8 @@ Ne l'activez pas sur les écrans autres que écrans Retina, sauf à des fins de 
 "GSHADE_MESSAGE" = "Pour exécuter Catalina, vous devez avoir installé Wine ou CrossOver.";
 "GSHADE_INFORMATIVE" = "Vous pouvez également ajouter manue llement la version de Wine fournie avec XIV on Mac.app à votre $PATH.";
 
-"INSTALLER_NOT_FOUND_MESSAGE" = "Installation de FINAL FANTASY XIV ONLINE trouvée!";
-"INSTALLER_NOT_FOUND_INFORMATIVE" = "Souhaitez-vous utiliser l'installation située dans %@ ?";
+"INSTALLER_FOUND_MESSAGE" = "Installation de FINAL FANTASY XIV ONLINE trouvée!";
+"INSTALLER_FOUND_INFORMATIVE" = "Souhaitez-vous utiliser l'installation située dans %@ ?";
 "INSTALLER_NOT_DETECTED_MESSAGE" = "Aucune installation de FINAL FANTASY XIV ONLINE n'a été détectée…";
 "INSTALLER_NOT_DETECTED_INFORMATIVE" = "Voulez-vous choisir manuellement un dossier ?";
 

@@ -116,8 +116,8 @@
 "GSHADE_MESSAGE" = "Catalinaで実行する場合、WineまたはCrossOverがインストールされている必要があります。";
 "GSHADE_INFORMATIVE" = "XIV on Mac.appにバンドルされているWineをを手動で$PATHに追加することもできます。";
 
-"INSTALLER_NOT_FOUND_MESSAGE" = "FINAL FANTASY XIV ONLINEのインストールファイルを検出しました！";
-"INSTALLER_NOT_FOUND_INFORMATIVE" = "%@に存在するインストールファイルを使用したいですか？";
+"INSTALLER_FOUND_MESSAGE" = "FINAL FANTASY XIV ONLINEのインストールファイルを検出しました！";
+"INSTALLER_FOUND_INFORMATIVE" = "%@に存在するインストールファイルを使用したいですか？";
 "INSTALLER_NOT_DETECTED_MESSAGE" = "FINAL FANTASY XIV ONLINEのインストールファイルが見つかりませんでした";
 "INSTALLER_NOT_DETECTED_INFORMATIVE" = "手動でフォルダを選択しますか？";
 
