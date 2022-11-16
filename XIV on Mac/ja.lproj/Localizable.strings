@@ -113,8 +113,8 @@
 "OTP_MESSAGE" = "OTP Secret for user \"%@\"";
 "OTP_INFORMATIVE" = "If you trust your local Keychain you can let XIV on Mac handle OTP generation for you if you provide a BASE32 encoded secret below:";
 
-"GSHADE_MESSAGE" = "When running Catalina you must have wine or CrossOver installed";
-"GSHADE_INFORMATIVE" = "You can also manually add the wine version bundled with the XIV on Mac.app to your $PATH";
+"GSHADE_MESSAGE" = "When running Catalina you must have Wine or CrossOver installed";
+"GSHADE_INFORMATIVE" = "You can also manually add the Wine version bundled with the XIV on Mac.app to your $PATH";
 
 "INSTALLER_NOT_FOUND_MESSAGE" = "FINAL FANTASY XIV ONLINE install found!";
 "INSTALLER_NOT_FOUND_INFORMATIVE" = "Would you like to use the install located at %@?";
