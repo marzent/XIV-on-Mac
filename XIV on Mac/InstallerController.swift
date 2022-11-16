@@ -128,7 +128,7 @@ class InstallerController: NSViewController {
         let alertTask = Task { () -> Bool in
             do {
                 let alert = NSAlert()
-                alert.messageText = NSLocalizedString("NSTALLER_NOT_DETECTED_MESSAGE", comment: "")
+                alert.messageText = NSLocalizedString("INSTALLER_NOT_DETECTED_MESSAGE", comment: "")
                 alert.informativeText = NSLocalizedString("INSTALLER_NOT_DETECTED_INFORMATIVE", comment: "")
                 alert.alertStyle = .warning
                 alert.addButton(withTitle: NSLocalizedString("BUTTON_YES", comment: ""))
