@@ -7,8 +7,8 @@
   
 */
 
-"BUTTON_YES" = "Yes";
-"BUTTON_NO" = "No";
+"BUTTON_YES" = "はい";
+"BUTTON_NO" = "いいえ";
 "BUTTON_OK" = "OK";
 "BUTTON_CANCEL" = "キャンセル";
 
