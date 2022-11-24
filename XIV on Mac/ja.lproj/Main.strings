@@ -113,6 +113,9 @@
 /* Class = "NSMenuItem"; title = "Substitutions"; ObjectID = "9ic-FL-obx"; */
 "9ic-FL-obx.title" = "自動置換";
 
+/* Class = "NSButtonCell"; title = "Quit XIV on Mac upon game exit"; ObjectID = "9ie-LK-Dur"; */
+"9ie-LK-Dur.title" = "ゲームを終了時にXIV on Macも終了させる";
+
 /* Class = "NSTextFieldCell"; title = "Copy existing game data to \"XIV on Mac\" prefix."; ObjectID = "9yd-8A-qFs"; */
 "9yd-8A-qFs.title" = "既存のゲームパッチを「XIV on Mac」内にコピーします。";
 
@@ -213,7 +216,7 @@
 "Fq2-37-Vx7.title" = "HUD";
 
 /* Class = "NSButtonCell"; title = "Keep Patches"; ObjectID = "GI5-jN-ZaJ"; */
-"GI5-jN-ZaJ.title" = "Keep Patches";
+"GI5-jN-ZaJ.title" = "パッチを保持する";
 
 /* Class = "NSTextFieldCell"; title = "The bridge enables the Discord Rich Presence Dalamud plugin to update your Discord status. If you do not plan to use this plugin, you can disable this setting."; ObjectID = "H7k-pX-G8j"; */
 "H7k-pX-G8j.title" = "以下をチェックするとDalamudのDiscord Rich Presenceプラグインを利用可能にし、Discord のステータスを更新できるようになります。このプラグインを使用する予定がない場合は、この設定を無効できます。";
@@ -240,7 +243,7 @@
 "IQv-IB-iLA.title" = "インストーラー";
 
 /* Class = "NSButtonCell"; title = "Encrypt Game Arguments"; ObjectID = "Iv2-C2-31G"; */
-"Iv2-C2-31G.title" = "Encrypt Game Arguments";
+"Iv2-C2-31G.title" = "ゲームの引数を暗号化する";
 
 /* Class = "NSButtonCell"; title = "Auto-Login"; ObjectID = "J8n-OX-VtC"; */
 "J8n-OX-VtC.title" = "自動ログイン";
@@ -252,7 +255,7 @@
 "Jbf-yx-ZQ7.title" = "Dalamudは後で追加することもできます";
 
 /* Class = "NSMenuItem"; title = "Check for Updates..."; ObjectID = "Jeg-Jn-PWU"; */
-"Jeg-Jn-PWU.title" = "アップデートを確認...";
+"Jeg-Jn-PWU.title" = "アップデートを確認…";
 
 /* Class = "NSMenuItem"; title = "4.0"; ObjectID = "K16-kg-NW2"; */
 "K16-kg-NW2.title" = "4.0";
@@ -396,7 +399,7 @@
 "Wum-vu-uC1.title" = "シェーダーキャッシュ";
 
 /* Class = "NSTextFieldCell"; title = "Installing..."; ObjectID = "X9z-xO-PQz"; */
-"X9z-xO-PQz.title" = "インストール中...";
+"X9z-xO-PQz.title" = "インストール中…";
 
 /* Class = "NSMenuItem"; title = "x86"; ObjectID = "XO2-yP-LkT"; */
 "XO2-yP-LkT.title" = "x86";
@@ -469,6 +472,9 @@
 
 /* Class = "NSWindow"; title = "Window"; ObjectID = "cnG-sE-eCO"; */
 "cnG-sE-eCO.title" = "ウィンドウ";
+
+/* Class = "NSButtonCell"; title = "Warn if game exits with non-zero exit code"; ObjectID = "cqe-Mq-QD3"; */
+"cqe-Mq-QD3.title" = "ゲーム本体が0以外の終了コードを返して終了した場合に警告する";
 
 /* Class = "NSMenuItem"; title = "Smart Links"; ObjectID = "cwL-P1-jid"; */
 "cwL-P1-jid.title" = "スマートリンク";
@@ -615,7 +621,7 @@
 "o5w-vX-Qqm.label" = "Copy game folder";
 
 /* Class = "NSButtonCell"; title = "Esync"; ObjectID = "o9I-0w-Ncp"; */
-"o9I-0w-Ncp.title" = "Esync";
+"o9I-0w-Ncp.title" = "Esyncを有効化";
 
 /* Class = "NSWindow"; title = "Troubleshooting"; ObjectID = "oJM-9v-5CI"; */
 "oJM-9v-5CI.title" = "トラブルシューティング";
@@ -633,7 +639,7 @@
 "phh-fm-6OL.title" = "次";
 
 /* Class = "NSTextFieldCell"; title = "If your game is freezing at startup, \"Compiling Shaders…\" forever, missing lighting or randomly freezing, the problem may be with your shader cache. Deleting it will cause a new one to be rebuilt, though it may result in occasional stutters during play initially."; ObjectID = "piU-pX-vSl"; */
-"piU-pX-vSl.title" = "起動時にフリーズしたり、Compiling Shaders... が無限に続いたり、ライトが欠けたり、ランダムにフリーズする場合は、シェーダーキャッシュに問題がある可能性があります。シェーダーキャッシュを削除すると新しいキャッシュが再構築されますが、初期状態ではプレイ中に時々カクカクすることがあります。";
+"piU-pX-vSl.title" = "起動時にフリーズしたり、Compiling Shaders… が無限に続いたり、ライトが欠けたり、ランダムにフリーズする場合は、シェーダーキャッシュに問題がある可能性があります。シェーダーキャッシュを削除すると新しいキャッシュが再構築されますが、初期状態ではプレイ中に時々カクカクすることがあります。";
 
 /* Class = "NSMenuItem"; title = "Find Next"; ObjectID = "q09-fT-Sye"; */
 "q09-fT-Sye.title" = "次を検索";

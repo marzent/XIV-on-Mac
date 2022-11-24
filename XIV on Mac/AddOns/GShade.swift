@@ -40,10 +40,10 @@ struct GShade {
                                "--env", "WINEPREFIX=\(Wine.prefix.path)"])
         } else {
             let alert = NSAlert()
-            alert.messageText = "When running Catalina you must have wine or CrossOver installed"
-            alert.informativeText = "You can also manually add the wine version bundled with the XIV on Mac.app to your $PATH"
+            alert.messageText = NSLocalizedString("GSHADE_MESSAGE", comment: "")
+            alert.informativeText = NSLocalizedString("GSHADE_INFORMATIVE", comment: "")
             alert.alertStyle = .warning
-            alert.addButton(withTitle: "OK")
+            alert.addButton(withTitle: NSLocalizedString("BUTTON_OK", comment: ""))
             alert.runModal()
         }
     }

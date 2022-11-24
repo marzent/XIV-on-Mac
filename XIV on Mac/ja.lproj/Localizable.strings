@@ -7,6 +7,11 @@
   
 */
 
+"BUTTON_YES" = "はい";
+"BUTTON_NO" = "いいえ";
+"BUTTON_OK" = "OK";
+"BUTTON_CANCEL" = "キャンセル";
+
 "LOGIN_ERROR" = "ログインエラー";
 "START_ERROR" = "FF14の起動に失敗";
 "INCORRECT_CREDENTIALS_SHORT" = "認証に失敗";
@@ -35,9 +40,6 @@
 "UNEXPECTED" = "予期せぬエラーが発生しました。";
 
 "REPAIR_RESULT" = "修復の結果";
-
-"OK_BUTTON" = "OK";
-"CANCEL_BUTTON" = "キャンセル";
 
 "DALAMUD_START_FAILURE" = "Dalamudの起動に失敗";
 "DALAMUD_START_FAILURE_INFORMATIONAL" = "Dalamudのダウンロードとインストールでエラーが発生しました。ネットワーク接続を確認し、Dalamudが現在のクライアントバージョンと互換性があるかご確認ください。";
@@ -89,3 +91,45 @@
 "FIRSTAID_CFGCHECK_HBAO_EXP" = "SSAO(Screen Space Ambient Occlusion)はMacでサポートされていません。グラフィックが黒く描画されることがあります。";
 "FIRSTAID_CFGCHECK_TESSELATION_TITLE" = "テッセレーション";
 "FIRSTAID_CFGCHECK_TESSELATION_EXP" = "テッセレーションを「標準」以上に設定すると、Apple Silicon Macで深刻なパフォーマンス低下を引き起こし、視覚的な改善も得られません。";
+
+"SELECT_GAME_PATH_PANEL_TITLE" = "FF14のインストールフォルダを選択";
+"SELECT_GAME_PATH_PANEL_SUBTITLE" = "当該フォルダには「game」と「boot」フォルダが含まれています。";
+"SELECT_GAME_PATH_ERROR_MESSAGE" = "選択されたフォルダにはゲームがインストールされていないようです。";
+"SELECT_GAME_PATH_ERROR_INFORMATIVE" = "それでも続行しますか？";
+
+"PATCH_INSTALLATION_WAITING" = "ダウンロード終了を待っています…";
+"PATCH_INSTALLATION_PROGRESS_INIT" = "%d個中0個のパッチがインストールされました";
+"PATCH_INSTALLATION_PROGRESS" = "%2$d個中%1$d個のパッチがインストールされました";
+"PATCH_INSTALLATION_ERROR_BUTTON" = "閉じる";
+"PATCH_INSTALLATION_ERROR_MESSAGE" = "ダウンロードエラー";
+"PATCH_INSTALLATION_ERROR_INFORMATIVE" = "XIV on Macは%dの試行後、%@をダウンロードできませんでした";
+"PATCH_INSTALLATION_DOWNLOAD_STATUS" = "%2$d中%1$d";
+"PATCH_INSTALLATION_DOWNLOAD_STATUS_PATCH" = "%2$d中%1$d (%3$d/秒)";
+
+"PATCH_ERROR_MESSAGE" = "パッチインストーラーエラー";
+"PATCH_ERROR_INFORMATIVE" = "パッチの検証に失敗しました。";
+"PATCH_ERROR_BUTTON" = "閉じる";
+
+"OTP_MESSAGE" = "ユーザー\"%@\"用のOTP秘密鍵";
+"OTP_INFORMATIVE" = "もしあなたがローカルのキーチェーンを信頼しているのであれば、以下にBASE32形式で秘密鍵を入力することでXIV on Macが自動的にOTPを生成することができます。";
+
+"GSHADE_MESSAGE" = "Catalinaで実行する場合、WineまたはCrossOverがインストールされている必要があります。";
+"GSHADE_INFORMATIVE" = "XIV on Mac.appにバンドルされているWineをを手動で$PATHに追加することもできます。";
+
+"INSTALLER_FOUND_MESSAGE" = "FINAL FANTASY XIV ONLINEのインストールファイルを検出しました！";
+"INSTALLER_FOUND_INFORMATIVE" = "%@に存在するインストールファイルを使用したいですか？";
+"INSTALLER_NOT_DETECTED_MESSAGE" = "FINAL FANTASY XIV ONLINEのインストールファイルが見つかりませんでした";
+"INSTALLER_NOT_DETECTED_INFORMATIVE" = "手動でフォルダを選択しますか？";
+
+"INSTALLER_PATH_TITLE" = "既存のインストールファイルがあるフォルダを選択";
+"INSTALLER_PATH_SUBTITLE" = "当該フォルダには「game」と「boot」フォルダ、およびゲームの実行ファイルが含まれています。";
+"INSTALLER_PATH_INVALID_MESSAGE" = "FF14のフォルダではありません";
+"INSTALLER_PATH_INVALID_INFORMATIVE" = "当該フォルダには「game」と「boot」フォルダ、およびゲームの実行ファイルが含まれています。";
+"INSTALLER_PATH_INVALID_BUTTON" = "ルイゾワのじっちゃんの名に賭けて！";
+
+"INSTALLER_DOWNLOAD_ERROR_MESSAGE" = "ダウンロードエラー";
+"INSTALLER_DOWNLOAD_ERROR_INFORMATIVE" = "XIV on Macはゲームの基本部分をダウンロードできませんでした。";
+
+"INSTALLER_EXTRACTING" = "展開中";
+
+"LOGGING_IN" = "ログイン中";

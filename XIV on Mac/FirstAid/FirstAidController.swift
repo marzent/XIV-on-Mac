@@ -66,7 +66,7 @@ class FirstAidController: NSViewController, NSTableViewDelegate, NSTableViewData
             alert.alertStyle = .warning
             alert.messageText = NSLocalizedString("FIRSTAID_GAME_RUNNING", comment: "")
             alert.informativeText = NSLocalizedString("FIRSTAID_GAME_RUNNING", comment: "")
-            alert.addButton(withTitle:NSLocalizedString("OK_BUTTON", comment: ""))
+            alert.addButton(withTitle:NSLocalizedString("BUTTON_OK", comment: ""))
             alert.runModal()
             return true
         }
@@ -89,7 +89,7 @@ class FirstAidController: NSViewController, NSTableViewDelegate, NSTableViewData
             alert.messageText = NSLocalizedString("DXVK_USER_CACHE_DELETE_FAILED", comment: "")
             alert.informativeText = NSLocalizedString("DXVK_USER_CACHE_DELETE_FAILED_INFORMATIVE", comment: "")
         }
-        alert.addButton(withTitle:NSLocalizedString("OK_BUTTON", comment: ""))
+        alert.addButton(withTitle:NSLocalizedString("BUTTON_OK", comment: ""))
         alert.runModal()
     }
     
@@ -119,7 +119,7 @@ class FirstAidController: NSViewController, NSTableViewDelegate, NSTableViewData
             alert.messageText = NSLocalizedString("GAME_CONFIG_RESET_FAILED", comment: "")
             alert.informativeText = NSLocalizedString("GAME_CONFIG_RESET_FAILED_INFORMATIVE", comment: "")
         }
-        alert.addButton(withTitle:NSLocalizedString("OK_BUTTON", comment: ""))
+        alert.addButton(withTitle:NSLocalizedString("BUTTON_OK", comment: ""))
         alert.runModal()
     }
     

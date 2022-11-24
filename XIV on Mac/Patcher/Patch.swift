@@ -82,10 +82,10 @@ public struct Patch: Codable {
         guard valid else {
             DispatchQueue.main.sync {
                 let alert = NSAlert()
-                alert.addButton(withTitle: "Close")
+                alert.addButton(withTitle: NSLocalizedString("PATCH_ERROR_MESSAGE", comment: ""))
                 alert.alertStyle = .critical
-                alert.messageText = "Patch Installer Error"
-                alert.informativeText = "Patch Verification failed"
+                alert.messageText = NSLocalizedString("PATCH_ERROR_MESSAGE", comment: "")
+                alert.informativeText = NSLocalizedString("PATCH_ERROR_INFORMATIVE", comment: "")
                 alert.runModal()
                 try! FileManager.default.removeItem(atPath: patchPath)
                 Util.quit()
@@ -101,9 +101,9 @@ public struct Patch: Codable {
         else {
             DispatchQueue.main.sync {
                 let alert = NSAlert()
-                alert.addButton(withTitle: "Close")
+                alert.addButton(withTitle: NSLocalizedString("PATCH_ERROR_MESSAGE", comment: ""))
                 alert.alertStyle = .critical
-                alert.messageText = "Patch Installer Error"
+                alert.messageText = NSLocalizedString("PATCH_ERROR_MESSAGE", comment: "")
                 alert.informativeText = res
                 alert.runModal()
                 Util.quit()

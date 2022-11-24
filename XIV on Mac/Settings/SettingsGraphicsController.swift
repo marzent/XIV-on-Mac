@@ -104,7 +104,7 @@ class SettingsGraphicsController: SettingsController {
         alert.informativeText = NSLocalizedString("RETINA_WARNING_INFORMATIVE", comment: "")
         alert.alertStyle = .warning
         alert.addButton(withTitle:NSLocalizedString("RETINA_ENABLE_BUTTON", comment: ""))
-        alert.addButton(withTitle:NSLocalizedString("CANCEL_BUTTON", comment: ""))
+        alert.addButton(withTitle:NSLocalizedString("BUTTON_CANCEL", comment: ""))
         let result = alert.runModal()
         guard result == .alertFirstButtonReturn else {
             wineRetina.state = !Wine.retina ? NSControl.StateValue.on : NSControl.StateValue.off

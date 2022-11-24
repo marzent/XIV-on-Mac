@@ -105,7 +105,7 @@ import XIVLauncher
             alert.messageText = NSLocalizedString("UNSUPPORTED_GPU", comment: "")
             alert.informativeText = NSLocalizedString("UNSUPPORTED_GPU_INFORMATIVE", comment: "")
             alert.alertStyle = .critical
-            alert.addButton(withTitle:NSLocalizedString("OK_BUTTON", comment: ""))
+            alert.addButton(withTitle:NSLocalizedString("BUTTON_OK", comment: ""))
             alert.addButton(withTitle:NSLocalizedString("SEE_COMPATABILITY_BUTTON", comment: ""))
             alert.icon = NSImage(named: "CfgCheckProbFailed.tiff")
             let result = alert.runModal()
@@ -216,9 +216,9 @@ import XIVLauncher
 	
     @IBAction func selectGamePath(_ sender: Any) {
         let openPanel = NSOpenPanel()
-        openPanel.title = "Choose the folder FFXIV is located in"
+        openPanel.title = NSLocalizedString("SELECT_GAME_PATH_PANEL_TITLE", comment: "")
         if #available(macOS 11.0, *) {
-            openPanel.subtitle = #"It should contain the folders "game" and "boot""#
+            openPanel.subtitle = NSLocalizedString("SELECT_GAME_PATH_PANEL_SUBTITLE", comment: "")
         }
         openPanel.showsResizeIndicator = true
         openPanel.showsHiddenFiles = true
@@ -234,11 +234,11 @@ import XIVLauncher
                     return
                 }
                 let alert = NSAlert()
-                alert.messageText = "The folder you chose for your game install does not seem to be valid"
-                alert.informativeText = "Do you still want to use it?"
+                alert.messageText = NSLocalizedString("SELECT_GAME_PATH_ERROR_MESSAGE", comment: "")
+                alert.informativeText = NSLocalizedString("SELECT_GAME_PATH_ERROR_INFORMATIVE", comment: "")
                 alert.alertStyle = .warning
-                alert.addButton(withTitle: "Yes")
-                alert.addButton(withTitle: "No")
+                alert.addButton(withTitle: NSLocalizedString("BUTTON_YES", comment: ""))
+                alert.addButton(withTitle: NSLocalizedString("BUTTON_NO", comment: ""))
                 if alert.runModal() == .alertFirstButtonReturn {
                     Settings.gamePath = openPanel.url!
                 }

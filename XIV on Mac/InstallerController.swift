@@ -111,11 +111,11 @@ class InstallerController: NSViewController {
                 let alertTask = Task { () -> Bool in
                     do {
                         let alert = NSAlert()
-                        alert.messageText = "FINAL FANTASY XIV ONLINE install found!"
-                        alert.informativeText = "Would you like to use the install located at \(gamePath)?"
+                        alert.messageText = NSLocalizedString("INSTALLER_FOUND_MESSAGE", comment: "")
+                        alert.informativeText = String(format: NSLocalizedString("INSTALLER_FOUND_INFORMATIVE", comment: ""), gamePath)
                         alert.alertStyle = .informational
-                        alert.addButton(withTitle: "Yes")
-                        alert.addButton(withTitle: "No")
+                        alert.addButton(withTitle: NSLocalizedString("BUTTON_YES", comment: ""))
+                        alert.addButton(withTitle: NSLocalizedString("BUTTON_NO", comment: ""))
                         let result = await alert.beginSheetModal(for: self.view.window!)
                         return result == .alertFirstButtonReturn
                     }
@@ -128,11 +128,11 @@ class InstallerController: NSViewController {
         let alertTask = Task { () -> Bool in
             do {
                 let alert = NSAlert()
-                alert.messageText = "No FINAL FANTASY XIV ONLINE installs were detected..."
-                alert.informativeText = "Would you like to manually choose a Folder?"
+                alert.messageText = NSLocalizedString("INSTALLER_NOT_DETECTED_MESSAGE", comment: "")
+                alert.informativeText = NSLocalizedString("INSTALLER_NOT_DETECTED_INFORMATIVE", comment: "")
                 alert.alertStyle = .warning
-                alert.addButton(withTitle: "Yes")
-                alert.addButton(withTitle: "No")
+                alert.addButton(withTitle: NSLocalizedString("BUTTON_YES", comment: ""))
+                alert.addButton(withTitle: NSLocalizedString("BUTTON_NO", comment: ""))
                 let result = await alert.beginSheetModal(for: self.view.window!)
                 return result == .alertFirstButtonReturn
             }
@@ -140,9 +140,9 @@ class InstallerController: NSViewController {
         if try! await alertTask.result.get() {
             let openTask = Task { () -> String? in
                 let openPanel = NSOpenPanel()
-                openPanel.title = "Choose the folder with the existing install"
+                openPanel.title = NSLocalizedString("INSTALLER_PATH_TITLE", comment: "")
                 if #available(macOS 11.0, *) {
-                    openPanel.subtitle = "It should contain the folders \"game\" and \"boot\" and the game executable."
+                    openPanel.subtitle = NSLocalizedString("INSTALLER_PATH_SUBTITLE", comment: "")
                 }
                 openPanel.showsResizeIndicator = true
                 openPanel.showsHiddenFiles = true
@@ -160,10 +160,10 @@ class InstallerController: NSViewController {
                     return openPath
                 }
                 let alert = NSAlert()
-                alert.messageText = "Invalid FFXIV Directory"
-                alert.informativeText = "It should contain the folders \"game\" and \"boot\" and the game executable."
+                alert.messageText = NSLocalizedString("INSTALLER_PATH_INVALID_MESSAGE", comment: "")
+                alert.informativeText = NSLocalizedString("INSTALLER_PATH_INVALID_INFORMATIVE", comment: "")
                 alert.alertStyle = .critical
-                alert.addButton(withTitle: "By the Twelve!")
+                alert.addButton(withTitle: NSLocalizedString("INSTALLER_PATH_INVALID_BUTTON", comment: ""))
                 await alert.beginSheetModal(for: self.view.window!)
                 return nil
             }
@@ -196,16 +196,16 @@ class InstallerController: NSViewController {
             catch {
                 DispatchQueue.main.sync {
                     let alert = NSAlert()
-                    alert.addButton(withTitle: "Close")
+                    alert.addButton(withTitle: NSLocalizedString("BUTTON_CLOSE", comment: ""))
                     alert.alertStyle = .critical
-                    alert.messageText = "Download Error"
-                    alert.informativeText = "XIV on Mac could not download the base game archive"
+                    alert.messageText = NSLocalizedString("INSTALLER_DOWNLOAD_ERROR_MESSAGE", comment: "")
+                    alert.informativeText = NSLocalizedString("INSTALLER_DOWNLOAD_ERROR_INFORMATIVE", comment: "")
                     alert.runModal()
                     closeWindow(self)
                 }
             }
             DispatchQueue.main.async { [self] in
-                info.stringValue = "Extracting"
+                info.stringValue = NSLocalizedString("INSTALLER_EXTRACTING", comment: "")
             }
             guard let archive = Archive(url: Util.cache.appendingPathComponent("finalfantasyxiv-\(version).zip"), accessMode: .read) else  {
                 Log.fatal("Fatal error reading base game archive")
