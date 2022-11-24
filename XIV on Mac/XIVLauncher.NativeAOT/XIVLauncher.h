@@ -16,13 +16,13 @@ const char *startGame(const char *loginResult, bool dalamudOk);
 
 const char *repairGame(const char *loginResult);
 
-const char *queryRepairProgress();
+const char *queryRepairProgress(void);
 
 int getExitCode(int pid);
 
-const char *getUserAgent();
+const char *getUserAgent(void);
 
-const char *getPatcherUserAgent();
+const char *getPatcherUserAgent(void);
 
 const char *getBootPatches(void);
 
