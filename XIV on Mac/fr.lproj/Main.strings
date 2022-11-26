@@ -384,7 +384,7 @@
 "Uem-xO-XvC.title" = "Étape actuelle";
 
 /* Class = "NSTextFieldCell"; title = "If Dalamud is not loading succesfully, you can try adjusting the load delay up or down to find a value that works for your Mac."; ObjectID = "VZh-e3-0dP"; */
-"VZh-e3-0dP.title" = "Si Dalamud ne fonctionne pas correctement, vous pouvez essayer d'augmenter ou diminer le délais pour trouver une valeur qui fonctionne pour votre Mac.";
+"VZh-e3-0dP.title" = "Si Dalamud ne fonctionne pas correctement, vous pouvez essayer d'augmenter ou diminuer le délais pour trouver une valeur qui fonctionne pour votre Mac.";
 
 /* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "Vdr-fp-XzO"; */
 "Vdr-fp-XzO.title" = "Masquer autres";
@@ -480,7 +480,7 @@
 "cwL-P1-jid.title" = "Liens intélligents";
 
 /* Class = "NSTextFieldCell"; title = "XIV On Mac can work with Mac, Windows, and Steam licenses. You must already own the license type you choose, if you are unsure you can check your account status through Mogstation. Steam accounts must have been previously linked to your Final Fantasy XIV service account by logging in on a Windows PC, and further require the macOS version of Steam to be running."; ObjectID = "d5H-SM-vjt"; */
-"d5H-SM-vjt.title" = "XIV on Mac peut fonctionner avec les licences Mac, Windows et Steam. Vous devez posséder le type de licence que vous choisissez. Si vous n'êtes pas sûr, vérifier l'état de votre compte via Mogstation. Les comptes Steam doivent avoir été précédemment liés à votre compte de service Final Fantasy XIV en vous connectant sur un PC Windows, et nécessitent en outre que la version macOS de Steam soit en cours d'exécution.";
+"d5H-SM-vjt.title" = "XIV on Mac peut fonctionner avec les licences Mac, Windows et Steam. Vous devez posséder le type de licence que vous choisissez. Si vous n'êtes pas sûr, vérifiez l'état de votre compte via Mogstation. Les comptes Steam doivent avoir été précédemment liés à votre compte de service Final Fantasy XIV en vous connectant sur un PC Windows, et nécessitent en outre que la version macOS de Steam soit en cours d'exécution.";
 
 /* Class = "NSMenuItem"; title = "Make Lower Case"; ObjectID = "d9M-CD-aMd"; */
 "d9M-CD-aMd.title" = "Transformer en minuscules";
