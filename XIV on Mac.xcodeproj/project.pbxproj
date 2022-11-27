@@ -758,8 +758,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/XIV\\ on\\ Mac/wine/lib",
-					"$(PROJECT_DIR)/XIV\\ on\\ Mac/MoltenVK/stable",
-					"$(PROJECT_DIR)/XIV\\ on\\ Mac/MoltenVK/modern",
 					"$(PROJECT_DIR)/XIV\\ on\\ Mac/XIVLauncher.NativeAOT",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
@@ -804,8 +802,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/XIV\\ on\\ Mac/wine/lib",
-					"$(PROJECT_DIR)/XIV\\ on\\ Mac/MoltenVK/stable",
-					"$(PROJECT_DIR)/XIV\\ on\\ Mac/MoltenVK/modern",
 					"$(PROJECT_DIR)/XIV\\ on\\ Mac/XIVLauncher.NativeAOT",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
