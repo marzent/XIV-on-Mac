@@ -492,6 +492,7 @@
 		};
 		5049B9AB283B8E1300463A2B /* Build  XIVLauncher.NativeAOT */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 12;
 			files = (
 			);
@@ -510,6 +511,7 @@
 		};
 		5592FEB42778D3CB00FA304B /* Fix Codesign (Runtime) */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
