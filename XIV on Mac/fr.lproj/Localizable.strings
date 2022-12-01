@@ -134,3 +134,6 @@ Ne l'activez pas sur les écrans autres que écrans Retina, sauf à des fins de 
 "INSTALLER_EXTRACTING" = "Extraction";
 
 "LOGGING_IN" = "Connexion";
+
+"AUTOLOGIN_MESSAGE" = "Connexion automatique";
+"AUTOLOGIN_INFORMATIVE" = "Vous pouvez annuler la connexion automatique en maintenant la touche SHIFT enfoncée lors du lancement de l'application.";

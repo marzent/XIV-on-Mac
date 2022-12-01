@@ -61,7 +61,7 @@ class LaunchController: NSViewController {
         }
         DispatchQueue.main.async {
             self.loginButton.isEnabled = true
-            if settings.autoLogin {
+            if settings.autoLogin && NSEvent.modifierFlags.intersection(.deviceIndependentFlagsMask) != .shift {
                 self.doLogin()
             }
         }
@@ -112,6 +112,16 @@ class LaunchController: NSViewController {
     
     @IBAction func autoLoginStateChange(_ sender: NSButton) {
         Settings.autoLogin = sender.state == .on
+        
+        if Settings.autoLogin {
+            let alert: NSAlert = NSAlert()
+            alert.messageText = NSLocalizedString("AUTOLOGIN_MESSAGE", comment: "")
+            alert.informativeText = NSLocalizedString("AUTOLOGIN_INFORMATIVE", comment: "")
+            alert.alertStyle = .informational
+            alert.addButton(withTitle:NSLocalizedString("BUTTON_OK", comment: ""))
+            
+            alert.runModal()
+        }
     }
     
     @IBAction func doLogin(_ sender: Any) {
