@@ -133,3 +133,6 @@
 "INSTALLER_EXTRACTING" = "展開中";
 
 "LOGGING_IN" = "ログイン中";
+
+"AUTOLOGIN_MESSAGE" = "Auto-Login";
+"AUTOLOGIN_INFORMATIVE" = "You can override the Auto-Login at application launch by holding the SHIFT key down.";

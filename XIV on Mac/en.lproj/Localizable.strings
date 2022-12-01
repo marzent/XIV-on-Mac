@@ -132,3 +132,6 @@ Do not enable this on non-retina displays, unless for screenshot purposes.";
 "INSTALLER_EXTRACTING" = "Extracting";
 
 "LOGGING_IN" = "Logging In";
+
+"AUTOLOGIN_MESSAGE" = "Auto-Login";
+"AUTOLOGIN_INFORMATIVE" = "You can override the Auto-Login at application launch by holding the SHIFT key down.";
