@@ -136,4 +136,4 @@ Ne l'activez pas sur les écrans autres que écrans Retina, sauf à des fins de 
 "LOGGING_IN" = "Connexion";
 
 "AUTOLOGIN_MESSAGE" = "Connexion automatique";
-"AUTOLOGIN_INFORMATIVE" = "Vous pouvez annuler la connexion automatique lors du lancement de l'application en maintenant la touche SHIFT enfoncée.";
+"AUTOLOGIN_INFORMATIVE" = "Vous pouvez annuler la connexion automatique en maintenant la touche SHIFT enfoncée lors du lancement de l'application.";
