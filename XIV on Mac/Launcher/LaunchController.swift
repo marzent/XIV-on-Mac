@@ -113,7 +113,7 @@ class LaunchController: NSViewController {
     @IBAction func autoLoginStateChange(_ sender: NSButton) {
         Settings.autoLogin = sender.state == .on
         
-        if (Settings.autoLogin) {
+        if Settings.autoLogin {
             let alert: NSAlert = NSAlert()
             alert.messageText = NSLocalizedString("AUTOLOGIN_MESSAGE", comment: "")
             alert.informativeText = NSLocalizedString("AUTOLOGIN_INFORMATIVE", comment: "")
