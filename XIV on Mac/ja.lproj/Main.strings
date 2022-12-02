@@ -737,8 +737,8 @@
 /* Class = "NSButtonCell"; title = "Login"; ObjectID = "JKW-MG-0U8"; */
 "JKW-MG-0U8.title" = "ACT";
 
-/* Class = "NSButtonCell"; title = "INNACT"; ObjectID = "EDf-k2-DjN"; */
-"EDf-k2-DjN.title" = "INNACT";
+/* Class = "NSButtonCell"; title = "IINACT"; ObjectID = "EDf-k2-DjN"; */
+"EDf-k2-DjN.title" = "IINACT";
 
 /* Class = "NSButtonCell"; title = "Bunny HUD"; ObjectID = "0Nw-cb-lDZ"; */
 "0Nw-cb-lDZ.title" = "Bunny HUD";
