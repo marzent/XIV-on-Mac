@@ -132,6 +132,8 @@ extension LaunchController {
             msg.accessoryView = txt
             if msg.runModal() == .alertFirstButtonReturn {
                 OTP.store(username: username, secret: txt.stringValue)
+            } else {
+                otpCheck.state = .off
             }
             txt.stringValue = ""
         }
