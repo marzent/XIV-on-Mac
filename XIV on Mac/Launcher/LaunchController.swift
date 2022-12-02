@@ -31,6 +31,7 @@ class LaunchController: NSViewController {
     @IBOutlet private var newsView: NSScrollView!
     @IBOutlet private var topicsView: NSScrollView!
     @IBOutlet weak var discloseButton: NSButton!
+    @IBOutlet private var touchBarLoginButton: NSButtonTouchBarItem!
     
     override func loadView() {
         super.loadView()
@@ -61,6 +62,7 @@ class LaunchController: NSViewController {
         }
         DispatchQueue.main.async {
             self.loginButton.isEnabled = true
+            self.touchBarLoginButton.isEnabled = true
             if settings.autoLogin && NSEvent.modifierFlags.intersection(.deviceIndependentFlagsMask) != .shift {
                 self.doLogin()
             }
@@ -279,6 +281,22 @@ class LaunchController: NSViewController {
             view.window?.beginSheet(patchWinController!.window!)
         }
         patchController?.install(patches)
+    }
+    
+    @IBAction func tapACT(_ sender: Any) {
+        ACT.launch()
+    }
+    
+    @IBAction func tapIINACT(_ sender: Any) {
+        IINACT.launch()
+    }
+    
+    @IBAction func tapBunnyHUD(_ sender: Any) {
+        BunnyHUD.launch()
+    }
+    
+    @IBAction func tapAnamnesis(_ sender: Any) {
+        Anamnesis.launch()
     }
 }
 

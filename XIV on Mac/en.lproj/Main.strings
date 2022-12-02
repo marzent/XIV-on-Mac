@@ -724,3 +724,21 @@
 
 /* Class = "NSMenuItem"; title = "German"; ObjectID = "z71-AL-d6f"; */
 "z71-AL-d6f.title" = "German";
+
+/* Class = "NSButtonCell"; title = "Login"; ObjectID = "803-uu-sDq"; */
+"803-uu-sDq.title" = "Login";
+
+/* Class = "NSPopoverTouchBarItem"; label = "Add-ons"; ObjectID = "SdX-YA-r4b"; */
+"SdX-YA-r4b.collapsedRepresentationLabel" = "Add-ons";
+
+/* Class = "NSButtonCell"; title = "Login"; ObjectID = "JKW-MG-0U8"; */
+"JKW-MG-0U8.title" = "ACT";
+
+/* Class = "NSButtonCell"; title = "INNACT"; ObjectID = "EDf-k2-DjN"; */
+"EDf-k2-DjN.title" = "INNACT";
+
+/* Class = "NSButtonCell"; title = "Bunny HUD"; ObjectID = "0Nw-cb-lDZ"; */
+"0Nw-cb-lDZ.title" = "Bunny HUD";
+
+/* Class = "NSButtonCell"; title = "Anamnesis"; ObjectID = "eFL-CT-TsU"; */
+"eFL-CT-TsU.title" = "Anamnesis";
