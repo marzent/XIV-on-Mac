@@ -283,6 +283,10 @@ class LaunchController: NSViewController {
         patchController?.install(patches)
     }
     
+    @IBAction func tapTroubleshooting(_ sender: Any) {
+        firstAidWinController?.showWindow(self)
+    }
+    
     @IBAction func tapACT(_ sender: Any) {
         ACT.launch()
     }

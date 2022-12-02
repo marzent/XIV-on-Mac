@@ -1994,7 +1994,7 @@ Gw
                                     </button>
                                 </viewController>
                             </touchBarItem>
-                            <touchBarPopoverItem collapsedRepresentationLabel="Add-ons" id="SdX-YA-r4b">
+                            <touchBarPopoverItem collapsedRepresentationImage="puzzlepiece.fill" catalog="system" collapsedRepresentationLabel="Add-ons" id="SdX-YA-r4b">
                                 <touchBar key="popoverTouchBar" id="tLk-S8-Elh">
                                     <touchBarItems>
                                         <touchBarSpacerItem identifier="NSTouchBarItemIdentifierFlexibleSpace" id="TzQ-T5-dhA"/>
@@ -2002,6 +2002,7 @@ Gw
                                             <viewController key="viewController" id="Yri-RQ-H6W">
                                                 <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mPL-Yr-tVh">
                                                     <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="push" title="ACT" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="JKW-MG-0U8">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                         <font key="font" usesAppearanceFont="YES"/>
@@ -2016,6 +2017,7 @@ Gw
                                             <viewController key="viewController" id="L31-0S-O7I">
                                                 <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="v9A-GB-eZC">
                                                     <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="push" title="INNACT" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="EDf-k2-DjN">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                         <font key="font" usesAppearanceFont="YES"/>
@@ -2030,6 +2032,7 @@ Gw
                                             <viewController key="viewController" id="qB2-Zf-0cd">
                                                 <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="r9W-Rx-9rf">
                                                     <rect key="frame" x="0.0" y="0.0" width="90" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="push" title="Bunny HUD" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0Nw-cb-lDZ">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                         <font key="font" usesAppearanceFont="YES"/>
@@ -2044,6 +2047,7 @@ Gw
                                             <viewController key="viewController" id="YQz-I1-YCw">
                                                 <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0F0-OZ-pce">
                                                     <rect key="frame" x="0.0" y="0.0" width="90" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="push" title="Anamnesis" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="eFL-CT-TsU">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                         <font key="font" usesAppearanceFont="YES"/>
@@ -2058,6 +2062,20 @@ Gw
                                     </touchBarItems>
                                 </touchBar>
                             </touchBarPopoverItem>
+                            <touchBarItem id="Vdo-Qm-4lp">
+                                <viewController key="viewController" id="HIt-iC-UO7">
+                                    <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="msb-e1-O5a">
+                                        <rect key="frame" x="0.0" y="0.0" width="144" height="30"/>
+                                        <buttonCell key="cell" type="push" title="Troubleshooting" bezelStyle="rounded" image="gear" catalog="system" imagePosition="leading" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="d7x-jG-QDv">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" usesAppearanceFont="YES"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="tapTroubleshooting:" target="sya-zo-KBW" id="yXz-k6-Vrj"/>
+                                        </connections>
+                                    </button>
+                                </viewController>
+                            </touchBarItem>
                             <touchBarSpacerItem identifier="NSTouchBarItemIdentifierFlexibleSpace" id="HEH-7s-XqS"/>
                         </touchBarItems>
                     </touchBar>
@@ -2965,5 +2983,7 @@ https://github.com/goatcorp/Dalamud</string>
         <image name="NSTouchBarGoDownTemplate" width="18" height="10"/>
         <image name="PrefsGeneral" width="96" height="96"/>
         <image name="PrefsGraphics" width="150.75" height="96"/>
+        <image name="gear" catalog="system" width="17" height="17"/>
+        <image name="puzzlepiece.fill" catalog="system" width="23" height="15"/>
     </resources>
 </document>
