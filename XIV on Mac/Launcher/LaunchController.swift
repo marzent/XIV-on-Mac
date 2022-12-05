@@ -136,8 +136,7 @@ class LaunchController: NSViewController {
     
     func problemConfigurationCheck() -> Bool {
         let firstAidController = firstAidWinController!.contentViewController! as! FirstAidController
-        if firstAidController.cfgCheckSevereProblems()
-        {
+        if firstAidController.cfgCheckSevereProblems() {
             firstAidWinController!.window?.makeKeyAndOrderFront(self)
             return true
         }
