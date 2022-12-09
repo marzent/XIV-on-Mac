@@ -82,7 +82,7 @@ public struct Patch: Codable {
         guard valid else {
             DispatchQueue.main.sync {
                 let alert = NSAlert()
-                alert.addButton(withTitle: NSLocalizedString("PATCH_ERROR_MESSAGE", comment: ""))
+                alert.addButton(withTitle: NSLocalizedString("PATCH_ERROR_BUTTON", comment: ""))
                 alert.alertStyle = .critical
                 alert.messageText = NSLocalizedString("PATCH_ERROR_MESSAGE", comment: "")
                 alert.informativeText = NSLocalizedString("PATCH_ERROR_INFORMATIVE", comment: "")
