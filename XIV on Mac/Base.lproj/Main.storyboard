@@ -1793,7 +1793,7 @@ Gw
                         <rect key="frame" x="0.0" y="0.0" width="965" height="439"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <visualEffectView fixedFrame="YES" blendingMode="behindWindow" material="underWindowBackground" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="wY2-dv-E6t">
+                            <visualEffectView fixedFrame="YES" blendingMode="behindWindow" material="HUDWindow" state="followsWindowActiveState" maskImage="snowflake_x2" translatesAutoresizingMaskIntoConstraints="NO" id="wY2-dv-E6t">
                                 <rect key="frame" x="0.0" y="0.0" width="965" height="442"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
@@ -1983,6 +1983,7 @@ Gw
                                 <viewController key="viewController" id="78I-9D-tLS">
                                     <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dHG-Nt-Pvm">
                                         <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="push" title="Login" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="803-uu-sDq">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" usesAppearanceFont="YES"/>
@@ -2066,6 +2067,7 @@ Gw
                                 <viewController key="viewController" id="HIt-iC-UO7">
                                     <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="msb-e1-O5a">
                                         <rect key="frame" x="0.0" y="0.0" width="144" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="push" title="Troubleshooting" bezelStyle="rounded" image="gear" catalog="system" imagePosition="leading" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="d7x-jG-QDv">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" usesAppearanceFont="YES"/>
@@ -2985,5 +2987,6 @@ https://github.com/goatcorp/Dalamud</string>
         <image name="PrefsGraphics" width="150.75" height="96"/>
         <image name="gear" catalog="system" width="17" height="17"/>
         <image name="puzzlepiece.fill" catalog="system" width="23" height="15"/>
+        <image name="snowflake_x2" width="1930" height="884"/>
     </resources>
 </document>
