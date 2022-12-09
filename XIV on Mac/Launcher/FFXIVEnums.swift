@@ -62,7 +62,7 @@ public enum XLError: Error {
         switch self {
         case .loginError(let errorMessage):
             switch errorMessage {
-            case "SteamAPI_Init() failed":
+            case "SteamAPI_Init() failed.":
                 return FFXIVLoginError.noSteamTicket
             case "ID or password is incorrect.":
                 return FFXIVLoginError.incorrectCredentials
