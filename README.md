@@ -1,5 +1,5 @@
-<p align="center"> <img src="spreaditregularc3.png"></a> </p>
-<p align="center"> <img src="https://github.com/marzent/XIV-on-Mac/blob/main/xivonmacmoving.gif"></a> <br><br>
+<p align="center"> <img src="xom_logo.png"></a> </p>
+<p align="center"> <img src="xom_animated.gif"></a> <br><br>
 Wine Wrapper, Setup tool and alternative launcher for FFXIV on MacOS.</p>
 
 ---
