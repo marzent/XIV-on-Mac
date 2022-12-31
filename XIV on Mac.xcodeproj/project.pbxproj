@@ -35,7 +35,6 @@
 		501956A327F04616003CB437 /* LaunchWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501956A227F04616003CB437 /* LaunchWindowController.swift */; };
 		5020957927C9611A00BD76CC /* Patch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5020957827C9611A00BD76CC /* Patch.swift */; };
 		502A18D827AA8C0D00144AB9 /* LoginCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A18D727AA8C0D00144AB9 /* LoginCredentials.swift */; };
-		502A18E127AABF8400144AB9 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 502A18E027AABF8400144AB9 /* KeychainAccess */; };
 		502A18E927AACEFE00144AB9 /* LaunchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A18E827AACEFE00144AB9 /* LaunchController.swift */; };
 		503B819628391054006197C1 /* XIVLauncher.NativeAOT.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 503B819428391054006197C1 /* XIVLauncher.NativeAOT.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		503B819C28394341006197C1 /* XIVLauncher.NativeAOT.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 503B819928394341006197C1 /* XIVLauncher.NativeAOT.dylib */; };
@@ -59,6 +58,8 @@
 		507D8F2127766F52000F0CB0 /* dxvk in Resources */ = {isa = PBXBuildFile; fileRef = 507D8F2027766F52000F0CB0 /* dxvk */; };
 		508C678F29431BFF0046AA38 /* snowflake_x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 508C678E29431BFF0046AA38 /* snowflake_x2.png */; };
 		509252E2287243FF00B00584 /* Anamnesis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509252E1287243FF00B00584 /* Anamnesis.swift */; };
+		509D0E2D2960536A0055367A /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 509D0E2C2960536A0055367A /* KeychainAccess */; };
+		509D0E302960540C0055367A /* AppMover in Frameworks */ = {isa = PBXBuildFile; productRef = 509D0E2F2960540C0055367A /* AppMover */; };
 		509FE19A27E3654E008D56D6 /* FFXIVEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509FE19927E3654E008D56D6 /* FFXIVEnums.swift */; };
 		509FE19C27E39DCB008D56D6 /* FFXIVApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509FE19B27E39DCB008D56D6 /* FFXIVApp.swift */; };
 		50B1C5B827D25620006DA54E /* SeeURL in Frameworks */ = {isa = PBXBuildFile; productRef = 50B1C5B727D25620006DA54E /* SeeURL */; };
@@ -68,7 +69,6 @@
 		50BD278727785418002B0D1F /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BD278627785418002B0D1F /* Notifications.swift */; };
 		50D30FA027B92EDB007A9F66 /* OTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D30F9F27B92EDB007A9F66 /* OTP.swift */; };
 		50D30FA327B93359007A9F66 /* Embassy in Frameworks */ = {isa = PBXBuildFile; productRef = 50D30FA227B93359007A9F66 /* Embassy */; };
-		50DC355927E8B6AD00DBA62C /* AppMover in Frameworks */ = {isa = PBXBuildFile; productRef = 50DC355827E8B6AD00DBA62C /* AppMover */; };
 		50DC355E27E9CEEE00DBA62C /* Base32 in Frameworks */ = {isa = PBXBuildFile; productRef = 50DC355D27E9CEEE00DBA62C /* Base32 */; };
 		50DF1F8527CCB83300DE9DA5 /* FFXIVRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DF1F8427CCB83300DE9DA5 /* FFXIVRepo.swift */; };
 		50DF1F8827CD261A00DE9DA5 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 50DF1F8727CD261A00DE9DA5 /* OrderedCollections */; };
@@ -153,6 +153,8 @@
 		507C600027CAA72000BA3CC2 /* PatchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchController.swift; sourceTree = "<group>"; };
 		507D8F2027766F52000F0CB0 /* dxvk */ = {isa = PBXFileReference; lastKnownFileType = folder; path = dxvk; sourceTree = "<group>"; };
 		508C678E29431BFF0046AA38 /* snowflake_x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snowflake_x2.png; sourceTree = "<group>"; };
+		508C6790294324BC0046AA38 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
+		508C6791294324BC0046AA38 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		509252E1287243FF00B00584 /* Anamnesis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Anamnesis.swift; sourceTree = "<group>"; };
 		509FE19927E3654E008D56D6 /* FFXIVEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFXIVEnums.swift; sourceTree = "<group>"; };
 		509FE19B27E39DCB008D56D6 /* FFXIVApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFXIVApp.swift; sourceTree = "<group>"; };
@@ -186,11 +188,11 @@
 				50DC355E27E9CEEE00DBA62C /* Base32 in Frameworks */,
 				50B1C5B827D25620006DA54E /* SeeURL in Frameworks */,
 				50692C8927B3D13700945593 /* Sparkle in Frameworks */,
-				502A18E127AABF8400144AB9 /* KeychainAccess in Frameworks */,
 				50DF1F8827CD261A00DE9DA5 /* OrderedCollections in Frameworks */,
+				509D0E2D2960536A0055367A /* KeychainAccess in Frameworks */,
 				503B819C28394341006197C1 /* XIVLauncher.NativeAOT.dylib in Frameworks */,
+				509D0E302960540C0055367A /* AppMover in Frameworks */,
 				5049B9B3283CFEC600463A2B /* libsteam_api64.dylib in Frameworks */,
-				50DC355927E8B6AD00DBA62C /* AppMover in Frameworks */,
 				50D30FA327B93359007A9F66 /* Embassy in Frameworks */,
 				507CFBF62781C780007ADEC9 /* ZIPFoundation in Frameworks */,
 			);
@@ -387,13 +389,13 @@
 			name = "XIV on Mac";
 			packageProductDependencies = (
 				507CFBF52781C780007ADEC9 /* ZIPFoundation */,
-				502A18E027AABF8400144AB9 /* KeychainAccess */,
 				50692C8827B3D13700945593 /* Sparkle */,
 				50D30FA227B93359007A9F66 /* Embassy */,
 				50DF1F8727CD261A00DE9DA5 /* OrderedCollections */,
 				50B1C5B727D25620006DA54E /* SeeURL */,
-				50DC355827E8B6AD00DBA62C /* AppMover */,
 				50DC355D27E9CEEE00DBA62C /* Base32 */,
+				509D0E2C2960536A0055367A /* KeychainAccess */,
+				509D0E2F2960540C0055367A /* AppMover */,
 			);
 			productName = "XIV on Mac";
 			productReference = 50511EC12770E085003A1E9F /* XIV on Mac.app */;
@@ -424,6 +426,7 @@
 				Base,
 				ja,
 				fr,
+				de,
 			);
 			mainGroup = 50511EB82770E085003A1E9F;
 			packageReferences = (
@@ -433,8 +436,8 @@
 				50D30FA127B93359007A9F66 /* XCRemoteSwiftPackageReference "Embassy" */,
 				50DF1F8627CD261A00DE9DA5 /* XCRemoteSwiftPackageReference "swift-collections" */,
 				50B1C5B627D25620006DA54E /* XCRemoteSwiftPackageReference "swift-seeurl" */,
-				50DC355727E8B6AD00DBA62C /* XCRemoteSwiftPackageReference "AppMover" */,
 				50DC355C27E9CEEE00DBA62C /* XCRemoteSwiftPackageReference "Base32" */,
+				509D0E2E2960540C0055367A /* XCRemoteSwiftPackageReference "AppMover" */,
 			);
 			productRefGroup = 50511EC22770E085003A1E9F /* Products */;
 			projectDirPath = "";
@@ -594,6 +597,7 @@
 				07B529D627D97D2B005B78BF /* en */,
 				FC2A071A289A5E4300C25C34 /* ja */,
 				F46BBF19291C0494000C4672 /* fr */,
+				508C6791294324BC0046AA38 /* de */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -605,6 +609,7 @@
 				FC2A0719289A5E4300C25C34 /* ja */,
 				504DF38B28C2BEA000535ED4 /* en */,
 				F46BBF18291C0494000C4672 /* fr */,
+				508C6790294324BC0046AA38 /* de */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -854,8 +859,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.2;
 			};
 		};
 		50692C8727B3D13700945593 /* XCRemoteSwiftPackageReference "Sparkle" */ = {
@@ -874,6 +879,14 @@
 				minimumVersion = 0.9.9;
 			};
 		};
+		509D0E2E2960540C0055367A /* XCRemoteSwiftPackageReference "AppMover" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/marzent/AppMover";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		50B1C5B627D25620006DA54E /* XCRemoteSwiftPackageReference "swift-seeurl" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/marzent/swift-seeurl.git";
@@ -888,14 +901,6 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 4.0.0;
-			};
-		};
-		50DC355727E8B6AD00DBA62C /* XCRemoteSwiftPackageReference "AppMover" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/iamcalledrob/AppMover";
-			requirement = {
-				branch = master;
-				kind = branch;
 			};
 		};
 		50DC355C27E9CEEE00DBA62C /* XCRemoteSwiftPackageReference "Base32" */ = {
@@ -917,11 +922,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		502A18E027AABF8400144AB9 /* KeychainAccess */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 502A18DF27AABF8400144AB9 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
-			productName = KeychainAccess;
-		};
 		50692C8827B3D13700945593 /* Sparkle */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 50692C8727B3D13700945593 /* XCRemoteSwiftPackageReference "Sparkle" */;
@@ -932,6 +932,16 @@
 			package = 507CFBF42781C780007ADEC9 /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
 			productName = ZIPFoundation;
 		};
+		509D0E2C2960536A0055367A /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 502A18DF27AABF8400144AB9 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+		509D0E2F2960540C0055367A /* AppMover */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 509D0E2E2960540C0055367A /* XCRemoteSwiftPackageReference "AppMover" */;
+			productName = AppMover;
+		};
 		50B1C5B727D25620006DA54E /* SeeURL */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 50B1C5B627D25620006DA54E /* XCRemoteSwiftPackageReference "swift-seeurl" */;
@@ -941,11 +951,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 50D30FA127B93359007A9F66 /* XCRemoteSwiftPackageReference "Embassy" */;
 			productName = Embassy;
-		};
-		50DC355827E8B6AD00DBA62C /* AppMover */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 50DC355727E8B6AD00DBA62C /* XCRemoteSwiftPackageReference "AppMover" */;
-			productName = AppMover;
 		};
 		50DC355D27E9CEEE00DBA62C /* Base32 */ = {
 			isa = XCSwiftPackageProductDependency;
