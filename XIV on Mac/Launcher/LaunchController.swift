@@ -278,8 +278,10 @@ class LaunchController: NSViewController {
     func startPatch(_ patches: [Patch]) {
         DispatchQueue.main.async { [self] in
             view.window?.beginSheet(patchWinController!.window!)
+            DispatchQueue.global(qos: .default).async { [self] in
+                patchController?.install(patches)
+            }
         }
-        patchController?.install(patches)
     }
     
     @IBAction func tapTroubleshooting(_ sender: Any) {
