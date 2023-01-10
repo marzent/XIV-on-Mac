@@ -120,8 +120,8 @@ class PatchController: NSViewController {
             formatter.string(fromByteCount: value)
         }
         DispatchQueue.main.async { [self] in
-            downloadStatus.stringValue = String(format: NSLocalizedString("PATCH_INSTALLATION_DOWNLOAD_STATUS", comment: ""), totalCompletedSize, totalSize)
-            downloadPatchStatus.stringValue = String(format: NSLocalizedString("PATCH_INSTALLATION_DOWNLOAD_STATUS_PATCH", comment: ""), completedSize, size, speed)
+            downloadStatus.stringValue = String(format: NSLocalizedString("PATCH_INSTALLATION_DOWNLOAD_STATUS", comment: ""), format(totalCompletedSize), format(totalSize))
+            downloadPatchStatus.stringValue = String(format: NSLocalizedString("PATCH_INSTALLATION_DOWNLOAD_STATUS_PATCH", comment: ""), format(completedSize), format(size), format(speed))
             downloadBar.doubleValue = downloadBar.maxValue * Double(totalCompletedSize) / Double(totalSize)
             downloadPatchBar.doubleValue = downloadPatchBar.maxValue * Double(completedSize) / Double(size)
         }

@@ -102,8 +102,8 @@ Do not enable this on non-retina displays, unless for screenshot purposes.";
 "PATCH_INSTALLATION_ERROR_BUTTON" = "Close";
 "PATCH_INSTALLATION_ERROR_MESSAGE" = "Download Error";
 "PATCH_INSTALLATION_ERROR_INFORMATIVE" = "XIV on Mac could not download %@ after %d attempts";
-"PATCH_INSTALLATION_DOWNLOAD_STATUS" = "%d of %d";
-"PATCH_INSTALLATION_DOWNLOAD_STATUS_PATCH" = "%d of %d (%d/sec)";
+"PATCH_INSTALLATION_DOWNLOAD_STATUS" = "%@ of %@";
+"PATCH_INSTALLATION_DOWNLOAD_STATUS_PATCH" = "%@ of %@ (%@/sec)";
 
 "PATCH_ERROR_MESSAGE" = "Patch Installer Error";
 "PATCH_ERROR_INFORMATIVE" = "Patch Verification failed";

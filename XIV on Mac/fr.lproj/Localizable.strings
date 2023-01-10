@@ -105,8 +105,8 @@ Ne l'activez pas sur les écrans autres que écrans Retina, sauf à des fins de 
 "PATCH_INSTALLATION_ERROR_BUTTON" = "Fermer";
 "PATCH_INSTALLATION_ERROR_MESSAGE" = "Erreur de téléchargement";
 "PATCH_INSTALLATION_ERROR_INFORMATIVE" = "XIV on Mac n'a pas pu télécharger %@ après %d tentatives";
-"PATCH_INSTALLATION_DOWNLOAD_STATUS" = "%d de %d";
-"PATCH_INSTALLATION_DOWNLOAD_STATUS_PATCH" = "%d de %d (%d/sec)";
+"PATCH_INSTALLATION_DOWNLOAD_STATUS" = "%@ de %@";
+"PATCH_INSTALLATION_DOWNLOAD_STATUS_PATCH" = "%@ de %@ (%@/sec)";
 
 "PATCH_ERROR_MESSAGE" = "Erreur d'installation des patchs";
 "PATCH_ERROR_INFORMATIVE" = "La vérification des patchs a échoué";
