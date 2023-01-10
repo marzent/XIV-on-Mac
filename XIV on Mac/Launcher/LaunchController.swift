@@ -276,12 +276,14 @@ class LaunchController: NSViewController {
     }
     
     func startPatch(_ patches: [Patch]) {
-        DispatchQueue.main.async { [self] in
+        if Thread.isMainThread {
             view.window?.beginSheet(patchWinController!.window!)
-            DispatchQueue.global(qos: .default).async { [self] in
-                patchController?.install(patches)
+        } else {
+            DispatchQueue.main.sync { [self] in
+                view.window?.beginSheet(patchWinController!.window!)
             }
         }
+        patchController?.install(patches)
     }
     
     @IBAction func tapTroubleshooting(_ sender: Any) {
