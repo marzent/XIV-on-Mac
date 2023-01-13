@@ -659,8 +659,8 @@
 /* Class = "NSTextFieldCell"; title = "This is the special Steam-only Windows License"; ObjectID = "rFx-Wl-XRP"; */
 "rFx-Wl-XRP.title" = "This is the special Steam-only Windows License";
 
-/* Class = "NSMenuItem"; title = "Microsoft ASP.NET 6.0"; ObjectID = "rPG-F8-HwW"; */
-"rPG-F8-HwW.title" = "Microsoft ASP.NET 6.0";
+/* Class = "NSMenuItem"; title = "Microsoft .NET 7.0"; ObjectID = "rPG-F8-HwW"; */
+"rPG-F8-HwW.title" = "Microsoft .NET 7.0";
 
 /* Class = "NSMenuItem"; title = "Check Spelling While Typing"; ObjectID = "rbD-Rh-wIN"; */
 "rbD-Rh-wIN.title" = "Check Spelling While Typing";

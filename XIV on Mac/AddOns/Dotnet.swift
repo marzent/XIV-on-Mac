@@ -76,5 +76,11 @@ struct Dotnet {
         Wine.launch(command: "\"\(Util.cache.appendingPathComponent("aspnetcore-runtime-6.0.7-win-x64.exe").path)\"", blocking: true)
     }
     
+    static func installDotNet702() {
+        download(url: "https://download.visualstudio.microsoft.com/download/pr/8d4ae76c-10d6-450c-b1c2-76b7b2156dc3/9207c5d5d0b608d8ec0622efa4419ed6/windowsdesktop-runtime-7.0.2-win-x64.exe")
+        Wine.set(version: "win10")
+        Wine.launch(command: "\"\(Util.cache.appendingPathComponent("windowsdesktop-runtime-7.0.2-win-x64.exe").path)\"", blocking: true)
+    }
+    
 }
 

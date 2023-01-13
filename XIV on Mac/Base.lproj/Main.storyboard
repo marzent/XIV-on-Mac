@@ -458,10 +458,10 @@
                                                 <action selector="installDotNet60:" target="Voe-Tx-rLC" id="XvV-zv-hkq"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Microsoft ASP.NET 6.0" id="rPG-F8-HwW">
+                                        <menuItem title="Microsoft .NET 7.0" id="rPG-F8-HwW">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="installAspDotNet60:" target="Voe-Tx-rLC" id="wp5-5H-Jzh"/>
+                                                <action selector="installDotNet70:" target="Voe-Tx-rLC" id="TLJ-B3-i1w"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="gN7-LO-yfV"/>

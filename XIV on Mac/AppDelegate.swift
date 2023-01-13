@@ -182,8 +182,8 @@ import XIVLauncher
         Dotnet.installDotNet607()
     }
     
-    @IBAction func installAspDotNet60(_ sender: Any) {
-        Dotnet.installAspDotNet607()
+    @IBAction func installDotNet70(_ sender: Any) {
+        Dotnet.installDotNet702()
     }
     
     @IBAction func installGShade(_ sender: Any) {

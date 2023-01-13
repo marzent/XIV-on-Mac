@@ -58,10 +58,7 @@ struct IINACT {
         Util.make(dir: dir)
         let fm = FileManager.default
         if !fm.fileExists(atPath: Wine.prefix.appendingPathComponent("/drive_c/Program Files/dotnet/dotnet.exe").path) {
-            Dotnet.installDotNet607()
-        }
-        if !fm.fileExists(atPath: Wine.prefix.appendingPathComponent("/drive_c/Program Files/dotnet/shared/Microsoft.AspNetCore.App").path) {
-            Dotnet.installAspDotNet607()
+            Dotnet.installDotNet702()
         }
         let zipURL = Util.cache.appendingPathComponent("IINACT-not-self-contained.zip")
         if let data = try? Data.init(contentsOf: versionFile) {
