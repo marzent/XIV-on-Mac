@@ -193,7 +193,7 @@ class LaunchController: NSViewController {
                     throw FFXIVLoginError.maintenance
                 }
                 NotificationCenter.default.post(name: .loginInfo, object: nil, userInfo: [Notification.status.info: "Updating Dalamud"])
-                let dalamudOk = loginResult.dalamudOk
+                let dalamudOk = loginResult.dalamudInstallState == .ok && Util.getXOMRuntimeEnvironment() == .x64Native
                 DispatchQueue.main.async {
                     if Settings.dalamudEnabled && !dalamudOk {
                         let alert = NSAlert()

@@ -48,8 +48,8 @@ struct LoginResult: Codable {
         }
     }
     
-    var dalamudOk: Bool {
-        getDalamudInstallState()
+    var dalamudInstallState: DalamudInstallState {
+        DalamudInstallState(rawValue: getDalamudInstallState()) ?? .failed
     }
     
     func startGame(_ _dalamudOk: Bool) throws -> ProcessInformation {
@@ -98,4 +98,10 @@ struct ProcessInformation: Codable {
     var exitCode: Int32 {
         getExitCode(pid)
     }
+}
+
+enum DalamudInstallState: UInt8 {
+    case ok
+    case failed
+    case outOfDate
 }
