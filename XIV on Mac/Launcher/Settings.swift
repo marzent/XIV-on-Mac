@@ -198,4 +198,20 @@ public struct Settings {
             syncToXL()
         }
     }
+    
+    public static let defaultMetal3PerformanceOverlay : Bool = false
+    private static let metal3PerformanceOverlayKey = "Metal3PerformanceOverlayEnabled"
+    static var metal3PerformanceOverlay : Bool {
+        get {
+            guard #available(macOS 13.0, *) else {
+                // Metal 3 is a macOS 13 feature
+                return false
+            }
+            return Util.getSetting(settingKey: metal3PerformanceOverlayKey, defaultValue: defaultMetal3PerformanceOverlay)
+        }
+        set {
+            storage.set(newValue, forKey: metal3PerformanceOverlayKey)
+            syncToXL()
+        }
+    }
 }
