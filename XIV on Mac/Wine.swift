@@ -43,6 +43,13 @@ struct Wine {
         addEnvironmentVariable("DXVK_CONFIG_FILE", "C:\\dxvk.conf")
         addEnvironmentVariable("DXVK_STATE_CACHE_PATH", "C:\\")
         addEnvironmentVariable("DXVK_LOG_PATH", "C:\\")
+        if Settings.metal3PerformanceOverlay {
+            addEnvironmentVariable("MTL_HUD_ENABLED", "1")
+        }
+        else {
+            // If we've previously set it to 1 this is the only way to turn it back off since we can't remove a previously set env
+            addEnvironmentVariable("MTL_HUD_ENABLED", "0")
+        }
         createCompatToolsInstance(FileManager.default.fileSystemRepresentation(withPath: wineBinURL.path), debug, esync)
     }
     

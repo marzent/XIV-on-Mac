@@ -24,6 +24,7 @@ class SettingsGraphicsController: SettingsController {
     @IBOutlet private var maxFPS: NSButton!
     @IBOutlet private var maxFPSField: NSTextField!
     @IBOutlet private var async: NSButton!
+    @IBOutlet private var metal3Hud: NSButton!
 
     @IBOutlet private var wineRetina: NSButton!
     @IBOutlet private var wineRetinaWorkaround: NSButton!
@@ -56,6 +57,13 @@ class SettingsGraphicsController: SettingsController {
         maxFPSField.isEnabled = limited
         maxFPSField.stringValue = String(Dxvk.options.maxFramerate)
         scale.doubleValue = Dxvk.options.hudScale
+        if #available(macOS 13.0, *) {
+            metal3Hud.isEnabled = true
+        }
+        else {
+            metal3Hud.isEnabled = false
+        }
+        metal3Hud.state = Settings.metal3PerformanceOverlay ? NSControl.StateValue.on : NSControl.StateValue.off
         
         wineRetina.state = !Wine.retina ? NSControl.StateValue.on : NSControl.StateValue.off
         wineRetinaWorkaround.state = Wine.retinaStartupBugWorkaround ? NSControl.StateValue.on : NSControl.StateValue.off
@@ -133,6 +141,7 @@ class SettingsGraphicsController: SettingsController {
             Dxvk.options.async = async.state == NSControl.StateValue.on
             Dxvk.options.maxFramerate = maxFPSField.isEnabled ? Int(maxFPSField.stringValue) ?? 0 : 0
             Dxvk.options.hudScale = scale.doubleValue
+            Settings.metal3PerformanceOverlay = metal3Hud.state == NSControl.StateValue.on
             Dxvk.options.save()
         }
     }
