@@ -7,6 +7,7 @@
 
 import AppKit
 import IOKit
+import SwiftUI
 
 struct Util {
     @available(*, unavailable) private init() {}
@@ -256,4 +257,18 @@ struct Util {
         return foundSupportedGPU
     }
     
+}
+
+extension View
+{
+    func openNewWindow(title: String, delegate: NSWindowDelegate?, geometry: NSRect = NSRect(x: 20, y: 20, width: 640, height: 500), style:NSWindow.StyleMask = [.titled, .closable, .miniaturizable, .resizable])
+    {
+        let window = NSWindow(contentRect: geometry, styleMask: style, backing: .buffered, defer: false)
+        window.center()
+        window.isReleasedWhenClosed = false
+        window.title = title
+        window.makeKeyAndOrderFront(nil)
+        window.delegate = delegate
+        window.contentView = NSHostingView(rootView: self)
+    }
 }

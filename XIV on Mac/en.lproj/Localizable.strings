@@ -135,3 +135,71 @@ Do not enable this on non-retina displays, unless for screenshot purposes.";
 
 "AUTOLOGIN_MESSAGE" = "Auto-Login";
 "AUTOLOGIN_INFORMATIVE" = "You can override the Auto-Login by holding the SHIFT key down at application launch.";
+
+"SETTINGS_WINDOW_TITLE" = "Settings";
+"SETTINGS_TAB_GENERAL_TITLE" = "General";
+"SETTINGS_TAB_GRAPHICS_TITLE" = "Graphics";
+"SETTINGS_TAB_PLUGINS_TITLE" = "Plugins (Dalamud)";
+"SETTINGS_TAB_ADVANCED_TITLE" = "Advanced";
+
+// General Settings tab items
+"SETTINGS_GENERAL_LANGUAGE_AND_LICENSE_BLURB" = "XIV On Mac can work with Mac, Windows, and Steam licenses. You must already own the license type you choose, if you are unsure you can check your account status through Mogstation. Steam accounts must have been previously linked to your Final Fantasy XIV service account by logging in on a Windows PC, and further require the macOS version of Steam to be running.";
+"SETTINGS_LANGUAGE_PICKER" = "Language:";
+"SETTINGS_LANGUAGE_JAPANESE" = "Japanese";
+"SETTINGS_LANGUAGE_ENGLISH" = "English";
+"SETTINGS_LANGUAGE_FRENCH" = "French";
+"SETTINGS_LANGUAGE_GERMAN" = "German";
+"SETTINGS_PLATFORM_PICKER" = "License:";
+"SETTINGS_PLATFORM_MAC" = "Mac";
+"SETTINGS_PLATFORM_WINDOWS" = "Windows";
+"SETTINGS_PLATFORM_STEAM" = "Steam";
+"SETTINGS_FREE_TRIAL" = "Free Trial";
+"SETTINGS_GENERAL_FREE_TRIAL_BLURB" = "When using the Free Trial, you must choose the same license type you used when you signed up for the trial. Additionally, your Final Fantasy XIV account must already have an active trial, as XIV On Mac cannot sign you up automatically.";
+"SETTINGS_DOWNLOAD_LIMIT" = "Limit Download speed to";
+"SETTINGS_DOWNLOAD_LIMIT_PLACEHOLDER" = "0.0";
+"SETTINGS_DOWNLOAD_LIMIT_UNITS" = "MB/sec";
+
+// Graphics Settings tab items
+"SETTINGS_FPS_LIMIT" = "Maximum Frame Rate";
+"SETTINGS_FPS_LIMIT_PLACEHOLDER" = "0";
+"SETTINGS_FPS_LIMIT_UNITS" = "fps";
+"SETTINGS_GRAPHICS_ASYNC" = "Async";
+"SETTINGS_GRAPHICS_HUD" = "HUD";
+"SETTINGS_GRAPHICS_DXVK_HUD_HEADER" = "DXVK HUD Options";
+"SETTINGS_GRAPHICS_HUD_BLURB" = "HUD Options are informational items displayed in the upper left corner during play that can aid you in determining how in-game settings are affecting your performance. They are entirely optional.";
+"SETTINGS_GRAPHICS_HUD_SCALE" = "Scale:";
+"SETTINGS_GRAPHICS_RESET_SCALE_BUTTON" = "Reset";
+"SETTINGS_GRAPHICS_METAL3_HUD" = "Metal 3 Performance HUD";
+"SETTINGS_GRAPHICS_DEVICE_INFO" = "Device Info";
+"SETTINGS_GRAPHICS_GPU_LOAD" = "GPU Load";
+"SETTINGS_GRAPHICS_FRAME_RATE_HUD" = "Frame Rate";
+"SETTINGS_GRAPHICS_DXVK_VERSION" = "DXVK Version";
+"SETTINGS_GRAPHICS_FRAME_TIME" = "Frame Time Graph";
+"SETTINGS_GRAPHICS_FEATURE_LEVEL" = "D3D Feature Level";
+"SETTINGS_GRAPHICS_BUFFER_SUBMISSIONS" = "Command Buffer Submissions";
+"SETTINGS_GRAPHICS_COMPILER" = "Shader Compiler Activity";
+"SETTINGS_GRAPHICS_DRAWCALLS" = "Draw Calls and Render Passes";
+"SETTINGS_GRAPHICS_PIPELINES" = "Graphics and Compute Pipelines";
+"SETTINGS_GRAPHICS_MEMORY" = "Memory Used";
+"SETTINGS_GRAPHICS_ALL_DXVK_ON_BUTTON" = "Enable Entire DXVK HUD";
+"SETTINGS_GRAPHICS_ALL_DXVK_OFF_BUTTON" = "Disable Entire DXVK HUD";
+"SETTINGS_GRAPHICS_RETINA" = "Enable macOS Scaling";
+"SETTINGS_GRAPHICS_RETINA_BUGFIX" = "Bugfix for non-scaling mode in fullscreen";
+
+// Plugins/Dalamud tab items
+"SETTINGS_PLUGINS_WHAT_IS_DALAMUD_BLURB" = "Plugins are enabled by a project called Dalamud, which enables extra functionality in your game. If you do not know why you would want a plugin or do not wish to use them, you may safely leave this disabled. To learn more about Dalamud please visit:\nhttps://github.com/goatcorp/Dalamud";
+"SETTINGS_PLUGINS_DALAMUD_ENABLE" = "Enable Dalamud";
+"SETTINGS_PLUGINS_DALAMUD_DELAY_BLURB" = "If Dalamud is not loading succesfully, you can try adjusting the load delay up or down to find a value that works for your Mac.";
+"SETTINGS_PLUGINS_DALAMUD_DELAY_UNITS" = "seconds";
+"SETTINGS_PLUGINS_DALAMUD_DELAY_LABEL" = "Delay:";
+"SETTINGS_PLUGINS_DISCORD_BLURB" = "The bridge enables the Discord Rich Presence Dalamud plugin to update your Discord status. If you do not plan to use this plugin, you can disable this setting.";
+"SETTINGS_PLUGINS_DISCORD_TOGGLE" = "Discord Rich Presence Wine Bridge";
+
+// Advanced Settings tab items
+"SETTINGS_ADVANCED_BLURB" = "These settings are mainly for troubleshooting purposes and generally shouldn't need to be changed.";
+"SETTINGS_ADVANCED_KEEP_PATCHES" = "Keep Patches";
+"SETTINGS_ADVANCED_ESYNC" = "Esync";
+"SETTINGS_ADVANCED_ENCRYPT_ARGS" = "Encrypt Game Arguments";
+"SETTINGS_ADVANCED_AUTO_EXIT" = "Quit XIV on Mac upon game exit";
+"SETTINGS_ADVANCED_ERROR_EXIT" = "Warn if game exits with non-zero exit code";
+"SETTINGS_ADVANCED_WINE_DEBUG" = "Wine Debug:";

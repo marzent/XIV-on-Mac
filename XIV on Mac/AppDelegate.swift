@@ -11,7 +11,7 @@ import AppMover
 import XIVLauncher
 
 @main class AppDelegate: NSObject, NSApplicationDelegate, SPUUpdaterDelegate {
-    private var settingsWinController: NSWindowController?
+    private var settingsWindow : SettingsWindowContentView = SettingsWindowContentView()
     private var launchWinController: NSWindowController?
     private var firstAidWinController: NSWindowController?
     @IBOutlet private var sparkle: SPUStandardUpdaterController!
@@ -32,7 +32,6 @@ import XIVLauncher
         // Do this first so that nothing loads data or otherwise touches the prefix first!
         let migrated = PrefixMigrator.migratePrefixIfNeeded()
         let storyboard = NSStoryboard(name: "Main", bundle: nil)
-        settingsWinController = storyboard.instantiateController(withIdentifier: "SettingsWindow") as? NSWindowController
         firstAidWinController = storyboard.instantiateController(withIdentifier: "FirstAidWindow") as? NSWindowController
         launchWinController = storyboard.instantiateController(withIdentifier: "LaunchWindow") as? NSWindowController
         launchWinController?.showWindow(self)
@@ -211,7 +210,7 @@ import XIVLauncher
     }
     
     @IBAction func dxvkSettings(_ sender: Any) {
-        settingsWinController?.showWindow(self)
+        self.settingsWindow.openNewWindow(title: NSLocalizedString("SETTINGS_WINDOW_TITLE", comment: ""), delegate: nil)
     }
 	
     @IBAction func selectGamePath(_ sender: Any) {

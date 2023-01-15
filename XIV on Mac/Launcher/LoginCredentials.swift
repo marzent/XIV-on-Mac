@@ -28,12 +28,16 @@ public struct LoginCredentials {
     }
     
     static func storedLogin(username: String) -> LoginCredentials? {
-        let keychain = Keychain(server: squareServer, protocolType: .https)
-        // wtf Swift
-        guard case let storedPassword?? = (((try? keychain.get(username)) as String??)) else {
+        #if DEBUG
             return nil
-        }
-        return LoginCredentials(username: username, password: storedPassword)
+        #else
+            let keychain = Keychain(server: squareServer, protocolType: .https)
+            // wtf Swift
+            guard case let storedPassword?? = (((try? keychain.get(username)) as String??)) else {
+                return nil
+            }
+            return LoginCredentials(username: username, password: storedPassword)
+        #endif
     }
     
     static func deleteLogin(username: String) {
