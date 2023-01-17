@@ -43,6 +43,7 @@ struct Wine {
         addEnvironmentVariable("DXVK_CONFIG_FILE", "C:\\dxvk.conf")
         addEnvironmentVariable("DXVK_STATE_CACHE_PATH", "C:\\")
         addEnvironmentVariable("DXVK_LOG_PATH", "C:\\")
+        addEnvironmentVariable("DOTNET_EnableWriteXorExecute", "0")     // XXX Required for Apple Silicon and .NET 7+
         if Settings.metal3PerformanceOverlay {
             addEnvironmentVariable("MTL_HUD_ENABLED", "1")
         }
