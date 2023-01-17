@@ -193,9 +193,9 @@ class LaunchController: NSViewController {
                     throw FFXIVLoginError.maintenance
                 }
                 NotificationCenter.default.post(name: .loginInfo, object: nil, userInfo: [Notification.status.info: "Updating Dalamud"])
-                let dalamudOk = loginResult.dalamudInstallState == .ok && Util.getXOMRuntimeEnvironment() == .x64Native
+                let dalamudInstallState = loginResult.dalamudInstallState
                 DispatchQueue.main.async {
-                    if Settings.dalamudEnabled && !dalamudOk {
+                    if Settings.dalamudEnabled && dalamudInstallState == .failed {
                         let alert = NSAlert()
                         alert.addButton(withTitle: NSLocalizedString("BUTTON_OK", comment: ""))
                         alert.alertStyle = .critical
@@ -205,7 +205,7 @@ class LaunchController: NSViewController {
                     }
                 }
                 NotificationCenter.default.post(name: .loginInfo, object: nil, userInfo: [Notification.status.info: "Starting Game"])
-                let process = try loginResult.startGame(dalamudOk)
+                let process = try loginResult.startGame(dalamudInstallState == .ok)
                 DispatchQueue.main.async { [self] in
                     loginSheetWinController?.window?.close()
                     view.window?.close()
