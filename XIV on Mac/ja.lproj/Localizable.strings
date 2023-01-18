@@ -17,7 +17,7 @@
 "INCORRECT_CREDENTIALS_SHORT" = "認証に失敗";
 "INCORRECT_CREDENTIALS" = "認証情報が正しくありません。";
 "NO_STEAM_TICKET_SHORT" = "Steamに接続できませんでした。";
-"NO_STEAM_TICKET" = "XIV on MacはFF14の有効なSteamチケット取得に失敗しました。Steamアプリが起動しログイン済みであることと、Mog StationにSteamアカウントをリンクしているかご確認ください。";
+"NO_STEAM_TICKET" = "XIV on MacはFF14の有効なSteamチケット取得に失敗しました。Steamアプリが起動しログイン済みであることと、モグステーションにSteamアカウントをリンクしているかご確認ください。";
 "STEAM_USER_ERROR_SHORT" = "Steamエラー";
 "STEAM_USER_ERROR" = "ユーザー名とSteamアカウントが一致していません。";
 "NOT_PLAYABLE_SHORT" = "ライセンスエラー";
@@ -114,7 +114,7 @@
 "OTP_INFORMATIVE" = "もしあなたがローカルのキーチェーンを信頼しているのであれば、以下にBASE32形式で秘密鍵を入力することでXIV on Macが自動的にOTPを生成することができます。";
 
 "GSHADE_MESSAGE" = "Catalinaで実行する場合、WineまたはCrossOverがインストールされている必要があります。";
-"GSHADE_INFORMATIVE" = "XIV on Mac.appにバンドルされているWineをを手動で$PATHに追加することもできます。";
+"GSHADE_INFORMATIVE" = "XIV on Mac.appにバンドルされているWineを手動で$PATHに追加することもできます。";
 
 "INSTALLER_FOUND_MESSAGE" = "FINAL FANTASY XIV ONLINEのインストールファイルを検出しました！";
 "INSTALLER_FOUND_INFORMATIVE" = "%@に存在するインストールファイルを使用したいですか？";
@@ -134,5 +134,73 @@
 
 "LOGGING_IN" = "ログイン中";
 
-"AUTOLOGIN_MESSAGE" = "Auto-Login";
-"AUTOLOGIN_INFORMATIVE" = "You can override the Auto-Login by holding the SHIFT key down at application launch.";
+"AUTOLOGIN_MESSAGE" = "自動ログイン";
+"AUTOLOGIN_INFORMATIVE" = "アプリケーション起動時にShiftキーを押し続けると、自動ログインを無効にできます。";
+
+"SETTINGS_WINDOW_TITLE" = "設定";
+"SETTINGS_TAB_GENERAL_TITLE" = "全般";
+"SETTINGS_TAB_GRAPHICS_TITLE" = "グラフィクス";
+"SETTINGS_TAB_PLUGINS_TITLE" = "プラグイン(Dalamud)";
+"SETTINGS_TAB_ADVANCED_TITLE" = "高度";
+
+// General Settings tab items
+"SETTINGS_GENERAL_LANGUAGE_AND_LICENSE_BLURB" = "XIV on MacはMac版、Windows版、Steam版のライセンスで動作可能です。選択したライセンスを所有している必要があります。不明な場合はモグステーションでアカウントの状況を確認できます。なお、Steam版はあらかじめWindows PCでSteamとファイナルファンタジーXIVのサービスアカウントをリンクしておく必要があり、さらにmacOS版のSteamアプリをバックグラウンドで起動しておく必要があります。";
+"SETTINGS_LANGUAGE_PICKER" = "言語:";
+"SETTINGS_LANGUAGE_JAPANESE" = "日本語";
+"SETTINGS_LANGUAGE_ENGLISH" = "英語";
+"SETTINGS_LANGUAGE_FRENCH" = "フランス語";
+"SETTINGS_LANGUAGE_GERMAN" = "ドイツ語";
+"SETTINGS_PLATFORM_PICKER" = "ライセンス:";
+"SETTINGS_PLATFORM_MAC" = "Mac";
+"SETTINGS_PLATFORM_WINDOWS" = "Windows";
+"SETTINGS_PLATFORM_STEAM" = "Steam";
+"SETTINGS_FREE_TRIAL" = "フリートライアル";
+"SETTINGS_GENERAL_FREE_TRIAL_BLURB" = "フリートライアルを利用する場合、フリートライアルに登録した時と同じライセンスタイプを選択してください。また、XIV on Macは自動的にサインアップできないため、あなたのファイナルファンタジーXIVのアカウントで先にフリートライアルへの登録を済ませておく必要があります。";
+"SETTINGS_DOWNLOAD_LIMIT" = "ダウンロード速度を制限";
+"SETTINGS_DOWNLOAD_LIMIT_PLACEHOLDER" = "0.0";
+"SETTINGS_DOWNLOAD_LIMIT_UNITS" = "MB/秒";
+
+// Graphics Settings tab items
+"SETTINGS_FPS_LIMIT" = "最大フレームレート";
+"SETTINGS_FPS_LIMIT_PLACEHOLDER" = "0";
+"SETTINGS_FPS_LIMIT_UNITS" = "fps";
+"SETTINGS_GRAPHICS_ASYNC" = "非同期";
+"SETTINGS_GRAPHICS_HUD" = "HUD";
+"SETTINGS_GRAPHICS_DXVK_HUD_HEADER" = "DXVK HUDオプション";
+"SETTINGS_GRAPHICS_HUD_BLURB" = "HUDオプションは、プレイ中に左上に表示される情報で、ゲーム内の設定がパフォーマンスにどのような影響を及ぼしているか判断するのに役立ちます。全ての項目は任意に設定可能です。";
+"SETTINGS_GRAPHICS_HUD_SCALE" = "拡大率:";
+"SETTINGS_GRAPHICS_RESET_SCALE_BUTTON" = "リセット";
+"SETTINGS_GRAPHICS_METAL3_HUD" = "Metal 3 Performance HUD";
+"SETTINGS_GRAPHICS_DEVICE_INFO" = "Device Info";
+"SETTINGS_GRAPHICS_GPU_LOAD" = "GPU Load";
+"SETTINGS_GRAPHICS_FRAME_RATE_HUD" = "Frame Rate";
+"SETTINGS_GRAPHICS_DXVK_VERSION" = "DXVK Version";
+"SETTINGS_GRAPHICS_FRAME_TIME" = "Frame Time Graph";
+"SETTINGS_GRAPHICS_FEATURE_LEVEL" = "D3D Feature Level";
+"SETTINGS_GRAPHICS_BUFFER_SUBMISSIONS" = "Command Buffer Submissions";
+"SETTINGS_GRAPHICS_COMPILER" = "Shader Compiler Activity";
+"SETTINGS_GRAPHICS_DRAWCALLS" = "Draw Calls and Render Passes";
+"SETTINGS_GRAPHICS_PIPELINES" = "Graphics and Compute Pipelines";
+"SETTINGS_GRAPHICS_MEMORY" = "Memory Used";
+"SETTINGS_GRAPHICS_ALL_DXVK_ON_BUTTON" = "全てを選択";
+"SETTINGS_GRAPHICS_ALL_DXVK_OFF_BUTTON" = "全てを選択解除";
+"SETTINGS_GRAPHICS_RETINA" = "macOSのスケーリングを有効化";
+"SETTINGS_GRAPHICS_RETINA_BUGFIX" = "全画面時のスケーリングモードのバグフィックス";
+
+// Plugins/Dalamud tab items
+"SETTINGS_PLUGINS_WHAT_IS_DALAMUD_BLURB" = "プラグイン機能はDalamudプロジェクトによって提供され、あなたのゲームに色々な（余計な）機能を追加できます。プラグインが必要な理由がわからない場合や、プラグインを使用したくない場合はこの機能を無効にした方が安全です。詳細は下記のWebサイトをご覧ください。\nhttps://github.com/goatcorp/Dalamud";
+"SETTINGS_PLUGINS_DALAMUD_ENABLE" = "Dalamudを有効化";
+"SETTINGS_PLUGINS_DALAMUD_DELAY_BLURB" = "Dalamudのロードがうまくいかない場合は、ロードの遅延秒数を適宜調整して、お使いのMacに合う値を探してみてください。";
+"SETTINGS_PLUGINS_DALAMUD_DELAY_UNITS" = "秒";
+"SETTINGS_PLUGINS_DALAMUD_DELAY_LABEL" = "遅延:";
+"SETTINGS_PLUGINS_DISCORD_BLURB" = "以下をチェックするとDalamudのDiscord Rich Presenceプラグインを利用可能にし、Discord のステータスを更新できるようになります。このプラグインを使用する予定がない場合は、この設定を無効できます。";
+"SETTINGS_PLUGINS_DISCORD_TOGGLE" = "Discord Rich Presence Wineブリッジ";
+
+// Advanced Settings tab items
+"SETTINGS_ADVANCED_BLURB" = "これらの設定は主にトラブルシューティングのためのもので、通常変更する必要はありません。";
+"SETTINGS_ADVANCED_KEEP_PATCHES" = "パッチを保持する";
+"SETTINGS_ADVANCED_ESYNC" = "Esyncを有効化";
+"SETTINGS_ADVANCED_ENCRYPT_ARGS" = "ゲームの引数を暗号化する";
+"SETTINGS_ADVANCED_AUTO_EXIT" = "ゲームを終了時にXIV on Macも終了させる";
+"SETTINGS_ADVANCED_ERROR_EXIT" = "ゲーム本体が0以外の終了コードを返して終了した場合に警告する";
+"SETTINGS_ADVANCED_WINE_DEBUG" = "Wine Debug:";
