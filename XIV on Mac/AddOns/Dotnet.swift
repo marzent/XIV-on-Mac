@@ -6,8 +6,8 @@
 //
 
 import Cocoa
-import ZIPFoundation
 import SeeURL
+import ZIPFoundation
 
 struct Dotnet {
     @available(*, unavailable) private init() {}
@@ -81,6 +81,4 @@ struct Dotnet {
         Wine.set(version: "win10")
         Wine.launch(command: "\"\(Util.cache.appendingPathComponent("windowsdesktop-runtime-7.0.2-win-x64.exe").path)\"", blocking: true)
     }
-    
 }
-

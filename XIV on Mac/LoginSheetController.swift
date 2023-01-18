@@ -8,7 +8,6 @@
 import Cocoa
 
 class LoginSheetController: NSViewController {
-    
     @IBOutlet private var status: NSTextField!
     @IBOutlet private var spinner: NSProgressIndicator!
     
@@ -32,7 +31,6 @@ class LoginSheetController: NSViewController {
     }
     
     private func setupObservers() {
-        NotificationCenter.default.addObserver(self,selector: #selector(loginUpdate(_:)),name: .loginInfo, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(loginUpdate(_:)), name: .loginInfo, object: nil)
     }
-    
 }

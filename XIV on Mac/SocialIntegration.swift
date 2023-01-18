@@ -30,5 +30,4 @@ struct DiscordBridge {
         }
         Wine.launch(command: "\"\(bridge.path)\"")
     }
-   
 }

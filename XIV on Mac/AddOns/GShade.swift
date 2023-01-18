@@ -10,14 +10,14 @@ import Cocoa
 struct GShade {
     @available(*, unavailable) private init() {}
     
-    //TODO: refactor this
+    // TODO: refactor this
     
     static func install() {
         if #available(OSX 11.0, *) {
             Util.launch(exec: URL(string: "file:///usr/bin/open")!,
                         args: ["-n", "-b", "com.apple.Terminal",
                                Bundle.main.url(forResource: "install_gshade", withExtension: "sh", subdirectory: "GShade")!.path,
-                               "--env", "WINEPATH=\( Bundle.main.url(forResource: "bin", withExtension: nil, subdirectory: "wine")!.path)",
+                               "--env", "WINEPATH=\(Bundle.main.url(forResource: "bin", withExtension: nil, subdirectory: "wine")!.path)",
                                "--env", "WINEESYNC=\(Wine.esync ? "1" : "0")",
                                "--env", "WINEPREFIX=\(Wine.prefix.path)"])
         } else {
@@ -35,7 +35,7 @@ struct GShade {
             Util.launch(exec: URL(string: "file:///usr/bin/open")!,
                         args: ["-n", "-b", "com.apple.Terminal",
                                Bundle.main.url(forResource: "manual_gshade", withExtension: "sh", subdirectory: "GShade")!.path,
-                               "--env", "WINEPATH=\( Bundle.main.url(forResource: "bin", withExtension: nil, subdirectory: "wine")!.path)",
+                               "--env", "WINEPATH=\(Bundle.main.url(forResource: "bin", withExtension: nil, subdirectory: "wine")!.path)",
                                "--env", "WINEESYNC=\(Wine.esync ? "1" : "0")",
                                "--env", "WINEPREFIX=\(Wine.prefix.path)"])
         } else {
@@ -47,5 +47,4 @@ struct GShade {
             alert.runModal()
         }
     }
-    
 }

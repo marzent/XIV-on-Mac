@@ -5,13 +5,13 @@
 //  Created by Marc-Aurel Zent on 20.12.21.
 //
 
+import AppMover
 import Cocoa
 import Sparkle
-import AppMover
 import XIVLauncher
 
 @main class AppDelegate: NSObject, NSApplicationDelegate, SPUUpdaterDelegate {
-    private var settingsWindow : SettingsWindowContentView = SettingsWindowContentView()
+    private var settingsWindow: SettingsWindowContentView = .init()
     private var launchWinController: NSWindowController?
     private var firstAidWinController: NSWindowController?
     @IBOutlet private var sparkle: SPUStandardUpdaterController!
@@ -41,23 +41,23 @@ import XIVLauncher
         checkForRosetta()
         checkGPUSupported()
         Wine.boot()
-        if (migrated) {
+        if migrated {
             // The final piece of migration has to happen after wine is ready for use.
             PrefixMigrator.migrateWineRegistrySettings()
         }
         sparkle.updater.checkForUpdatesInBackground()
         Util.make(dir: Util.cache.path)
-    #if DEBUG
+#if DEBUG
         Log.debug("Running in debug mode")
-    #else
+#else
         AppMover.moveIfNecessary()
-    #endif
+#endif
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {
-        //Wine.kill()
+        // Wine.kill()
     }
-
+    
     func applicationSupportsSecureRestorableState(_ app: NSApplication) -> Bool {
         return true
     }
@@ -75,19 +75,18 @@ import XIVLauncher
     }
     
     func checkForRosetta() {
-        if (Util.getXOMRuntimeEnvironment() == .appleSiliconNative) {        // No need to do any of this on Intel, and if we're already in Rosetta the answer is self-evident
-            if (!Wine.rosettaInstalled)
-            {
-                let alert: NSAlert = NSAlert()
+        if Util.getXOMRuntimeEnvironment() == .appleSiliconNative { // No need to do any of this on Intel, and if we're already in Rosetta the answer is self-evident
+            if !Wine.rosettaInstalled {
+                let alert: NSAlert = .init()
                 alert.messageText = NSLocalizedString("ROSETTA_REQUIRED", comment: "")
                 alert.informativeText = NSLocalizedString("ROSETTA_REQUIRED_INFORMATIVE", comment: "")
                 alert.alertStyle = .warning
-                alert.addButton(withTitle:NSLocalizedString("ROSETTA_REQUIRED_INSTALL_BUTTON", comment: ""))
-                alert.addButton(withTitle:NSLocalizedString("ROSETTA_REQUIRED_CANCEL_BUTTON", comment: ""))
+                alert.addButton(withTitle: NSLocalizedString("ROSETTA_REQUIRED_INSTALL_BUTTON", comment: ""))
+                alert.addButton(withTitle: NSLocalizedString("ROSETTA_REQUIRED_CANCEL_BUTTON", comment: ""))
                 let result = alert.runModal()
                 if result == .alertFirstButtonReturn {
                     let rosettaCommand = Bundle.main.url(forResource: "installRosetta", withExtension: "command")
-                    if (rosettaCommand != nil) {
+                    if rosettaCommand != nil {
                         // We could launch Terminal directly, but this should work more nicely for people who use 3rd party
                         // terminal apps.
                         Util.launch(exec: URL(fileURLWithPath: "/usr/bin/open"), args: [rosettaCommand!.path])
@@ -98,14 +97,13 @@ import XIVLauncher
     }
     
     func checkGPUSupported() {
-        if (!Util.supportedGPU())
-        {
-            let alert: NSAlert = NSAlert()
+        if !Util.supportedGPU() {
+            let alert: NSAlert = .init()
             alert.messageText = NSLocalizedString("UNSUPPORTED_GPU", comment: "")
             alert.informativeText = NSLocalizedString("UNSUPPORTED_GPU_INFORMATIVE", comment: "")
             alert.alertStyle = .critical
-            alert.addButton(withTitle:NSLocalizedString("BUTTON_OK", comment: ""))
-            alert.addButton(withTitle:NSLocalizedString("SEE_COMPATABILITY_BUTTON", comment: ""))
+            alert.addButton(withTitle: NSLocalizedString("BUTTON_OK", comment: ""))
+            alert.addButton(withTitle: NSLocalizedString("SEE_COMPATABILITY_BUTTON", comment: ""))
             alert.icon = NSImage(named: "CfgCheckProbFailed.tiff")
             let result = alert.runModal()
             if result == .alertSecondButtonReturn {
@@ -210,9 +208,9 @@ import XIVLauncher
     }
     
     @IBAction func dxvkSettings(_ sender: Any) {
-        self.settingsWindow.openNewWindow(title: NSLocalizedString("SETTINGS_WINDOW_TITLE", comment: ""), delegate: nil)
+        settingsWindow.openNewWindow(title: NSLocalizedString("SETTINGS_WINDOW_TITLE", comment: ""), delegate: nil)
     }
-	
+    
     @IBAction func selectGamePath(_ sender: Any) {
         let openPanel = NSOpenPanel()
         openPanel.title = NSLocalizedString("SELECT_GAME_PATH_PANEL_TITLE", comment: "")
@@ -225,7 +223,7 @@ import XIVLauncher
         openPanel.canChooseFiles = false
         openPanel.canCreateDirectories = false
         openPanel.allowsMultipleSelection = false
-        openPanel.begin() { (response) in
+        openPanel.begin { response in
             if response == .OK {
                 if InstallerController.isValidGameDirectory(gamePath: openPanel.url!.path) {
                     Settings.gamePath = openPanel.url!
@@ -246,9 +244,7 @@ import XIVLauncher
         }
     }
     
-    @IBAction func openFirstAid(_ sender: Any){
+    @IBAction func openFirstAid(_ sender: Any) {
         firstAidWinController?.showWindow(self)
     }
-    
 }
-

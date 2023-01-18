@@ -9,12 +9,13 @@ import Foundation
 import XIVLauncher
 
 // MARK: - LoginResult
+
 struct LoginResult: Codable {
     private let _state: Int
     let pendingPatches: [Patch]?
     let oauthLogin: OauthLogin?
     let uniqueID: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case _state = "State"
         case pendingPatches = "PendingPatches"
@@ -75,12 +76,13 @@ struct LoginResult: Codable {
 }
 
 // MARK: - OauthLogin
+
 struct OauthLogin: Codable {
     let sessionID: String
     let region: Int
     let termsAccepted, playable: Bool
     let maxExpansion: Int
-
+    
     enum CodingKeys: String, CodingKey {
         case sessionID = "SessionId"
         case region = "Region"
@@ -91,6 +93,7 @@ struct OauthLogin: Codable {
 }
 
 // MARK: - ProcessInformation
+
 struct ProcessInformation: Codable {
     let pid: Int32
     let handle: Int64

@@ -8,7 +8,7 @@
 import Foundation
 import XIVLauncher
 
-public struct Settings {
+public enum Settings {
     private static let storage = UserDefaults.standard
     
     static func syncToXL() {
@@ -145,7 +145,7 @@ public struct Settings {
     private static let acceptLanguageKey = "AcceptLanguage"
     static var acceptLanguage: String {
         guard let storedAcceptLanguage = storage.object(forKey: acceptLanguageKey) else {
-            let seed = Int32.random(in: 0..<420)
+            let seed = Int32.random(in: 0 ..< 420)
             let newAcceptLaungage = String(cString: generateAcceptLanguage(seed)!)
             storage.set(newAcceptLaungage, forKey: acceptLanguageKey)
             return newAcceptLaungage
@@ -200,9 +200,9 @@ public struct Settings {
         }
     }
     
-    public static let defaultMetal3PerformanceOverlay : Bool = false
+    public static let defaultMetal3PerformanceOverlay: Bool = false
     private static let metal3PerformanceOverlayKey = "Metal3PerformanceOverlayEnabled"
-    static var metal3PerformanceOverlay : Bool {
+    static var metal3PerformanceOverlay: Bool {
         get {
             guard #available(macOS 13.0, *) else {
                 // Metal 3 is a macOS 13 feature

@@ -17,30 +17,30 @@ struct Log {
         /// a running block of code.
         /// </summary>
         case verbose
-
+        
         /// <summary>
         /// Internal system events that aren't necessarily
         /// observable from the outside.
         /// </summary>
         case debug
-
+        
         /// <summary>
         /// The lifeblood of operational intelligence - things
         /// happen.
         /// </summary>
         case information
-
+        
         /// <summary>
         /// Service is degraded or endangered.
         /// </summary>
         case warning
-
+        
         /// <summary>
         /// Functionality is unavailable, invariants are broken
         /// or data is lost.
         /// </summary>
         case error
-
+        
         /// <summary>
         /// If you have a pager, it goes off when one of these
         /// occurs.

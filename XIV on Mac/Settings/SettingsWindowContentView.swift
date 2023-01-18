@@ -7,19 +7,16 @@
 
 import SwiftUI
 
-struct SettingsWindowContentView: View
-{
-    @State var selectedSettingsTab : SettingsTabItem = .General
-    
-    private var generalTabView : SettingsGeneralTabView = SettingsGeneralTabView()
-    private var graphicsTabView : SettingsGraphicsTabView = SettingsGraphicsTabView()
-    private var pluginsTabView : SettingsPluginsTabView = SettingsPluginsTabView()
-    private var advancedTabView : SettingsAdvancedTabView = SettingsAdvancedTabView()
+struct SettingsWindowContentView: View {
+    @State var selectedSettingsTab: SettingsTabItem = .General
 
-    var body: some View
-    {
-        TabView(selection: $selectedSettingsTab)
-        {
+    private var generalTabView: SettingsGeneralTabView = .init()
+    private var graphicsTabView: SettingsGraphicsTabView = .init()
+    private var pluginsTabView: SettingsPluginsTabView = .init()
+    private var advancedTabView: SettingsAdvancedTabView = .init()
+
+    var body: some View {
+        TabView(selection: $selectedSettingsTab) {
             generalTabView.tabItem { Text("SETTINGS_TAB_GENERAL_TITLE") }.tag(SettingsTabItem.General)
             graphicsTabView.tabItem { Text("SETTINGS_TAB_GRAPHICS_TITLE") }.tag(SettingsTabItem.Graphics)
             pluginsTabView.tabItem { Text("SETTINGS_TAB_PLUGINS_TITLE") }.tag(SettingsTabItem.Plugins)
@@ -35,8 +32,7 @@ struct SettingsWindow_Previews: PreviewProvider {
     }
 }
 
-enum SettingsTabItem: Hashable
-{
+enum SettingsTabItem: Hashable {
     case General
     case Graphics
     case Plugins

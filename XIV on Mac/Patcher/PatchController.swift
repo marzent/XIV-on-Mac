@@ -10,7 +10,6 @@ import OrderedCollections
 import SeeURL
 
 class PatchController: NSViewController {
-    
     @IBOutlet private var downloadStatus: NSTextField!
     @IBOutlet private var downloadPatch: NSTextField!
     @IBOutlet private var downloadPatchStatus: NSTextField!
@@ -41,12 +40,12 @@ class PatchController: NSViewController {
     }
     
     func install(_ patches: [Patch]) {
-        //Wine.kill()
+        // Wine.kill()
         let totalSize = Patch.totalLength(patches)
         DispatchQueue.main.async { [self] in
             installPatch.stringValue = NSLocalizedString("PATCH_INSTALLATION_WAITING", comment: "")
             installStatus.stringValue = String(format: NSLocalizedString("PATCH_INSTALLATION_PROGRESS_INIT", comment: ""), patches.count)
-            installBar.doubleValue = 0;
+            installBar.doubleValue = 0
             installBar.maxValue = Double(patches.count)
         }
         for (patchNum, _) in patches.enumerated() {
@@ -64,7 +63,7 @@ class PatchController: NSViewController {
         }
         let partialSize = Patch.totalLength(patches[..<patchNum])
         download(patch, totalSize: totalSize, partialSize: partialSize)
-        self.updateProgress(totalCompletedSize: partialSize + patch.length, totalSize: totalSize, completedSize: patch.length, size: patch.length, speed: 0)
+        updateProgress(totalCompletedSize: partialSize + patch.length, totalSize: totalSize, completedSize: patch.length, size: patch.length, speed: 0)
         patchQueue.async {
             DispatchQueue.main.async { [self] in
                 installPatch.stringValue = patch.path
@@ -73,11 +72,11 @@ class PatchController: NSViewController {
             DispatchQueue.main.async { [self] in
                 let installsDone = patchNum + 1
                 installBar.doubleValue = Double(installsDone)
-                installStatus.stringValue = String(format: NSLocalizedString("PATCH_INSTALLATION_PROGRESS", comment: ""), installsDone, patches.count);
+                installStatus.stringValue = String(format: NSLocalizedString("PATCH_INSTALLATION_PROGRESS", comment: ""), installsDone, patches.count)
                 if installsDone == patches.count {
                     FFXIVRepo.verToBck()
                     PatchController.isPatching.signal()
-                    view.window?.close() //all done
+                    view.window?.close() // all done
                 }
             }
         }
@@ -85,11 +84,11 @@ class PatchController: NSViewController {
     
     private func download(_ patch: Patch, totalSize: Int64, partialSize: Int64, tries: Int = 0, maxTries: Int = 3) {
         let headers: OrderedDictionary = [
-            "User-Agent"     : Patch.userAgent,
+            "User-Agent": Patch.userAgent,
             "Accept-Encoding": "*/*,application/metalink4+xml,application/metalink+xml",
-            "Host"           : "patch-dl.ffxiv.com",
-            "Connection"     : "Keep-Alive",
-            "Want-Digest"    : "SHA-512;q=1, SHA-256;q=1, SHA;q=0.1"
+            "Host": "patch-dl.ffxiv.com",
+            "Connection": "Keep-Alive",
+            "Want-Digest": "SHA-512;q=1, SHA-256;q=1, SHA;q=0.1"
         ]
         let destination = Patch.dir.appendingPathComponent(patch.path)
         do {
@@ -130,5 +129,4 @@ class PatchController: NSViewController {
     @IBAction func quit(_ sender: Any) {
         Util.quit()
     }
- 
 }

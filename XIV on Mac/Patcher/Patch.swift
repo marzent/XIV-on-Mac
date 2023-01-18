@@ -14,7 +14,7 @@ public struct Patch: Codable {
     let hashBlockSize: Int
     let hashes: [String]?
     let length: Int64
-
+    
     enum CodingKeys: String, CodingKey {
         case version = "VersionId"
         case hashType = "HashType"
@@ -25,7 +25,7 @@ public struct Patch: Codable {
     }
     
     static let dir = Util.applicationSupport.appendingPathComponent("patch")
-
+    
     var url: URL {
         URL(string: _url)!
     }
@@ -33,23 +33,25 @@ public struct Patch: Codable {
     var name: String {
         [repo.rawValue, String(url.lastPathComponent.dropLast(6))].joined(separator: "/")
     }
+
     var path: String {
         url.pathComponents.dropFirst().joined(separator: "/")
     }
+
     var repo: FFXIVRepo {
         FFXIVRepo(rawValue: url.pathComponents[2]) ??
-        (url.pathComponents[1] == "boot" ? .boot : .game)
+            (url.pathComponents[1] == "boot" ? .boot : .game)
     }
     
     static func totalLength(_ patches: [Patch]) -> Int64 {
-        patches.map{$0.length}.reduce(0, +)
+        patches.map { $0.length }.reduce(0, +)
     }
     
     static func totalLength(_ patches: ArraySlice<Patch>) -> Int64 {
         totalLength(Array(patches))
     }
     
-    static private let keepKey = "KeepPatches"
+    private static let keepKey = "KeepPatches"
     static var keep: Bool {
         get {
             UserDefaults.standard.bool(forKey: keepKey)
@@ -76,7 +78,7 @@ public struct Patch: Codable {
     }
     
     func install() {
-        let patchPath = Patch.dir.appendingPathComponent(self.path).path
+        let patchPath = Patch.dir.appendingPathComponent(path).path
         let patchPathCString = FileManager.default.fileSystemRepresentation(withPath: patchPath)
         let valid = checkPatchValidity(patchPathCString, Int(length), hashBlockSize, hashType, hashes?.joined(separator: ",") ?? "")
         guard valid else {
@@ -95,7 +97,7 @@ public struct Patch: Codable {
         var repo = self.repo
         let res = String(cString: installPatch(patchPathCString, repo.patchURL.path))
         if res == "OK" {
-            repo.ver = self.version
+            repo.ver = version
             Log.information("Updated ver to \(repo.ver)")
         }
         else {

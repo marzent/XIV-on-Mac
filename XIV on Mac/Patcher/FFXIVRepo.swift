@@ -8,7 +8,7 @@
 import Foundation
 import XIVLauncher
 
-fileprivate let baseVer = "2012.01.01.0000.0000"
+private let baseVer = "2012.01.01.0000.0000"
 
 public enum FFXIVRepo: String, CaseIterable {
     case boot = "ffxivboot"
@@ -40,7 +40,7 @@ public enum FFXIVRepo: String, CaseIterable {
     }
     
     private func read(from: URL) -> String {
-        if let data = try? Data.init(contentsOf: from) {
+        if let data = try? Data(contentsOf: from) {
             let readVer = String(data: data, encoding: .utf8) ?? ""
             return readVer.isEmpty ? baseVer : readVer
         }
@@ -69,7 +69,7 @@ public enum FFXIVRepo: String, CaseIterable {
         case .game:
             return app.gameRepoURL
         default:
-            return app.sqpackFolderURL.appendingPathComponent(self.rawValue)
+            return app.sqpackFolderURL.appendingPathComponent(rawValue)
         }
     }
     
@@ -84,11 +84,10 @@ public enum FFXIVRepo: String, CaseIterable {
     }
     
     var verURL: URL {
-        baseURL.appendingPathComponent(self.rawValue + ".ver")
+        baseURL.appendingPathComponent(rawValue + ".ver")
     }
     
     var bckURL: URL {
-        baseURL.appendingPathComponent(self.rawValue + ".bck")
+        baseURL.appendingPathComponent(rawValue + ".bck")
     }
-
 }

@@ -32,7 +32,7 @@ public struct FFXIVApp {
         
         let arrMovieFolder = gameRepoURL.appendingPathComponent("movie/ffxiv")
         movieFiles = ["00000.bk2", "00001.bk2", "00002.bk2", "00003.bk2"].map
-            {arrMovieFolder.appendingPathComponent($0)}
+            { arrMovieFolder.appendingPathComponent($0) }
     }
     
     static var running: Bool {
@@ -44,6 +44,6 @@ public struct FFXIVApp {
     }
     
     var installed: Bool {
-        (bootFiles + movieFiles).allSatisfy({FileManager.default.fileExists(atPath: $0.path)})
+        (bootFiles + movieFiles).allSatisfy { FileManager.default.fileExists(atPath: $0.path) }
     }
 }

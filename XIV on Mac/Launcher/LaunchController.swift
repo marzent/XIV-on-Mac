@@ -8,7 +8,6 @@
 import Cocoa
 
 class LaunchController: NSViewController {
-    
     var loginSheetWinController: NSWindowController?
     var installerWinController: NSWindowController?
     var patchWinController: NSWindowController?
@@ -18,25 +17,25 @@ class LaunchController: NSViewController {
     var repairController: RepairController?
     var newsTable: FrontierTableView!
     var topicsTable: FrontierTableView!
-    var otp: OTP? = nil
+    var otp: OTP?
     
     @IBOutlet private var loginButton: NSButton!
-    @IBOutlet weak var userField: NSTextField!
+    @IBOutlet var userField: NSTextField!
     @IBOutlet private var userMenu: NSMenu!
     @IBOutlet private var passwdField: NSTextField!
-    @IBOutlet weak var otpField: NSTextField!
-    @IBOutlet weak var otpCheck: NSButton!
-    @IBOutlet weak var autoLoginCheck: NSButton!
+    @IBOutlet var otpField: NSTextField!
+    @IBOutlet var otpCheck: NSButton!
+    @IBOutlet var autoLoginCheck: NSButton!
     @IBOutlet private var scrollView: AnimatingScrollView!
     @IBOutlet private var newsView: NSScrollView!
     @IBOutlet private var topicsView: NSScrollView!
-    @IBOutlet weak var discloseButton: NSButton!
+    @IBOutlet var discloseButton: NSButton!
     @IBOutlet private var touchBarLoginButton: NSButtonTouchBarItem!
     
     override func loadView() {
         super.loadView()
         update()
-        NotificationCenter.default.addObserver(self,selector: #selector(installDone(_:)),name: .installDone, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(installDone(_:)), name: .installDone, object: nil)
         userMenu.minimumWidth = 264
         newsTable = FrontierTableView(icon: NSImage(systemSymbolName: "newspaper", accessibilityDescription: nil)!)
         topicsTable = FrontierTableView(icon: NSImage(systemSymbolName: "newspaper.fill", accessibilityDescription: nil)!)
@@ -116,22 +115,22 @@ class LaunchController: NSViewController {
         Settings.autoLogin = sender.state == .on
         
         if Settings.autoLogin {
-            let alert: NSAlert = NSAlert()
+            let alert: NSAlert = .init()
             alert.messageText = NSLocalizedString("AUTOLOGIN_MESSAGE", comment: "")
             alert.informativeText = NSLocalizedString("AUTOLOGIN_INFORMATIVE", comment: "")
             alert.alertStyle = .informational
-            alert.addButton(withTitle:NSLocalizedString("BUTTON_OK", comment: ""))
+            alert.addButton(withTitle: NSLocalizedString("BUTTON_OK", comment: ""))
             
             alert.runModal()
         }
     }
     
     @IBAction func doLogin(_ sender: Any) {
-        self.doLogin()
+        doLogin()
     }
     
     @IBAction func doRepair(_ sender: Any) {
-        self.doLogin(repair: true)
+        doLogin(repair: true)
     }
     
     func problemConfigurationCheck() -> Bool {
@@ -141,13 +140,13 @@ class LaunchController: NSViewController {
             return true
         }
         // If there were no major problems, see if we need to apply the Retina bug workaround.
-        firstAidController.applyRetinaWorkaround();
+        firstAidController.applyRetinaWorkaround()
         return false
     }
     
     func doLogin(repair: Bool = false) {
         // Check for show stopping problems
-        if self.problemConfigurationCheck() {
+        if problemConfigurationCheck() {
             return
         }
         view.window?.beginSheet(loginSheetWinController!.window!)
@@ -221,8 +220,7 @@ class LaunchController: NSViewController {
                         alert.messageText = NSLocalizedString("GAME_START_FAILURE", comment: "")
                         alert.informativeText = NSLocalizedString("GAME_START_FAILURE_INFORMATIONAL", comment: "")
                         alert.runModal()
-                    }
-                    else if Settings.exitWithGame {
+                    } else if Settings.exitWithGame {
                         Util.quit()
                     }
                 }
@@ -231,7 +229,7 @@ class LaunchController: NSViewController {
                     loginSheetWinController?.window?.close()
                     view.window?.beginSheet(self.installerWinController!.window!)
                 }
-            } catch XLError.loginError(let errorMessage) {
+            } catch let XLError.loginError(errorMessage) {
                 DispatchQueue.main.async { [self] in
                     loginSheetWinController?.window?.close()
                     let alert = NSAlert()
@@ -241,7 +239,7 @@ class LaunchController: NSViewController {
                     alert.informativeText = errorMessage
                     alert.runModal()
                 }
-            } catch XLError.startError(let errorMessage) {
+            } catch let XLError.startError(errorMessage) {
                 DispatchQueue.main.async { [self] in
                     loginSheetWinController?.window?.close()
                     let alert = NSAlert()
@@ -261,7 +259,7 @@ class LaunchController: NSViewController {
                     alert.informativeText = error.localizedDescription
                     alert.runModal()
                 }
-            } catch { //should not reach
+            } catch { // should not reach
                 DispatchQueue.main.async { [self] in
                     loginSheetWinController?.window?.close()
                     let alert = NSAlert()
@@ -312,7 +310,6 @@ class userMenuItem: NSMenuItem {
 }
 
 final class BannerView: NSImageView {
-    
     var banner: Frontier.Info.Banner? {
         didSet {
             self.image = Frontier.fetchImage(url: URL(string: banner!.lsbBanner)!)
@@ -325,17 +322,15 @@ final class BannerView: NSImageView {
             NSWorkspace.shared.open(url)
         }
     }
-
 }
 
 final class AnimatingScrollView: NSScrollView {
-    
-    private var width: CGFloat  {
-        return self.contentSize.width
+    private var width: CGFloat {
+        return contentSize.width
     }
     
-    private var height: CGFloat  {
-        return self.contentSize.height
+    private var height: CGFloat {
+        return contentSize.height
     }
     
     private let animationDuration = 2.0
@@ -346,24 +341,23 @@ final class AnimatingScrollView: NSScrollView {
     var banners: [Frontier.Info.Banner]? {
         didSet {
             let banners = banners!
-            self.documentView?.setFrameSize(NSSize(width: width * CGFloat(banners.count), height: height))
+            documentView?.setFrameSize(NSSize(width: width * CGFloat(banners.count), height: height))
             for (i, banner) in banners.enumerated() {
                 let bannerView = BannerView()
                 bannerView.frame = CGRect(x: CGFloat(i) * width, y: 0, width: width, height: height)
                 bannerView.imageScaling = .scaleProportionallyUpOrDown
                 bannerView.banner = banner
-                self.documentView?.addSubview(bannerView)
+                documentView?.addSubview(bannerView)
             }
-            self.startTimer()
+            startTimer()
         }
     }
-    
     
     func startTimer() {
         stopTimer()
         timer = Timer.scheduledTimer(withTimeInterval: stayDuration, repeats: true, block: { _ in
             self.animate()
-            })
+        })
     }
     
     func stopTimer() {
@@ -380,9 +374,9 @@ final class AnimatingScrollView: NSScrollView {
         index = Int(floor((point.x + width / 2) / width))
         let snap_x = CGFloat(index) * width
         scroll(toPoint: NSPoint(x: snap_x, y: 0), animationDuration: animationDuration)
-        self.startTimer()
+        startTimer()
     }
-
+    
     private func scroll(toPoint: NSPoint, animationDuration: Double) {
         NSAnimationContext.beginGrouping()
         NSAnimationContext.current.duration = animationDuration
@@ -394,8 +388,7 @@ final class AnimatingScrollView: NSScrollView {
     private func animate() {
         if let banners = banners {
             index = (index + 1) % banners.count
-            self.scroll(toPoint: NSPoint(x: Int(width) * index, y: 0), animationDuration: animationDuration)
+            scroll(toPoint: NSPoint(x: Int(width) * index, y: 0), animationDuration: animationDuration)
         }
     }
-
 }

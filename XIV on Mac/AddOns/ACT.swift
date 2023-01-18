@@ -32,7 +32,6 @@ struct ACT {
         }
     }
 
-    
     static func launch() {
         install()
         Wine.launch(command: "\"\(exec.path)\"")
@@ -45,7 +44,7 @@ struct ACT {
     
     static func install() {
         Dotnet.download(url: remote.absoluteString)
-        guard let archive = Archive(url: Util.cache.appendingPathComponent("ACTv3.zip"), accessMode: .read) else  {
+        guard let archive = Archive(url: Util.cache.appendingPathComponent("ACTv3.zip"), accessMode: .read) else {
             Log.fatal("Fatal error reading ACT archive")
             return
         }
@@ -54,5 +53,4 @@ struct ACT {
             try? _ = archive.extract(file, to: dir.appendingPathComponent(file.path))
         }
     }
-    
 }

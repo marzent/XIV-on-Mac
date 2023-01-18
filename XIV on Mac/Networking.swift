@@ -5,13 +5,12 @@
 //  Created by Marc-Aurel Zent on 22.12.21.
 //
 
+import CcURLSwift
 import Foundation
 import OrderedCollections
-import CcURLSwift
 import SeeURL
 
 extension HTTPClient {
-    
     static func fetch(url: URL, headers: OrderedDictionary<String, String?>?, postBody: Data = Data()) -> Response? {
         var headerDict: OrderedDictionary<String, String> = [:]
         if let h = headers {
@@ -25,11 +24,11 @@ extension HTTPClient {
     }
     
     static func fetch(url: URL, headers: OrderedDictionary<String, String>? = nil, postBody: Data = Data()) -> Response? {
-        let headers = headers?.map {key, value in (key,value)} ?? []
+        let headers = headers?.map { key, value in (key, value) } ?? []
         let body = [UInt8](postBody)
         let method = body.isEmpty ? "GET" : "POST"
         var option = Option()
-        option.proxy = nil//"127.0.0.1:8866"
+        option.proxy = nil // "127.0.0.1:8866"
         return try? sendRequest(method: method, url: url.absoluteString, headers: headers, body: body, option: option)
     }
     
@@ -38,6 +37,7 @@ extension HTTPClient {
             self.total = 0
             self.now = 0
         }
+
         var total: Double
         var now: Double
     }
@@ -49,7 +49,7 @@ extension HTTPClient {
             return
         }
         let tempURL = URL(fileURLWithPath: NSTemporaryDirectory() + "/" + UUID().uuidString)
-        guard let fileHandle = tempURL.withUnsafeFileSystemRepresentation( { fopen($0, "wb") }) else {
+        guard let fileHandle = tempURL.withUnsafeFileSystemRepresentation({ fopen($0, "wb") }) else {
             throw cURL.Error.FailedInitialization
         }
         defer {
@@ -67,8 +67,8 @@ extension HTTPClient {
         if let proxy = proxy {
             try curl.set(option: CURLOPT_PROXY, proxy)
         }
-        if let curlHeaders = headers?.map({key, value in "\(key): \(value)"}) {
-            try curl.set(option:CURLOPT_HTTPHEADER, curlHeaders)
+        if let curlHeaders = headers?.map({ key, value in "\(key): \(value)" }) {
+            try curl.set(option: CURLOPT_HTTPHEADER, curlHeaders)
         }
         else {
             try curl.set(option: CURLOPT_USERAGENT, "curl/7.77.0")
@@ -81,8 +81,8 @@ extension HTTPClient {
             let filePtr = UnsafeMutablePointer<FILE>(OpaquePointer(file))
             return fwrite(contents, size, nmemb, filePtr)
         }
-        try curl.set(option:CURLOPT_WRITEFUNCTION, writeFile)
-        try curl.set(option:CURLOPT_WRITEDATA, fileHandle)
+        try curl.set(option: CURLOPT_WRITEFUNCTION, writeFile)
+        try curl.set(option: CURLOPT_WRITEDATA, fileHandle)
         
         func updateProgress(ptr: UnsafeMutableRawPointer?, dltotal: Double, dlnow: Double, ultotal: Double, ulnow: Double) -> Int32 {
             guard let progPtr = ptr else {
@@ -100,9 +100,9 @@ extension HTTPClient {
             timer?.invalidate()
         }
         if let callback = progressCallback {
-            try curl.set(option:CURLOPT_NOPROGRESS, false)
-            try curl.set(option:CURLOPT_PROGRESSFUNCTION, updateProgress)
-            try curl.set(option:CURLOPT_XFERINFODATA, Unmanaged.passUnretained(progress))
+            try curl.set(option: CURLOPT_NOPROGRESS, false)
+            try curl.set(option: CURLOPT_PROGRESSFUNCTION, updateProgress)
+            try curl.set(option: CURLOPT_XFERINFODATA, Unmanaged.passUnretained(progress))
             DispatchQueue.main.async {
                 let updateInterval = 0.5
                 timer = Timer.scheduledTimer(withTimeInterval: updateInterval, repeats: true) { _ in
@@ -112,7 +112,6 @@ extension HTTPClient {
                     let speed = (progress.now - lastDownloadedBytes) / updateInterval
                     lastDownloadedBytes = progress.now
                     callback(Int64(progress.total), Int64(progress.now), Int64(speed))
-                    
                 }
             }
         }
@@ -138,5 +137,4 @@ extension HTTPClient {
             UserDefaults.standard.set(newDelay, forKey: maxSpeedKey)
         }
     }
-    
 }

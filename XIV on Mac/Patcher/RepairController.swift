@@ -10,10 +10,11 @@ import OrderedCollections
 import XIVLauncher
 
 // MARK: - RepairProgress
-fileprivate struct RepairProgress: Codable {
+
+private struct RepairProgress: Codable {
     let currentStep, currentFile: String
     let total, progress, speed: Int64
-
+    
     enum CodingKeys: String, CodingKey {
         case currentStep = "CurrentStep"
         case currentFile = "CurrentFile"
@@ -35,9 +36,7 @@ fileprivate struct RepairProgress: Codable {
     }
 }
 
-
 class RepairController: NSViewController {
-    
     @IBOutlet private var repairStatus: NSTextField!
     @IBOutlet private var currentFile: NSTextField!
     @IBOutlet private var repairBar: NSProgressIndicator!

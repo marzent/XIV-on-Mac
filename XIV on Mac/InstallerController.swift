@@ -6,11 +6,10 @@
 //
 
 import Cocoa
-import ZIPFoundation
 import SeeURL
+import ZIPFoundation
 
 class InstallerController: NSViewController {
-    
     private enum GameFiles {
         case download
         case copy
@@ -71,7 +70,7 @@ class InstallerController: NSViewController {
     
     @IBAction func startInstall(_ sender: Any) {
         Task {
-            switch(action) {
+            switch action {
             case .download:
                 tabView.selectNextTabViewItem(sender)
                 install()
@@ -156,7 +155,7 @@ class InstallerController: NSViewController {
                     return nil
                 }
                 let openPath = openPanel.url!.path
-                if (InstallerController.isValidGameDirectory(gamePath: openPath)) {
+                if InstallerController.isValidGameDirectory(gamePath: openPath) {
                     return openPath
                 }
                 let alert = NSAlert()
@@ -175,7 +174,7 @@ class InstallerController: NSViewController {
     }
     
     static func isValidGameDirectory(gamePath: String) -> Bool {
-        let game = gamePath + "/game/ffxiv_dx11.exe" //needed in order to discriminate against SE's app bundle version
+        let game = gamePath + "/game/ffxiv_dx11.exe" // needed in order to discriminate against SE's app bundle version
         let boot = gamePath + "/boot"
         let validGame = FileManager.default.fileExists(atPath: game)
         let validBoot = FileManager.default.fileExists(atPath: boot)
@@ -189,7 +188,7 @@ class InstallerController: NSViewController {
             do {
                 try HTTPClient.fetchFile(url: url) { total, now, _ in
                     DispatchQueue.main.async { [self] in
-                        bar.doubleValue = bar.maxValue * (Double(now)/Double(total))
+                        bar.doubleValue = bar.maxValue * (Double(now) / Double(total))
                     }
                 }
             }
@@ -207,12 +206,12 @@ class InstallerController: NSViewController {
             DispatchQueue.main.async { [self] in
                 info.stringValue = NSLocalizedString("INSTALLER_EXTRACTING", comment: "")
             }
-            guard let archive = Archive(url: Util.cache.appendingPathComponent("finalfantasyxiv-\(version).zip"), accessMode: .read) else  {
+            guard let archive = Archive(url: Util.cache.appendingPathComponent("finalfantasyxiv-\(version).zip"), accessMode: .read) else {
                 Log.fatal("Fatal error reading base game archive")
                 return
             }
             let baseGamePath = "FINAL FANTASY XIV ONLINE.app/Contents/SharedSupport/finalfantasyxiv/support/published_Final_Fantasy/drive_c/Program Files (x86)/SquareEnix/FINAL FANTASY XIV - A Realm Reborn/"
-            let baseGameFiles = archive.filter({ $0.path.starts(with: baseGamePath) })
+            let baseGameFiles = archive.filter { $0.path.starts(with: baseGamePath) }
             Util.make(dir: Settings.gamePath)
             DispatchQueue.main.async { [self] in
                 bar.doubleValue = 0.0
@@ -251,7 +250,8 @@ class InstallerController: NSViewController {
                 try fm.removeItem(atPath: file.path)
             }
             try content.write(to: file, atomically: true, encoding: String.Encoding.utf8)
-        } catch {
+        }
+        catch {
             Log.error("Error writing ffxiv boot launcher config file")
         }
     }
@@ -266,13 +266,11 @@ class InstallerController: NSViewController {
     }
     
     @IBAction func closeWindow(_ sender: Any) {
-        self.view.window?.close()
-        self.tabView.selectTabViewItem(at: 0)
+        view.window?.close()
+        tabView.selectTabViewItem(at: 0)
         NotificationCenter.default.post(name: .installDone, object: nil)
     }
-    
 }
-
 
 extension NSTextView {
     func append(string: String) {

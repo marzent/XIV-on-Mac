@@ -5,8 +5,8 @@
 //  Created by Marc-Aurel Zent on 01.02.22.
 //
 
-import Foundation
 import CompatibilityTools
+import Foundation
 
 struct Wine {
     @available(*, unavailable) private init() {}
@@ -17,13 +17,13 @@ struct Wine {
     static func setup() {
         let winePath = Bundle.main.url(forResource: "lib", withExtension: "", subdirectory: "wine")!.path
         let libSearchPaths = [winePath, "/opt/local/lib", "/usr/local/lib", "/usr/lib", "/usr/libexec", "/usr/lib/system", "/opt/X11/lib"]
-            .compactMap {FileManager.default.fileSystemRepresentation(withPath: $0)}
+            .compactMap { FileManager.default.fileSystemRepresentation(withPath: $0) }
         let colon = UnsafePointer(strdup(":")!)
         defer {
             free(UnsafeMutableRawPointer(mutating: colon))
         }
-        let libSearchPathsSeparated = (0 ..< 2 * libSearchPaths.count - 1).map { $0 % 2 == 0 ? libSearchPaths[$0/2] : colon}
-        let libSearchPathsConcat = UnsafeMutablePointer<CChar>.allocate(capacity: libSearchPathsSeparated.map {strlen($0)}.reduce(1, +))
+        let libSearchPathsSeparated = (0 ..< 2 * libSearchPaths.count - 1).map { $0 % 2 == 0 ? libSearchPaths[$0 / 2] : colon }
+        let libSearchPathsConcat = UnsafeMutablePointer<CChar>.allocate(capacity: libSearchPathsSeparated.map { strlen($0) }.reduce(1, +))
         defer {
             libSearchPathsConcat.deallocate()
         }
@@ -34,16 +34,16 @@ struct Wine {
         addEnvironmentVariable("DYLD_FALLBACK_LIBRARY_PATH", libSearchPathsConcat)
         addEnvironmentVariable("DYLD_VERSIONED_LIBRARY_PATH", libSearchPathsConcat)
         addEnvironmentVariable("LANG", "en_US")
-        addEnvironmentVariable("MVK_ALLOW_METAL_FENCES", "1")             // XXX Required by DXVK for Apple/NVidia GPUs (better FPS than CPU Emulation)
+        addEnvironmentVariable("MVK_ALLOW_METAL_FENCES", "1") // XXX Required by DXVK for Apple/NVidia GPUs (better FPS than CPU Emulation)
         addEnvironmentVariable("MVK_CONFIG_FULL_IMAGE_VIEW_SWIZZLE", "1") // XXX Required by DXVK for Intel/NVidia GPUs
-        addEnvironmentVariable("MVK_CONFIG_RESUME_LOST_DEVICE", "1")      // XXX Required by WINE (doesn't handle VK_ERROR_DEVICE_LOST correctly)
+        addEnvironmentVariable("MVK_CONFIG_RESUME_LOST_DEVICE", "1") // XXX Required by WINE (doesn't handle VK_ERROR_DEVICE_LOST correctly)
         addEnvironmentVariable("DXVK_HUD", Dxvk.options.getHud())
         addEnvironmentVariable("DXVK_ASYNC", Dxvk.options.getAsync())
         addEnvironmentVariable("DXVK_FRAME_RATE", Dxvk.options.getMaxFramerate())
         addEnvironmentVariable("DXVK_CONFIG_FILE", "C:\\dxvk.conf")
         addEnvironmentVariable("DXVK_STATE_CACHE_PATH", "C:\\")
         addEnvironmentVariable("DXVK_LOG_PATH", "C:\\")
-        addEnvironmentVariable("DOTNET_EnableWriteXorExecute", "0")     // XXX Required for Apple Silicon and .NET 7+
+        addEnvironmentVariable("DOTNET_EnableWriteXorExecute", "0") // XXX Required for Apple Silicon and .NET 7+
         if Settings.metal3PerformanceOverlay {
             addEnvironmentVariable("MTL_HUD_ENABLED", "1")
         }
@@ -55,7 +55,7 @@ struct Wine {
     }
     
     static var rosettaInstalled: Bool {
-        if (Util.getXOMRuntimeEnvironment() == .appleSiliconNative) {
+        if Util.getXOMRuntimeEnvironment() == .appleSiliconNative {
             return checkRosetta()
         }
         return false
@@ -76,7 +76,7 @@ struct Wine {
     }
     
     static func pidsOf(processName: String) -> [Int] {
-        Array(String(cString: getProcessIds(processName)).split(separator: " ").compactMap {Int($0)})
+        Array(String(cString: getProcessIds(processName)).split(separator: " ").compactMap { Int($0) })
     }
     
     static func running(processName: String) -> Bool {
@@ -153,17 +153,16 @@ struct Wine {
             UserDefaults.standard.set(_retinaStartupBugWorkaround, forKey: retinaStartupBugWorkaroundSettingKey)
         }
     }
-
-    private static var timebase: mach_timebase_info = mach_timebase_info()
+    
+    private static var timebase: mach_timebase_info = .init()
     static var tickCount: UInt64 {
         if timebase.denom == 0 {
             mach_timebase_info(&timebase)
         }
-        let machtime = mach_continuous_time() //maybe mach_absolute_time for older wine versions?
+        let machtime = mach_continuous_time() // maybe mach_absolute_time for older wine versions?
         let numer = UInt64(timebase.numer)
         let denom = UInt64(timebase.denom)
         let monotonic_time = machtime * numer / denom / 100
         return monotonic_time / 10000
     }
-    
 }

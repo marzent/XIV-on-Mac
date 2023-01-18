@@ -7,7 +7,7 @@
 
 struct AddOn {
     @available(*, unavailable) private init() {}
-    
+
     static func launchNotify() {
         ACT.launchNotify()
         IINACT.launchNotify()

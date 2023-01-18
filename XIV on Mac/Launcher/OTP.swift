@@ -5,16 +5,16 @@
 //  Created by Marc-Aurel Zent on 13.02.22.
 //
 
+import Base32
 import Cocoa
 import Embassy
 import KeychainAccess
-import Base32
 
 class OTP {
     private let loop: SelectorEventLoop
-    private var server: DefaultHTTPServer? = nil
-    static private let keychain = Keychain(server: "https://secure.square-enix.com", protocolType: .https)
-    private var generator: TOTP? = nil
+    private var server: DefaultHTTPServer?
+    private static let keychain = Keychain(server: "https://secure.square-enix.com", protocolType: .https)
+    private var generator: TOTP?
     private var timer = Timer()
     
     init(username: String) {
@@ -22,8 +22,8 @@ class OTP {
         server = DefaultHTTPServer(eventLoop: loop, interface: "::", port: 4646) {
             (
                 environ: [String: Any],
-                startResponse: ((String, [(String, String)]) -> Void),
-                sendBody: ((Data) -> Void)
+                startResponse: (String, [(String, String)]) -> Void,
+                sendBody: (Data) -> Void
             ) in
             // Start HTTP response
             startResponse("200 OK", [])
@@ -74,14 +74,14 @@ class OTP {
     }
     
     private func stopServer() {
-        self.loop.stop()
+        loop.stop()
         server?.stop()
     }
     
     func start() {
         startServer()
         if generator != nil {
-            self.push(otp: self.generator?.token)
+            push(otp: generator?.token)
             timer.invalidate()
             timer = Timer.scheduledTimer(withTimeInterval: 30, repeats: true, block: { _ in
                 self.push(otp: self.generator?.token)
@@ -96,11 +96,10 @@ class OTP {
 }
 
 extension LaunchController {
-    
     typealias settings = Settings
     
     func setupOTP() {
-        NotificationCenter.default.addObserver(self,selector: #selector(otpUpdate(_:)),name: .otpPush, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(otpUpdate(_:)), name: .otpPush, object: nil)
         if settings.usesOneTimePassword {
             otpCheck.state = .on
             enableOTP()
@@ -110,7 +109,7 @@ extension LaunchController {
     @objc func otpUpdate(_ notif: Notification) {
         let info = notif.userInfo?[Notification.status.info]! as! String
         DispatchQueue.main.async {
-            self.otpField .stringValue = info
+            self.otpField.stringValue = info
         }
     }
     
@@ -141,5 +140,4 @@ extension LaunchController {
     func enableOTP() {
         otp = OTP(username: userField.stringValue)
     }
-
 }

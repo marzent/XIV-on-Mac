@@ -17,7 +17,7 @@ struct Util {
     static let cache = applicationSupport.appendingPathComponent("cache")
     static let seGameConfigPath = userHome.appendingPathComponent("/Documents/My Games/FINAL FANTASY XIV - A Realm Reborn/", isDirectory: true)
     
-    static func make(dir : String) {
+    static func make(dir: String) {
         if !FileManager.default.fileExists(atPath: dir) {
             do {
                 try FileManager.default.createDirectory(atPath: dir, withIntermediateDirectories: true, attributes: nil)
@@ -28,7 +28,7 @@ struct Util {
         }
     }
     
-    static func make(dir : URL) {
+    static func make(dir: URL) {
         make(dir: dir.path)
     }
     
@@ -56,12 +56,12 @@ struct Util {
         }
     }
     
-    static var enviroment : [String : String] {
+    static var enviroment: [String: String] {
         var env = ProcessInfo.processInfo.environment
         if Settings.platform == .steam {
             env["IS_FFXIV_LAUNCH_FROM_STEAM"] = "1"
         }
-        env["LANG"] = "en_US" //needed to run when system language is set to 日本語
+        env["LANG"] = "en_US" // needed to run when system language is set to 日本語
         env["WINEESYNC"] = Wine.esync ? "1" : "0"
         env["WINEPREFIX"] = Wine.prefix.path
         env["WINEDEBUG"] = Wine.debug
@@ -79,7 +79,7 @@ struct Util {
         env["MVK_CONFIG_RESUME_LOST_DEVICE"] = "1"
         env["MVK_ALLOW_METAL_FENCES"] = "1"
         env["MVK_CONFIG_USE_METAL_ARGUMENT_BUFFERS"] = "1"
-        //env["DYLD_PRINT_LIBRARIES"] = "YES"
+        // env["DYLD_PRINT_LIBRARIES"] = "YES"
         return env
     }
     
@@ -104,34 +104,31 @@ struct Util {
     }
     
     static func pathExists(path: URL) -> Bool {
-        var exists : Bool = false
+        var exists = false
         do {
-            exists = try path.checkResourceIsReachable();
+            exists = try path.checkResourceIsReachable()
         }
         catch let error as NSError {
-            if (error.domain == NSCocoaErrorDomain) && error.code == 260
-            {
+            if (error.domain == NSCocoaErrorDomain) && error.code == 260 {
                 // No such file, might be the first launch.
                 // The default is false, this path mainly exists to document that this is the EXPECTED 'doesn't exist' error,
                 // anything else should be logged/investigated.
                 exists = false
             }
-            else
-            {
+            else {
                 Log.error(error.localizedDescription)
             }
         }
-        return exists;
+        return exists
     }
     
-    static private func createConfigDirectory() {
+    private static func createConfigDirectory() {
         // Do we need to create the config directory itself?
-        if (!Util.pathExists(path: Settings.gameConfigPath)) {
+        if !Util.pathExists(path: Settings.gameConfigPath) {
             Log.information("Cfg: Game Config path doesn't exist.")
             // Ok, so, it may be our first launch, or our prefix was wiped etc. However, there might be an existing install from either an older XOM or
             // the SE client. See if that cfg location exists.
-            if (Util.pathExists(path: seGameConfigPath))
-            {
+            if Util.pathExists(path: seGameConfigPath) {
                 Log.information("Cfg: Found existing game Cfg path to import.")
                 // It does exist. Copy theirs to ours.
                 do {
@@ -140,10 +137,8 @@ struct Util {
                 catch let createError as NSError {
                     Log.error("Cfg: Could not import existing Cfg: \(createError.localizedDescription)")
                 }
-
             }
-            else
-            {
+            else {
                 Log.information("Cfg: No existing game Cfg found.")
                 // SE version does not exist. Just create the directory.
                 do {
@@ -159,14 +154,12 @@ struct Util {
     /// Attempt to load the FFXIV.cfg file (raw contents) from disk. If it does not yet exist, we attempt to create it with default values, as well as its containing folders.
     ///  - Returns: The contents of the cfg file, or nil if it cannot be read and a default could not be created.
     static func loadCfgFile() -> String? {
-        var configFileContents : String? = nil
-        if (!Util.pathExists(path: FFXIVApp.configURL))
-        {
-            createConfigDirectory();
+        var configFileContents: String?
+        if !Util.pathExists(path: FFXIVApp.configURL) {
+            createConfigDirectory()
         }
         // One way or another we should have a config folder now. IF we copied the SE one, we might also now have a .cfg file. Check again.
-        if (!Util.pathExists(path: FFXIVApp.configURL))
-        {
+        if !Util.pathExists(path: FFXIVApp.configURL) {
             // .cfg still doesn't exist, so let's copy in our Mac default one.
             Log.information("Cfg: No existing game configuration, establishing Mac default settings.")
             do {
@@ -177,15 +170,15 @@ struct Util {
                 Log.error("Cfg: Could not create default Mac settings: \(createError.localizedDescription)")
             }
         }
-
+        
         do {
-            configFileContents = try String(contentsOf:FFXIVApp.configURL)
+            configFileContents = try String(contentsOf: FFXIVApp.configURL)
         }
         catch {
             Log.error(error.localizedDescription)
             return nil
         }
-
+        
         return configFileContents
     }
     
@@ -196,12 +189,12 @@ struct Util {
     }
     
     static func getXOMRuntimeEnvironment() -> XOMRuntimeEnvironment {
-    #if arch(arm64)
+#if arch(arm64)
         return .appleSiliconNative
-    #else
+#else
         let key = "sysctl.proc_translated"
         var ret = Int32(0)
-        var size: Int = 0
+        var size = 0
         sysctlbyname(key, nil, &size, nil, 0)
         let result = sysctlbyname(key, &ret, &size, nil, 0)
         if result == -1 {
@@ -213,29 +206,29 @@ struct Util {
             Log.error("Error determining execution environment")
             return .x64Native
         }
-        if (ret == 1) {
+        if ret == 1 {
             return .appleSiliconRosetta
         }
         return .x64Native
-    #endif
+#endif
     }
     
     static func supportedGPU() -> Bool {
-        var foundSupportedGPU : Bool = false
-        if (Util.getXOMRuntimeEnvironment() != .x64Native) {
+        var foundSupportedGPU = false
+        if Util.getXOMRuntimeEnvironment() != .x64Native {
             // On Apple Silicon to date, there is always a built-in GPU, and it is always supported. So we don't need to check anything.
             foundSupportedGPU = true
         }
         else {
             // On Intel, we need to find an AMD GPU. Intel iGPUs are not supported, and neither is nVidia or other oddities (USB video).
-            var deviceIterator : io_iterator_t = io_iterator_t()
-                                                                               
-            if IOServiceGetMatchingServices(kIOMasterPortDefault, IOServiceMatching(kIOAcceleratorClassName),&deviceIterator) == kIOReturnSuccess {
-                var entry : io_registry_entry_t = IOIteratorNext(deviceIterator)
-                while (entry != 0) && (!foundSupportedGPU) {
-                    var properties : Unmanaged<CFMutableDictionary>? = nil
+            var deviceIterator = io_iterator_t()
+            
+            if IOServiceGetMatchingServices(kIOMasterPortDefault, IOServiceMatching(kIOAcceleratorClassName), &deviceIterator) == kIOReturnSuccess {
+                var entry: io_registry_entry_t = IOIteratorNext(deviceIterator)
+                while (entry != 0) && !foundSupportedGPU {
+                    var properties: Unmanaged<CFMutableDictionary>?
                     if IORegistryEntryCreateCFProperties(entry, &properties, kCFAllocatorDefault, 0) == kIOReturnSuccess {
-                        guard let propertiesDict = properties?.takeUnretainedValue() as? [String : AnyObject] else { continue }
+                        guard let propertiesDict = properties?.takeUnretainedValue() as? [String: AnyObject] else { continue }
                         properties?.release()
                         
                         let ioClass = propertiesDict["IOClass"]
@@ -256,12 +249,10 @@ struct Util {
         }
         return foundSupportedGPU
     }
-    
 }
 
-extension View
-{
-    func openNewWindow(title: String, delegate: NSWindowDelegate?, geometry: NSRect = NSRect(x: 20, y: 20, width: 640, height: 500), style:NSWindow.StyleMask = [.titled, .closable, .miniaturizable, .resizable])
+extension View {
+    func openNewWindow(title: String, delegate: NSWindowDelegate?, geometry: NSRect = NSRect(x: 20, y: 20, width: 640, height: 500), style: NSWindow.StyleMask = [.titled, .closable, .miniaturizable, .resizable])
     {
         let window = NSWindow(contentRect: geometry, styleMask: style, backing: .buffered, defer: false)
         window.center()

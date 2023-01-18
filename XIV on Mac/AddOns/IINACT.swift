@@ -6,8 +6,8 @@
 //
 
 import Foundation
-import ZIPFoundation
 import SeeURL
+import ZIPFoundation
 
 struct IINACT {
     @available(*, unavailable) private init() {}
@@ -61,7 +61,7 @@ struct IINACT {
             Dotnet.installDotNet702()
         }
         let zipURL = Util.cache.appendingPathComponent("IINACT-not-self-contained.zip")
-        if let data = try? Data.init(contentsOf: versionFile) {
+        if let data = try? Data(contentsOf: versionFile) {
             let remoteVersion = version
             let readVersion = String(data: data, encoding: .utf8) ?? remoteVersion
             if readVersion != remoteVersion {
@@ -76,7 +76,7 @@ struct IINACT {
             try? (version ?? "").write(to: versionFile, atomically: true, encoding: String.Encoding.utf8)
         }
         Dotnet.download(url: remote.absoluteString)
-        guard let archive = Archive(url: zipURL, accessMode: .read) else  {
+        guard let archive = Archive(url: zipURL, accessMode: .read) else {
             Log.fatal("Fatal error reading IINACT archive")
             return
         }
@@ -84,5 +84,4 @@ struct IINACT {
             try? _ = archive.extract(file, to: dir.appendingPathComponent(file.path))
         }
     }
-    
 }

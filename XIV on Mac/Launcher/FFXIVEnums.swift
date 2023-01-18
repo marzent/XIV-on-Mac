@@ -18,7 +18,7 @@ public enum FFXIVLanguage: UInt8 {
     case english = 1
     case french = 3
     case german = 2
-    
+
     static func guessFromLocale() -> FFXIVLanguage {
         switch Locale.current.languageCode {
         case "ja"?:
@@ -33,7 +33,7 @@ public enum FFXIVLanguage: UInt8 {
             return .english
         }
     }
-    
+
     var code: String {
         switch self {
         case .english:
@@ -57,7 +57,7 @@ public enum XLError: Error {
     case loginError(String)
     case startError(String)
     case runtimeError(String)
-    
+
     var tryMap: Error {
         switch self {
         case .loginError(let errorMessage):
@@ -123,11 +123,11 @@ extension FFXIVLoginError: LocalizedError {
             return NSLocalizedString("MULTIBOX_SHORT", comment: "")
         case .killswitch:
             return NSLocalizedString("KILLSWITCH_SHORT", comment: "")
-        case .unexpected(_):
+        case .unexpected:
             return NSLocalizedString("UNEXPECTED_SHORT", comment: "Unexpected Error Title")
         }
     }
-    
+
     public var errorDescription: String? {
         switch self {
         case .incorrectCredentials:
@@ -152,7 +152,7 @@ extension FFXIVLoginError: LocalizedError {
             return NSLocalizedString("MULTIBOX", comment: "")
         case .killswitch:
             return NSLocalizedString("KILLSWITCH", comment: "")
-        case .unexpected(_):
+        case .unexpected:
             return NSLocalizedString("UNEXPECTED", comment: "Unexpected Error Description")
         }
     }

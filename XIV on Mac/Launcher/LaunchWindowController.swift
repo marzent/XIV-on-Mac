@@ -9,16 +9,15 @@ import AppKit
 
 class LaunchWindowController: NSWindowController {
     private let autosaveName = "XOMMainWindowPosition"
-    
+
     override func windowDidLoad() {
         super.windowDidLoad()
         if let currentAutosaveName = window?.frameAutosaveName, currentAutosaveName != autosaveName {
-            window?.setFrameUsingName(autosaveName)
-            window?.setFrameAutosaveName(autosaveName)
+            window?.setFrameUsingName(self.autosaveName)
+            window?.setFrameAutosaveName(self.autosaveName)
         }
         window?.isMovableByWindowBackground = true
     }
-    
 }
 
 class FadingScrollView: NSScrollView {
@@ -33,7 +32,7 @@ class FadingScrollView: NSScrollView {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = NSMakeRect(self.bounds.origin.x, 0, self.bounds.size.width, self.bounds.size.height)
         gradientLayer.colors = [transparent, opaque, opaque, transparent]
-        gradientLayer.locations = [0, NSNumber(value: fadePercentage), NSNumber(value: 1 - fadePercentage * 2), 1]
+        gradientLayer.locations = [0, NSNumber(value: self.fadePercentage), NSNumber(value: 1 - self.fadePercentage * 2), 1]
         maskLayer.addSublayer(gradientLayer)
         self.layer?.mask = maskLayer
     }

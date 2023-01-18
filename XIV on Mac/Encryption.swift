@@ -5,8 +5,8 @@
 //  Created by Marc-Aurel Zent on 18.03.22.
 //
 
-import Foundation
 import CommonCrypto
+import Foundation
 
 struct Encryption {
     @available(*, unavailable) private init() {}
@@ -18,7 +18,7 @@ struct Encryption {
             bytes = swapByteOrder32(bytes)
         }
         var cipher = [UInt8](repeating: 0, count: bytes.count)
-        var bytesWritten: Int = 0
+        var bytesWritten = 0
         let op: CCOperation = UInt32(kCCEncrypt)
         let alg: CCAlgorithm = UInt32(kCCAlgorithmBlowfish)
         let opts: CCOptions = UInt32(kCCOptionECBMode)
@@ -29,7 +29,7 @@ struct Encryption {
         }
         return cipher
     }
-
+    
     private static func zeroPad(array: [UInt8]) -> [UInt8] {
         let zeroes = kCCBlockSizeBlowfish - (array.count % kCCBlockSizeBlowfish)
         if zeroes > 0 {
@@ -38,7 +38,7 @@ struct Encryption {
         return array
     }
     
-    private static func swapByteOrder32(_ bytes: [UInt8]) -> [UInt8]{
+    private static func swapByteOrder32(_ bytes: [UInt8]) -> [UInt8] {
         var mbytes = bytes
         for i in stride(from: 0, to: bytes.count, by: 4) {
             for j in 0 ..< 4 {
@@ -49,9 +49,9 @@ struct Encryption {
     }
     
     static func sha1(file: URL) throws -> (String, Int) {
-        let data = try Data.init(contentsOf: file)
+        let data = try Data(contentsOf: file)
         var hash = [UInt8](repeating: 0, count: Int(CC_SHA1_DIGEST_LENGTH))
-        data.withUnsafeBytes { (bytes: UnsafeRawBufferPointer) -> Void in
+        _ = data.withUnsafeBytes { (bytes: UnsafeRawBufferPointer) in
             CC_SHA1(bytes.baseAddress, UInt32(data.count), &hash)
         }
         return (Data(hash).hexStr, data.count)
@@ -100,11 +100,11 @@ extension Data {
         let intBits = [UInt8](self).withUnsafeBufferPointer {
             ($0.baseAddress!.withMemoryRebound(to: UInt32.self, capacity: 1) { $0 })
         }.pointee
-      return UInt32(littleEndian: intBits)
+        return UInt32(littleEndian: intBits)
     }
     
     func squareBase64EncodedString() -> String {
-        self.base64EncodedString()
+        base64EncodedString()
             .replacingOccurrences(of: "+", with: "-")
             .replacingOccurrences(of: "/", with: "_")
             .replacingOccurrences(of: "=", with: "*")

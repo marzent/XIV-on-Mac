@@ -13,7 +13,7 @@ public struct LoginCredentials {
     static let squareServer = "https://secure.square-enix.com"
     let username: String
     let password: String
-    var oneTimePassword: String? = nil
+    var oneTimePassword: String?
     
     public init(username: String) {
         self.username = username
@@ -28,16 +28,16 @@ public struct LoginCredentials {
     }
     
     static func storedLogin(username: String) -> LoginCredentials? {
-        #if DEBUG
+#if DEBUG
+        return nil
+#else
+        let keychain = Keychain(server: squareServer, protocolType: .https)
+        // wtf Swift
+        guard case let storedPassword?? = ((try? keychain.get(username)) as String??) else {
             return nil
-        #else
-            let keychain = Keychain(server: squareServer, protocolType: .https)
-            // wtf Swift
-            guard case let storedPassword?? = (((try? keychain.get(username)) as String??)) else {
-                return nil
-            }
-            return LoginCredentials(username: username, password: storedPassword)
-        #endif
+        }
+        return LoginCredentials(username: username, password: storedPassword)
+#endif
     }
     
     static func deleteLogin(username: String) {
@@ -56,7 +56,6 @@ public struct LoginCredentials {
     
     static var accounts: [LoginCredentials] {
         let keychain = Keychain(server: squareServer, protocolType: .https)
-        return keychain.allKeys().compactMap {storedLogin(username:$0)}.filter {!$0.username.contains(" ")}
+        return keychain.allKeys().compactMap { storedLogin(username: $0) }.filter { !$0.username.contains(" ") }
     }
-    
 }

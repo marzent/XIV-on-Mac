@@ -26,7 +26,7 @@ struct Anamnesis {
             Dotnet.installDotNet607()
         }
         Dotnet.download(url: remote.absoluteString)
-        guard let archive = Archive(url: Util.cache.appendingPathComponent("Anamnesis.zip"), accessMode: .read) else  {
+        guard let archive = Archive(url: Util.cache.appendingPathComponent("Anamnesis.zip"), accessMode: .read) else {
             Log.fatal("Fatal error reading Anamnesis archive")
             return
         }
@@ -35,5 +35,4 @@ struct Anamnesis {
             try? _ = archive.extract(file, to: dir.appendingPathComponent(file.path))
         }
     }
-    
 }

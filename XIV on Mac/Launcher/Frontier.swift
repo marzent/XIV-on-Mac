@@ -11,7 +11,6 @@ import SeeURL
 import XIVLauncher
 
 class Frontier {
-    
     static var squareTime: Int64 {
         Int64((Date().timeIntervalSince1970 * 1000.0).rounded())
     }
@@ -41,11 +40,11 @@ class Frontier {
     
     static func fetch(url: URL, accept: String? = nil, global: Bool = false) -> HTTPClient.Response? {
         let headers: OrderedDictionary = [
-            "User-Agent"     : String(cString: getUserAgent()),
-            "Accept"         : accept,
+            "User-Agent": String(cString: getUserAgent()),
+            "Accept": accept,
             "Accept-Encoding": "gzip, deflate",
-            "Origin"         : "https://launcher.finalfantasyxiv.com",
-            "Referer"        : (global ? refererGlobal : referer).absoluteString
+            "Origin": "https://launcher.finalfantasyxiv.com",
+            "Referer": (global ? refererGlobal : referer).absoluteString
         ]
         return HTTPClient.fetch(url: url, headers: headers)
     }
@@ -102,7 +101,6 @@ class Frontier {
     }
     
     struct Info: Codable {
-        
         struct News: Codable {
             let date: String
             let title: String
@@ -114,7 +112,7 @@ class Frontier {
         struct Banner: Codable {
             let lsbBanner: String
             let link: String
-
+            
             enum CodingKeys: String, CodingKey {
                 case lsbBanner = "lsb_banner"
                 case link
@@ -139,18 +137,16 @@ class Frontier {
             return nil
         }
     }
-
 }
 
 extension String {
     var unescapingUnicodeCharacters: String {
         let mutableString = NSMutableString(string: self)
         CFStringTransform(mutableString, nil, "Any-Hex/Java" as NSString, true)
-
+        
         return mutableString as String
     }
 }
-
 
 class FrontierTableView: NSObject {
     static let columnText = "text"
@@ -184,7 +180,7 @@ class FrontierTableView: NSObject {
         tableView.target = self
         tableView.action = #selector(onItemClicked)
     }
-        
+    
     func add(items: [Frontier.Info.News]) {
         self.items += items
     }
@@ -200,9 +196,7 @@ class FrontierTableView: NSObject {
     }
 }
 
-
 extension FrontierTableView: NSTableViewDelegate, NSTableViewDataSource {
-    
     func numberOfRows(in tableView: NSTableView) -> Int {
         return items.count
     }
@@ -229,7 +223,6 @@ extension FrontierTableView: NSTableViewDelegate, NSTableViewDataSource {
         text.preferredMaxLayoutWidth = 433
         return text
     }
-
     
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
         return createCell(name: items[row].title).intrinsicContentSize.height
@@ -245,4 +238,3 @@ extension FrontierTableView: NSTableViewDelegate, NSTableViewDataSource {
         return rowView
     }
 }
-
