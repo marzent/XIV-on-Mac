@@ -191,6 +191,10 @@ import XIVLauncher
         GShade.manual()
     }
     
+    @IBAction func forceGShade(_ sender: Any) {
+        GShade.forceUpdate()
+    }
+    
     @IBAction func regedit(_ sender: Any) {
         Wine.launch(command: "regedit")
     }

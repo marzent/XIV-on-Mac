@@ -7,4 +7,8 @@ rm -rf gshade_installer-master &>/dev/null
 curl -LO https://github.com/HereInPlainSight/gshade_installer/archive/refs/heads/master.zip
 unzip -qquo master.zip
 cd gshade_installer-master
-./gshade_installer.sh
+if [[ -z "${GSHADE_FORCE_UPDATE}" ]]; then
+  ./gshade_installer.sh
+else
+  ./gshade_installer.sh update force
+fi

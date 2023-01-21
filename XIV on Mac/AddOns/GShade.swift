@@ -47,4 +47,23 @@ struct GShade {
             alert.runModal()
         }
     }
+    
+    static func forceUpdate() {
+        if #available(OSX 11.0, *) {
+            Util.launch(exec: URL(string: "file:///usr/bin/open")!,
+                        args: ["-n", "-b", "com.apple.Terminal",
+                               Bundle.main.url(forResource: "manual_gshade", withExtension: "sh", subdirectory: "GShade")!.path,
+                               "--env", "WINEPATH=\(Bundle.main.url(forResource: "bin", withExtension: nil, subdirectory: "wine")!.path)",
+                               "--env", "WINEESYNC=\(Wine.esync ? "1" : "0")",
+                               "--env", "WINEPREFIX=\(Wine.prefix.path)",
+                               "--env", "GSHADE_FORCE_UPDATE=1"])
+        } else {
+            let alert = NSAlert()
+            alert.messageText = NSLocalizedString("GSHADE_MESSAGE", comment: "")
+            alert.informativeText = NSLocalizedString("GSHADE_INFORMATIVE", comment: "")
+            alert.alertStyle = .warning
+            alert.addButton(withTitle: NSLocalizedString("BUTTON_OK", comment: ""))
+            alert.runModal()
+        }
+    }
 }
