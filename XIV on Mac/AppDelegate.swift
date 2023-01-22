@@ -175,6 +175,10 @@ import XIVLauncher
         Dotnet.installDotNet48()
     }
     
+    @IBAction func installDotNet481(_ sender: Any) {
+        Dotnet.installDotNet481()
+    }
+    
     @IBAction func installDotNet60(_ sender: Any) {
         Dotnet.installDotNet607()
     }

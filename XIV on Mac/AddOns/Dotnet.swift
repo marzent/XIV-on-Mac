@@ -23,6 +23,7 @@ struct Dotnet {
         installDotNet462()
         installDotNet472()
         installDotNet48()
+        installDotNet481()
     }
     
     static func installMSVC32() {
@@ -62,6 +63,12 @@ struct Dotnet {
         download(url: "https://download.visualstudio.microsoft.com/download/pr/7afca223-55d2-470a-8edc-6a1739ae3252/abd170b4b0ec15ad0222a809b761a036/ndp48-x86-x64-allos-enu.exe")
         Wine.set(version: "win10")
         Wine.launch(command: "\"\(Util.cache.appendingPathComponent("ndp48-x86-x64-allos-enu.exe").path)\" /passive /norestart", blocking: true)
+    }
+    
+    static func installDotNet481() {
+        download(url: "https://download.visualstudio.microsoft.com/download/pr/6f083c7e-bd40-44d4-9e3f-ffba71ec8b09/3951fd5af6098f2c7e8ff5c331a0679c/ndp481-x86-x64-allos-enu.exe")
+        Wine.set(version: "win10")
+        Wine.launch(command: "\"\(Util.cache.appendingPathComponent("ndp481-x86-x64-allos-enu.exe").path)\" /passive /norestart", blocking: true)
     }
     
     static func installDotNet607() {
