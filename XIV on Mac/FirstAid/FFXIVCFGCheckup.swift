@@ -17,7 +17,7 @@ let FFXIVCheckupConditions: [FFXIVCfgCheckCondition] = [
 let FFXIVCheckupConditions_AS: [FFXIVCfgCheckCondition] = [
     FFXIVCfgCheckCondition(title: NSLocalizedString("FIRSTAID_CFGCHECK_TESSELATION_TITLE", comment: ""),
                            explanation: NSLocalizedString("FIRSTAID_CFGCHECK_TESSELATION_EXP", comment: ""),
-                           type: .advisory, sectionKey: FFXIVCFGSectionLabel.Graphics.rawValue, name: FFXIVCFGOptionKey.Graphics_Tesselation.rawValue, comparisonValue: "3", proposedValue: "3", comparisonType: .lessthan)
+                           type: .advisory, sectionKey: FFXIVCFGSectionLabel.Graphics.rawValue, name: FFXIVCFGOptionKey.Graphics_Tesselation.rawValue, comparisonValue: "3", proposedValue: "2", comparisonType: .lessthan)
 ]
 
 // Conditions which only apply to Intel
@@ -44,7 +44,9 @@ public enum FFXIVCfgConditionComparisonType {
 }
 
 
-public struct FFXIVCfgCheckCondition {
+public class FFXIVCfgCheckCondition : Identifiable {
+    public var id: String { name }
+    
     var title: String
     var explanation: String
     var type: FFXIVCfgConditionType
@@ -53,10 +55,24 @@ public struct FFXIVCfgCheckCondition {
     var comparisonValue: String
     var proposedValue: String
     var comparisonType: FFXIVCfgConditionComparisonType
+    var fixed : Bool = false
 
+    init(title: String, explanation: String, type: FFXIVCfgConditionType, sectionKey: String, name: String, comparisonValue: String, proposedValue: String, comparisonType: FFXIVCfgConditionComparisonType)
+    {
+        self.title = title
+        self.explanation = explanation
+        self.type = type
+        self.sectionKey = sectionKey
+        self.name = name
+        self.comparisonValue = comparisonValue
+        self.proposedValue = proposedValue
+        self.comparisonType = comparisonType
+    }
+    
     public func applyProposedValueToConfig(config: inout FFXIVCFG){
         if let cfgSection: FFXIVCFGSection = config.sections[sectionKey] {
             cfgSection.contents[name] = proposedValue
+            self.fixed = true
         }
     }
     

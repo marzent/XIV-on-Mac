@@ -148,7 +148,7 @@ struct SettingsGraphicsTabView: View {
                         Text("SETTINGS_GRAPHICS_HUD_BLURB")
                             .multilineTextAlignment(.leading)
                             .lineLimit(nil)
-                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .fixedSize(horizontal: false, vertical: true)
                         
                         HStack {
                             Text("SETTINGS_GRAPHICS_HUD_SCALE")

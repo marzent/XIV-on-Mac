@@ -23,10 +23,11 @@ struct SettingsPluginsTabView: View {
                 Toggle(isOn: $dalamudEnabled) {
                     Text("SETTINGS_PLUGINS_DALAMUD_ENABLE")
                 }
-                .padding(.leading)
-                .onChange(of: dalamudEnabled) { newValue in
-                    Settings.dalamudEnabled = newValue
-                }
+                    .padding(.leading)
+                    .onChange(of: dalamudEnabled)
+                    { newValue in
+                        Settings.dalamudEnabled = newValue
+                    }
                 Spacer()
             }
             Text("SETTINGS_PLUGINS_DALAMUD_DELAY_BLURB")

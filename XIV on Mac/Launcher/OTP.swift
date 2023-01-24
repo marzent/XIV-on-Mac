@@ -93,34 +93,9 @@ class OTP {
         stopServer()
         timer.invalidate()
     }
-}
-
-extension LaunchController {
-    typealias settings = Settings
     
-    func setupOTP() {
-        NotificationCenter.default.addObserver(self, selector: #selector(otpUpdate(_:)), name: .otpPush, object: nil)
-        if settings.usesOneTimePassword {
-            otpCheck.state = .on
-            enableOTP()
-        }
-    }
-    
-    @objc func otpUpdate(_ notif: Notification) {
-        let info = notif.userInfo?[Notification.status.info]! as! String
-        DispatchQueue.main.async {
-            self.otpField.stringValue = info
-        }
-    }
-    
-    @IBAction func toggleOTP(_ sender: NSButton) {
-        otp?.stop()
-        if sender.state == .off {
-            settings.usesOneTimePassword = false
-            return
-        }
-        settings.usesOneTimePassword = true
-        let username = userField.stringValue
+    static func getOTPSecretIfNeeded(username : String)
+    {
         if !OTP.secretStored(username: username) {
             let msg = NSAlert()
             msg.addButton(withTitle: NSLocalizedString("BUTTON_OK", comment: ""))
@@ -134,10 +109,28 @@ extension LaunchController {
             }
             txt.stringValue = ""
         }
-        enableOTP()
+    }
+
+}
+
+extension LaunchController {
+    typealias settings = Settings
+    
+    func setupOTP() {
+        NotificationCenter.default.addObserver(self, selector: #selector(otpUpdate(_:)), name: .otpPush, object: nil)
+        if settings.usesOneTimePassword {
+            enableOTP()
+        }
+    }
+    
+    @objc func otpUpdate(_ notif: Notification) {
+        let info = notif.userInfo?[Notification.status.info]! as! String
+        DispatchQueue.main.async {
+            self.currentOTPValue = info
+        }
     }
     
     func enableOTP() {
-        otp = OTP(username: userField.stringValue)
+        otp = OTP(username: currentUsername)
     }
 }

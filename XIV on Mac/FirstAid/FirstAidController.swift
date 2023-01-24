@@ -7,49 +7,16 @@
 
 import Cocoa
 
-class FirstAidController: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
+class FirstAidController : ObservableObject
+{
 
-    @IBOutlet weak var cfgCheckTable: NSTableView?
-    @IBOutlet weak var cfgCheckResultImage: NSImageView?
-    @IBOutlet weak var cfgCheckResultLabel: NSTextField?
+    @Published var cfgCheckOverallResult : FFXIVCfgConditionType = .noissue
 
-    var cfgProblems: [FFXIVCfgCheckCondition] = [] {
-        didSet {
-            guard let cfgCheckTable = self.cfgCheckTable else {
-                return
-            }
-            cfgCheckTable.reloadData()
-            guard let cfgCheckResultImage = self.cfgCheckResultImage,
-                  let cfgCheckResultLabel = self.cfgCheckResultLabel else {
-                return
-            }
-            let worstIssueType: FFXIVCfgConditionType = cfgProblems.max(by:{$0.type.rawValue < $1.type.rawValue})?.type ?? FFXIVCfgConditionType.noissue
-            var resultImage: NSImage?
-            var resultText: String
-            switch worstIssueType {
-            case .noissue:
-                resultImage = NSImage(named: "CfgCheckGood.tiff")
-                resultText = NSLocalizedString("FIRSTAID_CFGCHECK_GOOD_RESULT", comment: "")
-            case .advisory:
-                resultImage = NSImage(named: "CfgCheckGood.tiff")
-                resultText = NSLocalizedString("FIRSTAID_CFGCHECK_ADVISORY_RESULT", comment: "")
-            case .recommendation:
-                resultImage = NSImage(named: "CfgCheckGood.tiff")
-                resultText = NSLocalizedString("FIRSTAID_CFGCHECK_RECOMMENDATION_RESULT", comment: "")
-            case .problem:
-                resultImage = NSImage(named: "CfgCheckProblems.tiff")
-                resultText = NSLocalizedString("FIRSTAID_CFGCHECK_PROBLEM_RESULT", comment: "")
-            }
-            
-            cfgCheckResultImage.image = resultImage
-            cfgCheckResultLabel.stringValue = resultText
-        }
-    }
+    @Published var cfgProblems: [FFXIVCfgCheckCondition] = [FFXIVCfgCheckCondition]()
     
     var ffxivCfg: FFXIVCFG?
 
-    override func viewWillAppear() {
-        super.viewWillAppear()
+    func willAppear() {
         if ffxivCfg == nil {
             // This will be nil if we're being loaded because the user voluntarily opened us. If, instead, we're opened because
             // there's a "severe" issue preventing login, we don't want to load ALL issues, leave the list alone to focus on the major problem(s)
@@ -57,6 +24,11 @@ class FirstAidController: NSViewController, NSTableViewDelegate, NSTableViewData
         }
     }
 
+    func updateWorstIssue()
+    {
+        let worstIssueType: FFXIVCfgConditionType = cfgProblems.filter { $0.fixed == false }.max(by:{$0.type.rawValue < $1.type.rawValue})?.type ?? FFXIVCfgConditionType.noissue
+        cfgCheckOverallResult = worstIssueType
+    }
     
     func checkIfRunning() -> Bool {
         // Since we're deleting or otherwise mucking with files the game may be using or may re-write,
@@ -73,7 +45,7 @@ class FirstAidController: NSViewController, NSTableViewDelegate, NSTableViewData
         return false
     }
     
-    @IBAction func pressedDeleteUserCache(_ sender: Any) {
+    func pressedDeleteUserCache(_ sender: Any) {
         if self.checkIfRunning() {
             return
         }
@@ -93,7 +65,7 @@ class FirstAidController: NSViewController, NSTableViewDelegate, NSTableViewData
         alert.runModal()
     }
     
-    @IBAction func pressedResetConfiguration(_ sender: Any) {
+    func pressedResetConfiguration(_ sender: Any) {
         if self.checkIfRunning() {
             return
         }
@@ -123,40 +95,11 @@ class FirstAidController: NSViewController, NSTableViewDelegate, NSTableViewData
         alert.runModal()
     }
     
-    @IBAction func pressedCfgCheckup(_ sender: Any) {
+    func pressedCfgCheckup(_ sender: Any) {
         // Force a re-read of the cfg file when the button is pressed
         ffxivCfg = nil
         let conditions : [FFXIVCfgCheckCondition] = cfgCheckConditions().filter {$0.type.rawValue >= FFXIVCfgConditionType.recommendation.rawValue}
         _ = cfgCheckFilteredProblems(conditions:conditions)
-    }
-    
-    // Table View support
-    
-    func numberOfRows(in tableView: NSTableView) -> Int {
-        return cfgProblems.count
-    }
-    
-    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        guard let firstAidCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "FirstAidResult"), owner: self) as? FirstAidTableCellView else {
-            return nil
-        }
-        let problem: FFXIVCfgCheckCondition = cfgProblems[row]
-        
-        firstAidCell.condition = problem
-        firstAidCell.controller = self
-        firstAidCell.problemDescriptionLabel.stringValue = problem.explanation
-        firstAidCell.problemTitleLabel.stringValue = problem.title
-        firstAidCell.fixButton.isEnabled = true
-        switch problem.type {
-        case .advisory:
-            firstAidCell.problemSeverityIcon.image = NSImage(named: "CfgCheckAdvFailed.tiff")
-        case .problem:
-            firstAidCell.problemSeverityIcon.image = NSImage(named: "CfgCheckProbFailed.tiff")
-        default:
-            firstAidCell.problemSeverityIcon.image = NSImage(named: "CfgCheckGood.tiff")
-        }
-            
-        return firstAidCell
     }
     
     func getCurrentCfg() -> FFXIVCFG {
@@ -198,7 +141,7 @@ class FirstAidController: NSViewController, NSTableViewDelegate, NSTableViewData
         }
         
         cfgProblems = foundConditions
-        
+        updateWorstIssue()
         return foundConditions.count > 0
     }
     
@@ -222,6 +165,7 @@ class FirstAidController: NSViewController, NSTableViewDelegate, NSTableViewData
         var config = getCurrentCfg()
         condition.applyProposedValueToConfig(config: &config)
         writeCurrentCfg()
+        updateWorstIssue()
     }
     
     private static let retinaWorkaroundAskedSettingKey = "AskedRetinaWorkaround"

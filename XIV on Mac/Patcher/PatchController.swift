@@ -9,44 +9,42 @@ import Cocoa
 import OrderedCollections
 import SeeURL
 
-class PatchController: NSViewController {
-    @IBOutlet private var downloadStatus: NSTextField!
-    @IBOutlet private var downloadPatch: NSTextField!
-    @IBOutlet private var downloadPatchStatus: NSTextField!
-    @IBOutlet private var installStatus: NSTextField!
-    @IBOutlet private var installPatch: NSTextField!
-    @IBOutlet private var downloadBar: NSProgressIndicator!
-    @IBOutlet private var downloadPatchBar: NSProgressIndicator!
-    @IBOutlet private var installBar: NSProgressIndicator!
+class PatchController: ObservableObject {
+    @Published var downloadStatus: String = ""
+    @Published var downloadPatch: String = ""
+    @Published var downloadPatchStatus: String = ""
+    @Published var installStatus: String = ""
+    @Published var installPatch: String = ""
+    @Published var downloadProgress: Double = 0.0
+    @Published var downloadProgressMax: Double = 100.0
+    @Published var patchProgress: Double = 0.0
+    @Published var patchProgressMax: Double = 100.0
+    @Published var installProgress: Double = 0.0
+    @Published var installProgressMax: Double = 100.0
+
+    @Published var patching : Bool = false // Are we currently patching?
     
     static var isPatching = DispatchSemaphore(value: 0)
     
     let installQueue = DispatchQueue(label: "installer.serial.queue", qos: .utility, attributes: [], autoreleaseFrequency: .workItem)
     let patchQueue = DispatchQueue(label: "patch.installer.serial.queue", qos: .utility, attributes: [], autoreleaseFrequency: .workItem)
     let formatter = ByteCountFormatter()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        formatter.allowedUnits = .useAll
-        formatter.countStyle = .file
-        formatter.includesUnit = true
-        formatter.isAdaptive = true
-    }
-    
-    override func viewWillAppear() {
-        super.viewWillAppear()
-        downloadBar.usesThreadedAnimation = true
-        installBar.usesThreadedAnimation = true
-    }
+
     
     func install(_ patches: [Patch]) {
+        defer {
+            DispatchQueue.main.async {
+                self.patching = false
+            }
+        }
         // Wine.kill()
         let totalSize = Patch.totalLength(patches)
         DispatchQueue.main.async { [self] in
-            installPatch.stringValue = NSLocalizedString("PATCH_INSTALLATION_WAITING", comment: "")
-            installStatus.stringValue = String(format: NSLocalizedString("PATCH_INSTALLATION_PROGRESS_INIT", comment: ""), patches.count)
-            installBar.doubleValue = 0
-            installBar.maxValue = Double(patches.count)
+            self.patching = true
+            installPatch = NSLocalizedString("PATCH_INSTALLATION_WAITING", comment: "")
+            installStatus = String(format: NSLocalizedString("PATCH_INSTALLATION_PROGRESS_INIT", comment: ""), patches.count)
+            installProgress = 0
+            installProgressMax = Double(patches.count)
         }
         for (patchNum, _) in patches.enumerated() {
             installQueue.async { [self] in
@@ -59,24 +57,23 @@ class PatchController: NSViewController {
     private func install(patchNum: Int, patches: [Patch], totalSize: Int64) {
         let patch = patches[patchNum]
         DispatchQueue.main.async { [self] in
-            downloadPatch.stringValue = patch.name
+            downloadPatch = patch.name
         }
         let partialSize = Patch.totalLength(patches[..<patchNum])
         download(patch, totalSize: totalSize, partialSize: partialSize)
         updateProgress(totalCompletedSize: partialSize + patch.length, totalSize: totalSize, completedSize: patch.length, size: patch.length, speed: 0)
         patchQueue.async {
             DispatchQueue.main.async { [self] in
-                installPatch.stringValue = patch.path
+                installPatch = patch.path
             }
             patch.install()
             DispatchQueue.main.async { [self] in
                 let installsDone = patchNum + 1
-                installBar.doubleValue = Double(installsDone)
-                installStatus.stringValue = String(format: NSLocalizedString("PATCH_INSTALLATION_PROGRESS", comment: ""), installsDone, patches.count)
+                installProgress = Double(installsDone)
+                installStatus = String(format: NSLocalizedString("PATCH_INSTALLATION_PROGRESS", comment: ""), installsDone, patches.count)
                 if installsDone == patches.count {
                     FFXIVRepo.verToBck()
                     PatchController.isPatching.signal()
-                    view.window?.close() // all done
                 }
             }
         }
@@ -116,17 +113,22 @@ class PatchController: NSViewController {
     
     private func updateProgress(totalCompletedSize: Int64, totalSize: Int64, completedSize: Int64, size: Int64, speed: Int64) {
         func format(_ value: Int64) -> String {
-            formatter.string(fromByteCount: value)
+            // TODO: We can probably do all this in an init once this isn't an NSViewController anymore...
+            formatter.allowedUnits = .useAll
+            formatter.countStyle = .file
+            formatter.includesUnit = true
+            formatter.isAdaptive = true
+            return formatter.string(fromByteCount: value)
         }
         DispatchQueue.main.async { [self] in
-            downloadStatus.stringValue = String(format: NSLocalizedString("PATCH_INSTALLATION_DOWNLOAD_STATUS", comment: ""), format(totalCompletedSize), format(totalSize))
-            downloadPatchStatus.stringValue = String(format: NSLocalizedString("PATCH_INSTALLATION_DOWNLOAD_STATUS_PATCH", comment: ""), format(completedSize), format(size), format(speed))
-            downloadBar.doubleValue = downloadBar.maxValue * Double(totalCompletedSize) / Double(totalSize)
-            downloadPatchBar.doubleValue = downloadPatchBar.maxValue * Double(completedSize) / Double(size)
+            downloadStatus = String(format: NSLocalizedString("PATCH_INSTALLATION_DOWNLOAD_STATUS", comment: ""), format(totalCompletedSize), format(totalSize))
+            downloadPatchStatus = String(format: NSLocalizedString("PATCH_INSTALLATION_DOWNLOAD_STATUS_PATCH", comment: ""), format(completedSize), format(size), format(speed))
+            downloadProgress = downloadProgressMax * Double(totalCompletedSize) / Double(totalSize)
+            patchProgress = patchProgressMax * Double(completedSize) / Double(size)
         }
     }
     
-    @IBAction func quit(_ sender: Any) {
+    func quit(_ sender: Any) {
         Util.quit()
     }
 }

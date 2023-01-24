@@ -9,7 +9,8 @@ import Foundation
 import KeychainAccess
 import OrderedCollections
 
-public struct LoginCredentials {
+public struct LoginCredentials : Identifiable {
+    public var id : String { username }
     static let squareServer = "https://secure.square-enix.com"
     let username: String
     let password: String

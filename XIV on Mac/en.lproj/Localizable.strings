@@ -6,10 +6,47 @@
   
 */
 
+// Main Menu items
+"MENU_CHECK_FOR_UPDATES" = "Check for Updates…";
+"MENU_SETTINGS" = "Settings…"; // Formerly "Preferences…" on older macOS
+"MENU_OPEN" = "Open…";
+"MENU_OPEN_INSTALL_FOLDER" = "Open Install Folder";
+"MENU_SELECT_GAME_PATH" = "Select Game Path";
+"MENU_REPAIR_GAME" = "Repair Game Files";
+"MENU_TOOLS" = "Tools";
+"MENU_TROUBLESHOOTING" = "Troubleshooting…";
+"MENU_EDIT_REGISTRY" = "Edit Registry";
+"MENU_WINE_CONFIG" = "Wine Configuration";
+"MENU_CLI" = "Command Line";
+"MENU_ADD_ONS" = "Add-Ons";
+"MENU_ACT_START" = "Start ACT";
+"MENU_ACT_AUTOSTART_DISABLE" = "Disable ACT Autostart";
+"MENU_ACT_AUTOSTART_ENABLE" = "Enable ACT Autostart";
+"MENU_IINACT_START" = "Start IINACT";
+"MENU_IINACT_AUTOSTART_DISABLE" = "Disable IINACT Autostart";
+"MENU_IINACT_AUTOSTART_ENABLE" = "Enable IINACT Autostart";
+"MENU_BUNNY_START" = "Start Bunny HUD";
+"MENU_BUNNY_AUTOSTART_DISABLE" = "Disable Bunny HUD Autostart";
+"MENU_BUNNY_AUTOSTART_ENABLE" = "Enable Bunny HUD Autostart";
+"MENU_ANAMNESIS_START" = "Start Anamnesis";
+"MENU_INSTALL" = "Install";
+"MENU_MSVCPP" = "Microsoft Visual C++ Redistributables";
+"MENU_DOTNET_4" = "Microsoft .NET 4.xx";
+"MENU_DOTNET_6" = "Microsoft .NET 6.0";
+"MENU_DOTNET_7" = "Microsoft .NET 7.0";
+"MENU_GSHADE" = "GShade";
+"MENU_GSHADE_AUTO" = "Auto Install";
+"MENU_GSHADE_MANUAL" = "Manual Install";
+
+// Common/standard button labels
 "BUTTON_YES" = "Yes";
 "BUTTON_NO" = "No";
 "BUTTON_OK" = "OK";
 "BUTTON_CANCEL" = "Cancel";
+"BUTTON_PREVIOUS" = "Previous";
+"BUTTON_NEXT" = "Next";
+"BUTTON_CLOSE" = "Close";
+"BUTTON_QUIT" = "Quit";
 
 "LOGIN_ERROR" = "Login Error";
 "START_ERROR" = "Error starting FFXIV";
@@ -39,6 +76,7 @@
 "UNEXPECTED" = "An unexpected error occurred.";
 
 "REPAIR_RESULT" = "Repair Result";
+"REPAIR_SHEET_HEADER" = "Repairing";
 
 "DALAMUD_START_FAILURE" = "Dalamud is not OK";
 "DALAMUD_START_FAILURE_INFORMATIONAL" = "An error occured downloading and installing Dalamud. Please check your network connection and make sure Dalamud is compatible with the current game version.";
@@ -85,6 +123,7 @@ Do not enable this on non-retina displays, unless for screenshot purposes.";
 "FIRSTAID_CFGCHECK_RECOMMENDATION_RESULT" = "You may have better results or performance with a few changes.";
 "FIRSTAID_CFGCHECK_PROBLEM_RESULT" = "One or more problems was found with your configuration which are known to cause problems.";
 
+"FIRSTAID_CFGCHECK_FIX_BUTTON" = "Fix";
 "FIRSTAID_CFGCHECK_FIXED" = "Fixed!";
 "FIRSTAID_CFGCHECK_HBAO_TITLE" = "SSAO Setting is Invalid";
 "FIRSTAID_CFGCHECK_HBAO_EXP" = "The HBAO levels of SSAO (Screen Space Ambient Occlusion) are not supported on the Mac, and can cause graphics to render with black holes.";
@@ -104,6 +143,8 @@ Do not enable this on non-retina displays, unless for screenshot purposes.";
 "PATCH_INSTALLATION_ERROR_INFORMATIVE" = "XIV on Mac could not download %@ after %d attempts";
 "PATCH_INSTALLATION_DOWNLOAD_STATUS" = "%@ of %@";
 "PATCH_INSTALLATION_DOWNLOAD_STATUS_PATCH" = "%@ of %@ (%@/sec)";
+"PATCH_SHEET_DOWNLOADING_HEADER" = "Downloading";
+"PATCH_SHEET_INSTALLING_HEADER" = "Installing";
 
 "PATCH_ERROR_MESSAGE" = "Patch Installer Error";
 "PATCH_ERROR_INFORMATIVE" = "Patch Verification failed";
@@ -136,6 +177,65 @@ Do not enable this on non-retina displays, unless for screenshot purposes.";
 "AUTOLOGIN_MESSAGE" = "Auto-Login";
 "AUTOLOGIN_INFORMATIVE" = "You can override the Auto-Login by holding the SHIFT key down at application launch.";
 
+// Launcher (Main) Window
+"LAUNCHER_LOADING" = "Loading…";
+"LAUNCHER_SE_ID" = "Square Enix ID";
+"LAUNCHER_NO_SAVED_ACCOUNTS" = "No accounts have been saved in your Keychain";
+"LAUNCHER_SE_ID_PLACEHOLDER" = "Required; Not your e-mail address";
+"LAUNCHER_SE_PASSWORD" = "Square Enix Password";
+"LAUNCHER_SE_PASSWORD_PLACEHOLDER" = "Required";
+"LAUNCHER_SE_OTP" = "One-Time Password";
+"LAUNCHER_SE_OTP_PLACEHOLDER" = "Optional";
+"LAUNCHER_AUTOLOGIN" = "Auto-Login";
+"LAUNCHER_AUTOOTP" = "Auto-OTP";
+"LAUNCHER_LOGIN_BUTTON" = "Login";
+
+"LOGIN_STATUS_LOGGING_IN" = "Logging In";
+"LOGIN_STATUS_DALAMUD_UPDATE" = "Updating Dalamud";
+"LOGIN_STATUS_GAME_START" = "Starting Game";
+
+"INSTALLER_SELECT_OPTION" = "Select an option";
+"INSTALLER_SELECT_OPTION_DALAMUD_DISABLED" = "Launch Vanilla Game";
+"INSTALLER_SELECT_OPTION_DALAMUD_DISABLED_BLURB" = "You can chose to enable Dalamud later";
+"INSTALLER_SELECT_OPTION_DALAMUD_ENABLED" = "Launch with Dalamud Plugin Support";
+"INSTALLER_SELECT_OPTION_DALAMUD_ENABLED_BLURB" = "You can disable Dalamud any time";
+"INSTALLER_SELECT_LICENSE" = "Select a license";
+"INSTALLER_SELECT_LICENSE_MAC_BLURB" = "This is the normal Mac license";
+"INSTALLER_SELECT_LICENSE_WINDOWS_BLURB" = "This is the normal non-Steam Windows license";
+"INSTALLER_SELECT_LICENSE_STEAM_BLURB" = "This is the special Steam-only Windows license";
+"INSTALLER_GAME_FILES_EXISTING_WARNING" = "When selecting a custom folder, please select one your game is installed in. It should contain the folders \"game\" and \"boot\". Otherwise XIV on Mac will redownload your game.";
+"INSTALLER_GAMEFILES" = "Select how you want to handle the game files";
+"INSTALLER_GAME_FILES_DOWNLOAD" = "Download";
+"INSTALLER_GAME_FILES_DOWNLOAD_BLURB" = "Download and install a fresh copy of the game";
+"INSTALLER_GAME_FILES_COPY" = "Copy existing install";
+"INSTALLER_GAME_FILES_COPY_BLURB" = "Copy an existing installation of the game into \"XIV on Mac\"";
+"INSTALLER_GAME_FILES_EXISTING" = "Choose existing install";
+"INSTALLER_GAME_FILES_EXISTING_BLURB" = "Point \"XIV on Mac\" to an existing install";
+"INSTALLER_INSTALLING" = "Installing…";
+"INSTALLER_BASE_GAME" = "Base Game"; // As in, the core pieces of the game
+"INSTALLER_DOWNLOADING" = "Downloading";
+"INSTALLER_DONE" = "Installation Complete";
+"INSTALLER_DONE_WELCOME" = "Welcome to \"XIV on Mac\"!";
+
+"TOUCHBAR_ADDONS_BUTTON" = "Add-Ons";
+"TOUCHBAR_TROUBLESHOOTING_BUTTON" = "Troubleshooting";
+"TOUCHBAR_ADDON_ANAMNESIS" = "Anamnesis";
+"TOUCHBAR_ADDON_IINACT" = "IINACT";
+"TOUCHBAR_ADDON_ACT" = "ACT";
+"TOUCHBAR_ADDON_BUNNYHUD" = "Bunny HUD";
+
+// First Aid/Troubleshooting Window
+"FIRSTAID_WINDOW_TITLE" = "First-Aid";
+"FIRSTAID_SHADER_CACHE_HEADING" = "Shader Cache";
+"FIRSTAID_SHADER_CACHE_BLURB" = "If your game is freezing at startup, \"Compiling Shaders…\" forever, missing lighting or randomly freezing, the problem may be with your shader cache. Deleting it will cause a new one to be rebuilt, though it may result in occasional stutters during play initially.";
+"FIRSTAID_SHADER_CACHE_BUTTON" = "Delete User Shader Cache";
+"FIRSTAID_CONFIG_HEADING" = "FFXIV Configuration";
+"FIRSTAID_RESET_CONFIG_BLURB" = "If you've misconfigured your game in a way that prevents you from playing it, such as a bad graphics setting, you can try resetting your configuration to default.";
+"FIRSTAID_RESET_CONFIG_BUTTON" = "Reset Configuration";
+"FIRSTAID_CHECKUP_BLURB" = "XIV on Mac can identify potential problems, or make recommended changes to your FFXIV Configuration file to give you the best experience available on the Mac.";
+"FIRSTAID_CHECKUP_BUTTON" = "Configuration Checkup";
+
+// Settings Window
 "SETTINGS_WINDOW_TITLE" = "Settings";
 "SETTINGS_TAB_GENERAL_TITLE" = "General";
 "SETTINGS_TAB_GRAPHICS_TITLE" = "Graphics";

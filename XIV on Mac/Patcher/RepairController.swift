@@ -36,32 +36,24 @@ private struct RepairProgress: Codable {
     }
 }
 
-class RepairController: NSViewController {
-    @IBOutlet private var repairStatus: NSTextField!
-    @IBOutlet private var currentFile: NSTextField!
-    @IBOutlet private var repairBar: NSProgressIndicator!
-    
+class RepairController: ObservableObject {
+    @Published var repairStatus : String = ""
+    @Published var currentFile : String = ""
+    @Published var repairProgress : Double = 0.0
+    @Published var repairProgressMax : Double = 100.0
+    @Published var repairing : Bool = false
+
     private var timer: Timer?
     let formatter = ByteCountFormatter()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        formatter.allowedUnits = .useAll
-        formatter.countStyle = .file
-        formatter.includesUnit = true
-        formatter.isAdaptive = true
-    }
-    
-    override func viewWillAppear() {
-        super.viewWillAppear()
-        repairBar.usesThreadedAnimation = true
-        updateProgress()
-    }
-    
     func repair(_ loginResult: LoginResult) {
+        DispatchQueue.main.async { [self] in
+            self.repairing = false
+        }
         DispatchQueue.global(qos: .userInitiated).async {
             Wine.kill()
             DispatchQueue.main.async { [self] in
+                self.repairing = true
                 let updateInterval = 0.25
                 timer = Timer.scheduledTimer(withTimeInterval: updateInterval, repeats: true) { _ in
                     self.updateProgress()
@@ -70,7 +62,6 @@ class RepairController: NSViewController {
             let repairResult = loginResult.repairGame()
             DispatchQueue.main.async { [self] in
                 timer?.invalidate()
-                view.window?.close()
                 let alert = NSAlert()
                 alert.addButton(withTitle: NSLocalizedString("BUTTON_OK", comment: ""))
                 alert.alertStyle = .critical
@@ -86,14 +77,20 @@ class RepairController: NSViewController {
             return
         }
         DispatchQueue.main.async { [self] in
-            repairStatus.stringValue = repairProgress.currentStep + " (\(formatter.string(fromByteCount: repairProgress.speed))/sec)"
-            currentFile.stringValue = repairProgress.currentFile
-            repairBar.doubleValue = Double(repairProgress.progress)
-            repairBar.maxValue = Double(repairProgress.total)
+            // TODO: We can probably do all this in an init once this isn't an NSViewController anymore...
+            formatter.allowedUnits = .useAll
+            formatter.countStyle = .file
+            formatter.includesUnit = true
+            formatter.isAdaptive = true
+
+            repairStatus = repairProgress.currentStep + " (\(formatter.string(fromByteCount: repairProgress.speed))/sec)"
+            currentFile = repairProgress.currentFile
+            self.repairProgress = Double(repairProgress.progress)
+            self.repairProgressMax = Double(repairProgress.total)
         }
     }
     
-    @IBAction func quit(_ sender: Any) {
+    func quit(_ sender: Any) {
         Util.quit()
     }
 }
