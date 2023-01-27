@@ -183,14 +183,6 @@ import XIVLauncher
         Dotnet.installDotNet702()
     }
     
-    @IBAction func installGShade(_ sender: Any) {
-        GShade.install()
-    }
-    
-    @IBAction func manualGShade(_ sender: Any) {
-        GShade.manual()
-    }
-    
     @IBAction func regedit(_ sender: Any) {
         Wine.launch(command: "regedit")
     }

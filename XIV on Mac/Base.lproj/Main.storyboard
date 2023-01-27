@@ -464,26 +464,6 @@
                                                 <action selector="installDotNet70:" target="Voe-Tx-rLC" id="TLJ-B3-i1w"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem isSeparatorItem="YES" id="gN7-LO-yfV"/>
-                                        <menuItem title="GShade" id="9VN-cs-jNP">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <menu key="submenu" title="GShade" id="AgC-OX-7rb">
-                                                <items>
-                                                    <menuItem title="Auto Install" id="8FT-OM-tMB">
-                                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                                        <connections>
-                                                            <action selector="installGShade:" target="Voe-Tx-rLC" id="VTr-jj-E15"/>
-                                                        </connections>
-                                                    </menuItem>
-                                                    <menuItem title="Manual Install" id="Taa-Lw-mwf">
-                                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                                        <connections>
-                                                            <action selector="manualGShade:" target="Voe-Tx-rLC" id="7Yg-HS-g4g"/>
-                                                        </connections>
-                                                    </menuItem>
-                                                </items>
-                                            </menu>
-                                        </menuItem>
                                     </items>
                                 </menu>
                             </menuItem>
