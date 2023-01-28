@@ -135,3 +135,71 @@ Do not enable this on non-retina displays, unless for screenshot purposes.";
 
 "AUTOLOGIN_MESSAGE" = "Auto-Login";
 "AUTOLOGIN_INFORMATIVE" = "You can override the Auto-Login by holding the SHIFT key down at application launch.";
+
+"SETTINGS_WINDOW_TITLE" = "Einstellungen";
+"SETTINGS_TAB_GENERAL_TITLE" = "Allgemein";
+"SETTINGS_TAB_GRAPHICS_TITLE" = "Grafik";
+"SETTINGS_TAB_PLUGINS_TITLE" = "Plugins (Dalamud)";
+"SETTINGS_TAB_ADVANCED_TITLE" = "Erweiterte Optionen";
+
+// General Settings tab items
+"SETTINGS_GENERAL_LANGUAGE_AND_LICENSE_BLURB" = "XIV on Mac kann mit Mac, Windows, oder Steam Spiellizenzen funktionieren. Du musst im Besitz der jeweiligen Lizenz sein, im Zweifelsfall kann der Account Status auf der Mogry-Station überprüft werden. Steam-Accounts müssen zuvor mit dem Final Fantasy XIV-Dienstkonto verknüpft worden sein, indem man sich auf einem Windows-PC anmeldet; zusätzlich muss außerdem die macOS-Version von Steam laufen.";
+"SETTINGS_LANGUAGE_PICKER" = "Sprache:";
+"SETTINGS_LANGUAGE_JAPANESE" = "Japanisch";
+"SETTINGS_LANGUAGE_ENGLISH" = "Englisch";
+"SETTINGS_LANGUAGE_FRENCH" = "Französisch";
+"SETTINGS_LANGUAGE_GERMAN" = "Deutsch";
+"SETTINGS_PLATFORM_PICKER" = "Lizenz:";
+"SETTINGS_PLATFORM_MAC" = "Mac";
+"SETTINGS_PLATFORM_WINDOWS" = "Windows";
+"SETTINGS_PLATFORM_STEAM" = "Steam";
+"SETTINGS_FREE_TRIAL" = "Kostenlose Testversion";
+"SETTINGS_GENERAL_FREE_TRIAL_BLURB" = "Wenn du die kostenlose Testversion verwenden musst du denselben Lizenztyp wählen, den du bei der Anmeldung für die Testversion verwendet hast. Außerdem muss dein Final Fantasy XIV-Konto bereits eine aktive Testversion haben, da XIV on Mac dich nicht automatisch anmelden kann.";
+"SETTINGS_DOWNLOAD_LIMIT" = "Begrenzung der Download-Geschwindigkeit auf";
+"SETTINGS_DOWNLOAD_LIMIT_PLACEHOLDER" = "0.0";
+"SETTINGS_DOWNLOAD_LIMIT_UNITS" = "MB/Sek";
+
+// Graphics Settings tab items
+"SETTINGS_FPS_LIMIT" = "Maximale Framerate";
+"SETTINGS_FPS_LIMIT_PLACEHOLDER" = "0";
+"SETTINGS_FPS_LIMIT_UNITS" = "fps";
+"SETTINGS_GRAPHICS_ASYNC" = "Async";
+"SETTINGS_GRAPHICS_HUD" = "HUD";
+"SETTINGS_GRAPHICS_DXVK_HUD_HEADER" = "DXVK HUD Optionen";
+"SETTINGS_GRAPHICS_HUD_BLURB" = "HUD-Optionen sind Informationselemente, die während des Spiels in der oberen linken Ecke angezeigt werden und dir dabei helfen können festzustellen, wie sich die Einstellungen im Spiel auf Ihre Leistung auswirken. Sie sind vollkommen optional.";
+"SETTINGS_GRAPHICS_HUD_SCALE" = "Skalierung:";
+"SETTINGS_GRAPHICS_RESET_SCALE_BUTTON" = "Zurücksetzen";
+"SETTINGS_GRAPHICS_METAL3_HUD" = "Metal 3 Performance HUD";
+"SETTINGS_GRAPHICS_DEVICE_INFO" = "Geräte-Info";
+"SETTINGS_GRAPHICS_GPU_LOAD" = "GPU-Auslastung";
+"SETTINGS_GRAPHICS_FRAME_RATE_HUD" = "Framerate";
+"SETTINGS_GRAPHICS_DXVK_VERSION" = "DXVK Version";
+"SETTINGS_GRAPHICS_FRAME_TIME" = "Frametime Graph";
+"SETTINGS_GRAPHICS_FEATURE_LEVEL" = "D3D Feature Level";
+"SETTINGS_GRAPHICS_BUFFER_SUBMISSIONS" = "Command Buffer Submissions";
+"SETTINGS_GRAPHICS_COMPILER" = "Shader Compiler Aktivität";
+"SETTINGS_GRAPHICS_DRAWCALLS" = "Draw Calls und Render Passes";
+"SETTINGS_GRAPHICS_PIPELINES" = "Graphics und Compute Pipelines";
+"SETTINGS_GRAPHICS_MEMORY" = "Genutzter Speicher";
+"SETTINGS_GRAPHICS_ALL_DXVK_ON_BUTTON" = "Alle DXVK HUD Optionen aktivieren";
+"SETTINGS_GRAPHICS_ALL_DXVK_OFF_BUTTON" = "Alle DXVK HUD Optionen deaktivieren";
+"SETTINGS_GRAPHICS_RETINA" = "macOS Skalierung aktivieren";
+"SETTINGS_GRAPHICS_RETINA_BUGFIX" = "Bugfix für deaktivierte macOS Skalierung im Vollbildmodus";
+
+// Plugins/Dalamud tab items
+"SETTINGS_PLUGINS_WHAT_IS_DALAMUD_BLURB" = "Plugins werden durch ein Projekt namens Dalamud geladen, das zusätzliche Funktionen in deinem Spiel ermöglicht. Wenn du nicht weißt, wozu du ein Plugin benötigen oder es nicht verwenden möchten, kann Dalamud bedenkenlos deaktiviert bleiben. Mehr über Dalamud kannst du hier erfahren:\nhttps://github.com/goatcorp/Dalamud";
+"SETTINGS_PLUGINS_DALAMUD_ENABLE" = "Dalamud aktivieren";
+"SETTINGS_PLUGINS_DALAMUD_DELAY_BLURB" = "Wenn Dalamud sich nicht erfolgreich laden kann kannst du versuchen die Ladeverzögerung nach oben oder unten zu verändern, um einen Wert zu finden der für deinen Mac geeignet ist.";
+"SETTINGS_PLUGINS_DALAMUD_DELAY_UNITS" = "Sekunden";
+"SETTINGS_PLUGINS_DALAMUD_DELAY_LABEL" = "Ladeverzögerung:";
+"SETTINGS_PLUGINS_DISCORD_BLURB" = "Die Brücke erlaubt es dem Discord Rich Presence Dalamud-Plugin deinen Discord-Status zu aktualisieren. Wenn Sie nicht vorhaben, dieses Plugin zu verwenden, können Sie diese Einstellung deaktivieren.";
+"SETTINGS_PLUGINS_DISCORD_TOGGLE" = "Discord Rich Presence Wine Brücke";
+
+// Advanced Settings tab items
+"SETTINGS_ADVANCED_BLURB" = "Diese Einstellungen dienen hauptsächlich der Fehlersuche und sollten im Allgemeinen nicht verändert werden.";
+"SETTINGS_ADVANCED_KEEP_PATCHES" = "Patches behalten";
+"SETTINGS_ADVANCED_ESYNC" = "Esync";
+"SETTINGS_ADVANCED_ENCRYPT_ARGS" = "Spielargumente verschlüsseln";
+"SETTINGS_ADVANCED_AUTO_EXIT" = "XIV on Mac beim Beenden des Spiels beenden";
+"SETTINGS_ADVANCED_ERROR_EXIT" = "Eine Warnung einblenden, wenn das Spiel mit einem nicht Null Exit-Code beendet wird";
+"SETTINGS_ADVANCED_WINE_DEBUG" = "Wine Debug:";
