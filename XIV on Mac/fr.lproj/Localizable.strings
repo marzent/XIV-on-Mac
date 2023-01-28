@@ -137,3 +137,71 @@ Ne l'activez pas sur les écrans autres que écrans Retina, sauf à des fins de 
 
 "AUTOLOGIN_MESSAGE" = "Connexion automatique";
 "AUTOLOGIN_INFORMATIVE" = "Vous pouvez annuler la connexion automatique en maintenant la touche SHIFT enfoncée lors du lancement de l'application.";
+
+"SETTINGS_WINDOW_TITLE" = "Paramètres";
+"SETTINGS_TAB_GENERAL_TITLE" = "Général";
+"SETTINGS_TAB_GRAPHICS_TITLE" = "Graphique";
+"SETTINGS_TAB_PLUGINS_TITLE" = "Plugins (Dalamud)";
+"SETTINGS_TAB_ADVANCED_TITLE" = "Avancé";
+
+// General Settings tab items
+"SETTINGS_GENERAL_LANGUAGE_AND_LICENSE_BLURB" = "XIV on Mac peut fonctionner avec les licences Mac, Windows et Steam. Vous devez posséder le type de licence que vous choisissez. Si vous n'êtes pas sûr, vérifiez l'état de votre compte via Mogstation. Les comptes Steam doivent avoir été précédemment liés à votre compte de service Final Fantasy XIV en vous connectant sur un PC Windows, et nécessitent en outre que la version macOS de Steam soit en cours d'exécution.";
+"SETTINGS_LANGUAGE_PICKER" = "Langue :";
+"SETTINGS_LANGUAGE_JAPANESE" = "Japonais";
+"SETTINGS_LANGUAGE_ENGLISH" = "Anglais";
+"SETTINGS_LANGUAGE_FRENCH" = "Français";
+"SETTINGS_LANGUAGE_GERMAN" = "Allemand";
+"SETTINGS_PLATFORM_PICKER" = "Licence :";
+"SETTINGS_PLATFORM_MAC" = "Mac";
+"SETTINGS_PLATFORM_WINDOWS" = "Windows";
+"SETTINGS_PLATFORM_STEAM" = "Steam";
+"SETTINGS_FREE_TRIAL" = "Essai gratuit";
+"SETTINGS_GENERAL_FREE_TRIAL_BLURB" = "Lorsque vous utilisez l'essai gratuit, vous devez choisir le même type de licence que celui que vous avez utilisé lors de votre inscription à l'essai. De plus, votre compte Final Fantasy XIV doit déjà avoir un essai actif, car XIV sur Mac ne peut pas vous inscrire automatiquement.";
+"SETTINGS_DOWNLOAD_LIMIT" = "Limiter la vitesse de téléchargement à";
+"SETTINGS_DOWNLOAD_LIMIT_PLACEHOLDER" = "0.0";
+"SETTINGS_DOWNLOAD_LIMIT_UNITS" = "Mo/s";
+
+// Graphics Settings tab items
+"SETTINGS_FPS_LIMIT" = "Fréquence d'images maximale";
+"SETTINGS_FPS_LIMIT_PLACEHOLDER" = "0";
+"SETTINGS_FPS_LIMIT_UNITS" = "ips";
+"SETTINGS_GRAPHICS_ASYNC" = "Asynchrone";
+"SETTINGS_GRAPHICS_HUD" = "Affichage tête haute";
+"SETTINGS_GRAPHICS_DXVK_HUD_HEADER" = "Options affichage tête haute de DXVK";
+"SETTINGS_GRAPHICS_HUD_BLURB" = "Les options HUD sont des éléments d'information affichés dans le coin supérieur gauche dans le jeu qui peuvent vous aider à déterminer comment les paramètres du jeu affectent vos performances. Ils sont entièrement facultatifs.";
+"SETTINGS_GRAPHICS_HUD_SCALE" = "Échelle:";
+"SETTINGS_GRAPHICS_RESET_SCALE_BUTTON" = "Réinitialiser";
+"SETTINGS_GRAPHICS_METAL3_HUD" = "Metal 3 Performance HUD";
+"SETTINGS_GRAPHICS_DEVICE_INFO" = "Device Info";
+"SETTINGS_GRAPHICS_GPU_LOAD" = "GPU Load";
+"SETTINGS_GRAPHICS_FRAME_RATE_HUD" = "Frame Rate";
+"SETTINGS_GRAPHICS_DXVK_VERSION" = "DXVK Version";
+"SETTINGS_GRAPHICS_FRAME_TIME" = "Frame Time Graph";
+"SETTINGS_GRAPHICS_FEATURE_LEVEL" = "D3D Feature Level";
+"SETTINGS_GRAPHICS_BUFFER_SUBMISSIONS" = "Command Buffer Submissions";
+"SETTINGS_GRAPHICS_COMPILER" = "Shader Compiler Activity";
+"SETTINGS_GRAPHICS_DRAWCALLS" = "Draw Calls and Render Passes";
+"SETTINGS_GRAPHICS_PIPELINES" = "Graphics and Compute Pipelines";
+"SETTINGS_GRAPHICS_MEMORY" = "Memory Used";
+"SETTINGS_GRAPHICS_ALL_DXVK_ON_BUTTON" = "Enable Entire DXVK HUD";
+"SETTINGS_GRAPHICS_ALL_DXVK_OFF_BUTTON" = "Disable Entire DXVK HUD";
+"SETTINGS_GRAPHICS_RETINA" = "Activer la mise à l'échelle macOS";
+"SETTINGS_GRAPHICS_RETINA_BUGFIX" = "Correctif du bug pour le mode sans mise à l'échelle";
+
+// Plugins/Dalamud tab items
+"SETTINGS_PLUGINS_WHAT_IS_DALAMUD_BLURB" = "Les plugins sont activés par un projet appelé Dalamud, qui permet des fonctionnalités supplémentaires dans votre jeu. Si vous ne savez pas pourquoi vous voudriez un plugin ou si vous ne souhaitez pas les utiliser, vous pouvez les laisser désactivés en toute sécurité. Pour en savoir plus sur Dalamud, veuillez visiter :\nhttps://github.com/goatcorp/Dalamud";
+"SETTINGS_PLUGINS_DALAMUD_ENABLE" = "Activer Dalamud";
+"SETTINGS_PLUGINS_DALAMUD_DELAY_BLURB" = "Si Dalamud ne fonctionne pas correctement, vous pouvez essayer d'augmenter ou diminuer le délais pour trouver une valeur qui fonctionne pour votre Mac.";
+"SETTINGS_PLUGINS_DALAMUD_DELAY_UNITS" = "secondes";
+"SETTINGS_PLUGINS_DALAMUD_DELAY_LABEL" = "Délais :";
+"SETTINGS_PLUGINS_DISCORD_BLURB" = "Le \"Bridge\" permet au plugin \"Discord Rich Presence Dalamud\" de mettre à jour votre statut Discord. Si vous ne prévoyez pas d'utiliser ce plugin, vous pouvez désactiver ce paramètre.";
+"SETTINGS_PLUGINS_DISCORD_TOGGLE" = "Discord Rich Presence Wine Bridge";
+
+// Advanced Settings tab items
+"SETTINGS_ADVANCED_BLURB" = "Ces paramètres sont principalement destinés à des fins de dépannage et ne doivent généralement pas être modifiés.";
+"SETTINGS_ADVANCED_KEEP_PATCHES" = "Conserver les correctifs";
+"SETTINGS_ADVANCED_ESYNC" = "Esync";
+"SETTINGS_ADVANCED_ENCRYPT_ARGS" = "Chiffrer les arguments du jeu";
+"SETTINGS_ADVANCED_AUTO_EXIT" = "Quitter XIV on Mac à la sortie du jeu";
+"SETTINGS_ADVANCED_ERROR_EXIT" = "Avertir si le jeu se termine avec un code de sortie différent de zéro";
+"SETTINGS_ADVANCED_WINE_DEBUG" = "Débogage de Wine :";
