@@ -126,7 +126,6 @@ struct SettingsGraphicsTabView: View {
                     .padding(.all)
             }
         }
-        .frame(minWidth: 700, minHeight: 550)
     }
 }
 
