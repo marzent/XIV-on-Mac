@@ -8,12 +8,7 @@
 import SwiftUI
 
 struct SettingsAdvancedTabView: View {
-    @State var keepPatches: Bool = Patch.keep
-    @State var eSync: Bool = Wine.esync
-    @State var encryptArgs: Bool = Settings.encryptedArguments
-    @State var nonZeroExitError: Bool = Settings.nonZeroExitError
-    @State var exitWithGame: Bool = Settings.exitWithGame
-    @State var wineDebug: String = Wine.debug
+    @StateObject private var viewModel = ViewModel()
 
     var body: some View {
         VStack {
@@ -23,62 +18,45 @@ struct SettingsAdvancedTabView: View {
                 .padding([.top, .leading, .trailing])
                 .frame(maxWidth: .infinity, alignment: .leading)
             HStack {
-                Toggle(isOn: $keepPatches) {
+                Toggle(isOn: $viewModel.keepPatches) {
                     Text("SETTINGS_ADVANCED_KEEP_PATCHES")
                 }
                 .padding(.leading)
-                .onChange(of: keepPatches) { newValue in
-                    Patch.keep = newValue
-                }
                 Spacer()
             }
             HStack {
-                Toggle(isOn: $eSync) {
+                Toggle(isOn: $viewModel.eSync) {
                     Text("SETTINGS_ADVANCED_ESYNC")
                 }
                 .padding(.leading)
-                .onChange(of: eSync) { newValue in
-                    Wine.esync = newValue
-                }
                 Spacer()
             }
             HStack {
-                Toggle(isOn: $encryptArgs) {
+                Toggle(isOn: $viewModel.encryptArgs) {
                     Text("SETTINGS_ADVANCED_ENCRYPT_ARGS")
                 }
                 .padding(.leading)
-                .onChange(of: encryptArgs) { newValue in
-                    Settings.encryptedArguments = newValue
-                }
                 Spacer()
             }
             HStack {
-                Toggle(isOn: $exitWithGame) {
+                Toggle(isOn: $viewModel.exitWithGame) {
                     Text("SETTINGS_ADVANCED_AUTO_EXIT")
                 }
                 .padding(.leading)
-                .onChange(of: exitWithGame) { newValue in
-                    Settings.exitWithGame = newValue
-                }
                 Spacer()
             }
             HStack {
-                Toggle(isOn: $nonZeroExitError) {
+                Toggle(isOn: $viewModel.nonZeroExitError) {
                     Text("SETTINGS_ADVANCED_ERROR_EXIT")
                 }
                 .padding(.leading)
-                .onChange(of: nonZeroExitError) { newValue in
-                    Settings.nonZeroExitError = newValue
-                }
                 Spacer()
             }
             HStack {
                 Text("SETTINGS_ADVANCED_WINE_DEBUG")
                     .padding(.leading)
-                TextField("", text: $wineDebug)
-                    .onChange(of: wineDebug) { newValue in
-                        Wine.debug = newValue
-                    }
+                TextField("", text: $viewModel.wineDebug)
+                    .disableAutocorrection(true)
             }
             Spacer()
         }
@@ -88,5 +66,33 @@ struct SettingsAdvancedTabView: View {
 struct SettingsAdvancedTabView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsAdvancedTabView()
+    }
+}
+
+extension SettingsAdvancedTabView {
+    @MainActor class ViewModel: ObservableObject {
+        @Published var keepPatches: Bool = Patch.keep {
+            didSet { Patch.keep = keepPatches }
+        }
+
+        @Published var eSync: Bool = Wine.esync {
+            didSet { Wine.esync = eSync }
+        }
+
+        @Published var encryptArgs: Bool = Settings.encryptedArguments {
+            didSet { Settings.encryptedArguments = encryptArgs }
+        }
+
+        @Published var nonZeroExitError: Bool = Settings.nonZeroExitError {
+            didSet { Settings.nonZeroExitError = nonZeroExitError }
+        }
+
+        @Published var exitWithGame: Bool = Settings.exitWithGame {
+            didSet { Settings.exitWithGame = exitWithGame }
+        }
+
+        @Published var wineDebug: String = Wine.debug {
+            didSet { Wine.debug = wineDebug }
+        }
     }
 }

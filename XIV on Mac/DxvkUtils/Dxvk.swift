@@ -5,8 +5,8 @@
 //  Created by Marc-Aurel Zent on 02.03.22.
 //
 
-import Foundation
 import CompatibilityTools
+import Foundation
 
 struct Dxvk {
     @available(*, unavailable) private init() {}
@@ -29,15 +29,13 @@ struct Dxvk {
             if fm.fileExists(atPath: winDllPath) {
                 do {
                     try fm.removeItem(atPath: winDllPath)
-                }
-                catch {
+                } catch {
                     Log.error("[DXVK] error deleting wine dx dll \(winDllPath)\n\(error)")
                 }
             }
             do {
                 try fm.copyItem(atPath: dxvkDllPath, toPath: winDllPath)
-            }
-            catch {
+            } catch {
                 Log.error("[DXVK] error copying dxvk dll \(error)")
             }
         }
@@ -56,7 +54,7 @@ struct Dxvk {
                 return
             }
             let zoeyEntryHash: [UInt8] = [153, 106, 41, 216, 87, 200, 23, 183, 42, 119, 59, 206, 160, 195, 34, 186, 3, 214, 205, 51]
-            if userCache.entries.map({$0.sha1Hash}).contains(zoeyEntryHash) {
+            if userCache.entries.map({ $0.sha1Hash }).contains(zoeyEntryHash) {
                 Log.warning("[DXVK] You are having an entry in your user cache that is known to cause issues, consider deleting your user state cache")
             }
             let mergedCache = DxvkStateCache(header: userCache.header, entries: Array(Set(userCache.entries + baseCache.entries)))
@@ -65,7 +63,7 @@ struct Dxvk {
             } catch {
                 Log.error(error.localizedDescription)
             }
-        } else { //user cache non-existent or corrupt
+        } else { // user cache non-existent or corrupt
             try? fm.removeItem(at: userCacheURL)
             try? fm.copyItem(at: baseCacheBundled, to: userCacheURL)
         }
@@ -73,28 +71,31 @@ struct Dxvk {
     
     class Options: Codable {
         static let settingKey = "DxvkOptions"
-        var async = true
+        var asyncShaders = true
         var maxFramerate = 0
-        var hud = ["devinfo": false, //Displays the name of the GPU and the driver version.
-                   "fps": false, //Shows the current frame rate.
-                   "frametimes": false, //Shows a frame time graph.
-                   "submissions": false, //Shows the number of command buffers submitted per frame.
-                   "drawcalls": false, //Shows the number of draw calls and render passes per frame.
-                   "pipelines": false, //Shows the total number of graphics and compute pipelines.
-                   "memory": false, //Shows the amount of device memory allocated and used.
-                   "gpuload": false, //Shows estimated GPU load. May be inaccurate.
-                   "version": false, //Shows DXVK version.
-                   "api": false, //Shows the D3D feature level used by the application.
-                   "compiler": true] //Shows shader compiler activity
+        private var hud = ["devinfo": false, // Displays the name of the GPU and the driver version.
+                           "fps": false, // Shows the current frame rate.
+                           "frametimes": false, // Shows a frame time graph.
+                           "submissions": false, // Shows the number of command buffers submitted per frame.
+                           "drawcalls": false, // Shows the number of draw calls and render passes per frame.
+                           "pipelines": false, // Shows the total number of graphics and compute pipelines.
+                           "memory": false, // Shows the amount of device memory allocated and used.
+                           "gpuload": false, // Shows estimated GPU load. May be inaccurate.
+                           "version": false, // Shows DXVK version.
+                           "api": false, // Shows the D3D feature level used by the application.
+                           "compiler": true] // Shows shader compiler activity
         var hudScale = 1.0
         
         init() {
             if let data = UserDefaults.standard.value(forKey: Dxvk.Options.settingKey) as? Data {
-                let s = try? PropertyListDecoder().decode(Dxvk.Options.self, from: data)
-                async = s!.async
-                maxFramerate = s!.maxFramerate
-                hud = s!.hud
-                hudScale = s!.hudScale
+                guard let s = try? PropertyListDecoder().decode(Dxvk.Options.self, from: data) else {
+                    save(withSetup: false)
+                    return
+                }
+                asyncShaders = s.asyncShaders
+                maxFramerate = s.maxFramerate
+                hud = s.hud
+                hudScale = s.hudScale
                 
             } else {
                 save(withSetup: false)
@@ -102,11 +103,11 @@ struct Dxvk {
         }
         
         func getAsync() -> String {
-            return self.async ? "1": "0"
+            return asyncShaders ? "1" : "0"
         }
         
         func getMaxFramerate() -> String {
-            return String(self.maxFramerate)
+            return String(maxFramerate)
         }
         
         func getHud() -> String {
@@ -119,6 +120,28 @@ struct Dxvk {
             return params.joined(separator: ",")
         }
         
+        func getHud(option: String) -> Bool {
+            hud[option]!
+        }
+        
+        func setHud(option: String, to: Bool) throws {
+            guard let originalOption = hud[option] else {
+                throw DxvkError.invalidHudKey
+            }
+            guard originalOption != to else {
+                return
+            }
+            hud[option] = to
+            save()
+        }
+        
+        func setAllHudOptions(to: Bool) {
+            for key in Array(hud.keys) {
+                hud[key] = to
+            }
+            save()
+        }
+        
         func save(withSetup: Bool = true) {
             UserDefaults.standard.set(try? PropertyListEncoder().encode(self), forKey: Dxvk.Options.settingKey)
             if withSetup {
@@ -126,5 +149,4 @@ struct Dxvk {
             }
         }
     }
-    
 }

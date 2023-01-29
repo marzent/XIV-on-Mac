@@ -8,6 +8,7 @@
 import Foundation
 
 enum DxvkError: Error {
+    case invalidHudKey
     case invalidHeader
     case invalidEntryHeader
     case invalidEntryData
