@@ -449,6 +449,12 @@
                                                             <action selector="installDotNet48:" target="Voe-Tx-rLC" id="KQA-LM-e9c"/>
                                                         </connections>
                                                     </menuItem>
+                                                    <menuItem title="4.8.1" id="FaC-aE-BV8">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="installDotNet481:" target="Voe-Tx-rLC" id="KQA-LM-e9d"/>
+                                                        </connections>
+                                                    </menuItem>
                                                 </items>
                                             </menu>
                                         </menuItem>
