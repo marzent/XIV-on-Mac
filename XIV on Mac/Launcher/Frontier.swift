@@ -11,6 +11,7 @@ import SeeURL
 import XIVLauncher
 
 class Frontier {
+    
     static var squareTime: Int64 {
         Int64((Date().timeIntervalSince1970 * 1000.0).rounded())
     }
@@ -49,8 +50,9 @@ class Frontier {
         return HTTPClient.fetch(url: url, headers: headers)
     }
     
-    static func fetchImage(url: URL) -> NSImage? {
-        guard let response = fetch(url: url) else {
+    static func fetchImage(url: URL?) -> NSImage? {
+        guard let url = url,
+            let response = fetch(url: url) else {
             return nil
         }
         return NSImage(data: response.body)
@@ -101,17 +103,61 @@ class Frontier {
     }
     
     struct Info: Codable {
-        struct News: Codable {
+        struct News: Codable, Identifiable, Hashable {
             let date: String
             let title: String
             let url: String
             let id: String
             let tag: String?
+            
+            var usableURL : URL? {
+                // For news and such, SE doesn't tend to return us the URL directly for... reasons known only to them
+                if self.url.count > 0
+                {
+                    return URL(string: url)
+                }
+                if self.id.count == 0
+                {
+                    return nil
+                }
+                // But if they gave us an ID, the URL can be constructed if you know the appropriate regional Lodestone page
+                var seURLBase : URL? = nil
+                switch (Settings.language.code)
+                {
+                case "en-us":
+                    seURLBase = URL(string: "https://na.finalfantasyxiv.com/lodestone/news/detail/")
+                case "en-gb":
+                    seURLBase = URL(string: "https://eu.finalfantasyxiv.com/lodestone/news/detail/")
+                case "fr":
+                    seURLBase = URL(string: "https://fr.finalfantasyxiv.com/lodestone/news/detail/")
+                case "de":
+                    seURLBase = URL(string: "https://de.finalfantasyxiv.com/lodestone/news/detail/")
+                case "ja":
+                    seURLBase = URL(string: "https://jp.finalfantasyxiv.com/lodestone/news/detail/")
+                default:
+                    seURLBase = nil
+                }
+            
+                guard let seURLBase = seURLBase else
+                {
+                    return nil
+                }
+                if #available(macOS 13.0, *) {
+                    return seURLBase.appending(path: self.id)
+                } else {
+                    return seURLBase.appendingPathComponent(self.id)
+                }
+                
+            }
+            
         }
         
-        struct Banner: Codable {
+        struct Banner: Codable, Identifiable {
+            var id: String { lsbBanner }
+            
             let lsbBanner: String
             let link: String
+            var bannerImage: NSImage = NSImage(systemSymbolName: "wifi.slash", accessibilityDescription: nil)!
             
             enum CodingKeys: String, CodingKey {
                 case lsbBanner = "lsb_banner"
