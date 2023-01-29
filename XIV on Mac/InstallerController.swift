@@ -9,81 +9,64 @@ import Cocoa
 import SeeURL
 import ZIPFoundation
 
-class InstallerController: NSViewController {
-    private enum GameFiles {
+class InstallerController: NSViewController, ObservableObject {
+    public enum GameFiles {
         case download
         case copy
         case point
     }
     
+    enum InstallerSheetPage: Int {
+        case selectOption = 0
+        case selectLicense
+        case copyGame
+        case installing
+        case done
+    }
+
     private var action = GameFiles.download
     
-    @IBOutlet private var status: NSTextField!
-    @IBOutlet private var info: NSTextField!
-    @IBOutlet private var tabView: NSTabView!
-    @IBOutlet private var bar: NSProgressIndicator!
+    @Published var installing: Bool = false
+    @Published var status: String = ""
+    @Published var info: String = ""
+    @Published var progress: Double = 0.0
+    @Published var progressMax: Double = 100.0
+    @Published var page: InstallerSheetPage = .init(rawValue: 0)! // You can set this to another value to see that page in the SwiftUI preview without breaking the flow
     
-    override func viewWillAppear() {
-        super.viewWillAppear()
-        bar.usesThreadedAnimation = true
+    func presentInstaller() {
+        DispatchQueue.main.async {
+            self.page = .selectOption // Or should we do it by index 0 so the order it controlled by the enum?
+            self.installing = true
+        }
     }
     
-    @IBAction func nextTab(_ sender: Any) {
-        tabView.selectNextTabViewItem(sender)
-    }
-    
-    @IBAction func previousTab(_ sender: Any) {
-        tabView.selectPreviousTabViewItem(sender)
-    }
-    
-    @IBAction func versionSelect(_ sender: NSButton) {
-        Settings.dalamudEnabled = (sender.identifier == NSUserInterfaceItemIdentifier("withDalamud"))
-    }
-    
-    @IBAction func licenseSelect(_ sender: NSButton) {
-        switch sender.identifier! {
-        case NSUserInterfaceItemIdentifier("windowsLicense"):
-            DispatchQueue.global(qos: .utility).async {
-                Settings.platform = .windows
-            }
-        case NSUserInterfaceItemIdentifier("steamLicense"):
-            DispatchQueue.global(qos: .utility).async {
-                Settings.platform = .steam
-            }
-        default:
-            DispatchQueue.global(qos: .utility).async {
-                Settings.platform = .mac
+    func previousPage() {
+        DispatchQueue.main.async {
+            if self.page.rawValue > 0 {
+                self.page = InstallerSheetPage(rawValue: self.page.rawValue - 1) ?? .selectOption
             }
         }
     }
     
-    @IBAction func gameFileSelect(_ sender: NSButton) {
-        switch sender.identifier! {
-        case NSUserInterfaceItemIdentifier("copyGame"):
-            action = GameFiles.copy
-        case NSUserInterfaceItemIdentifier("pointGame"):
-            action = GameFiles.point
-        default:
-            action = GameFiles.download
+    func nextPage() {
+        DispatchQueue.main.async {
+            self.page = InstallerSheetPage(rawValue: self.page.rawValue + 1) ?? .done
         }
     }
     
-    @IBAction func startInstall(_ sender: Any) {
+    func startInstall(_ sender: Any) {
         Task {
             switch action {
             case .download:
-                tabView.selectNextTabViewItem(sender)
                 install()
             case .copy:
                 if let gamePath = await getGameDirectory() {
                     copyGame(gamePath: gamePath)
-                    tabView.selectNextTabViewItem(sender)
                     install()
                 }
             case .point:
                 if let gamePath = await getGameDirectory() {
                     Settings.gamePath = URL(fileURLWithPath: gamePath)
-                    tabView.selectNextTabViewItem(sender)
                     install()
                 }
             }
@@ -182,13 +165,18 @@ class InstallerController: NSViewController {
     }
     
     func install() {
+        DispatchQueue.main.async { [self] in
+            self.status = NSLocalizedString("INSTALLER_BASE_GAME", comment: "")
+            self.info = NSLocalizedString("INSTALLER_DOWNLOADING", comment: "")
+        }
+
         DispatchQueue.global(qos: .userInitiated).async { [self] in
             let version = "1.0.8"
             let url = URL(string: "https://mac-dl.ffxiv.com/cw/finalfantasyxiv-\(version).zip")!
             do {
                 try HTTPClient.fetchFile(url: url) { total, now, _ in
                     DispatchQueue.main.async { [self] in
-                        bar.doubleValue = bar.maxValue * (Double(now) / Double(total))
+                        progress = progressMax * (Double(now) / Double(total))
                     }
                 }
             }
@@ -204,7 +192,7 @@ class InstallerController: NSViewController {
                 }
             }
             DispatchQueue.main.async { [self] in
-                info.stringValue = NSLocalizedString("INSTALLER_EXTRACTING", comment: "")
+                info = NSLocalizedString("INSTALLER_EXTRACTING", comment: "")
             }
             guard let archive = Archive(url: Util.cache.appendingPathComponent("finalfantasyxiv-\(version).zip"), accessMode: .read) else {
                 Log.fatal("Fatal error reading base game archive")
@@ -214,7 +202,7 @@ class InstallerController: NSViewController {
             let baseGameFiles = archive.filter { $0.path.starts(with: baseGamePath) }
             Util.make(dir: Settings.gamePath)
             DispatchQueue.main.async { [self] in
-                bar.doubleValue = 0.0
+                progress = 0.0
             }
             for (i, file) in baseGameFiles.enumerated() {
                 let components = URL(fileURLWithPath: file.path).pathComponents
@@ -230,12 +218,12 @@ class InstallerController: NSViewController {
                 }
                 
                 DispatchQueue.main.async { [self] in
-                    bar.doubleValue = bar.maxValue * Double(i + 1) / Double(baseGameFiles.count)
+                    progress = progressMax * Double(i + 1) / Double(baseGameFiles.count)
                 }
             }
             InstallerController.vanillaConf()
             DispatchQueue.main.async {
-                self.tabView.selectNextTabViewItem(self)
+                self.page = .done
             }
         }
     }
@@ -256,27 +244,17 @@ class InstallerController: NSViewController {
         }
     }
     
-    @IBAction func cancelInstall(_ sender: Any) {
+    func cancelInstall(_ sender: Any) {
         Util.quit()
     }
 
-    @IBAction func openFAQ(_ sender: Any) {
+    func openFAQ(_ sender: Any) {
         let url = URL(string: "https://www.xivmac.com/xiv-mac-application-help")!
         NSWorkspace.shared.open(url)
     }
     
-    @IBAction func closeWindow(_ sender: Any) {
-        view.window?.close()
-        tabView.selectTabViewItem(at: 0)
+    func closeWindow(_ sender: Any) {
+        self.installing = false
         NotificationCenter.default.post(name: .installDone, object: nil)
-    }
-}
-
-extension NSTextView {
-    func append(string: String) {
-        DispatchQueue.main.async {
-            self.textStorage?.append(NSAttributedString(string: string))
-            self.scrollToEndOfDocument(nil)
-        }
     }
 }
