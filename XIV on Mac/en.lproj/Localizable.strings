@@ -76,7 +76,7 @@ Do not enable this on non-retina displays, unless for screenshot purposes.";
 "RETINA_WORKAROUND_OPTIN_DISABLE" = "Do Not Enable";
 
 "ROSETTA_REQUIRED" = "Rosetta 2 is Required.";
-"ROSETTA_REQUIRED_INFORMATIVE" = "XIV On Mac requires Apple's Rosetta 2 to be installed in order to function on your Apple Silicon Mac. If you choose not to install, your game will not start. Would you like to start the Rosetta installer now?";
+"ROSETTA_REQUIRED_INFORMATIVE" = "XIV On Mac requires Apple's Rosetta 2 to be installed in order to function on your Apple Silicon Mac. If you choose not to install, your game will not start. Rosetta requires you to agree to the terms of the software license agreement here: http://www.apple.com/legal/sla/. Would you like to start the Rosetta installer now?";
 "ROSETTA_REQUIRED_INSTALL_BUTTON" = "Install Rosetta";
 "ROSETTA_REQUIRED_CANCEL_BUTTON" = "Cancel";
 

@@ -22,7 +22,6 @@
 		07A3499028056C7600A9D7D0 /* CfgCheckProblems.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 07A3498F28056C7600A9D7D0 /* CfgCheckProblems.tiff */; };
 		07AAF894283F3D08003C10FA /* PrefixMigrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AAF893283F3D08003C10FA /* PrefixMigrator.swift */; };
 		07B529D527D97D2B005B78BF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 07B529D727D97D2B005B78BF /* Localizable.strings */; };
-		07B529D927D97F26005B78BF /* installRosetta.command in Resources */ = {isa = PBXBuildFile; fileRef = 07B529D827D97F26005B78BF /* installRosetta.command */; };
 		07BF3AF728063A8600794155 /* CfgCheckProbFixed.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 07BF3AF628063A8600794155 /* CfgCheckProbFixed.tiff */; };
 		07BF3AFA2806507800794155 /* CfgCheckAdvFailed.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 07BF3AF82806507800794155 /* CfgCheckAdvFailed.tiff */; };
 		07BF3AFB2806507800794155 /* CfgCheckAdvFixed.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 07BF3AF92806507800794155 /* CfgCheckAdvFixed.tiff */; };
@@ -111,7 +110,6 @@
 		07A3498F28056C7600A9D7D0 /* CfgCheckProblems.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = CfgCheckProblems.tiff; sourceTree = "<group>"; };
 		07AAF893283F3D08003C10FA /* PrefixMigrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefixMigrator.swift; sourceTree = "<group>"; };
 		07B529D627D97D2B005B78BF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		07B529D827D97F26005B78BF /* installRosetta.command */ = {isa = PBXFileReference; lastKnownFileType = text; path = installRosetta.command; sourceTree = "<group>"; };
 		07BF3AF628063A8600794155 /* CfgCheckProbFixed.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = CfgCheckProbFixed.tiff; sourceTree = "<group>"; };
 		07BF3AF82806507800794155 /* CfgCheckAdvFailed.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = CfgCheckAdvFailed.tiff; sourceTree = "<group>"; };
 		07BF3AF92806507800794155 /* CfgCheckAdvFixed.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = CfgCheckAdvFixed.tiff; sourceTree = "<group>"; };
@@ -279,7 +277,6 @@
 				07B529D727D97D2B005B78BF /* Localizable.strings */,
 				07A349882805689200A9D7D0 /* Resources */,
 				07C876DC280B7DD500CB0D8E /* FFXIV-MacDefault.cfg */,
-				07B529D827D97F26005B78BF /* installRosetta.command */,
 				5046F7EE27E74A9A006C34E1 /* discord_bridge.exe */,
 			);
 			path = "XIV on Mac";
@@ -372,7 +369,6 @@
 				50511EBF2770E085003A1E9F /* Resources */,
 				5592FEB42778D3CB00FA304B /* Fix Codesign (Runtime) */,
 				503B819728391054006197C1 /* Embed Libraries */,
-				07B529DA27D98CBF005B78BF /* Fix Install Rosetta Script Permissions */,
 			);
 			buildRules = (
 			);
@@ -456,7 +452,6 @@
 				073649AF281E393000DA41F7 /* PrefsGeneral.tiff in Resources */,
 				07BF3AFA2806507800794155 /* CfgCheckAdvFailed.tiff in Resources */,
 				07B529D527D97D2B005B78BF /* Localizable.strings in Resources */,
-				07B529D927D97F26005B78BF /* installRosetta.command in Resources */,
 				07A3498B2805689200A9D7D0 /* CfgCheckGood.tiff in Resources */,
 				07C876DD280B7DD500CB0D8E /* FFXIV-MacDefault.cfg in Resources */,
 				507D8F2127766F52000F0CB0 /* dxvk in Resources */,
@@ -468,25 +463,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		07B529DA27D98CBF005B78BF /* Fix Install Rosetta Script Permissions */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Fix Install Rosetta Script Permissions";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nchmod u+x \"${TARGET_BUILD_DIR}\"/\"${UNLOCALIZED_RESOURCES_FOLDER_PATH}\"/installRosetta.command\n";
-		};
 		501BB9AB2983341C0037F201 /* Download Wine */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;

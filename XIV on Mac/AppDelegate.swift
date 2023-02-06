@@ -85,12 +85,7 @@ import XIVLauncher
                 alert.addButton(withTitle: NSLocalizedString("ROSETTA_REQUIRED_CANCEL_BUTTON", comment: ""))
                 let result = alert.runModal()
                 if result == .alertFirstButtonReturn {
-                    let rosettaCommand = Bundle.main.url(forResource: "installRosetta", withExtension: "command")
-                    if rosettaCommand != nil {
-                        // We could launch Terminal directly, but this should work more nicely for people who use 3rd party
-                        // terminal apps.
-                        Util.launch(exec: URL(fileURLWithPath: "/usr/bin/open"), args: [rosettaCommand!.path])
-                    }
+                    Util.launch(exec: URL(fileURLWithPath: "/usr/sbin/softwareupdate"), args: ["--install-rosetta", "--agree-to-license"], blocking: true)
                 }
             }
         }
