@@ -56,33 +56,6 @@ struct Util {
         }
     }
     
-    static var enviroment: [String: String] {
-        var env = ProcessInfo.processInfo.environment
-        if Settings.platform == .steam {
-            env["IS_FFXIV_LAUNCH_FROM_STEAM"] = "1"
-        }
-        env["LANG"] = "en_US" // needed to run when system language is set to 日本語
-        env["WINEESYNC"] = Wine.esync ? "1" : "0"
-        env["WINEPREFIX"] = Wine.prefix.path
-        env["WINEDEBUG"] = Wine.debug
-        env["WINEDLLOVERRIDES"] = "d3d9,d3d11,d3d10core,dxgi,mscoree=n"
-        env["DXVK_HUD"] = Dxvk.options.getHud()
-        env["DXVK_ASYNC"] = Dxvk.options.getAsync()
-        env["DXVK_FRAME_RATE"] = Dxvk.options.getMaxFramerate()
-        env["DXVK_STATE_CACHE_PATH"] = "C:\\"
-        env["DXVK_LOG_PATH"] = "C:\\"
-        env["DXVK_CONFIG_FILE"] = "C:\\ffxiv_dx11.conf"
-        env["DALAMUD_RUNTIME"] = "C:\\Program Files\\XIV on Mac\\dotNET Runtime"
-        env["XL_WINEONLINUX"] = "true"
-        env["XL_WINEONMAC"] = "true"
-        env["MVK_CONFIG_FULL_IMAGE_VIEW_SWIZZLE"] = "1"
-        env["MVK_CONFIG_RESUME_LOST_DEVICE"] = "1"
-        env["MVK_ALLOW_METAL_FENCES"] = "1"
-        env["MVK_CONFIG_USE_METAL_ARGUMENT_BUFFERS"] = "1"
-        // env["DYLD_PRINT_LIBRARIES"] = "YES"
-        return env
-    }
-    
     static func getSetting<T>(settingKey: String, defaultValue: T) -> T {
         let defaults = UserDefaults.standard
         let setting = defaults.object(forKey: settingKey)
