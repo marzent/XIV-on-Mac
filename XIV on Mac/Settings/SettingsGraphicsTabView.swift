@@ -18,6 +18,33 @@ struct SettingsGraphicsTabView: View {
             }.frame(width: 300.0, height: nil, alignment: .leading)
         }
     }
+    
+    func labeledScaleSlider(maxScale: Int) -> some View {
+        func labelOffsetAt(_ index: Int, _ maxScale: Int) -> CGFloat {
+            switch index {
+            case 0:
+                return 2.7
+            case maxScale:
+                return -2
+            default:
+                return 0
+            }
+        }
+        return VStack(spacing: 5) {
+            Slider(value: $viewModel.hudScale, in: 0.0 ... Double(maxScale))
+            HStack(spacing: 0) {
+                ForEach(0...maxScale,  id: \.self) { index in
+                    VStack {
+                        Text("x\(index)")
+                    }
+                    .offset(x: labelOffsetAt(index, maxScale))
+                    if index != maxScale {
+                        Spacer()
+                    }
+                }
+            }
+        }
+    }
 
     func dxvkOptionsView() -> some View {
         return Group {
@@ -91,9 +118,9 @@ struct SettingsGraphicsTabView: View {
                             .multilineTextAlignment(.leading)
                             .lineLimit(nil)
                             .fixedSize(horizontal: false, vertical: true)
-                        HStack {
+                        HStack(spacing: 30) {
                             Text("SETTINGS_GRAPHICS_HUD_SCALE")
-                            Slider(value: $viewModel.hudScale, in: 0.0 ... 4.0, step: 1.0)
+                            labeledScaleSlider(maxScale: 4)
                             Button("SETTINGS_GRAPHICS_RESET_SCALE_BUTTON") {
                                 viewModel.hudScale = 1.0
                             }
