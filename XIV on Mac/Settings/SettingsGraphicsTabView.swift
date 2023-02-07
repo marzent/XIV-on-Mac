@@ -252,6 +252,7 @@ extension SettingsGraphicsTabView {
 
         private func updateFpsLimit() {
             Dxvk.options.maxFramerate = fpsLimited ? Int(fpsLimit) ?? 0 : 0
+            Dxvk.options.save()
         }
     }
 }
