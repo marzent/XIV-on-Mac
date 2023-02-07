@@ -18,7 +18,7 @@ struct SettingsGraphicsTabView: View {
             }.frame(width: 300.0, height: nil, alignment: .leading)
         }
     }
-    
+
     func labeledScaleSlider(maxScale: Int) -> some View {
         func labelOffsetAt(_ index: Int, _ maxScale: Int) -> CGFloat {
             switch index {
@@ -33,7 +33,7 @@ struct SettingsGraphicsTabView: View {
         return VStack(spacing: 5) {
             Slider(value: $viewModel.hudScale, in: 0.0 ... Double(maxScale))
             HStack(spacing: 0) {
-                ForEach(0...maxScale,  id: \.self) { index in
+                ForEach(0 ... maxScale, id: \.self) { index in
                     VStack {
                         Text("x\(index)")
                     }
