@@ -1327,42 +1327,30 @@ Gw
                                         </scroller>
                                     </scrollView>
                                     <button wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tBx-dX-l3A" userLabel="Left">
-                                        <rect key="frame" x="20" y="142" width="16" height="252"/>
+                                        <rect key="frame" x="20" y="141" width="16" height="253"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="250" id="EzR-1i-guR"/>
+                                            <constraint firstAttribute="height" constant="245" id="EzR-1i-guR"/>
                                             <constraint firstAttribute="width" constant="16" id="ghM-Fl-wAo"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="LUF-1H-RXN">
+                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="LUF-1H-RXN">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
-                                            <imageReference key="image" image="chevron.left" catalog="system" symbolScale="large" renderingMode="hierarchical-single" variableValue="1">
-                                                <hierarchicalColors>
-                                                    <color white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <color name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                    <color name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
-                                                </hierarchicalColors>
-                                            </imageReference>
+                                            <imageReference key="image" image="chevron.left" catalog="system" symbolScale="large" variableValue="1"/>
                                         </buttonCell>
                                         <connections>
                                             <action selector="scrollLeft:" target="sya-zo-KBW" id="LlY-Dc-N1j"/>
                                         </connections>
                                     </button>
                                     <button wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YtN-Rh-od1" userLabel="Right">
-                                        <rect key="frame" x="644" y="142" width="16" height="252"/>
+                                        <rect key="frame" x="644" y="141" width="16" height="253"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="250" id="VF9-7D-nWO"/>
+                                            <constraint firstAttribute="height" constant="245" id="VF9-7D-nWO"/>
                                             <constraint firstAttribute="width" constant="16" id="Wrg-Y3-udI"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vFE-9l-3Rf">
+                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="vFE-9l-3Rf">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
-                                            <imageReference key="image" image="chevron.right" catalog="system" symbolScale="large" renderingMode="hierarchical-single">
-                                                <hierarchicalColors>
-                                                    <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <color name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
-                                                    <color name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
-                                                </hierarchicalColors>
-                                            </imageReference>
+                                            <imageReference key="image" image="chevron.right" catalog="system" symbolScale="large"/>
                                         </buttonCell>
                                         <connections>
                                             <action selector="scrollRight:" target="sya-zo-KBW" id="eEO-ch-MRR"/>

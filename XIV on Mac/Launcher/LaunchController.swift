@@ -44,6 +44,10 @@ class LaunchController: NSViewController {
         topicsTable = FrontierTableView(icon: NSImage(systemSymbolName: "newspaper.fill", accessibilityDescription: nil)!)
         newsView.documentView = newsTable.tableView
         topicsView.documentView = topicsTable.tableView
+        leftButton.wantsLayer = true
+        leftButton.layer?.backgroundColor = .black.copy(alpha: 0.4)
+        rightButton.wantsLayer = true
+        rightButton.layer?.backgroundColor = .black.copy(alpha: 0.4)
         DispatchQueue.global(qos: .userInitiated).async {
             self.checkBoot()
         }
