@@ -4,6 +4,7 @@
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="21008"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="the Touch Bar" minToolsVersion="8.1" minSystemVersion="10.12.2" requiredIntegratedClassName="NSTouchBar"/>
     </dependencies>
@@ -1326,26 +1327,42 @@ Gw
                                         </scroller>
                                     </scrollView>
                                     <button wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tBx-dX-l3A" userLabel="Left">
-                                        <rect key="frame" x="20" y="134" width="16" height="267"/>
+                                        <rect key="frame" x="20" y="142" width="16" height="252"/>
                                         <constraints>
+                                            <constraint firstAttribute="height" constant="250" id="EzR-1i-guR"/>
                                             <constraint firstAttribute="width" constant="16" id="ghM-Fl-wAo"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="chevron.left" catalog="system" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="LUF-1H-RXN">
+                                        <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="LUF-1H-RXN">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
+                                            <imageReference key="image" image="chevron.left" catalog="system" symbolScale="large" renderingMode="hierarchical-single" variableValue="1">
+                                                <hierarchicalColors>
+                                                    <color white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                </hierarchicalColors>
+                                            </imageReference>
                                         </buttonCell>
                                         <connections>
                                             <action selector="scrollLeft:" target="sya-zo-KBW" id="LlY-Dc-N1j"/>
                                         </connections>
                                     </button>
                                     <button wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YtN-Rh-od1" userLabel="Right">
-                                        <rect key="frame" x="644" y="134" width="16" height="267"/>
+                                        <rect key="frame" x="644" y="142" width="16" height="252"/>
                                         <constraints>
+                                            <constraint firstAttribute="height" constant="250" id="VF9-7D-nWO"/>
                                             <constraint firstAttribute="width" constant="16" id="Wrg-Y3-udI"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="chevron.right" catalog="system" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vFE-9l-3Rf">
+                                        <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vFE-9l-3Rf">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
+                                            <imageReference key="image" image="chevron.right" catalog="system" symbolScale="large" renderingMode="hierarchical-single">
+                                                <hierarchicalColors>
+                                                    <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                </hierarchicalColors>
+                                            </imageReference>
                                         </buttonCell>
                                         <connections>
                                             <action selector="scrollRight:" target="sya-zo-KBW" id="eEO-ch-MRR"/>
@@ -1408,12 +1425,10 @@ Gw
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="YtN-Rh-od1" firstAttribute="top" secondItem="3yp-No-o33" secondAttribute="top" id="AlE-ZM-yid"/>
+                                    <constraint firstItem="YtN-Rh-od1" firstAttribute="centerY" secondItem="3yp-No-o33" secondAttribute="centerY" id="EoV-Lk-1Ps"/>
+                                    <constraint firstItem="tBx-dX-l3A" firstAttribute="centerY" secondItem="3yp-No-o33" secondAttribute="centerY" id="Glb-8f-Wp4"/>
                                     <constraint firstItem="YtN-Rh-od1" firstAttribute="trailing" secondItem="3yp-No-o33" secondAttribute="trailing" id="Kbv-aG-1R9"/>
-                                    <constraint firstItem="YtN-Rh-od1" firstAttribute="bottom" secondItem="3yp-No-o33" secondAttribute="bottom" id="R7q-nz-TzX"/>
-                                    <constraint firstItem="tBx-dX-l3A" firstAttribute="top" secondItem="3yp-No-o33" secondAttribute="top" id="mty-pz-bCn"/>
                                     <constraint firstItem="tBx-dX-l3A" firstAttribute="leading" secondItem="3yp-No-o33" secondAttribute="leading" id="oyJ-tQ-rsw"/>
-                                    <constraint firstItem="tBx-dX-l3A" firstAttribute="bottom" secondItem="3yp-No-o33" secondAttribute="bottom" id="pR0-7a-eo3"/>
                                 </constraints>
                             </visualEffectView>
                         </subviews>
@@ -1525,13 +1540,13 @@ Gw
                     <connections>
                         <outlet property="autoLoginCheck" destination="fhv-Eb-PmW" id="ZbX-wj-4b6"/>
                         <outlet property="discloseButton" destination="R5T-I0-Kje" id="ALW-vS-IBY"/>
-                        <outlet property="leftButton" destination="tBx-dX-l3A" id="bnm-o4-9mU"/>
+                        <outlet property="leftButton" destination="tBx-dX-l3A" id="hfY-Eb-j7x"/>
                         <outlet property="loginButton" destination="Cgh-yM-JG5" id="gcf-Am-XLt"/>
                         <outlet property="newsView" destination="VFB-VA-Nbg" id="Joc-Vj-rNh"/>
                         <outlet property="otpCheck" destination="xhX-md-4MR" id="16N-02-2YO"/>
                         <outlet property="otpField" destination="hjj-4f-wNd" id="Qbt-Wl-rev"/>
                         <outlet property="passwdField" destination="Bhg-a8-aUl" id="C2s-Nr-4j7"/>
-                        <outlet property="rightButton" destination="YtN-Rh-od1" id="ciC-9H-LoG"/>
+                        <outlet property="rightButton" destination="YtN-Rh-od1" id="wgw-Sa-chY"/>
                         <outlet property="scrollView" destination="kUd-Jw-ky7" id="GXL-go-HMw"/>
                         <outlet property="topicsView" destination="pE4-Pq-abN" id="8cB-5W-RZq"/>
                         <outlet property="touchBarLoginButton" destination="dHG-Nt-Pvm" id="98v-Wp-QUY"/>
@@ -2173,8 +2188,8 @@ Gw
         <image name="CfgCheckGood" width="96" height="96"/>
         <image name="CfgCheckProbFailed" width="96" height="96"/>
         <image name="NSTouchBarGoDownTemplate" width="18" height="11"/>
-        <image name="chevron.left" catalog="system" width="10" height="14"/>
-        <image name="chevron.right" catalog="system" width="10" height="14"/>
+        <image name="chevron.left" catalog="system" width="12" height="17"/>
+        <image name="chevron.right" catalog="system" width="12" height="17"/>
         <image name="gear" catalog="system" width="17" height="17"/>
         <image name="puzzlepiece.fill" catalog="system" width="22" height="15"/>
     </resources>

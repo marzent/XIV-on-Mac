@@ -19,8 +19,7 @@ class LaunchController: NSViewController {
     var topicsTable: FrontierTableView!
     var otp: OTP?
     
-    @IBOutlet weak var rightButton: NSButton!
-    @IBOutlet weak var leftButton: NSButton!
+    
     @IBOutlet private var loginButton: NSButton!
     @IBOutlet var userField: NSTextField!
     @IBOutlet private var userMenu: NSMenu!
@@ -33,6 +32,8 @@ class LaunchController: NSViewController {
     @IBOutlet private var topicsView: NSScrollView!
     @IBOutlet var discloseButton: NSButton!
     @IBOutlet private var touchBarLoginButton: NSButtonTouchBarItem!
+    @IBOutlet var leftButton: NSButton!
+    @IBOutlet var rightButton: NSButton!
     
     override func loadView() {
         super.loadView()
@@ -413,7 +414,7 @@ final class AnimatingScrollView: NSScrollView {
     
     func scrollLeft() {
         guard banners != nil,
-              index >= 0 else {
+              index > 0 else {
             return
         }
         startTimer()
