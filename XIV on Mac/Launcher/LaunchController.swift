@@ -19,6 +19,8 @@ class LaunchController: NSViewController {
     var topicsTable: FrontierTableView!
     var otp: OTP?
     
+    @IBOutlet weak var rightButton: NSButton!
+    @IBOutlet weak var leftButton: NSButton!
     @IBOutlet private var loginButton: NSButton!
     @IBOutlet var userField: NSTextField!
     @IBOutlet private var userMenu: NSMenu!
@@ -131,6 +133,14 @@ class LaunchController: NSViewController {
     
     @IBAction func doRepair(_ sender: Any) {
         doLogin(repair: true)
+    }
+    
+    @IBAction func scrollLeft(_ sender: NSButton) {
+        scrollView.scrollLeft()
+    }
+    
+    @IBAction func scrollRight(_ sender: NSButton) {
+        scrollView.scrollRight()
     }
     
     func problemConfigurationCheck() -> Bool {
@@ -386,9 +396,28 @@ final class AnimatingScrollView: NSScrollView {
     }
     
     private func animate() {
-        if let banners = banners {
-            index = (index + 1) % banners.count
-            scroll(toPoint: NSPoint(x: Int(width) * index, y: 0), animationDuration: animationDuration)
+        guard let banners = banners else { return }
+        index = (index + 1) % banners.count
+        scroll(toPoint: NSPoint(x: Int(width) * index, y: 0), animationDuration: animationDuration)
+    }
+    
+    func scrollRight() {
+        guard let banners = banners,
+        index < banners.count - 1 else {
+            return
         }
+        startTimer()
+        index += 1
+        scroll(toPoint: NSPoint(x: Int(width) * index, y: 0), animationDuration: animationDuration)
+    }
+    
+    func scrollLeft() {
+        guard banners != nil,
+              index >= 0 else {
+            return
+        }
+        startTimer()
+        index -= 1
+        scroll(toPoint: NSPoint(x: Int(width) * index, y: 0), animationDuration: animationDuration)
     }
 }
