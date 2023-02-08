@@ -19,7 +19,6 @@ class LaunchController: NSViewController {
     var topicsTable: FrontierTableView!
     var otp: OTP?
     
-    
     @IBOutlet private var loginButton: NSButton!
     @IBOutlet var userField: NSTextField!
     @IBOutlet private var userMenu: NSMenu!
@@ -39,15 +38,16 @@ class LaunchController: NSViewController {
         super.loadView()
         update()
         NotificationCenter.default.addObserver(self, selector: #selector(installDone(_:)), name: .installDone, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showSideButtons(_:)), name: .bannerEnter, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(hideSideButtons(_:)), name: .bannerLeft, object: nil)
         userMenu.minimumWidth = 264
         newsTable = FrontierTableView(icon: NSImage(systemSymbolName: "newspaper", accessibilityDescription: nil)!)
         topicsTable = FrontierTableView(icon: NSImage(systemSymbolName: "newspaper.fill", accessibilityDescription: nil)!)
         newsView.documentView = newsTable.tableView
         topicsView.documentView = topicsTable.tableView
         leftButton.wantsLayer = true
-        leftButton.layer?.backgroundColor = .black.copy(alpha: 0.4)
         rightButton.wantsLayer = true
-        rightButton.layer?.backgroundColor = .black.copy(alpha: 0.4)
+        setSideButtonVisibility(to: false)
         DispatchQueue.global(qos: .userInitiated).async {
             self.checkBoot()
         }
@@ -60,6 +60,20 @@ class LaunchController: NSViewController {
     
     @objc func installDone(_ notif: Notification) {
         checkBoot()
+    }
+    
+    @objc func hideSideButtons(_ notif: Notification) {
+        setSideButtonVisibility(to: false)
+    }
+    
+    @objc func showSideButtons(_ notif: Notification) {
+        setSideButtonVisibility(to: true)
+    }
+    
+    func setSideButtonVisibility(to: Bool) {
+        let buttonAlpha = 0.4
+        leftButton.layer?.backgroundColor = .black.copy(alpha: to ? buttonAlpha : 0.0)
+        rightButton.layer?.backgroundColor = .black.copy(alpha: to ? buttonAlpha : 0.0)
     }
     
     func checkBoot() {
@@ -367,6 +381,12 @@ final class AnimatingScrollView: NSScrollView {
             startTimer()
         }
     }
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        let trackingArea = NSTrackingArea(rect: bounds, options: [.activeInKeyWindow, .mouseEnteredAndExited], owner: self, userInfo: nil)
+        addTrackingArea(trackingArea)
+    }
     
     func startTimer() {
         stopTimer()
@@ -407,8 +427,7 @@ final class AnimatingScrollView: NSScrollView {
     }
     
     func scrollRight() {
-        guard let banners = banners,
-        index < banners.count - 1 else {
+        guard let banners = banners, index < banners.count - 1 else {
             return
         }
         startTimer()
@@ -417,12 +436,21 @@ final class AnimatingScrollView: NSScrollView {
     }
     
     func scrollLeft() {
-        guard banners != nil,
-              index > 0 else {
+        guard banners != nil, index > 0 else {
             return
         }
         startTimer()
         index -= 1
         scroll(toPoint: NSPoint(x: Int(width) * index, y: 0), animationDuration: animationDuration)
+    }
+    
+    override func mouseEntered(with theEvent: NSEvent) {
+        super.mouseEntered(with: theEvent)
+        NotificationCenter.default.post(name: .bannerEnter, object: nil)
+    }
+       
+    override func mouseExited(with theEvent: NSEvent) {
+        super.mouseExited(with: theEvent)
+        NotificationCenter.default.post(name: .bannerLeft, object: nil)
     }
 }
