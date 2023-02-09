@@ -14,7 +14,7 @@ struct CarouselView<Content>: View where Content: View {
 
     @State private var offset = CGFloat.zero
     @State private var dragging = false
-    @State private var timer = Timer.publish(every: 5, on: .current, in: .common).autoconnect()
+    @State private var timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
 
     init(index: Binding<Int>, maxIndex: Int, @ViewBuilder content: @escaping () -> Content) {
         self._index = index
