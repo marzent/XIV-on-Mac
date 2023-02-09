@@ -87,7 +87,11 @@ struct ItemControl: View {
                 Circle()
                     .strokeBorder(Color.black, lineWidth: 1)
                     .background(Circle().foregroundColor(index == self.index ? Color.white : Color.gray))
-                    .frame(width: 8, height: 8)
+                    .frame(width: 12, height: 12)
+                    .opacity(0.4)
+                    .onTapGesture {
+                        self.index = index
+                    }
             }
         }
         .padding(15)
