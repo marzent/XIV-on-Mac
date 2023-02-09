@@ -11,10 +11,10 @@ struct CarouselView<Content>: View where Content: View {
     @Binding var index: Int
     let maxIndex: Int
     let content: () -> Content
-    private let timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
 
     @State private var offset = CGFloat.zero
     @State private var dragging = false
+    @State private var timer = Timer.publish(every: 5, on: .current, in: .common).autoconnect()
 
     init(index: Binding<Int>, maxIndex: Int, @ViewBuilder content: @escaping () -> Content) {
         self._index = index
@@ -43,7 +43,7 @@ struct CarouselView<Content>: View where Content: View {
                         let predictedEndOffset = -CGFloat(self.index) * geometry.size.width + value.predictedEndTranslation.width
                         let predictedIndex = Int(round(predictedEndOffset / -geometry.size.width))
                         self.index = self.clampedIndex(from: predictedIndex)
-                        withAnimation(.easeOut) {
+                        withAnimation(.easeInOut) {
                             self.dragging = false
                         }
                     }
@@ -52,12 +52,23 @@ struct CarouselView<Content>: View where Content: View {
             .clipped()
 
             ItemControl(index: $index, maxIndex: maxIndex)
-                .onReceive(self.timer) { _ in
-                    if maxIndex > 0 {
-                        self.index = (self.index + 1) % maxIndex
-                    }
-                }
         }
+        .onReceive(timer) { _ in
+            guard maxIndex > 0 else { return }
+            withAnimation(.easeInOut) {
+                index = (index + 1) % maxIndex
+            }
+        }
+        .onChange(of: index) { _ in
+            resetTimer()
+        }
+        .onChange(of: dragging) { _ in
+            resetTimer()
+        }
+    }
+    
+    private func resetTimer() {
+        timer = Timer.publish(every: 5, on: .current, in: .common).autoconnect()
     }
 
     func offset(in geometry: GeometryProxy) -> CGFloat {
