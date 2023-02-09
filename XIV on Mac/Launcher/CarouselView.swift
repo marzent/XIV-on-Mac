@@ -63,12 +63,20 @@ struct CarouselView<Content>: View where Content: View {
             resetTimer()
         }
         .onChange(of: dragging) { _ in
-            resetTimer()
+            if dragging {
+                stopTimer()
+            } else {
+                resetTimer()
+            }
         }
     }
     
     private func resetTimer() {
         timer = Timer.publish(every: 5, on: .current, in: .common).autoconnect()
+    }
+    
+    private func stopTimer() {
+        timer.upstream.connect().cancel()
     }
 
     func offset(in geometry: GeometryProxy) -> CGFloat {
