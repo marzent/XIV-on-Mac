@@ -33,6 +33,7 @@
 		5015D4C72881E97C004BA6D8 /* BunnyHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5015D4C62881E97C004BA6D8 /* BunnyHUD.swift */; };
 		5015D4C92881EAF9004BA6D8 /* AddOn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5015D4C82881EAF9004BA6D8 /* AddOn.swift */; };
 		501956A327F04616003CB437 /* LaunchWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501956A227F04616003CB437 /* LaunchWindowController.swift */; };
+		501AF2F1299641A700754CC6 /* Dalamud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501AF2F0299641A700754CC6 /* Dalamud.swift */; };
 		5020957927C9611A00BD76CC /* Patch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5020957827C9611A00BD76CC /* Patch.swift */; };
 		502A18D827AA8C0D00144AB9 /* LoginCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A18D727AA8C0D00144AB9 /* LoginCredentials.swift */; };
 		502A18E927AACEFE00144AB9 /* LaunchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A18E827AACEFE00144AB9 /* LaunchController.swift */; };
@@ -121,6 +122,7 @@
 		5015D4C62881E97C004BA6D8 /* BunnyHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BunnyHUD.swift; sourceTree = "<group>"; };
 		5015D4C82881EAF9004BA6D8 /* AddOn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOn.swift; sourceTree = "<group>"; };
 		501956A227F04616003CB437 /* LaunchWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchWindowController.swift; sourceTree = "<group>"; };
+		501AF2F0299641A700754CC6 /* Dalamud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dalamud.swift; sourceTree = "<group>"; };
 		5020957827C9611A00BD76CC /* Patch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patch.swift; sourceTree = "<group>"; };
 		502A18D727AA8C0D00144AB9 /* LoginCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCredentials.swift; sourceTree = "<group>"; };
 		502A18E827AACEFE00144AB9 /* LaunchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchController.swift; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 				5077A32B27C12A9100D4F1B8 /* Settings.swift */,
 				507607A027B149F600DDF3E6 /* Frontier.swift */,
 				5049B9AF283BF89400463A2B /* LoginResult.swift */,
+				501AF2F0299641A700754CC6 /* Dalamud.swift */,
 			);
 			path = Launcher;
 			sourceTree = "<group>";
@@ -533,6 +536,7 @@
 				5015D4C92881EAF9004BA6D8 /* AddOn.swift in Sources */,
 				5077A32C27C12A9100D4F1B8 /* Settings.swift in Sources */,
 				50BD278727785418002B0D1F /* Notifications.swift in Sources */,
+				501AF2F1299641A700754CC6 /* Dalamud.swift in Sources */,
 				509FE19A27E3654E008D56D6 /* FFXIVEnums.swift in Sources */,
 				5010EFE427E4CE40001D2FEC /* Encryption.swift in Sources */,
 				5020957927C9611A00BD76CC /* Patch.swift in Sources */,

@@ -190,6 +190,7 @@
 // Plugins/Dalamud tab items
 "SETTINGS_PLUGINS_WHAT_IS_DALAMUD_BLURB" = "プラグイン機能はDalamudプロジェクトによって提供され、あなたのゲームに色々な（余計な）機能を追加できます。プラグインが必要な理由がわからない場合や、プラグインを使用したくない場合はこの機能を無効にした方が安全です。詳細は下記のWebサイトをご覧ください。\nhttps://github.com/goatcorp/Dalamud";
 "SETTINGS_PLUGINS_DALAMUD_ENABLE" = "Dalamudを有効化";
+"SETTINGS_PLUGINS_DALAMUD_ENTRYPOINT" = "Entrypoint";
 "SETTINGS_PLUGINS_DALAMUD_DELAY_BLURB" = "Dalamudのロードがうまくいかない場合は、ロードの遅延秒数を適宜調整して、お使いのMacに合う値を探してみてください。";
 "SETTINGS_PLUGINS_DALAMUD_DELAY_UNITS" = "秒";
 "SETTINGS_PLUGINS_DALAMUD_DELAY_LABEL" = "遅延:";

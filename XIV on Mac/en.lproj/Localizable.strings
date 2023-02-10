@@ -189,6 +189,7 @@ Do not enable this on non-retina displays, unless for screenshot purposes.";
 // Plugins/Dalamud tab items
 "SETTINGS_PLUGINS_WHAT_IS_DALAMUD_BLURB" = "Plugins are enabled by a project called Dalamud, which enables extra functionality in your game. If you do not know why you would want a plugin or do not wish to use them, you may safely leave this disabled. To learn more about Dalamud please visit:\nhttps://github.com/goatcorp/Dalamud";
 "SETTINGS_PLUGINS_DALAMUD_ENABLE" = "Enable Dalamud";
+"SETTINGS_PLUGINS_DALAMUD_ENTRYPOINT" = "Entrypoint";
 "SETTINGS_PLUGINS_DALAMUD_DELAY_BLURB" = "If Dalamud is not loading succesfully, you can try adjusting the load delay up or down to find a value that works for your Mac.";
 "SETTINGS_PLUGINS_DALAMUD_DELAY_UNITS" = "seconds";
 "SETTINGS_PLUGINS_DALAMUD_DELAY_LABEL" = "Delay:";

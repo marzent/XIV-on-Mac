@@ -191,6 +191,7 @@ Ne l'activez pas sur les écrans autres que écrans Retina, sauf à des fins de 
 // Plugins/Dalamud tab items
 "SETTINGS_PLUGINS_WHAT_IS_DALAMUD_BLURB" = "Les plugins sont activés par un projet appelé Dalamud, qui permet des fonctionnalités supplémentaires dans votre jeu. Si vous ne savez pas pourquoi vous voudriez un plugin ou si vous ne souhaitez pas les utiliser, vous pouvez les laisser désactivés en toute sécurité. Pour en savoir plus sur Dalamud, veuillez visiter :\nhttps://github.com/goatcorp/Dalamud";
 "SETTINGS_PLUGINS_DALAMUD_ENABLE" = "Activer Dalamud";
+"SETTINGS_PLUGINS_DALAMUD_ENTRYPOINT" = "Entrypoint";
 "SETTINGS_PLUGINS_DALAMUD_DELAY_BLURB" = "Si Dalamud ne fonctionne pas correctement, vous pouvez essayer d'augmenter ou diminuer le délais pour trouver une valeur qui fonctionne pour votre Mac.";
 "SETTINGS_PLUGINS_DALAMUD_DELAY_UNITS" = "secondes";
 "SETTINGS_PLUGINS_DALAMUD_DELAY_LABEL" = "Délais :";
