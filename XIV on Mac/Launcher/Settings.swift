@@ -192,7 +192,7 @@ public enum Settings {
     private static let dalamudEntryPointSettingsKey = "DalamudEntrypoint"
     static var dalamudEntryPoint: Bool {
         get {
-            Util.getSetting(settingKey: dalamudEntryPointSettingsKey, defaultValue: true)
+            Util.getSetting(settingKey: dalamudEntryPointSettingsKey, defaultValue: false)
         }
         set {
             storage.set(newValue, forKey: dalamudEntryPointSettingsKey)
