@@ -168,8 +168,6 @@ class LaunchController: NSViewController {
             firstAidWinController!.window?.makeKeyAndOrderFront(self)
             return true
         }
-        // If there were no major problems, see if we need to apply the Retina bug workaround.
-        firstAidController.applyRetinaWorkaround()
         return false
     }
     

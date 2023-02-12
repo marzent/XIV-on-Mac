@@ -23,7 +23,7 @@ struct SettingsWindowContentView: View {
             advancedTabView.tabItem { Text("SETTINGS_TAB_ADVANCED_TITLE") }.tag(SettingsTabItem.Advanced)
         }
         .padding(.top)
-        .frame(minWidth: 700, minHeight: 550)
+        .frame(minWidth: 700, minHeight: 590)
     }
 }
 

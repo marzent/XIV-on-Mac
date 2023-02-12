@@ -126,16 +126,6 @@ struct Wine {
         }
     }
     
-    private static let retinaStartupBugWorkaroundSettingKey = "RetinaStartupBugWorkaround"
-    static var retinaStartupBugWorkaround: Bool {
-        get {
-            Util.getSetting(settingKey: retinaStartupBugWorkaroundSettingKey, defaultValue: false)
-        }
-        set(_retinaStartupBugWorkaround) {
-            UserDefaults.standard.set(_retinaStartupBugWorkaround, forKey: retinaStartupBugWorkaroundSettingKey)
-        }
-    }
-    
     private static var timebase: mach_timebase_info = .init()
     static var tickCount: UInt64 {
         if timebase.denom == 0 {

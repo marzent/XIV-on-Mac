@@ -66,15 +66,9 @@
 "SEE_COMPATABILITY_BUTTON" = "Liste de compatibilité";
 
 "RETINA_WARNING" = "Avertissement";
-"RETINA_WARNING_INFORMATIVE" = "La modification de ce paramètre peut entraîner des problèmes avec Final Fantasy XIV ne s'affichant pas à la taille maximale de l'écran. Ne pas modifier pas ce paramètre pendant que le jeu est en cours d'exécution et redémarrez XIV on Mac après toute modification.
-Si le problème persiste, il est recommandé de changer le mode d'affichage dans le jeu. La désactivation de la mise à l'échelle peut augmenter le nombre de pixels du jeu jusqu'à 4x, ce qui pèsera lourdement sur vos performances.
+"RETINA_WARNING_INFORMATIVE" = "La désactivation de la mise à l'échelle peut augmenter le nombre de pixels du jeu jusqu'à 4x, ce qui pèsera lourdement sur vos performances.
 Ne l'activez pas sur les écrans autres que écrans Retina, sauf à des fins de capture d'écran.";
 "RETINA_ENABLE_BUTTON" = "J'ai compris";
-
-"RETINA_WORKAROUND_OPTIN" = "Solution du bogue en plein écran";
-"RETINA_WORKAROUND_OPTIN_INFORMATIVE" = "Wine contient un bogue qui provoque une taille de fenêtre et une position de la souris incorrectes au démarrage si le mode de mise à l'échelle est désactivé. XIV on Mac peut aider à contourner ce problème en changeant votre jeu en mode fenêtré à chaque lancement. Une fois que le jeu démarre, vous pouvez revenir à votre mode préféré. Souhaitez-vous activer cette solution  ? Vous pouvez modifier ce paramètre à tout moment dans les préférences.";
-"RETINA_WORKAROUND_OPTIN_ENABLE" = "Activer la solution";
-"RETINA_WORKAROUND_OPTIN_DISABLE" = "Ne pas activer";
 
 "ROSETTA_REQUIRED" = "Rosetta 2 est requis.";
 "ROSETTA_REQUIRED_INFORMATIVE" = "XIV on Mac nécessite l'installation de Rosetta 2 d'Apple pour fonctionner sur votre Apple Silicon Mac. Si vous choisissez de ne pas installer, votre jeu ne démarrera pas. Souhaitez-vous lancer le programme d'installation de Rosetta maintenant ?";

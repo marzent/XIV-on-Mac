@@ -138,21 +138,15 @@ struct SettingsGraphicsTabView: View {
                     Toggle(isOn: $viewModel.macScaling) {
                         Text("SETTINGS_GRAPHICS_RETINA")
                     }
-                    .padding(.leading)
+                    .padding([.leading, .top])
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    if !viewModel.macScaling {
-                        Toggle(isOn: $viewModel.retinaStartupBugWorkaround) {
-                            Text("SETTINGS_GRAPHICS_RETINA_BUGFIX")
-                        }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.leading, 30)
-                    }
                     Spacer()
                 }.frame(maxWidth: .infinity, alignment: .topLeading)
                 Image(nsImage: NSImage(named: "PrefsGraphics") ?? NSImage())
                     .padding(.all)
             }
         }
+        .padding(.top)
     }
 }
 
@@ -256,10 +250,6 @@ extension SettingsGraphicsTabView {
                 }
                 Wine.retina = !macScaling
             }
-        }
-
-        @Published var retinaStartupBugWorkaround: Bool = Wine.retinaStartupBugWorkaround {
-            didSet { Wine.retinaStartupBugWorkaround = retinaStartupBugWorkaround }
         }
 
         func setAllDXVKSettings(to: Bool) {

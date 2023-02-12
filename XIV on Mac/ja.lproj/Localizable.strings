@@ -66,15 +66,9 @@
 "SEE_COMPATABILITY_BUTTON" = "互換性リスト";
 
 "RETINA_WARNING" = "警告";
-"RETINA_WARNING_INFORMATIVE" = "この設定を変更すると、ファイナルファンタジーXIVが全画面表示できない問題が発生することがあります。ゲーム起動中はこの設定を変更せず、変更後はXIV on Macを再起動してください。
-それでも問題が解決しない場合、ゲーム内の表示モードを変更することをお勧めします。アップスケーリングを無効にすると、ゲームのピクセル数が最大4倍まで増加するため、パフォーマンスに多大な影響が出ます。
+"RETINA_WARNING_INFORMATIVE" = "アップスケーリングを無効にすると、ゲームのピクセル数が最大4倍まで増加するため、パフォーマンスに多大な影響が出ます。
 スクリーンショットを撮る用途でない限り、Retinaディスプレイ以外ではこの機能を有効にしないでください。";
 "RETINA_ENABLE_BUTTON" = "理解しました";
-
-"RETINA_WORKAROUND_OPTIN" = "全画面表示バグに関する回避策";
-"RETINA_WORKAROUND_OPTIN_INFORMATIVE" = "Wineにはスケーリングモードが無効の場合、起動時にウィンドウサイズとマウスポインタの位置が不正になるバグが存在します。XIV on Macでは、毎回起動時にゲームをウィンドウモードにすることにより、この問題を回避します。この回避策を有効にしますか？ 本機能は環境設定でいつでも変更可能です。";
-"RETINA_WORKAROUND_OPTIN_ENABLE" = "回避策を有効にする";
-"RETINA_WORKAROUND_OPTIN_DISABLE" = "利用しない";
 
 "ROSETTA_REQUIRED" = "Rosetta 2が必要です";
 "ROSETTA_REQUIRED_INFORMATIVE" = "XIV on Macは、Apple Siliconを搭載したMacで動作させるためにApple社のRosetta 2を利用します。Rosetta 2をインストールしなければゲームは起動しません。Rosetta 2のインストーラーを起動しますか？";
