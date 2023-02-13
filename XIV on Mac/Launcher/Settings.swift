@@ -224,7 +224,7 @@ public enum Settings {
         }
         set {
             storage.set(newValue, forKey: metal3PerformanceOverlayKey)
-            syncToXL()
+            Wine.setup()
         }
     }
 }

@@ -26,13 +26,7 @@ struct Wine {
         addEnvironmentVariable("DXVK_STATE_CACHE_PATH", "C:\\")
         addEnvironmentVariable("DXVK_LOG_PATH", "C:\\")
         addEnvironmentVariable("DOTNET_EnableWriteXorExecute", "0") // XXX Required for Apple Silicon and .NET 7+
-        if Settings.metal3PerformanceOverlay {
-            addEnvironmentVariable("MTL_HUD_ENABLED", "1")
-        }
-        else {
-            // If we've previously set it to 1 this is the only way to turn it back off since we can't remove a previously set env
-            addEnvironmentVariable("MTL_HUD_ENABLED", "0")
-        }
+        addEnvironmentVariable("MTL_HUD_ENABLED", Settings.metal3PerformanceOverlay ? "1" : "0")
         createCompatToolsInstance(FileManager.default.fileSystemRepresentation(withPath: wineBinURL.path), debug, esync)
     }
     
