@@ -238,4 +238,8 @@ import XIVLauncher
     @IBAction func openFirstAid(_ sender: Any) {
         firstAidWinController?.showWindow(self)
     }
+    
+    @IBAction func startBenchmark(_ sender: Any) {
+        Benchmark.launch()
+    }
 }

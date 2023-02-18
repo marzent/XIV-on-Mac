@@ -71,6 +71,7 @@
 		50DC355E27E9CEEE00DBA62C /* Base32 in Frameworks */ = {isa = PBXBuildFile; productRef = 50DC355D27E9CEEE00DBA62C /* Base32 */; };
 		50DF1F8527CCB83300DE9DA5 /* FFXIVRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DF1F8427CCB83300DE9DA5 /* FFXIVRepo.swift */; };
 		50DF1F8827CD261A00DE9DA5 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 50DF1F8727CD261A00DE9DA5 /* OrderedCollections */; };
+		50E7EB9A29A16F29001BC287 /* Benchmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E7EB9929A16F29001BC287 /* Benchmark.swift */; };
 		50E980DE2840A65000050151 /* RepairController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E980DD2840A65000050151 /* RepairController.swift */; };
 		50ED0DB32773C619002E9854 /* Dotnet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ED0DB22773C619002E9854 /* Dotnet.swift */; };
 		50ED0DB52773CA8C002E9854 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ED0DB42773CA8C002E9854 /* Networking.swift */; };
@@ -161,6 +162,7 @@
 		50BD278627785418002B0D1F /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		50D30F9F27B92EDB007A9F66 /* OTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTP.swift; sourceTree = "<group>"; };
 		50DF1F8427CCB83300DE9DA5 /* FFXIVRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFXIVRepo.swift; sourceTree = "<group>"; };
+		50E7EB9929A16F29001BC287 /* Benchmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Benchmark.swift; sourceTree = "<group>"; };
 		50E980DD2840A65000050151 /* RepairController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepairController.swift; sourceTree = "<group>"; };
 		50ED0DB22773C619002E9854 /* Dotnet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dotnet.swift; sourceTree = "<group>"; };
 		50ED0DB42773CA8C002E9854 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
@@ -306,6 +308,7 @@
 				502A18D727AA8C0D00144AB9 /* LoginCredentials.swift */,
 				5077A32B27C12A9100D4F1B8 /* Settings.swift */,
 				507607A027B149F600DDF3E6 /* Frontier.swift */,
+				50E7EB9929A16F29001BC287 /* Benchmark.swift */,
 				5049B9AF283BF89400463A2B /* LoginResult.swift */,
 				501AF2F0299641A700754CC6 /* Dalamud.swift */,
 			);
@@ -535,6 +538,7 @@
 				2B7C95D2277C6C6000A3CA89 /* SocialIntegration.swift in Sources */,
 				5015D4C92881EAF9004BA6D8 /* AddOn.swift in Sources */,
 				5077A32C27C12A9100D4F1B8 /* Settings.swift in Sources */,
+				50E7EB9A29A16F29001BC287 /* Benchmark.swift in Sources */,
 				50BD278727785418002B0D1F /* Notifications.swift in Sources */,
 				501AF2F1299641A700754CC6 /* Dalamud.swift in Sources */,
 				509FE19A27E3654E008D56D6 /* FFXIVEnums.swift in Sources */,
