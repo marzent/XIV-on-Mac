@@ -93,10 +93,9 @@ Ne l'activez pas sur les écrans autres que écrans Retina, sauf à des fins de 
 "SELECT_GAME_PATH_ERROR_MESSAGE" = "Le dossier que vous avez choisi pour l'installation du jeu ne semble pas être valide.";
 "SELECT_GAME_PATH_ERROR_INFORMATIVE" = "Voulez-vous toujours l'utiliser ?";
 
-"SELECT_BENCHMARK_PATH_PANEL_TITLE" = "Choose FFXIV benchmark location";
-"SELECT_BENCHMARK_PATH_PANEL_SUBTITLE" = "It should contain the folder \"game\" and \"ffxiv-endwalker-bench.exe\"";
+"SELECT_BENCHMARK_PATH_PANEL_MESSAGE" = "Please choose the FFXIV benchmark location";
 "BENCHMARK_TITLE" = "FINAL FANTASY XIV benchmark";
-"SELECT_BENCHMARK_PATH_ERROR_INFORMATIVE" = "The folder you chose for the game benchmark does not seem to be valid";
+"SELECT_BENCHMARK_PATH_ERROR_INFORMATIVE" = "The folder you chose for the game benchmark does not seem to be valid.\n It should contain \"ffxiv-endwalker-bench.exe\" and the folder \"game\"";
 "BENCHMARK_RESULT" = "Score: %@\nAverage FPS: %@";
 
 "PATCH_INSTALLATION_WAITING" = "Attendez la fin du téléchargement…";

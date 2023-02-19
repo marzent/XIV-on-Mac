@@ -14,8 +14,7 @@ struct Benchmark {
 
     public static func launch() {
         let openPanel = NSOpenPanel()
-        openPanel.title = NSLocalizedString("SELECT_BENCHMARK_PATH_PANEL_TITLE", comment: "")
-        openPanel.subtitle = NSLocalizedString("SELECT_BENCHMARK_PATH_PANEL_SUBTITLE", comment: "")
+        openPanel.message = NSLocalizedString("SELECT_BENCHMARK_PATH_PANEL_MESSAGE", comment: "")
         openPanel.showsResizeIndicator = true
         openPanel.showsHiddenFiles = true
         openPanel.canChooseDirectories = true
