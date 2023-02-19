@@ -46,8 +46,8 @@ struct SettingsGraphicsTabView: View {
         }
     }
 
-    func dxvkOptionsView() -> some View {
-        return Group {
+    var dxvkOptionsView: some View {
+        Group {
             Toggle(isOn: $viewModel.metal3Hud) {
                 Text("SETTINGS_GRAPHICS_METAL3_HUD")
             }
@@ -125,7 +125,7 @@ struct SettingsGraphicsTabView: View {
                                 viewModel.hudScale = 1.0
                             }
                         }
-                        dxvkOptionsView()
+                        dxvkOptionsView
                     }
                 }
                 .padding(.horizontal)

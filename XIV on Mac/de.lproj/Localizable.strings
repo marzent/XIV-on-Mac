@@ -203,3 +203,15 @@ Do not enable this on non-retina displays, unless for screenshot purposes.";
 "SETTINGS_ADVANCED_AUTO_EXIT" = "XIV on Mac beim Beenden des Spiels beenden";
 "SETTINGS_ADVANCED_ERROR_EXIT" = "Eine Warnung einblenden, wenn das Spiel mit einem nicht Null Exit-Code beendet wird";
 "SETTINGS_ADVANCED_WINE_DEBUG" = "Wine Debug:";
+
+// First Aid/Troubleshooting Window
+"FIRSTAID_WINDOW_TITLE" = "First-Aid";
+"FIRSTAID_SHADER_CACHE_HEADING" = "Shader Cache";
+"FIRSTAID_SHADER_CACHE_BLURB" = "If your game is freezing at startup, \"Compiling Shaders…\" forever, missing lighting or randomly freezing, the problem may be with your shader cache. Deleting it will cause a new one to be rebuilt, though it may result in occasional stutters during play initially.";
+"FIRSTAID_SHADER_CACHE_BUTTON" = "Delete User Shader Cache";
+"FIRSTAID_CONFIG_HEADING" = "FFXIV Configuration";
+"FIRSTAID_RESET_CONFIG_BLURB" = "If you've misconfigured your game in a way that prevents you from playing it, such as a bad graphics setting, you can try resetting your configuration to default.";
+"FIRSTAID_RESET_CONFIG_BUTTON" = "Reset Configuration";
+"FIRSTAID_CHECKUP_BLURB" = "XIV on Mac can identify potential problems, or make recommended changes to your FFXIV Configuration file to give you the best experience available on the Mac.";
+"FIRSTAID_CHECKUP_BUTTON" = "Configuration Checkup";
+"FIRSTAID_CFGCHECK_FIX_BUTTON" = "Fix";

@@ -12,7 +12,6 @@ class LaunchController: NSViewController {
     var installerWinController: NSWindowController?
     var patchWinController: NSWindowController?
     var repairWinController: NSWindowController?
-    var firstAidWinController: NSWindowController?
     var patchController: PatchController?
     var repairController: RepairController?
     var newsTable: FrontierTableView!
@@ -97,7 +96,6 @@ class LaunchController: NSViewController {
         repairWinController = storyboard?.instantiateController(withIdentifier: "RepairSheet") as? NSWindowController
         patchController = patchWinController!.contentViewController! as? PatchController
         repairController = repairWinController!.contentViewController! as? RepairController
-        firstAidWinController = storyboard?.instantiateController(withIdentifier: "FirstAidWindow") as? NSWindowController
     }
     
     private func populateNews(_ info: Frontier.Info) {
@@ -163,9 +161,9 @@ class LaunchController: NSViewController {
     }
     
     func problemConfigurationCheck() -> Bool {
-        let firstAidController = firstAidWinController!.contentViewController! as! FirstAidController
-        if firstAidController.cfgCheckSevereProblems() {
-            firstAidWinController!.window?.makeKeyAndOrderFront(self)
+        if FirstAidModel().cfgCheckSevereProblems() {
+            let appDelegate = NSApplication.shared.delegate as! AppDelegate
+            appDelegate.openFirstAid(self)
             return true
         }
         return false
@@ -312,7 +310,8 @@ class LaunchController: NSViewController {
     }
     
     @IBAction func tapTroubleshooting(_ sender: Any) {
-        firstAidWinController?.showWindow(self)
+        let appDelegate = NSApplication.shared.delegate as! AppDelegate
+        appDelegate.openFirstAid(self)
     }
     
     @IBAction func tapACT(_ sender: Any) {

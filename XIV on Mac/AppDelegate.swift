@@ -11,9 +11,9 @@ import Sparkle
 import XIVLauncher
 
 @main class AppDelegate: NSObject, NSApplicationDelegate, SPUUpdaterDelegate {
-    private var settingsWindow: SettingsWindowContentView = .init()
+    private var settingsWindow: NSWindow?
+    private var firstAidWindow: NSWindow?
     private var launchWinController: NSWindowController?
-    private var firstAidWinController: NSWindowController?
     @IBOutlet private var sparkle: SPUStandardUpdaterController!
     @IBOutlet private var actAutoLaunch: NSMenuItem!
     @IBOutlet private var iinactAutoLaunch: NSMenuItem!
@@ -32,7 +32,6 @@ import XIVLauncher
         // Do this first so that nothing loads data or otherwise touches the prefix first!
         let migrated = PrefixMigrator.migratePrefixIfNeeded()
         let storyboard = NSStoryboard(name: "Main", bundle: nil)
-        firstAidWinController = storyboard.instantiateController(withIdentifier: "FirstAidWindow") as? NSWindowController
         launchWinController = storyboard.instantiateController(withIdentifier: "LaunchWindow") as? NSWindowController
         launchWinController?.showWindow(self)
         actAutoLaunch.state = ACT.autoLaunch ? .on : .off
@@ -142,10 +141,6 @@ import XIVLauncher
         bhAutoLaunch.state = BunnyHUD.autoLaunch ? .on : .off
     }
     
-    @IBAction func installDXVK(_ sender: Any) {
-        Dxvk.install()
-    }
-    
     @IBAction func installMSVC32(_ sender: Any) {
         Dotnet.installMSVC32()
     }
@@ -198,8 +193,18 @@ import XIVLauncher
         Wine.launch(command: "wineconsole")
     }
     
-    @IBAction func dxvkSettings(_ sender: Any) {
-        settingsWindow.openNewWindow(title: NSLocalizedString("SETTINGS_WINDOW_TITLE", comment: ""), delegate: nil)
+    @IBAction func appSettings(_ sender: Any) {
+        if settingsWindow == nil {
+            settingsWindow = SettingsView().createNewWindow(title: NSLocalizedString("SETTINGS_WINDOW_TITLE", comment: ""), delegate: nil)
+        }
+        settingsWindow?.makeKeyAndOrderFront(sender)
+    }
+    
+    @IBAction func openFirstAid(_ sender: Any) {
+        if firstAidWindow == nil {
+            firstAidWindow = FirstAidView().createNewWindow(title: NSLocalizedString("FIRSTAID_WINDOW_TITLE", comment: ""), delegate: nil)
+        }
+        firstAidWindow?.makeKeyAndOrderFront(sender)
     }
     
     @IBAction func selectGamePath(_ sender: Any) {
@@ -233,10 +238,6 @@ import XIVLauncher
                 openPanel.close()
             }
         }
-    }
-    
-    @IBAction func openFirstAid(_ sender: Any) {
-        firstAidWinController?.showWindow(self)
     }
     
     @IBAction func startBenchmark(_ sender: Any) {

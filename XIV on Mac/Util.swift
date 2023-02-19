@@ -15,7 +15,6 @@ struct Util {
     static let userHome = FileManager.default.homeDirectoryForCurrentUser
     static let applicationSupport = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).last!.appendingPathComponent("XIV on Mac")
     static let cache = applicationSupport.appendingPathComponent("cache")
-    static let seGameConfigPath = userHome.appendingPathComponent("/Documents/My Games/FINAL FANTASY XIV - A Realm Reborn/", isDirectory: true)
     
     static func make(dir: String) {
         if !FileManager.default.fileExists(atPath: dir) {
@@ -95,66 +94,6 @@ struct Util {
         return exists
     }
     
-    private static func createConfigDirectory() {
-        // Do we need to create the config directory itself?
-        if !Util.pathExists(path: Settings.gameConfigPath) {
-            Log.information("Cfg: Game Config path doesn't exist.")
-            // Ok, so, it may be our first launch, or our prefix was wiped etc. However, there might be an existing install from either an older XOM or
-            // the SE client. See if that cfg location exists.
-            if Util.pathExists(path: seGameConfigPath) {
-                Log.information("Cfg: Found existing game Cfg path to import.")
-                // It does exist. Copy theirs to ours.
-                do {
-                    try FileManager.default.copyItem(at: seGameConfigPath, to: Settings.gameConfigPath)
-                }
-                catch let createError as NSError {
-                    Log.error("Cfg: Could not import existing Cfg: \(createError.localizedDescription)")
-                }
-            }
-            else {
-                Log.information("Cfg: No existing game Cfg found.")
-                // SE version does not exist. Just create the directory.
-                do {
-                    try FileManager.default.createDirectory(atPath: Settings.gameConfigPath.path, withIntermediateDirectories: true, attributes: nil)
-                }
-                catch let createError as NSError {
-                    Log.error("Cfg: Could not create Cfg directory: \(createError.localizedDescription)")
-                }
-            }
-        }
-    }
-    
-    /// Attempt to load the FFXIV.cfg file (raw contents) from disk. If it does not yet exist, we attempt to create it with default values, as well as its containing folders.
-    ///  - Returns: The contents of the cfg file, or nil if it cannot be read and a default could not be created.
-    static func loadCfgFile() -> String? {
-        var configFileContents: String?
-        if !Util.pathExists(path: FFXIVApp.configURL) {
-            createConfigDirectory()
-        }
-        // One way or another we should have a config folder now. IF we copied the SE one, we might also now have a .cfg file. Check again.
-        if !Util.pathExists(path: FFXIVApp.configURL) {
-            // .cfg still doesn't exist, so let's copy in our Mac default one.
-            Log.information("Cfg: No existing game configuration, establishing Mac default settings.")
-            do {
-                let defaultCfgURL = Bundle.main.url(forResource: "FFXIV-MacDefault", withExtension: "cfg")!
-                try FileManager.default.copyItem(at: defaultCfgURL, to: FFXIVApp.configURL)
-            }
-            catch let createError as NSError {
-                Log.error("Cfg: Could not create default Mac settings: \(createError.localizedDescription)")
-            }
-        }
-        
-        do {
-            configFileContents = try String(contentsOf: FFXIVApp.configURL)
-        }
-        catch {
-            Log.error(error.localizedDescription)
-            return nil
-        }
-        
-        return configFileContents
-    }
-    
     public enum XOMRuntimeEnvironment: UInt8 {
         case x64Native = 0
         case appleSiliconRosetta = 1
@@ -225,14 +164,14 @@ struct Util {
 }
 
 extension View {
-    func openNewWindow(title: String, delegate: NSWindowDelegate?, geometry: NSRect = NSRect(x: 20, y: 20, width: 640, height: 500), style: NSWindow.StyleMask = [.titled, .closable, .miniaturizable, .resizable])
+    func createNewWindow(title: String, delegate: NSWindowDelegate?, geometry: NSRect = NSRect(x: 20, y: 20, width: 640, height: 500), style: NSWindow.StyleMask = [.titled, .closable, .miniaturizable, .resizable]) -> NSWindow
     {
         let window = NSWindow(contentRect: geometry, styleMask: style, backing: .buffered, defer: false)
         window.center()
         window.isReleasedWhenClosed = false
         window.title = title
-        window.makeKeyAndOrderFront(nil)
         window.delegate = delegate
         window.contentView = NSHostingView(rootView: self)
+        return window
     }
 }

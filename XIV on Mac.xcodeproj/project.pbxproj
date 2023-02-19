@@ -9,16 +9,15 @@
 /* Begin PBXBuildFile section */
 		073649AD281E35C700DA41F7 /* PrefsGraphics.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 073649AC281E35C700DA41F7 /* PrefsGraphics.tiff */; };
 		073649AF281E393000DA41F7 /* PrefsGeneral.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 073649AE281E393000DA41F7 /* PrefsGeneral.tiff */; };
-		0762AB8E2973A09A00A4D6E0 /* SettingsWindowContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0762AB8D2973A09A00A4D6E0 /* SettingsWindowContentView.swift */; };
+		0762AB8E2973A09A00A4D6E0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0762AB8D2973A09A00A4D6E0 /* SettingsView.swift */; };
 		0762AB902973AE2000A4D6E0 /* SettingsGeneralTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0762AB8F2973AE2000A4D6E0 /* SettingsGeneralTabView.swift */; };
 		0762AB922973AEB400A4D6E0 /* SettingsGraphicsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0762AB912973AEB400A4D6E0 /* SettingsGraphicsTabView.swift */; };
 		0762AB942973AED200A4D6E0 /* SettingsPluginsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0762AB932973AED200A4D6E0 /* SettingsPluginsTabView.swift */; };
 		0762AB962973AEF100A4D6E0 /* SettingsAdvancedTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0762AB952973AEF100A4D6E0 /* SettingsAdvancedTabView.swift */; };
-		079A343027F90F350043BEEA /* FirstAidController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079A342F27F90F350043BEEA /* FirstAidController.swift */; };
+		079A343027F90F350043BEEA /* FirstAidModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079A342F27F90F350043BEEA /* FirstAidModel.swift */; };
 		079A343227FA59D90043BEEA /* FFXIVCFGEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079A343127FA59D90043BEEA /* FFXIVCFGEncoder.swift */; };
 		07A3498B2805689200A9D7D0 /* CfgCheckGood.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 07A349892805689200A9D7D0 /* CfgCheckGood.tiff */; };
 		07A3498C2805689200A9D7D0 /* CfgCheckProbFailed.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 07A3498A2805689200A9D7D0 /* CfgCheckProbFailed.tiff */; };
-		07A3498E28056A2800A9D7D0 /* FirstAidTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A3498D28056A2800A9D7D0 /* FirstAidTableCellView.swift */; };
 		07A3499028056C7600A9D7D0 /* CfgCheckProblems.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 07A3498F28056C7600A9D7D0 /* CfgCheckProblems.tiff */; };
 		07AAF894283F3D08003C10FA /* PrefixMigrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AAF893283F3D08003C10FA /* PrefixMigrator.swift */; };
 		07B529D527D97D2B005B78BF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 07B529D727D97D2B005B78BF /* Localizable.strings */; };
@@ -34,6 +33,7 @@
 		5015D4C92881EAF9004BA6D8 /* AddOn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5015D4C82881EAF9004BA6D8 /* AddOn.swift */; };
 		501956A327F04616003CB437 /* LaunchWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501956A227F04616003CB437 /* LaunchWindowController.swift */; };
 		501AF2F1299641A700754CC6 /* Dalamud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501AF2F0299641A700754CC6 /* Dalamud.swift */; };
+		501D1C9A29A23CB500248126 /* FirstAidView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501D1C9929A23CB400248126 /* FirstAidView.swift */; };
 		5020957927C9611A00BD76CC /* Patch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5020957827C9611A00BD76CC /* Patch.swift */; };
 		502A18D827AA8C0D00144AB9 /* LoginCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A18D727AA8C0D00144AB9 /* LoginCredentials.swift */; };
 		502A18E927AACEFE00144AB9 /* LaunchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A18E827AACEFE00144AB9 /* LaunchController.swift */; };
@@ -99,16 +99,15 @@
 /* Begin PBXFileReference section */
 		073649AC281E35C700DA41F7 /* PrefsGraphics.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = PrefsGraphics.tiff; sourceTree = "<group>"; };
 		073649AE281E393000DA41F7 /* PrefsGeneral.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = PrefsGeneral.tiff; sourceTree = "<group>"; };
-		0762AB8D2973A09A00A4D6E0 /* SettingsWindowContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsWindowContentView.swift; sourceTree = "<group>"; };
+		0762AB8D2973A09A00A4D6E0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		0762AB8F2973AE2000A4D6E0 /* SettingsGeneralTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsGeneralTabView.swift; sourceTree = "<group>"; };
 		0762AB912973AEB400A4D6E0 /* SettingsGraphicsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsGraphicsTabView.swift; sourceTree = "<group>"; };
 		0762AB932973AED200A4D6E0 /* SettingsPluginsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPluginsTabView.swift; sourceTree = "<group>"; };
 		0762AB952973AEF100A4D6E0 /* SettingsAdvancedTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAdvancedTabView.swift; sourceTree = "<group>"; };
-		079A342F27F90F350043BEEA /* FirstAidController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstAidController.swift; sourceTree = "<group>"; };
+		079A342F27F90F350043BEEA /* FirstAidModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstAidModel.swift; sourceTree = "<group>"; };
 		079A343127FA59D90043BEEA /* FFXIVCFGEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFXIVCFGEncoder.swift; sourceTree = "<group>"; };
 		07A349892805689200A9D7D0 /* CfgCheckGood.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = CfgCheckGood.tiff; sourceTree = "<group>"; };
 		07A3498A2805689200A9D7D0 /* CfgCheckProbFailed.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = CfgCheckProbFailed.tiff; sourceTree = "<group>"; };
-		07A3498D28056A2800A9D7D0 /* FirstAidTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstAidTableCellView.swift; sourceTree = "<group>"; };
 		07A3498F28056C7600A9D7D0 /* CfgCheckProblems.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = CfgCheckProblems.tiff; sourceTree = "<group>"; };
 		07AAF893283F3D08003C10FA /* PrefixMigrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefixMigrator.swift; sourceTree = "<group>"; };
 		07B529D627D97D2B005B78BF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -124,6 +123,7 @@
 		5015D4C82881EAF9004BA6D8 /* AddOn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOn.swift; sourceTree = "<group>"; };
 		501956A227F04616003CB437 /* LaunchWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchWindowController.swift; sourceTree = "<group>"; };
 		501AF2F0299641A700754CC6 /* Dalamud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dalamud.swift; sourceTree = "<group>"; };
+		501D1C9929A23CB400248126 /* FirstAidView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstAidView.swift; sourceTree = "<group>"; };
 		5020957827C9611A00BD76CC /* Patch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patch.swift; sourceTree = "<group>"; };
 		502A18D727AA8C0D00144AB9 /* LoginCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCredentials.swift; sourceTree = "<group>"; };
 		502A18E827AACEFE00144AB9 /* LaunchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchController.swift; sourceTree = "<group>"; };
@@ -289,8 +289,8 @@
 		5095B97A2806B20600364374 /* FirstAid */ = {
 			isa = PBXGroup;
 			children = (
-				079A342F27F90F350043BEEA /* FirstAidController.swift */,
-				07A3498D28056A2800A9D7D0 /* FirstAidTableCellView.swift */,
+				079A342F27F90F350043BEEA /* FirstAidModel.swift */,
+				501D1C9929A23CB400248126 /* FirstAidView.swift */,
 				079A343127FA59D90043BEEA /* FFXIVCFGEncoder.swift */,
 				07FC7C2D28001EDA009A6FE0 /* FFXIVCFGCheckup.swift */,
 			);
@@ -331,7 +331,7 @@
 		50E32256281FA4BB00695B2E /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				0762AB8D2973A09A00A4D6E0 /* SettingsWindowContentView.swift */,
+				0762AB8D2973A09A00A4D6E0 /* SettingsView.swift */,
 				0762AB8F2973AE2000A4D6E0 /* SettingsGeneralTabView.swift */,
 				0762AB912973AEB400A4D6E0 /* SettingsGraphicsTabView.swift */,
 				0762AB932973AED200A4D6E0 /* SettingsPluginsTabView.swift */,
@@ -533,7 +533,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0762AB8E2973A09A00A4D6E0 /* SettingsWindowContentView.swift in Sources */,
+				0762AB8E2973A09A00A4D6E0 /* SettingsView.swift in Sources */,
 				0762AB962973AEF100A4D6E0 /* SettingsAdvancedTabView.swift in Sources */,
 				2B7C95D2277C6C6000A3CA89 /* SocialIntegration.swift in Sources */,
 				5015D4C92881EAF9004BA6D8 /* AddOn.swift in Sources */,
@@ -548,6 +548,7 @@
 				50E980DE2840A65000050151 /* RepairController.swift in Sources */,
 				50FC2DFF27F974D300871760 /* DxvkStateCache.swift in Sources */,
 				50DF1F8527CCB83300DE9DA5 /* FFXIVRepo.swift in Sources */,
+				501D1C9A29A23CB500248126 /* FirstAidView.swift in Sources */,
 				5015D4C528814047004BA6D8 /* IINACT.swift in Sources */,
 				5049B9B0283BF89400463A2B /* LoginResult.swift in Sources */,
 				507C600127CAA72000BA3CC2 /* PatchController.swift in Sources */,
@@ -568,10 +569,9 @@
 				501956A327F04616003CB437 /* LaunchWindowController.swift in Sources */,
 				502A18D827AA8C0D00144AB9 /* LoginCredentials.swift in Sources */,
 				509FE19C27E39DCB008D56D6 /* FFXIVApp.swift in Sources */,
-				079A343027F90F350043BEEA /* FirstAidController.swift in Sources */,
+				079A343027F90F350043BEEA /* FirstAidModel.swift in Sources */,
 				50BC73CF27C2BEAF006269AC /* ACT.swift in Sources */,
 				509252E2287243FF00B00584 /* Anamnesis.swift in Sources */,
-				07A3498E28056A2800A9D7D0 /* FirstAidTableCellView.swift in Sources */,
 				50511EC52770E085003A1E9F /* AppDelegate.swift in Sources */,
 				50ED0DB32773C619002E9854 /* Dotnet.swift in Sources */,
 				07FC7C2E28001EDA009A6FE0 /* FFXIVCFGCheckup.swift in Sources */,

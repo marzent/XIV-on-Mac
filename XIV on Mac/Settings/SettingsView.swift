@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct SettingsWindowContentView: View {
-    @State var selectedSettingsTab: SettingsTabItem = .General
+struct SettingsView: View {
+    @State private var selectedSettingsTab: SettingsTabItem = .General
 
     private var generalTabView: SettingsGeneralTabView = .init()
     private var graphicsTabView: SettingsGraphicsTabView = .init()
@@ -29,11 +29,11 @@ struct SettingsWindowContentView: View {
 
 struct SettingsWindow_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsWindowContentView()
+        SettingsView()
     }
 }
 
-enum SettingsTabItem: Hashable {
+private enum SettingsTabItem: Hashable {
     case General
     case Graphics
     case Plugins
