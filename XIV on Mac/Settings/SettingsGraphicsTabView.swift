@@ -19,8 +19,35 @@ struct SettingsGraphicsTabView: View {
         }
     }
 
-    func dxvkOptionsView() -> some View {
-        return Group {
+    func labeledScaleSlider(maxScale: Int) -> some View {
+        func labelOffsetAt(_ index: Int, _ maxScale: Int) -> CGFloat {
+            switch index {
+            case 0:
+                return 2.7
+            case maxScale:
+                return -2
+            default:
+                return 0
+            }
+        }
+        return VStack(spacing: 5) {
+            Slider(value: $viewModel.hudScale, in: 0.0 ... Double(maxScale))
+            HStack(spacing: 0) {
+                ForEach(0 ... maxScale, id: \.self) { index in
+                    VStack {
+                        Text("x\(index)")
+                    }
+                    .offset(x: labelOffsetAt(index, maxScale))
+                    if index != maxScale {
+                        Spacer()
+                    }
+                }
+            }
+        }
+    }
+
+    var dxvkOptionsView: some View {
+        Group {
             Toggle(isOn: $viewModel.metal3Hud) {
                 Text("SETTINGS_GRAPHICS_METAL3_HUD")
             }
@@ -91,14 +118,14 @@ struct SettingsGraphicsTabView: View {
                             .multilineTextAlignment(.leading)
                             .lineLimit(nil)
                             .fixedSize(horizontal: false, vertical: true)
-                        HStack {
+                        HStack(spacing: 30) {
                             Text("SETTINGS_GRAPHICS_HUD_SCALE")
-                            Slider(value: $viewModel.hudScale, in: 0.0 ... 4.0, step: 1.0)
+                            labeledScaleSlider(maxScale: 4)
                             Button("SETTINGS_GRAPHICS_RESET_SCALE_BUTTON") {
                                 viewModel.hudScale = 1.0
                             }
                         }
-                        dxvkOptionsView()
+                        dxvkOptionsView
                     }
                 }
                 .padding(.horizontal)
@@ -111,21 +138,15 @@ struct SettingsGraphicsTabView: View {
                     Toggle(isOn: $viewModel.macScaling) {
                         Text("SETTINGS_GRAPHICS_RETINA")
                     }
-                    .padding(.leading)
+                    .padding([.leading, .top])
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    if !viewModel.macScaling {
-                        Toggle(isOn: $viewModel.retinaStartupBugWorkaround) {
-                            Text("SETTINGS_GRAPHICS_RETINA_BUGFIX")
-                        }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.leading, 30)
-                    }
                     Spacer()
                 }.frame(maxWidth: .infinity, alignment: .topLeading)
                 Image(nsImage: NSImage(named: "PrefsGraphics") ?? NSImage())
                     .padding(.all)
             }
         }
+        .padding(.top)
     }
 }
 
@@ -231,10 +252,6 @@ extension SettingsGraphicsTabView {
             }
         }
 
-        @Published var retinaStartupBugWorkaround: Bool = Wine.retinaStartupBugWorkaround {
-            didSet { Wine.retinaStartupBugWorkaround = retinaStartupBugWorkaround }
-        }
-
         func setAllDXVKSettings(to: Bool) {
             Dxvk.options.setAllHudOptions(to: to)
             devinfo = to
@@ -252,6 +269,7 @@ extension SettingsGraphicsTabView {
 
         private func updateFpsLimit() {
             Dxvk.options.maxFramerate = fpsLimited ? Int(fpsLimit) ?? 0 : 0
+            Dxvk.options.save()
         }
     }
 }

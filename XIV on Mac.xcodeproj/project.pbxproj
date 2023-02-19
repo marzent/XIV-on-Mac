@@ -9,13 +9,13 @@
 /* Begin PBXBuildFile section */
 		073649AD281E35C700DA41F7 /* PrefsGraphics.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 073649AC281E35C700DA41F7 /* PrefsGraphics.tiff */; };
 		073649AF281E393000DA41F7 /* PrefsGeneral.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 073649AE281E393000DA41F7 /* PrefsGeneral.tiff */; };
-		0762AB8E2973A09A00A4D6E0 /* SettingsWindowContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0762AB8D2973A09A00A4D6E0 /* SettingsWindowContentView.swift */; };
+		0762AB8E2973A09A00A4D6E0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0762AB8D2973A09A00A4D6E0 /* SettingsView.swift */; };
 		0762AB902973AE2000A4D6E0 /* SettingsGeneralTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0762AB8F2973AE2000A4D6E0 /* SettingsGeneralTabView.swift */; };
 		0762AB922973AEB400A4D6E0 /* SettingsGraphicsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0762AB912973AEB400A4D6E0 /* SettingsGraphicsTabView.swift */; };
 		0762AB942973AED200A4D6E0 /* SettingsPluginsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0762AB932973AED200A4D6E0 /* SettingsPluginsTabView.swift */; };
 		0762AB962973AEF100A4D6E0 /* SettingsAdvancedTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0762AB952973AEF100A4D6E0 /* SettingsAdvancedTabView.swift */; };
 		078B1FAD297F79100045BF90 /* RepairingSheetContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078B1FAC297F79100045BF90 /* RepairingSheetContent.swift */; };
-		079A343027F90F350043BEEA /* FirstAidController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079A342F27F90F350043BEEA /* FirstAidController.swift */; };
+		079A343027F90F350043BEEA /* FirstAidModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079A342F27F90F350043BEEA /* FirstAidModel.swift */; };
 		079A343227FA59D90043BEEA /* FFXIVCFGEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079A343127FA59D90043BEEA /* FFXIVCFGEncoder.swift */; };
 		07A3498B2805689200A9D7D0 /* CfgCheckGood.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 07A349892805689200A9D7D0 /* CfgCheckGood.tiff */; };
 		07A3498C2805689200A9D7D0 /* CfgCheckProbFailed.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 07A3498A2805689200A9D7D0 /* CfgCheckProbFailed.tiff */; };
@@ -23,9 +23,7 @@
 		07AAF894283F3D08003C10FA /* PrefixMigrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AAF893283F3D08003C10FA /* PrefixMigrator.swift */; };
 		07AEEA1529762CD400016FAE /* LaunchWindowContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AEEA1429762CD400016FAE /* LaunchWindowContent.swift */; };
 		07AEEA172976571D00016FAE /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AEEA162976571D00016FAE /* CarouselView.swift */; };
-		07AEEA1B2977FCF900016FAE /* FirstAidWindowContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AEEA1A2977FCF900016FAE /* FirstAidWindowContent.swift */; };
 		07B529D527D97D2B005B78BF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 07B529D727D97D2B005B78BF /* Localizable.strings */; };
-		07B529D927D97F26005B78BF /* installRosetta.command in Resources */ = {isa = PBXBuildFile; fileRef = 07B529D827D97F26005B78BF /* installRosetta.command */; };
 		07BF3AF728063A8600794155 /* CfgCheckProbFixed.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 07BF3AF628063A8600794155 /* CfgCheckProbFixed.tiff */; };
 		07BF3AFA2806507800794155 /* CfgCheckAdvFailed.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 07BF3AF82806507800794155 /* CfgCheckAdvFailed.tiff */; };
 		07BF3AFB2806507800794155 /* CfgCheckAdvFixed.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 07BF3AF92806507800794155 /* CfgCheckAdvFixed.tiff */; };
@@ -40,6 +38,9 @@
 		5015D4C528814047004BA6D8 /* IINACT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5015D4C428814047004BA6D8 /* IINACT.swift */; };
 		5015D4C72881E97C004BA6D8 /* BunnyHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5015D4C62881E97C004BA6D8 /* BunnyHUD.swift */; };
 		5015D4C92881EAF9004BA6D8 /* AddOn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5015D4C82881EAF9004BA6D8 /* AddOn.swift */; };
+		501956A327F04616003CB437 /* LaunchWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501956A227F04616003CB437 /* LaunchWindowController.swift */; };
+		501AF2F1299641A700754CC6 /* Dalamud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501AF2F0299641A700754CC6 /* Dalamud.swift */; };
+		501D1C9A29A23CB500248126 /* FirstAidView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501D1C9929A23CB400248126 /* FirstAidView.swift */; };
 		5020957927C9611A00BD76CC /* Patch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5020957827C9611A00BD76CC /* Patch.swift */; };
 		502A18D827AA8C0D00144AB9 /* LoginCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A18D727AA8C0D00144AB9 /* LoginCredentials.swift */; };
 		502A18E927AACEFE00144AB9 /* LaunchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A18E827AACEFE00144AB9 /* LaunchController.swift */; };
@@ -62,7 +63,6 @@
 		507C600127CAA72000BA3CC2 /* PatchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507C600027CAA72000BA3CC2 /* PatchController.swift */; };
 		507CFBF62781C780007ADEC9 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 507CFBF52781C780007ADEC9 /* ZIPFoundation */; };
 		507D8F2127766F52000F0CB0 /* dxvk in Resources */ = {isa = PBXBuildFile; fileRef = 507D8F2027766F52000F0CB0 /* dxvk */; };
-		508C678F29431BFF0046AA38 /* snowflake_x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 508C678E29431BFF0046AA38 /* snowflake_x2.png */; };
 		509252E2287243FF00B00584 /* Anamnesis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509252E1287243FF00B00584 /* Anamnesis.swift */; };
 		509D0E2D2960536A0055367A /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 509D0E2C2960536A0055367A /* KeychainAccess */; };
 		509D0E302960540C0055367A /* AppMover in Frameworks */ = {isa = PBXBuildFile; productRef = 509D0E2F2960540C0055367A /* AppMover */; };
@@ -76,6 +76,7 @@
 		50DC355E27E9CEEE00DBA62C /* Base32 in Frameworks */ = {isa = PBXBuildFile; productRef = 50DC355D27E9CEEE00DBA62C /* Base32 */; };
 		50DF1F8527CCB83300DE9DA5 /* FFXIVRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DF1F8427CCB83300DE9DA5 /* FFXIVRepo.swift */; };
 		50DF1F8827CD261A00DE9DA5 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 50DF1F8727CD261A00DE9DA5 /* OrderedCollections */; };
+		50E7EB9A29A16F29001BC287 /* Benchmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E7EB9929A16F29001BC287 /* Benchmark.swift */; };
 		50E980DE2840A65000050151 /* RepairController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E980DD2840A65000050151 /* RepairController.swift */; };
 		50ED0DB32773C619002E9854 /* Dotnet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ED0DB22773C619002E9854 /* Dotnet.swift */; };
 		50ED0DB52773CA8C002E9854 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ED0DB42773CA8C002E9854 /* Networking.swift */; };
@@ -103,13 +104,13 @@
 /* Begin PBXFileReference section */
 		073649AC281E35C700DA41F7 /* PrefsGraphics.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = PrefsGraphics.tiff; sourceTree = "<group>"; };
 		073649AE281E393000DA41F7 /* PrefsGeneral.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = PrefsGeneral.tiff; sourceTree = "<group>"; };
-		0762AB8D2973A09A00A4D6E0 /* SettingsWindowContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsWindowContentView.swift; sourceTree = "<group>"; };
+		0762AB8D2973A09A00A4D6E0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		0762AB8F2973AE2000A4D6E0 /* SettingsGeneralTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsGeneralTabView.swift; sourceTree = "<group>"; };
 		0762AB912973AEB400A4D6E0 /* SettingsGraphicsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsGraphicsTabView.swift; sourceTree = "<group>"; };
 		0762AB932973AED200A4D6E0 /* SettingsPluginsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPluginsTabView.swift; sourceTree = "<group>"; };
 		0762AB952973AEF100A4D6E0 /* SettingsAdvancedTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAdvancedTabView.swift; sourceTree = "<group>"; };
 		078B1FAC297F79100045BF90 /* RepairingSheetContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepairingSheetContent.swift; sourceTree = "<group>"; };
-		079A342F27F90F350043BEEA /* FirstAidController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstAidController.swift; sourceTree = "<group>"; };
+		079A342F27F90F350043BEEA /* FirstAidModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstAidModel.swift; sourceTree = "<group>"; };
 		079A343127FA59D90043BEEA /* FFXIVCFGEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFXIVCFGEncoder.swift; sourceTree = "<group>"; };
 		07A349892805689200A9D7D0 /* CfgCheckGood.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = CfgCheckGood.tiff; sourceTree = "<group>"; };
 		07A3498A2805689200A9D7D0 /* CfgCheckProbFailed.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = CfgCheckProbFailed.tiff; sourceTree = "<group>"; };
@@ -117,9 +118,7 @@
 		07AAF893283F3D08003C10FA /* PrefixMigrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefixMigrator.swift; sourceTree = "<group>"; };
 		07AEEA1429762CD400016FAE /* LaunchWindowContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchWindowContent.swift; sourceTree = "<group>"; };
 		07AEEA162976571D00016FAE /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
-		07AEEA1A2977FCF900016FAE /* FirstAidWindowContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstAidWindowContent.swift; sourceTree = "<group>"; };
 		07B529D627D97D2B005B78BF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		07B529D827D97F26005B78BF /* installRosetta.command */ = {isa = PBXFileReference; lastKnownFileType = text; path = installRosetta.command; sourceTree = "<group>"; };
 		07BF3AF628063A8600794155 /* CfgCheckProbFixed.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = CfgCheckProbFixed.tiff; sourceTree = "<group>"; };
 		07BF3AF82806507800794155 /* CfgCheckAdvFailed.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = CfgCheckAdvFailed.tiff; sourceTree = "<group>"; };
 		07BF3AF92806507800794155 /* CfgCheckAdvFixed.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = CfgCheckAdvFixed.tiff; sourceTree = "<group>"; };
@@ -134,6 +133,9 @@
 		5015D4C428814047004BA6D8 /* IINACT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IINACT.swift; sourceTree = "<group>"; };
 		5015D4C62881E97C004BA6D8 /* BunnyHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BunnyHUD.swift; sourceTree = "<group>"; };
 		5015D4C82881EAF9004BA6D8 /* AddOn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOn.swift; sourceTree = "<group>"; };
+		501956A227F04616003CB437 /* LaunchWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchWindowController.swift; sourceTree = "<group>"; };
+		501AF2F0299641A700754CC6 /* Dalamud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dalamud.swift; sourceTree = "<group>"; };
+		501D1C9929A23CB400248126 /* FirstAidView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstAidView.swift; sourceTree = "<group>"; };
 		5020957827C9611A00BD76CC /* Patch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patch.swift; sourceTree = "<group>"; };
 		502A18D727AA8C0D00144AB9 /* LoginCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCredentials.swift; sourceTree = "<group>"; };
 		502A18E827AACEFE00144AB9 /* LaunchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchController.swift; sourceTree = "<group>"; };
@@ -159,7 +161,6 @@
 		5077A32B27C12A9100D4F1B8 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		507C600027CAA72000BA3CC2 /* PatchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchController.swift; sourceTree = "<group>"; };
 		507D8F2027766F52000F0CB0 /* dxvk */ = {isa = PBXFileReference; lastKnownFileType = folder; path = dxvk; sourceTree = "<group>"; };
-		508C678E29431BFF0046AA38 /* snowflake_x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snowflake_x2.png; sourceTree = "<group>"; };
 		508C6791294324BC0046AA38 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		509252E1287243FF00B00584 /* Anamnesis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Anamnesis.swift; sourceTree = "<group>"; };
 		509FE19927E3654E008D56D6 /* FFXIVEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFXIVEnums.swift; sourceTree = "<group>"; };
@@ -169,6 +170,7 @@
 		50BD278627785418002B0D1F /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		50D30F9F27B92EDB007A9F66 /* OTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTP.swift; sourceTree = "<group>"; };
 		50DF1F8427CCB83300DE9DA5 /* FFXIVRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFXIVRepo.swift; sourceTree = "<group>"; };
+		50E7EB9929A16F29001BC287 /* Benchmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Benchmark.swift; sourceTree = "<group>"; };
 		50E980DD2840A65000050151 /* RepairController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepairController.swift; sourceTree = "<group>"; };
 		50ED0DB22773C619002E9854 /* Dotnet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dotnet.swift; sourceTree = "<group>"; };
 		50ED0DB42773CA8C002E9854 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
@@ -204,7 +206,6 @@
 		07A349882805689200A9D7D0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				508C678E29431BFF0046AA38 /* snowflake_x2.png */,
 				07A349892805689200A9D7D0 /* CfgCheckGood.tiff */,
 				07A3498F28056C7600A9D7D0 /* CfgCheckProblems.tiff */,
 				07A3498A2805689200A9D7D0 /* CfgCheckProbFailed.tiff */,
@@ -287,7 +288,6 @@
 				07B529D727D97D2B005B78BF /* Localizable.strings */,
 				07A349882805689200A9D7D0 /* Resources */,
 				07C876DC280B7DD500CB0D8E /* FFXIV-MacDefault.cfg */,
-				07B529D827D97F26005B78BF /* installRosetta.command */,
 				5046F7EE27E74A9A006C34E1 /* discord_bridge.exe */,
 			);
 			path = "XIV on Mac";
@@ -296,10 +296,10 @@
 		5095B97A2806B20600364374 /* FirstAid */ = {
 			isa = PBXGroup;
 			children = (
-				079A342F27F90F350043BEEA /* FirstAidController.swift */,
+				079A342F27F90F350043BEEA /* FirstAidModel.swift */,
+				501D1C9929A23CB400248126 /* FirstAidView.swift */,
 				079A343127FA59D90043BEEA /* FFXIVCFGEncoder.swift */,
 				07FC7C2D28001EDA009A6FE0 /* FFXIVCFGCheckup.swift */,
-				07AEEA1A2977FCF900016FAE /* FirstAidWindowContent.swift */,
 			);
 			path = FirstAid;
 			sourceTree = "<group>";
@@ -314,9 +314,11 @@
 				502A18D727AA8C0D00144AB9 /* LoginCredentials.swift */,
 				5077A32B27C12A9100D4F1B8 /* Settings.swift */,
 				507607A027B149F600DDF3E6 /* Frontier.swift */,
+				50E7EB9929A16F29001BC287 /* Benchmark.swift */,
 				5049B9AF283BF89400463A2B /* LoginResult.swift */,
 				07AEEA1429762CD400016FAE /* LaunchWindowContent.swift */,
 				07AEEA162976571D00016FAE /* CarouselView.swift */,
+				501AF2F0299641A700754CC6 /* Dalamud.swift */,
 			);
 			path = Launcher;
 			sourceTree = "<group>";
@@ -337,7 +339,7 @@
 		50E32256281FA4BB00695B2E /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				0762AB8D2973A09A00A4D6E0 /* SettingsWindowContentView.swift */,
+				0762AB8D2973A09A00A4D6E0 /* SettingsView.swift */,
 				0762AB8F2973AE2000A4D6E0 /* SettingsGeneralTabView.swift */,
 				0762AB912973AEB400A4D6E0 /* SettingsGraphicsTabView.swift */,
 				0762AB932973AED200A4D6E0 /* SettingsPluginsTabView.swift */,
@@ -383,7 +385,6 @@
 				50511EBF2770E085003A1E9F /* Resources */,
 				5592FEB42778D3CB00FA304B /* Fix Codesign (Runtime) */,
 				503B819728391054006197C1 /* Embed Libraries */,
-				07B529DA27D98CBF005B78BF /* Fix Install Rosetta Script Permissions */,
 			);
 			buildRules = (
 			);
@@ -459,7 +460,6 @@
 				07A3499028056C7600A9D7D0 /* CfgCheckProblems.tiff in Resources */,
 				5046F7EF27E74AC9006C34E1 /* discord_bridge.exe in Resources */,
 				07A3498C2805689200A9D7D0 /* CfgCheckProbFailed.tiff in Resources */,
-				508C678F29431BFF0046AA38 /* snowflake_x2.png in Resources */,
 				073649AD281E35C700DA41F7 /* PrefsGraphics.tiff in Resources */,
 				07BF3AFB2806507800794155 /* CfgCheckAdvFixed.tiff in Resources */,
 				50692C8B27B3E48B00945593 /* Credits.html in Resources */,
@@ -469,7 +469,6 @@
 				07BF3AFA2806507800794155 /* CfgCheckAdvFailed.tiff in Resources */,
 				07B529D527D97D2B005B78BF /* Localizable.strings in Resources */,
 				07CF9B0E297CE55800C5FBB5 /* ChocoboWalk1.tiff in Resources */,
-				07B529D927D97F26005B78BF /* installRosetta.command in Resources */,
 				07A3498B2805689200A9D7D0 /* CfgCheckGood.tiff in Resources */,
 				07C876DD280B7DD500CB0D8E /* FFXIV-MacDefault.cfg in Resources */,
 				07CF9B0F297CE55800C5FBB5 /* ChocoboWalk2.tiff in Resources */,
@@ -481,25 +480,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		07B529DA27D98CBF005B78BF /* Fix Install Rosetta Script Permissions */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Fix Install Rosetta Script Permissions";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nchmod u+x \"${TARGET_BUILD_DIR}\"/\"${UNLOCALIZED_RESOURCES_FOLDER_PATH}\"/installRosetta.command\n";
-		};
 		501BB9AB2983341C0037F201 /* Download Wine */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
@@ -517,7 +497,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/zsh;
-			shellScript = "cd \"$PROJECT_DIR\"/XIV\\ on\\ Mac/\n[ -d \"wine\" ] && exit 0\ncurl -LO https://github.com/marzent/winecx/releases/download/ff-wine-2.1/wine.tar.xz\ntar -xf wine.tar.xz\nrm wine.tar.xz\n";
+			shellScript = "cd \"$PROJECT_DIR\"/XIV\\ on\\ Mac/\n[ -d \"wine\" ] && exit 0\ncurl -LO https://github.com/marzent/winecx/releases/download/ff-wine-2.2.1/wine.tar.xz\ntar -xf wine.tar.xz\nrm wine.tar.xz\n";
 		};
 		5049B9AB283B8E1300463A2B /* Build  XIVLauncher.NativeAOT */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -564,12 +544,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0762AB8E2973A09A00A4D6E0 /* SettingsWindowContentView.swift in Sources */,
+				0762AB8E2973A09A00A4D6E0 /* SettingsView.swift in Sources */,
 				0762AB962973AEF100A4D6E0 /* SettingsAdvancedTabView.swift in Sources */,
 				2B7C95D2277C6C6000A3CA89 /* SocialIntegration.swift in Sources */,
 				5015D4C92881EAF9004BA6D8 /* AddOn.swift in Sources */,
 				5077A32C27C12A9100D4F1B8 /* Settings.swift in Sources */,
+				50E7EB9A29A16F29001BC287 /* Benchmark.swift in Sources */,
 				50BD278727785418002B0D1F /* Notifications.swift in Sources */,
+				501AF2F1299641A700754CC6 /* Dalamud.swift in Sources */,
 				509FE19A27E3654E008D56D6 /* FFXIVEnums.swift in Sources */,
 				5010EFE427E4CE40001D2FEC /* Encryption.swift in Sources */,
 				5020957927C9611A00BD76CC /* Patch.swift in Sources */,
@@ -577,6 +559,7 @@
 				50E980DE2840A65000050151 /* RepairController.swift in Sources */,
 				50FC2DFF27F974D300871760 /* DxvkStateCache.swift in Sources */,
 				50DF1F8527CCB83300DE9DA5 /* FFXIVRepo.swift in Sources */,
+				501D1C9A29A23CB500248126 /* FirstAidView.swift in Sources */,
 				5015D4C528814047004BA6D8 /* IINACT.swift in Sources */,
 				5049B9B0283BF89400463A2B /* LoginResult.swift in Sources */,
 				507C600127CAA72000BA3CC2 /* PatchController.swift in Sources */,
@@ -592,14 +575,13 @@
 				50D30FA027B92EDB007A9F66 /* OTP.swift in Sources */,
 				50FC2E0127F9751600871760 /* DxvkError.swift in Sources */,
 				5049B9AE283BAFE600463A2B /* Log.swift in Sources */,
-				07AEEA1B2977FCF900016FAE /* FirstAidWindowContent.swift in Sources */,
 				0762AB942973AED200A4D6E0 /* SettingsPluginsTabView.swift in Sources */,
 				5015D4C72881E97C004BA6D8 /* BunnyHUD.swift in Sources */,
 				079A343227FA59D90043BEEA /* FFXIVCFGEncoder.swift in Sources */,
 				502A18E927AACEFE00144AB9 /* LaunchController.swift in Sources */,
 				502A18D827AA8C0D00144AB9 /* LoginCredentials.swift in Sources */,
 				509FE19C27E39DCB008D56D6 /* FFXIVApp.swift in Sources */,
-				079A343027F90F350043BEEA /* FirstAidController.swift in Sources */,
+				079A343027F90F350043BEEA /* FirstAidModel.swift in Sources */,
 				50BC73CF27C2BEAF006269AC /* ACT.swift in Sources */,
 				509252E2287243FF00B00584 /* Anamnesis.swift in Sources */,
 				50511EC52770E085003A1E9F /* AppMain.swift in Sources */,
@@ -762,9 +744,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "XIV on Mac/XIV_on_Mac.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 113;
+				CURRENT_PROJECT_VERSION = 117;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = TQJJTJ6364;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -784,7 +767,7 @@
 					"$(PROJECT_DIR)/XIV\\ on\\ Mac/XIVLauncher.NativeAOT",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 4.5.1;
+				MARKETING_VERSION = 4.6;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = "dezent.XIV-on-Mac";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -806,9 +789,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "XIV on Mac/XIV_on_Mac.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 113;
+				CURRENT_PROJECT_VERSION = 117;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = TQJJTJ6364;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -828,7 +812,7 @@
 					"$(PROJECT_DIR)/XIV\\ on\\ Mac/XIVLauncher.NativeAOT",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 4.5.1;
+				MARKETING_VERSION = 4.6;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = "dezent.XIV-on-Mac";
 				PRODUCT_NAME = "$(TARGET_NAME)";

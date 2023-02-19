@@ -103,18 +103,12 @@
 "SEE_COMPATABILITY_BUTTON" = "Compatibility List";
 
 "RETINA_WARNING" = "Warning";
-"RETINA_WARNING_INFORMATIVE" = "Changing this setting can cause issues with Final Fantasy XIV not rendering at the full size of the screen. Please do not change this setting while the game is running and restart XIV on Mac after any change.
-If the issue persists, changing the in-game Display Mode is recommended. Disabling upscaling can increase the pixel count of the game up to 4x, which will take a heavy toll on your performance.
+"RETINA_WARNING_INFORMATIVE" = "Disabling upscaling can increase the pixel count of the game up to 4x, which will take a heavy toll on your performance.
 Do not enable this on non-retina displays, unless for screenshot purposes.";
 "RETINA_ENABLE_BUTTON" = "Understood";
 
-"RETINA_WORKAROUND_OPTIN" = "Fullscreen Bug Workaround";
-"RETINA_WORKAROUND_OPTIN_INFORMATIVE" = "Wine contains a bug which causes incorrect window size and mouse position on startup if Scaling Mode is disabled. XIV on Mac can help work around this problem by changing your game to Windowed mode on each launch, once the game starts you may switch back to your preferred mode. Would you like to enable this workaround? You can change this setting at any time in preferences.";
-"RETINA_WORKAROUND_OPTIN_ENABLE" = "Enable Workaround";
-"RETINA_WORKAROUND_OPTIN_DISABLE" = "Do Not Enable";
-
 "ROSETTA_REQUIRED" = "Rosetta 2 is Required.";
-"ROSETTA_REQUIRED_INFORMATIVE" = "XIV On Mac requires Apple's Rosetta 2 to be installed in order to function on your Apple Silicon Mac. If you choose not to install, your game will not start. Would you like to start the Rosetta installer now?";
+"ROSETTA_REQUIRED_INFORMATIVE" = "XIV On Mac requires Apple's Rosetta 2 to be installed in order to function on your Apple Silicon Mac. If you choose not to install, your game will not start. Rosetta requires you to read and agree to the terms of the software license agreement here: http://www.apple.com/legal/sla/. Would you like to install Rosetta now?";
 "ROSETTA_REQUIRED_INSTALL_BUTTON" = "Install Rosetta";
 "ROSETTA_REQUIRED_CANCEL_BUTTON" = "Cancel";
 
@@ -134,6 +128,11 @@ Do not enable this on non-retina displays, unless for screenshot purposes.";
 "SELECT_GAME_PATH_PANEL_SUBTITLE" = "It should contain the folders \"game\" and \"boot\"";
 "SELECT_GAME_PATH_ERROR_MESSAGE" = "The folder you chose for your game install does not seem to be valid";
 "SELECT_GAME_PATH_ERROR_INFORMATIVE" = "Do you still want to use it?";
+
+"SELECT_BENCHMARK_PATH_PANEL_MESSAGE" = "Please choose the FFXIV benchmark location";
+"BENCHMARK_TITLE" = "FINAL FANTASY XIV benchmark";
+"SELECT_BENCHMARK_PATH_ERROR_INFORMATIVE" = "The folder you chose for the game benchmark does not seem to be valid.\n It should contain \"ffxiv-endwalker-bench.exe\" and the folder \"game\"";
+"BENCHMARK_RESULT" = "Score: %@\nAverage FPS: %@";
 
 "PATCH_INSTALLATION_WAITING" = "Waiting for download to finish…";
 "PATCH_INSTALLATION_PROGRESS_INIT" = "0 out of %d Patches installed";
@@ -224,17 +223,6 @@ Do not enable this on non-retina displays, unless for screenshot purposes.";
 "TOUCHBAR_ADDON_ACT" = "ACT";
 "TOUCHBAR_ADDON_BUNNYHUD" = "Bunny HUD";
 
-// First Aid/Troubleshooting Window
-"FIRSTAID_WINDOW_TITLE" = "First-Aid";
-"FIRSTAID_SHADER_CACHE_HEADING" = "Shader Cache";
-"FIRSTAID_SHADER_CACHE_BLURB" = "If your game is freezing at startup, \"Compiling Shaders…\" forever, missing lighting or randomly freezing, the problem may be with your shader cache. Deleting it will cause a new one to be rebuilt, though it may result in occasional stutters during play initially.";
-"FIRSTAID_SHADER_CACHE_BUTTON" = "Delete User Shader Cache";
-"FIRSTAID_CONFIG_HEADING" = "FFXIV Configuration";
-"FIRSTAID_RESET_CONFIG_BLURB" = "If you've misconfigured your game in a way that prevents you from playing it, such as a bad graphics setting, you can try resetting your configuration to default.";
-"FIRSTAID_RESET_CONFIG_BUTTON" = "Reset Configuration";
-"FIRSTAID_CHECKUP_BLURB" = "XIV on Mac can identify potential problems, or make recommended changes to your FFXIV Configuration file to give you the best experience available on the Mac.";
-"FIRSTAID_CHECKUP_BUTTON" = "Configuration Checkup";
-
 // Settings Window
 "SETTINGS_WINDOW_TITLE" = "Settings";
 "SETTINGS_TAB_GENERAL_TITLE" = "General";
@@ -289,6 +277,7 @@ Do not enable this on non-retina displays, unless for screenshot purposes.";
 // Plugins/Dalamud tab items
 "SETTINGS_PLUGINS_WHAT_IS_DALAMUD_BLURB" = "Plugins are enabled by a project called Dalamud, which enables extra functionality in your game. If you do not know why you would want a plugin or do not wish to use them, you may safely leave this disabled. To learn more about Dalamud please visit:\nhttps://github.com/goatcorp/Dalamud";
 "SETTINGS_PLUGINS_DALAMUD_ENABLE" = "Enable Dalamud";
+"SETTINGS_PLUGINS_DALAMUD_ENTRYPOINT" = "Entrypoint";
 "SETTINGS_PLUGINS_DALAMUD_DELAY_BLURB" = "If Dalamud is not loading succesfully, you can try adjusting the load delay up or down to find a value that works for your Mac.";
 "SETTINGS_PLUGINS_DALAMUD_DELAY_UNITS" = "seconds";
 "SETTINGS_PLUGINS_DALAMUD_DELAY_LABEL" = "Delay:";
@@ -303,3 +292,15 @@ Do not enable this on non-retina displays, unless for screenshot purposes.";
 "SETTINGS_ADVANCED_AUTO_EXIT" = "Quit XIV on Mac upon game exit";
 "SETTINGS_ADVANCED_ERROR_EXIT" = "Warn if game exits with non-zero exit code";
 "SETTINGS_ADVANCED_WINE_DEBUG" = "Wine Debug:";
+
+// First Aid/Troubleshooting Window
+"FIRSTAID_WINDOW_TITLE" = "First-Aid";
+"FIRSTAID_SHADER_CACHE_HEADING" = "Shader Cache";
+"FIRSTAID_SHADER_CACHE_BLURB" = "If your game is freezing at startup, \"Compiling Shaders…\" forever, missing lighting or randomly freezing, the problem may be with your shader cache. Deleting it will cause a new one to be rebuilt, though it may result in occasional stutters during play initially.";
+"FIRSTAID_SHADER_CACHE_BUTTON" = "Delete User Shader Cache";
+"FIRSTAID_CONFIG_HEADING" = "FFXIV Configuration";
+"FIRSTAID_RESET_CONFIG_BLURB" = "If you've misconfigured your game in a way that prevents you from playing it, such as a bad graphics setting, you can try resetting your configuration to default.";
+"FIRSTAID_RESET_CONFIG_BUTTON" = "Reset Configuration";
+"FIRSTAID_CHECKUP_BLURB" = "XIV on Mac can identify potential problems, or make recommended changes to your FFXIV Configuration file to give you the best experience available on the Mac.";
+"FIRSTAID_CHECKUP_BUTTON" = "Configuration Checkup";
+"FIRSTAID_CFGCHECK_FIX_BUTTON" = "Fix";

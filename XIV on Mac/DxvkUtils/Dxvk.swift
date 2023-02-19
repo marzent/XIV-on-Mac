@@ -11,11 +11,12 @@ import Foundation
 struct Dxvk {
     @available(*, unavailable) private init() {}
     
-    static let userCacheURL = Wine.prefix.appendingPathComponent("drive_c/ffxiv_dx11.dxvk-cache")
     static var options = Options()
+    private static let userCacheURL = Wine.prefix.appendingPathComponent("drive_c/ffxiv_dx11.dxvk-cache")
+    private static let dxvkPath = Bundle.main.url(forResource: "dxvk", withExtension: nil, subdirectory: "")!
+    private static let baseCacheBundled = dxvkPath.appendingPathComponent("ffxiv_dx11.dxvk-cache-base")
     
     static func install() {
-        let dxvkPath = Bundle.main.url(forResource: "dxvk", withExtension: nil, subdirectory: "")!
         let dxDlls = ["d3d10_1.dll", "d3d10.dll", "d3d10core.dll", "dxgi.dll", "d3d11.dll"]
         let system32 = Wine.prefix.appendingPathComponent("drive_c/windows/system32")
         Util.make(dir: system32)
@@ -39,10 +40,6 @@ struct Dxvk {
                 Log.error("[DXVK] error copying dxvk dll \(error)")
             }
         }
-        let baseCacheName = "ffxiv_dx11.dxvk-cache-base"
-        let baseCacheBundled = dxvkPath.appendingPathComponent(baseCacheName)
-        let baseCachePrefix = Wine.prefix.appendingPathComponent("drive_c/" + baseCacheName)
-        try? fm.removeItem(at: baseCachePrefix)
         let userCache = try? DxvkStateCache(inputData: (try? Data(contentsOf: userCacheURL)) ?? Data())
         guard let baseCache = try? DxvkStateCache(inputData: (try? Data(contentsOf: baseCacheBundled)) ?? Data()) else {
             Log.warning("[DXVK] Corrupt base cache")
@@ -53,10 +50,6 @@ struct Dxvk {
                 Log.warning("[DXVK] Base and user cache versions do not match")
                 return
             }
-            let zoeyEntryHash: [UInt8] = [153, 106, 41, 216, 87, 200, 23, 183, 42, 119, 59, 206, 160, 195, 34, 186, 3, 214, 205, 51]
-            if userCache.entries.map({ $0.sha1Hash }).contains(zoeyEntryHash) {
-                Log.warning("[DXVK] You are having an entry in your user cache that is known to cause issues, consider deleting your user state cache")
-            }
             let mergedCache = DxvkStateCache(header: userCache.header, entries: Array(Set(userCache.entries + baseCache.entries)))
             do {
                 try mergedCache.rawData.write(to: userCacheURL)
@@ -64,9 +57,14 @@ struct Dxvk {
                 Log.error(error.localizedDescription)
             }
         } else { // user cache non-existent or corrupt
-            try? fm.removeItem(at: userCacheURL)
-            try? fm.copyItem(at: baseCacheBundled, to: userCacheURL)
+            try? resetCache()
         }
+    }
+    
+    static func resetCache() throws {
+        let fm = FileManager.default
+        try fm.removeItem(at: userCacheURL)
+        try fm.copyItem(at: baseCacheBundled, to: userCacheURL)
     }
     
     class Options: Codable {

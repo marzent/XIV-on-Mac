@@ -4,16 +4,18 @@ Wine Wrapper, Setup tool and alternative launcher for FFXIV on MacOS.</p>
 
 ---
 
-<b>The "XIV on Mac" application is a superior way of playing FFXIV on macOS.<br> It provides improved performance vs Square Enix's native MacOS launcher and Codeweavers Crossover. <br><br><b>This project is 100% open source.</b>
+<b>The "XIV on Mac" application is a superior way of playing FFXIV on macOS.<br> It provides improved performance and more features vs Square Enix's native MacOS launcher and Codeweavers Crossover. <br><br><b>This project is 100% open source.</b>
 
 ---
 <h3>Features:</h3>
 
 - User friendly setup
-- Mod support: ACT, GShade, Dalamud and more!
-- Performance enhancements; Better FPS vs Native Mac launcher & Crossover, updated DXVK/MoltenVK libraries, PCAP support for ACT etc.
+- Fast game patching and game repair
+- Mod support: Dalamud, IINACT and more!
+- Runs the official benchmark
+- Performance enhancements; Better FPS vs Native Mac launcher & Crossover, updated DXVK/MoltenVK libraries, etc.
 - User Support in our <a href="https://discord.gg/dWN5bTC4Yv">Discord.</a>
-- Wine is built using https://github.com/marzent/winecx
+- Wine is based on the latest release from https://github.com/marzent/winecx
 
 <h6>*FPS may vary based on hardware, but in most cases FPS should be better!</h6>
 
@@ -24,7 +26,7 @@ You can read our depreciated Crossover setup guide <a href="https://github.com/s
 
 ---
 
-<h3>Our current staff:</h3>
+<h3>Our current team:</h3>
 <h4><a href="https://github.com/Marzent">Marzent (ウサギ)</a> (Head Developer, Technical Support)<br>
 <a href="https://github.com/Seathasky">Seathasky</a> (Project Manager, Support)<br>
 <a href="https://github.com/FleetAdmiralButter">FleetAdmiralButter</a> (Web Developer, Support)<br>
@@ -47,4 +49,4 @@ And very special thanks to our wonderful community and contributors. Without you
 
 ---
 
-<div align="center"><b>FINAL FANTASY is a registered trademark of Square Enix Holdings Co., Ltd.</b></div>
+<div align="center"><b>FINAL FANTASY is a registered trademark of Square Enix Holdings Co., Ltd.<br>XIV on Mac is not affiliated with Square Enix Holdings Co., Ltd in any way, shape, or form.</b></div>

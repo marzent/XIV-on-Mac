@@ -7,12 +7,10 @@
 
 import Cocoa
 
-
 class LaunchController: ObservableObject {
     @Published var installerController : InstallerController = InstallerController()
     @Published var patchController : PatchController = PatchController()
     @Published var repairController : RepairController = RepairController()
-    @Published var firstAidController: FirstAidController = FirstAidController()
     var newsTable: FrontierTableView!
     var topicsTable: FrontierTableView!
     var otp: OTP?
@@ -55,7 +53,6 @@ class LaunchController: ObservableObject {
     {
         NotificationCenter.default.addObserver(self, selector: #selector(loginUpdate(_:)), name: .loginInfo, object: nil)
     }
-
     
     func checkBoot() {
         if let bootPatches = try? Patch.bootPatches, !bootPatches.isEmpty, FFXIVApp().installed {
@@ -89,12 +86,11 @@ class LaunchController: ObservableObject {
     }
     
     func problemConfigurationCheck() -> Bool {
-        if firstAidController.cfgCheckSevereProblems() {
-            FirstAidWindowContent().openNewWindow(title: NSLocalizedString("FIRSTAID_WINDOW_TITLE", comment: ""), delegate: nil)
+        if FirstAidModel().cfgCheckSevereProblems() {
+            let appDelegate = NSApplication.shared.delegate as! AppDelegate
+            appDelegate.openFirstAid()
             return true
         }
-        // If there were no major problems, see if we need to apply the Retina bug workaround.
-        firstAidController.applyRetinaWorkaround()
         return false
     }
     
@@ -228,4 +224,3 @@ class LaunchController: ObservableObject {
     }
 
 }
-

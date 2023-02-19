@@ -12,8 +12,6 @@ import SwiftUI
 import XIVLauncher
 
 @main class XIVOnMac: App {
-    private var settingsWindow: SettingsWindowContentView = .init()
-    private var firstAidWindow: FirstAidWindowContent = .init()
     private var launchController: LaunchController = .init()
 
     @NSApplicationDelegateAdaptor private var appDelegate: AppDelegate
@@ -40,7 +38,7 @@ import XIVLauncher
                 }
                 Divider()
                 Button("MENU_SETTINGS") {
-                    self.settingsWindow.openNewWindow(title: NSLocalizedString("SETTINGS_WINDOW_TITLE", comment: ""), delegate: nil)
+                    self.appDelegate.openSettings()
                 }
                 .keyboardShortcut(",", modifiers: [.command])
                 Divider()
@@ -66,7 +64,7 @@ import XIVLauncher
             }
             CommandMenu("MENU_TOOLS") {
                 Button("MENU_TROUBLESHOOTING") {
-                    self.firstAidWindow.openNewWindow(title: NSLocalizedString("FIRSTAID_WINDOW_TITLE", comment: ""), delegate: nil)
+                    self.appDelegate.openFirstAid()
                 }
                 Button("MENU_EDIT_REGISTRY") {
                     self.appDelegate.regedit(self)
@@ -162,6 +160,8 @@ import XIVLauncher
 
 class AppDelegate: NSObject, NSApplicationDelegate, SPUUpdaterDelegate, ObservableObject {
     public var sparkle: SPUStandardUpdaterController?
+    private var settingsWindow: NSWindow?
+    private var firstAidWindow: NSWindow?
 
     func applicationWillUpdate(_ notification: Notification) {
         // Dumb hack because there doesn't appear to be a way to remove an entire menu tree in SwiftUI currently
@@ -358,5 +358,19 @@ class AppDelegate: NSObject, NSApplicationDelegate, SPUUpdaterDelegate, Observab
                 openPanel.close()
             }
         }
+    }
+    
+    func openSettings() {
+        if settingsWindow == nil {
+            settingsWindow = SettingsView().createNewWindow(title: NSLocalizedString("SETTINGS_WINDOW_TITLE", comment: ""), delegate: nil)
+        }
+        settingsWindow?.makeKeyAndOrderFront(nil)
+    }
+
+    func openFirstAid() {
+        if firstAidWindow == nil {
+            firstAidWindow = FirstAidView().createNewWindow(title: NSLocalizedString("FIRSTAID_WINDOW_TITLE", comment: ""), delegate: nil)
+        }
+        firstAidWindow?.makeKeyAndOrderFront(nil)
     }
 }

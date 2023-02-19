@@ -66,15 +66,9 @@
 "SEE_COMPATABILITY_BUTTON" = "Liste de compatibilité";
 
 "RETINA_WARNING" = "Avertissement";
-"RETINA_WARNING_INFORMATIVE" = "La modification de ce paramètre peut entraîner des problèmes avec Final Fantasy XIV ne s'affichant pas à la taille maximale de l'écran. Ne pas modifier pas ce paramètre pendant que le jeu est en cours d'exécution et redémarrez XIV on Mac après toute modification.
-Si le problème persiste, il est recommandé de changer le mode d'affichage dans le jeu. La désactivation de la mise à l'échelle peut augmenter le nombre de pixels du jeu jusqu'à 4x, ce qui pèsera lourdement sur vos performances.
+"RETINA_WARNING_INFORMATIVE" = "La désactivation de la mise à l'échelle peut augmenter le nombre de pixels du jeu jusqu'à 4x, ce qui pèsera lourdement sur vos performances.
 Ne l'activez pas sur les écrans autres que écrans Retina, sauf à des fins de capture d'écran.";
 "RETINA_ENABLE_BUTTON" = "J'ai compris";
-
-"RETINA_WORKAROUND_OPTIN" = "Solution du bogue en plein écran";
-"RETINA_WORKAROUND_OPTIN_INFORMATIVE" = "Wine contient un bogue qui provoque une taille de fenêtre et une position de la souris incorrectes au démarrage si le mode de mise à l'échelle est désactivé. XIV on Mac peut aider à contourner ce problème en changeant votre jeu en mode fenêtré à chaque lancement. Une fois que le jeu démarre, vous pouvez revenir à votre mode préféré. Souhaitez-vous activer cette solution  ? Vous pouvez modifier ce paramètre à tout moment dans les préférences.";
-"RETINA_WORKAROUND_OPTIN_ENABLE" = "Activer la solution";
-"RETINA_WORKAROUND_OPTIN_DISABLE" = "Ne pas activer";
 
 "ROSETTA_REQUIRED" = "Rosetta 2 est requis.";
 "ROSETTA_REQUIRED_INFORMATIVE" = "XIV on Mac nécessite l'installation de Rosetta 2 d'Apple pour fonctionner sur votre Apple Silicon Mac. Si vous choisissez de ne pas installer, votre jeu ne démarrera pas. Souhaitez-vous lancer le programme d'installation de Rosetta maintenant ?";
@@ -98,6 +92,11 @@ Ne l'activez pas sur les écrans autres que écrans Retina, sauf à des fins de 
 "SELECT_GAME_PATH_PANEL_SUBTITLE" = "Il doit contenir les dossiers \"game\" et \"boot\".";
 "SELECT_GAME_PATH_ERROR_MESSAGE" = "Le dossier que vous avez choisi pour l'installation du jeu ne semble pas être valide.";
 "SELECT_GAME_PATH_ERROR_INFORMATIVE" = "Voulez-vous toujours l'utiliser ?";
+
+"SELECT_BENCHMARK_PATH_PANEL_MESSAGE" = "Please choose the FFXIV benchmark location";
+"BENCHMARK_TITLE" = "FINAL FANTASY XIV benchmark";
+"SELECT_BENCHMARK_PATH_ERROR_INFORMATIVE" = "The folder you chose for the game benchmark does not seem to be valid.\n It should contain \"ffxiv-endwalker-bench.exe\" and the folder \"game\"";
+"BENCHMARK_RESULT" = "Score: %@\nAverage FPS: %@";
 
 "PATCH_INSTALLATION_WAITING" = "Attendez la fin du téléchargement…";
 "PATCH_INSTALLATION_PROGRESS_INIT" = "0 de %d patch installé";
@@ -191,6 +190,7 @@ Ne l'activez pas sur les écrans autres que écrans Retina, sauf à des fins de 
 // Plugins/Dalamud tab items
 "SETTINGS_PLUGINS_WHAT_IS_DALAMUD_BLURB" = "Les plugins sont activés par un projet appelé Dalamud, qui permet des fonctionnalités supplémentaires dans votre jeu. Si vous ne savez pas pourquoi vous voudriez un plugin ou si vous ne souhaitez pas les utiliser, vous pouvez les laisser désactivés en toute sécurité. Pour en savoir plus sur Dalamud, veuillez visiter :\nhttps://github.com/goatcorp/Dalamud";
 "SETTINGS_PLUGINS_DALAMUD_ENABLE" = "Activer Dalamud";
+"SETTINGS_PLUGINS_DALAMUD_ENTRYPOINT" = "Entrypoint";
 "SETTINGS_PLUGINS_DALAMUD_DELAY_BLURB" = "Si Dalamud ne fonctionne pas correctement, vous pouvez essayer d'augmenter ou diminuer le délais pour trouver une valeur qui fonctionne pour votre Mac.";
 "SETTINGS_PLUGINS_DALAMUD_DELAY_UNITS" = "secondes";
 "SETTINGS_PLUGINS_DALAMUD_DELAY_LABEL" = "Délais :";
@@ -205,3 +205,15 @@ Ne l'activez pas sur les écrans autres que écrans Retina, sauf à des fins de 
 "SETTINGS_ADVANCED_AUTO_EXIT" = "Quitter XIV on Mac à la sortie du jeu";
 "SETTINGS_ADVANCED_ERROR_EXIT" = "Avertir si le jeu se termine avec un code de sortie différent de zéro";
 "SETTINGS_ADVANCED_WINE_DEBUG" = "Débogage de Wine :";
+
+// First Aid/Troubleshooting Window
+"FIRSTAID_WINDOW_TITLE" = "First-Aid";
+"FIRSTAID_SHADER_CACHE_HEADING" = "Shader Cache";
+"FIRSTAID_SHADER_CACHE_BLURB" = "If your game is freezing at startup, \"Compiling Shaders…\" forever, missing lighting or randomly freezing, the problem may be with your shader cache. Deleting it will cause a new one to be rebuilt, though it may result in occasional stutters during play initially.";
+"FIRSTAID_SHADER_CACHE_BUTTON" = "Delete User Shader Cache";
+"FIRSTAID_CONFIG_HEADING" = "FFXIV Configuration";
+"FIRSTAID_RESET_CONFIG_BLURB" = "If you've misconfigured your game in a way that prevents you from playing it, such as a bad graphics setting, you can try resetting your configuration to default.";
+"FIRSTAID_RESET_CONFIG_BUTTON" = "Reset Configuration";
+"FIRSTAID_CHECKUP_BLURB" = "XIV on Mac can identify potential problems, or make recommended changes to your FFXIV Configuration file to give you the best experience available on the Mac.";
+"FIRSTAID_CHECKUP_BUTTON" = "Configuration Checkup";
+"FIRSTAID_CFGCHECK_FIX_BUTTON" = "Fix";

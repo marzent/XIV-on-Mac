@@ -66,15 +66,9 @@
 "SEE_COMPATABILITY_BUTTON" = "互換性リスト";
 
 "RETINA_WARNING" = "警告";
-"RETINA_WARNING_INFORMATIVE" = "この設定を変更すると、ファイナルファンタジーXIVが全画面表示できない問題が発生することがあります。ゲーム起動中はこの設定を変更せず、変更後はXIV on Macを再起動してください。
-それでも問題が解決しない場合、ゲーム内の表示モードを変更することをお勧めします。アップスケーリングを無効にすると、ゲームのピクセル数が最大4倍まで増加するため、パフォーマンスに多大な影響が出ます。
+"RETINA_WARNING_INFORMATIVE" = "アップスケーリングを無効にすると、ゲームのピクセル数が最大4倍まで増加するため、パフォーマンスに多大な影響が出ます。
 スクリーンショットを撮る用途でない限り、Retinaディスプレイ以外ではこの機能を有効にしないでください。";
 "RETINA_ENABLE_BUTTON" = "理解しました";
-
-"RETINA_WORKAROUND_OPTIN" = "全画面表示バグに関する回避策";
-"RETINA_WORKAROUND_OPTIN_INFORMATIVE" = "Wineにはスケーリングモードが無効の場合、起動時にウィンドウサイズとマウスポインタの位置が不正になるバグが存在します。XIV on Macでは、毎回起動時にゲームをウィンドウモードにすることにより、この問題を回避します。この回避策を有効にしますか？ 本機能は環境設定でいつでも変更可能です。";
-"RETINA_WORKAROUND_OPTIN_ENABLE" = "回避策を有効にする";
-"RETINA_WORKAROUND_OPTIN_DISABLE" = "利用しない";
 
 "ROSETTA_REQUIRED" = "Rosetta 2が必要です";
 "ROSETTA_REQUIRED_INFORMATIVE" = "XIV on Macは、Apple Siliconを搭載したMacで動作させるためにApple社のRosetta 2を利用します。Rosetta 2をインストールしなければゲームは起動しません。Rosetta 2のインストーラーを起動しますか？";
@@ -96,6 +90,11 @@
 "SELECT_GAME_PATH_PANEL_SUBTITLE" = "当該フォルダには「game」と「boot」フォルダが含まれています。";
 "SELECT_GAME_PATH_ERROR_MESSAGE" = "選択されたフォルダにはゲームがインストールされていないようです。";
 "SELECT_GAME_PATH_ERROR_INFORMATIVE" = "それでも続行しますか？";
+
+"SELECT_BENCHMARK_PATH_PANEL_MESSAGE" = "Please choose the FFXIV benchmark location";
+"BENCHMARK_TITLE" = "FINAL FANTASY XIV benchmark";
+"SELECT_BENCHMARK_PATH_ERROR_INFORMATIVE" = "The folder you chose for the game benchmark does not seem to be valid.\n It should contain \"ffxiv-endwalker-bench.exe\" and the folder \"game\"";
+"BENCHMARK_RESULT" = "Score: %@\nAverage FPS: %@";
 
 "PATCH_INSTALLATION_WAITING" = "ダウンロード終了を待っています…";
 "PATCH_INSTALLATION_PROGRESS_INIT" = "%d個中0個のパッチがインストールされました";
@@ -190,6 +189,7 @@
 // Plugins/Dalamud tab items
 "SETTINGS_PLUGINS_WHAT_IS_DALAMUD_BLURB" = "プラグイン機能はDalamudプロジェクトによって提供され、あなたのゲームに色々な（余計な）機能を追加できます。プラグインが必要な理由がわからない場合や、プラグインを使用したくない場合はこの機能を無効にした方が安全です。詳細は下記のWebサイトをご覧ください。\nhttps://github.com/goatcorp/Dalamud";
 "SETTINGS_PLUGINS_DALAMUD_ENABLE" = "Dalamudを有効化";
+"SETTINGS_PLUGINS_DALAMUD_ENTRYPOINT" = "Entrypoint";
 "SETTINGS_PLUGINS_DALAMUD_DELAY_BLURB" = "Dalamudのロードがうまくいかない場合は、ロードの遅延秒数を適宜調整して、お使いのMacに合う値を探してみてください。";
 "SETTINGS_PLUGINS_DALAMUD_DELAY_UNITS" = "秒";
 "SETTINGS_PLUGINS_DALAMUD_DELAY_LABEL" = "遅延:";
@@ -204,3 +204,16 @@
 "SETTINGS_ADVANCED_AUTO_EXIT" = "ゲームを終了時にXIV on Macも終了させる";
 "SETTINGS_ADVANCED_ERROR_EXIT" = "ゲーム本体が0以外の終了コードを返して終了した場合に警告する";
 "SETTINGS_ADVANCED_WINE_DEBUG" = "Wine Debug:";
+
+// First Aid/Troubleshooting Window
+"FIRSTAID_WINDOW_TITLE" = "First-Aid";
+"FIRSTAID_SHADER_CACHE_HEADING" = "Shader Cache";
+"FIRSTAID_SHADER_CACHE_BLURB" = "If your game is freezing at startup, \"Compiling Shaders…\" forever, missing lighting or randomly freezing, the problem may be with your shader cache. Deleting it will cause a new one to be rebuilt, though it may result in occasional stutters during play initially.";
+"FIRSTAID_SHADER_CACHE_BUTTON" = "Delete User Shader Cache";
+"FIRSTAID_CONFIG_HEADING" = "FFXIV Configuration";
+"FIRSTAID_RESET_CONFIG_BLURB" = "If you've misconfigured your game in a way that prevents you from playing it, such as a bad graphics setting, you can try resetting your configuration to default.";
+"FIRSTAID_RESET_CONFIG_BUTTON" = "Reset Configuration";
+"FIRSTAID_CHECKUP_BLURB" = "XIV on Mac can identify potential problems, or make recommended changes to your FFXIV Configuration file to give you the best experience available on the Mac.";
+"FIRSTAID_CHECKUP_BUTTON" = "Configuration Checkup";
+"FIRSTAID_CFGCHECK_FIX_BUTTON" = "Fix";
+
