@@ -267,6 +267,7 @@
 				5010EFE327E4CE40001D2FEC /* Encryption.swift */,
 				50F8A5F827BFA93800ADC0CB /* Patcher */,
 				509A62D527A58966001B203A /* Launcher */,
+				509D4C4C29A4B993001961CC /* Benchmark */,
 				50BC73D427C2C804006269AC /* AddOns */,
 				503B819828394341006197C1 /* XIVLauncher.NativeAOT */,
 				50FC2DFD27F9744700871760 /* DxvkUtils */,
@@ -315,13 +316,20 @@
 				502A18D727AA8C0D00144AB9 /* LoginCredentials.swift */,
 				5077A32B27C12A9100D4F1B8 /* Settings.swift */,
 				507607A027B149F600DDF3E6 /* Frontier.swift */,
-				50E7EB9929A16F29001BC287 /* Benchmark.swift */,
-				07B3506E29A457770010C1F5 /* BenchmarkView.swift */,
-				07B3507029A4717B0010C1F5 /* INIReadWrite.swift */,
 				5049B9AF283BF89400463A2B /* LoginResult.swift */,
 				501AF2F0299641A700754CC6 /* Dalamud.swift */,
 			);
 			path = Launcher;
+			sourceTree = "<group>";
+		};
+		509D4C4C29A4B993001961CC /* Benchmark */ = {
+			isa = PBXGroup;
+			children = (
+				50E7EB9929A16F29001BC287 /* Benchmark.swift */,
+				07B3506E29A457770010C1F5 /* BenchmarkView.swift */,
+				07B3507029A4717B0010C1F5 /* INIReadWrite.swift */,
+			);
+			path = Benchmark;
 			sourceTree = "<group>";
 		};
 		50BC73D427C2C804006269AC /* AddOns */ = {
