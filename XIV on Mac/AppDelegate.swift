@@ -14,6 +14,7 @@ import XIVLauncher
     private var settingsWindow: NSWindow?
     private var firstAidWindow: NSWindow?
     private var launchWinController: NSWindowController?
+    private var benchmarkWindow: NSWindow?
     @IBOutlet private var sparkle: SPUStandardUpdaterController!
     @IBOutlet private var actAutoLaunch: NSMenuItem!
     @IBOutlet private var iinactAutoLaunch: NSMenuItem!
@@ -241,6 +242,9 @@ import XIVLauncher
     }
     
     @IBAction func startBenchmark(_ sender: Any) {
-        Benchmark.launch()
+        if benchmarkWindow == nil {
+            benchmarkWindow = BenchmarkView().createNewWindow(title: NSLocalizedString("BENCHMARK_WINDOW_TITLE", comment: ""), delegate: nil)
+        }
+        benchmarkWindow?.makeKeyAndOrderFront(sender)
     }
 }
