@@ -4,6 +4,7 @@
 
   Created by Chris Backas on 3/9/22.
   Japanese Localized by Umichang on Aug 5 2022
+  Japanese Localized by usounds on Feb 23 2023
   
 */
 
@@ -91,10 +92,10 @@
 "SELECT_GAME_PATH_ERROR_MESSAGE" = "選択されたフォルダにはゲームがインストールされていないようです。";
 "SELECT_GAME_PATH_ERROR_INFORMATIVE" = "それでも続行しますか？";
 
-"SELECT_BENCHMARK_PATH_PANEL_MESSAGE" = "Please choose the FFXIV benchmark location";
-"BENCHMARK_TITLE" = "FINAL FANTASY XIV benchmark";
-"SELECT_BENCHMARK_PATH_ERROR_INFORMATIVE" = "The folder you chose for the game benchmark does not seem to be valid.\n It should contain \"ffxiv-endwalker-bench.exe\" and the folder \"game\"";
-"BENCHMARK_RESULT" = "Score: %@\nAverage FPS: %@";
+"SELECT_BENCHMARK_PATH_PANEL_MESSAGE" = "FF14のベンチマークフォルダを選択";
+"BENCHMARK_TITLE" = "FINAL FANTASY XIVベンチマーク";
+"SELECT_BENCHMARK_PATH_ERROR_INFORMATIVE" = "選択されたフォルダはベンチマークのフォルダではないようです。\n 「ffxiv-endwalker-bench.exe」と「game」が含まれるフォルダを選択してください。";
+"BENCHMARK_RESULT" = "SCORE: %@\n平均フレームレート: %@";
 
 "PATCH_INSTALLATION_WAITING" = "ダウンロード終了を待っています…";
 "PATCH_INSTALLATION_PROGRESS_INIT" = "%d個中0個のパッチがインストールされました";
@@ -206,14 +207,13 @@
 "SETTINGS_ADVANCED_WINE_DEBUG" = "Wine Debug:";
 
 // First Aid/Troubleshooting Window
-"FIRSTAID_WINDOW_TITLE" = "First-Aid";
-"FIRSTAID_SHADER_CACHE_HEADING" = "Shader Cache";
-"FIRSTAID_SHADER_CACHE_BLURB" = "If your game is freezing at startup, \"Compiling Shaders…\" forever, missing lighting or randomly freezing, the problem may be with your shader cache. Deleting it will cause a new one to be rebuilt, though it may result in occasional stutters during play initially.";
-"FIRSTAID_SHADER_CACHE_BUTTON" = "Delete User Shader Cache";
-"FIRSTAID_CONFIG_HEADING" = "FFXIV Configuration";
-"FIRSTAID_RESET_CONFIG_BLURB" = "If you've misconfigured your game in a way that prevents you from playing it, such as a bad graphics setting, you can try resetting your configuration to default.";
-"FIRSTAID_RESET_CONFIG_BUTTON" = "Reset Configuration";
-"FIRSTAID_CHECKUP_BLURB" = "XIV on Mac can identify potential problems, or make recommended changes to your FFXIV Configuration file to give you the best experience available on the Mac.";
-"FIRSTAID_CHECKUP_BUTTON" = "Configuration Checkup";
-"FIRSTAID_CFGCHECK_FIX_BUTTON" = "Fix";
-
+"FIRSTAID_WINDOW_TITLE" = "トラブルシューティング";
+"FIRSTAID_SHADER_CACHE_HEADING" = "シェーダーキャッシュ";
+"FIRSTAID_SHADER_CACHE_BLURB" = "起動時にフリーズしたり、Compiling Shaders… が無限に続いたり、ライトが欠けたり、ランダムにフリーズする場合は、シェーダーキャッシュに問題がある可能性があります。シェーダーキャッシュを削除すると新しいキャッシュが再構築されますが、初期状態ではプレイ中に時々カクカクすることがあります。";
+"FIRSTAID_SHADER_CACHE_BUTTON" = "シェーダーキャッシュの削除";
+"FIRSTAID_CONFIG_HEADING" = "FF14の設定";
+"FIRSTAID_RESET_CONFIG_BLURB" = "グラフィック設定を失敗するなどして、ゲームをプレイできないような設定になっている場合は、設定をデフォルトに戻してみてください。";
+"FIRSTAID_RESET_CONFIG_BUTTON" = "設定のリセット";
+"FIRSTAID_CHECKUP_BLURB" = "XIV on Macは潜在的な問題を特定したり、FF14の設定ファイルに推奨される変更を加えることで、Macで利用可能な最高のパフォーマンスを提供できます。";
+"FIRSTAID_CHECKUP_BUTTON" = "設定のチェック";
+"FIRSTAID_CFGCHECK_FIX_BUTTON" = "修正";
