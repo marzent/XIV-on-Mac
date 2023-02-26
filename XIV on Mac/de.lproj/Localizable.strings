@@ -215,3 +215,15 @@ Do not enable this on non-retina displays, unless for screenshot purposes.";
 "FIRSTAID_CHECKUP_BLURB" = "XIV on Mac can identify potential problems, or make recommended changes to your FFXIV Configuration file to give you the best experience available on the Mac.";
 "FIRSTAID_CHECKUP_BUTTON" = "Configuration Checkup";
 "FIRSTAID_CFGCHECK_FIX_BUTTON" = "Fix";
+
+// Benchmark Window
+"BENCHMARK_WINDOW_TITLE" = "Final Fantasy XIV Benchmark";
+"BENCHMARK_FOLDER_LABEL" = "Benchmark-Ordner:";
+"BENCHMARK_FOLDER_SELECT_BUTTON" = "Auswählen…";
+"BENCHMARK_FOLDER_NOT_SET" = "Nicht ausgewählt…";
+"BENCHMARK_SET_DEFAULTS" = "Empfohlene Einstellungen übernehmen";
+"BENCHMARK_TYPE_LABEL" = "Benchmark-Typ";
+"BENCHMARK_TYPE_HD" = "Fenster HD: 1920 x 1080";
+"BENCHMARK_TYPE_QHD" = "Fenster WQHD: 2560 × 1440";
+"BENCHMARK_TYPE_CUSTOM" = "Fenster ohne Rand: Desktop Resolution";
+"BENCHMARK_START_BUTTON" = "Benchmark starten";

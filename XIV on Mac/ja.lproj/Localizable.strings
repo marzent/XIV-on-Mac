@@ -217,3 +217,15 @@
 "FIRSTAID_CHECKUP_BLURB" = "XIV on Macは潜在的な問題を特定したり、FF14の設定ファイルに推奨される変更を加えることで、Macで利用可能な最高のパフォーマンスを提供できます。";
 "FIRSTAID_CHECKUP_BUTTON" = "設定のチェック";
 "FIRSTAID_CFGCHECK_FIX_BUTTON" = "修正";
+
+// Benchmark Window
+"BENCHMARK_WINDOW_TITLE" = "Final Fantasy XIV Benchmark";
+"BENCHMARK_FOLDER_LABEL" = "Benchmark Folder Location:";
+"BENCHMARK_FOLDER_SELECT_BUTTON" = "Select…";
+"BENCHMARK_FOLDER_NOT_SET" = "Not Set…";
+"BENCHMARK_SET_DEFAULTS" = "Apply Recommended Settings";
+"BENCHMARK_TYPE_LABEL" = "Benchmark Type";
+"BENCHMARK_TYPE_HD" = "Windowed HD: 1920 x 1080";
+"BENCHMARK_TYPE_QHD" = "Windowed WQHD: 2560 × 1440";
+"BENCHMARK_TYPE_CUSTOM" = "Borderless Fullscreen: Desktop Resolution";
+"BENCHMARK_START_BUTTON" = "Start Benchmark";
