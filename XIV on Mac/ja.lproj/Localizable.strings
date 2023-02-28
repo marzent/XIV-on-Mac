@@ -216,7 +216,7 @@
 "FIRSTAID_RESET_CONFIG_BUTTON" = "設定をリセットする";
 "FIRSTAID_CHECKUP_BLURB" = "XIV on Macは潜在的な問題を特定したり、FF14の設定ファイルに推奨される変更を加えることで、Macで利用可能な最高のパフォーマンスを提供できます。";
 "FIRSTAID_CHECKUP_BUTTON" = "設定をチェックする";
-"FIRSTAID_CFGCHECK_FIX_BUTTON" = "修正する";
+"FIRSTAID_CFGCHECK_FIX_BUTTON" = "設定を修正する";
 
 // Benchmark Window
 "BENCHMARK_WINDOW_TITLE" = "Final Fantasy XIVベンチマーク";
