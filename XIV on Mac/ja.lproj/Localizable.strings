@@ -213,19 +213,19 @@
 "FIRSTAID_SHADER_CACHE_BUTTON" = "シェーダーキャッシュの削除";
 "FIRSTAID_CONFIG_HEADING" = "FF14の設定";
 "FIRSTAID_RESET_CONFIG_BLURB" = "グラフィック設定を失敗するなどして、ゲームをプレイできないような設定になっている場合は、設定をデフォルトに戻してみてください。";
-"FIRSTAID_RESET_CONFIG_BUTTON" = "設定のリセット";
+"FIRSTAID_RESET_CONFIG_BUTTON" = "設定をリセットする";
 "FIRSTAID_CHECKUP_BLURB" = "XIV on Macは潜在的な問題を特定したり、FF14の設定ファイルに推奨される変更を加えることで、Macで利用可能な最高のパフォーマンスを提供できます。";
-"FIRSTAID_CHECKUP_BUTTON" = "設定のチェック";
-"FIRSTAID_CFGCHECK_FIX_BUTTON" = "修正";
+"FIRSTAID_CHECKUP_BUTTON" = "設定をチェックする";
+"FIRSTAID_CFGCHECK_FIX_BUTTON" = "修正する";
 
 // Benchmark Window
-"BENCHMARK_WINDOW_TITLE" = "Final Fantasy XIV Benchmark";
-"BENCHMARK_FOLDER_LABEL" = "Benchmark Folder Location:";
-"BENCHMARK_FOLDER_SELECT_BUTTON" = "Select…";
-"BENCHMARK_FOLDER_NOT_SET" = "Not Set…";
-"BENCHMARK_SET_DEFAULTS" = "Apply Recommended Settings";
-"BENCHMARK_TYPE_LABEL" = "Benchmark Type";
-"BENCHMARK_TYPE_HD" = "Windowed HD: 1920 x 1080";
-"BENCHMARK_TYPE_QHD" = "Windowed WQHD: 2560 × 1440";
-"BENCHMARK_TYPE_CUSTOM" = "Borderless Fullscreen: Desktop Resolution";
-"BENCHMARK_START_BUTTON" = "Start Benchmark";
+"BENCHMARK_WINDOW_TITLE" = "Final Fantasy XIVベンチマーク";
+"BENCHMARK_FOLDER_LABEL" = "ベンチマークフォルダ:";
+"BENCHMARK_FOLDER_SELECT_BUTTON" = "選択…";
+"BENCHMARK_FOLDER_NOT_SET" = "未設定…";
+"BENCHMARK_SET_DEFAULTS" = "推奨設定を使用する";
+"BENCHMARK_TYPE_LABEL" = "画面設定";
+"BENCHMARK_TYPE_HD" = "ウィンドウモード: 1920 x 1080[HD]";
+"BENCHMARK_TYPE_QHD" = "ウィンドウモード: 2560 × 1440[WQHD]";
+"BENCHMARK_TYPE_CUSTOM" = "仮想フルスクリーン: デスクトップ解像度";
+"BENCHMARK_START_BUTTON" = "ベンチマークを実行";
