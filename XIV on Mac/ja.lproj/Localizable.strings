@@ -227,5 +227,5 @@
 "BENCHMARK_TYPE_LABEL" = "画面設定";
 "BENCHMARK_TYPE_HD" = "ウィンドウモード: 1920 x 1080[HD]";
 "BENCHMARK_TYPE_QHD" = "ウィンドウモード: 2560 × 1440[WQHD]";
-"BENCHMARK_TYPE_CUSTOM" = "仮想フルスクリーン: デスクトップ解像度";
+"BENCHMARK_TYPE_CUSTOM" = "仮想フルスクリーン";
 "BENCHMARK_START_BUTTON" = "ベンチマークを実行";
