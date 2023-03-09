@@ -123,7 +123,7 @@ struct Wine {
     private static let leftOptionIsAltSettingKey = "LeftOptionIsAlt"
     static var leftOptionIsAlt: Bool {
         get {
-            Util.getSetting(settingKey: leftOptionIsAltSettingKey, defaultValue: false)
+            Util.getSetting(settingKey: leftOptionIsAltSettingKey, defaultValue: true)
         }
         set(_leftOpenIsAlt) {
             addReg(key: "HKEY_CURRENT_USER\\Software\\Wine\\Mac Driver", value: "LeftOptionIsAlt", data: _leftOpenIsAlt ? "y" : "n")
@@ -134,7 +134,7 @@ struct Wine {
     private static let rightOptionIsAltSettingKey = "RightOptionIsAlt"
     static var rightOptionIsAlt: Bool {
         get {
-            Util.getSetting(settingKey: rightOptionIsAltSettingKey, defaultValue: false)
+            Util.getSetting(settingKey: rightOptionIsAltSettingKey, defaultValue: true)
         }
         set(_rightOpenIsAlt) {
             addReg(key: "HKEY_CURRENT_USER\\Software\\Wine\\Mac Driver", value: "RightOptionIsAlt", data: _rightOpenIsAlt ? "y" : "n")
@@ -145,7 +145,7 @@ struct Wine {
     private static let leftCommandIsCtrlSettingKey = "LeftCommandIsCtrl"
     static var leftCommandIsCtrl: Bool {
         get {
-            Util.getSetting(settingKey: leftCommandIsCtrlSettingKey, defaultValue: false)
+            Util.getSetting(settingKey: leftCommandIsCtrlSettingKey, defaultValue: true)
         }
         set(_leftCommandIsCtrl) {
             addReg(key: "HKEY_CURRENT_USER\\Software\\Wine\\Mac Driver", value: "LeftCommandIsCtrl", data: _leftCommandIsCtrl ? "y" : "n")
@@ -156,7 +156,7 @@ struct Wine {
     private static let rightCommandIsCtrlSettingKey = "RightCommandIsCtrl"
     static var rightCommandIsCtrl: Bool {
         get {
-            Util.getSetting(settingKey: rightCommandIsCtrlSettingKey, defaultValue: false)
+            Util.getSetting(settingKey: rightCommandIsCtrlSettingKey, defaultValue: true)
         }
         set(_rightCommandIsCtrl) {
             addReg(key: "HKEY_CURRENT_USER\\Software\\Wine\\Mac Driver", value: "RightCommandIsCtrl", data: _rightCommandIsCtrl ? "y" : "n")
