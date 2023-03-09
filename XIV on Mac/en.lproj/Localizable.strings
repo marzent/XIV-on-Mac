@@ -159,7 +159,6 @@ Do not enable this on non-retina displays, unless for screenshot purposes.";
 "SETTINGS_DOWNLOAD_LIMIT" = "Limit Download speed to";
 "SETTINGS_DOWNLOAD_LIMIT_PLACEHOLDER" = "0.0";
 "SETTINGS_DOWNLOAD_LIMIT_UNITS" = "MB/sec";
-"SETTINGS_DOWNLOAD_LIMIT_UNITS" = "MB/sec";
 "SETTINGS_GENERAL_TITLE_INPUT" = "Key mapping";
 "SETTINGS_GENERAL_INPUT_LEFT_OPTION" = "Left option:";
 "SETTINGS_GENERAL_INPUT_RIGHT_OPTION" = "Right option:";
