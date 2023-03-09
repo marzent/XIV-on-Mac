@@ -163,19 +163,19 @@ extension SettingsGeneralTabView {
             didSet { updateHTTPMaxSpeed() }
         }
         
-        @Published var leftOptionIsAlt: Bool = !Wine.leftOptionIsAlt {
+        @Published var leftOptionIsAlt: Bool = Wine.leftOptionIsAlt {
             didSet { Wine.leftOptionIsAlt = leftOptionIsAlt }
         }
         
-        @Published var rightOptionIsAlt: Bool = !Wine.rightOptionIsAlt {
+        @Published var rightOptionIsAlt: Bool = Wine.rightOptionIsAlt {
             didSet { Wine.rightOptionIsAlt = rightOptionIsAlt }
         }
         
-        @Published var leftCommandIsCtrl: Bool = !Wine.leftCommandIsCtrl {
+        @Published var leftCommandIsCtrl: Bool = Wine.leftCommandIsCtrl {
             didSet { Wine.leftCommandIsCtrl = leftCommandIsCtrl }
         }
         
-        @Published var rightCommandIsCtrl: Bool = !Wine.rightCommandIsCtrl {
+        @Published var rightCommandIsCtrl: Bool = Wine.rightCommandIsCtrl {
             didSet { Wine.rightCommandIsCtrl = rightCommandIsCtrl }
         }
 
