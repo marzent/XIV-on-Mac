@@ -142,6 +142,7 @@ Do not enable this on non-retina displays, unless for screenshot purposes.";
 "SETTINGS_TAB_ADVANCED_TITLE" = "Advanced";
 
 // General Settings tab items
+"SETTINGS_GENERAL_TITLE_LICENSE" = "License";
 "SETTINGS_GENERAL_LANGUAGE_AND_LICENSE_BLURB" = "XIV on Mac can work with Mac, Windows, and Steam licenses. You must already own the license type you choose, if you are unsure you can check your account status through Mogstation. Steam accounts must have been previously linked to your Final Fantasy XIV service account by logging in on a Windows PC, and further require the macOS version of Steam to be running.";
 "SETTINGS_LANGUAGE_PICKER" = "Language:";
 "SETTINGS_LANGUAGE_JAPANESE" = "Japanese";
@@ -154,9 +155,20 @@ Do not enable this on non-retina displays, unless for screenshot purposes.";
 "SETTINGS_PLATFORM_STEAM" = "Steam";
 "SETTINGS_FREE_TRIAL" = "Free Trial";
 "SETTINGS_GENERAL_FREE_TRIAL_BLURB" = "When using the Free Trial, you must choose the same license type you used when you signed up for the trial. Additionally, your Final Fantasy XIV account must already have an active trial, as XIV on Mac cannot sign you up automatically.";
+"SETTINGS_GENERAL_TITLE_NETWORK" = "Network";
 "SETTINGS_DOWNLOAD_LIMIT" = "Limit Download speed to";
 "SETTINGS_DOWNLOAD_LIMIT_PLACEHOLDER" = "0.0";
 "SETTINGS_DOWNLOAD_LIMIT_UNITS" = "MB/sec";
+"SETTINGS_DOWNLOAD_LIMIT_UNITS" = "MB/sec";
+"SETTINGS_GENERAL_TITLE_INPUT" = "Key mapping";
+"SETTINGS_GENERAL_INPUT_LEFT_OPTION" = "Left option:";
+"SETTINGS_GENERAL_INPUT_RIGHT_OPTION" = "Right option:";
+"SETTINGS_GENERAL_INPUT_BUTTON_WINDOWS_ALT" = "Windows alt";
+"SETTINGS_GENERAL_INPUT_BUTTON_MACOS_OPTION" = "macOS option";
+"SETTINGS_GENERAL_INPUT_LEFT_COMMAND" = "Left command:";
+"SETTINGS_GENERAL_INPUT_RIGHT_COMMAND" = "Right command:";
+"SETTINGS_GENERAL_INPUT_BUTTON_CTRL" = "Ctrl";
+"SETTINGS_GENERAL_INPUT_BUTTON_ALT" = "Alt";
 
 // Graphics Settings tab items
 "SETTINGS_FPS_LIMIT" = "Maximum Frame Rate";
