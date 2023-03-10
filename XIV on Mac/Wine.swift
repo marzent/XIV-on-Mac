@@ -120,6 +120,50 @@ struct Wine {
         }
     }
     
+    private static let leftOptionIsAltSettingKey = "LeftOptionIsAlt"
+    static var leftOptionIsAlt: Bool {
+        get {
+            Util.getSetting(settingKey: leftOptionIsAltSettingKey, defaultValue: true)
+        }
+        set(_leftOpenIsAlt) {
+            addReg(key: "HKEY_CURRENT_USER\\Software\\Wine\\Mac Driver", value: "LeftOptionIsAlt", data: _leftOpenIsAlt ? "y" : "n")
+            UserDefaults.standard.set(_leftOpenIsAlt, forKey: leftOptionIsAltSettingKey)
+        }
+    }
+    
+    private static let rightOptionIsAltSettingKey = "RightOptionIsAlt"
+    static var rightOptionIsAlt: Bool {
+        get {
+            Util.getSetting(settingKey: rightOptionIsAltSettingKey, defaultValue: true)
+        }
+        set(_rightOpenIsAlt) {
+            addReg(key: "HKEY_CURRENT_USER\\Software\\Wine\\Mac Driver", value: "RightOptionIsAlt", data: _rightOpenIsAlt ? "y" : "n")
+            UserDefaults.standard.set(_rightOpenIsAlt, forKey: rightOptionIsAltSettingKey)
+        }
+    }
+    
+    private static let leftCommandIsCtrlSettingKey = "LeftCommandIsCtrl"
+    static var leftCommandIsCtrl: Bool {
+        get {
+            Util.getSetting(settingKey: leftCommandIsCtrlSettingKey, defaultValue: true)
+        }
+        set(_leftCommandIsCtrl) {
+            addReg(key: "HKEY_CURRENT_USER\\Software\\Wine\\Mac Driver", value: "LeftCommandIsCtrl", data: _leftCommandIsCtrl ? "y" : "n")
+            UserDefaults.standard.set(_leftCommandIsCtrl, forKey: leftCommandIsCtrlSettingKey)
+        }
+    }
+    
+    private static let rightCommandIsCtrlSettingKey = "RightCommandIsCtrl"
+    static var rightCommandIsCtrl: Bool {
+        get {
+            Util.getSetting(settingKey: rightCommandIsCtrlSettingKey, defaultValue: true)
+        }
+        set(_rightCommandIsCtrl) {
+            addReg(key: "HKEY_CURRENT_USER\\Software\\Wine\\Mac Driver", value: "RightCommandIsCtrl", data: _rightCommandIsCtrl ? "y" : "n")
+            UserDefaults.standard.set(_rightCommandIsCtrl, forKey: rightCommandIsCtrlSettingKey)
+        }
+    }
+    
     private static var timebase: mach_timebase_info = .init()
     static var tickCount: UInt64 {
         if timebase.denom == 0 {

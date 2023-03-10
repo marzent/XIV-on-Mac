@@ -144,6 +144,7 @@ Ne l'activez pas sur les écrans autres que écrans Retina, sauf à des fins de 
 "SETTINGS_TAB_ADVANCED_TITLE" = "Avancé";
 
 // General Settings tab items
+"SETTINGS_GENERAL_TITLE_LICENSE" = "License";
 "SETTINGS_GENERAL_LANGUAGE_AND_LICENSE_BLURB" = "XIV on Mac peut fonctionner avec les licences Mac, Windows et Steam. Vous devez posséder le type de licence que vous choisissez. Si vous n'êtes pas sûr, vérifiez l'état de votre compte via Mogstation. Les comptes Steam doivent avoir été précédemment liés à votre compte de service Final Fantasy XIV en vous connectant sur un PC Windows, et nécessitent en outre que la version macOS de Steam soit en cours d'exécution.";
 "SETTINGS_LANGUAGE_PICKER" = "Langue :";
 "SETTINGS_LANGUAGE_JAPANESE" = "Japonais";
@@ -156,9 +157,19 @@ Ne l'activez pas sur les écrans autres que écrans Retina, sauf à des fins de 
 "SETTINGS_PLATFORM_STEAM" = "Steam";
 "SETTINGS_FREE_TRIAL" = "Essai gratuit";
 "SETTINGS_GENERAL_FREE_TRIAL_BLURB" = "Lorsque vous utilisez l'essai gratuit, vous devez choisir le même type de licence que celui que vous avez utilisé lors de votre inscription à l'essai. De plus, votre compte Final Fantasy XIV doit déjà avoir un essai actif, car XIV sur Mac ne peut pas vous inscrire automatiquement.";
+"SETTINGS_GENERAL_TITLE_NETWORK" = "Network";
 "SETTINGS_DOWNLOAD_LIMIT" = "Limiter la vitesse de téléchargement à";
 "SETTINGS_DOWNLOAD_LIMIT_PLACEHOLDER" = "0.0";
 "SETTINGS_DOWNLOAD_LIMIT_UNITS" = "Mo/s";
+"SETTINGS_GENERAL_TITLE_INPUT" = "Key mapping";
+"SETTINGS_GENERAL_INPUT_LEFT_OPTION" = "Left option:";
+"SETTINGS_GENERAL_INPUT_RIGHT_OPTION" = "Right option:";
+"SETTINGS_GENERAL_INPUT_BUTTON_WINDOWS_ALT" = "Windows alt";
+"SETTINGS_GENERAL_INPUT_BUTTON_MACOS_OPTION" = "macOS option";
+"SETTINGS_GENERAL_INPUT_LEFT_COMMAND" = "Left command:";
+"SETTINGS_GENERAL_INPUT_RIGHT_COMMAND" = "Right command:";
+"SETTINGS_GENERAL_INPUT_BUTTON_CTRL" = "Ctrl";
+"SETTINGS_GENERAL_INPUT_BUTTON_ALT" = "Alt";
 
 // Graphics Settings tab items
 "SETTINGS_FPS_LIMIT" = "Fréquence d'images maximale";

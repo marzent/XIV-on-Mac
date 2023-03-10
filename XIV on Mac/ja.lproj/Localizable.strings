@@ -144,6 +144,7 @@
 "SETTINGS_TAB_ADVANCED_TITLE" = "高度";
 
 // General Settings tab items
+"SETTINGS_GENERAL_TITLE_LICENSE" = "License";
 "SETTINGS_GENERAL_LANGUAGE_AND_LICENSE_BLURB" = "XIV on MacはMac版、Windows版、Steam版のライセンスで動作可能です。選択したライセンスを所有している必要があります。不明な場合はモグステーションでアカウントの状況を確認できます。なお、Steam版はあらかじめWindows PCでSteamとファイナルファンタジーXIVのサービスアカウントをリンクしておく必要があり、さらにmacOS版のSteamアプリをバックグラウンドで起動しておく必要があります。";
 "SETTINGS_LANGUAGE_PICKER" = "言語:";
 "SETTINGS_LANGUAGE_JAPANESE" = "日本語";
@@ -156,9 +157,19 @@
 "SETTINGS_PLATFORM_STEAM" = "Steam";
 "SETTINGS_FREE_TRIAL" = "フリートライアル";
 "SETTINGS_GENERAL_FREE_TRIAL_BLURB" = "フリートライアルを利用する場合、フリートライアルに登録した時と同じライセンスタイプを選択してください。また、XIV on Macは自動的にサインアップできないため、あなたのファイナルファンタジーXIVのアカウントで先にフリートライアルへの登録を済ませておく必要があります。";
+"SETTINGS_GENERAL_TITLE_NETWORK" = "Network";
 "SETTINGS_DOWNLOAD_LIMIT" = "ダウンロード速度を制限";
 "SETTINGS_DOWNLOAD_LIMIT_PLACEHOLDER" = "0.0";
 "SETTINGS_DOWNLOAD_LIMIT_UNITS" = "MB/秒";
+"SETTINGS_GENERAL_TITLE_INPUT" = "Key mapping";
+"SETTINGS_GENERAL_INPUT_LEFT_OPTION" = "Left option:";
+"SETTINGS_GENERAL_INPUT_RIGHT_OPTION" = "Right option:";
+"SETTINGS_GENERAL_INPUT_BUTTON_WINDOWS_ALT" = "Windows alt";
+"SETTINGS_GENERAL_INPUT_BUTTON_MACOS_OPTION" = "macOS option";
+"SETTINGS_GENERAL_INPUT_LEFT_COMMAND" = "Left command:";
+"SETTINGS_GENERAL_INPUT_RIGHT_COMMAND" = "Right command:";
+"SETTINGS_GENERAL_INPUT_BUTTON_CTRL" = "Ctrl";
+"SETTINGS_GENERAL_INPUT_BUTTON_ALT" = "Alt";
 
 // Graphics Settings tab items
 "SETTINGS_FPS_LIMIT" = "最大フレームレート";
