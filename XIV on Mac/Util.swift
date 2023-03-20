@@ -8,6 +8,11 @@
 import AppKit
 import IOKit
 import SwiftUI
+import KeyboardShortcuts
+
+extension KeyboardShortcuts.Name {
+    static let toggleVideoCapture = Self("toggleVideoCapture")
+}
 
 struct Util {
     @available(*, unavailable) private init() {}
