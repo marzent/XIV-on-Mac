@@ -14,6 +14,9 @@
 		0762AB922973AEB400A4D6E0 /* SettingsGraphicsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0762AB912973AEB400A4D6E0 /* SettingsGraphicsTabView.swift */; };
 		0762AB942973AED200A4D6E0 /* SettingsPluginsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0762AB932973AED200A4D6E0 /* SettingsPluginsTabView.swift */; };
 		0762AB962973AEF100A4D6E0 /* SettingsAdvancedTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0762AB952973AEF100A4D6E0 /* SettingsAdvancedTabView.swift */; };
+		0786F05A29BAD9E300009AD5 /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = 0786F05929BAD9E300009AD5 /* KeyboardShortcuts */; };
+		0786F05C29BADDA500009AD5 /* ScreenCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786F05B29BADDA500009AD5 /* ScreenCapture.swift */; };
+		0786F05E29BBF67400009AD5 /* ScreenCaptureEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786F05D29BBF67400009AD5 /* ScreenCaptureEngine.swift */; };
 		079A343027F90F350043BEEA /* FirstAidModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079A342F27F90F350043BEEA /* FirstAidModel.swift */; };
 		079A343227FA59D90043BEEA /* FFXIVCFGEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079A343127FA59D90043BEEA /* FFXIVCFGEncoder.swift */; };
 		07A3498B2805689200A9D7D0 /* CfgCheckGood.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 07A349892805689200A9D7D0 /* CfgCheckGood.tiff */; };
@@ -24,6 +27,7 @@
 		07B3507129A4717B0010C1F5 /* INIReadWrite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B3507029A4717B0010C1F5 /* INIReadWrite.swift */; };
 		07B3507329A4829C0010C1F5 /* ffxivbenchmarklauncher-Default.ini in Resources */ = {isa = PBXBuildFile; fileRef = 07B3507229A4829C0010C1F5 /* ffxivbenchmarklauncher-Default.ini */; };
 		07B529D527D97D2B005B78BF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 07B529D727D97D2B005B78BF /* Localizable.strings */; };
+		07B5C83729C7AFCC0092C5C6 /* SettingsCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B5C83629C7AFCC0092C5C6 /* SettingsCaptureView.swift */; };
 		07BF3AF728063A8600794155 /* CfgCheckProbFixed.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 07BF3AF628063A8600794155 /* CfgCheckProbFixed.tiff */; };
 		07BF3AFA2806507800794155 /* CfgCheckAdvFailed.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 07BF3AF82806507800794155 /* CfgCheckAdvFailed.tiff */; };
 		07BF3AFB2806507800794155 /* CfgCheckAdvFixed.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 07BF3AF92806507800794155 /* CfgCheckAdvFixed.tiff */; };
@@ -107,6 +111,8 @@
 		0762AB912973AEB400A4D6E0 /* SettingsGraphicsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsGraphicsTabView.swift; sourceTree = "<group>"; };
 		0762AB932973AED200A4D6E0 /* SettingsPluginsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPluginsTabView.swift; sourceTree = "<group>"; };
 		0762AB952973AEF100A4D6E0 /* SettingsAdvancedTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAdvancedTabView.swift; sourceTree = "<group>"; };
+		0786F05B29BADDA500009AD5 /* ScreenCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenCapture.swift; sourceTree = "<group>"; };
+		0786F05D29BBF67400009AD5 /* ScreenCaptureEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenCaptureEngine.swift; sourceTree = "<group>"; };
 		079A342F27F90F350043BEEA /* FirstAidModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstAidModel.swift; sourceTree = "<group>"; };
 		079A343127FA59D90043BEEA /* FFXIVCFGEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFXIVCFGEncoder.swift; sourceTree = "<group>"; };
 		07A349892805689200A9D7D0 /* CfgCheckGood.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = CfgCheckGood.tiff; sourceTree = "<group>"; };
@@ -117,6 +123,7 @@
 		07B3507029A4717B0010C1F5 /* INIReadWrite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INIReadWrite.swift; sourceTree = "<group>"; };
 		07B3507229A4829C0010C1F5 /* ffxivbenchmarklauncher-Default.ini */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "ffxivbenchmarklauncher-Default.ini"; sourceTree = "<group>"; };
 		07B529D627D97D2B005B78BF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		07B5C83629C7AFCC0092C5C6 /* SettingsCaptureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCaptureView.swift; sourceTree = "<group>"; };
 		07BF3AF628063A8600794155 /* CfgCheckProbFixed.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = CfgCheckProbFixed.tiff; sourceTree = "<group>"; };
 		07BF3AF82806507800794155 /* CfgCheckAdvFailed.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = CfgCheckAdvFailed.tiff; sourceTree = "<group>"; };
 		07BF3AF92806507800794155 /* CfgCheckAdvFixed.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = CfgCheckAdvFixed.tiff; sourceTree = "<group>"; };
@@ -193,6 +200,7 @@
 				50DF1F8827CD261A00DE9DA5 /* OrderedCollections in Frameworks */,
 				509D0E2D2960536A0055367A /* KeychainAccess in Frameworks */,
 				503B819C28394341006197C1 /* XIVLauncher.NativeAOT.dylib in Frameworks */,
+				0786F05A29BAD9E300009AD5 /* KeyboardShortcuts in Frameworks */,
 				509D0E302960540C0055367A /* AppMover in Frameworks */,
 				5049B9B3283CFEC600463A2B /* libsteam_api64.dylib in Frameworks */,
 				50D30FA327B93359007A9F66 /* Embassy in Frameworks */,
@@ -265,6 +273,8 @@
 				5049B9AD283BAFE600463A2B /* Log.swift */,
 				50511EC42770E085003A1E9F /* AppDelegate.swift */,
 				5010EFE327E4CE40001D2FEC /* Encryption.swift */,
+				0786F05B29BADDA500009AD5 /* ScreenCapture.swift */,
+				0786F05D29BBF67400009AD5 /* ScreenCaptureEngine.swift */,
 				50F8A5F827BFA93800ADC0CB /* Patcher */,
 				509A62D527A58966001B203A /* Launcher */,
 				509D4C4C29A4B993001961CC /* Benchmark */,
@@ -350,6 +360,7 @@
 			children = (
 				0762AB8D2973A09A00A4D6E0 /* SettingsView.swift */,
 				0762AB8F2973AE2000A4D6E0 /* SettingsGeneralTabView.swift */,
+				07B5C83629C7AFCC0092C5C6 /* SettingsCaptureView.swift */,
 				0762AB912973AEB400A4D6E0 /* SettingsGraphicsTabView.swift */,
 				0762AB932973AED200A4D6E0 /* SettingsPluginsTabView.swift */,
 				0762AB952973AEF100A4D6E0 /* SettingsAdvancedTabView.swift */,
@@ -407,6 +418,7 @@
 				50DC355D27E9CEEE00DBA62C /* Base32 */,
 				509D0E2C2960536A0055367A /* KeychainAccess */,
 				509D0E2F2960540C0055367A /* AppMover */,
+				0786F05929BAD9E300009AD5 /* KeyboardShortcuts */,
 			);
 			productName = "XIV on Mac";
 			productReference = 50511EC12770E085003A1E9F /* XIV on Mac.app */;
@@ -449,6 +461,7 @@
 				50B1C5B627D25620006DA54E /* XCRemoteSwiftPackageReference "swift-seeurl" */,
 				50DC355C27E9CEEE00DBA62C /* XCRemoteSwiftPackageReference "Base32" */,
 				509D0E2E2960540C0055367A /* XCRemoteSwiftPackageReference "AppMover" */,
+				0786F05829BAD9E300009AD5 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
 			);
 			productRefGroup = 50511EC22770E085003A1E9F /* Products */;
 			projectDirPath = "";
@@ -555,6 +568,7 @@
 				0762AB962973AEF100A4D6E0 /* SettingsAdvancedTabView.swift in Sources */,
 				2B7C95D2277C6C6000A3CA89 /* SocialIntegration.swift in Sources */,
 				5015D4C92881EAF9004BA6D8 /* AddOn.swift in Sources */,
+				07B5C83729C7AFCC0092C5C6 /* SettingsCaptureView.swift in Sources */,
 				5077A32C27C12A9100D4F1B8 /* Settings.swift in Sources */,
 				50E7EB9A29A16F29001BC287 /* Benchmark.swift in Sources */,
 				50BD278727785418002B0D1F /* Notifications.swift in Sources */,
@@ -562,8 +576,10 @@
 				509FE19A27E3654E008D56D6 /* FFXIVEnums.swift in Sources */,
 				5010EFE427E4CE40001D2FEC /* Encryption.swift in Sources */,
 				5020957927C9611A00BD76CC /* Patch.swift in Sources */,
+				0786F05C29BADDA500009AD5 /* ScreenCapture.swift in Sources */,
 				0762AB902973AE2000A4D6E0 /* SettingsGeneralTabView.swift in Sources */,
 				07B3507129A4717B0010C1F5 /* INIReadWrite.swift in Sources */,
+				0786F05E29BBF67400009AD5 /* ScreenCaptureEngine.swift in Sources */,
 				50E980DE2840A65000050151 /* RepairController.swift in Sources */,
 				50FC2DFF27F974D300871760 /* DxvkStateCache.swift in Sources */,
 				50DF1F8527CCB83300DE9DA5 /* FFXIVRepo.swift in Sources */,
@@ -867,6 +883,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		0786F05829BAD9E300009AD5 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/KeyboardShortcuts";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		502A18DF27AABF8400144AB9 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
@@ -934,6 +958,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		0786F05929BAD9E300009AD5 /* KeyboardShortcuts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0786F05829BAD9E300009AD5 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */;
+			productName = KeyboardShortcuts;
+		};
 		50692C8827B3D13700945593 /* Sparkle */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 50692C8727B3D13700945593 /* XCRemoteSwiftPackageReference "Sparkle" */;
