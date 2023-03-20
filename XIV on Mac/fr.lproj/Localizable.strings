@@ -230,13 +230,13 @@ Ne l'activez pas sur les écrans autres que écrans Retina, sauf à des fins de 
 "FIRSTAID_CFGCHECK_FIX_BUTTON" = "Fix";
 
 // Benchmark Window
-"BENCHMARK_WINDOW_TITLE" = "Final Fantasy XIV Benchmark";
-"BENCHMARK_FOLDER_LABEL" = "Benchmark Folder Location:";
-"BENCHMARK_FOLDER_SELECT_BUTTON" = "Select…";
-"BENCHMARK_FOLDER_NOT_SET" = "Not Set…";
-"BENCHMARK_SET_DEFAULTS" = "Apply Recommended Settings";
-"BENCHMARK_TYPE_LABEL" = "Benchmark Type";
-"BENCHMARK_TYPE_HD" = "Windowed HD: 1920 x 1080";
-"BENCHMARK_TYPE_QHD" = "Windowed WQHD: 2560 × 1440";
-"BENCHMARK_TYPE_CUSTOM" = "Borderless Fullscreen: Desktop Resolution";
-"BENCHMARK_START_BUTTON" = "Start Benchmark";
+"BENCHMARK_WINDOW_TITLE" = "Benchmark Final Fantasy XIV";
+"BENCHMARK_FOLDER_LABEL" = "Emplacement du dossier de benchmarking :";
+"BENCHMARK_FOLDER_SELECT_BUTTON" = "Sélectionner…";
+"BENCHMARK_FOLDER_NOT_SET" = "Non défini…";
+"BENCHMARK_SET_DEFAULTS" = "Appliquer les paramètres recommandés";
+"BENCHMARK_TYPE_LABEL" = "Type de benchmark";
+"BENCHMARK_TYPE_HD" = "HD fenêtré : 1920 x 1080";
+"BENCHMARK_TYPE_QHD" = "WQHD fenêtré : 2560 × 1440";
+"BENCHMARK_TYPE_CUSTOM" = "Plein écran sans bordure : Résolution du bureau";
+"BENCHMARK_START_BUTTON" = "Démarrer le Benchmark";
