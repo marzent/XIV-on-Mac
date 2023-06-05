@@ -174,7 +174,7 @@
 
 // Screen Capture tab items
 "SETTINGS_TOGGLE_SCREEN_RECORDING" = "録画のショートカットキー:";
-"SETTINGS_CAPTURE_PERMISSIONS_CHECK" = "録画を使用するにはXIV On Macへ画面収録の権限付与が必要です。また、録画開始・終了時に通知が必要な場合は、通知の権限付与が併せて必要です。";
+"SETTINGS_CAPTURE_PERMISSIONS_CHECK" = "録画を使用するにはXIV on Macへ画面収録の権限付与が必要です。また、録画開始・終了時に通知が必要な場合は、通知の権限付与が併せて必要です。";
 "SETTINGS_CAPTURE_PERMISSIONS_CHECK_BUTTON" = "権限をチェックする";
 "CAPTURE_FOLDER_LABEL" = "録画の保存先フォルダ:";
 "CAPTURE_FOLDER_SELECT_BUTTON" = "選択…";
@@ -183,10 +183,10 @@
 "SETTINGS_CAPTURE_CODEC_H264" = "H.264";
 "SETTINGS_CAPTURE_CODEC_HEVC" = "HEVC";
 "SCREEN_CAPTURE_PERMISSION" = "録画の権限";
-"SCREEN_CAPTURE_PERMISSION_HAVE_NONE" = "録画を使用するにはXIV On Macへ画面収録の権限付与が必要です。また、録画開始・終了時に通知が必要な場合は、通知の権限付与が併せて必要です。";
-"SCREEN_CAPTURE_PERMISSION_NO_NOTIFY" = "録画開始・終了時に通知が必要な場合は、XIV On Macへ通知の権限付与が必要です。この権限がなくても録画は使用出来ます。";
-"SCREEN_CAPTURE_PERMISSION_NO_RECORD" = "録画を使用するにはXIV On Macへ画面収録の権限付与が必要です。";
-"SCREEN_CAPTURE_PERMISSION_HAVE_ALL" = "XIV On Macは必要なすべての権限が付与されています。";
+"SCREEN_CAPTURE_PERMISSION_HAVE_NONE" = "録画を使用するにはXIV on Macへ画面収録の権限付与が必要です。また、録画開始・終了時に通知が必要な場合は、通知の権限付与が併せて必要です。";
+"SCREEN_CAPTURE_PERMISSION_NO_NOTIFY" = "録画開始・終了時に通知が必要な場合は、XIV on Macへ通知の権限付与が必要です。この権限がなくても録画は使用出来ます。";
+"SCREEN_CAPTURE_PERMISSION_NO_RECORD" = "録画を使用するにはXIV on Macへ画面収録の権限付与が必要です。";
+"SCREEN_CAPTURE_PERMISSION_HAVE_ALL" = "XIV on Macは必要なすべての権限が付与されています。";
 "SCREEN_CAPTURE_PERMISSION_OPEN_PREF_BUTTON" = "プライバシーとセキュリティを開く…";
 "NOTIFY_CAPTURE_TITLE" = "録画";
 "NOTIFY_CAPTURE_STARTED_SUBTITLE" = "録画を開始しました";
