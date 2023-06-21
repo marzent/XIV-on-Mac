@@ -70,7 +70,7 @@ Do not enable this on non-retina displays, unless for screenshot purposes.";
 "RETINA_ENABLE_BUTTON" = "Understood";
 
 "ROSETTA_REQUIRED" = "Rosetta 2 is Required.";
-"ROSETTA_REQUIRED_INFORMATIVE" = "XIV On Mac requires Apple's Rosetta 2 to be installed in order to function on your Apple Silicon Mac. If you choose not to install, your game will not start. Would you like to start the Rosetta installer now?";
+"ROSETTA_REQUIRED_INFORMATIVE" = "XIV On Mac requires Apple's Rosetta 2 to be installed in order to function on your Apple Silicon Mac. If you choose not to install, your game will not start. Rosetta requires you to read and agree to the terms of the software license agreement here: http://www.apple.com/legal/sla/. Would you like to install Rosetta now?";
 "ROSETTA_REQUIRED_INSTALL_BUTTON" = "Install Rosetta";
 "ROSETTA_REQUIRED_CANCEL_BUTTON" = "Cancel";
 
@@ -137,6 +137,7 @@ Do not enable this on non-retina displays, unless for screenshot purposes.";
 
 "SETTINGS_WINDOW_TITLE" = "Einstellungen";
 "SETTINGS_TAB_GENERAL_TITLE" = "Allgemein";
+"SETTINGS_TAB_CAPTURE_TITLE" = "Screen Capture";
 "SETTINGS_TAB_GRAPHICS_TITLE" = "Grafik";
 "SETTINGS_TAB_PLUGINS_TITLE" = "Plugins (Dalamud)";
 "SETTINGS_TAB_ADVANCED_TITLE" = "Erweiterte Optionen";
@@ -155,8 +156,8 @@ Do not enable this on non-retina displays, unless for screenshot purposes.";
 "SETTINGS_PLATFORM_STEAM" = "Steam";
 "SETTINGS_FREE_TRIAL" = "Kostenlose Testversion";
 "SETTINGS_GENERAL_FREE_TRIAL_BLURB" = "Wenn du die kostenlose Testversion verwenden musst du denselben Lizenztyp wählen, den du bei der Anmeldung für die Testversion verwendet hast. Außerdem muss dein Final Fantasy XIV-Konto bereits eine aktive Testversion haben, da XIV on Mac dich nicht automatisch anmelden kann.";
-"SETTINGS_DOWNLOAD_LIMIT" = "Begrenzung der Download-Geschwindigkeit auf";
 "SETTINGS_GENERAL_TITLE_NETWORK" = "Network";
+"SETTINGS_DOWNLOAD_LIMIT" = "Begrenzung der Download-Geschwindigkeit auf";
 "SETTINGS_DOWNLOAD_LIMIT_PLACEHOLDER" = "0.0";
 "SETTINGS_DOWNLOAD_LIMIT_UNITS" = "MB/Sek";
 "SETTINGS_GENERAL_TITLE_INPUT" = "Key mapping";
@@ -168,6 +169,29 @@ Do not enable this on non-retina displays, unless for screenshot purposes.";
 "SETTINGS_GENERAL_INPUT_RIGHT_COMMAND" = "Right command:";
 "SETTINGS_GENERAL_INPUT_BUTTON_CTRL" = "Ctrl";
 "SETTINGS_GENERAL_INPUT_BUTTON_ALT" = "Alt";
+
+// Screen Capture tab items
+"SETTINGS_TOGGLE_SCREEN_RECORDING" = "Start/Stop Screen Recording";
+"SETTINGS_CAPTURE_PERMISSIONS_CHECK" = "XIV On Mac requires permission to capture your screen. If you wish to receive a notification when screen recording has started or stopped, notification permissions must also be granted.";
+"SETTINGS_CAPTURE_PERMISSIONS_CHECK_BUTTON" = "Check Permissions…";
+"CAPTURE_FOLDER_LABEL" = "Capture Location:";
+"CAPTURE_FOLDER_SELECT_BUTTON" = "Select…";
+"SELECT_CAPTURE_PATH_PANEL_MESSAGE" = "Choose a folder to store new screen captures in.";
+"SETTINGS_CAPTURE_CODEC" = "Video Codec:";
+"SETTINGS_CAPTURE_CODEC_H264" = "H.264";
+"SETTINGS_CAPTURE_CODEC_HEVC" = "HEVC";
+"SCREEN_CAPTURE_PERMISSION" = "Screen Capture Permissions";
+"SCREEN_CAPTURE_PERMISSION_HAVE_NONE" = "XIV On Mac requires Screen Capture permission in order to record. You might also want to grant Notification permission to find out when recording has started or stopped.";
+"SCREEN_CAPTURE_PERMISSION_NO_NOTIFY" = "XIV On Mac required Notification permission to inform you when recording has started or stopped. Screen recording will still work without this permission.";
+"SCREEN_CAPTURE_PERMISSION_NO_RECORD" = "XIV On Mac requires Screen Capture permission in order to record.";
+"SCREEN_CAPTURE_PERMISSION_HAVE_ALL" = "XIV On Mac has all the permissions it needs!";
+"SCREEN_CAPTURE_PERMISSION_OPEN_PREF_BUTTON" = "Open Security Settings…";
+"NOTIFY_CAPTURE_TITLE" = "Screen Capture";
+"NOTIFY_CAPTURE_STARTED_SUBTITLE" = "Started Screen Recording";
+"NOTIFY_CAPTURE_STARTED_BODY" = "Recording to %@";
+"NOTIFY_CAPTURE_STOPPED_SUBTITLE" = "Stopped Screen Recording";
+"NOTIFY_CAPTURE_STOPPED_BODY" = "Recording saved to %@";
+
 
 // Graphics Settings tab items
 "SETTINGS_FPS_LIMIT" = "Maximale Framerate";
