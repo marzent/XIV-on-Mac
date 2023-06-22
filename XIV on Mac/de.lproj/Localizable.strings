@@ -20,19 +20,19 @@
 "STEAM_USER_ERROR_SHORT" = "Steam Fehler";
 "STEAM_USER_ERROR" = "Es gibt eine Unstimmigkeit zwischen dem angegebenen Benutzernamen und dem Steam-Konto.";
 "NOT_PLAYABLE_SHORT" = "Lizenz Fehler";
-"NOT_PLAYABLE" = "Die Antwort der Anmeldeserver zeigt an, dass du das Spiel derzeit nicht spielen kannst. Bitte stelle sicher, dass Du ein aktives Abonnement hast und die richtige Lizenz (Windows, Steam oder Mac) in den Einstellungen ausgewählt ist.";
+"NOT_PLAYABLE" = "Die Antwort der Anmeldeserver zeigt an, dass du das Spiel derzeit nicht spielen kannst. Bitte stelle sicher, dass du ein aktives Abonnement hast und die richtige Lizenz (Windows, Steam oder Mac) in den Einstellungen ausgewählt ist.";
 "NO_TERMS_SHORT" = "Login System Fehler";
 "NO_TERMS" = "Bitte akzeptieren die Final Fantasy XIV-Nutzungsbedingungen im offiziellen Launcher.";
 "PROTOCOL_ERROR_SHORT" = "Login System Fehler";
-"PROTOCOL_ERROR" = "Die Login-Server haben die Anfrage nicht angenommen. Bitte stellen sicher, dass Du eine stabile Netzwerkverbindung zu den FFXIV-Servern hast.";
+"PROTOCOL_ERROR" = "Die Login-Server haben die Anfrage nicht angenommen. Bitte stellen sicher, dass du eine stabile Netzwerkverbindung zu den FFXIV-Servern hast.";
 "NETWORK_ERROR_SHORT" = "Netzwerk Fehler";
 "NETWORK_ERROR" = "Überprüfen deine Internetverbindung, oder versuchen es später noch einmal. Ist FFXIV nicht verfügbar?";
 "NO_INSTALL_SHORT" = "Final Fantasy XIV ist nicht installiert!";
 "NO_INSTALL" = "Wesentliche Spieldateien konnten nicht gefunden werden.\nStarte Installer...";
 "MAINTENANCE_SHORT" = "Laufende Wartungsarbeiten";
-"MAINTENANCE" = "Bitte warten, bis die Wartungsarbeiten abgeschlossen sind, bevor Du dich anmeldest.";
+"MAINTENANCE" = "Bitte warten, bis die Wartungsarbeiten abgeschlossen sind, bevor du dich anmeldest.";
 "MULTIBOX_SHORT" = "Zwei Spiel-Instanzen laufen bereits";
-"MULTIBOX" = "Bitte schließen eine deiner alten Spielinstanzen, bevor Du eine neue startest.";
+"MULTIBOX" = "Bitte schließen eine deiner alten Spielinstanzen, bevor du eine neue startest.";
 "KILLSWITCH_SHORT" = "Anmeldeprozess geändert";
 "KILLSWITCH" = "Aufgrund von Änderungen am Login-Prozess, die von Square Enix vorgenommen wurden, müssen wir überprüfen, ob XIV auf Mac korrekt und sicher funktioniert. Bitte verwenden Sie in der Zwischenzeit den offiziellen Launcher.";
 "UNEXPECTED_SHORT" = "Unerwarteter Fehler";
@@ -40,23 +40,23 @@
 
 "REPAIR_RESULT" = "Ergebnis der Reparatur";
 
-"DALAMUD_START_FAILURE" = "Dalamud is not OK";
-"DALAMUD_START_FAILURE_INFORMATIONAL" = "An error occured downloading and installing Dalamud. Please check your network connection and make sure Dalamud is compatible with the current game version.";
-"GAME_START_FAILURE" = "Final Fantasy XIV failed to start";
-"GAME_START_FAILURE_INFORMATIONAL" = "An error occured starting the game. Please try restarting XIV on Mac.";
+"DALAMUD_START_FAILURE" = "Dalamud ist nicht okay";
+"DALAMUD_START_FAILURE_INFORMATIONAL" = "Beim Herunterladen und Installieren von Dalamud ist ein Fehler aufgetreten. Bitte überprüfe deine Netzwerkverbindung und stelle sicher, dass Dalamud mit der aktuellen Spielversion kompatibel ist.";
+"GAME_START_FAILURE" = "Final Fantasy XIV konnte nicht gestartet werden";
+"GAME_START_FAILURE_INFORMATIONAL" = "Beim Starten des Spiels ist ein Fehler aufgetreten. Bitte versuche, XIV auf Mac neu zu starten.";
 
-"FIRSTAID_GAME_RUNNING" = "Final Fantasy XIV is Running";
-"FIRSTAID_GAME_RUNNING_INFORMATIONAL" = "Please close any copies of Final Fantasy XIV that are running before taking any Troubleshooting actions.";
+"FIRSTAID_GAME_RUNNING" = "Final Fantasy XIV läuft";
+"FIRSTAID_GAME_RUNNING_INFORMATIONAL" = "Bitte schließe alle Kopien von Final Fantasy XIV, die noch laufen, bevor du Maßnahmen zur Fehlerbehebung ergreifst.";
 
-"DXVK_USER_CACHE_DELETED" = "Shader Cache Deleted";
-"DXVK_USER_CACHE_DELETED_INFORMATIVE" = "The shader cache was deleted succesfully. Try starting the game to see if your problem has been addressed.";
-"DXVK_USER_CACHE_DELETE_FAILED" = "Deleting Shader Cache Failed";
-"DXVK_USER_CACHE_DELETE_FAILED_INFORMATIVE" = "Unable to delete the shader cache. You can try to manually delete it using File->Open Wine Prefix.";
+"DXVK_USER_CACHE_DELETED" = "Shader Cache gelöscht";
+"DXVK_USER_CACHE_DELETED_INFORMATIVE" = "Der Shader Cache wurde erfolgreich gelöscht. Versuche das Spiel zu starten, um zu sehen, ob dein Problem behoben wurde.";
+"DXVK_USER_CACHE_DELETE_FAILED" = "Shader Cache löschen fehlgeschlagen";
+"DXVK_USER_CACHE_DELETE_FAILED_INFORMATIVE" = "Der Shader-Cache kann nicht gelöscht werden. Du kannst versuchen, ihn manuell über File->Open Wine Prefix öffnen zu löschen.";
 
-"GAME_CONFIG_RESET" = "Configuration Reset";
-"GAME_CONFIG_RESET_INFORMATIVE" = "Your game configuration was succesfully reset.";
-"GAME_CONFIG_RESET_FAILED" = "Resetting Configuration Failed";
-"GAME_CONFIG_RESET_FAILED_INFORMATIVE" = "Unable to reset configuration. You may need to grant XIV On Mac access to your Downloads folder in System Preferences, Security.";
+"GAME_CONFIG_RESET" = "Zurücksetzen der Konfiguration";
+"GAME_CONFIG_RESET_INFORMATIVE" = "Deine Spielkonfiguration wurde erfolgreich zurückgesetzt.";
+"GAME_CONFIG_RESET_FAILED" = "Zurücksetzen der Konfiguration fehlgeschlagen";
+"GAME_CONFIG_RESET_FAILED_INFORMATIVE" = "Die Konfiguration kann nicht zurückgesetzt werden. Möglicherweise musst du XIV On Mac in den Systemeinstellungen, Sicherheit, Zugriff auf den Ordner Downloads gewähren.";
 
 "DOCUMENTS_PERM_STILL_BAD" = "XIV On Mac is still unable to read and/or write to your Documents folder. If your Security Preference Pane shows the correct permissions, try deleting the entry and re-creating it.";
 
@@ -137,14 +137,14 @@ Do not enable this on non-retina displays, unless for screenshot purposes.";
 
 "SETTINGS_WINDOW_TITLE" = "Einstellungen";
 "SETTINGS_TAB_GENERAL_TITLE" = "Allgemein";
-"SETTINGS_TAB_CAPTURE_TITLE" = "Bildschirmaufzeichnung";
+"SETTINGS_TAB_CAPTURE_TITLE" = "Bildschirmaufnahme";
 "SETTINGS_TAB_GRAPHICS_TITLE" = "Grafik";
 "SETTINGS_TAB_PLUGINS_TITLE" = "Plugins (Dalamud)";
 "SETTINGS_TAB_ADVANCED_TITLE" = "Erweiterte Optionen";
 
 // General Settings tab items
 "SETTINGS_GENERAL_TITLE_LICENSE" = "Lizenz";
-"SETTINGS_GENERAL_LANGUAGE_AND_LICENSE_BLURB" = "XIV on Mac kann mit Mac, Windows, oder Steam Spiellizenzen funktionieren. Du musst im Besitz der jeweiligen Lizenz sein, im Zweifelsfall kann der Account Status auf der Mogry-Station überprüft werden. Steam-Accounts müssen zuvor mit dem Final Fantasy XIV-Dienstkonto verknüpft worden sein, indem man sich auf einem Windows-PC anmeldet; zusätzlich muss außerdem die macOS-Version von Steam laufen.";
+"SETTINGS_GENERAL_LANGUAGE_AND_LICENSE_BLURB" = "XIV on Mac kann mit Mac, Windows, oder Steam Spiellizenzen funktionieren. du musst im Besitz der jeweiligen Lizenz sein, im Zweifelsfall kann der Account Status auf der Mogry-Station überprüft werden. Steam-Accounts müssen zuvor mit dem Final Fantasy XIV-Dienstkonto verknüpft worden sein, indem man sich auf einem Windows-PC anmeldet; zusätzlich muss außerdem die macOS-Version von Steam laufen.";
 "SETTINGS_LANGUAGE_PICKER" = "Sprache:";
 "SETTINGS_LANGUAGE_JAPANESE" = "Japanisch";
 "SETTINGS_LANGUAGE_ENGLISH" = "Englisch";
@@ -171,25 +171,25 @@ Do not enable this on non-retina displays, unless for screenshot purposes.";
 "SETTINGS_GENERAL_INPUT_BUTTON_ALT" = "Alt";
 
 // Screen Capture tab items
-"SETTINGS_TOGGLE_SCREEN_RECORDING" = "Bildschirmaufzeichnung starten/stoppen";
-"SETTINGS_CAPTURE_PERMISSIONS_CHECK" = "XIV On Mac benötigt die Erlaubnis, deinen Bildschirm aufzuzeichnen. Wenn Du eine Benachrichtigung erhalten möchtest, wenn die Bildschirmaufzeichnung gestartet oder gestoppt wurde, musst Du auch die Berechtigung zur Benachrichtigung erteilen.";
+"SETTINGS_TOGGLE_SCREEN_RECORDING" = "Bildschirmaufnahme starten/stoppen";
+"SETTINGS_CAPTURE_PERMISSIONS_CHECK" = "XIV On Mac benötigt die Erlaubnis, deinen Bildschirm aufzunehmen. Wenn du eine Benachrichtigung erhalten möchtest, wenn die Bildschirmaufnahme gestartet oder gestoppt wurde, musst du auch die Berechtigung zur Benachrichtigung erteilen.";
 "SETTINGS_CAPTURE_PERMISSIONS_CHECK_BUTTON" = "Zugriffsrechte prüfen...";
 "CAPTURE_FOLDER_LABEL" = "Ort der Aufnahme:";
 "CAPTURE_FOLDER_SELECT_BUTTON" = "Auswählen…";
-"SELECT_CAPTURE_PATH_PANEL_MESSAGE" = "Wähle einen Ordner aus, in dem neue Bildschirmaufzeichnungen gespeichert werden sollen.";
+"SELECT_CAPTURE_PATH_PANEL_MESSAGE" = "Wähle einen Ordner aus, in dem neue Bildschirmaufnahme gespeichert werden sollen.";
 "SETTINGS_CAPTURE_CODEC" = "Video Codec:";
 "SETTINGS_CAPTURE_CODEC_H264" = "H.264";
 "SETTINGS_CAPTURE_CODEC_HEVC" = "HEVC";
-"SCREEN_CAPTURE_PERMISSION" = "Berechtigungen für Bildschirmaufzeichnungen";
-"SCREEN_CAPTURE_PERMISSION_HAVE_NONE" = "XIV On Mac benötigt die Berechtigung: Bildschirmaufnahme, um aufzeichnen zu können. Möglicherweise möchten Sie auch die Berechtigung: Benachrichtigung erteilen, um zu erfahren, wann die Aufnahme begonnen oder beendet wurde.";
-"SCREEN_CAPTURE_PERMISSION_NO_NOTIFY" = "XIV On Mac benötigt die Berechtigung: Benachrichtigung, um Sie zu informieren, wenn die Aufzeichnung gestartet oder gestoppt wurde. Die Bildschirmaufnahme funktioniert auch ohne diese Berechtigung.";
-"SCREEN_CAPTURE_PERMISSION_NO_RECORD" = "XIV On Mac erfordert die Erlaubnis zur Bildschirmaufnahme, um aufzeichnen zu können.";
+"SCREEN_CAPTURE_PERMISSION" = "Berechtigungen für Bildschirmaufnahme";
+"SCREEN_CAPTURE_PERMISSION_HAVE_NONE" = "XIV On Mac benötigt die Berechtigung: Bildschirmaufnahme, um aufnehmen zu können. Möglicherweise möchten Sie auch die Berechtigung: Benachrichtigung erteilen, um zu erfahren, wann die Aufnahme begonnen oder beendet wurde.";
+"SCREEN_CAPTURE_PERMISSION_NO_NOTIFY" = "XIV On Mac benötigt die Berechtigung: Benachrichtigung, um Sie zu informieren, wenn die Aufnahme gestartet oder gestoppt wurde. Die Bildschirmaufnahme funktioniert auch ohne diese Berechtigung.";
+"SCREEN_CAPTURE_PERMISSION_NO_RECORD" = "XIV On Mac erfordert die Erlaubnis zur Bildschirmaufnahme, um aufnehmen zu können.";
 "SCREEN_CAPTURE_PERMISSION_HAVE_ALL" = "XIV On Mac verfügt über alle erforderlichen Berechtigungen!";
 "SCREEN_CAPTURE_PERMISSION_OPEN_PREF_BUTTON" = "Öffnen der Sicherheitseinstellungen...";
-"NOTIFY_CAPTURE_TITLE" = "Bildschirmaufzeichnung";
-"NOTIFY_CAPTURE_STARTED_SUBTITLE" = "Gestartete Bildschirmaufzeichnung";
-"NOTIFY_CAPTURE_STARTED_BODY" = "Aufzeichnung auf %@";
-"NOTIFY_CAPTURE_STOPPED_SUBTITLE" = "Gestoppte Bildschirmaufzeichnung";
+"NOTIFY_CAPTURE_TITLE" = "Bildschirmaufnahme";
+"NOTIFY_CAPTURE_STARTED_SUBTITLE" = "Gestartete Bildschirmaufnahme";
+"NOTIFY_CAPTURE_STARTED_BODY" = "Aufnahme auf %@";
+"NOTIFY_CAPTURE_STOPPED_SUBTITLE" = "Gestoppte Bildschirmaufnahme";
 "NOTIFY_CAPTURE_STOPPED_BODY" = "Aufnahme gespeichert in %@";
 
 
