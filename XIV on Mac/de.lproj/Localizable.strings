@@ -34,7 +34,7 @@
 "MULTIBOX_SHORT" = "Zwei Spiel-Instanzen laufen bereits";
 "MULTIBOX" = "Bitte schließen eine deiner alten Spielinstanzen, bevor du eine neue startest.";
 "KILLSWITCH_SHORT" = "Anmeldeprozess geändert";
-"KILLSWITCH" = "Aufgrund von Änderungen am Login-Prozess, die von Square Enix vorgenommen wurden, müssen wir überprüfen, ob XIV auf Mac korrekt und sicher funktioniert. Bitte verwenden Sie in der Zwischenzeit den offiziellen Launcher.";
+"KILLSWITCH" = "Aufgrund von Änderungen am Login-Prozess, die von Square Enix vorgenommen wurden, müssen wir überprüfen, ob XIV on Mac korrekt und sicher funktioniert. Bitte verwenden Sie in der Zwischenzeit den offiziellen Launcher.";
 "UNEXPECTED_SHORT" = "Unerwarteter Fehler";
 "UNEXPECTED" = "Es ist ein unerwarteter Fehler aufgetreten.";
 
@@ -43,7 +43,7 @@
 "DALAMUD_START_FAILURE" = "Dalamud ist nicht okay";
 "DALAMUD_START_FAILURE_INFORMATIONAL" = "Beim Herunterladen und Installieren von Dalamud ist ein Fehler aufgetreten. Bitte überprüfe deine Netzwerkverbindung und stelle sicher, dass Dalamud mit der aktuellen Spielversion kompatibel ist.";
 "GAME_START_FAILURE" = "Final Fantasy XIV konnte nicht gestartet werden";
-"GAME_START_FAILURE_INFORMATIONAL" = "Beim Starten des Spiels ist ein Fehler aufgetreten. Bitte versuche, XIV auf Mac neu zu starten.";
+"GAME_START_FAILURE_INFORMATIONAL" = "Beim Starten des Spiels ist ein Fehler aufgetreten. Bitte versuche, XIV on Mac neu zu starten.";
 
 "FIRSTAID_GAME_RUNNING" = "Final Fantasy XIV läuft";
 "FIRSTAID_GAME_RUNNING_INFORMATIONAL" = "Bitte schließe alle Kopien von Final Fantasy XIV, die noch laufen, bevor du Maßnahmen zur Fehlerbehebung ergreifst.";
@@ -58,82 +58,82 @@
 "GAME_CONFIG_RESET_FAILED" = "Zurücksetzen der Konfiguration fehlgeschlagen";
 "GAME_CONFIG_RESET_FAILED_INFORMATIVE" = "Die Konfiguration kann nicht zurückgesetzt werden. Möglicherweise musst du XIV On Mac in den Systemeinstellungen, Sicherheit, Zugriff auf den Ordner Downloads gewähren.";
 
-"DOCUMENTS_PERM_STILL_BAD" = "XIV On Mac is still unable to read and/or write to your Documents folder. If your Security Preference Pane shows the correct permissions, try deleting the entry and re-creating it.";
+"DOCUMENTS_PERM_STILL_BAD" = "XIV On Mac ist immer noch nicht in der Lage, Deinen Dokumentenordner zu lesen und/oder zu beschreiben. Wenn dein Sicherheitseinstellungsfenster die richtigen Berechtigungen anzeigt, versuche den Eintrag zu löschen und neu zu erstellen.";
 
-"UNSUPPORTED_GPU" = "No Supported GPU Found";
-"UNSUPPORTED_GPU_INFORMATIVE" = "XIV On Mac did not find any supported GPUs in your Mac. If you continue, the game may fail to function, crash, or otherwise perform in a substandard manner. For more details please see our Compatibility List.";
-"SEE_COMPATABILITY_BUTTON" = "Compatibility List";
+"UNSUPPORTED_GPU" = "Keine unterstützte GPU gefunden";
+"UNSUPPORTED_GPU_INFORMATIVE" = "XIV On Mac hat keine unterstützten GPUs in deinem Mac gefunden. Wenn du fortfährst, kann es sein, dass das Spiel nicht funktioniert, abstürzt oder anderweitig unzureichend funktioniert. Weitere Details findest du in unserer Kompatibilitätsliste.";
+"SEE_COMPATABILITY_BUTTON" = "Kompatibilitätsliste";
 
-"RETINA_WARNING" = "Warning";
-"RETINA_WARNING_INFORMATIVE" = "Disabling upscaling can increase the pixel count of the game up to 4x, which will take a heavy toll on your performance.
-Do not enable this on non-retina displays, unless for screenshot purposes.";
-"RETINA_ENABLE_BUTTON" = "Understood";
+"RETINA_WARNING" = "Warnung";
+"RETINA_WARNING_INFORMATIVE" = "Die Deaktivierung der Hochskalierung kann die Pixelzahl des Spiels um das Vierfache erhöhen, was sich stark auf die Leistung auswirkt.
+Aktiviere dies nicht auf Nicht-Retina-Displays, es sei denn, du benötigen Screenshots.";
+"RETINA_ENABLE_BUTTON" = "Verstanden";
 
-"ROSETTA_REQUIRED" = "Rosetta 2 is Required.";
-"ROSETTA_REQUIRED_INFORMATIVE" = "XIV On Mac requires Apple's Rosetta 2 to be installed in order to function on your Apple Silicon Mac. If you choose not to install, your game will not start. Rosetta requires you to read and agree to the terms of the software license agreement here: http://www.apple.com/legal/sla/. Would you like to install Rosetta now?";
-"ROSETTA_REQUIRED_INSTALL_BUTTON" = "Install Rosetta";
-"ROSETTA_REQUIRED_CANCEL_BUTTON" = "Cancel";
+"ROSETTA_REQUIRED" = "Rosetta 2 wird benötigt.";
+"ROSETTA_REQUIRED_INFORMATIVE" = "XIV On Mac erfordert die Installation von Apples Rosetta 2, um auf deinem Apple Silicon Mac zu funktionieren. Wenn du es nicht installierst, wird das Spiel nicht gestartet. Rosetta erfordert, dass du die Bedingungen der Software-Lizenzvereinbarung ließt und ihnen zustimmst: http://www.apple.com/legal/sla/. Möchten du Rosetta jetzt installieren?";
+"ROSETTA_REQUIRED_INSTALL_BUTTON" = "Rosetta installieren";
+"ROSETTA_REQUIRED_CANCEL_BUTTON" = "Abbrechen";
 
-"FIRSTAID_CFGCHECK_GOOD_RESULT" = "Your configuration looks good!";
-"FIRSTAID_CFGCHECK_ADVISORY_RESULT" = "Your configuration looks good, but there are some items you might want to know about.";
-"FIRSTAID_CFGCHECK_RECOMMENDATION_RESULT" = "You may have better results or performance with a few changes.";
-"FIRSTAID_CFGCHECK_PROBLEM_RESULT" = "One or more problems was found with your configuration which are known to cause problems.";
+"FIRSTAID_CFGCHECK_GOOD_RESULT" = "Deine Konfiguration sieht gut aus!";
+"FIRSTAID_CFGCHECK_ADVISORY_RESULT" = "Deine Konfiguration sieht gut aus, aber es gibt einige Punkte, die du vielleicht wissen möchtest.";
+"FIRSTAID_CFGCHECK_RECOMMENDATION_RESULT" = "Mit ein paar Änderungen kannst du bessere Ergebnisse oder Leistungen erzielen.";
+"FIRSTAID_CFGCHECK_PROBLEM_RESULT" = "Es wurden ein oder mehrere Probleme in deiner Konfiguration gefunden, die bekanntermaßen Probleme verursachen können.";
 
-"FIRSTAID_CFGCHECK_FIXED" = "Fixed!";
-"FIRSTAID_CFGCHECK_HBAO_TITLE" = "SSAO Setting is Invalid";
-"FIRSTAID_CFGCHECK_HBAO_EXP" = "The HBAO levels of SSAO (Screen Space Ambient Occlusion) are not supported on the Mac, and can cause graphics to render with black holes.";
+"FIRSTAID_CFGCHECK_FIXED" = "Behoben!";
+"FIRSTAID_CFGCHECK_HBAO_TITLE" = "SSAO Einstellung ist ungültig";
+"FIRSTAID_CFGCHECK_HBAO_EXP" = "Die HBAO-Stufen von SSAO (Screen Space Ambient Occlusion) werden auf dem Mac nicht unterstützt und können dazu führen, dass Grafiken mit schwarzen Löchern dargestellt werden.";
 "FIRSTAID_CFGCHECK_TESSELATION_TITLE" = "Tesselation";
-"FIRSTAID_CFGCHECK_TESSELATION_EXP" = "Values above \"Normal\" are known to cause severe performance problems on Apple Silicon Macs, while offering no visual improvement.";
+"FIRSTAID_CFGCHECK_TESSELATION_EXP" = "Werte über \"Normal\" sind dafür bekannt, dass sie auf Apple Silicon Macs zu erheblichen Leistungsproblemen führen und keine visuelle Verbesserung bieten.";
 
-"SELECT_GAME_PATH_PANEL_TITLE" = "Choose FFXIV install location";
-"SELECT_GAME_PATH_PANEL_SUBTITLE" = "It should contain the folders \"game\" and \"boot\"";
-"SELECT_GAME_PATH_ERROR_MESSAGE" = "The folder you chose for your game install does not seem to be valid";
-"SELECT_GAME_PATH_ERROR_INFORMATIVE" = "Do you still want to use it?";
+"SELECT_GAME_PATH_PANEL_TITLE" = "Wähle den FFXIV Installationsort";
+"SELECT_GAME_PATH_PANEL_SUBTITLE" = "Sie sollte die Ordner \"game\" und \"boot\" enthalten.";
+"SELECT_GAME_PATH_ERROR_MESSAGE" = "Der Ordner, den du für die Installation deines Spiels gewählt hast, scheint der falsche zu sein";
+"SELECT_GAME_PATH_ERROR_INFORMATIVE" = "Möchtest du es immer noch benutzen?";
 
-"SELECT_BENCHMARK_PATH_PANEL_MESSAGE" = "Please choose the FFXIV benchmark location";
-"BENCHMARK_TITLE" = "FINAL FANTASY XIV benchmark";
-"SELECT_BENCHMARK_PATH_ERROR_INFORMATIVE" = "The folder you chose for the game benchmark does not seem to be valid.\n It should contain \"ffxiv-endwalker-bench.exe\" and the folder \"game\"";
-"BENCHMARK_RESULT" = "Score: %@\nAverage FPS: %@";
+"SELECT_BENCHMARK_PATH_PANEL_MESSAGE" = "Bitte wähle den FFXIV Benchmark Standort";
+"BENCHMARK_TITLE" = "FINAL FANTASY XIV Benchmark";
+"SELECT_BENCHMARK_PATH_ERROR_INFORMATIVE" = "Der Ordner, den du für den Spiel-Benchmark gewählt hast, scheint nicht gültig zu sein.\n Er sollte \"ffxiv-endwalker-bench.exe\" und den Ordner \"game\" enthalten.";
+"BENCHMARK_RESULT" = "Ergebnis: %@\nDurchschnittliche FPS: %@";
 
-"PATCH_INSTALLATION_WAITING" = "Waiting for download to finish…";
-"PATCH_INSTALLATION_PROGRESS_INIT" = "0 out of %d Patches installed";
-"PATCH_INSTALLATION_PROGRESS" = "%d out of %d Patches installed";
-"PATCH_INSTALLATION_ERROR_BUTTON" = "Close";
-"PATCH_INSTALLATION_ERROR_MESSAGE" = "Download Error";
-"PATCH_INSTALLATION_ERROR_INFORMATIVE" = "XIV on Mac could not download %@ after %d attempts";
+"PATCH_INSTALLATION_WAITING" = "Warten auf den Abschluss des Downloads...";
+"PATCH_INSTALLATION_PROGRESS_INIT" = "0 von %d Patches installiert";
+"PATCH_INSTALLATION_PROGRESS" = "%d von %d Patches installiert";
+"PATCH_INSTALLATION_ERROR_BUTTON" = "Schließen";
+"PATCH_INSTALLATION_ERROR_MESSAGE" = "Download Fehler";
+"PATCH_INSTALLATION_ERROR_INFORMATIVE" = "XIV on Mac konnte %@ nach %d Versuchen nicht herunterladen";
 "PATCH_INSTALLATION_DOWNLOAD_STATUS" = "%@ von %@";
-"PATCH_INSTALLATION_DOWNLOAD_STATUS_PATCH" = "%@ of %@ (%@/Sek)";
+"PATCH_INSTALLATION_DOWNLOAD_STATUS_PATCH" = "%@ von %@ (%@/Sek)";
 
-"PATCH_ERROR_MESSAGE" = "Patch Installer Error";
-"PATCH_ERROR_INFORMATIVE" = "Patch Verification failed";
-"PATCH_ERROR_BUTTON" = "Close";
+"PATCH_ERROR_MESSAGE" = "Patch Installationsfehler";
+"PATCH_ERROR_INFORMATIVE" = "Patch Verifizierung fehlgeschlagen";
+"PATCH_ERROR_BUTTON" = "Schließen";
 
-"OTP_MESSAGE" = "OTP Secret for user \"%@\"";
-"OTP_INFORMATIVE" = "If you trust your local Keychain you can let XIV on Mac handle OTP generation for you if you provide a BASE32 encoded secret below:";
+"OTP_MESSAGE" = "OTP-Schlüssel für Benutzer \"%@\"";
+"OTP_INFORMATIVE" = "Wenn du deinem lokalen Schlüsselbund vertraust, kann XIV on Mac die OTP-Generierung für dich übernehmen, wenn du unten ein BASE32-verschlüsselten Schlüssel angibst:";
 
-"GSHADE_MESSAGE" = "When running Catalina you must have Wine or CrossOver installed";
-"GSHADE_INFORMATIVE" = "You can also manually add the Wine version bundled with the XIV on Mac.app to your $PATH";
+"GSHADE_MESSAGE" = "Wenn du Catalina ausführst, musst du Wine oder CrossOver installiert haben";
+"GSHADE_INFORMATIVE" = "Du kannst die Wine-Version, die mit der XIV on Mac.app ausgeliefert wird, auch manuell zu deinem $PATH hinzufügen";
 
-"INSTALLER_FOUND_MESSAGE" = "FINAL FANTASY XIV ONLINE install found!";
-"INSTALLER_FOUND_INFORMATIVE" = "Would you like to use the install located at %@?";
-"INSTALLER_NOT_DETECTED_MESSAGE" = "No FINAL FANTASY XIV ONLINE installs were detected…";
-"INSTALLER_NOT_DETECTED_INFORMATIVE" = "Would you like to manually choose a Folder?";
+"INSTALLER_FOUND_MESSAGE" = "FINAL FANTASY XIV ONLINE Installation gefunden!";
+"INSTALLER_FOUND_INFORMATIVE" = "Möchtest du die Installation unter %@ verwenden?";
+"INSTALLER_NOT_DETECTED_MESSAGE" = "Es wurden keine FINAL FANTASY XIV ONLINE-Installationen gefunden..";
+"INSTALLER_NOT_DETECTED_INFORMATIVE" = "Möchtest du einen Ordner manuell auswählen?";
 
-"INSTALLER_PATH_TITLE" = "Choose the folder with the existing install";
-"INSTALLER_PATH_SUBTITLE" = "It should contain the folders \"game\" and \"boot\" and the game executable.";
-"INSTALLER_PATH_INVALID_MESSAGE" = "Invalid FFXIV Directory";
-"INSTALLER_PATH_INVALID_INFORMATIVE" = "It should contain the folders \"game\" and \"boot\" and the game executable.";
-"INSTALLER_PATH_INVALID_BUTTON" = "By the Twelve!";
+"INSTALLER_PATH_TITLE" = "Wähle den Ordner mit der bestehenden Installation";
+"INSTALLER_PATH_SUBTITLE" = "Sie sollte die Ordner \"game\" und \"boot\" sowie die ausführbare Datei des Spiels enthalten.";
+"INSTALLER_PATH_INVALID_MESSAGE" = "Ungültiges FFXIV-Verzeichnis";
+"INSTALLER_PATH_INVALID_INFORMATIVE" = "Sie sollte die Ordner \"game\" und \"boot\" sowie die ausführbare Datei des Spiels enthalten.";
+"INSTALLER_PATH_INVALID_BUTTON" = "Bei den Zwölfen!";
 
-"INSTALLER_DOWNLOAD_ERROR_MESSAGE" = "Download Error";
-"INSTALLER_DOWNLOAD_ERROR_INFORMATIVE" = "XIV on Mac could not download the base game archive";
+"INSTALLER_DOWNLOAD_ERROR_MESSAGE" = "Download Fehler";
+"INSTALLER_DOWNLOAD_ERROR_INFORMATIVE" = "XIV on Mac konnte das Archiv des Basisspiels nicht herunterladen";
 
-"INSTALLER_EXTRACTING" = "Extracting";
+"INSTALLER_EXTRACTING" = "Extrahieren";
 
-"LOGGING_IN" = "Logging In";
+"LOGGING_IN" = "Einloggen";
 
 "AUTOLOGIN_MESSAGE" = "Auto-Login";
-"AUTOLOGIN_INFORMATIVE" = "You can override the Auto-Login by holding the SHIFT key down at application launch.";
+"AUTOLOGIN_INFORMATIVE" = "Du kannst die automatische Anmeldung außer Kraft setzen, indem du beim Start der Anwendung die Umschalt-Taste gedrückt hältst.";
 
 "SETTINGS_WINDOW_TITLE" = "Einstellungen";
 "SETTINGS_TAB_GENERAL_TITLE" = "Allgemein";
@@ -240,16 +240,16 @@ Do not enable this on non-retina displays, unless for screenshot purposes.";
 "SETTINGS_ADVANCED_WINE_DEBUG" = "Wine Debug:";
 
 // First Aid/Troubleshooting Window
-"FIRSTAID_WINDOW_TITLE" = "First-Aid";
+"FIRSTAID_WINDOW_TITLE" = "Erste Hilfe";
 "FIRSTAID_SHADER_CACHE_HEADING" = "Shader Cache";
-"FIRSTAID_SHADER_CACHE_BLURB" = "If your game is freezing at startup, \"Compiling Shaders…\" forever, missing lighting or randomly freezing, the problem may be with your shader cache. Deleting it will cause a new one to be rebuilt, though it may result in occasional stutters during play initially.";
-"FIRSTAID_SHADER_CACHE_BUTTON" = "Delete User Shader Cache";
-"FIRSTAID_CONFIG_HEADING" = "FFXIV Configuration";
-"FIRSTAID_RESET_CONFIG_BLURB" = "If you've misconfigured your game in a way that prevents you from playing it, such as a bad graphics setting, you can try resetting your configuration to default.";
-"FIRSTAID_RESET_CONFIG_BUTTON" = "Reset Configuration";
-"FIRSTAID_CHECKUP_BLURB" = "XIV on Mac can identify potential problems, or make recommended changes to your FFXIV Configuration file to give you the best experience available on the Mac.";
-"FIRSTAID_CHECKUP_BUTTON" = "Configuration Checkup";
-"FIRSTAID_CFGCHECK_FIX_BUTTON" = "Fix";
+"FIRSTAID_SHADER_CACHE_BLURB" = "Wenn dein Spiel beim Start einfriert, \"Compiling Shaders...\" ewig dauert, die Beleuchtung fehlt oder das Spiel zufällig einfriert, liegt das Problem möglicherweise an deinem Shader-Cache. Wenn du ihn löschst, wird ein neuer Cache erstellt, auch wenn dies anfangs zu gelegentlichen Stottern beim Spielen führen kann.";
+"FIRSTAID_SHADER_CACHE_BUTTON" = "Benutzer Shader Cache löschen";
+"FIRSTAID_CONFIG_HEADING" = "FFXIV Konfiguration";
+"FIRSTAID_RESET_CONFIG_BLURB" = "Wenn du dein Spiel auf eine Weise falsch konfiguriert hast, die dich daran hindert, es zu spielen, wie z. B. eine schlechte Grafikeinstellung, kannst du versuchen, deine Konfiguration auf die Standardeinstellungen zurückzusetzen.";
+"FIRSTAID_RESET_CONFIG_BUTTON" = "Konfiguration zurücksetzen";
+"FIRSTAID_CHECKUP_BLURB" = "XIV on Mac kann mögliche Probleme identifizieren oder empfohlene Änderungen an deiner FFXIV-Konfigurationsdatei vornehmen, um dir das bestmögliche Erlebnis auf dem Mac zu bieten.";
+"FIRSTAID_CHECKUP_BUTTON" = "Konfigurationsüberprüfung";
+"FIRSTAID_CFGCHECK_FIX_BUTTON" = "Reparieren";
 
 // Benchmark Window
 "BENCHMARK_WINDOW_TITLE" = "Final Fantasy XIV Benchmark";

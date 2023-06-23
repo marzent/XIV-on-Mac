@@ -3,19 +3,19 @@
 "0Nw-cb-lDZ.title" = "Bunny HUD";
 
 /* Class = "NSViewController"; title = "General"; ObjectID = "0Rv-P7-893"; */
-"0Rv-P7-893.title" = "General";
+"0Rv-P7-893.title" = "Allgemein";
 
 /* Class = "NSButtonCell"; title = "Launch with Dalamud Plugin Support"; ObjectID = "0ZX-g7-76H"; */
-"0ZX-g7-76H.title" = "Launch with Dalamud Plugin Support";
+"0ZX-g7-76H.title" = "Starte mit Dalamud Plugin Support";
 
 /* Class = "NSTextFieldCell"; title = "Point XIV on Mac towards a custom folder."; ObjectID = "0iQ-Qw-vtu"; */
-"0iQ-Qw-vtu.title" = "Point XIV on Mac towards a custom folder.";
+"0iQ-Qw-vtu.title" = "Wähle XIV on Mac auf einen benutzerdefinierten Ordner aus.";
 
 /* Class = "NSMenuItem"; title = "Auto-Launch Bunny HUD"; ObjectID = "1Do-e8-DyE"; */
-"1Do-e8-DyE.title" = "Auto-Launch Bunny HUD";
+"1Do-e8-DyE.title" = "Autostart Bunny HUD";
 
 /* Class = "NSTextFieldCell"; title = "Downloading"; ObjectID = "1Lo-aA-aE9"; */
-"1Lo-aA-aE9.title" = "Downloading";
+"1Lo-aA-aE9.title" = "Herunterladen";
 
 /* Class = "NSMenuItem"; title = "Wine Configuration"; ObjectID = "1UK-8n-QPP"; */
 "1UK-8n-QPP.title" = "Wine Konfiguration";
@@ -24,7 +24,7 @@
 "1Xt-HY-uBw.title" = "XIV on Mac";
 
 /* Class = "NSMenu"; title = "Find"; ObjectID = "1b7-l0-nxx"; */
-"1b7-l0-nxx.title" = "Find";
+"1b7-l0-nxx.title" = "Suche";
 
 /* Class = "NSWindow"; title = "Settings"; ObjectID = "2hl-BH-elL"; */
 "2hl-BH-elL.title" = "Settings";
