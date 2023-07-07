@@ -27,73 +27,73 @@
 "1b7-l0-nxx.title" = "Suche";
 
 /* Class = "NSWindow"; title = "Settings"; ObjectID = "2hl-BH-elL"; */
-"2hl-BH-elL.title" = "Settings";
+"2hl-BH-elL.title" = "Einstellungen";
 
 /* Class = "NSMenuItem"; title = "Transformations"; ObjectID = "2oI-Rn-ZJC"; */
 "2oI-Rn-ZJC.title" = "Transformations";
 
 /* Class = "NSMenu"; title = "Spelling"; ObjectID = "3IN-sU-3Bg"; */
-"3IN-sU-3Bg.title" = "Spelling";
+"3IN-sU-3Bg.title" = "Rechtschreibung";
 
 /* Class = "NSMenu"; title = "Speech"; ObjectID = "3rS-ZA-NoH"; */
-"3rS-ZA-NoH.title" = "Speech";
+"3rS-ZA-NoH.title" = "Vorlesen";
 
 /* Class = "NSMenuItem"; title = "Find"; ObjectID = "4EN-yA-p0u"; */
-"4EN-yA-p0u.title" = "Find";
+"4EN-yA-p0u.title" = "Suchen";
 
 /* Class = "NSViewController"; title = "Advanced"; ObjectID = "4Nu-Eh-h4G"; */
-"4Nu-Eh-h4G.title" = "Advanced";
+"4Nu-Eh-h4G.title" = "Erweiterte";
 
 /* Class = "NSButtonCell"; title = "Quit"; ObjectID = "4W4-r3-YqJ"; */
-"4W4-r3-YqJ.title" = "Quit";
+"4W4-r3-YqJ.title" = "Beenden";
 
 /* Class = "NSButtonCell"; title = "Async"; ObjectID = "4l9-XH-Dbl"; */
 "4l9-XH-Dbl.title" = "Async";
 
 /* Class = "NSMenuItem"; title = "Quit XIV on Mac"; ObjectID = "4sb-4s-VLi"; */
-"4sb-4s-VLi.title" = "Quit XIV on Mac";
+"4sb-4s-VLi.title" = "XIV on Mac Beenden";
 
 /* Class = "NSTextFieldCell"; title = "Plugins are enabled by a project called Dalamud, which enables extra functionality in your game. If you do not know why you would want a plugin or do not wish to use them, you may safely leave this disabled. To learn more about Dalamud please visit:\nhttps://github.com/goatcorp/Dalamud"; ObjectID = "4uL-Sg-0m9"; */
-"4uL-Sg-0m9.title" = "Plugins are enabled by a project called Dalamud, which enables extra functionality in your game. If you do not know why you would want a plugin or do not wish to use them, you may safely leave this disabled. To learn more about Dalamud please visit:\nhttps://github.com/goatcorp/Dalamud";
+"4uL-Sg-0m9.title" = "Plugins werden durch ein Projekt namens Dalamud aktiviert, das zusätzliche Funktionen in deinem Spiel ermöglicht. Wenn du nicht weißt, wozu du ein Plugin brauchst oder es nicht benutzen willst, kannst du es getrost deaktiviert lassen. Um mehr über Dalamud zu erfahren, besuche bitte:\nhttps://github.com/goatcorp/Dalamud";
 
 /* Class = "NSTextFieldCell"; placeholderString = "optional"; ObjectID = "5FC-rM-Oay"; */
 "5FC-rM-Oay.placeholderString" = "optional";
 
 /* Class = "NSMenuItem"; title = "Edit"; ObjectID = "5QF-Oa-p0T"; */
-"5QF-Oa-p0T.title" = "Edit";
+"5QF-Oa-p0T.title" = "Bearbeiten";
 
 /* Class = "NSMenuItem"; title = "About XIV on Mac"; ObjectID = "5kV-Vb-QxS"; */
-"5kV-Vb-QxS.title" = "About XIV on Mac";
+"5kV-Vb-QxS.title" = "Über XIV on Mac";
 
 /* Class = "NSMenuItem"; title = "Auto-Launch ACT"; ObjectID = "6JE-Fn-nLi"; */
-"6JE-Fn-nLi.title" = "Auto-Launch ACT";
+"6JE-Fn-nLi.title" = "Auto-Start ACT";
 
 /* Class = "NSTextFieldCell"; title = "s"; ObjectID = "6Ur-qN-wMK"; */
 "6Ur-qN-wMK.title" = "s";
 
 /* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "6Z2-gP-gHf"; */
-"6Z2-gP-gHf.title" = "Cancel";
+"6Z2-gP-gHf.title" = "Abbrechen";
 
 /* Class = "NSMenuItem"; title = "Redo"; ObjectID = "6dh-zS-Vam"; */
-"6dh-zS-Vam.title" = "Redo";
+"6dh-zS-Vam.title" = "Wiederholen";
 
 /* Class = "NSTextFieldCell"; title = "HUD Options are informational items displayed in the upper left corner during play that can aid you in determining how in-game settings are affecting your performance. They are entirely optional."; ObjectID = "74A-cF-fLc"; */
-"74A-cF-fLc.title" = "HUD Options are informational items displayed in the upper left corner during play that can aid you in determining how in-game settings are affecting your performance. They are entirely optional.";
+"74A-cF-fLc.title" = "HUD Optionen sind Informationselemente, die während des Spiels in der oberen linken Ecke angezeigt werden und dir dabei helfen können, herauszufinden, wie sich die Einstellungen im Spiel auf deine Leistung auswirken. Sie sind völlig optional.";
 
 /* Class = "NSMenuItem"; title = "Correct Spelling Automatically"; ObjectID = "78Y-hA-62v"; */
-"78Y-hA-62v.title" = "Correct Spelling Automatically";
+"78Y-hA-62v.title" = "Automatisch Rechtschreibung korrigieren";
 
 /* Class = "NSTextFieldCell"; title = "Language:"; ObjectID = "7QP-ih-obw"; */
-"7QP-ih-obw.title" = "Language:";
+"7QP-ih-obw.title" = "Sprache:";
 
 /* Class = "NSTabViewItem"; label = "Installing"; ObjectID = "7fh-eq-btc"; */
-"7fh-eq-btc.label" = "Installing";
+"7fh-eq-btc.label" = "Installieren";
 
 /* Class = "NSButtonCell"; title = "Enable macOS scaling"; ObjectID = "7vx-YJ-IUo"; */
-"7vx-YJ-IUo.title" = "Enable macOS scaling";
+"7vx-YJ-IUo.title" = "macOS Skalierung aktivieren";
 
 /* Class = "NSButtonCell"; title = "Draw Calls and Render Passes"; ObjectID = "7xs-cj-Vij"; */
-"7xs-cj-Vij.title" = "Draw Calls and Render Passes";
+"7xs-cj-Vij.title" = "Draw Calls und Render Passes";
 
 /* Class = "NSButtonCell"; title = "Login"; ObjectID = "803-uu-sDq"; */
 "803-uu-sDq.title" = "Einloggen";
@@ -117,16 +117,16 @@
 "9gQ-FA-62f.title" = "D2013.06.18.0000.0000";
 
 /* Class = "NSMenuItem"; title = "Substitutions"; ObjectID = "9ic-FL-obx"; */
-"9ic-FL-obx.title" = "Substitutions";
+"9ic-FL-obx.title" = "Ersetzungen";
 
 /* Class = "NSButtonCell"; title = "Quit XIV on Mac upon game exit"; ObjectID = "9ie-LK-Dur"; */
-"9ie-LK-Dur.title" = "Quit XIV on Mac upon game exit";
+"9ie-LK-Dur.title" = "XIV on Mac beim Beenden des Spiels beenden";
 
 /* Class = "NSTextFieldCell"; title = "Copy existing game data to \"XIV on Mac\" prefix."; ObjectID = "9yd-8A-qFs"; */
-"9yd-8A-qFs.title" = "Copy existing game data to \"XIV on Mac\" prefix.";
+"9yd-8A-qFs.title" = "Kopiere vorhandene Spieldaten in das Präfix \"XIV on Mac\".";
 
 /* Class = "NSMenuItem"; title = "Smart Copy/Paste"; ObjectID = "9yt-4B-nSM"; */
-"9yt-4B-nSM.title" = "Smart Copy/Paste";
+"9yt-4B-nSM.title" = "Smartes Kopieren/Einfügen";
 
 /* Class = "NSViewController"; title = "Plugins (Dalamud)"; ObjectID = "A8Q-Gs-kK7"; */
 "A8Q-Gs-kK7.title" = "Plugins (Dalamud)";
@@ -135,7 +135,7 @@
 "A9a-u7-hsU.title" = "Add On";
 
 /* Class = "NSButtonCell"; title = "Reset Configuration"; ObjectID = "AGp-z2-0Vw"; */
-"AGp-z2-0Vw.title" = "Reset Configuration";
+"AGp-z2-0Vw.title" = "Konfiguration zurücksetzen";
 
 /* Class = "NSButtonCell"; title = "Download"; ObjectID = "AHs-hu-DAo"; */
 "AHs-hu-DAo.title" = "Download";
@@ -144,40 +144,40 @@
 "ARN-hb-Lmx.title" = "MB/sec";
 
 /* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
-"AYu-sK-qS6.title" = "Main Menu";
+"AYu-sK-qS6.title" = "Hauptmenü";
 
 /* Class = "NSMenu"; title = "GShade"; ObjectID = "AgC-OX-7rb"; */
 "AgC-OX-7rb.title" = "GShade";
 
 /* Class = "NSTextFieldCell"; title = "Base Game"; ObjectID = "Ah7-q5-p6m"; */
-"Ah7-q5-p6m.title" = "Base Game";
+"Ah7-q5-p6m.title" = "Basis Spiel";
 
 /* Class = "NSMenuItem"; title = "Steam"; ObjectID = "Azf-g8-OxM"; */
 "Azf-g8-OxM.title" = "Steam";
 
 /* Class = "NSButtonCell"; title = "Previous"; ObjectID = "BDK-br-7Ao"; */
-"BDK-br-7Ao.title" = "Previous";
+"BDK-br-7Ao.title" = "Vorherige";
 
 /* Class = "NSButtonCell"; title = "Reset"; ObjectID = "BHo-QR-6f8"; */
-"BHo-QR-6f8.title" = "Reset";
+"BHo-QR-6f8.title" = "Zurücksetzen";
 
 /* Class = "NSTextFieldCell"; title = "fps"; ObjectID = "BMg-PA-pZ1"; */
 "BMg-PA-pZ1.title" = "fps";
 
 /* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "BOF-NM-1cW"; */
-"BOF-NM-1cW.title" = "Preferences…";
+"BOF-NM-1cW.title" = "Einstellungen...";
 
 /* Class = "NSButtonCell"; title = "Fix"; ObjectID = "CIy-Lt-yyH"; */
 "CIy-Lt-yyH.title" = "Fix";
 
 /* Class = "NSButtonCell"; title = "Copy existing install"; ObjectID = "CKg-pw-iZA"; */
-"CKg-pw-iZA.title" = "Copy existing install";
+"CKg-pw-iZA.title" = "Vorhandene Installation kopieren";
 
 /* Class = "NSButtonCell"; title = "Windows"; ObjectID = "CqV-50-MBO"; */
 "CqV-50-MBO.title" = "Windows";
 
 /* Class = "NSMenuItem"; title = "Close"; ObjectID = "DVo-aG-piG"; */
-"DVo-aG-piG.title" = "Close";
+"DVo-aG-piG.title" = "Schließen";
 
 /* Class = "NSMenuItem"; title = "Start ACT"; ObjectID = "Dbv-Cm-iXv"; */
 "Dbv-Cm-iXv.title" = "Start ACT";
