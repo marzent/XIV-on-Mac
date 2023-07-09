@@ -42,7 +42,7 @@
 "4EN-yA-p0u.title" = "Suchen";
 
 /* Class = "NSViewController"; title = "Advanced"; ObjectID = "4Nu-Eh-h4G"; */
-"4Nu-Eh-h4G.title" = "Erweiterte";
+"4Nu-Eh-h4G.title" = "Erweitert";
 
 /* Class = "NSButtonCell"; title = "Quit"; ObjectID = "4W4-r3-YqJ"; */
 "4W4-r3-YqJ.title" = "Beenden";
@@ -66,7 +66,7 @@
 "5kV-Vb-QxS.title" = "Über XIV on Mac";
 
 /* Class = "NSMenuItem"; title = "Auto-Launch ACT"; ObjectID = "6JE-Fn-nLi"; */
-"6JE-Fn-nLi.title" = "Auto-Start ACT";
+"6JE-Fn-nLi.title" = "Autostart ACT";
 
 /* Class = "NSTextFieldCell"; title = "s"; ObjectID = "6Ur-qN-wMK"; */
 "6Ur-qN-wMK.title" = "s";
@@ -81,7 +81,7 @@
 "74A-cF-fLc.title" = "HUD Optionen sind Informationselemente, die während des Spiels in der oberen linken Ecke angezeigt werden und dir dabei helfen können, herauszufinden, wie sich die Einstellungen im Spiel auf deine Leistung auswirken. Sie sind völlig optional.";
 
 /* Class = "NSMenuItem"; title = "Correct Spelling Automatically"; ObjectID = "78Y-hA-62v"; */
-"78Y-hA-62v.title" = "Automatisch Rechtschreibung korrigieren";
+"78Y-hA-62v.title" = "Automatische Rechtschreibkorrektur";
 
 /* Class = "NSTextFieldCell"; title = "Language:"; ObjectID = "7QP-ih-obw"; */
 "7QP-ih-obw.title" = "Sprache:";
@@ -120,7 +120,7 @@
 "9ic-FL-obx.title" = "Ersetzungen";
 
 /* Class = "NSButtonCell"; title = "Quit XIV on Mac upon game exit"; ObjectID = "9ie-LK-Dur"; */
-"9ie-LK-Dur.title" = "XIV on Mac beim Beenden des Spiels beenden";
+"9ie-LK-Dur.title" = "XIV on Mac nach Beenden des Spiels schließen";
 
 /* Class = "NSTextFieldCell"; title = "Copy existing game data to \"XIV on Mac\" prefix."; ObjectID = "9yd-8A-qFs"; */
 "9yd-8A-qFs.title" = "Kopiere vorhandene Spieldaten in das Präfix \"XIV on Mac\".";
@@ -186,10 +186,10 @@
 "Def-J0-BrB.title" = "One-Time Password";
 
 /* Class = "NSMenuItem"; title = "Spelling and Grammar"; ObjectID = "Dv1-io-Yv7"; */
-"Dv1-io-Yv7.title" = "Spelling and Grammar";
+"Dv1-io-Yv7.title" = "Rechtschreibung und Grammatik";
 
 /* Class = "NSTextFieldCell"; title = "XIV on Mac can identify potential problems, or make recommended changes to your FFXIV Configuration file to give you the best experience available on the Mac."; ObjectID = "Dv8-bd-owY"; */
-"Dv8-bd-owY.title" = "XIV on Mac can identify potential problems, or make recommended changes to your FFXIV Configuration file to give you the best experience available on the Mac.";
+"Dv8-bd-owY.title" = "XIV on Mac kann mögliche Probleme identifizieren oder empfohlene Änderungen an deiner FFXIV-Konfigurationsdatei vornehmen, um dir das bestmögliche Erlebnis auf dem Mac zu bieten.";
 
 /* Class = "NSButtonCell"; title = "INNACT"; ObjectID = "EDf-k2-DjN"; */
 "EDf-k2-DjN.title" = "INNACT";
@@ -201,16 +201,16 @@
 "Ebe-6x-j5a.label" = "Version auswählen";
 
 /* Class = "NSMenu"; title = "Help"; ObjectID = "F2S-fz-NVQ"; */
-"F2S-fz-NVQ.title" = "Help";
+"F2S-fz-NVQ.title" = "Hilfe";
 
 /* Class = "NSMenuItem"; title = "XIV on Mac Help"; ObjectID = "FKE-Sm-Kum"; */
-"FKE-Sm-Kum.title" = "XIV on Mac Help";
+"FKE-Sm-Kum.title" = "XIV on Mac Hilfe";
 
 /* Class = "NSTextFieldCell"; title = "Done"; ObjectID = "FS5-VI-VER"; */
-"FS5-VI-VER.title" = "Done";
+"FS5-VI-VER.title" = "Fertig";
 
 /* Class = "NSTextFieldCell"; title = "Repairing"; ObjectID = "FSD-me-yOd"; */
-"FSD-me-yOd.title" = "Repairing";
+"FSD-me-yOd.title" = "Reparieren";
 
 /* Class = "NSMenuItem"; title = "4.8"; ObjectID = "FaC-aE-BV7"; */
 "FaC-aE-BV7.title" = "4.8";
@@ -222,40 +222,40 @@
 "FeM-D8-WVr.title" = "Substitutions";
 
 /* Class = "NSTextFieldCell"; title = "These settings are mainly for troubleshooting purposes and generally shouldn't need to be changed."; ObjectID = "Fee-RW-Fzh"; */
-"Fee-RW-Fzh.title" = "These settings are mainly for troubleshooting purposes and generally shouldn't need to be changed.";
+"Fee-RW-Fzh.title" = "Diese Einstellungen dienen hauptsächlich der Fehlerbehebung und sollten in der Regel nicht geändert werden müssen.";
 
 /* Class = "NSBox"; title = "HUD"; ObjectID = "Fq2-37-Vx7"; */
 "Fq2-37-Vx7.title" = "HUD";
 
 /* Class = "NSButtonCell"; title = "Keep Patches"; ObjectID = "GI5-jN-ZaJ"; */
-"GI5-jN-ZaJ.title" = "Keep Patches";
+"GI5-jN-ZaJ.title" = "Patches behalten";
 
 /* Class = "NSTextFieldCell"; title = "The bridge enables the Discord Rich Presence Dalamud plugin to update your Discord status. If you do not plan to use this plugin, you can disable this setting."; ObjectID = "H7k-pX-G8j"; */
-"H7k-pX-G8j.title" = "The bridge enables the Discord Rich Presence Dalamud plugin to update your Discord status. If you do not plan to use this plugin, you can disable this setting.";
+"H7k-pX-G8j.title" = "Die Brücke aktiviert das Discord Rich Presence Dalamud Plugin, um deinen Discord-Status zu aktualisieren. Wenn du nicht vorhast, dieses Plugin zu verwenden, kannst du diese Einstellung deaktivieren.";
 
 /* Class = "NSMenuItem"; title = "Tools"; ObjectID = "H8h-7b-M4v"; */
 "H8h-7b-M4v.title" = "Tools";
 
 /* Class = "NSMenuItem"; title = "Text Replacement"; ObjectID = "HFQ-gK-NFA"; */
-"HFQ-gK-NFA.title" = "Text Replacement";
+"HFQ-gK-NFA.title" = "Text-Ersetzung";
 
 /* Class = "NSMenuItem"; title = "Show Spelling and Grammar"; ObjectID = "HFo-cy-zxI"; */
-"HFo-cy-zxI.title" = "Show Spelling and Grammar";
+"HFo-cy-zxI.title" = "Rechtschreibung und Grammatik anzeigen";
 
 /* Class = "NSTextFieldCell"; title = "0.00 GB of 0.00 GB"; ObjectID = "HQX-r7-1tH"; */
-"HQX-r7-1tH.title" = "0.00 GB of 0.00 GB";
+"HQX-r7-1tH.title" = "0.00 GB von 0.00 GB";
 
 /* Class = "NSMenu"; title = "Tools"; ObjectID = "HyV-fh-RgO"; */
 "HyV-fh-RgO.title" = "Tools";
 
 /* Class = "NSMenuItem"; title = "Open…"; ObjectID = "IAo-SY-fd9"; */
-"IAo-SY-fd9.title" = "Open…";
+"IAo-SY-fd9.title" = "Öffnen…";
 
 /* Class = "NSWindow"; title = "Installer"; ObjectID = "IQv-IB-iLA"; */
 "IQv-IB-iLA.title" = "Installer";
 
 /* Class = "NSButtonCell"; title = "Encrypt Game Arguments"; ObjectID = "Iv2-C2-31G"; */
-"Iv2-C2-31G.title" = "Encrypt Game Arguments";
+"Iv2-C2-31G.title" = "Spiel Argumente verschlüsseln";
 
 /* Class = "NSButtonCell"; title = "Auto-Login"; ObjectID = "J8n-OX-VtC"; */
 "J8n-OX-VtC.title" = "Auto-Login";
@@ -264,52 +264,52 @@
 "JKW-MG-0U8.title" = "ACT";
 
 /* Class = "NSMenuItem"; title = "French"; ObjectID = "JVS-ez-96D"; */
-"JVS-ez-96D.title" = "French";
+"JVS-ez-96D.title" = "Französisch";
 
 /* Class = "NSTextFieldCell"; title = "You can chose to enable Dalamud later"; ObjectID = "Jbf-yx-ZQ7"; */
-"Jbf-yx-ZQ7.title" = "You can chose to enable Dalamud later";
+"Jbf-yx-ZQ7.title" = "Du kannst Dalamud auch später aktivieren";
 
 /* Class = "NSMenuItem"; title = "Check for Updates..."; ObjectID = "Jeg-Jn-PWU"; */
-"Jeg-Jn-PWU.title" = "Check for Updates...";
+"Jeg-Jn-PWU.title" = "Suche nach Updates...";
 
 /* Class = "NSMenuItem"; title = "4.0"; ObjectID = "K16-kg-NW2"; */
 "K16-kg-NW2.title" = "4.0";
 
 /* Class = "NSTextFieldCell"; title = "License:"; ObjectID = "KR1-HA-AnN"; */
-"KR1-HA-AnN.title" = "License:";
+"KR1-HA-AnN.title" = "Lizenz:";
 
 /* Class = "NSButtonCell"; title = "Limit Download Speed to"; ObjectID = "KSs-CO-Vc9"; */
-"KSs-CO-Vc9.title" = "Limit Download Speed to";
+"KSs-CO-Vc9.title" = "Downloadgeschwindigkeit begrenzen auf";
 
 /* Class = "NSMenuItem"; title = "Show All"; ObjectID = "Kd2-mp-pUS"; */
-"Kd2-mp-pUS.title" = "Show All";
+"Kd2-mp-pUS.title" = "Alles anzeigen";
 
 /* Class = "NSTextFieldCell"; title = "This is the normal Mac License"; ObjectID = "KhY-Wz-XDC"; */
-"KhY-Wz-XDC.title" = "This is the normal Mac License";
+"KhY-Wz-XDC.title" = "Das ist die normale Mac Lizenz";
 
 /* Class = "NSWindow"; title = "Window"; ObjectID = "Knf-sg-4vr"; */
 "Knf-sg-4vr.title" = "Window";
 
 /* Class = "NSMenuItem"; title = "Bring All to Front"; ObjectID = "LE2-aR-0XJ"; */
-"LE2-aR-0XJ.title" = "Bring All to Front";
+"LE2-aR-0XJ.title" = "Alles nach vorne bringen";
 
 /* Class = "NSTextFieldCell"; title = "Waiting for download to finish..."; ObjectID = "LLv-Yk-R7e"; */
-"LLv-Yk-R7e.title" = "Waiting for download to finish...";
+"LLv-Yk-R7e.title" = "Warten auf den Abschluss des Downloads...";
 
 /* Class = "NSTextFieldCell"; title = "You can disable Dalamud anytime"; ObjectID = "LPN-SN-8np"; */
-"LPN-SN-8np.title" = "You can disable Dalamud anytime";
+"LPN-SN-8np.title" = "Du kannst Dalamud jederzeit deaktivieren";
 
 /* Class = "NSButtonCell"; title = "Mac"; ObjectID = "LRc-OZ-739"; */
 "LRc-OZ-739.title" = "Mac";
 
 /* Class = "NSTextFieldCell"; title = "Select how you want to handle the game files:"; ObjectID = "LTb-VO-T18"; */
-"LTb-VO-T18.title" = "Select how you want to handle the game files:";
+"LTb-VO-T18.title" = "Wähle aus, wie du die Spieldateien behandeln willst:";
 
 /* Class = "NSButtonCell"; title = "Choose existing install"; ObjectID = "Loh-1J-Ipp"; */
-"Loh-1J-Ipp.title" = "Choose existing install";
+"Loh-1J-Ipp.title" = "Vorhandene Installation auswählen";
 
 /* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "LsB-Af-NpT"; */
-"LsB-Af-NpT.title" = "Cancel";
+"LsB-Af-NpT.title" = "Abbrechen";
 
 /* Class = "NSButtonCell"; title = "Windows (Steam)"; ObjectID = "NHb-zd-owg"; */
 "NHb-zd-owg.title" = "Windows (Steam)";
@@ -318,22 +318,22 @@
 "NMo-om-nkz.title" = "Services";
 
 /* Class = "NSTextFieldCell"; title = "0.0 MB of 0.0 MB (0.0 MB/sec)"; ObjectID = "OFS-xw-3KL"; */
-"OFS-xw-3KL.title" = "0.0 MB of 0.0 MB (0.0 MB/sec)";
+"OFS-xw-3KL.title" = "0.0 MB von 0.0 MB (0.0 MB/sec)";
 
 /* Class = "NSTextFieldCell"; title = "Current File"; ObjectID = "OHo-zg-md7"; */
-"OHo-zg-md7.title" = "Current File";
+"OHo-zg-md7.title" = "Aktuelle Datei";
 
 /* Class = "NSMenuItem"; title = "Minimize"; ObjectID = "OY7-WF-poV"; */
 "OY7-WF-poV.title" = "Minimieren";
 
 /* Class = "NSMenuItem"; title = "Hide XIV on Mac"; ObjectID = "Olw-nP-bQN"; */
-"Olw-nP-bQN.title" = "Hide XIV on Mac";
+"Olw-nP-bQN.title" = "XIV on Mac ausblenden";
 
 /* Class = "NSMenuItem"; title = "Find Previous"; ObjectID = "OwM-mh-QMV"; */
-"OwM-mh-QMV.title" = "Find Previous";
+"OwM-mh-QMV.title" = "Vorherige finden";
 
 /* Class = "NSMenuItem"; title = "Stop Speaking"; ObjectID = "Oyz-dy-DGm"; */
-"Oyz-dy-DGm.title" = "Stop Speaking";
+"Oyz-dy-DGm.title" = "Aufhören zu sprechen";
 
 /* Class = "NSTextFieldCell"; title = "Square Enix Password"; ObjectID = "P4p-qs-m93"; */
 "P4p-qs-m93.title" = "Square Enix Password";
