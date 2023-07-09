@@ -43,10 +43,10 @@
 "DALAMUD_START_FAILURE" = "Dalamud ist nicht okay";
 "DALAMUD_START_FAILURE_INFORMATIONAL" = "Beim Herunterladen und Installieren von Dalamud ist ein Fehler aufgetreten. Bitte überprüfe deine Netzwerkverbindung und stelle sicher, dass Dalamud mit der aktuellen Spielversion kompatibel ist.";
 "GAME_START_FAILURE" = "Final Fantasy XIV konnte nicht gestartet werden";
-"GAME_START_FAILURE_INFORMATIONAL" = "Beim Starten des Spiels ist ein Fehler aufgetreten. Bitte versuche, XIV on Mac neu zu starten.";
+"GAME_START_FAILURE_INFORMATIONAL" = "Beim Starten des Spiels ist ein Fehler aufgetreten. Bitte versuche XIV on Mac neu zu starten.";
 
 "FIRSTAID_GAME_RUNNING" = "Final Fantasy XIV läuft";
-"FIRSTAID_GAME_RUNNING_INFORMATIONAL" = "Bitte schließe alle Kopien von Final Fantasy XIV, die noch laufen, bevor du Maßnahmen zur Fehlerbehebung ergreifst.";
+"FIRSTAID_GAME_RUNNING_INFORMATIONAL" = "Bitte schließe all noch laufenden Kopien von Final Fantasy XIV, bevor du Maßnahmen zur Fehlerbehebung ergreifst.";
 
 "DXVK_USER_CACHE_DELETED" = "Shader Cache gelöscht";
 "DXVK_USER_CACHE_DELETED_INFORMATIVE" = "Der Shader Cache wurde erfolgreich gelöscht. Versuche das Spiel zu starten, um zu sehen, ob dein Problem behoben wurde.";
@@ -65,41 +65,41 @@
 "SEE_COMPATABILITY_BUTTON" = "Kompatibilitätsliste";
 
 "RETINA_WARNING" = "Warnung";
-"RETINA_WARNING_INFORMATIVE" = "Die Deaktivierung der Hochskalierung kann die Pixelzahl des Spiels um das Vierfache erhöhen, was sich stark auf die Leistung auswirkt.
-Aktiviere dies nicht auf Nicht-Retina-Displays, es sei denn, du benötigen Screenshots.";
+"RETINA_WARNING_INFORMATIVE" = "Das Deaktivieren der Hochskalierung kann die Pixelzahl des Spiels um das Vierfache erhöhen, was sich stark auf die Leistung auswirkt.
+Aktiviere dies auf Nicht-Retina-Displays nur, wenn du Bildschirmfotos aufnehmen möchtest";
 "RETINA_ENABLE_BUTTON" = "Verstanden";
 
 "ROSETTA_REQUIRED" = "Rosetta 2 wird benötigt.";
-"ROSETTA_REQUIRED_INFORMATIVE" = "XIV On Mac erfordert die Installation von Apples Rosetta 2, um auf deinem Apple Silicon Mac zu funktionieren. Wenn du es nicht installierst, wird das Spiel nicht gestartet. Rosetta erfordert, dass du die Bedingungen der Software-Lizenzvereinbarung ließt und ihnen zustimmst: http://www.apple.com/legal/sla/. Möchten du Rosetta jetzt installieren?";
+"ROSETTA_REQUIRED_INFORMATIVE" = "XIV On Mac erfordert die Installation von Apples Rosetta 2, um auf deinem Apple Silicon Mac zu funktionieren. Wenn du es nicht installierst kann das Spiel nicht gestartet werden. Rosetta erfordert, dass du die Bedingungen der Software-Lizenzvereinbarung ließt und ihnen zustimmst: http://www.apple.com/legal/sla/. Möchtest du Rosetta jetzt installieren?";
 "ROSETTA_REQUIRED_INSTALL_BUTTON" = "Rosetta installieren";
 "ROSETTA_REQUIRED_CANCEL_BUTTON" = "Abbrechen";
 
 "FIRSTAID_CFGCHECK_GOOD_RESULT" = "Deine Konfiguration sieht gut aus!";
-"FIRSTAID_CFGCHECK_ADVISORY_RESULT" = "Deine Konfiguration sieht gut aus, aber es gibt einige Punkte, die du vielleicht wissen möchtest.";
-"FIRSTAID_CFGCHECK_RECOMMENDATION_RESULT" = "Mit ein paar Änderungen kannst du bessere Ergebnisse oder Leistungen erzielen.";
-"FIRSTAID_CFGCHECK_PROBLEM_RESULT" = "Es wurden ein oder mehrere Probleme in deiner Konfiguration gefunden, die bekanntermaßen Probleme verursachen können.";
+"FIRSTAID_CFGCHECK_ADVISORY_RESULT" = "Deine Konfiguration sieht gut aus, es gibt jedoch einige Hinweise.";
+"FIRSTAID_CFGCHECK_RECOMMENDATION_RESULT" = "Mit ein paar Änderungen kann die Leistung verbessert werden.";
+"FIRSTAID_CFGCHECK_PROBLEM_RESULT" = "Es wurden ein oder mehrere Einstellungen gefunden welche bekanntermaßen zu Problemen führen können.";
 
 "FIRSTAID_CFGCHECK_FIXED" = "Behoben!";
-"FIRSTAID_CFGCHECK_HBAO_TITLE" = "SSAO Einstellung ist ungültig";
+"FIRSTAID_CFGCHECK_HBAO_TITLE" = "Ungültige SSAO Einstellung";
 "FIRSTAID_CFGCHECK_HBAO_EXP" = "Die HBAO-Stufen von SSAO (Screen Space Ambient Occlusion) werden auf dem Mac nicht unterstützt und können dazu führen, dass Grafiken mit schwarzen Löchern dargestellt werden.";
 "FIRSTAID_CFGCHECK_TESSELATION_TITLE" = "Tesselation";
-"FIRSTAID_CFGCHECK_TESSELATION_EXP" = "Werte über \"Normal\" sind dafür bekannt, dass sie auf Apple Silicon Macs zu erheblichen Leistungsproblemen führen und keine visuelle Verbesserung bieten.";
+"FIRSTAID_CFGCHECK_TESSELATION_EXP" = "Werte über \"Normal\" sind dafür bekannt, dass sie auf Apple Silicon Macs zu erheblichen Leistungsproblemen führen und keine optische Verbesserung bieten.";
 
 "SELECT_GAME_PATH_PANEL_TITLE" = "Wähle den FFXIV Installationsort";
-"SELECT_GAME_PATH_PANEL_SUBTITLE" = "Sie sollte die Ordner \"game\" und \"boot\" enthalten.";
-"SELECT_GAME_PATH_ERROR_MESSAGE" = "Der Ordner, den du für die Installation deines Spiels gewählt hast, scheint der falsche zu sein";
-"SELECT_GAME_PATH_ERROR_INFORMATIVE" = "Möchtest du es immer noch benutzen?";
+"SELECT_GAME_PATH_PANEL_SUBTITLE" = "Er sollte die Ordner \"game\" und \"boot\" enthalten.";
+"SELECT_GAME_PATH_ERROR_MESSAGE" = "Das ausgewählte Installationsverzeichnis scheint ungültig zu sein.";
+"SELECT_GAME_PATH_ERROR_INFORMATIVE" = "Möchtest du ihn trotzdem verwenden?";
 
-"SELECT_BENCHMARK_PATH_PANEL_MESSAGE" = "Bitte wähle den FFXIV Benchmark Standort";
+"SELECT_BENCHMARK_PATH_PANEL_MESSAGE" = "Bitte wähle den FFXIV Benchmark Installationsort";
 "BENCHMARK_TITLE" = "FINAL FANTASY XIV Benchmark";
-"SELECT_BENCHMARK_PATH_ERROR_INFORMATIVE" = "Der Ordner, den du für den Spiel-Benchmark gewählt hast, scheint nicht gültig zu sein.\n Er sollte \"ffxiv-endwalker-bench.exe\" und den Ordner \"game\" enthalten.";
+"SELECT_BENCHMARK_PATH_ERROR_INFORMATIVE" = "Das Verzeichnis, das du für den Spiel-Benchmark gewählt hast, scheint nicht gültig zu sein.\n Es sollte \"ffxiv-endwalker-bench.exe\" und den Ordner \"game\" enthalten.";
 "BENCHMARK_RESULT" = "Ergebnis: %@\nDurchschnittliche FPS: %@";
 
-"PATCH_INSTALLATION_WAITING" = "Warten auf den Abschluss des Downloads...";
+"PATCH_INSTALLATION_WAITING" = "Warte auf Fertigstellung des Downloads...";
 "PATCH_INSTALLATION_PROGRESS_INIT" = "0 von %d Patches installiert";
 "PATCH_INSTALLATION_PROGRESS" = "%d von %d Patches installiert";
 "PATCH_INSTALLATION_ERROR_BUTTON" = "Schließen";
-"PATCH_INSTALLATION_ERROR_MESSAGE" = "Download Fehler";
+"PATCH_INSTALLATION_ERROR_MESSAGE" = "Fehler beim Download";
 "PATCH_INSTALLATION_ERROR_INFORMATIVE" = "XIV on Mac konnte %@ nach %d Versuchen nicht herunterladen";
 "PATCH_INSTALLATION_DOWNLOAD_STATUS" = "%@ von %@";
 "PATCH_INSTALLATION_DOWNLOAD_STATUS_PATCH" = "%@ von %@ (%@/Sek)";
@@ -109,7 +109,7 @@ Aktiviere dies nicht auf Nicht-Retina-Displays, es sei denn, du benötigen Scree
 "PATCH_ERROR_BUTTON" = "Schließen";
 
 "OTP_MESSAGE" = "OTP-Schlüssel für Benutzer \"%@\"";
-"OTP_INFORMATIVE" = "Wenn du deinem lokalen Schlüsselbund vertraust, kann XIV on Mac die OTP-Generierung für dich übernehmen, wenn du unten ein BASE32-verschlüsselten Schlüssel angibst:";
+"OTP_INFORMATIVE" = "Wenn du deinem lokalen Schlüsselbund vertraust, kann XIV on Mac die OTP-Generierung für dich übernehmen, wenn du unten einen BASE32-kodierten Schlüssel angibst:";
 
 "GSHADE_MESSAGE" = "Wenn du Catalina ausführst, musst du Wine oder CrossOver installiert haben";
 "GSHADE_INFORMATIVE" = "Du kannst die Wine-Version, die mit der XIV on Mac.app ausgeliefert wird, auch manuell zu deinem $PATH hinzufügen";
@@ -117,18 +117,18 @@ Aktiviere dies nicht auf Nicht-Retina-Displays, es sei denn, du benötigen Scree
 "INSTALLER_FOUND_MESSAGE" = "FINAL FANTASY XIV ONLINE Installation gefunden!";
 "INSTALLER_FOUND_INFORMATIVE" = "Möchtest du die Installation unter %@ verwenden?";
 "INSTALLER_NOT_DETECTED_MESSAGE" = "Es wurden keine FINAL FANTASY XIV ONLINE-Installationen gefunden..";
-"INSTALLER_NOT_DETECTED_INFORMATIVE" = "Möchtest du einen Ordner manuell auswählen?";
+"INSTALLER_NOT_DETECTED_INFORMATIVE" = "Möchtest du ein Verzeichnis manuell auswählen?";
 
-"INSTALLER_PATH_TITLE" = "Wähle den Ordner mit der bestehenden Installation";
-"INSTALLER_PATH_SUBTITLE" = "Sie sollte die Ordner \"game\" und \"boot\" sowie die ausführbare Datei des Spiels enthalten.";
+"INSTALLER_PATH_TITLE" = "Wähle das existierende Installationsverzeichnis aus";
+"INSTALLER_PATH_SUBTITLE" = "Er sollte die Verzeichnisse \"game\" und \"boot\" sowie die ausführbare Datei des Spiels enthalten.";
 "INSTALLER_PATH_INVALID_MESSAGE" = "Ungültiges FFXIV-Verzeichnis";
-"INSTALLER_PATH_INVALID_INFORMATIVE" = "Sie sollte die Ordner \"game\" und \"boot\" sowie die ausführbare Datei des Spiels enthalten.";
+"INSTALLER_PATH_INVALID_INFORMATIVE" = "Er sollte die Verzeichnisse \"game\" und \"boot\" sowie die ausführbare Datei des Spiels enthalten.";
 "INSTALLER_PATH_INVALID_BUTTON" = "Bei den Zwölfen!";
 
-"INSTALLER_DOWNLOAD_ERROR_MESSAGE" = "Download Fehler";
+"INSTALLER_DOWNLOAD_ERROR_MESSAGE" = "Fehler beim Download / Herunterladen";
 "INSTALLER_DOWNLOAD_ERROR_INFORMATIVE" = "XIV on Mac konnte das Archiv des Basisspiels nicht herunterladen";
 
-"INSTALLER_EXTRACTING" = "Extrahieren";
+"INSTALLER_EXTRACTING" = "Entpacken";
 
 "LOGGING_IN" = "Einloggen";
 
@@ -144,7 +144,7 @@ Aktiviere dies nicht auf Nicht-Retina-Displays, es sei denn, du benötigen Scree
 
 // General Settings tab items
 "SETTINGS_GENERAL_TITLE_LICENSE" = "Lizenz";
-"SETTINGS_GENERAL_LANGUAGE_AND_LICENSE_BLURB" = "XIV on Mac kann mit Mac, Windows, oder Steam Spiellizenzen funktionieren. du musst im Besitz der jeweiligen Lizenz sein, im Zweifelsfall kann der Account Status auf der Mogry-Station überprüft werden. Steam-Accounts müssen zuvor mit dem Final Fantasy XIV-Dienstkonto verknüpft worden sein, indem man sich auf einem Windows-PC anmeldet; zusätzlich muss außerdem die macOS-Version von Steam laufen.";
+"SETTINGS_GENERAL_LANGUAGE_AND_LICENSE_BLURB" = "XIV on Mac funktioniert mit Spiellizenzen für Mac, Windows oder Steam. Du musst im Besitz der jeweiligen Lizenz sein. Im Zweifelsfall kann der Account Status auf der Mogry-Station überprüft werden. Steam-Accounts müssen zuvor mit dem Final Fantasy XIV-Dienstkonto verknüpft worden sein, indem man sich auf einem Windows-PC anmeldet; zusätzlich muss außerdem die macOS-Version von Steam laufen.";
 "SETTINGS_LANGUAGE_PICKER" = "Sprache:";
 "SETTINGS_LANGUAGE_JAPANESE" = "Japanisch";
 "SETTINGS_LANGUAGE_ENGLISH" = "Englisch";
@@ -172,18 +172,20 @@ Aktiviere dies nicht auf Nicht-Retina-Displays, es sei denn, du benötigen Scree
 
 // Screen Capture tab items
 "SETTINGS_TOGGLE_SCREEN_RECORDING" = "Bildschirmaufnahme starten/stoppen";
-"SETTINGS_CAPTURE_PERMISSIONS_CHECK" = "XIV On Mac benötigt die Erlaubnis, deinen Bildschirm aufzunehmen. Wenn du eine Benachrichtigung erhalten möchtest, wenn die Bildschirmaufnahme gestartet oder gestoppt wurde, musst du auch die Berechtigung zur Benachrichtigung erteilen.";
+"SETTINGS_CAPTURE_PERMISSIONS_CHECK" = "XIV on Mac benötigt deine Erlaubnis um den Bildschirm aufzunehmen.
+Um eine Benachrichtigung beim Starten oder Stoppen einer Aufnahme zu erhalten musst du zusätzlich die Berechtigung für Benachrichtigungen aktivieren.";
 "SETTINGS_CAPTURE_PERMISSIONS_CHECK_BUTTON" = "Zugriffsrechte prüfen...";
 "CAPTURE_FOLDER_LABEL" = "Ort der Aufnahme:";
 "CAPTURE_FOLDER_SELECT_BUTTON" = "Auswählen…";
-"SELECT_CAPTURE_PATH_PANEL_MESSAGE" = "Wähle einen Ordner aus, in dem neue Bildschirmaufnahme gespeichert werden sollen.";
+"SELECT_CAPTURE_PATH_PANEL_MESSAGE" = "Wähle ein Verzeichnis aus, in dem neue Bildschirmaufnahme gespeichert werden sollen.";
 "SETTINGS_CAPTURE_CODEC" = "Video Codec:";
 "SETTINGS_CAPTURE_CODEC_H264" = "H.264";
 "SETTINGS_CAPTURE_CODEC_HEVC" = "HEVC";
 "SCREEN_CAPTURE_PERMISSION" = "Berechtigungen für Bildschirmaufnahme";
-"SCREEN_CAPTURE_PERMISSION_HAVE_NONE" = "XIV On Mac benötigt die Berechtigung: Bildschirmaufnahme, um aufnehmen zu können. Möglicherweise möchten Sie auch die Berechtigung: Benachrichtigung erteilen, um zu erfahren, wann die Aufnahme begonnen oder beendet wurde.";
-"SCREEN_CAPTURE_PERMISSION_NO_NOTIFY" = "XIV On Mac benötigt die Berechtigung: Benachrichtigung, um Sie zu informieren, wenn die Aufnahme gestartet oder gestoppt wurde. Die Bildschirmaufnahme funktioniert auch ohne diese Berechtigung.";
-"SCREEN_CAPTURE_PERMISSION_NO_RECORD" = "XIV On Mac erfordert die Erlaubnis zur Bildschirmaufnahme, um aufnehmen zu können.";
+"SCREEN_CAPTURE_PERMISSION_HAVE_NONE" = "Um Videos aufzuzeichnen benötigt XIV On Mac die Berechtigung zur "Bildschirmaufnahme".
+Zusätzlich kann die Berechtigung für "Mitteilungen" aktiviert werden um beim Starten und Beenden einer Aufzeichnung benachrichtigt zu werden.";
+"SCREEN_CAPTURE_PERMISSION_NO_NOTIFY" = "XIV On Mac benötigt die Mitteilungs-Berechtigung um über den Start und das Beenden einer Aufzeichnung zu informieren. Bildschirmaufnahmen können auch ohne diese Berechtigung erstellt werden.";
+"SCREEN_CAPTURE_PERMISSION_NO_RECORD" = "XIV On Mac benötigt die Erlaubnis zur Bildschirmaufnahme, um aufnehmen zu können.";
 "SCREEN_CAPTURE_PERMISSION_HAVE_ALL" = "XIV On Mac verfügt über alle erforderlichen Berechtigungen!";
 "SCREEN_CAPTURE_PERMISSION_OPEN_PREF_BUTTON" = "Öffnen der Sicherheitseinstellungen...";
 "NOTIFY_CAPTURE_TITLE" = "Bildschirmaufnahme";
@@ -245,9 +247,9 @@ Aktiviere dies nicht auf Nicht-Retina-Displays, es sei denn, du benötigen Scree
 "FIRSTAID_SHADER_CACHE_BLURB" = "Wenn dein Spiel beim Start einfriert, \"Compiling Shaders...\" ewig dauert, die Beleuchtung fehlt oder das Spiel zufällig einfriert, liegt das Problem möglicherweise an deinem Shader-Cache. Wenn du ihn löschst, wird ein neuer Cache erstellt, auch wenn dies anfangs zu gelegentlichen Stottern beim Spielen führen kann.";
 "FIRSTAID_SHADER_CACHE_BUTTON" = "Benutzer Shader Cache löschen";
 "FIRSTAID_CONFIG_HEADING" = "FFXIV Konfiguration";
-"FIRSTAID_RESET_CONFIG_BLURB" = "Wenn du dein Spiel auf eine Weise falsch konfiguriert hast, die dich daran hindert, es zu spielen, wie z. B. eine schlechte Grafikeinstellung, kannst du versuchen, deine Konfiguration auf die Standardeinstellungen zurückzusetzen.";
+"FIRSTAID_RESET_CONFIG_BLURB" = "Wenn du dein Spiel auf eine Weise falsch konfiguriert hast, die dich daran hindert, es zu spielen, wie z.B. eine schlechte Grafikeinstellung, kannst du versuchen, deine Konfiguration auf die Standardeinstellungen zurückzusetzen.";
 "FIRSTAID_RESET_CONFIG_BUTTON" = "Konfiguration zurücksetzen";
-"FIRSTAID_CHECKUP_BLURB" = "XIV on Mac kann mögliche Probleme identifizieren oder empfohlene Änderungen an deiner FFXIV-Konfigurationsdatei vornehmen, um dir das bestmögliche Erlebnis auf dem Mac zu bieten.";
+"FIRSTAID_CHECKUP_BLURB" = "XIV on Mac kann mögliche Probleme identifizieren und empfohlene Änderungen an deiner FFXIV-Konfigurationsdatei vornehmen, um dir das bestmögliche Erlebnis auf dem Mac zu bieten.";
 "FIRSTAID_CHECKUP_BUTTON" = "Konfigurationsüberprüfung";
 "FIRSTAID_CFGCHECK_FIX_BUTTON" = "Reparieren";
 
