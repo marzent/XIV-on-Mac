@@ -86,7 +86,7 @@ Aktiviere dies auf Nicht-Retina-Displays nur, wenn du Bildschirmfotos aufnehmen 
 "FIRSTAID_CFGCHECK_TESSELATION_EXP" = "Werte über \"Normal\" sind dafür bekannt, dass sie auf Apple Silicon Macs zu erheblichen Leistungsproblemen führen und keine optische Verbesserung bieten.";
 
 "SELECT_GAME_PATH_PANEL_TITLE" = "Wähle den FFXIV Installationsort";
-"SELECT_GAME_PATH_PANEL_SUBTITLE" = "Er sollte die Ordner \"game\" und \"boot\" enthalten.";
+"SELECT_GAME_PATH_PANEL_SUBTITLE" = "Es sollte die Ordner \"game\" und \"boot\" enthalten.";
 "SELECT_GAME_PATH_ERROR_MESSAGE" = "Das ausgewählte Installationsverzeichnis scheint ungültig zu sein.";
 "SELECT_GAME_PATH_ERROR_INFORMATIVE" = "Möchtest du ihn trotzdem verwenden?";
 
@@ -120,9 +120,9 @@ Aktiviere dies auf Nicht-Retina-Displays nur, wenn du Bildschirmfotos aufnehmen 
 "INSTALLER_NOT_DETECTED_INFORMATIVE" = "Möchtest du ein Verzeichnis manuell auswählen?";
 
 "INSTALLER_PATH_TITLE" = "Wähle das existierende Installationsverzeichnis aus";
-"INSTALLER_PATH_SUBTITLE" = "Er sollte die Verzeichnisse \"game\" und \"boot\" sowie die ausführbare Datei des Spiels enthalten.";
+"INSTALLER_PATH_SUBTITLE" = "Es sollte die Verzeichnisse \"game\" und \"boot\" sowie die ausführbare Datei des Spiels enthalten.";
 "INSTALLER_PATH_INVALID_MESSAGE" = "Ungültiges FFXIV-Verzeichnis";
-"INSTALLER_PATH_INVALID_INFORMATIVE" = "Er sollte die Verzeichnisse \"game\" und \"boot\" sowie die ausführbare Datei des Spiels enthalten.";
+"INSTALLER_PATH_INVALID_INFORMATIVE" = "Es sollte die Verzeichnisse \"game\" und \"boot\" sowie die ausführbare Datei des Spiels enthalten.";
 "INSTALLER_PATH_INVALID_BUTTON" = "Bei den Zwölfen!";
 
 "INSTALLER_DOWNLOAD_ERROR_MESSAGE" = "Fehler beim Download / Herunterladen";
