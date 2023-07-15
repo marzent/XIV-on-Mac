@@ -432,7 +432,7 @@
 "YOz-MM-jki.title" = "Gerät Info";
 
 /* Class = "NSMenuItem"; title = "Start Speaking"; ObjectID = "Ynk-f8-cLZ"; */
-"Ynk-f8-cLZ.title" = "Sprechen beginnen";
+"Ynk-f8-cLZ.title" = "Diktat starten";
 
 /* Class = "NSTextFieldCell"; title = "If you've misconfigured your game in a way that prevents you from playing it, such as a bad graphics setting, you can try resetting your configuration to default."; ObjectID = "YxS-mf-FNj"; */
 "YxS-mf-FNj.title" = "Wenn du dein Spiel auf eine Weise falsch konfiguriert hast, die dich daran hindert, es zu spielen, wie z. B. eine schlechte Grafikeinstellung, kannst du versuchen, deine Konfiguration auf die Standardeinstellungen zurückzusetzen.";
@@ -480,7 +480,7 @@
 "c2g-j3-NbA.title" = "Microsoft .NET 6.0";
 
 /* Class = "NSMenu"; title = "Transformations"; ObjectID = "c8a-y6-VQd"; */
-"c8a-y6-VQd.title" = "Verwandlungen";
+"c8a-y6-VQd.title" = "Transformationen";
 
 /* Class = "NSButtonCell"; title = "Quit"; ObjectID = "cHd-1O-1aa"; */
 "cHd-1O-1aa.title" = "Beenden";
@@ -501,7 +501,7 @@
 "d7x-jG-QDv.title" = "Fehlersuche";
 
 /* Class = "NSMenuItem"; title = "Make Lower Case"; ObjectID = "d9M-CD-aMd"; */
-"d9M-CD-aMd.title" = "Kleinschreibung vornehmen";
+"d9M-CD-aMd.title" = "Kleinbuchstaben";
 
 /* Class = "NSMenuItem"; title = "Start IINACT"; ObjectID = "dC8-zW-bPm"; */
 "dC8-zW-bPm.title" = "Start IINACT";
@@ -663,7 +663,7 @@
 "q09-fT-Sye.title" = "Nächste finden";
 
 /* Class = "NSButtonCell"; title = "Launch Vanilla Game"; ObjectID = "qDd-CO-Fjs"; */
-"qDd-CO-Fjs.title" = "Vanille-Spiel starten";
+"qDd-CO-Fjs.title" = "Unmodifiziertes Spiel starten";
 
 /* Class = "NSTextFieldCell"; title = "Logging In"; ObjectID = "qM7-gN-uyd"; */
 "qM7-gN-uyd.title" = "Einloggen";
