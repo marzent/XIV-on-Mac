@@ -78,7 +78,7 @@
 "6dh-zS-Vam.title" = "Wiederholen";
 
 /* Class = "NSTextFieldCell"; title = "HUD Options are informational items displayed in the upper left corner during play that can aid you in determining how in-game settings are affecting your performance. They are entirely optional."; ObjectID = "74A-cF-fLc"; */
-"74A-cF-fLc.title" = "HUD Optionen sind Informationselemente, die während des Spiels in der oberen linken Ecke angezeigt werden und dir dabei helfen können, herauszufinden, wie sich die Einstellungen im Spiel auf deine Leistung auswirken. Sie sind völlig optional.";
+"74A-cF-fLc.title" = "HUD Optionen sind Informationselemente, die während des Spiels in der oberen linken und/oder rechten Ecke angezeigt werden und dir dabei helfen können, herauszufinden, wie sich die Einstellungen im Spiel auf deine Leistung auswirken. Sie sind völlig optional.";
 
 /* Class = "NSMenuItem"; title = "Correct Spelling Automatically"; ObjectID = "78Y-hA-62v"; */
 "78Y-hA-62v.title" = "Automatische Rechtschreibkorrektur";
