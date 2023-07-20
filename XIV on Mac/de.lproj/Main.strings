@@ -534,7 +534,7 @@
 "dxd-Xu-JNa.title" = "Spielpfad auswählen";
 
 /* Class = "NSButtonCell"; title = "Anamnesis"; ObjectID = "eFL-CT-TsU"; */
-"eFL-CT-TsU.title" = "Anamnese";
+"eFL-CT-TsU.title" = "Anamnesis";
 
 /* Class = "NSMenuItem"; title = "Repair Game Files"; ObjectID = "eHZ-Vy-9pF"; */
 "eHZ-Vy-9pF.title" = "Spieldateien reparieren";
@@ -693,10 +693,10 @@
 "snW-S8-Cw5.title" = "Registry bearbeiten";
 
 /* Class = "NSMenuItem"; title = "Data Detectors"; ObjectID = "tRr-pd-1PS"; */
-"tRr-pd-1PS.title" = "Daten-Detektive";
+"tRr-pd-1PS.title" = "Datenerkennung";
 
 /* Class = "NSButtonCell"; title = "Frame Time Graph"; ObjectID = "ti2-f2-LWe"; */
-"ti2-f2-LWe.title" = "Rahmenzeitdiagramm";
+"ti2-f2-LWe.title" = "Frametime Diagramm";
 
 /* Class = "NSTextFieldCell"; title = "When selecting a custom folder, please select one your game is installed in. It should contain the folders \"game\" and \"boot\". Otherwise XIV on Mac will redownload your game."; ObjectID = "uJx-kU-CQH"; */
 "uJx-kU-CQH.title" = "Wenn du einen benutzerdefinierten Ordner auswählst, wähle bitte den, in dem dein Spiel installiert ist. Er sollte die Ordner \"game\" und \"boot\" enthalten. Andernfalls wird XIV auf Mac dein Spiel erneut herunterladen.";
