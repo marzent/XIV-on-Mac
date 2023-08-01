@@ -182,8 +182,8 @@ Um eine Benachrichtigung beim Starten oder Stoppen einer Aufnahme zu erhalten mu
 "SETTINGS_CAPTURE_CODEC_H264" = "H.264";
 "SETTINGS_CAPTURE_CODEC_HEVC" = "HEVC";
 "SCREEN_CAPTURE_PERMISSION" = "Berechtigungen für Bildschirmaufnahme";
-"SCREEN_CAPTURE_PERMISSION_HAVE_NONE" = "Um Videos aufzuzeichnen benötigt XIV On Mac die Berechtigung zur "Bildschirmaufnahme".
-Zusätzlich kann die Berechtigung für "Mitteilungen" aktiviert werden um beim Starten und Beenden einer Aufzeichnung benachrichtigt zu werden.";
+"SCREEN_CAPTURE_PERMISSION_HAVE_NONE" = "Um Videos aufzuzeichnen benötigt XIV On Mac die Berechtigung zur \"Bildschirmaufnahme\".
+Zusätzlich kann die Berechtigung für \"Mitteilungen\" aktiviert werden um beim Starten und Beenden einer Aufzeichnung benachrichtigt zu werden.";
 "SCREEN_CAPTURE_PERMISSION_NO_NOTIFY" = "XIV On Mac benötigt die Mitteilungs-Berechtigung um über den Start und das Beenden einer Aufzeichnung zu informieren. Bildschirmaufnahmen können auch ohne diese Berechtigung erstellt werden.";
 "SCREEN_CAPTURE_PERMISSION_NO_RECORD" = "XIV On Mac benötigt die Erlaubnis zur Bildschirmaufnahme, um aufnehmen zu können.";
 "SCREEN_CAPTURE_PERMISSION_HAVE_ALL" = "XIV On Mac verfügt über alle erforderlichen Berechtigungen!";
