@@ -751,3 +751,6 @@
 
 /* Class = "NSButtonCell"; title = "Anamnesis"; ObjectID = "eFL-CT-TsU"; */
 "eFL-CT-TsU.title" = "Anamnesis";
+
+/* Class = "NSMenuItem"; title = "Run Benchmark"; ObjectID = "ATC-3I-GLs"; */
+"ATC-3I-GLs.title" = "ベンチマークを実行";
