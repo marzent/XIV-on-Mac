@@ -117,6 +117,7 @@ extension HTTPClient {
         }
         
         try curl.perform()
+        fflush(fileHandle)
         let response = try curl.get(info: CURLINFO_RESPONSE_CODE) as Int
         if response == 200 {
             try FileManager.default.moveItem(at: tempURL, to: destURL)

@@ -517,7 +517,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/zsh;
-			shellScript = "cd \"$PROJECT_DIR\"/XIV\\ on\\ Mac/\n[ -d \"wine\" ] && exit 0\ncurl -LO https://github.com/marzent/winecx/releases/download/ff-wine-2.4.1/wine.tar.xz\ntar -xf wine.tar.xz\nrm wine.tar.xz\n";
+			shellScript = "cd \"$PROJECT_DIR\"/XIV\\ on\\ Mac/\n[ -d \"wine\" ] && exit 0\ncurl -LO https://github.com/marzent/winecx/releases/download/ff-wine-2.4.2/wine.tar.xz\ntar -xf wine.tar.xz\nrm wine.tar.xz\n";
 		};
 		5049B9AB283B8E1300463A2B /* Build  XIVLauncher.NativeAOT */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -781,7 +781,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 127;
+				CURRENT_PROJECT_VERSION = 128;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = TQJJTJ6364;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -801,7 +801,7 @@
 					"$(PROJECT_DIR)/XIV\\ on\\ Mac/XIVLauncher.NativeAOT",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 4.10.2;
+				MARKETING_VERSION = 4.10.3;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = "dezent.XIV-on-Mac";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -826,7 +826,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 127;
+				CURRENT_PROJECT_VERSION = 128;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = TQJJTJ6364;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -846,7 +846,7 @@
 					"$(PROJECT_DIR)/XIV\\ on\\ Mac/XIVLauncher.NativeAOT",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 4.10.2;
+				MARKETING_VERSION = 4.10.3;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = "dezent.XIV-on-Mac";
 				PRODUCT_NAME = "$(TARGET_NAME)";
