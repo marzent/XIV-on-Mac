@@ -12,6 +12,7 @@ struct Wine {
     @available(*, unavailable) private init() {}
     
     static let wineBinURL = Bundle.main.url(forResource: "bin", withExtension: nil, subdirectory: "wine")!
+    static let wineLibURL = Bundle.main.url(forResource: "lib", withExtension: nil, subdirectory: "wine")!
     static let prefix = Util.applicationSupport.appendingPathComponent("wineprefix")
     
     static func setup() {
@@ -163,6 +164,41 @@ struct Wine {
             UserDefaults.standard.set(_rightCommandIsCtrl, forKey: rightCommandIsCtrlSettingKey)
         }
     }
+    
+    private static let moltenVKSymlinkURL = wineLibURL.appendingPathComponent("libMoltenVK.dylib")
+    static var fastMoltenVK: Bool {
+        get {
+            do {
+                let resolvedPath = try FileManager.default.destinationOfSymbolicLink(atPath: moltenVKSymlinkURL.path)
+                
+                if resolvedPath.hasSuffix("libMoltenVK.fast.dylib") {
+                    return true
+                } else if resolvedPath.hasSuffix("libMoltenVK.stable.dylib") {
+                    return false
+                } else {
+                    return false
+                }
+            } catch {
+                Log.error("Error resolving MoltenVK symlink: \(String(describing: error))")
+                return false
+            }
+        }
+        
+        set {
+            let targetPath = newValue ? "libMoltenVK.fast.dylib" : "libMoltenVK.stable.dylib"
+            
+            do {
+                if FileManager.default.fileExists(atPath: moltenVKSymlinkURL.path) {
+                    try FileManager.default.removeItem(at: moltenVKSymlinkURL)
+                }
+
+                try FileManager.default.createSymbolicLink(atPath: moltenVKSymlinkURL.path, withDestinationPath: targetPath)
+            } catch {
+                Log.error("Error updating MoltenVK symlink: \(String(describing: error))")
+            }
+        }
+    }
+
     
     private static var timebase: mach_timebase_info = .init()
     static var tickCount: UInt64 {

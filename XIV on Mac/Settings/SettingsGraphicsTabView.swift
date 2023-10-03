@@ -97,6 +97,7 @@ struct SettingsGraphicsTabView: View {
                 Toggle(isOn: $viewModel.fpsLimited) {
                     Text("SETTINGS_FPS_LIMIT")
                 }
+                .fixedSize(horizontal: true, vertical: false)
                 .padding(.leading)
                 TextField("SETTINGS_FPS_LIMIT_PLACEHOLDER", text: $viewModel.fpsLimit)
                     .frame(minWidth: 50)
@@ -107,9 +108,14 @@ struct SettingsGraphicsTabView: View {
                 Toggle(isOn: $viewModel.asyncShaders) {
                     Text("SETTINGS_GRAPHICS_ASYNC")
                 }
-                .padding(.leading)
+                .padding(.trailing)
+                Toggle(isOn: $viewModel.fastMoltenVK) {
+                    Text("SETTINGS_GRAPHICS_FAST_MVK")
+                }.fixedSize(horizontal: true, vertical: false)
+                .padding(.trailing)
                 Spacer()
                     .padding(.horizontal)
+    
             }
             GroupBox(label: Text("SETTINGS_GRAPHICS_HUD")) {
                 Group {
@@ -250,6 +256,10 @@ extension SettingsGraphicsTabView {
                 }
                 Wine.retina = !macScaling
             }
+        }
+        
+        @Published var fastMoltenVK: Bool = Wine.fastMoltenVK {
+            didSet { Wine.fastMoltenVK = fastMoltenVK }
         }
 
         func setAllDXVKSettings(to: Bool) {

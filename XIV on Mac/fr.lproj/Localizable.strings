@@ -176,6 +176,7 @@ Ne l'activez pas sur les écrans autres que écrans Retina, sauf à des fins de 
 "SETTINGS_FPS_LIMIT_PLACEHOLDER" = "0";
 "SETTINGS_FPS_LIMIT_UNITS" = "ips";
 "SETTINGS_GRAPHICS_ASYNC" = "Asynchrone";
+"SETTINGS_GRAPHICS_FAST_MVK" = "Experimental MoltenVK";
 "SETTINGS_GRAPHICS_HUD" = "Affichage tête haute";
 "SETTINGS_GRAPHICS_DXVK_HUD_HEADER" = "Options affichage tête haute de DXVK";
 "SETTINGS_GRAPHICS_HUD_BLURB" = "Les options HUD sont des éléments d'information affichés dans le coin supérieur gauche dans le jeu qui peuvent vous aider à déterminer comment les paramètres du jeu affectent vos performances. Ils sont entièrement facultatifs.";
