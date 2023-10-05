@@ -198,6 +198,7 @@ Do not enable this on non-retina displays, unless for screenshot purposes.";
 "SETTINGS_FPS_LIMIT_PLACEHOLDER" = "0";
 "SETTINGS_FPS_LIMIT_UNITS" = "fps";
 "SETTINGS_GRAPHICS_ASYNC" = "Async";
+"SETTINGS_GRAPHICS_FAST_MVK" = "Experimental MoltenVK";
 "SETTINGS_GRAPHICS_HUD" = "HUD";
 "SETTINGS_GRAPHICS_DXVK_HUD_HEADER" = "DXVK HUD Options";
 "SETTINGS_GRAPHICS_HUD_BLURB" = "HUD Options are informational items displayed in the upper left corner during play that can aid you in determining how in-game settings are affecting your performance. They are entirely optional.";
