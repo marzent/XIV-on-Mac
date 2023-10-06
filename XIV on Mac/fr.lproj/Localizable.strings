@@ -212,6 +212,7 @@ Ne l'activez pas sur les écrans autres que écrans Retina, sauf à des fins de 
 // Advanced Settings tab items
 "SETTINGS_ADVANCED_BLURB" = "Ces paramètres sont principalement destinés à des fins de dépannage et ne doivent généralement pas être modifiés.";
 "SETTINGS_ADVANCED_KEEP_PATCHES" = "Conserver les correctifs";
+"SETTINGS_ADVANCED_MSYNC" = "Msync";
 "SETTINGS_ADVANCED_ESYNC" = "Esync";
 "SETTINGS_ADVANCED_ENCRYPT_ARGS" = "Chiffrer les arguments du jeu";
 "SETTINGS_ADVANCED_AUTO_EXIT" = "Quitter XIV on Mac à la sortie du jeu";

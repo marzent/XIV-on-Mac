@@ -25,6 +25,13 @@ struct SettingsAdvancedTabView: View {
                 Spacer()
             }
             HStack {
+                Toggle(isOn: $viewModel.mSync) {
+                    Text("SETTINGS_ADVANCED_MSYNC")
+                }
+                .padding(.leading)
+                Spacer()
+            }
+            HStack {
                 Toggle(isOn: $viewModel.eSync) {
                     Text("SETTINGS_ADVANCED_ESYNC")
                 }
@@ -73,6 +80,10 @@ extension SettingsAdvancedTabView {
     @MainActor class ViewModel: ObservableObject {
         @Published var keepPatches: Bool = Patch.keep {
             didSet { Patch.keep = keepPatches }
+        }
+
+        @Published var mSync: Bool = Wine.msync {
+            didSet { Wine.msync = mSync }
         }
 
         @Published var eSync: Bool = Wine.esync {

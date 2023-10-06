@@ -16,6 +16,7 @@ struct Wine {
     static let prefix = Util.applicationSupport.appendingPathComponent("wineprefix")
     
     static func setup() {
+        addEnvironmentVariable("WINEMSYNC", msync ? "1" : "0")
         addEnvironmentVariable("LANG", "en_US")
         addEnvironmentVariable("MVK_ALLOW_METAL_FENCES", "1") // XXX Required by DXVK for Apple/NVidia GPUs (better FPS than CPU Emulation)
         addEnvironmentVariable("MVK_CONFIG_FULL_IMAGE_VIEW_SWIZZLE", "1") // XXX Required by DXVK for Intel/NVidia GPUs
@@ -79,10 +80,21 @@ struct Wine {
         }
         set {
             UserDefaults.standard.set(newValue, forKey: esyncSettingKey)
-            createCompatToolsInstance(Wine.wineBinURL.path, Wine.debug, Wine.esync)
+            createCompatToolsInstance(FileManager.default.fileSystemRepresentation(withPath: wineBinURL.path), debug, esync)
         }
     }
-    
+
+    private static let msyncSettingKey = "MsyncSetting"
+    static var msync: Bool {
+        get {
+            Util.getSetting(settingKey: msyncSettingKey, defaultValue: true)
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: msyncSettingKey)
+            addEnvironmentVariable("WINEMSYNC", msync ? "1" : "0")
+        }
+    }
+
     private static let wineDebugSettingKey = "WineDebugSetting"
     static var debug: String {
         get {
@@ -90,7 +102,7 @@ struct Wine {
         }
         set {
             UserDefaults.standard.set(newValue, forKey: wineDebugSettingKey)
-            createCompatToolsInstance(Wine.wineBinURL.path, Wine.debug, Wine.esync)
+            createCompatToolsInstance(FileManager.default.fileSystemRepresentation(withPath: wineBinURL.path), debug, esync)
         }
     }
     
