@@ -87,20 +87,11 @@ struct Wine {
     private static let msyncSettingKey = "MsyncSetting"
     static var msync: Bool {
         get {
-            if #available(macOS 13.0, *) {
-                return Util.getSetting(settingKey: msyncSettingKey, defaultValue: true)
-            } else {
-                return false
-            }
+            Util.getSetting(settingKey: msyncSettingKey, defaultValue: true)
         }
         set {
-            if #available(macOS 13.0, *) {
-                UserDefaults.standard.set(newValue, forKey: msyncSettingKey)
-                addEnvironmentVariable("WINEMSYNC", newValue ? "1" : "0")
-            } else {
-                UserDefaults.standard.set(false, forKey: msyncSettingKey)
-                addEnvironmentVariable("WINEMSYNC", "0")
-            }
+            UserDefaults.standard.set(newValue, forKey: msyncSettingKey)
+            addEnvironmentVariable("WINEMSYNC", msync ? "1" : "0")
         }
     }
 
