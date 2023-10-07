@@ -24,12 +24,14 @@ struct SettingsAdvancedTabView: View {
                 .padding(.leading)
                 Spacer()
             }
-            HStack {
-                Toggle(isOn: $viewModel.mSync) {
-                    Text("SETTINGS_ADVANCED_MSYNC")
+            if #available(macOS 13.0, *) {
+                HStack {
+                    Toggle(isOn: $viewModel.mSync) {
+                        Text("SETTINGS_ADVANCED_MSYNC")
+                    }
+                    .padding(.leading)
+                    Spacer()
                 }
-                .padding(.leading)
-                Spacer()
             }
             HStack {
                 Toggle(isOn: $viewModel.eSync) {
