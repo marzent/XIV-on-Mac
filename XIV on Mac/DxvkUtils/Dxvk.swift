@@ -17,16 +17,13 @@ struct Dxvk {
     private static let baseCacheBundled = dxvkPath.appendingPathComponent("ffxiv_dx11.dxvk-cache-base")
     
     static func install() {
-        let dxDlls = ["d3d10_1.dll", "d3d10.dll", "d3d10core.dll", "dxgi.dll", "d3d11.dll"]
+        let d3d11Dll = "d3d11.dll"
         let system32 = Wine.prefix.appendingPathComponent("drive_c/windows/system32")
         Util.make(dir: system32)
         let fm = FileManager.default
-        for dll in dxDlls {
-            let winDllPath = system32.appendingPathComponent(dll).path
-            let dxvkDllPath = dxvkPath.appendingPathComponent(dll).path
-            if fm.contentsEqual(atPath: winDllPath, andPath: dxvkDllPath) {
-                continue
-            }
+        let winDllPath = system32.appendingPathComponent(d3d11Dll).path
+        let dxvkDllPath = dxvkPath.appendingPathComponent(d3d11Dll).path
+        if !fm.contentsEqual(atPath: winDllPath, andPath: dxvkDllPath) {
             if fm.fileExists(atPath: winDllPath) {
                 do {
                     try fm.removeItem(atPath: winDllPath)
