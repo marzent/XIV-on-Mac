@@ -11,6 +11,7 @@
 "BUTTON_NO" = "Non";
 "BUTTON_OK" = "Okay";
 "BUTTON_CANCEL" = "Annuler";
+"BUTTON_CLOSE" = "Close";
 
 "LOGIN_ERROR" = "Erreur d'identification";
 "START_ERROR" = "Erreur de démarrage de FFXIV";
