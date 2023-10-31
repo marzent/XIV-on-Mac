@@ -183,7 +183,7 @@ class InstallerController: NSViewController {
     
     func install() {
         DispatchQueue.global(qos: .userInitiated).async { [self] in
-            let version = "1.1.2"
+            let version = "1.1.3"
             let url = URL(string: "https://mac-dl.ffxiv.com/cw/finalfantasyxiv-\(version).zip")!
             do {
                 try HTTPClient.fetchFile(url: url) { total, now, _ in

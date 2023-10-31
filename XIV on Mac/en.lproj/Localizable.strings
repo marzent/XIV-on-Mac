@@ -10,6 +10,7 @@
 "BUTTON_NO" = "No";
 "BUTTON_OK" = "OK";
 "BUTTON_CANCEL" = "Cancel";
+"BUTTON_CLOSE" = "Close";
 
 "LOGIN_ERROR" = "Login Error";
 "START_ERROR" = "Error starting FFXIV";
@@ -234,6 +235,7 @@ Do not enable this on non-retina displays, unless for screenshot purposes.";
 // Advanced Settings tab items
 "SETTINGS_ADVANCED_BLURB" = "These settings are mainly for troubleshooting purposes and generally shouldn't need to be changed.";
 "SETTINGS_ADVANCED_KEEP_PATCHES" = "Keep Patches";
+"SETTINGS_ADVANCED_MSYNC" = "Msync";
 "SETTINGS_ADVANCED_ESYNC" = "Esync";
 "SETTINGS_ADVANCED_ENCRYPT_ARGS" = "Encrypt Game Arguments";
 "SETTINGS_ADVANCED_AUTO_EXIT" = "Quit XIV on Mac upon game exit";

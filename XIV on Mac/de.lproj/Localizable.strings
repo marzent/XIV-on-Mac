@@ -10,6 +10,7 @@
 "BUTTON_NO" = "Nein";
 "BUTTON_OK" = "OK";
 "BUTTON_CANCEL" = "Abbrechen";
+"BUTTON_CLOSE" = "Schließen";
 
 "LOGIN_ERROR" = "Login Fehler";
 "START_ERROR" = "Fehler beim starten von FFXIV";
@@ -236,6 +237,7 @@ Zusätzlich kann die Berechtigung für \"Mitteilungen\" aktiviert werden um beim
 // Advanced Settings tab items
 "SETTINGS_ADVANCED_BLURB" = "Diese Einstellungen dienen hauptsächlich der Fehlersuche und sollten im Allgemeinen nicht verändert werden.";
 "SETTINGS_ADVANCED_KEEP_PATCHES" = "Patches behalten";
+"SETTINGS_ADVANCED_MSYNC" = "Msync";
 "SETTINGS_ADVANCED_ESYNC" = "Esync";
 "SETTINGS_ADVANCED_ENCRYPT_ARGS" = "Spielargumente verschlüsseln";
 "SETTINGS_ADVANCED_AUTO_EXIT" = "XIV on Mac beim Beenden des Spiels beenden";

@@ -12,6 +12,7 @@
 "BUTTON_NO" = "いいえ";
 "BUTTON_OK" = "OK";
 "BUTTON_CANCEL" = "キャンセル";
+"BUTTON_CLOSE" = "Close";
 
 "LOGIN_ERROR" = "ログインエラー";
 "START_ERROR" = "FF14の起動に失敗";
@@ -235,6 +236,7 @@
 // Advanced Settings tab items
 "SETTINGS_ADVANCED_BLURB" = "これらの設定は主にトラブルシューティングのためのもので、通常変更する必要はありません。";
 "SETTINGS_ADVANCED_KEEP_PATCHES" = "パッチを保持する";
+"SETTINGS_ADVANCED_MSYNC" = "Msync";
 "SETTINGS_ADVANCED_ESYNC" = "Esyncを有効化";
 "SETTINGS_ADVANCED_ENCRYPT_ARGS" = "ゲームの引数を暗号化する";
 "SETTINGS_ADVANCED_AUTO_EXIT" = "ゲームを終了時にXIV on Macも終了させる";
