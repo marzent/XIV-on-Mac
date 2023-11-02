@@ -51,8 +51,11 @@ class LaunchController: NSViewController {
             self.checkBoot()
         }
         DispatchQueue.global(qos: .userInteractive).async {
-            if let frontier = Frontier.info {
-                self.populateNews(frontier)
+            if let frontierInfo = Frontier.info {
+                self.populateNews(frontierInfo)
+            }
+            if let frontierBanners = Frontier.banners {
+                self.populateBanners(frontierBanners)
             }
         }
     }
@@ -102,7 +105,12 @@ class LaunchController: NSViewController {
         DispatchQueue.main.async {
             self.topicsTable.add(items: info.topics)
             self.newsTable.add(items: info.pinned + info.news)
-            self.scrollView.banners = info.banner
+        }
+    }
+    
+    private func populateBanners(_ banners: [Frontier.BannerRoot.Banner]) {
+        DispatchQueue.main.async {
+            self.scrollView.banners = banners
         }
     }
     
@@ -336,9 +344,14 @@ class userMenuItem: NSMenuItem {
 }
 
 final class BannerView: NSImageView {
-    var banner: Frontier.Info.Banner? {
+    var banner: Frontier.BannerRoot.Banner? {
         didSet {
-            self.image = Frontier.fetchImage(url: URL(string: banner!.lsbBanner)!)
+            DispatchQueue.global(qos: .background).async { [self] in
+                let bannerImage = Frontier.fetchImage(url: URL(string: banner!.lsbBanner)!)
+                DispatchQueue.main.async { [self] in
+                    image = bannerImage
+                }
+            }
         }
     }
     
@@ -364,7 +377,7 @@ final class AnimatingScrollView: NSScrollView {
     private var index = 0
     private var timer = Timer()
     
-    var banners: [Frontier.Info.Banner]? {
+    var banners: [Frontier.BannerRoot.Banner]? {
         didSet {
             let banners = banners!
             documentView?.setFrameSize(NSSize(width: width * CGFloat(banners.count), height: height))

@@ -96,7 +96,11 @@ public enum Settings {
     private static let verboseLoggingKey = "VerboseLogging"
     static var verboseLogging: Bool {
         get {
+        #if DEBUG
+            true
+        #else
             storage.bool(forKey: verboseLoggingKey)
+        #endif
         }
         set {
             storage.set(newValue, forKey: verboseLoggingKey)

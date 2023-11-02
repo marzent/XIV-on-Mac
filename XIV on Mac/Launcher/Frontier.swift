@@ -11,9 +11,11 @@ import SeeURL
 import XIVLauncher
 
 class Frontier {
-    static var squareTime: Int64 {
+    private static var squareTime: Int64 {
         Int64((Date().timeIntervalSince1970 * 1000.0).rounded())
     }
+    
+    public static let frontierURLTemplate = "https://launcher.finalfantasyxiv.com/v650/index.html?rc_lang={0}&time={1}";
     
     private static func generateReferer(lang: FFXIVLanguage) -> URL {
         let dateFormatter = DateFormatter()
@@ -22,20 +24,28 @@ class Frontier {
         dateFormatter.dateFormat = "yyyy-MM-dd-HH-mm"
         let time = dateFormatter.string(from: Date())
         let rcLang = lang.code.replacingOccurrences(of: "-", with: "_")
-        return URL(string: "https://launcher.finalfantasyxiv.com/v620/index.html?rc_lang=\(rcLang)&time=\(time)")!
+        let frontierURL = frontierURLTemplate
+            .replacingOccurrences(of: "{0}", with: rcLang)
+            .replacingOccurrences(of: "{1}", with: time)
+        return URL(string: frontierURL)!
     }
     
-    static var referer: URL {
+    private static var referer: URL {
         generateReferer(lang: Settings.language)
     }
     
-    static var refererGlobal: URL {
+    private static var refererGlobal: URL {
         generateReferer(lang: FFXIVLanguage.english)
     }
     
-    static var headline: URL {
+    private static var headline: URL {
         let lang = Settings.language.code
         return URL(string: "https://frontier.ffxiv.com/news/headline.json?lang=\(lang)&media=pcapp&_=\(squareTime)")!
+    }
+    
+    private static var banner: URL {
+        let lang = Settings.language.code
+        return URL(string: "https://frontier.ffxiv.com/v2/topics/\(lang)/banner.json?lang=\(lang)&media=pcapp&_=\(squareTime)")!
     }
     
     static func fetch(url: URL, accept: String? = nil, global: Bool = false) -> HTTPClient.Response? {
@@ -44,7 +54,8 @@ class Frontier {
             "Accept": accept,
             "Accept-Encoding": "gzip, deflate",
             "Origin": "https://launcher.finalfantasyxiv.com",
-            "Referer": (global ? refererGlobal : referer).absoluteString
+            "Referer": (global ? refererGlobal : referer).absoluteString,
+            "Connection": "Keep-Alive"
         ]
         return HTTPClient.fetch(url: url, headers: headers)
     }
@@ -109,17 +120,39 @@ class Frontier {
             let tag: String?
         }
         
+        let news, topics, pinned: [News]
+    }
+    
+    struct BannerRoot: Codable {
         struct Banner: Codable {
             let lsbBanner: String
             let link: String
+            let orderPriority: Int32
+            let fixOrder: Int32?
             
             enum CodingKeys: String, CodingKey {
                 case lsbBanner = "lsb_banner"
                 case link
+                case orderPriority = "order_priority"
+                case fixOrder = "fix_order"
+            }
+            
+            init(from decoder: Decoder) throws {
+                let container = try decoder.container(keyedBy: CodingKeys.self)
+                lsbBanner = try container.decode(String.self, forKey: .lsbBanner)
+                link = try container.decode(String.self, forKey: .link)
+                
+                let orderPriorityString = try container.decode(String.self, forKey: .orderPriority)
+                orderPriority = Int32(orderPriorityString) ?? 0
+                
+                if let fixOrderString = try container.decodeIfPresent(String.self, forKey: .fixOrder) {
+                    fixOrder = Int32(fixOrderString) ?? nil
+                } else {
+                    fixOrder = nil
+                }
             }
         }
         
-        let news, topics, pinned: [News]
         let banner: [Banner]
     }
     
@@ -133,6 +166,33 @@ class Frontier {
         let jsonDecoder = JSONDecoder()
         do {
             return try jsonDecoder.decode(Info.self, from: data)
+        } catch {
+            return nil
+        }
+    }
+    
+    static var banners: [BannerRoot.Banner]? {
+        guard let response = fetch(url: banner) else {
+            return nil
+        }
+        guard let data = String(decoding: response.body, as: UTF8.self).unescapingUnicodeCharacters.data(using: .utf8) else {
+            return nil
+        }
+        let jsonDecoder = JSONDecoder()
+        do {
+            let bannerRoot = try jsonDecoder.decode(BannerRoot.self, from: data)
+            return bannerRoot.banner.sorted {
+                if let fixOrder0 = $0.fixOrder, let fixOrder1 = $1.fixOrder {
+                    return fixOrder0 > fixOrder1
+                }
+                if $0.fixOrder != nil {
+                    return true
+                }
+                if $1.fixOrder != nil {
+                    return false
+                }
+                return $0.orderPriority > $1.orderPriority
+            }
         } catch {
             return nil
         }
