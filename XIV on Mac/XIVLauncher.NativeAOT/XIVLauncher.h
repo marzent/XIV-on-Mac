@@ -1,6 +1,6 @@
 #include <stdbool.h>
 
-void initXL(const char* appName, const char *storagePath, bool verboseLogging);
+void initXL(const char* appName, const char *storagePath, bool verboseLogging, const char *frontierURL);
 
 const char *generateAcceptLanguage(int seed);
 
