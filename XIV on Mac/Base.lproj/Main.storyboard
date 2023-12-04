@@ -358,32 +358,6 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Add On" id="A9a-u7-hsU">
                                     <items>
-                                        <menuItem title="Start ACT" id="Dbv-Cm-iXv">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="startACT:" target="Voe-Tx-rLC" id="4zk-o2-nm1"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Auto-Launch ACT" id="6JE-Fn-nLi">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="toggleACT:" target="Voe-Tx-rLC" id="TXL-fp-zVo"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem isSeparatorItem="YES" id="AbC-rd-Zp7"/>
-                                        <menuItem title="Start IINACT" id="dC8-zW-bPm">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="startIINACT:" target="Voe-Tx-rLC" id="ljL-0e-Hbe"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Auto-Launch IINACT" id="jii-Yc-y26">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="toggleIINACT:" target="Voe-Tx-rLC" id="9Wf-sE-v2v"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem isSeparatorItem="YES" id="Ch7-7R-nko"/>
                                         <menuItem title="Start Bunny HUD" id="lTa-gf-Qso">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
@@ -394,88 +368,6 @@
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="toggleBH:" target="Voe-Tx-rLC" id="JYB-PA-S2z"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem isSeparatorItem="YES" id="YMN-kQ-aNI"/>
-                                        <menuItem title="Start Anamnesis" id="yWN-Fm-lto">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="startAnamnesis:" target="Voe-Tx-rLC" id="8FE-y3-FrX"/>
-                                            </connections>
-                                        </menuItem>
-                                    </items>
-                                </menu>
-                            </menuItem>
-                            <menuItem title="Install" id="i3J-kg-a1T">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Install" id="w9C-j3-R4E">
-                                    <items>
-                                        <menuItem title="Microsoft Visual C++ Redistributables" id="jJ3-H2-GqS">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <menu key="submenu" title="Microsoft Visual C++ Redistributables" id="a5q-2b-gk9">
-                                                <items>
-                                                    <menuItem title="x86" id="XO2-yP-LkT">
-                                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                                        <connections>
-                                                            <action selector="installMSVC32:" target="Voe-Tx-rLC" id="h34-nR-taM"/>
-                                                        </connections>
-                                                    </menuItem>
-                                                    <menuItem title="x64" id="SYN-Tz-ix0">
-                                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                                        <connections>
-                                                            <action selector="installMSVC64:" target="Voe-Tx-rLC" id="CsJ-4j-kud"/>
-                                                        </connections>
-                                                    </menuItem>
-                                                </items>
-                                            </menu>
-                                        </menuItem>
-                                        <menuItem title="Microsoft .NET Framework" id="8SF-gz-CjR">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <menu key="submenu" title="Microsoft .NET Framework" id="c0q-Kl-Wr3">
-                                                <items>
-                                                    <menuItem title="4.0" id="K16-kg-NW2">
-                                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                                        <connections>
-                                                            <action selector="installDotNet40:" target="Voe-Tx-rLC" id="KbS-aj-KP9"/>
-                                                        </connections>
-                                                    </menuItem>
-                                                    <menuItem title="4.6.2" id="ThK-Bg-ZyU">
-                                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                                        <connections>
-                                                            <action selector="installDotNet462:" target="Voe-Tx-rLC" id="k1W-IF-ei6"/>
-                                                        </connections>
-                                                    </menuItem>
-                                                    <menuItem title="4.7.2" id="h6P-A1-h9S">
-                                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                                        <connections>
-                                                            <action selector="installDotNet472:" target="Voe-Tx-rLC" id="Shn-Wj-JD8"/>
-                                                        </connections>
-                                                    </menuItem>
-                                                    <menuItem title="4.8" id="FaC-aE-BV7">
-                                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                                        <connections>
-                                                            <action selector="installDotNet48:" target="Voe-Tx-rLC" id="KQA-LM-e9c"/>
-                                                        </connections>
-                                                    </menuItem>
-                                                    <menuItem title="4.8.1" id="FaC-aE-BV8">
-                                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                                        <connections>
-                                                            <action selector="installDotNet481:" target="Voe-Tx-rLC" id="KQA-LM-e9d"/>
-                                                        </connections>
-                                                    </menuItem>
-                                                </items>
-                                            </menu>
-                                        </menuItem>
-                                        <menuItem title="Microsoft .NET 6.0" id="c2g-j3-NbA">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="installDotNet60:" target="Voe-Tx-rLC" id="XvV-zv-hkq"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Microsoft .NET 7.0" id="rPG-F8-HwW">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="installDotNet70:" target="Voe-Tx-rLC" id="TLJ-B3-i1w"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -526,9 +418,7 @@
                 </application>
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="XIV_on_Mac" customModuleProvider="target">
                     <connections>
-                        <outlet property="actAutoLaunch" destination="6JE-Fn-nLi" id="NMe-oE-26T"/>
                         <outlet property="bhAutoLaunch" destination="1Do-e8-DyE" id="Sif-eR-Xui"/>
-                        <outlet property="iinactAutoLaunch" destination="jii-Yc-y26" id="Ley-Ku-VPT"/>
                         <outlet property="sparkle" destination="yc9-Mt-LbV" id="5O3-N6-awX"/>
                     </connections>
                 </customObject>
@@ -1252,7 +1142,7 @@ Gw
                                         </connections>
                                     </textField>
                                     <button wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fhv-Eb-PmW">
-                                        <rect key="frame" x="679" y="202.5" width="139" height="19"/>
+                                        <rect key="frame" x="679" y="202" width="139" height="19"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="check" title="Auto-Login" bezelStyle="regularSquare" imagePosition="left" controlSize="large" inset="2" id="J8n-OX-VtC">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1263,7 +1153,7 @@ Gw
                                         </connections>
                                     </button>
                                     <button wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xhX-md-4MR">
-                                        <rect key="frame" x="819" y="202.5" width="127" height="19"/>
+                                        <rect key="frame" x="819" y="202" width="127" height="19"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="check" title="Auto-OTP" bezelStyle="regularSquare" imagePosition="left" controlSize="large" inset="2" id="hjS-RC-X85">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1434,7 +1324,6 @@ Gw
                                 <viewController key="viewController" id="78I-9D-tLS">
                                     <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dHG-Nt-Pvm">
                                         <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="push" title="Login" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="803-uu-sDq">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" usesAppearanceFont="YES"/>
@@ -1450,62 +1339,16 @@ Gw
                                 <touchBar key="popoverTouchBar" id="tLk-S8-Elh">
                                     <touchBarItems>
                                         <touchBarSpacerItem identifier="NSTouchBarItemIdentifierFlexibleSpace" id="TzQ-T5-dhA"/>
-                                        <touchBarItem id="3PU-BY-9B4">
-                                            <viewController key="viewController" id="Yri-RQ-H6W">
-                                                <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mPL-Yr-tVh">
-                                                    <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <buttonCell key="cell" type="push" title="ACT" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="JKW-MG-0U8">
-                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                        <font key="font" usesAppearanceFont="YES"/>
-                                                    </buttonCell>
-                                                    <connections>
-                                                        <action selector="tapACT:" target="sya-zo-KBW" id="GXf-gl-bb6"/>
-                                                    </connections>
-                                                </button>
-                                            </viewController>
-                                        </touchBarItem>
-                                        <touchBarItem id="1vT-Z2-zOs">
-                                            <viewController key="viewController" id="L31-0S-O7I">
-                                                <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="v9A-GB-eZC">
-                                                    <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <buttonCell key="cell" type="push" title="INNACT" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="EDf-k2-DjN">
-                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                        <font key="font" usesAppearanceFont="YES"/>
-                                                    </buttonCell>
-                                                    <connections>
-                                                        <action selector="tapIINACT:" target="sya-zo-KBW" id="gLs-SF-CRA"/>
-                                                    </connections>
-                                                </button>
-                                            </viewController>
-                                        </touchBarItem>
                                         <touchBarItem id="8vu-wv-fLu">
                                             <viewController key="viewController" id="qB2-Zf-0cd">
                                                 <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="r9W-Rx-9rf">
                                                     <rect key="frame" x="0.0" y="0.0" width="90" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="push" title="Bunny HUD" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0Nw-cb-lDZ">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                         <font key="font" usesAppearanceFont="YES"/>
                                                     </buttonCell>
                                                     <connections>
                                                         <action selector="tapBunnyHUD:" target="sya-zo-KBW" id="HzO-oz-4ta"/>
-                                                    </connections>
-                                                </button>
-                                            </viewController>
-                                        </touchBarItem>
-                                        <touchBarItem id="pYx-3c-r4E">
-                                            <viewController key="viewController" id="YQz-I1-YCw">
-                                                <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0F0-OZ-pce">
-                                                    <rect key="frame" x="0.0" y="0.0" width="90" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <buttonCell key="cell" type="push" title="Anamnesis" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="eFL-CT-TsU">
-                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                        <font key="font" usesAppearanceFont="YES"/>
-                                                    </buttonCell>
-                                                    <connections>
-                                                        <action selector="tapAnamnesis:" target="sya-zo-KBW" id="WUT-Ic-xYP"/>
                                                     </connections>
                                                 </button>
                                             </viewController>
@@ -1518,7 +1361,6 @@ Gw
                                 <viewController key="viewController" id="HIt-iC-UO7">
                                     <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="msb-e1-O5a">
                                         <rect key="frame" x="0.0" y="0.0" width="144" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="push" title="Troubleshooting" bezelStyle="rounded" image="gear" catalog="system" imagePosition="leading" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="d7x-jG-QDv">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" usesAppearanceFont="YES"/>

@@ -322,20 +322,8 @@ class LaunchController: NSViewController {
         appDelegate.openFirstAid(self)
     }
     
-    @IBAction func tapACT(_ sender: Any) {
-        ACT.launch()
-    }
-    
-    @IBAction func tapIINACT(_ sender: Any) {
-        IINACT.launch()
-    }
-    
     @IBAction func tapBunnyHUD(_ sender: Any) {
         BunnyHUD.launch()
-    }
-    
-    @IBAction func tapAnamnesis(_ sender: Any) {
-        Anamnesis.launch()
     }
 }
 

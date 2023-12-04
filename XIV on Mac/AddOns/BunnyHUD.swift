@@ -21,6 +21,12 @@ struct BunnyHUD {
         }
     }
 
+    static func launchNotify() {
+        if autoLaunch {
+            launch()
+        }
+    }
+
     static func launch() {
         let bunnyPath = URL(fileURLWithPath: "/Applications/BunnyHUD.app").path
         if FileManager.default.fileExists(atPath: bunnyPath) {

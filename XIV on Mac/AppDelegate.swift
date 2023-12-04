@@ -19,8 +19,6 @@ import UserNotifications
     private var benchmarkWindow: NSWindow?
     private var screenCapture : Any? = nil // Class is only available on 13.0+, so we have to hide its declaration type.
     @IBOutlet private var sparkle: SPUStandardUpdaterController!
-    @IBOutlet private var actAutoLaunch: NSMenuItem!
-    @IBOutlet private var iinactAutoLaunch: NSMenuItem!
     @IBOutlet private var bhAutoLaunch: NSMenuItem!
     
     func applicationWillFinishLaunching(_ notification: Notification) {
@@ -38,8 +36,6 @@ import UserNotifications
         let storyboard = NSStoryboard(name: "Main", bundle: nil)
         launchWinController = storyboard.instantiateController(withIdentifier: "LaunchWindow") as? NSWindowController
         launchWinController?.showWindow(self)
-        actAutoLaunch.state = ACT.autoLaunch ? .on : .off
-        iinactAutoLaunch.state = IINACT.autoLaunch ? .on : .off
         bhAutoLaunch.state = BunnyHUD.autoLaunch ? .on : .off
         checkForRosetta()
         checkGPUSupported()
@@ -131,28 +127,6 @@ import UserNotifications
         NSWorkspace.shared.open(Util.applicationSupport)
     }
     
-    @IBAction func startAnamnesis(_ sender: Any) {
-        Anamnesis.launch()
-    }
-    
-    @IBAction func startACT(_ sender: Any) {
-        ACT.launch()
-    }
-    
-    @IBAction func toggleACT(_ sender: Any) {
-        ACT.autoLaunch = !ACT.autoLaunch
-        actAutoLaunch.state = ACT.autoLaunch ? .on : .off
-    }
-    
-    @IBAction func startIINACT(_ sender: Any) {
-        IINACT.launch()
-    }
-    
-    @IBAction func toggleIINACT(_ sender: Any) {
-        IINACT.autoLaunch = !IINACT.autoLaunch
-        iinactAutoLaunch.state = IINACT.autoLaunch ? .on : .off
-    }
-    
     @IBAction func startBH(_ sender: Any) {
         BunnyHUD.launch()
     }
@@ -160,42 +134,6 @@ import UserNotifications
     @IBAction func toggleBH(_ sender: Any) {
         BunnyHUD.autoLaunch = !BunnyHUD.autoLaunch
         bhAutoLaunch.state = BunnyHUD.autoLaunch ? .on : .off
-    }
-    
-    @IBAction func installMSVC32(_ sender: Any) {
-        Dotnet.installMSVC32()
-    }
-    
-    @IBAction func installMSVC64(_ sender: Any) {
-        Dotnet.installMSVC64()
-    }
-    
-    @IBAction func installDotNet40(_ sender: Any) {
-        Dotnet.installDotNet40()
-    }
-    
-    @IBAction func installDotNet462(_ sender: Any) {
-        Dotnet.installDotNet462()
-    }
-    
-    @IBAction func installDotNet472(_ sender: Any) {
-        Dotnet.installDotNet472()
-    }
-    
-    @IBAction func installDotNet48(_ sender: Any) {
-        Dotnet.installDotNet48()
-    }
-    
-    @IBAction func installDotNet481(_ sender: Any) {
-        Dotnet.installDotNet481()
-    }
-    
-    @IBAction func installDotNet60(_ sender: Any) {
-        Dotnet.installDotNet607()
-    }
-    
-    @IBAction func installDotNet70(_ sender: Any) {
-        Dotnet.installDotNet702()
     }
     
     @IBAction func regedit(_ sender: Any) {
