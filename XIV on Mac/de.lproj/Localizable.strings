@@ -201,7 +201,6 @@ Zusätzlich kann die Berechtigung für \"Mitteilungen\" aktiviert werden um beim
 "SETTINGS_FPS_LIMIT_PLACEHOLDER" = "0";
 "SETTINGS_FPS_LIMIT_UNITS" = "fps";
 "SETTINGS_GRAPHICS_ASYNC" = "Async";
-"SETTINGS_GRAPHICS_FAST_MVK" = "Experimentelles MoltenVK";
 "SETTINGS_GRAPHICS_HUD" = "HUD";
 "SETTINGS_GRAPHICS_DXVK_HUD_HEADER" = "DXVK HUD Optionen";
 "SETTINGS_GRAPHICS_HUD_BLURB" = "HUD-Optionen sind Informationselemente, die während des Spiels in der oberen linken Ecke angezeigt werden und dir dabei helfen können festzustellen, wie sich die Einstellungen im Spiel auf Ihre Leistung auswirken. Sie sind vollkommen optional.";
