@@ -200,7 +200,6 @@
 "SETTINGS_FPS_LIMIT_PLACEHOLDER" = "0";
 "SETTINGS_FPS_LIMIT_UNITS" = "fps";
 "SETTINGS_GRAPHICS_ASYNC" = "非同期";
-"SETTINGS_GRAPHICS_FAST_MVK" = "Experimental MoltenVK";
 "SETTINGS_GRAPHICS_HUD" = "HUD";
 "SETTINGS_GRAPHICS_DXVK_HUD_HEADER" = "DXVK HUDオプション";
 "SETTINGS_GRAPHICS_HUD_BLURB" = "HUDオプションは、プレイ中に左上に表示される情報で、ゲーム内の設定がパフォーマンスにどのような影響を及ぼしているか判断するのに役立ちます。全ての項目は任意に設定可能です。";

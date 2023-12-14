@@ -63,6 +63,7 @@
 		507C600127CAA72000BA3CC2 /* PatchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507C600027CAA72000BA3CC2 /* PatchController.swift */; };
 		507CFBF62781C780007ADEC9 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 507CFBF52781C780007ADEC9 /* ZIPFoundation */; };
 		507D8F2127766F52000F0CB0 /* dxvk in Resources */ = {isa = PBXBuildFile; fileRef = 507D8F2027766F52000F0CB0 /* dxvk */; };
+		508C678F29431BFF0046AA38 /* snowflake_x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 508C678E29431BFF0046AA38 /* snowflake_x2.png */; };
 		509D0E2D2960536A0055367A /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 509D0E2C2960536A0055367A /* KeychainAccess */; };
 		509D0E302960540C0055367A /* AppMover in Frameworks */ = {isa = PBXBuildFile; productRef = 509D0E2F2960540C0055367A /* AppMover */; };
 		509FE19A27E3654E008D56D6 /* FFXIVEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509FE19927E3654E008D56D6 /* FFXIVEnums.swift */; };
@@ -159,6 +160,7 @@
 		5077A32B27C12A9100D4F1B8 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		507C600027CAA72000BA3CC2 /* PatchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchController.swift; sourceTree = "<group>"; };
 		507D8F2027766F52000F0CB0 /* dxvk */ = {isa = PBXFileReference; lastKnownFileType = folder; path = dxvk; sourceTree = "<group>"; };
+		508C678E29431BFF0046AA38 /* snowflake_x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snowflake_x2.png; sourceTree = "<group>"; };
 		508C6790294324BC0046AA38 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		508C6791294324BC0046AA38 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		509FE19927E3654E008D56D6 /* FFXIVEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFXIVEnums.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 		07A349882805689200A9D7D0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				508C678E29431BFF0046AA38 /* snowflake_x2.png */,
 				07A349892805689200A9D7D0 /* CfgCheckGood.tiff */,
 				07A3498F28056C7600A9D7D0 /* CfgCheckProblems.tiff */,
 				07A3498A2805689200A9D7D0 /* CfgCheckProbFailed.tiff */,
@@ -468,6 +471,7 @@
 				07A3499028056C7600A9D7D0 /* CfgCheckProblems.tiff in Resources */,
 				5046F7EF27E74AC9006C34E1 /* discord_bridge.exe in Resources */,
 				07A3498C2805689200A9D7D0 /* CfgCheckProbFailed.tiff in Resources */,
+				508C678F29431BFF0046AA38 /* snowflake_x2.png in Resources */,
 				073649AD281E35C700DA41F7 /* PrefsGraphics.tiff in Resources */,
 				07BF3AFB2806507800794155 /* CfgCheckAdvFixed.tiff in Resources */,
 				50692C8B27B3E48B00945593 /* Credits.html in Resources */,
@@ -765,7 +769,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 143;
+				CURRENT_PROJECT_VERSION = 144;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = TQJJTJ6364;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -785,7 +789,7 @@
 					"$(PROJECT_DIR)/XIV\\ on\\ Mac/XIVLauncher.NativeAOT",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 4.12.5;
+				MARKETING_VERSION = 4.13;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = "dezent.XIV-on-Mac";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -810,7 +814,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 143;
+				CURRENT_PROJECT_VERSION = 144;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = TQJJTJ6364;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -830,7 +834,7 @@
 					"$(PROJECT_DIR)/XIV\\ on\\ Mac/XIVLauncher.NativeAOT",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 4.12.5;
+				MARKETING_VERSION = 4.13;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = "dezent.XIV-on-Mac";
 				PRODUCT_NAME = "$(TARGET_NAME)";
