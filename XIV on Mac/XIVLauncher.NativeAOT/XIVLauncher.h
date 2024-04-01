@@ -4,7 +4,7 @@ void initXL(const char* appName, const char *storagePath, bool verboseLogging, c
 
 const char *generateAcceptLanguage(int seed);
 
-void loadConfig(const char *acceptLanguage, const char *gamePath, const char *gameConfigPath, unsigned char clientLanguage, bool isDx11, bool isEncryptArgs, bool isFt, unsigned char license, const char *patchPath, unsigned char patchAcquisitionMethod, long patchSpeedLimit, unsigned char dalamudLoadMethod, int dalamudLoadDelay, bool isAutoLogin, bool isHiDpi);
+void loadConfig(const char *acceptLanguage, const char *gamePath, const char *gameConfigPath, unsigned char clientLanguage, bool isEncryptArgs, bool isFt, unsigned char license, const char *patchPath, unsigned char patchAcquisitionMethod, long patchSpeedLimit, unsigned char dalamudLoadMethod, int dalamudLoadDelay, bool isAutoLogin, bool isHiDpi);
 
 void fakeLogin(void);
 

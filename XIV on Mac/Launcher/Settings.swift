@@ -17,7 +17,7 @@ public enum Settings {
         let patchDirCString = FileManager.default.fileSystemRepresentation(withPath: Patch.dir.path)
         let loadMethod: Dalamud.LoadMethod = dalamudEnabled ? (dalamudEntryPoint ? .entryPoint : .dllInject) : .ACLonly
         let delayMs = dalamudEntryPoint ? 0 : Int32(injectionDelay * 1000)
-        loadConfig(acceptLanguage, gamePathCString, gameConfigPathCString, language.rawValue, true, encryptedArguments, freeTrial, platform.rawValue, patchDirCString, 0, 0, loadMethod.rawValue, delayMs, autoLogin, Wine.retina)
+        loadConfig(acceptLanguage, gamePathCString, gameConfigPathCString, language.rawValue, encryptedArguments, freeTrial, platform.rawValue, patchDirCString, 0, 0, loadMethod.rawValue, delayMs, autoLogin, Wine.retina)
     }
     
     private static let platformKey = "Platform"
