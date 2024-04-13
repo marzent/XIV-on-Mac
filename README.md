@@ -4,11 +4,12 @@ Wine Wrapper, Setup tool and alternative launcher for FFXIV on MacOS.</p>
 
 ---
 
-<b>The "XIV on Mac" application is a superior way of playing FFXIV on macOS.<br> It provides improved performance and more features vs Square Enix's native MacOS launcher and Codeweavers Crossover. <br><br><b>This project is 100% open source.</b>
+<b>The "XIV on Mac" application is a superior way of playing FFXIV on Apple Silicon Macs.<br> It provides improved performance and more features vs Square Enix's native MacOS launcher. <br><br><b>This project is 100% open source.</b>
 
 ---
 <h3>Features:</h3>
 
+- Support for Apple Silicon Macs (Intel Macs are NOT SUPPORTED!)
 - User friendly setup
 - Fast game patching and game repair
 - Mod support: Dalamud, IINACT and more!
