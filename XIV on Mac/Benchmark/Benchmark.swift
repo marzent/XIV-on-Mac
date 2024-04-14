@@ -181,7 +181,8 @@ struct Benchmark {
         guard let folder = folder else {
             return false
         }
-        guard fm.fileExists(atPath: folder.appendingPathComponent("ffxiv-dawntrail-bench.exe").path) else {
+        guard fm.fileExists(atPath: folder.appendingPathComponent("ffxiv-endwalker-bench.exe").path) ||
+              fm.fileExists(atPath: folder.appendingPathComponent("ffxiv-dawntrail-bench.exe").path) else {
             return false
         }
         guard fm.fileExists(atPath: folder.appendingPathComponent("game/ffxiv_dx11.exe").path) else {
