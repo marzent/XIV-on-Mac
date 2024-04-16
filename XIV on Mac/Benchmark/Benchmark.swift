@@ -327,7 +327,7 @@ struct Benchmark {
             Log.error("Benchmark: Could not save new settings: \(writeError.localizedDescription)")
         }
 		var finalArgs = args
-		finalArgs.append("SYS.ScreenMode\(screenMode)")
+		finalArgs.append("SYS.ScreenMode=\(screenMode)")
 		finalArgs.append("SYS.ScreenWidth=\(screenWidth)")
 		finalArgs.append("SYS.ScreenHeight=\(screenHeight)")
 		if options.mode == .characterCreator {
