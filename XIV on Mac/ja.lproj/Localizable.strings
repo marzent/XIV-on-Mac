@@ -12,7 +12,7 @@
 "BUTTON_NO" = "いいえ";
 "BUTTON_OK" = "OK";
 "BUTTON_CANCEL" = "キャンセル";
-"BUTTON_CLOSE" = "閉じる";
+"BUTTON_CLOSE" = "Close";
 
 "LOGIN_ERROR" = "ログインエラー";
 "START_ERROR" = "FF14の起動に失敗";
@@ -256,6 +256,9 @@
 
 // Benchmark Window
 "BENCHMARK_WINDOW_TITLE" = "Final Fantasy XIVベンチマーク";
+"BENCHMARK_MODE_LABEL" = "モード";
+"BENCHMARK_MODE_BENCHMARK_LABEL" = "ベンチマーク";
+"BENCHMARK_MODE_CREATOR_LABEL" = "キャラクターコンフィグ";
 "BENCHMARK_FOLDER_LABEL" = "ベンチマークフォルダ:";
 "BENCHMARK_FOLDER_SELECT_BUTTON" = "選択…";
 "BENCHMARK_FOLDER_NOT_SET" = "未設定…";
@@ -265,3 +268,37 @@
 "BENCHMARK_TYPE_QHD" = "ウィンドウモード: 2560 × 1440[WQHD]";
 "BENCHMARK_TYPE_CUSTOM" = "仮想フルスクリーン";
 "BENCHMARK_START_BUTTON" = "ベンチマークを実行";
+
+"BENCHMARK_CHARACTER_APPEARANCE_FORMAT" = "スロット %d – %@";
+"BENCHMARK_CHARACTER_APPEARANCE" = "キャラクターの容姿";
+"BENCHMARK_DEFAULT_APPEARANCE" = "デフォルト";
+"BENCHMARK_CHARACTER_UNNAMED" = "名称未設定";
+"BENCHMARK_CHARACTER_COSTUME" = "装備";
+
+"BENCHMARK_COSTUME_0" = "ジョブ装備";
+"BENCHMARK_COSTUME_1" = "種族装備";
+"BENCHMARK_COSTUME_2" = "バハムート装備";
+"BENCHMARK_COSTUME_3" = "ガーロンド装備";
+"BENCHMARK_COSTUME_4" = "アレキサンダー装備";
+"BENCHMARK_COSTUME_5" = "ドラゴン装備";
+"BENCHMARK_COSTUME_6" = "ロミンサンエリート装備";
+"BENCHMARK_COSTUME_7" = "グリダニアンエリート装備";
+"BENCHMARK_COSTUME_8" = "ウルダハンエリート装備";
+"BENCHMARK_COSTUME_9" = "源氏装備";
+"BENCHMARK_COSTUME_10" = "オメガ装備";
+"BENCHMARK_COSTUME_11" = "ヘルハウンド装備";
+"BENCHMARK_COSTUME_12" = "ドワーフ装備";
+"BENCHMARK_COSTUME_13" = "エデン装備";
+"BENCHMARK_COSTUME_14" = "パンデモニウム装備";
+"BENCHMARK_COSTUME_15" = "ウォーリアー・オブ・ライト装備";
+"BENCHMARK_COSTUME_16" = "ワイルドローズ装備";
+"BENCHMARK_COSTUME_17" = "ムーンワード装備";
+"BENCHMARK_COSTUME_18" = "ストライフ装備";
+"BENCHMARK_COSTUME_19" = "レオンハート装備";
+"BENCHMARK_COSTUME_20" = "タンタラス装備";
+"BENCHMARK_COSTUME_21" = "エイブス／ハイサマナー装備";
+"BENCHMARK_COSTUME_22" = "スノウ／ライトニング装備";
+"BENCHMARK_COSTUME_23" = "シャーレアンプロディジー装備";
+"BENCHMARK_COSTUME_24" = "ルシス王子装備";
+"BENCHMARK_COSTUME_25" = "メディアン装備";
+"BENCHMARK_COSTUME_26" = "ポーキー装備";
