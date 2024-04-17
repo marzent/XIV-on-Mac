@@ -12,7 +12,7 @@
 "BUTTON_NO" = "いいえ";
 "BUTTON_OK" = "OK";
 "BUTTON_CANCEL" = "キャンセル";
-"BUTTON_CLOSE" = "Close";
+"BUTTON_CLOSE" = "閉じる";
 
 "LOGIN_ERROR" = "ログインエラー";
 "START_ERROR" = "FF14の起動に失敗";
