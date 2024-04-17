@@ -6,11 +6,73 @@
 //
 
 import Cocoa
+import SwiftUI
+
+public enum BenchmarkMode {
+	case benchmark
+	case characterCreator
+}
 
 public enum BenchmarkType: UInt8 {
     case hd = 0
     case wqhd = 1
     case custom = 2
+}
+
+// Some options/features have only been tested against
+// specific benchmarks.
+public enum BenchmarkVersion {
+	case unknown
+	case endwalker
+	case dawntrail
+}
+
+public enum BenchmarkCostumes: UInt8, Equatable, CaseIterable {
+	case jobGear = 0 // In Dawntrail, lvl 100 Viper
+	case racialGear = 1
+	case dreadwyrm = 2
+	case ironworks = 3
+	case alexandrian = 4
+	case fallingDragon = 5
+	case stormElite = 6
+	case serpentElite = 7
+	case flameElite = 8
+	case genji = 9
+	case omega = 10
+	case hellhound = 11
+	case dwarven = 12
+	case edenmorn = 13
+	case anabaseios = 14
+	case legacy = 15
+	case wildRose = 16
+	case moonward = 17
+	case strife = 18
+	case leonheart = 19
+	case tantalus = 20
+	case highSummoner = 21
+	case lightning = 22
+	case sharlayanProdigy = 23
+	case lucianPrince = 24
+	case metian = 25
+	case swine = 26
+	
+	var localizedName: LocalizedStringKey { LocalizedStringKey(String(format:"BENCHMARK_COSTUME_%d",rawValue)) }
+}
+
+struct CharacterDataSlot : Identifiable
+{
+	var id : Int
+	var name : String
+	var path : URL
+}
+
+struct BenchmarkOptions
+{
+	var mode : BenchmarkMode = .benchmark
+	var type : BenchmarkType = .hd
+	var appearanceData : URL? = nil // A URL to a character appears .dat file, if any. Implies it needs to be copied in!
+	var appearanceSlot : Int? = nil 
+	var costume : BenchmarkCostumes = .jobGear
 }
 
 struct Benchmark {
@@ -20,9 +82,111 @@ struct Benchmark {
     @available(*, unavailable) private init() {}
 
     // MOST but not all of these arguments are only honored at the command line, and ignored in the INI file.
-    // Note that SYS.ScreenMode is required but omitted here; we dynically fill that in before use below.
-    private static let args = "SYS.Language=1 SYS.Fps=0 SYS.WaterWet_DX11=1 SYS.OcclusionCulling_DX11=0 SYS.LodType_DX11=0 SYS.ReflectionType_DX11=3 SYS.AntiAliasing_DX11=1 SYS.TranslucentQuality_DX11=1 SYS.GrassQuality_DX11=3 SYS.ShadowLOD_DX11=0 SYS.ShadowVisibilityTypeSelf_DX11=1 SYS.ShadowVisibilityTypeOther_DX11=1 SYS.ShadowTextureSizeType_DX11=2 SYS.ShadowCascadeCountType_DX11=2 SYS.ShadowSoftShadowType_DX11=1 SYS.PhysicsTypeSelf_DX11=2 SYS.PhysicsTypeOther_DX11=2 SYS.TextureFilterQuality_DX11=2 SYS.TextureAnisotropicQuality_DX11=2 SYS.Vignetting_DX11=1 SYS.RadialBlur_DX11=1 SYS.SSAO_DX11=2 SYS.Glare_DX11=2 SYS.DepthOfField_DX11=1 SYS.ParallaxOcclusion_DX11=1 SYS.Tessellation_DX11=0 SYS.GlareRepresentation_DX11=1 SYS.DistortionWater_DX11=2"
+    // Note that SYS.ScreenMode is required but omitted here; we dynamically fill that in before use below.
+	private static let args : [String] = ["SYS.Language=1",
+										  "SYS.Fps=0",
+										  "SYS.WaterWet_DX11=1",
+										  "SYS.OcclusionCulling_DX11=0",
+										  "SYS.LodType_DX11=0",
+										  "SYS.ReflectionType_DX11=3",
+										  "SYS.AntiAliasing_DX11=1",
+										  "SYS.TranslucentQuality_DX11=1",
+										  "SYS.GrassQuality_DX11=3",
+										  "SYS.ShadowLOD_DX11=0",
+										  "SYS.ShadowVisibilityTypeSelf_DX11=1",
+										  "SYS.ShadowVisibilityTypeOther_DX11=1",
+										  "SYS.ShadowTextureSizeType_DX11=2",
+										  "SYS.ShadowCascadeCountType_DX11=2",
+										  "SYS.ShadowSoftShadowType_DX11=1",
+										  "SYS.PhysicsTypeSelf_DX11=2",
+										  "SYS.PhysicsTypeOther_DX11=2",
+										  "SYS.TextureFilterQuality_DX11=2",
+										  "SYS.TextureAnisotropicQuality_DX11=2",
+										  "SYS.Vignetting_DX11=1",
+										  "SYS.RadialBlur_DX11=1",
+										  "SYS.SSAO_DX11=2",
+										  "SYS.Glare_DX11=2",
+										  "SYS.DepthOfField_DX11=1",
+										  "SYS.ParallaxOcclusion_DX11=1",
+										  "SYS.Tessellation_DX11=0",
+										  "SYS.GlareRepresentation_DX11=1",
+										  "SYS.DistortionWater_DX11=2"]
+	static let seDemoLocationURL = Util.userHome.appendingPathComponent("/Documents/My Games/FINAL FANTASY XIV - A Realm Reborn (Benchmark)/", isDirectory: true)
 
+	public static func findAvailableDemoCharacters() -> [CharacterDataSlot]
+	{
+		return findAvailableCharacters(location: seDemoLocationURL, pattern: "FFXIV_CHARA_BENCH")
+	}
+
+	public static func findAvailableRetailCharacters() -> [CharacterDataSlot]
+	{
+		return findAvailableCharacters(location: Settings.gameConfigPath, pattern: "FFXIV_CHARA_")
+	}
+
+	// Looks for character appearances exported from the game and return the path to any we find
+	public static func findAvailableCharacters(location:URL, pattern: String) -> [CharacterDataSlot]
+	{
+		var ReturnMe: [CharacterDataSlot] = [CharacterDataSlot]()
+		
+		let enumerator = FileManager.default.enumerator(at: location,
+														includingPropertiesForKeys: nil,
+														options: [.skipsHiddenFiles,.skipsSubdirectoryDescendants], errorHandler:
+															{ (url, error) -> Bool in
+																	Log.error("Bench: directoryEnumerator error at \(url): \(error)")
+																return true
+															})!
+		for case let oneFileURL as URL in enumerator {
+			if oneFileURL.pathExtension == "dat" && oneFileURL.lastPathComponent.starts(with: pattern) {
+				// Found what looks like a character appearance data file!
+				// The slot number is just the end part of the filename
+				if let slot : Int = Int(oneFileURL.lastPathComponent.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()) {
+					if let fileHandle: FileHandle = try? FileHandle(forReadingFrom: oneFileURL) {
+						try? fileHandle.seek(toOffset: 0x30) // User name starts 48 bytes in
+						if let characterData: Data = try? fileHandle.readToEnd() // Files are only 212 bytes. I suppose somone could dupe us with a multi-gb monstrosity but *shrug*
+						{
+							var characterName: String = ""
+							for byteNum in 0...characterData.count {
+								let oneByte : UInt8 = characterData[byteNum]
+								if oneByte == 0 { break }
+								characterName.append(String(UnicodeScalar(oneByte)))
+							}
+							// Names in these files are optional so it might be blank.
+							if (characterName.count == 0) { characterName = NSLocalizedString("BENCHMARK_CHARACTER_UNNAMED",comment: "" )}
+							let characterLabel = String.localizedStringWithFormat(NSLocalizedString("BENCHMARK_CHARACTER_APPEARANCE_FORMAT",comment: "" ),
+																				  slot,
+																				  characterName)
+							ReturnMe.append(CharacterDataSlot(id: slot, name: characterLabel, path: oneFileURL))
+						}
+					}
+				}
+			}
+		}
+		
+		return ReturnMe
+	}
+	
+	public static func benchmarkVersion() -> BenchmarkVersion {
+		if let benchmarkPath : String = UserDefaults.standard.string(forKey: benchmarkFolderPref) {
+			let benchmarkFolder : URL = URL(fileURLWithPath: benchmarkPath)
+			do {
+				if try benchmarkFolder.appendingPathComponent("ffxiv-dawntrail-bench.exe", isDirectory: false).checkResourceIsReachable() {
+					return .dawntrail
+				}
+			}
+			catch {
+			}
+			do {
+				if try benchmarkFolder.appendingPathComponent("ffxiv-endwalker-bench.exe", isDirectory: false).checkResourceIsReachable() {
+					return .endwalker
+				}
+			}
+			catch {
+			}
+			
+		}
+		return .unknown
+	}
+	
     public static func chooseFolder() {
         let openPanel = NSOpenPanel()
         openPanel.message = NSLocalizedString("SELECT_BENCHMARK_PATH_PANEL_MESSAGE", comment: "")
@@ -88,7 +252,7 @@ struct Benchmark {
         return iniFile
     }
     
-    public static func launchFrom(folder: URL, type : BenchmarkType, setDefaults : Bool) {
+	public static func launchFrom(folder: URL, options : BenchmarkOptions, setDefaults : Bool) async {
         var shouldSetDefaults : Bool = setDefaults
         Log.information("Benchmark started on folder: \(folder.path)")
         let benchmarkExe = folder.appendingPathComponent("game/ffxiv_dx11.exe").path
@@ -121,7 +285,7 @@ struct Benchmark {
         if  let evnSection : INIFileSection = iniFile.sections["EVN"]
         {
             // Set the screen mode selected
-            switch type
+			switch options.type
             {
             case .hd:
                 break
@@ -143,6 +307,15 @@ struct Benchmark {
             evnSection.setValue(key: "SCREENHEIGHT_DX11", value:screenHeight)
         }
         
+		if options.mode == .benchmark {
+			if  let castingSection : INIFileSection = iniFile.sections["CASTING"] {
+				if let appearanceSlot = options.appearanceSlot {
+					castingSection.setValue(key: "CASTING_SAVEDATAINDEX", value: String(appearanceSlot))
+				}
+				castingSection.setValue(key: "CASTING_EQUIPMENT", value: String(options.costume.rawValue))
+			}
+		}
+		
         // Write out our modified INI file
         do
         {
@@ -153,9 +326,15 @@ struct Benchmark {
         {
             Log.error("Benchmark: Could not save new settings: \(writeError.localizedDescription)")
         }
-        
-        let finalArgs = "\(args) SYS.ScreenMode=\(screenMode)"
-        Wine.launch(command: "\"\(benchmarkExe)\" \(finalArgs)", blocking: true)
+		var finalArgs = args
+		finalArgs.append("SYS.ScreenMode=\(screenMode)")
+		finalArgs.append("SYS.ScreenWidth=\(screenWidth)")
+		finalArgs.append("SYS.ScreenHeight=\(screenHeight)")
+		if options.mode == .characterCreator {
+			finalArgs.append("Bench.CharacterCreation=1")
+		}
+
+		Wine.launch(command: "\"\(benchmarkExe)\" \(finalArgs.joined(separator: " "))", blocking: true)
         guard let iniContents = try? String(contentsOf: folder.appendingPathComponent("ffxivbenchmarklauncher.ini"), encoding: .utf8) else {
             Log.error("Could not read ffxivbenchmarklauncher.ini")
             return
@@ -168,12 +347,15 @@ struct Benchmark {
             Log.error("Could not parse parse benchmark fps")
             return
         }
-        let alert = NSAlert()
-        alert.messageText = NSLocalizedString("BENCHMARK_TITLE", comment: "")
-        alert.informativeText = String(format: NSLocalizedString("BENCHMARK_RESULT", comment: ""), String(iniContents[score]), String(iniContents[fps]))
-        alert.alertStyle = .informational
-        alert.addButton(withTitle: NSLocalizedString("BUTTON_OK", comment: ""))
-        alert.runModal()
+		await MainActor.run
+		{
+			let alert = NSAlert()
+			alert.messageText = NSLocalizedString("BENCHMARK_TITLE", comment: "")
+			alert.informativeText = String(format: NSLocalizedString("BENCHMARK_RESULT", comment: ""), String(iniContents[score]), String(iniContents[fps]))
+			alert.alertStyle = .informational
+			alert.addButton(withTitle: NSLocalizedString("BUTTON_OK", comment: ""))
+			alert.runModal()
+		}
     }
 
     private static func check(folder: URL?) -> Bool {
@@ -181,7 +363,8 @@ struct Benchmark {
         guard let folder = folder else {
             return false
         }
-        guard fm.fileExists(atPath: folder.appendingPathComponent("ffxiv-endwalker-bench.exe").path) else {
+        guard fm.fileExists(atPath: folder.appendingPathComponent("ffxiv-endwalker-bench.exe").path) ||
+              fm.fileExists(atPath: folder.appendingPathComponent("ffxiv-dawntrail-bench.exe").path) else {
             return false
         }
         guard fm.fileExists(atPath: folder.appendingPathComponent("game/ffxiv_dx11.exe").path) else {
