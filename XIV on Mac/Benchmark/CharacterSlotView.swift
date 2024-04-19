@@ -59,6 +59,6 @@ struct CharacterSlotView: View {
 }
 
 #Preview {
-	var characterData : CharacterDataSlot = CharacterDataSlot(id:1,dataURL: nil)
+	let characterData : CharacterDataSlot = CharacterDataSlot(id:1,dataURL: nil)
 	return CharacterSlotView(characterData: characterData)
 }
