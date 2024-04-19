@@ -59,13 +59,6 @@ public enum BenchmarkCostumes: UInt8, Equatable, CaseIterable {
 	var localizedName: LocalizedStringKey { LocalizedStringKey(String(format:"BENCHMARK_COSTUME_%d",rawValue)) }
 }
 
-struct CharacterDataSlot : Identifiable
-{
-	var id : Int
-	var name : String
-	var path : URL
-}
-
 struct BenchmarkOptions
 {
 	var mode : BenchmarkMode = .benchmark
@@ -122,6 +115,11 @@ struct Benchmark {
 	{
 		return findAvailableCharacters(location: Settings.gameConfigPath, pattern: "FFXIV_CHARA_")
 	}
+	
+	public static func findAvailableDiscordTeamCharacters() -> [CharacterDataSlot]
+	{
+		return findAvailableCharacters(location: Bundle.main.resourceURL!, pattern: "DISCORD_TEAM_")
+	}
 
 	// Looks for character appearances exported from the game and return the path to any we find
 	public static func findAvailableCharacters(location:URL, pattern: String) -> [CharacterDataSlot]
@@ -140,29 +138,33 @@ struct Benchmark {
 				// Found what looks like a character appearance data file!
 				// The slot number is just the end part of the filename
 				if let slot : Int = Int(oneFileURL.lastPathComponent.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()) {
-					if let fileHandle: FileHandle = try? FileHandle(forReadingFrom: oneFileURL) {
-						try? fileHandle.seek(toOffset: 0x30) // User name starts 48 bytes in
-						if let characterData: Data = try? fileHandle.readToEnd() // Files are only 212 bytes. I suppose somone could dupe us with a multi-gb monstrosity but *shrug*
-						{
-							var characterName: String = ""
-							for byteNum in 0...characterData.count {
-								let oneByte : UInt8 = characterData[byteNum]
-								if oneByte == 0 { break }
-								characterName.append(String(UnicodeScalar(oneByte)))
-							}
-							// Names in these files are optional so it might be blank.
-							if (characterName.count == 0) { characterName = NSLocalizedString("BENCHMARK_CHARACTER_UNNAMED",comment: "" )}
-							let characterLabel = String.localizedStringWithFormat(NSLocalizedString("BENCHMARK_CHARACTER_APPEARANCE_FORMAT",comment: "" ),
-																				  slot,
-																				  characterName)
-							ReturnMe.append(CharacterDataSlot(id: slot, name: characterLabel, path: oneFileURL))
-						}
-					}
+					ReturnMe.append(CharacterDataSlot(id: slot, dataURL: oneFileURL))
 				}
 			}
 		}
 		
 		return ReturnMe
+	}
+	
+	public static func importCharacterData(character : CharacterDataSlot)
+	{
+		guard let sourceURL : URL = character.path else { return }
+		// Need to find a free slot on the target, because the game only accepts a limited amount. (40 in Dawntrail)
+		let existingCharacters: [CharacterDataSlot] = Benchmark.findAvailableDemoCharacters().sorted(by: {$0.id < $1.id})
+		var slotNumber : Int = 1
+		for oneCharacter in existingCharacters
+		{
+			if oneCharacter.id != slotNumber
+			{
+				// Found a free slot or a gap
+				break;
+			}
+			slotNumber += 1
+		}
+		guard slotNumber <= 40 else {return}
+		
+		let destURL = seDemoLocationURL.appendingPathComponent(String(format:"FFXIV_CHARA_BENCH%02d.dat",slotNumber), isDirectory: false)
+		try? FileManager.default.copyItem(at: sourceURL, to: destURL)
 	}
 	
 	public static func benchmarkVersion() -> BenchmarkVersion {

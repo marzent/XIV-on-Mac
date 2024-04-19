@@ -11,6 +11,9 @@
 "BUTTON_OK" = "OK";
 "BUTTON_CANCEL" = "Cancel";
 "BUTTON_CLOSE" = "Close";
+"BUTTON_DONE" = "Done";
+"BUTTON_DELETE" = "Delete";
+"REVEAL_IN_FINDER" = "Reveal in Finder";
 
 "LOGIN_ERROR" = "Login Error";
 "START_ERROR" = "Error starting FFXIV";
@@ -272,6 +275,12 @@ Do not enable this on non-retina displays, unless for screenshot purposes.";
 "BENCHMARK_DEFAULT_APPEARANCE" = "Default";
 "BENCHMARK_CHARACTER_UNNAMED" = "Unnamed";
 "BENCHMARK_CHARACTER_COSTUME" = "Character Costume";
+"BENCHMARK_IMPORT_CHARACTER_BUTTON" = "Import Character Appearance…";
+"BENCHMARK_SLOT_DELETE_BUTTON" = "Delete Slot…";
+"BENCHMARK_SLOT_IMPORT_BUTTON" = "Import Slot";
+"BENCHMARK_CONFIRM_SLOT_DELETE" = "Really delete character appearance?";
+"BENCHMARK_CONFIRM_SLOT_DELETE_INFORMATIVE" = "This operation cannot be undone.";
+"BENCHMARK_DISCORD_BLURB" = "Thank you for petting the Chocobo! As a reward, here are the personal characters of several of your XIV on Mac Devs and Discord personalities for you to try out in the benchmark!";
 
 "BENCHMARK_COSTUME_0" = "Job Gear";
 "BENCHMARK_COSTUME_1" = "Racial Gear";
@@ -300,3 +309,38 @@ Do not enable this on non-retina displays, unless for screenshot purposes.";
 "BENCHMARK_COSTUME_24" = "Lucian Prince's Attire";
 "BENCHMARK_COSTUME_25" = "Metian Attire";
 "BENCHMARK_COSTUME_26" = "Swine Suit";
+"BENCHMARK_SLOTS_LIST_LABEL" = "Benchmark Characters";
+"AVAILABLE_SLOTS_LIST_LABEL" = "Importable Characters";
+"APPEARANCE_DATA_ERROR_LOADING" = "Empty Slot";
+
+"APPEARANCE_GENDER_0" = "Male";
+"APPEARANCE_GENDER_1" = "Female";
+"APPEARANCE_GENDER_255" = "Unknown";
+"APPEARANCE_RACE_0" = "Unknown";
+"APPEARANCE_RACE_1" = "Hyur";
+"APPEARANCE_RACE_2" = "Elezen";
+"APPEARANCE_RACE_3" = "Lalafel";
+"APPEARANCE_RACE_4" = "Miqo'te";
+"APPEARANCE_RACE_5" = "Roegadyn";
+"APPEARANCE_RACE_6" = "Au Ra";
+"APPEARANCE_RACE_7" = "Hrothgar";
+"APPEARANCE_RACE_8" = "Viera";
+"APPEARANCE_TRIBE_0" = "Unknown";
+"APPEARANCE_TRIBE_1" = "Midlander";
+"APPEARANCE_TRIBE_2" = "Highlander";
+"APPEARANCE_TRIBE_3" = "Wildwood";
+"APPEARANCE_TRIBE_4" = "Duskwight";
+"APPEARANCE_TRIBE_5" = "Plainsfolk";
+"APPEARANCE_TRIBE_6" = "Dunesfolk";
+"APPEARANCE_TRIBE_7" = "Seeker of the Sun";
+"APPEARANCE_TRIBE_8" = "Keeper of the Moon";
+"APPEARANCE_TRIBE_9" = "seaWolf";
+"APPEARANCE_TRIBE_10" = "hellsguard";
+"APPEARANCE_TRIBE_11" = "Raen";
+"APPEARANCE_TRIBE_12" = "Xaela";
+"APPEARANCE_TRIBE_13" = "Helions";
+"APPEARANCE_TRIBE_14" = "The Lost";
+"APPEARANCE_TRIBE_15" = "Rava";
+"APPEARANCE_TRIBE_16" = "Veena";
+
+

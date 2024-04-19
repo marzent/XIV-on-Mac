@@ -7,9 +7,21 @@
 
 import SwiftUI
 
+// Controls which type of sheet we're displaying. Only one currently, but this
+// provides a framework for how to add more.
+enum BenchmarkSheetType: String, Identifiable
+{
+	case copyCharacterData
+	
+	var id: String { rawValue }
+}
+
+
 struct BenchmarkView: View {
     @AppStorage(Benchmark.benchmarkFolderPref, store: .standard) var benchmarkFolder : String = ""
-    
+
+	@State var presentedSheet: BenchmarkSheetType?
+	
     @State var setDefaults : Bool = true
     @State var benchType : BenchmarkType = .hd
 	@State var benchMode : BenchmarkMode = .benchmark
@@ -60,10 +72,17 @@ struct BenchmarkView: View {
 								Text("BENCHMARK_DEFAULT_APPEARANCE").tag(nil as Int?)
 						ForEach(Benchmark.findAvailableDemoCharacters().sorted(by: {$0.id < $1.id}), content:
 											{ oneCharacter in
-												Text(oneCharacter.name).tag(oneCharacter.id as Int?)
+												Text(oneCharacter.longDisplayName).tag(oneCharacter.id as Int?)
 											})
 							}
-						
+					HStack
+					{
+						Spacer()
+						Button("BENCHMARK_IMPORT_CHARACTER_BUTTON")
+						{
+							presentedSheet = .copyCharacterData
+						}
+					}
 					Picker(selection: $chosenCostume, label: Text("BENCHMARK_CHARACTER_COSTUME").font(.headline)) {
 						ForEach(BenchmarkCostumes.allCases, id: \.self) { costume in
 							Text(costume.localizedName)
@@ -71,7 +90,6 @@ struct BenchmarkView: View {
 						}
 					}
 				}
-				Spacer()
 			}
 			HStack
 			{
@@ -99,6 +117,16 @@ struct BenchmarkView: View {
 
         }
         .padding()
+		.sheet(item: $presentedSheet, content:
+				{ sheet in
+			switch sheet
+			{
+			case .copyCharacterData:
+				CharacterDataImportView()
+					.frame(minWidth:700, minHeight: 600)
+			}
+		})
+
     }
 }
 

@@ -140,7 +140,7 @@ struct Util {
             // On Intel, we need to find an AMD GPU. Intel iGPUs are not supported, and neither is nVidia or other oddities (USB video).
             var deviceIterator = io_iterator_t()
             
-            if IOServiceGetMatchingServices(kIOMasterPortDefault, IOServiceMatching(kIOAcceleratorClassName), &deviceIterator) == kIOReturnSuccess {
+			if IOServiceGetMatchingServices(kIOMainPortDefault, IOServiceMatching(kIOAcceleratorClassName), &deviceIterator) == kIOReturnSuccess {
                 var entry: io_registry_entry_t = IOIteratorNext(deviceIterator)
                 while (entry != 0) && !foundSupportedGPU {
                     var properties: Unmanaged<CFMutableDictionary>?
