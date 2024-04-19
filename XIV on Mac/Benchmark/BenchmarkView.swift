@@ -27,10 +27,17 @@ struct BenchmarkView: View {
 	@State var benchMode : BenchmarkMode = .benchmark
 	@State var chosenCostume: BenchmarkCostumes = .jobGear
 	
+	@State var availableCharacters : [CharacterDataSlot] = [CharacterDataSlot]()
+	
 	@State var selectedAppearanceSlot : Int? = nil
 	
 	let benchmarkVersion: BenchmarkVersion = Benchmark.benchmarkVersion()
     
+	func refreshCharacters()
+	{
+		availableCharacters = Benchmark.findAvailableDemoCharacters().sorted(by: {$0.id < $1.id})
+	}
+	
     var body: some View {
         VStack{
             HStack
@@ -70,11 +77,14 @@ struct BenchmarkView: View {
 					Picker(selection: $selectedAppearanceSlot, label: Text("BENCHMARK_CHARACTER_APPEARANCE").font(.headline))
 							{
 								Text("BENCHMARK_DEFAULT_APPEARANCE").tag(nil as Int?)
-						ForEach(Benchmark.findAvailableDemoCharacters().sorted(by: {$0.id < $1.id}), content:
+								ForEach(availableCharacters, content:
 											{ oneCharacter in
 												Text(oneCharacter.longDisplayName).tag(oneCharacter.id as Int?)
-											})
+								})
 							}
+						.onAppear{
+							refreshCharacters()
+						}
 					HStack
 					{
 						Spacer()
@@ -111,21 +121,25 @@ struct BenchmarkView: View {
 						options.costume = chosenCostume
 						options.mode = benchMode
 						await Benchmark.launchFrom(folder: benchmarkLocation, options:options, setDefaults: setDefaults)
+						refreshCharacters()
 					}
 				}
 			}
 
         }
         .padding()
-		.sheet(item: $presentedSheet, content:
-				{ sheet in
-			switch sheet
-			{
-			case .copyCharacterData:
-				CharacterDataImportView()
-					.frame(minWidth:700, minHeight: 600)
-			}
-		})
+		.sheet(item: $presentedSheet, 
+					onDismiss: {
+						refreshCharacters()
+					},
+					content: { sheet in
+						switch sheet
+						{
+						case .copyCharacterData:
+							CharacterDataImportView()
+								.frame(minWidth:700, minHeight: 600)
+						}
+					})
 
     }
 }

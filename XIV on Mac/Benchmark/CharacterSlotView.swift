@@ -11,6 +11,15 @@ struct CharacterSlotView: View {
 	
 	var characterData : CharacterDataSlot
 	var selected : Bool = false
+	let dateFormatter: DateFormatter
+	
+	init(characterData: CharacterDataSlot, selected : Bool = false) {
+		self.characterData = characterData
+		self.selected = selected
+		dateFormatter = DateFormatter()
+		dateFormatter.dateStyle = .long
+		dateFormatter.timeStyle = .short
+	}
 	
     var body: some View {
 		VStack {
@@ -25,6 +34,10 @@ struct CharacterSlotView: View {
 					Text(String(localized:appearanceData.race.localizedName))
 					Text(String(localized:appearanceData.tribe.localizedName))
 					Text(String(localized:appearanceData.gender.localizedName))
+					Spacer()
+				}
+				HStack {
+					Text(characterData.modDate ?? Date(), formatter: dateFormatter).font(.subheadline)
 					Spacer()
 				}
 			}
@@ -59,6 +72,6 @@ struct CharacterSlotView: View {
 }
 
 #Preview {
-	let characterData : CharacterDataSlot = CharacterDataSlot(id:1,dataURL: nil)
+	let characterData : CharacterDataSlot = Benchmark.findAvailableRetailCharacters().first!
 	return CharacterSlotView(characterData: characterData)
 }

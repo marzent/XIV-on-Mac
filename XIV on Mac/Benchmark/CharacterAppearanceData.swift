@@ -130,6 +130,7 @@ struct CharacterDataSlot : Identifiable
 	var name : String
 	var path : URL?
 	var appearanceData : CharacterAppearanceData?
+	var modDate : Date?
 	
 	init(id: Int, dataURL: URL?)
 	{
@@ -153,16 +154,26 @@ struct CharacterDataSlot : Identifiable
 		{
 			return self.displayName
 		}
-		return String(format: "%@ – %@ %@ %@",
+		
+		let dateFormatter = DateFormatter()
+		dateFormatter.dateStyle = .short
+		dateFormatter.timeStyle = .short
+		let modDate = modDate ?? Date()
+
+		return String(format: "%@ – %@ %@ %@ – %@",
 					  self.displayName,
 					  String(localized: appearanceData.race.localizedName),
 					  String(localized: appearanceData.tribe.localizedName),
-					  String(localized: appearanceData.gender.localizedName))
+					  String(localized: appearanceData.gender.localizedName),
+					  dateFormatter.string(from: modDate))
 	}
 
 	private mutating func loadData()
 	{
 		guard let path = path else {return}
+		
+		modDate = try? path.resourceValues(forKeys: [.contentModificationDateKey]).contentModificationDate
+		
 		if let fileHandle: FileHandle = try? FileHandle(forReadingFrom: path)
 		{
 			try? fileHandle.seek(toOffset: 0x10) // Start of appearance section
