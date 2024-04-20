@@ -21,6 +21,7 @@ struct BenchmarkView: View {
     @AppStorage(Benchmark.benchmarkFolderPref, store: .standard) var benchmarkFolder : String = ""
 
 	@State var presentedSheet: BenchmarkSheetType?
+	@State var benchmarkRunning: Bool = false
 	
     @State var setDefaults : Bool = true
     @State var benchType : BenchmarkType = .hd
@@ -110,8 +111,12 @@ struct BenchmarkView: View {
 
 				Button("BENCHMARK_START_BUTTON")
 				{
+					benchmarkRunning = true
 					Task
 					{
+						// Needed for people who've never played the retail game through XoM
+						Dxvk.install()
+
 						let benchmarkLocation : URL = URL(fileURLWithPath: benchmarkFolder)
 						var options : BenchmarkOptions = BenchmarkOptions()
 						options.type = benchType
@@ -122,8 +127,12 @@ struct BenchmarkView: View {
 						options.mode = benchMode
 						await Benchmark.launchFrom(folder: benchmarkLocation, options:options, setDefaults: setDefaults)
 						refreshCharacters()
+						await MainActor.run {
+							benchmarkRunning = false
+						}
 					}
 				}
+				.disabled(benchmarkRunning)
 			}
 
         }
