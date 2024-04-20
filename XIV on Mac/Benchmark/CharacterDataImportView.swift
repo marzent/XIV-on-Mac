@@ -45,7 +45,9 @@ class CharacterListState: ObservableObject {
 	func pad(cdsArray: [CharacterDataSlot], toSize: Int) -> [CharacterDataSlot]
 	{
 		var ReturnMe : [CharacterDataSlot] = [CharacterDataSlot]()
-		for slot in 1...toSize
+		let highestSlot : Int = cdsArray.max()?.id ?? 0
+		let listSize = max(toSize,highestSlot)
+		for slot in 1...listSize
 		{
 			if let existingData = cdsArray.filter({ $0.id == slot }).first
 			{
@@ -62,7 +64,7 @@ class CharacterListState: ObservableObject {
 	func loadSourceFromDiscordTeam()
 	{
 		sourceCharacters = pad(cdsArray: Benchmark.findAvailableDiscordTeamCharacters().sorted(by: {$0.id < $1.id}),
-							   toSize: 10)
+							   toSize: 0)
 	}
 	
 	func loadTargetFromDemo()
@@ -74,7 +76,7 @@ class CharacterListState: ObservableObject {
 	func loadSourceFromRetail()
 	{
 		sourceCharacters = pad(cdsArray: Benchmark.findAvailableRetailCharacters().sorted(by: {$0.id < $1.id}),
-							   toSize: 10)
+							   toSize: 0)
 	}
 }
 

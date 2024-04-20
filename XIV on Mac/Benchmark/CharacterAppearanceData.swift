@@ -124,13 +124,22 @@ struct CharacterAppearanceData
 	}
 }
 
-struct CharacterDataSlot : Identifiable
+struct CharacterDataSlot : Identifiable, Comparable
 {
 	var id : Int
 	var name : String
 	var path : URL?
 	var appearanceData : CharacterAppearanceData?
 	var modDate : Date?
+	
+	static func ==(lhs: CharacterDataSlot, rhs: CharacterDataSlot) -> Bool {
+		return lhs.id == rhs.id
+	}
+	
+	static func <(lhs: CharacterDataSlot, rhs: CharacterDataSlot) -> Bool {
+		return lhs.id < rhs.id
+	}
+
 	
 	init(id: Int, dataURL: URL?)
 	{
