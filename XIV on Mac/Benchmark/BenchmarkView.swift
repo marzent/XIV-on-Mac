@@ -7,18 +7,37 @@
 
 import SwiftUI
 
+// Controls which type of sheet we're displaying. Only one currently, but this
+// provides a framework for how to add more.
+enum BenchmarkSheetType: String, Identifiable
+{
+	case copyCharacterData
+	
+	var id: String { rawValue }
+}
+
+
 struct BenchmarkView: View {
     @AppStorage(Benchmark.benchmarkFolderPref, store: .standard) var benchmarkFolder : String = ""
-    
+
+	@State var presentedSheet: BenchmarkSheetType?
+	
     @State var setDefaults : Bool = true
     @State var benchType : BenchmarkType = .hd
 	@State var benchMode : BenchmarkMode = .benchmark
 	@State var chosenCostume: BenchmarkCostumes = .jobGear
 	
+	@State var availableCharacters : [CharacterDataSlot] = [CharacterDataSlot]()
+	
 	@State var selectedAppearanceSlot : Int? = nil
 	
 	let benchmarkVersion: BenchmarkVersion = Benchmark.benchmarkVersion()
     
+	func refreshCharacters()
+	{
+		availableCharacters = Benchmark.findAvailableDemoCharacters().sorted(by: {$0.id < $1.id})
+	}
+	
     var body: some View {
         VStack{
             HStack
@@ -58,12 +77,22 @@ struct BenchmarkView: View {
 					Picker(selection: $selectedAppearanceSlot, label: Text("BENCHMARK_CHARACTER_APPEARANCE").font(.headline))
 							{
 								Text("BENCHMARK_DEFAULT_APPEARANCE").tag(nil as Int?)
-						ForEach(Benchmark.findAvailableDemoCharacters().sorted(by: {$0.id < $1.id}), content:
+								ForEach(availableCharacters, content:
 											{ oneCharacter in
-												Text(oneCharacter.name).tag(oneCharacter.id as Int?)
-											})
+												Text(oneCharacter.longDisplayName).tag(oneCharacter.id as Int?)
+								})
 							}
-						
+						.onAppear{
+							refreshCharacters()
+						}
+					HStack
+					{
+						Spacer()
+						Button("BENCHMARK_IMPORT_CHARACTER_BUTTON")
+						{
+							presentedSheet = .copyCharacterData
+						}
+					}
 					Picker(selection: $chosenCostume, label: Text("BENCHMARK_CHARACTER_COSTUME").font(.headline)) {
 						ForEach(BenchmarkCostumes.allCases, id: \.self) { costume in
 							Text(costume.localizedName)
@@ -71,7 +100,6 @@ struct BenchmarkView: View {
 						}
 					}
 				}
-				Spacer()
 			}
 			HStack
 			{
@@ -93,12 +121,26 @@ struct BenchmarkView: View {
 						options.costume = chosenCostume
 						options.mode = benchMode
 						await Benchmark.launchFrom(folder: benchmarkLocation, options:options, setDefaults: setDefaults)
+						refreshCharacters()
 					}
 				}
 			}
 
         }
         .padding()
+		.sheet(item: $presentedSheet, 
+					onDismiss: {
+						refreshCharacters()
+					},
+					content: { sheet in
+						switch sheet
+						{
+						case .copyCharacterData:
+							CharacterDataImportView()
+								.frame(minWidth:700, minHeight: 600)
+						}
+					})
+
     }
 }
 

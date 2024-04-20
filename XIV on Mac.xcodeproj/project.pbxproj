@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -32,6 +32,17 @@
 		07BF3AFA2806507800794155 /* CfgCheckAdvFailed.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 07BF3AF82806507800794155 /* CfgCheckAdvFailed.tiff */; };
 		07BF3AFB2806507800794155 /* CfgCheckAdvFixed.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 07BF3AF92806507800794155 /* CfgCheckAdvFixed.tiff */; };
 		07C876DD280B7DD500CB0D8E /* FFXIV-MacDefault.cfg in Resources */ = {isa = PBXBuildFile; fileRef = 07C876DC280B7DD500CB0D8E /* FFXIV-MacDefault.cfg */; };
+		07E8A6662BD05698005AD41B /* ChocoboWalk2.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 07E8A6642BD05698005AD41B /* ChocoboWalk2.tiff */; };
+		07E8A6672BD05698005AD41B /* ChocoboWalk1.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 07E8A6652BD05698005AD41B /* ChocoboWalk1.tiff */; };
+		07E8A66A2BD056C0005AD41B /* CharacterSlotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E8A6682BD056C0005AD41B /* CharacterSlotView.swift */; };
+		07E8A66B2BD056C0005AD41B /* KwehView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E8A6692BD056C0005AD41B /* KwehView.swift */; };
+		07E8A66D2BD05987005AD41B /* CharacterDataImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E8A66C2BD05987005AD41B /* CharacterDataImportView.swift */; };
+		07E8A6712BD07041005AD41B /* CharacterAppearanceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E8A6702BD07041005AD41B /* CharacterAppearanceData.swift */; };
+		07E8A6722BD0A3D4005AD41B /* DISCORD_TEAM_USAGI_01.dat in Resources */ = {isa = PBXBuildFile; fileRef = 07E8A66E2BD06C72005AD41B /* DISCORD_TEAM_USAGI_01.dat */; };
+		07E8A6762BD0A535005AD41B /* DISCORD_TEAM_SEATHASKY_02.dat in Resources */ = {isa = PBXBuildFile; fileRef = 07E8A6752BD0A524005AD41B /* DISCORD_TEAM_SEATHASKY_02.dat */; };
+		07E8A6772BD0A538005AD41B /* DISCORD_TEAM_WYLDFIRE_04.dat in Resources */ = {isa = PBXBuildFile; fileRef = 07E8A6732BD0A524005AD41B /* DISCORD_TEAM_WYLDFIRE_04.dat */; };
+		07E8A6782BD0A53A005AD41B /* DISCORD_TEAM_MODEST_05.dat in Resources */ = {isa = PBXBuildFile; fileRef = 07E8A6742BD0A524005AD41B /* DISCORD_TEAM_MODEST_05.dat */; };
+		07E8A67A2BD0AA11005AD41B /* DISCORD_TEAM_FLEET_03.dat in Resources */ = {isa = PBXBuildFile; fileRef = 07E8A6792BD0AA11005AD41B /* DISCORD_TEAM_FLEET_03.dat */; };
 		07FC7C2E28001EDA009A6FE0 /* FFXIVCFGCheckup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FC7C2D28001EDA009A6FE0 /* FFXIVCFGCheckup.swift */; };
 		2B7C95D2277C6C6000A3CA89 /* SocialIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7C95D1277C6C6000A3CA89 /* SocialIntegration.swift */; };
 		5010EFE427E4CE40001D2FEC /* Encryption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5010EFE327E4CE40001D2FEC /* Encryption.swift */; };
@@ -125,6 +136,17 @@
 		07BF3AF82806507800794155 /* CfgCheckAdvFailed.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = CfgCheckAdvFailed.tiff; sourceTree = "<group>"; };
 		07BF3AF92806507800794155 /* CfgCheckAdvFixed.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = CfgCheckAdvFixed.tiff; sourceTree = "<group>"; };
 		07C876DC280B7DD500CB0D8E /* FFXIV-MacDefault.cfg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "FFXIV-MacDefault.cfg"; sourceTree = "<group>"; };
+		07E8A6642BD05698005AD41B /* ChocoboWalk2.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = ChocoboWalk2.tiff; sourceTree = "<group>"; };
+		07E8A6652BD05698005AD41B /* ChocoboWalk1.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = ChocoboWalk1.tiff; sourceTree = "<group>"; };
+		07E8A6682BD056C0005AD41B /* CharacterSlotView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterSlotView.swift; sourceTree = "<group>"; };
+		07E8A6692BD056C0005AD41B /* KwehView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KwehView.swift; sourceTree = "<group>"; };
+		07E8A66C2BD05987005AD41B /* CharacterDataImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDataImportView.swift; sourceTree = "<group>"; };
+		07E8A66E2BD06C72005AD41B /* DISCORD_TEAM_USAGI_01.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = DISCORD_TEAM_USAGI_01.dat; sourceTree = "<group>"; };
+		07E8A6702BD07041005AD41B /* CharacterAppearanceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterAppearanceData.swift; sourceTree = "<group>"; };
+		07E8A6732BD0A524005AD41B /* DISCORD_TEAM_WYLDFIRE_04.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = DISCORD_TEAM_WYLDFIRE_04.dat; sourceTree = "<group>"; };
+		07E8A6742BD0A524005AD41B /* DISCORD_TEAM_MODEST_05.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = DISCORD_TEAM_MODEST_05.dat; sourceTree = "<group>"; };
+		07E8A6752BD0A524005AD41B /* DISCORD_TEAM_SEATHASKY_02.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = DISCORD_TEAM_SEATHASKY_02.dat; sourceTree = "<group>"; };
+		07E8A6792BD0AA11005AD41B /* DISCORD_TEAM_FLEET_03.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = DISCORD_TEAM_FLEET_03.dat; sourceTree = "<group>"; };
 		07FC7C2D28001EDA009A6FE0 /* FFXIVCFGCheckup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFXIVCFGCheckup.swift; sourceTree = "<group>"; };
 		2B7C95D1277C6C6000A3CA89 /* SocialIntegration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialIntegration.swift; sourceTree = "<group>"; };
 		5010EFE327E4CE40001D2FEC /* Encryption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encryption.swift; sourceTree = "<group>"; };
@@ -208,6 +230,7 @@
 		07A349882805689200A9D7D0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				07E8A66F2BD06C79005AD41B /* Cameos */,
 				508C678E29431BFF0046AA38 /* snowflake_x2.png */,
 				07A349892805689200A9D7D0 /* CfgCheckGood.tiff */,
 				07A3498F28056C7600A9D7D0 /* CfgCheckProblems.tiff */,
@@ -217,8 +240,22 @@
 				07BF3AF92806507800794155 /* CfgCheckAdvFixed.tiff */,
 				073649AC281E35C700DA41F7 /* PrefsGraphics.tiff */,
 				073649AE281E393000DA41F7 /* PrefsGeneral.tiff */,
+				07E8A6652BD05698005AD41B /* ChocoboWalk1.tiff */,
+				07E8A6642BD05698005AD41B /* ChocoboWalk2.tiff */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		07E8A66F2BD06C79005AD41B /* Cameos */ = {
+			isa = PBXGroup;
+			children = (
+				07E8A66E2BD06C72005AD41B /* DISCORD_TEAM_USAGI_01.dat */,
+				07E8A6752BD0A524005AD41B /* DISCORD_TEAM_SEATHASKY_02.dat */,
+				07E8A6792BD0AA11005AD41B /* DISCORD_TEAM_FLEET_03.dat */,
+				07E8A6732BD0A524005AD41B /* DISCORD_TEAM_WYLDFIRE_04.dat */,
+				07E8A6742BD0A524005AD41B /* DISCORD_TEAM_MODEST_05.dat */,
+			);
+			path = Cameos;
 			sourceTree = "<group>";
 		};
 		503B819328391054006197C1 /* Frameworks */ = {
@@ -332,6 +369,10 @@
 			children = (
 				50E7EB9929A16F29001BC287 /* Benchmark.swift */,
 				07B3506E29A457770010C1F5 /* BenchmarkView.swift */,
+				07E8A66C2BD05987005AD41B /* CharacterDataImportView.swift */,
+				07E8A6682BD056C0005AD41B /* CharacterSlotView.swift */,
+				07E8A6692BD056C0005AD41B /* KwehView.swift */,
+				07E8A6702BD07041005AD41B /* CharacterAppearanceData.swift */,
 				07B3507029A4717B0010C1F5 /* INIReadWrite.swift */,
 			);
 			path = Benchmark;
@@ -423,7 +464,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1320;
-				LastUpgradeCheck = 1410;
+				LastUpgradeCheck = 1530;
 				TargetAttributes = {
 					50511EC02770E085003A1E9F = {
 						CreatedOnToolsVersion = 13.2;
@@ -432,7 +473,7 @@
 				};
 			};
 			buildConfigurationList = 50511EBC2770E085003A1E9F /* Build configuration list for PBXProject "XIV on Mac" */;
-			compatibilityVersion = "Xcode 13.0";
+			compatibilityVersion = "Xcode 15.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -470,6 +511,7 @@
 			files = (
 				07A3499028056C7600A9D7D0 /* CfgCheckProblems.tiff in Resources */,
 				5046F7EF27E74AC9006C34E1 /* discord_bridge.exe in Resources */,
+				07E8A6662BD05698005AD41B /* ChocoboWalk2.tiff in Resources */,
 				07A3498C2805689200A9D7D0 /* CfgCheckProbFailed.tiff in Resources */,
 				508C678F29431BFF0046AA38 /* snowflake_x2.png in Resources */,
 				073649AD281E35C700DA41F7 /* PrefsGraphics.tiff in Resources */,
@@ -480,12 +522,18 @@
 				073649AF281E393000DA41F7 /* PrefsGeneral.tiff in Resources */,
 				07BF3AFA2806507800794155 /* CfgCheckAdvFailed.tiff in Resources */,
 				07B529D527D97D2B005B78BF /* Localizable.strings in Resources */,
+				07E8A6782BD0A53A005AD41B /* DISCORD_TEAM_MODEST_05.dat in Resources */,
+				07E8A6672BD05698005AD41B /* ChocoboWalk1.tiff in Resources */,
+				07E8A6772BD0A538005AD41B /* DISCORD_TEAM_WYLDFIRE_04.dat in Resources */,
 				07A3498B2805689200A9D7D0 /* CfgCheckGood.tiff in Resources */,
 				07C876DD280B7DD500CB0D8E /* FFXIV-MacDefault.cfg in Resources */,
 				07B3507329A4829C0010C1F5 /* ffxivbenchmarklauncher-Default.ini in Resources */,
+				07E8A67A2BD0AA11005AD41B /* DISCORD_TEAM_FLEET_03.dat in Resources */,
+				07E8A6762BD0A535005AD41B /* DISCORD_TEAM_SEATHASKY_02.dat in Resources */,
 				507D8F2127766F52000F0CB0 /* dxvk in Resources */,
 				50511ECC2770E087003A1E9F /* Main.storyboard in Resources */,
 				5043E36C27728BA300E59127 /* wine in Resources */,
+				07E8A6722BD0A3D4005AD41B /* DISCORD_TEAM_USAGI_01.dat in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -567,6 +615,7 @@
 				501AF2F1299641A700754CC6 /* Dalamud.swift in Sources */,
 				509FE19A27E3654E008D56D6 /* FFXIVEnums.swift in Sources */,
 				5010EFE427E4CE40001D2FEC /* Encryption.swift in Sources */,
+				07E8A6712BD07041005AD41B /* CharacterAppearanceData.swift in Sources */,
 				5020957927C9611A00BD76CC /* Patch.swift in Sources */,
 				0786F05C29BADDA500009AD5 /* ScreenCapture.swift in Sources */,
 				0762AB902973AE2000A4D6E0 /* SettingsGeneralTabView.swift in Sources */,
@@ -574,6 +623,9 @@
 				0786F05E29BBF67400009AD5 /* ScreenCaptureEngine.swift in Sources */,
 				50E980DE2840A65000050151 /* RepairController.swift in Sources */,
 				50FC2DFF27F974D300871760 /* DxvkStateCache.swift in Sources */,
+				07E8A66A2BD056C0005AD41B /* CharacterSlotView.swift in Sources */,
+				07E8A66D2BD05987005AD41B /* CharacterDataImportView.swift in Sources */,
+				07E8A66B2BD056C0005AD41B /* KwehView.swift in Sources */,
 				50DF1F8527CCB83300DE9DA5 /* FFXIVRepo.swift in Sources */,
 				501D1C9A29A23CB500248126 /* FirstAidView.swift in Sources */,
 				5049B9B0283BF89400463A2B /* LoginResult.swift in Sources */,
@@ -688,7 +740,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -748,7 +800,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
@@ -788,7 +840,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/XIV\\ on\\ Mac/XIVLauncher.NativeAOT",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 4.13.11;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = "dezent.XIV-on-Mac";
@@ -833,7 +885,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/XIV\\ on\\ Mac/XIVLauncher.NativeAOT",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 4.13.11;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = "dezent.XIV-on-Mac";
