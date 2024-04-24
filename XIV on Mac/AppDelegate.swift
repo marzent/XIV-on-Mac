@@ -22,6 +22,13 @@ import UserNotifications
     @IBOutlet private var bhAutoLaunch: NSMenuItem!
     
     func applicationWillFinishLaunching(_ notification: Notification) {
+        var signalSet = sigset_t()
+        var oldSet = sigset_t()
+        sigemptyset(&signalSet)
+        sigaddset(&signalSet, SIGUSR1)
+        if sigprocmask(SIG_BLOCK, &signalSet, &oldSet) != 0 {
+            perror("sigprocmask")
+        }
         Settings.syncToXL()
         let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString")!
         let build = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion")!
