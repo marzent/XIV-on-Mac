@@ -23,11 +23,10 @@ import UserNotifications
     
     func applicationWillFinishLaunching(_ notification: Notification) {
         var signalSet = sigset_t()
-        var oldSet = sigset_t()
         sigemptyset(&signalSet)
         sigaddset(&signalSet, SIGUSR1)
-        if sigprocmask(SIG_BLOCK, &signalSet, &oldSet) != 0 {
-            perror("sigprocmask")
+        if pthread_sigmask(SIG_BLOCK, &signalSet, nil) != 0 {
+            perror("pthread_sigmask")
         }
         Settings.syncToXL()
         let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString")!
