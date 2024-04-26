@@ -13,6 +13,9 @@
 "BUTTON_OK" = "OK";
 "BUTTON_CANCEL" = "キャンセル";
 "BUTTON_CLOSE" = "閉じる";
+"BUTTON_DONE" = "完了";
+"BUTTON_DELETE" = "削除";
+"REVEAL_IN_FINDER" = "Finderで表示";
 
 "LOGIN_ERROR" = "ログインエラー";
 "START_ERROR" = "FF14の起動に失敗";
@@ -274,6 +277,12 @@
 "BENCHMARK_DEFAULT_APPEARANCE" = "デフォルト";
 "BENCHMARK_CHARACTER_UNNAMED" = "名称未設定";
 "BENCHMARK_CHARACTER_COSTUME" = "装備";
+"BENCHMARK_IMPORT_CHARACTER_BUTTON" = "キャラクターの容姿の取り込み…";
+"BENCHMARK_SLOT_DELETE_BUTTON" = "スロットの削除…";
+"BENCHMARK_SLOT_IMPORT_BUTTON" = "スロットの取り込み";
+"BENCHMARK_CONFIRM_SLOT_DELETE" = "本当にキャラクターの容姿を削除しますか？";
+"BENCHMARK_CONFIRM_SLOT_DELETE_INFORMATIVE" = "この操作は取り消しできません。";
+"BENCHMARK_DISCORD_BLURB" = "チョコボを撫でてくれてありがとう！報酬として、XIV on Macの開発メンバーとDiscordのユーザーのキャラクターを紹介しますので、ベンチマークで試してみてください！";
 
 "BENCHMARK_COSTUME_0" = "ジョブ装備";
 "BENCHMARK_COSTUME_1" = "種族装備";
@@ -302,3 +311,36 @@
 "BENCHMARK_COSTUME_24" = "ルシス王子装備";
 "BENCHMARK_COSTUME_25" = "メディアン装備";
 "BENCHMARK_COSTUME_26" = "ポーキー装備";
+"BENCHMARK_SLOTS_LIST_LABEL" = "ベンチマークキャラクター";
+"AVAILABLE_SLOTS_LIST_LABEL" = "取り込み可能なキャラクター";
+"APPEARANCE_DATA_ERROR_LOADING" = "空のスロット";
+
+"APPEARANCE_GENDER_0" = "♂";
+"APPEARANCE_GENDER_1" = "♀";
+"APPEARANCE_GENDER_255" = "不明";
+"APPEARANCE_RACE_0" = "不明";
+"APPEARANCE_RACE_1" = "ヒューラン";
+"APPEARANCE_RACE_2" = "エレゼン";
+"APPEARANCE_RACE_3" = "ララフェル";
+"APPEARANCE_RACE_4" = "ミコッテ";
+"APPEARANCE_RACE_5" = "ルガディン";
+"APPEARANCE_RACE_6" = "アウラ";
+"APPEARANCE_RACE_7" = "ロスガル";
+"APPEARANCE_RACE_8" = "ヴィエラ";
+"APPEARANCE_TRIBE_0" = "不明";
+"APPEARANCE_TRIBE_1" = "ミッドランダー";
+"APPEARANCE_TRIBE_2" = "ハイランダー";
+"APPEARANCE_TRIBE_3" = "フォレスター";
+"APPEARANCE_TRIBE_4" = "シェーダー";
+"APPEARANCE_TRIBE_5" = "プレーンフォーク";
+"APPEARANCE_TRIBE_6" = "デューンフォーク";
+"APPEARANCE_TRIBE_7" = "サンシーカー";
+"APPEARANCE_TRIBE_8" = "ムーンキーパー";
+"APPEARANCE_TRIBE_9" = "ゼーヴォルフ";
+"APPEARANCE_TRIBE_10" = "ローエンガルデ";
+"APPEARANCE_TRIBE_11" = "アウラ・レン";
+"APPEARANCE_TRIBE_12" = "アウラ・ゼラ";
+"APPEARANCE_TRIBE_13" = "ヘリオン";
+"APPEARANCE_TRIBE_14" = "ロスト";
+"APPEARANCE_TRIBE_15" = "ラヴァ・ヴィエラ";
+"APPEARANCE_TRIBE_16" = "ヴィナ・ヴィエラ";
