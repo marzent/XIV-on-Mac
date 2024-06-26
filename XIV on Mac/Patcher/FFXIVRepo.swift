@@ -13,7 +13,7 @@ private let baseVer = "2012.01.01.0000.0000"
 public enum FFXIVRepo: String, CaseIterable {
     case boot = "ffxivboot"
     case game = "ffxivgame"
-    case ex1, ex2, ex3, ex4
+    case ex1, ex2, ex3, ex4, ex5
     
     var ver: String {
         get {
