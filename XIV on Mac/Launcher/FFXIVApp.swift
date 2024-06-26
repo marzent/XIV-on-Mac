@@ -13,7 +13,6 @@ public struct FFXIVApp {
     let bootRepoURL, bootExeURL, bootExe64URL, launcherExe64URL, updaterExe64URL: URL
     let gameRepoURL, dx9URL, dx11URL, sqpackFolderURL: URL
     private let bootFiles: [URL]
-    public let movieFiles: [URL]
     
     init() {
         bootRepoURL = Settings.gamePath.appendingPathComponent("boot")
@@ -28,10 +27,6 @@ public struct FFXIVApp {
         sqpackFolderURL = gameRepoURL.appendingPathComponent("sqpack")
         
         bootFiles = [bootExeURL, bootExe64URL, launcherExe64URL, updaterExe64URL]
-        
-        let arrMovieFolder = gameRepoURL.appendingPathComponent("movie/ffxiv")
-        movieFiles = ["00000.bk2", "00001.bk2", "00002.bk2", "00003.bk2"].map
-            { arrMovieFolder.appendingPathComponent($0) }
     }
     
     static var running: Bool {
@@ -43,7 +38,7 @@ public struct FFXIVApp {
     }
     
     var installed: Bool {
-        (bootFiles + movieFiles).allSatisfy { FileManager.default.fileExists(atPath: $0.path) }
+        bootFiles.allSatisfy { FileManager.default.fileExists(atPath: $0.path) }
     }
     
     private static func createConfigDirectory() {
