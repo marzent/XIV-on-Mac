@@ -61,7 +61,12 @@ class LaunchController: NSViewController {
     }
     
     @objc func installDone(_ notif: Notification) {
-        checkBoot()
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.checkBoot(skipInstallCheck: true)
+            DispatchQueue.main.async {
+                self.doLogin()
+            }
+        }
     }
     
     @objc func hideSideButtons(_ notif: Notification) {
@@ -78,8 +83,8 @@ class LaunchController: NSViewController {
         rightButton.layer?.backgroundColor = .black.copy(alpha: to ? buttonAlpha : 0.0)
     }
     
-    func checkBoot() {
-        if let bootPatches = try? Patch.bootPatches, !bootPatches.isEmpty, FFXIVApp().installed {
+    func checkBoot(skipInstallCheck: Bool = false) {
+        if let bootPatches = try? Patch.bootPatches, !bootPatches.isEmpty, (FFXIVApp().installed || skipInstallCheck) {
             startPatch(bootPatches)
         }
         DispatchQueue.main.async {
