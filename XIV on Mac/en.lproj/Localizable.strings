@@ -84,8 +84,6 @@ Do not enable this on non-retina displays, unless for screenshot purposes.";
 "FIRSTAID_CFGCHECK_PROBLEM_RESULT" = "One or more problems was found with your configuration which are known to cause problems.";
 
 "FIRSTAID_CFGCHECK_FIXED" = "Fixed!";
-"FIRSTAID_CFGCHECK_HBAO_TITLE" = "SSAO Setting is Invalid";
-"FIRSTAID_CFGCHECK_HBAO_EXP" = "The HBAO levels of SSAO (Screen Space Ambient Occlusion) are not supported on the Mac, and can cause graphics to render with black holes.";
 "FIRSTAID_CFGCHECK_TESSELATION_TITLE" = "Tesselation";
 "FIRSTAID_CFGCHECK_TESSELATION_EXP" = "Values above \"Normal\" are known to cause severe performance problems on Apple Silicon Macs, while offering no visual improvement.";
 

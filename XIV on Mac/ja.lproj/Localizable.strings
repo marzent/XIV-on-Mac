@@ -86,8 +86,6 @@
 "FIRSTAID_CFGCHECK_PROBLEM_RESULT" = "設定にいくつかの問題が見つかりました";
 
 "FIRSTAID_CFGCHECK_FIXED" = "修復しました！";
-"FIRSTAID_CFGCHECK_HBAO_TITLE" = "SSAOは使用できません";
-"FIRSTAID_CFGCHECK_HBAO_EXP" = "SSAO(Screen Space Ambient Occlusion)はMacでサポートされていません。グラフィックが黒く描画されることがあります。";
 "FIRSTAID_CFGCHECK_TESSELATION_TITLE" = "テッセレーション";
 "FIRSTAID_CFGCHECK_TESSELATION_EXP" = "テッセレーションを「標準」以上に設定すると、Apple Silicon Macで深刻なパフォーマンス低下を引き起こし、視覚的な改善も得られません。";
 

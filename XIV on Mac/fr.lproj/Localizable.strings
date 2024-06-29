@@ -82,8 +82,6 @@ Ne l'activez pas sur les écrans autres que écrans Retina, sauf à des fins de 
 "FIRSTAID_CFGCHECK_PROBLEM_RESULT" = "Un ou plusieurs problèmes ont été trouvés dans votre configuration qui peuvent causer des problèmes.";
 
 "FIRSTAID_CFGCHECK_FIXED" = "Corrigé!";
-"FIRSTAID_CFGCHECK_HBAO_TITLE" = "Le paramètre SSAO n'est pas valide";
-"FIRSTAID_CFGCHECK_HBAO_EXP" = "Les niveaux HBAO de SSAO (Screen Space Ambient Occlusion) ne sont pas pris en charge sur Mac et peuvent causer des trous noirs dans le jeu.";
 
 
 "FIRSTAID_CFGCHECK_TESSELATION_TITLE" = "Tesselation";
