@@ -146,11 +146,10 @@ struct Benchmark {
 		return ReturnMe
 	}
 	
-	public static func importCharacterData(character : CharacterDataSlot)
+	public static func copy(character: CharacterDataSlot, from: URL, to: URL, existingCharacters: [CharacterDataSlot], format: String)
 	{
-		guard let sourceURL : URL = character.path else { return }
 		// Need to find a free slot on the target, because the game only accepts a limited amount. (40 in Dawntrail)
-		let existingCharacters: [CharacterDataSlot] = Benchmark.findAvailableDemoCharacters().sorted(by: {$0.id < $1.id})
+		let existingCharacters: [CharacterDataSlot] = existingCharacters.sorted(by: {$0.id < $1.id})
 		var slotNumber : Int = 1
 		for oneCharacter in existingCharacters
 		{
@@ -163,9 +162,22 @@ struct Benchmark {
 		}
 		guard slotNumber <= 40 else {return}
 		
-		let destURL = seDemoLocationURL.appendingPathComponent(String(format:"FFXIV_CHARA_BENCH%02d.dat",slotNumber), isDirectory: false)
-		try? FileManager.default.copyItem(at: sourceURL, to: destURL)
+		let destURL = to.appendingPathComponent(String(format:format,slotNumber), isDirectory: false)
+		try? FileManager.default.copyItem(at: from, to: destURL)
 	}
+	
+	public static func importCharacterData(character : CharacterDataSlot)
+	{
+		guard let sourceURL : URL = character.path else { return }
+		copy(character: character, from: sourceURL, to: seDemoLocationURL, existingCharacters: Benchmark.findAvailableDemoCharacters(), format: "FFXIV_CHARA_BENCH%02d.dat")
+	}
+
+	public static func exportCharacterData(character : CharacterDataSlot)
+	{
+		guard let sourceURL : URL = character.path else { return }
+		copy(character: character, from: sourceURL, to: Settings.gameConfigPath, existingCharacters: Benchmark.findAvailableRetailCharacters(), format: "FFXIV_CHARA_%02d.dat")
+	}
+
 	
 	public static func benchmarkVersion() -> BenchmarkVersion {
 		if let benchmarkPath : String = UserDefaults.standard.string(forKey: benchmarkFolderPref) {
