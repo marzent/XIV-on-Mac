@@ -99,6 +99,7 @@ struct CharacterDataImportView: View {
 	}
 	
     var body: some View {
+		let benchmarkVersion: BenchmarkVersion = Benchmark.benchmarkVersion()
 		GeometryReader { geometry in
 			ZStack(alignment:.bottom)
 			{
@@ -112,30 +113,46 @@ struct CharacterDataImportView: View {
 							Text("BENCHMARK_SLOTS_LIST_LABEL").font(.title)
 							CharacterDataListView(characterData: $characterListState.targetCharacters,
 												  selection: $benchmarkCharacterSelection)
-							Button("BENCHMARK_SLOT_DELETE_BUTTON", role: .destructive)
-							{
-								let alert: NSAlert = .init()
-								alert.messageText = NSLocalizedString("BENCHMARK_CONFIRM_SLOT_DELETE", comment: "")
-								alert.informativeText = NSLocalizedString("BENCHMARK_CONFIRM_SLOT_DELETE_INFORMATIVE", comment: "")
-								alert.alertStyle = .warning
-								alert.addButton(withTitle: NSLocalizedString("BUTTON_DELETE", comment: ""))
-								alert.addButton(withTitle: NSLocalizedString("BUTTON_CANCEL", comment: ""))
-								let result = alert.runModal()
-								if result == .alertFirstButtonReturn {
-									if let deleteCharacter = characterListState.targetCharacters.filter({ $0.id == benchmarkCharacterSelection }).first
-									{
-										if let path = deleteCharacter.path
+							HStack {
+								Button("BENCHMARK_SLOT_DELETE_BUTTON", role: .destructive)
+								{
+									let alert: NSAlert = .init()
+									alert.messageText = NSLocalizedString("BENCHMARK_CONFIRM_SLOT_DELETE", comment: "")
+									alert.informativeText = NSLocalizedString("BENCHMARK_CONFIRM_SLOT_DELETE_INFORMATIVE", comment: "")
+									alert.alertStyle = .warning
+									alert.addButton(withTitle: NSLocalizedString("BUTTON_DELETE", comment: ""))
+									alert.addButton(withTitle: NSLocalizedString("BUTTON_CANCEL", comment: ""))
+									let result = alert.runModal()
+									if result == .alertFirstButtonReturn {
+										if let deleteCharacter = characterListState.targetCharacters.filter({ $0.id == benchmarkCharacterSelection }).first
 										{
-											try? FileManager.default.removeItem(at: path)
+											if let path = deleteCharacter.path
+											{
+												try? FileManager.default.removeItem(at: path)
+											}
+										}
+										characterListState.loadTargetFromDemo()
+										benchmarkCharacterSelection = nil
+									}
+									
+								}
+								.disabled(benchmarkCharacterSelection == nil)
+								// Don't offer the export button if the Benchmark is for an unsupported version
+								// Mostly this is forward-thinking to the next expansion.
+								if benchmarkVersion == .dawntrail {
+									Button("BENCHMARK_SLOT_EXPORT_BUTTON")
+									{
+										if let exportCharacter: CharacterDataSlot = characterListState.targetCharacters.filter({ $0.id == benchmarkCharacterSelection }).first
+										{
+											Benchmark.exportCharacterData(character: exportCharacter)
+											characterListState.loadSourceFromRetail()
+											benchmarkCharacterSelection = nil
 										}
 									}
-									characterListState.loadTargetFromDemo()
-									benchmarkCharacterSelection = nil
+									.disabled(benchmarkCharacterSelection == nil)
+									
 								}
-								
 							}
-							.disabled(benchmarkCharacterSelection == nil)
-							
 							Spacer()
 						}
 						Divider()
