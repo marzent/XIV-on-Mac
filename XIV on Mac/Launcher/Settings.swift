@@ -241,4 +241,15 @@ public enum Settings {
             storage.set(newValue, forKey: dxmtSettingsKey)
         }
     }
+    
+    private static let metalFxSpatialSettingsKey = "MetalFxSpatialEnabled"
+    static var metalFxSpatialEnabled: Bool {
+        get {
+            Util.getSetting(settingKey: metalFxSpatialSettingsKey, defaultValue: false)
+        }
+        set {
+            storage.set(newValue, forKey: metalFxSpatialSettingsKey)
+            Wine.setup()
+        }
+    }
 }

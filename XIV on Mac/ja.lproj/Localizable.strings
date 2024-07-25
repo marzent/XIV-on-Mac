@@ -197,7 +197,8 @@
 "NOTIFY_CAPTURE_STOPPED_BODY" = "保存先: %@";
 
 // Graphics Settings tab items
-"DXMT_ENABLED" = "D3D11をMetalに直接変換する";
+"DXMT_ENABLED" = "D3D11をMetalに直接変換する(DXMT)";
+"METALFX_SPATIAL_ENABLED" = "MetalFX空間アップスケーリングを有効にする";
 "SETTINGS_FPS_LIMIT" = "最大フレームレート";
 "SETTINGS_FPS_LIMIT_PLACEHOLDER" = "0";
 "SETTINGS_FPS_LIMIT_UNITS" = "fps";

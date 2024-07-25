@@ -16,6 +16,7 @@ struct Wine {
     
     static func setup() {
         addEnvironmentVariable("WINEMSYNC", msync ? "1" : "0")
+        addEnvironmentVariable("DXMT_METALFX_SPATIAL_SWAPCHAIN", Settings.metalFxSpatialEnabled ? "1" : "0")
         addEnvironmentVariable("LANG", "en_US")
         addEnvironmentVariable("MVK_ALLOW_METAL_FENCES", "1") // XXX Required by DXVK for Apple/NVidia GPUs (better FPS than CPU Emulation)
         addEnvironmentVariable("MVK_CONFIG_FULL_IMAGE_VIEW_SWIZZLE", "1") // XXX Required by DXVK for Intel/NVidia GPUs

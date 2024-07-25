@@ -195,7 +195,8 @@ Zusätzlich kann die Berechtigung für \"Mitteilungen\" aktiviert werden um beim
 
 
 // Graphics Settings tab items
-"DXMT_ENABLED" = "Direkte Übersetzung von D3D11 zu Metal verwenden";
+"DXMT_ENABLED" = "Direkte Übersetzung von D3D11 zu Metal verwenden (DXMT)";
+"METALFX_SPATIAL_ENABLED" = "MetalFX räumliches Upscaling aktivieren";
 "SETTINGS_FPS_LIMIT" = "Maximale Framerate";
 "SETTINGS_FPS_LIMIT_PLACEHOLDER" = "0";
 "SETTINGS_FPS_LIMIT_UNITS" = "fps";

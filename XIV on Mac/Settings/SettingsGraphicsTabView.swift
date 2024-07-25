@@ -101,6 +101,12 @@ struct SettingsGraphicsTabView: View {
                         Text("DXMT_ENABLED")
                     }
                     .padding(.leading)
+                    .frame(width: 340, height: nil, alignment: .leading)
+                    Toggle(isOn: $viewModel.metalFxSpatialEnabled) {
+                        Text("METALFX_SPATIAL_ENABLED")
+                    }.disabled(!viewModel.dxmtEnabled)
+                    .padding(.leading)
+                    .frame(width: 240, height: nil, alignment: .leading)
                     Spacer()
                         .padding(.horizontal)
                 }
@@ -172,6 +178,10 @@ extension SettingsGraphicsTabView {
     @MainActor class ViewModel: ObservableObject {
         @Published var dxmtEnabled: Bool = Settings.dxmtEnabled {
             didSet { Settings.dxmtEnabled = dxmtEnabled }
+        }
+        
+        @Published var metalFxSpatialEnabled: Bool = Settings.metalFxSpatialEnabled {
+            didSet { Settings.metalFxSpatialEnabled = metalFxSpatialEnabled }
         }
 
         @Published var fpsLimited: Bool = Dxvk.options.maxFramerate != 0 {
