@@ -9,12 +9,14 @@ class ScreenCaptureEngine: NSObject, @unchecked Sendable {
     private var stream: SCStream?
     private let videoSampleBufferQueue = DispatchQueue(label: "com.marzent.XIVOnMac.VideoCapture")
     private let audioSampleBufferQueue = DispatchQueue(label: "com.marzent.XIVOnMac.AudioCapture")
-    
+	private var streamOutput: CaptureEngineStreamOutput? = nil
+
     /// - Tag: StartCapture
     func startCapture(configuration: SCStreamConfiguration, filter: SCContentFilter) {
-        let streamOutput = CaptureEngineStreamOutput()
-        
         do {
+			let streamOutput = CaptureEngineStreamOutput()
+			// Need to keep a reference to this so that it's not discarded when we start recording
+			self.streamOutput = streamOutput
             if let avWriter = self.avWriter
             {
                 streamOutput.avWriter = avWriter
@@ -203,9 +205,14 @@ class AVWriter {
 
         self.isRecording = false
         self.assetWriter = nil
-
-        await assetWriter.finishWriting()
-        return assetWriter.outputURL
+		if assetWriter.status == .writing
+		{
+			await assetWriter.finishWriting()
+			return assetWriter.outputURL
+		}
+		
+		return nil
+        
     }
 
     func recordVideo(sampleBuffer: CMSampleBuffer) {
