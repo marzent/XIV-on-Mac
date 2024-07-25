@@ -115,7 +115,7 @@ struct BenchmarkView: View {
 					Task
 					{
 						// Needed for people who've never played the retail game through XoM
-						Dxvk.install()
+                        GraphicsInstaller.ensureBackend()
 
 						let benchmarkLocation : URL = URL(fileURLWithPath: benchmarkFolder)
 						var options : BenchmarkOptions = BenchmarkOptions()

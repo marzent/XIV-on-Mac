@@ -196,7 +196,7 @@ class LaunchController: NSViewController {
                 }
                 DispatchQueue.global(qos: .userInitiated).async {
                     DiscordBridge.setPresence()
-                    Dxvk.install()
+                    GraphicsInstaller.ensureBackend()
                 }
                 if Frontier.loginMaintenance {
                     throw FFXIVLoginError.maintenance

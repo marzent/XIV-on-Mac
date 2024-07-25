@@ -14,29 +14,11 @@ struct Dxvk {
     static var options = Options()
     private static let userCacheURL = Wine.prefix.appendingPathComponent("drive_c/ffxiv_dx11.dxvk-cache")
     private static let dxvkPath = Bundle.main.url(forResource: "dxvk", withExtension: nil, subdirectory: "")!
+    private static let d3d11Dll = dxvkPath.appendingPathComponent("d3d11.dll")
     private static let baseCacheBundled = dxvkPath.appendingPathComponent("ffxiv_dx11.dxvk-cache-base")
     
     static func install() {
-        let d3d11Dll = "d3d11.dll"
-        let system32 = Wine.prefix.appendingPathComponent("drive_c/windows/system32")
-        Util.make(dir: system32)
-        let fm = FileManager.default
-        let winDllPath = system32.appendingPathComponent(d3d11Dll).path
-        let dxvkDllPath = dxvkPath.appendingPathComponent(d3d11Dll).path
-        if !fm.contentsEqual(atPath: winDllPath, andPath: dxvkDllPath) {
-            if fm.fileExists(atPath: winDllPath) {
-                do {
-                    try fm.removeItem(atPath: winDllPath)
-                } catch {
-                    Log.error("[DXVK] error deleting wine dx dll \(winDllPath)\n\(error)")
-                }
-            }
-            do {
-                try fm.copyItem(atPath: dxvkDllPath, toPath: winDllPath)
-            } catch {
-                Log.error("[DXVK] error copying dxvk dll \(error)")
-            }
-        }
+        GraphicsInstaller.install(dll: d3d11Dll)
         let userCache = try? DxvkStateCache(inputData: (try? Data(contentsOf: userCacheURL)) ?? Data())
         guard let baseCache = try? DxvkStateCache(inputData: (try? Data(contentsOf: baseCacheBundled)) ?? Data()) else {
             Log.warning("[DXVK] Corrupt base cache")
