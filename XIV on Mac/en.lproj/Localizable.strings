@@ -196,6 +196,7 @@ Do not enable this on non-retina displays, unless for screenshot purposes.";
 
 
 // Graphics Settings tab items
+"DXMT_ENABLED" = "Use direct translation of D3D11 to Metal";
 "SETTINGS_FPS_LIMIT" = "Maximum Frame Rate";
 "SETTINGS_FPS_LIMIT_PLACEHOLDER" = "0";
 "SETTINGS_FPS_LIMIT_UNITS" = "fps";

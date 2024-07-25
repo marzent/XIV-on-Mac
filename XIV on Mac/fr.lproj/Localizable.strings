@@ -171,6 +171,7 @@ Ne l'activez pas sur les écrans autres que écrans Retina, sauf à des fins de 
 "SETTINGS_GENERAL_INPUT_BUTTON_ALT" = "Alt";
 
 // Graphics Settings tab items
+"DXMT_ENABLED" = "Utiliser la traduction directe de D3D11 vers Metal";
 "SETTINGS_FPS_LIMIT" = "Fréquence d'images maximale";
 "SETTINGS_FPS_LIMIT_PLACEHOLDER" = "0";
 "SETTINGS_FPS_LIMIT_UNITS" = "ips";

@@ -235,11 +235,10 @@ public enum Settings {
     private static let dxmtSettingsKey = "DxmtEnabled"
     static var dxmtEnabled: Bool {
         get {
-            Util.getSetting(settingKey: dxmtSettingsKey, defaultValue: true)
+            Util.getSetting(settingKey: dxmtSettingsKey, defaultValue: false)
         }
         set {
-            storage.set(newValue, forKey: dalamudSettingsKey)
-            syncToXL()
+            storage.set(newValue, forKey: dxmtSettingsKey)
         }
     }
 }
