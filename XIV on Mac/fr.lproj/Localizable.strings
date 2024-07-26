@@ -4,70 +4,70 @@
 
   Created by Chris Backas on 3/9/22.
   French translation by Simon St-Pierre on 11/8/22.
- 
+  French translation updated by krptg on 26/7/24.
 */
 
 "BUTTON_YES" = "Oui";
 "BUTTON_NO" = "Non";
 "BUTTON_OK" = "Okay";
 "BUTTON_CANCEL" = "Annuler";
-"BUTTON_CLOSE" = "Close";
+"BUTTON_CLOSE" = "Fermer";
 
 "LOGIN_ERROR" = "Erreur d'identification";
 "START_ERROR" = "Erreur de démarrage de FFXIV";
 "INCORRECT_CREDENTIALS_SHORT" = "Identifiants incorrects";
-"INCORRECT_CREDENTIALS" = "Les serveurs d'identification n'ont pas acceptés les identifiants fourni";
+"INCORRECT_CREDENTIALS" = "Les serveurs d'identification n'ont pas accepté les identifiants fournis";
 "NO_STEAM_TICKET_SHORT" = "N'a pas pu se connecter à Steam";
-"NO_STEAM_TICKET" = "XIV on Mac ne peut pas obtenir un Steam Ticket valide pour Final Fantasy XIV. Soyez sûr que Steam est ouvert, que vous êtes identifié et que vous avez associé votre compte Steam.";
+"NO_STEAM_TICKET" = "XIV on Mac ne peut pas obtenir un ticket Steam valide pour Final Fantasy XIV. Soyez sûr que Steam est ouvert, que vous êtes identifié et que vous avez associé votre compte Steam.";
 "STEAM_USER_ERROR_SHORT" = "Erreur de Steam";
 "STEAM_USER_ERROR" = "Il y a une différence entre le nom d'utilisateur fourni et celui de votre compte Steam.";
-"NOT_PLAYABLE_SHORT" = "Erreur de licensement";
-"NOT_PLAYABLE" = "La réponse des serveurs d'identification indique que vous ne pouvez pas jouer. Assurez-vous d'avoir un abonnement actif et sélectionner votre type d'abonnement (Windows, Steam ou Mac) dans les paramètres.";
-"NO_TERMS_SHORT" = "Erreur dand le système d'identification";
+"NOT_PLAYABLE_SHORT" = "Erreur de license";
+"NOT_PLAYABLE" = "La réponse des serveurs d'identification indique que vous ne pouvez pas jouer. Assurez-vous d'avoir un abonnement actif et d'avoir sélectionné votre type d'abonnement (Windows, Steam ou Mac) dans les paramètres.";
+"NO_TERMS_SHORT" = "Erreur dans le système d'identification";
 "NO_TERMS" = "Accepter les conditions de services de Final Fantasy XIV ou utiliser le lanceur officiel.";
 "PROTOCOL_ERROR_SHORT" = "Erreur dans le système d'identification";
-"PROTOCOL_ERROR" = "Les serveurs d'idenfication n'ont pas accepté la requête. Soyez sûr d'avoir une connexion stable connectée sur les serveurs de FFXIV.";
-"NETWORK_ERROR_SHORT" = "Erreur de réseau";
-"NETWORK_ERROR" = "Vérifier votre connexion d'Internet, ou essayer plus tard. Est-ce que FFXIV souffre d'une panne?";
-"NO_INSTALL_SHORT" = "Final Fantasy XIV n'est pas installé!";
+"PROTOCOL_ERROR" = "Les serveurs d'idenfication n'ont pas accepté la requête. Soyez sûr d'avoir une connexion stable vers les serveurs de FFXIV.";
+"NETWORK_ERROR_SHORT" = "Erreur réseau";
+"NETWORK_ERROR" = "Vérifiez votre connexion Internet, ou essayez plus tard. Est-ce que FFXIV souffre d'une panne ?";
+"NO_INSTALL_SHORT" = "Final Fantasy XIV n'est pas installé !";
 "NO_INSTALL" = "Certains fichiers de jeu n'on pas été trouvés.\nDémarrage de l'installeur…";
 "MAINTENANCE_SHORT" = "Maintenance en cours";
 "MAINTENANCE" = "Attendez la fin de la maintenance avant de vous identifier.";
-"MULTIBOX_SHORT" = "Deux instances de jeu sont déjà démarrée";
-"MULTIBOX" = "Fermer l'une des instance de jeu avant d'en démarrer une autre.";
+"MULTIBOX_SHORT" = "Deux instances de jeu sont déjà démarrées";
+"MULTIBOX" = "Fermer l'une des instances de jeu avant d'en démarrer une autre.";
 "KILLSWITCH_SHORT" = "Le processus d'identification a changé";
-"KILLSWITCH" = "En raison des modifications apportées au processus de connexion par Square Enix, vous devez vérifier que XIV  Mac fonctionne correctement et en toute sécurité. Veuillez utiliser le lanceur officiel en attendant.";
+"KILLSWITCH" = "En raison des modifications apportées au processus de connexion par Square Enix, vous devez vérifier que XIV On Mac fonctionne correctement et en toute sécurité. Veuillez utiliser le lanceur officiel en attendant.";
 "UNEXPECTED_SHORT" = "Erreur inattendue";
 "UNEXPECTED" = "Une erreur inattendue est survenue.";
 
 "REPAIR_RESULT" = "Résultat de la réparation";
 
 "DALAMUD_START_FAILURE" = "Dalamud ne fonctionne pas";
-"DALAMUD_START_FAILURE_INFORMATIONAL" = "Une erreur est survenue lors du téléchargement et de l'installation de Dalamud. Vérifiez votre connexion et assurez-vous que Dalamud est compatible avec la version courante du jeu.";
+"DALAMUD_START_FAILURE_INFORMATIONAL" = "Une erreur est survenue lors du téléchargement et de l'installation de Dalamud. Vérifiez votre connexion Internet et assurez-vous que Dalamud est compatible avec la version courante du jeu.";
 "GAME_START_FAILURE" = "Le lancement de Final Fantasy XIV a échoué";
 "GAME_START_FAILURE_INFORMATIONAL" = "Une erreur est survenue lors du lancement du jeu. Essayez de relancer XIV on MAC.";
 
-"FIRSTAID_GAME_RUNNING" = "Final Fantasy XIV tourne";
-"FIRSTAID_GAME_RUNNING_INFORMATIONAL" = "Fermer les instances de Final Fantasy XIV déjà lancées avant d'entreprendre le Dépannage.";
+"FIRSTAID_GAME_RUNNING" = "Final Fantasy XIV est en cours d'exécution.";
+"FIRSTAID_GAME_RUNNING_INFORMATIONAL" = "Fermer les instances de Final Fantasy XIV déjà lancées avant de lancer le dépannage.";
 
-"DXVK_USER_CACHE_DELETED" = "Shader Cache supprimé";
-"DXVK_USER_CACHE_DELETED_INFORMATIVE" = "Le Shader Cache a été supprimé. Démarrez le jeu et vérifiez si votre problème a été corrigé.";
-"DXVK_USER_CACHE_DELETE_FAILED" = "Suppression du Shader Cache échouée";
-"DXVK_USER_CACHE_DELETE_FAILED_INFORMATIVE" = "Incapable de supprimer le shader cache. Vous pouvez essayer de le supprimer manuellement avec Fichier->Ouvrir Wine Prefix.";
+"DXVK_USER_CACHE_DELETED" = "Cache shader supprimé";
+"DXVK_USER_CACHE_DELETED_INFORMATIVE" = "Le cache shader a été supprimé. Démarrez le jeu et vérifiez si votre problème a été corrigé.";
+"DXVK_USER_CACHE_DELETE_FAILED" = "Suppression du cache shader échouée";
+"DXVK_USER_CACHE_DELETE_FAILED_INFORMATIVE" = "Impossble de supprimer le cache shader. Vous pouvez essayer de le supprimer manuellement avec Fichier -> Ouvrir Wine Prefix.";
 
 "GAME_CONFIG_RESET" = "Configuration réinitialisée";
-"GAME_CONFIG_RESET_INFORMATIVE" = "Votre configuration de jeu a été réinitialisée.";
+"GAME_CONFIG_RESET_INFORMATIVE" = "Votre configuration de jeu a été réinitialisée avec succès.";
 "GAME_CONFIG_RESET_FAILED" = "Réinitialisation de la configuration échouée";
-"GAME_CONFIG_RESET_FAILED_INFORMATIVE" = "Incapable de réinitialiser la configuration. Vous pourriez autoriser XIV on Mac les droits d'accès à votre dossier de Téléchargement dans Préférences du système, Sécurité.";
+"GAME_CONFIG_RESET_FAILED_INFORMATIVE" = "Impossible de réinitialiser la configuration. Vous devriez autoriser XIV on Mac à avoir accès à votre dossier Téléchargements dans Préférences systèmes, Sécurité.";
 
-"DOCUMENTS_PERM_STILL_BAD" = "XIV On Mac ne peut toujours pas lire ou écrire dans vos Documents. Si le volet des préférences de sécurité affiche les bonnes permissions, supprimez l'entrée et recréer la permission.";
+"DOCUMENTS_PERM_STILL_BAD" = "XIV On Mac ne peut toujours pas lire ou écrire dans votre dossier Documents. Si le volet des préférences de sécurité affiche les bonnes permissions, supprimez l'entrée et recréez la permission.";
 
 "UNSUPPORTED_GPU" = "Aucun GPU pris en charge trouvé";
-"UNSUPPORTED_GPU_INFORMATIVE" = "XIV on Mac n'a trouvé aucun GPU pris en charge sur votre Mac. Si vous continuez, le jeu pourrait ne pas fonctionner, planter ou fonctionner de manière inférieure. Pour plus de détails, veuillez consulter notre liste de compatibilité.";
-"SEE_COMPATABILITY_BUTTON" = "Liste de compatibilité";
+"UNSUPPORTED_GPU_INFORMATIVE" = "XIV on Mac n'a trouvé aucun GPU pris en charge sur votre Mac. Si vous continuez, le jeu pourrait ne pas fonctionner, planter ou fonctionner de manière dégradée. Pour plus de détails, veuillez consulter notre matrice de compatibilité.";
+"SEE_COMPATABILITY_BUTTON" = "Matrice de compatibilité";
 
 "RETINA_WARNING" = "Avertissement";
-"RETINA_WARNING_INFORMATIVE" = "La désactivation de la mise à l'échelle peut augmenter le nombre de pixels du jeu jusqu'à 4x, ce qui pèsera lourdement sur vos performances.
+"RETINA_WARNING_INFORMATIVE" = "La désactivation de la mise à l'échelle peut augmenter le nombre de pixels du jeu jusqu'à 4x, ce qui impactera lourdement vos performances.
 Ne l'activez pas sur les écrans autres que écrans Retina, sauf à des fins de capture d'écran.";
 "RETINA_ENABLE_BUTTON" = "J'ai compris";
 
@@ -78,7 +78,7 @@ Ne l'activez pas sur les écrans autres que écrans Retina, sauf à des fins de 
 
 "FIRSTAID_CFGCHECK_GOOD_RESULT" = "Votre configuration semble fonctionnelle !";
 "FIRSTAID_CFGCHECK_ADVISORY_RESULT" = "Votre configuration semble bonne, mais devriez prendre connaissance de certains éléments.";
-"FIRSTAID_CFGCHECK_RECOMMENDATION_RESULT" = "Vous pouvez obtenir une meilleure perfomance de jeu avec quelques modifications.";
+"FIRSTAID_CFGCHECK_RECOMMENDATION_RESULT" = "Vous pouvez obtenir de meilleures perfomances de jeu avec quelques modifications.";
 "FIRSTAID_CFGCHECK_PROBLEM_RESULT" = "Un ou plusieurs problèmes ont été trouvés dans votre configuration qui peuvent causer des problèmes.";
 
 "FIRSTAID_CFGCHECK_FIXED" = "Corrigé!";
@@ -92,12 +92,12 @@ Ne l'activez pas sur les écrans autres que écrans Retina, sauf à des fins de 
 "SELECT_GAME_PATH_ERROR_MESSAGE" = "Le dossier que vous avez choisi pour l'installation du jeu ne semble pas être valide.";
 "SELECT_GAME_PATH_ERROR_INFORMATIVE" = "Voulez-vous toujours l'utiliser ?";
 
-"SELECT_BENCHMARK_PATH_PANEL_MESSAGE" = "Please choose the FFXIV benchmark location";
+"SELECT_BENCHMARK_PATH_PANEL_MESSAGE" = "Merci de sélectionner l'emplacement du benchmark FF XIV.";
 "BENCHMARK_TITLE" = "FINAL FANTASY XIV benchmark";
-"SELECT_BENCHMARK_PATH_ERROR_INFORMATIVE" = "The folder you chose for the game benchmark does not seem to be valid.\n It should contain \"ffxiv-endwalker-bench.exe\" and the folder \"game\"";
-"BENCHMARK_RESULT" = "Score: %@\nAverage FPS: %@";
+"SELECT_BENCHMARK_PATH_ERROR_INFORMATIVE" = "Le dossier que vous avez sélectionné pour le benchmark FF XIV ne semble pas valide.\n Il devrait contenir \"ffxiv-endwalker-bench.exe\" et un dossier \"game\"";
+"BENCHMARK_RESULT" = "Score: %@\nFPS moyens: %@";
 
-"PATCH_INSTALLATION_WAITING" = "Attendez la fin du téléchargement…";
+"PATCH_INSTALLATION_WAITING" = "Attente de la fin du téléchargement…";
 "PATCH_INSTALLATION_PROGRESS_INIT" = "0 de %d patch installé";
 "PATCH_INSTALLATION_PROGRESS" = "%d de %d patchs installés";
 "PATCH_INSTALLATION_ERROR_BUTTON" = "Fermer";
@@ -112,8 +112,8 @@ Ne l'activez pas sur les écrans autres que écrans Retina, sauf à des fins de 
 
 "OTP_MESSAGE" = "Secret OTP pour l'utilisateur \"%@\"";
 "OTP_INFORMATIVE" = "Si vous faites confiance à votre trousseau local, vous pouvez laisser XIV sur Mac gérer la génération d'OTP pour vous si vous fournissez un secret encodé en BASE32 ci-dessous :";
-"GSHADE_MESSAGE" = "Pour exécuter Catalina, vous devez avoir installé Wine ou CrossOver.";
-"GSHADE_INFORMATIVE" = "Vous pouvez également ajouter manue llement la version de Wine fournie avec XIV on Mac.app à votre $PATH.";
+"GSHADE_MESSAGE" = "Sous macOS Catalina, vous devez avoir installé Wine ou CrossOver.";
+"GSHADE_INFORMATIVE" = "Vous pouvez également ajouter manuellement la version de Wine fournie avec XIV on Mac.app à votre $PATH.";
 
 "INSTALLER_FOUND_MESSAGE" = "Installation de FINAL FANTASY XIV ONLINE trouvée!";
 "INSTALLER_FOUND_INFORMATIVE" = "Souhaitez-vous utiliser l'installation située dans %@ ?";
@@ -122,7 +122,7 @@ Ne l'activez pas sur les écrans autres que écrans Retina, sauf à des fins de 
 
 "INSTALLER_PATH_TITLE" = "Choisissez le dossier avec l'installation existante";
 "INSTALLER_PATH_SUBTITLE" = "Il doit contenir les dossiers \"game\" et \"boot\" et l'exécutable du jeu.";
-"INSTALLER_PATH_INVALID_MESSAGE" = "Invalid FFXIV Directory";
+"INSTALLER_PATH_INVALID_MESSAGE" = "Dossier FFXIV invalide";
 "INSTALLER_PATH_INVALID_INFORMATIVEmo" = "Il doit contenir les dossiers \"game\" et \"boot\" et l'exécutable du jeu.";
 "INSTALLER_PATH_INVALID_BUTTON" = "Par les Douze!";
 
@@ -138,7 +138,7 @@ Ne l'activez pas sur les écrans autres que écrans Retina, sauf à des fins de 
 
 "SETTINGS_WINDOW_TITLE" = "Paramètres";
 "SETTINGS_TAB_GENERAL_TITLE" = "Général";
-"SETTINGS_TAB_GRAPHICS_TITLE" = "Graphique";
+"SETTINGS_TAB_GRAPHICS_TITLE" = "Paramètres graphiques";
 "SETTINGS_TAB_PLUGINS_TITLE" = "Plugins (Dalamud)";
 "SETTINGS_TAB_ADVANCED_TITLE" = "Avancé";
 
@@ -160,15 +160,38 @@ Ne l'activez pas sur les écrans autres que écrans Retina, sauf à des fins de 
 "SETTINGS_DOWNLOAD_LIMIT" = "Limiter la vitesse de téléchargement à";
 "SETTINGS_DOWNLOAD_LIMIT_PLACEHOLDER" = "0.0";
 "SETTINGS_DOWNLOAD_LIMIT_UNITS" = "Mo/s";
-"SETTINGS_GENERAL_TITLE_INPUT" = "Key mapping";
-"SETTINGS_GENERAL_INPUT_LEFT_OPTION" = "Left option:";
-"SETTINGS_GENERAL_INPUT_RIGHT_OPTION" = "Right option:";
+"SETTINGS_GENERAL_TITLE_INPUT" = "Mappage des touches";
+"SETTINGS_GENERAL_INPUT_LEFT_OPTION" = "Option gauche:";
+"SETTINGS_GENERAL_INPUT_RIGHT_OPTION" = "Option droite:";
 "SETTINGS_GENERAL_INPUT_BUTTON_WINDOWS_ALT" = "Windows alt";
 "SETTINGS_GENERAL_INPUT_BUTTON_MACOS_OPTION" = "macOS option";
-"SETTINGS_GENERAL_INPUT_LEFT_COMMAND" = "Left command:";
-"SETTINGS_GENERAL_INPUT_RIGHT_COMMAND" = "Right command:";
+"SETTINGS_GENERAL_INPUT_LEFT_COMMAND" = "Command gauche:";
+"SETTINGS_GENERAL_INPUT_RIGHT_COMMAND" = "Command droite:";
 "SETTINGS_GENERAL_INPUT_BUTTON_CTRL" = "Ctrl";
 "SETTINGS_GENERAL_INPUT_BUTTON_ALT" = "Alt";
+
+// Screen Capture tab items
+"SETTINGS_TOGGLE_SCREEN_RECORDING" = "Démarrer/Arrêter l'enregistrement d'écran.";
+"SETTINGS_CAPTURE_PERMISSIONS_CHECK" = "XIV On Mac nécessite des permissions supplémentaires pour enregistrer votre écran. Si vous souhaitez recevoir une notification chaque fois que l'enregistrement démarre ou s'arrête, les autorisations de notifications doivent également être accordées.";
+"SETTINGS_CAPTURE_PERMISSIONS_CHECK_BUTTON" = "Vérification des permissions...";
+"CAPTURE_FOLDER_LABEL" = "Emplacement de sauvegarde:";
+"CAPTURE_FOLDER_SELECT_BUTTON" = "Sélectionner...";
+"SELECT_CAPTURE_PATH_PANEL_MESSAGE" = "Choisissez un dossier où enregistrer les nouvelles captures.";
+"SETTINGS_CAPTURE_CODEC" = "Codec Vidéo:";
+"SETTINGS_CAPTURE_CODEC_H264" = "H.264";
+"SETTINGS_CAPTURE_CODEC_HEVC" = "HEVC";
+"SCREEN_CAPTURE_PERMISSION" = "Permissions d'enregistrement d'écran";
+"SCREEN_CAPTURE_PERMISSION_HAVE_NONE" = "XIV On Mac nécessite des permissions d'enregistrement d'écran pour enregistrer l'écran. Vous pourriez également accorder l'autorisation de notifications pour être alerté lorsque l'enregistrement démarre ou s'arrête.";
+"SCREEN_CAPTURE_PERMISSION_NO_NOTIFY" = "XIV On Mac nécessite l'autorisation de notifications pour vous alerter lorsque l'enregistrement démarre ou s'arrête. L'enregistrement d'écran fonctionnera quand même sans cette permission.";
+"SCREEN_CAPTURE_PERMISSION_NO_RECORD" = "XIV On Mac nécessite l'autorisation d'enregistrement d'écran pour enregistrer l'écran.";
+"SCREEN_CAPTURE_PERMISSION_HAVE_ALL" = "XIV On Mac dispose de toutes les permissions nécessaires !";
+"SCREEN_CAPTURE_PERMISSION_OPEN_PREF_BUTTON" = "Ouvrir les Options de Sécurité…";
+"NOTIFY_CAPTURE_TITLE" = "Enregistrement d'écran";
+"NOTIFY_CAPTURE_STARTED_SUBTITLE" = "Enregistrement d'écran démarré";
+"NOTIFY_CAPTURE_STARTED_BODY" = "Enregistre vers %@";
+"NOTIFY_CAPTURE_STOPPED_SUBTITLE" = "Enregistrement d'écran arrêté";
+"NOTIFY_CAPTURE_STOPPED_BODY" = "Enregistré vers %@";
+
 
 // Graphics Settings tab items
 "DXMT_ENABLED" = "Utiliser la traduction directe de D3D11 vers Metal (DXMT)";
@@ -182,30 +205,30 @@ Ne l'activez pas sur les écrans autres que écrans Retina, sauf à des fins de 
 "SETTINGS_GRAPHICS_HUD_BLURB" = "Les options HUD sont des éléments d'information affichés dans le coin supérieur gauche dans le jeu qui peuvent vous aider à déterminer comment les paramètres du jeu affectent vos performances. Ils sont entièrement facultatifs.";
 "SETTINGS_GRAPHICS_HUD_SCALE" = "Échelle:";
 "SETTINGS_GRAPHICS_RESET_SCALE_BUTTON" = "Réinitialiser";
-"SETTINGS_GRAPHICS_METAL3_HUD" = "Metal 3 Performance HUD";
-"SETTINGS_GRAPHICS_DEVICE_INFO" = "Device Info";
-"SETTINGS_GRAPHICS_GPU_LOAD" = "GPU Load";
-"SETTINGS_GRAPHICS_FRAME_RATE_HUD" = "Frame Rate";
-"SETTINGS_GRAPHICS_DXVK_VERSION" = "DXVK Version";
-"SETTINGS_GRAPHICS_FRAME_TIME" = "Frame Time Graph";
+"SETTINGS_GRAPHICS_METAL3_HUD" = "ATH de performances Metal 3";
+"SETTINGS_GRAPHICS_DEVICE_INFO" = "Informations matérielles";
+"SETTINGS_GRAPHICS_GPU_LOAD" = "Charge GPU";
+"SETTINGS_GRAPHICS_FRAME_RATE_HUD" = "Rafraîchissement d'image";
+"SETTINGS_GRAPHICS_DXVK_VERSION" = "Version de DXVK";
+"SETTINGS_GRAPHICS_FRAME_TIME" = "Graph de timing d'image";
 "SETTINGS_GRAPHICS_FEATURE_LEVEL" = "D3D Feature Level";
-"SETTINGS_GRAPHICS_BUFFER_SUBMISSIONS" = "Command Buffer Submissions";
-"SETTINGS_GRAPHICS_COMPILER" = "Shader Compiler Activity";
-"SETTINGS_GRAPHICS_DRAWCALLS" = "Draw Calls and Render Passes";
+"SETTINGS_GRAPHICS_BUFFER_SUBMISSIONS" = "Soumissions au buffer de commande";
+"SETTINGS_GRAPHICS_COMPILER" = "Activité du compileur de shaders";
+"SETTINGS_GRAPHICS_DRAWCALLS" = "Draw Calls et Render Passes";
 "SETTINGS_GRAPHICS_PIPELINES" = "Graphics and Compute Pipelines";
-"SETTINGS_GRAPHICS_MEMORY" = "Memory Used";
-"SETTINGS_GRAPHICS_ALL_DXVK_ON_BUTTON" = "Enable Entire DXVK HUD";
-"SETTINGS_GRAPHICS_ALL_DXVK_OFF_BUTTON" = "Disable Entire DXVK HUD";
+"SETTINGS_GRAPHICS_MEMORY" = "Mémoire utilisée";
+"SETTINGS_GRAPHICS_ALL_DXVK_ON_BUTTON" = "Activer tout l'ATH DXVK";
+"SETTINGS_GRAPHICS_ALL_DXVK_OFF_BUTTON" = "Désactiver tout l'ATH DXVK";
 "SETTINGS_GRAPHICS_RETINA" = "Activer la mise à l'échelle macOS";
-"SETTINGS_GRAPHICS_RETINA_BUGFIX" = "Correctif du bug pour le mode sans mise à l'échelle";
+"SETTINGS_GRAPHICS_RETINA_BUGFIX" = "Bugfix pour le mode sans mise à l'échelle en plein écran";
 
 // Plugins/Dalamud tab items
-"SETTINGS_PLUGINS_WHAT_IS_DALAMUD_BLURB" = "Les plugins sont activés par un projet appelé Dalamud, qui permet des fonctionnalités supplémentaires dans votre jeu. Si vous ne savez pas pourquoi vous voudriez un plugin ou si vous ne souhaitez pas les utiliser, vous pouvez les laisser désactivés en toute sécurité. Pour en savoir plus sur Dalamud, veuillez visiter :\nhttps://github.com/goatcorp/Dalamud";
+"SETTINGS_PLUGINS_WHAT_IS_DALAMUD_BLURB" = "Les plugins sont activés par un projet appelé Dalamud, qui active des fonctionnalités supplémentaires dans votre jeu. Si vous ne savez pas pourquoi vous souhaiteriez utiliser un plugin ou si vous ne souhaitez pas les utiliser, vous pouvez les laisser désactivés en toute sécurité. Pour en savoir plus sur Dalamud, veuillez visiter :\nhttps://github.com/goatcorp/Dalamud";
 "SETTINGS_PLUGINS_DALAMUD_ENABLE" = "Activer Dalamud";
 "SETTINGS_PLUGINS_DALAMUD_ENTRYPOINT" = "Entrypoint";
-"SETTINGS_PLUGINS_DALAMUD_DELAY_BLURB" = "Si Dalamud ne fonctionne pas correctement, vous pouvez essayer d'augmenter ou diminuer le délais pour trouver une valeur qui fonctionne pour votre Mac.";
+"SETTINGS_PLUGINS_DALAMUD_DELAY_BLURB" = "Si Dalamud ne fonctionne pas correctement, vous pouvez essayer d'augmenter ou diminuer le délai pour trouver une valeur qui fonctionne pour votre Mac.";
 "SETTINGS_PLUGINS_DALAMUD_DELAY_UNITS" = "secondes";
-"SETTINGS_PLUGINS_DALAMUD_DELAY_LABEL" = "Délais :";
+"SETTINGS_PLUGINS_DALAMUD_DELAY_LABEL" = "Délai :";
 "SETTINGS_PLUGINS_DISCORD_BLURB" = "Le \"Bridge\" permet au plugin \"Discord Rich Presence Dalamud\" de mettre à jour votre statut Discord. Si vous ne prévoyez pas d'utiliser ce plugin, vous pouvez désactiver ce paramètre.";
 "SETTINGS_PLUGINS_DISCORD_TOGGLE" = "Discord Rich Presence Wine Bridge";
 
@@ -221,18 +244,21 @@ Ne l'activez pas sur les écrans autres que écrans Retina, sauf à des fins de 
 
 // First Aid/Troubleshooting Window
 "FIRSTAID_WINDOW_TITLE" = "First-Aid";
-"FIRSTAID_SHADER_CACHE_HEADING" = "Shader Cache";
-"FIRSTAID_SHADER_CACHE_BLURB" = "If your game is freezing at startup, \"Compiling Shaders…\" forever, missing lighting or randomly freezing, the problem may be with your shader cache. Deleting it will cause a new one to be rebuilt, though it may result in occasional stutters during play initially.";
-"FIRSTAID_SHADER_CACHE_BUTTON" = "Delete User Shader Cache";
-"FIRSTAID_CONFIG_HEADING" = "FFXIV Configuration";
-"FIRSTAID_RESET_CONFIG_BLURB" = "If you've misconfigured your game in a way that prevents you from playing it, such as a bad graphics setting, you can try resetting your configuration to default.";
-"FIRSTAID_RESET_CONFIG_BUTTON" = "Reset Configuration";
-"FIRSTAID_CHECKUP_BLURB" = "XIV on Mac can identify potential problems, or make recommended changes to your FFXIV Configuration file to give you the best experience available on the Mac.";
-"FIRSTAID_CHECKUP_BUTTON" = "Configuration Checkup";
-"FIRSTAID_CFGCHECK_FIX_BUTTON" = "Fix";
+"FIRSTAID_SHADER_CACHE_HEADING" = "Cache shader";
+"FIRSTAID_SHADER_CACHE_BLURB" = "Si votre jeu se bloque au démarrage, affichant \"Compiling Shaders…\" sans discontinuer, ou présente des problèmes d'éclairage, ou se fige aléatoirement, le problème pourrait venir de votre cache shader. Le supprimer engendrera la création d'un tout nouveau cache, mais peut résulter initialement en des sauts d'image occasionnels en jeu.";
+"FIRSTAID_SHADER_CACHE_BUTTON" = "Supprimer le cache shader utilisateur";
+"FIRSTAID_CONFIG_HEADING" = "Configuration de FFXIV";
+"FIRSTAID_RESET_CONFIG_BLURB" = "Si vous avez mal configuré votre jeu, le rendant non lancable/injouable (comme des paramètres graphiques erronés), vous pouvez essayer de réinitialiser ces paramètres à leur valeur par défaut.";
+"FIRSTAID_RESET_CONFIG_BUTTON" = "Réinitialisation de la configuration";
+"FIRSTAID_CHECKUP_BLURB" = "XIV On Mac peut identifier certains problèmes potentiels, ou appliquer des changements recommandés sur votre fichier de configuration FFXIV pour vous livrer la meilleure expérience possible sur Mac.";
+"FIRSTAID_CHECKUP_BUTTON" = "Vérification de la configuration";
+"FIRSTAID_CFGCHECK_FIX_BUTTON" = "Réparer";
 
 // Benchmark Window
 "BENCHMARK_WINDOW_TITLE" = "Benchmark Final Fantasy XIV";
+"BENCHMARK_MODE_LABEL" = "Mode";
+"BENCHMARK_MODE_BENCHMARK_LABEL" = "Performance Benchmark";
+"BENCHMARK_MODE_CREATOR_LABEL" = "Création de personnage";
 "BENCHMARK_FOLDER_LABEL" = "Emplacement du dossier de benchmarking :";
 "BENCHMARK_FOLDER_SELECT_BUTTON" = "Sélectionner…";
 "BENCHMARK_FOLDER_NOT_SET" = "Non défini…";
@@ -242,3 +268,15 @@ Ne l'activez pas sur les écrans autres que écrans Retina, sauf à des fins de 
 "BENCHMARK_TYPE_QHD" = "WQHD fenêtré : 2560 × 1440";
 "BENCHMARK_TYPE_CUSTOM" = "Plein écran sans bordure : Résolution du bureau";
 "BENCHMARK_START_BUTTON" = "Démarrer le Benchmark";
+"BENCHMARK_CHARACTER_APPEARANCE_FORMAT" = "Slot %d – %@";
+"BENCHMARK_CHARACTER_APPEARANCE" = "Apparence de personnage";
+"BENCHMARK_DEFAULT_APPEARANCE" = "Default";
+"BENCHMARK_CHARACTER_UNNAMED" = "Unnamed";
+"BENCHMARK_CHARACTER_COSTUME" = "Costume de personnage";
+"BENCHMARK_IMPORT_CHARACTER_BUTTON" = "Importer l'apparence de personnage…";
+"BENCHMARK_SLOT_DELETE_BUTTON" = "Supprimer le slot…";
+"BENCHMARK_SLOT_IMPORT_BUTTON" = "Importer le slot";
+"BENCHMARK_SLOT_EXPORT_BUTTON" = "Exporter le slot";
+"BENCHMARK_CONFIRM_SLOT_DELETE" = "Voulez-vous vraiment supprimer cette apparence de personnage ?";
+"BENCHMARK_CONFIRM_SLOT_DELETE_INFORMATIVE" = "Cette opération est irréversible.";
+"BENCHMARK_DISCORD_BLURB" = "Merci d'avoir caressé le chocobo ! Comme récompense, voici les personnages de certains des développeurs de XIV On Mac ainsi que de certaines des personnalités du serveur Discord. A vous de les essayer dans le benchmark !";
