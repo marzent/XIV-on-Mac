@@ -11,7 +11,7 @@ import Foundation
 struct Wine {
     @available(*, unavailable) private init() {}
     
-    static let wineArchiveURL = Bundle.main.url(forResource: "wine", withExtension: "tar.gz")!
+    static let wineArchiveURL = Bundle.main.url(forResource: "wine", withExtension: "tar.gz.xor")!
     static let wineURL = Util.applicationSupport.appendingPathComponent("wine")
     static let wineBinURL = wineURL.appendingPathComponent("bin")
     static let prefix = Util.applicationSupport.appendingPathComponent("wineprefix")
