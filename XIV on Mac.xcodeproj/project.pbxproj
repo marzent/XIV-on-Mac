@@ -84,6 +84,7 @@
 		50C029032C5256630085297D /* Dxmt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C029022C5256630085297D /* Dxmt.swift */; };
 		50C029052C5257050085297D /* GraphicsInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C029042C5257050085297D /* GraphicsInstaller.swift */; };
 		50C029072C52638C0085297D /* dxmt in Resources */ = {isa = PBXBuildFile; fileRef = 50C029062C52638C0085297D /* dxmt */; };
+		50C0290B2C5406D60085297D /* wine.tar.gz in Resources */ = {isa = PBXBuildFile; fileRef = 50C0290A2C5406D60085297D /* wine.tar.gz */; };
 		50D30FA027B92EDB007A9F66 /* OTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D30F9F27B92EDB007A9F66 /* OTP.swift */; };
 		50D30FA327B93359007A9F66 /* Embassy in Frameworks */ = {isa = PBXBuildFile; productRef = 50D30FA227B93359007A9F66 /* Embassy */; };
 		50DC355E27E9CEEE00DBA62C /* Base32 in Frameworks */ = {isa = PBXBuildFile; productRef = 50DC355D27E9CEEE00DBA62C /* Base32 */; };
@@ -194,6 +195,7 @@
 		50C029022C5256630085297D /* Dxmt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dxmt.swift; sourceTree = "<group>"; };
 		50C029042C5257050085297D /* GraphicsInstaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicsInstaller.swift; sourceTree = "<group>"; };
 		50C029062C52638C0085297D /* dxmt */ = {isa = PBXFileReference; lastKnownFileType = folder; path = dxmt; sourceTree = "<group>"; };
+		50C0290A2C5406D60085297D /* wine.tar.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; path = wine.tar.gz; sourceTree = "<group>"; };
 		50D30F9F27B92EDB007A9F66 /* OTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTP.swift; sourceTree = "<group>"; };
 		50DF1F8427CCB83300DE9DA5 /* FFXIVRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFXIVRepo.swift; sourceTree = "<group>"; };
 		50E7EB9929A16F29001BC287 /* Benchmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Benchmark.swift; sourceTree = "<group>"; };
@@ -329,6 +331,7 @@
 				50692C8A27B3E48B00945593 /* Credits.html */,
 				50511ECA2770E087003A1E9F /* Main.storyboard */,
 				50511ECD2770E087003A1E9F /* XIV_on_Mac.entitlements */,
+				50C0290A2C5406D60085297D /* wine.tar.gz */,
 				50C029062C52638C0085297D /* dxmt */,
 				507D8F2027766F52000F0CB0 /* dxvk */,
 				07B529D727D97D2B005B78BF /* Localizable.strings */,
@@ -521,6 +524,7 @@
 				50C029072C52638C0085297D /* dxmt in Resources */,
 				07A3498C2805689200A9D7D0 /* CfgCheckProbFailed.tiff in Resources */,
 				508C678F29431BFF0046AA38 /* snowflake_x2.png in Resources */,
+				50C0290B2C5406D60085297D /* wine.tar.gz in Resources */,
 				073649AD281E35C700DA41F7 /* PrefsGraphics.tiff in Resources */,
 				07BF3AFB2806507800794155 /* CfgCheckAdvFixed.tiff in Resources */,
 				50692C8B27B3E48B00945593 /* Credits.html in Resources */,
@@ -563,7 +567,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/zsh;
-			shellScript = "cd \"$PROJECT_DIR\"/XIV\\ on\\ Mac/\n[ -d \"wine\" ] && exit 0\ncurl -LO https://github.com/marzent/winecx/releases/download/ff-wine-9.12.1/wine.tar.xz\ntar -xf wine.tar.xz\nrm wine.tar.xz\n";
+			shellScript = "cd \"$PROJECT_DIR\"/XIV\\ on\\ Mac/\n[ -f \"wine.tar.gz\" ] && exit 0\ncurl -LO https://github.com/marzent/winecx/releases/download/ff-wine-9.12.1/wine.tar.gz\n";
 		};
 		5049B9AB283B8E1300463A2B /* Build  XIVLauncher.NativeAOT */ = {
 			isa = PBXShellScriptBuildPhase;
