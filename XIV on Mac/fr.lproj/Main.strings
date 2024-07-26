@@ -6,7 +6,7 @@
 "0ZX-g7-76H.title" = "Lancement avec la prise en charge du plugin Dalamud";
 
 /* Class = "NSTextFieldCell"; title = "Point XIV on Mac towards a custom folder."; ObjectID = "0iQ-Qw-vtu"; */
-"0iQ-Qw-vtu.title" = "Dirigez XIV on Mac vers un dossier personnalisé.";
+"0iQ-Qw-vtu.title" = "Pointer XIV on Mac vers un dossier personnalisé.";
 
 /* Class = "NSMenuItem"; title = "Auto-Launch Bunny HUD"; ObjectID = "1Do-e8-DyE"; */
 "1Do-e8-DyE.title" = "Lancement automatique de Bunny HUD";
@@ -51,7 +51,7 @@
 "4sb-4s-VLi.title" = "Fermer XIV on Mac";
 
 /* Class = "NSTextFieldCell"; title = "Plugins are enabled by a project called Dalamud, which enables extra functionality in your game. If you do not know why you would want a plugin or do not wish to use them, you may safely leave this disabled. To learn more about Dalamud please visit:\nhttps://github.com/goatcorp/Dalamud"; ObjectID = "4uL-Sg-0m9"; */
-"4uL-Sg-0m9.title" = "Les plugins sont activés par un projet appelé Dalamud, qui permet des fonctionnalités supplémentaires dans votre jeu. Si vous ne savez pas pourquoi vous voudriez un plugin ou si vous ne souhaitez pas les utiliser, vous pouvez les laisser désactivés en toute sécurité. Pour en savoir plus sur Dalamud, veuillez visiter :\nhttps://github.com/goatcorp/Dalamud";
+"4uL-Sg-0m9.title" = "Les plugins sont activés par un projet appelé Dalamud, qui active des fonctionnalités supplémentaires dans votre jeu. Si vous ne savez pas pourquoi vous souhaiteriez utiliser un plugin ou si vous ne souhaitez pas les utiliser, vous pouvez les laisser désactivés en toute sécurité. Pour en savoir plus sur Dalamud, veuillez visiter :\nhttps://github.com/goatcorp/Dalamud";
 
 /* Class = "NSTextFieldCell"; placeholderString = "optional"; ObjectID = "5FC-rM-Oay"; */
 "5FC-rM-Oay.placeholderString" = "optionnel";
@@ -180,7 +180,7 @@
 "Def-J0-BrB.title" = "Mot de passe à usage unique (OTP)";
 
 /* Class = "NSMenuItem"; title = "Spelling and Grammar"; ObjectID = "Dv1-io-Yv7"; */
-"Dv1-io-Yv7.title" = "Épellation et grammaire";
+"Dv1-io-Yv7.title" = "Orthographe et grammaire";
 
 /* Class = "NSTextFieldCell"; title = "XIV on Mac can identify potential problems, or make recommended changes to your FFXIV Configuration file to give you the best experience available on the Mac."; ObjectID = "Dv8-bd-owY"; */
 "Dv8-bd-owY.title" = "XIV on Mac peut identifier des problèmes potentiels ou apporter des modifications recommandées à votre fichier de configuration FFXIV pour vous offrir la meilleure expérience disponible sur Mac.";
@@ -387,7 +387,7 @@
 "Uem-xO-XvC.title" = "Étape actuelle";
 
 /* Class = "NSTextFieldCell"; title = "If Dalamud is not loading succesfully, you can try adjusting the load delay up or down to find a value that works for your Mac."; ObjectID = "VZh-e3-0dP"; */
-"VZh-e3-0dP.title" = "Si Dalamud ne fonctionne pas correctement, vous pouvez essayer d'augmenter ou diminuer le délais pour trouver une valeur qui fonctionne pour votre Mac.";
+"VZh-e3-0dP.title" = "Si Dalamud ne fonctionne pas correctement, vous pouvez essayer d'augmenter ou diminuer le délai pour trouver une valeur qui fonctionne pour votre Mac.";
 
 /* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "Vdr-fp-XzO"; */
 "Vdr-fp-XzO.title" = "Masquer autres";
@@ -423,7 +423,7 @@
 "Ynk-f8-cLZ.title" = "Commencer à parler";
 
 /* Class = "NSTextFieldCell"; title = "If you've misconfigured your game in a way that prevents you from playing it, such as a bad graphics setting, you can try resetting your configuration to default."; ObjectID = "YxS-mf-FNj"; */
-"YxS-mf-FNj.title" = "Si vous avez configuré votre jeu d'une manière qui vous empêche d'y jouer, comme un mauvais réglage graphique, vous pouvez essayer de réinitialiser votre configuration.";
+"YxS-mf-FNj.title" = "Si vous avez mal configuré votre jeu, le rendant non lancable/injouable (comme des paramètres graphiques erronés), vous pouvez essayer de réinitialiser ces paramètres à leur valeur par défaut.";
 
 /* Class = "NSMenuItem"; title = "Japanese"; ObjectID = "Z2I-xl-N2E"; */
 "Z2I-xl-N2E.title" = "Japonais";
@@ -510,7 +510,7 @@
 "dYN-5e-LY1.title" = "Identifiant Square Enix";
 
 /* Class = "NSButton"; ibShadowedToolTip = "Wine has a bug when starting up in Fullscreen modes with non-scaled set which makes the application difficult to interact with. This option will automatically change your game to Windowed mode on every startup, after which you can change back to fullscreen to avoid the bug."; ObjectID = "dcJ-iB-Eb4"; */
-"dcJ-iB-Eb4.ibShadowedToolTip" = "Wine a un bogue lors du démarrage en mode plein écran avec un ensemble non mis à l'échelle qui rend l'application difficile à interagir avec. Cette option basculera automatiquement votre jeu en mode fenêtré à chaque démarrage, après quoi vous pourrez revenir en plein écran pour éviter le bug.";
+"dcJ-iB-Eb4.ibShadowedToolTip" = "Wine a un bogue lors du démarrage en mode plein écran avec un ensemble non mis à l'échelle ce qui rend compliqué l'intéraction avec l'application. Cette option basculera automatiquement votre jeu en mode fenêtré à chaque démarrage, après quoi vous pourrez revenir en plein écran pour éviter le bug.";
 
 /* Class = "NSButtonCell"; title = "Graphics and Compute Pipelines"; ObjectID = "dkA-rO-6VD"; */
 "dkA-rO-6VD.title" = "Graphics and Compute Pipelines";
@@ -546,7 +546,7 @@
 "h6P-A1-h9S.title" = "4.7.2";
 
 /* Class = "NSMenuItem"; title = "Smart Quotes"; ObjectID = "hQb-2v-fYv"; */
-"hQb-2v-fYv.title" = "Citations intélligentes";
+"hQb-2v-fYv.title" = "Citations intelligentes";
 
 /* Class = "NSTextFieldCell"; title = "Select a License"; ObjectID = "hfH-NT-WKX"; */
 "hfH-NT-WKX.title" = "Sélectionnez une licence :";
@@ -558,7 +558,7 @@
 "hjS-RC-X85.title" = "OTP auto.";
 
 /* Class = "NSMenuItem"; title = "Check Document Now"; ObjectID = "hz2-CU-CR7"; */
-"hz2-CU-CR7.title" = "Vérifier document maintenant";
+"hz2-CU-CR7.title" = "Vérifier Documents maintenant";
 
 /* Class = "NSMenu"; title = "Services"; ObjectID = "hz9-B4-Xy5"; */
 "hz9-B4-Xy5.title" = "Services";
@@ -639,13 +639,13 @@
 "phh-fm-6OL.title" = "Suivant";
 
 /* Class = "NSTextFieldCell"; title = "If your game is freezing at startup, \"Compiling Shaders…\" forever, missing lighting or randomly freezing, the problem may be with your shader cache. Deleting it will cause a new one to be rebuilt, though it may result in occasional stutters during play initially."; ObjectID = "piU-pX-vSl"; */
-"piU-pX-vSl.title" = "Si votre jeu se fige au démarrage, \"Compiling Shaders…\" pour toujours, manque d'éclairage ou se fige de manière aléatoire, le problème peut provenir de votre \"Shader Cache\". Le supprimer entraînera la reconstruction d'un nouveau \"Shader Cache\", bien que cela puisse entraîner des bégaiements occasionnels pendant le lancement initial.";
+"piU-pX-vSl.title" = "Si votre jeu se bloque au démarrage, affichant \"Compiling Shaders…\" sans discontinuer, ou présente des problèmes d'éclairage, ou se fige aléatoirement, le problème pourrait venir de votre \"cache shader\". Le supprimer engendrera la création d'un tout nouveau cache, mais peut résulter initialement en des sauts d'image occasionnels en jeu.";
 
 /* Class = "NSMenuItem"; title = "Find Next"; ObjectID = "q09-fT-Sye"; */
 "q09-fT-Sye.title" = "Rechercher suivant";
 
 /* Class = "NSButtonCell"; title = "Launch Vanilla Game"; ObjectID = "qDd-CO-Fjs"; */
-"qDd-CO-Fjs.title" = "Lancer le jeu vanille";
+"qDd-CO-Fjs.title" = "Lancer le jeu en mode vanilla";
 
 /* Class = "NSTextFieldCell"; title = "Logging In"; ObjectID = "qM7-gN-uyd"; */
 "qM7-gN-uyd.title" = "Connexion";
@@ -684,7 +684,7 @@
 "ti2-f2-LWe.title" = "Frame Time Graph";
 
 /* Class = "NSTextFieldCell"; title = "When selecting a custom folder, please select one your game is installed in. It should contain the folders \"game\" and \"boot\". Otherwise XIV on Mac will redownload your game."; ObjectID = "uJx-kU-CQH"; */
-"uJx-kU-CQH.title" = "Lors de la sélection d'un dossier personnalisé, veuillez sélectionner celui dans lequel votre jeu est installé. Il doit contenir les dossiers \"jeu\" et \"boot\". Sinon, XIV son Mac téléchargera votre jeu à nouveau.";
+"uJx-kU-CQH.title" = "Lors de la sélection d'un dossier personnalisé, veuillez sélectionner celui dans lequel votre jeu est installé. Il doit contenir les dossiers \"jeu\" et \"boot\". Sinon, XIV son Mac téléchargera le jeu à nouveau.";
 
 /* Class = "NSMenu"; title = "XIV on Mac"; ObjectID = "uQy-DD-JDr"; */
 "uQy-DD-JDr.title" = "XIV on Mac";
