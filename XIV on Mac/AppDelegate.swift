@@ -33,6 +33,7 @@ import UserNotifications
         let build = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion")!
         let storagePath = FileManager.default.fileSystemRepresentation(withPath: Util.applicationSupport.path)
         initXL("XIV on Mac \(version) build \(build)", storagePath, Settings.verboseLogging, Frontier.frontierURLTemplate)
+        Wine.extract()
         Wine.setup()
     }
     
