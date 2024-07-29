@@ -333,7 +333,6 @@
 				50692C8A27B3E48B00945593 /* Credits.html */,
 				50511ECA2770E087003A1E9F /* Main.storyboard */,
 				50511ECD2770E087003A1E9F /* XIV_on_Mac.entitlements */,
-				504B0D0A2C5414820074B11C /* wine.tar.gz.xor */,
 				50C029062C52638C0085297D /* dxmt */,
 				507D8F2027766F52000F0CB0 /* dxvk */,
 				5043E36B27728BA300E59127 /* wine */,
@@ -571,7 +570,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/zsh;
-			shellScript = "cd \"$PROJECT_DIR\"/XIV\\ on\\ Mac/\n[ -f \"wine.tar.gz.xor\" ] && exit 0\ncurl -LO https://github.com/marzent/winecx/releases/download/ff-wine-9.12.1/wine.tar.gz\nxxd -p wine.tar.gz | tr '0123456789abcdef' 'fedcba9876543210' | xxd -p -r > wine.tar.gz.xor\nrm -f wine.tar.gz\n";
+			shellScript = "cd \"$PROJECT_DIR\"/XIV\\ on\\ Mac/\n[ -d \"wine\" ] && exit 0\ncurl -LO https://github.com/marzent/winecx/releases/download/ff-wine-9.12.1/wine.tar.xz\ntar -xf wine.tar.xz\nrm wine.tar.xz\n";
 		};
 		5049B9AB283B8E1300463A2B /* Build  XIVLauncher.NativeAOT */ = {
 			isa = PBXShellScriptBuildPhase;
