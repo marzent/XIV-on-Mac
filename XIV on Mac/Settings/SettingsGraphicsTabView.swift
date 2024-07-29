@@ -184,11 +184,11 @@ extension SettingsGraphicsTabView {
             didSet { Settings.metalFxSpatialEnabled = metalFxSpatialEnabled }
         }
 
-        @Published var fpsLimited: Bool = Dxvk.options.maxFramerate != 0 {
+        @Published var fpsLimited: Bool = Settings.maxFramerate != 0 {
             didSet { updateFpsLimit() }
         }
 
-        @Published var fpsLimit: String = .init(Dxvk.options.maxFramerate) {
+        @Published var fpsLimit: String = String(Settings.maxFramerate) {
             didSet { updateFpsLimit() }
         }
 
