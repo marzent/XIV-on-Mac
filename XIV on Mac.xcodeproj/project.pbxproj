@@ -56,6 +56,7 @@
 		502A18E927AACEFE00144AB9 /* LaunchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A18E827AACEFE00144AB9 /* LaunchController.swift */; };
 		503B819628391054006197C1 /* XIVLauncher.NativeAOT.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 503B819428391054006197C1 /* XIVLauncher.NativeAOT.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		503B819C28394341006197C1 /* XIVLauncher.NativeAOT.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 503B819928394341006197C1 /* XIVLauncher.NativeAOT.dylib */; };
+		5043E36C27728BA300E59127 /* wine in Resources */ = {isa = PBXBuildFile; fileRef = 5043E36B27728BA300E59127 /* wine */; };
 		5046F7EF27E74AC9006C34E1 /* discord_bridge.exe in Resources */ = {isa = PBXBuildFile; fileRef = 5046F7EE27E74A9A006C34E1 /* discord_bridge.exe */; };
 		5049B9AE283BAFE600463A2B /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5049B9AD283BAFE600463A2B /* Log.swift */; };
 		5049B9B0283BF89400463A2B /* LoginResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5049B9AF283BF89400463A2B /* LoginResult.swift */; };
@@ -165,6 +166,7 @@
 		503B819928394341006197C1 /* XIVLauncher.NativeAOT.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = XIVLauncher.NativeAOT.dylib; sourceTree = "<group>"; };
 		503B819A28394341006197C1 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		503B819B28394341006197C1 /* XIVLauncher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XIVLauncher.h; sourceTree = "<group>"; };
+		5043E36B27728BA300E59127 /* wine */ = {isa = PBXFileReference; lastKnownFileType = folder; path = wine; sourceTree = "<group>"; };
 		5046F7EE27E74A9A006C34E1 /* discord_bridge.exe */ = {isa = PBXFileReference; lastKnownFileType = file; path = discord_bridge.exe; sourceTree = "<group>"; };
 		5049B9AC283BA82800463A2B /* Serilog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Serilog.h; sourceTree = "<group>"; };
 		5049B9AD283BAFE600463A2B /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
@@ -334,6 +336,7 @@
 				504B0D0A2C5414820074B11C /* wine.tar.gz.xor */,
 				50C029062C52638C0085297D /* dxmt */,
 				507D8F2027766F52000F0CB0 /* dxvk */,
+				5043E36B27728BA300E59127 /* wine */,
 				07B529D727D97D2B005B78BF /* Localizable.strings */,
 				07A349882805689200A9D7D0 /* Resources */,
 				07C876DC280B7DD500CB0D8E /* FFXIV-MacDefault.cfg */,
@@ -543,6 +546,7 @@
 				07E8A6762BD0A535005AD41B /* DISCORD_TEAM_SEATHASKY_02.dat in Resources */,
 				507D8F2127766F52000F0CB0 /* dxvk in Resources */,
 				50511ECC2770E087003A1E9F /* Main.storyboard in Resources */,
+				5043E36C27728BA300E59127 /* wine in Resources */,
 				07E8A6722BD0A3D4005AD41B /* DISCORD_TEAM_USAGI_01.dat in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
