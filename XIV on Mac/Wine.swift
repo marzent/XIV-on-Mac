@@ -11,40 +11,8 @@ import Foundation
 struct Wine {
     @available(*, unavailable) private init() {}
     
-    static let wineArchiveURL = Bundle.main.url(forResource: "wine", withExtension: "tar.gz.xor")!
-    static let wineURL = Util.applicationSupport.appendingPathComponent("wine")
-    static let wineBinURL = wineURL.appendingPathComponent("bin")
+    static let wineBinURL = Bundle.main.url(forResource: "bin", withExtension: nil, subdirectory: "wine")!
     static let prefix = Util.applicationSupport.appendingPathComponent("wineprefix")
-    
-    private static func extract(hashURL: URL, hash: String) throws {
-        let ret = extractTarGzip(FileManager.default.fileSystemRepresentation(withPath: wineArchiveURL.path), FileManager.default.fileSystemRepresentation(withPath: Util.applicationSupport.path))
-        if (ret != 0) {
-            throw XLError.runtimeError("Failed to extract .tar.gz archive")
-        }
-        try hash.write(to: hashURL, atomically: true, encoding: .utf8)
-        Log.information("Wine extraction completed and hash written to \(hashURL.path)")
-    }
-    
-    static func extract() {
-        let wineHashURL = wineURL.appendingPathComponent("hash.txt")
-
-        do {
-            let (wineArchiveHash, _) = try Encryption.sha1(file: wineArchiveURL)
-
-            if FileManager.default.fileExists(atPath: wineHashURL.path), FileManager.default.fileExists(atPath: wineBinURL.path) {
-                let storedHash = try String(contentsOf: wineHashURL, encoding: .utf8).trimmingCharacters(in: .whitespacesAndNewlines)
-                if storedHash != wineArchiveHash {
-                    try extract(hashURL: wineHashURL, hash: wineArchiveHash)
-                } else {
-                    Log.information("Wine hash matches. No extraction needed.")
-                }
-            } else {
-                try extract(hashURL: wineHashURL, hash: wineArchiveHash)
-            }
-        } catch {
-            Log.error("Error during extraction: \(error)")
-        }
-    }
     
     static func setup() {
         addEnvironmentVariable("WINEMSYNC", msync ? "1" : "0")
