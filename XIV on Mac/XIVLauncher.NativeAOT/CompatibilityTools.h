@@ -15,5 +15,3 @@ void addEnvironmentVariable(const char *key, const char *value);
 void killWine(void);
 
 bool checkRosetta(void);
-
-int extractTarGzip(const char *winePath, const char *compressedFilePath);
