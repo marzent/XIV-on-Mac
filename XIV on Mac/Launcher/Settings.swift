@@ -235,7 +235,11 @@ public enum Settings {
     private static let dxmtSettingsKey = "DxmtEnabled"
     static var dxmtEnabled: Bool {
         get {
-            Util.getSetting(settingKey: dxmtSettingsKey, defaultValue: false)
+            guard #available(macOS 14.0, *) else {
+                // DXMT requires Metal 3.1 features
+                return false
+            }
+            return Util.getSetting(settingKey: dxmtSettingsKey, defaultValue: false)
         }
         set {
             storage.set(newValue, forKey: dxmtSettingsKey)
@@ -249,6 +253,28 @@ public enum Settings {
         }
         set {
             storage.set(newValue, forKey: metalFxSpatialSettingsKey)
+            Wine.setup()
+        }
+    }
+    
+    private static let metalFxSpatialFactorSettingsKey = "MetalFxSpatialFactor"
+    static var metalFxSpatialFactor: Float {
+        get {
+            Util.getSetting(settingKey: metalFxSpatialFactorSettingsKey, defaultValue: 2.0)
+        }
+        set {
+            storage.set(newValue, forKey: metalFxSpatialFactorSettingsKey)
+            Wine.setup()
+        }
+    }
+    
+    private static let maxFramerateSettingsKey = "MaxFramerate"
+    static var maxFramerate: UInt32 {
+        get {
+            Util.getSetting(settingKey: maxFramerateSettingsKey, defaultValue: UInt32(Dxvk.options.maxFramerate))
+        }
+        set {
+            storage.set(newValue, forKey: maxFramerateSettingsKey)
             Wine.setup()
         }
     }

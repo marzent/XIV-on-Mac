@@ -16,6 +16,7 @@ struct Wine {
     
     static func setup() {
         addEnvironmentVariable("WINEMSYNC", msync ? "1" : "0")
+        addEnvironmentVariable("DXMT_CONFIG", "d3d11.metalSpatialUpscaleFactor=\(Settings.metalFxSpatialFactor);d3d11.preferredMaxFrameRate=\(Settings.maxFramerate);")
         addEnvironmentVariable("DXMT_METALFX_SPATIAL_SWAPCHAIN", Settings.metalFxSpatialEnabled ? "1" : "0")
         addEnvironmentVariable("LANG", "en_US")
         addEnvironmentVariable("MVK_ALLOW_METAL_FENCES", "1") // XXX Required by DXVK for Apple/NVidia GPUs (better FPS than CPU Emulation)
@@ -23,7 +24,7 @@ struct Wine {
         addEnvironmentVariable("MVK_CONFIG_RESUME_LOST_DEVICE", "1") // XXX Required by WINE (doesn't handle VK_ERROR_DEVICE_LOST correctly)
         addEnvironmentVariable("DXVK_HUD", Dxvk.options.getHud())
         addEnvironmentVariable("DXVK_ASYNC", Dxvk.options.getAsync())
-        addEnvironmentVariable("DXVK_FRAME_RATE", Dxvk.options.getMaxFramerate())
+        addEnvironmentVariable("DXVK_FRAME_RATE", String(Settings.maxFramerate))
         addEnvironmentVariable("DXVK_CONFIG_FILE", "C:\\dxvk.conf")
         addEnvironmentVariable("DXVK_STATE_CACHE_PATH", "C:\\")
         addEnvironmentVariable("DXVK_LOG_PATH", "C:\\")

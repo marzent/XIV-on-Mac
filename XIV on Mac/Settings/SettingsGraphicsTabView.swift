@@ -113,7 +113,7 @@ struct SettingsGraphicsTabView: View {
                 HStack {
                     Toggle(isOn: $viewModel.fpsLimited) {
                         Text("SETTINGS_FPS_LIMIT")
-                    }.disabled(viewModel.dxmtEnabled)
+                    }
                     .padding(.leading)
                     TextField("SETTINGS_FPS_LIMIT_PLACEHOLDER", text: $viewModel.fpsLimit)
                         .frame(minWidth: 50)
@@ -294,8 +294,7 @@ extension SettingsGraphicsTabView {
         }
 
         private func updateFpsLimit() {
-            Dxvk.options.maxFramerate = fpsLimited ? Int(fpsLimit) ?? 0 : 0
-            Dxvk.options.save()
+            Settings.maxFramerate = fpsLimited ? UInt32(fpsLimit) ?? 0 : 0
         }
     }
 }
