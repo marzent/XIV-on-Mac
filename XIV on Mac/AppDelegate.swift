@@ -97,9 +97,10 @@ import UserNotifications
     }
     
     func checkForRosetta() {
-        if Util.getXOMRuntimeEnvironment() == .appleSiliconNative { // No need to do any of this on Intel, and if we're already in Rosetta the answer is self-evident
-            if !Wine.rosettaInstalled {
-                let alert: NSAlert = .init()
+        if Util.getXOMRuntimeEnvironment() == .appleSiliconNative {        // No need to do any of this on Intel, and if we're already in Rosetta the answer is self-evident
+            if !Util.rosettaIsInstalled()
+            {
+                let alert: NSAlert = NSAlert()
                 alert.messageText = NSLocalizedString("ROSETTA_REQUIRED", comment: "")
                 alert.informativeText = NSLocalizedString("ROSETTA_REQUIRED_INFORMATIVE", comment: "")
                 alert.alertStyle = .warning
