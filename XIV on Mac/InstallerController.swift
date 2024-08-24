@@ -110,7 +110,7 @@ class InstallerController: NSViewController {
                         return result == .alertFirstButtonReturn
                     }
                 }
-                if try! await alertTask.result.get() {
+                if await alertTask.result.get() {
                     return gamePath
                 }
             }
@@ -127,7 +127,7 @@ class InstallerController: NSViewController {
                 return result == .alertFirstButtonReturn
             }
         }
-        if try! await alertTask.result.get() {
+        if await alertTask.result.get() {
             let openTask = Task { () -> String? in
                 let openPanel = NSOpenPanel()
                 openPanel.title = NSLocalizedString("INSTALLER_PATH_TITLE", comment: "")
@@ -157,7 +157,7 @@ class InstallerController: NSViewController {
                 await alert.beginSheetModal(for: self.view.window!)
                 return nil
             }
-            if let gamePath = try! await openTask.result.get() {
+            if let gamePath = await openTask.result.get() {
                 return gamePath
             }
         }
