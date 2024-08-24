@@ -190,3 +190,17 @@ extension View {
         return window
     }
 }
+
+struct VisualEffectView: NSViewRepresentable {
+    func makeNSView(context: Context) -> NSVisualEffectView {
+        let view = NSVisualEffectView()
+
+        view.blendingMode = .behindWindow
+        view.isEmphasized = true
+        view.material = .fullScreenUI
+        return view
+    }
+
+    func updateNSView(_ nsView: NSVisualEffectView, context: Context) {
+    }
+}

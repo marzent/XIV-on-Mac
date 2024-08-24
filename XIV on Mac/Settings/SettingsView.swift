@@ -27,7 +27,8 @@ struct SettingsView: View {
             advancedTabView.tabItem { Text("SETTINGS_TAB_ADVANCED_TITLE") }.tag(SettingsTabItem.Advanced)
         }
         .padding(.top)
-        .frame(minWidth: 700, minHeight: 590)
+        .frame(minWidth: 720, minHeight: 590)
+        .background(VisualEffectView())
     }
 }
 
