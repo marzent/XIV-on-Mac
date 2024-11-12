@@ -15,7 +15,7 @@ class Frontier {
         Int64((Date().timeIntervalSince1970 * 1000.0).rounded())
     }
     
-    public static let frontierURLTemplate = "https://launcher.finalfantasyxiv.com/v650/index.html?rc_lang={0}&time={1}";
+    public static let frontierURLTemplate = "https://launcher.finalfantasyxiv.com/v710/index.html?rc_lang={0}&time={1}";
     
     private static func generateReferer(lang: FFXIVLanguage) -> URL {
         let dateFormatter = DateFormatter()
