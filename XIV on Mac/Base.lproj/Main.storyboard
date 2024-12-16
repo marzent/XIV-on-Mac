@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="23091" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="23010"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23091"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23504"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="the Touch Bar" minToolsVersion="8.1" minSystemVersion="10.12.2" requiredIntegratedClassName="NSTouchBar"/>
@@ -991,7 +991,7 @@ Gw
                         <rect key="frame" x="0.0" y="0.0" width="965" height="439"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <visualEffectView fixedFrame="YES" blendingMode="behindWindow" material="popover" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="wY2-dv-E6t">
+                            <visualEffectView fixedFrame="YES" blendingMode="behindWindow" material="HUDWindow" state="followsWindowActiveState" maskImage="snowflake_x2" translatesAutoresizingMaskIntoConstraints="NO" id="wY2-dv-E6t">
                                 <rect key="frame" x="0.0" y="0.0" width="965" height="442"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
@@ -1595,5 +1595,6 @@ Gw
         <image name="flag.checkered.2.crossed" catalog="system" width="34" height="22"/>
         <image name="gear" catalog="system" width="17" height="16"/>
         <image name="puzzlepiece.fill" catalog="system" width="22" height="15"/>
+        <image name="snowflake_x2" width="1930" height="884"/>
     </resources>
 </document>
