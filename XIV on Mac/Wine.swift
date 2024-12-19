@@ -12,9 +12,11 @@ struct Wine {
     @available(*, unavailable) private init() {}
     
     static let wineBinURL = Bundle.main.url(forResource: "bin", withExtension: nil, subdirectory: "wine")!
+    static let wineDllURL = Bundle.main.url(forResource: "lib/wine", withExtension: nil, subdirectory: "wine")!
     static let prefix = Util.applicationSupport.appendingPathComponent("wineprefix")
     
     static func setup() {
+        addEnvironmentVariable("WINEDLLPATH", FileManager.default.fileSystemRepresentation(withPath: wineDllURL.path))
         addEnvironmentVariable("WINEMSYNC", msync ? "1" : "0")
         addEnvironmentVariable("DXMT_CONFIG", "d3d11.metalSpatialUpscaleFactor=\(Settings.metalFxSpatialFactor);d3d11.preferredMaxFrameRate=\(Settings.maxFramerate);")
         addEnvironmentVariable("DXMT_METALFX_SPATIAL_SWAPCHAIN", Settings.metalFxSpatialEnabled ? "1" : "0")
