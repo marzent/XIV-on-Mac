@@ -5,7 +5,6 @@
   }) {
     system = "x86_64-darwin";
   },
-  fetchGit ? builtins.fetchGit,
   pkgsCross ? pkgs.pkgsCross,
   darwinMinVersion ? "12.0"
 }:
@@ -58,8 +57,8 @@ pkgs.stdenv.mkDerivation rec {
   pname = "ff-wine";
   version = "10.0.0 rc2";
 
-  src = fetchGit { 
-    url = "/Users/marc-aurel/Repos/winecx";
+  src = builtins.fetchGit {
+    url = builtins.toString ./source;
   };
 
   strictDeps = true;
