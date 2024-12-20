@@ -6,7 +6,8 @@
     system = "x86_64-darwin";
   },
   fetchGit ? builtins.fetchGit,
-  pkgsCross ? pkgs.pkgsCross
+  pkgsCross ? pkgs.pkgsCross,
+  darwinMinVersion ? "12.0"
 }:
 
 let
@@ -19,7 +20,7 @@ let
     };
   } ./setup-hook-darwin.sh;
   target_sdk = pkgs.apple-sdk_15;
-  darwinMinVersionHook = (pkgs.darwinMinVersionHook "12.0");
+  darwinMinVersionHook = (pkgs.darwinMinVersionHook darwinMinVersion);
   addDarwinDepsRecursive = drv:
     if pkgs.lib.elem drv [ pkgs.darwinMinVersionHook target_sdk pkgs.stdenv pkgs.bash ] then
       drv
