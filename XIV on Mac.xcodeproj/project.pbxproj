@@ -165,6 +165,13 @@
 		503B819928394341006197C1 /* XIVLauncher.NativeAOT.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = XIVLauncher.NativeAOT.dylib; sourceTree = "<group>"; };
 		503B819A28394341006197C1 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		503B819B28394341006197C1 /* XIVLauncher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XIVLauncher.h; sourceTree = "<group>"; };
+		503C48142D15F76200141D3F /* winemetal.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = winemetal.so; sourceTree = "<group>"; };
+		503C48162D15F76200141D3F /* winemetal.dll */ = {isa = PBXFileReference; lastKnownFileType = file; path = winemetal.dll; sourceTree = "<group>"; };
+		503C48192D15F76200141D3F /* libMoltenVK.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libMoltenVK.dylib; sourceTree = "<group>"; };
+		503C4BBF2D15F76200141D3F /* build.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = build.sh; sourceTree = "<group>"; };
+		503C4BC02D15F76200141D3F /* default.nix */ = {isa = PBXFileReference; lastKnownFileType = text; path = default.nix; sourceTree = "<group>"; };
+		503C4BC12D15F76200141D3F /* gnutls.nix */ = {isa = PBXFileReference; lastKnownFileType = text; path = gnutls.nix; sourceTree = "<group>"; };
+		503C4BC22D15F76200141D3F /* setup-hook-darwin.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "setup-hook-darwin.sh"; sourceTree = "<group>"; };
 		5043E36B27728BA300E59127 /* wine */ = {isa = PBXFileReference; lastKnownFileType = folder; path = wine; sourceTree = "<group>"; };
 		5046F7EE27E74A9A006C34E1 /* discord_bridge.exe */ = {isa = PBXFileReference; lastKnownFileType = file; path = discord_bridge.exe; sourceTree = "<group>"; };
 		5049B9AC283BA82800463A2B /* Serilog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Serilog.h; sourceTree = "<group>"; };
@@ -285,6 +292,60 @@
 			path = XIVLauncher.NativeAOT;
 			sourceTree = "<group>";
 		};
+		503C48152D15F76200141D3F /* x86_64-unix */ = {
+			isa = PBXGroup;
+			children = (
+				503C48142D15F76200141D3F /* winemetal.so */,
+			);
+			path = "x86_64-unix";
+			sourceTree = "<group>";
+		};
+		503C48172D15F76200141D3F /* x86_64-windows */ = {
+			isa = PBXGroup;
+			children = (
+				503C48162D15F76200141D3F /* winemetal.dll */,
+			);
+			path = "x86_64-windows";
+			sourceTree = "<group>";
+		};
+		503C48182D15F76200141D3F /* wine */ = {
+			isa = PBXGroup;
+			children = (
+				503C48152D15F76200141D3F /* x86_64-unix */,
+				503C48172D15F76200141D3F /* x86_64-windows */,
+			);
+			path = wine;
+			sourceTree = "<group>";
+		};
+		503C481A2D15F76200141D3F /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				503C48182D15F76200141D3F /* wine */,
+				503C48192D15F76200141D3F /* libMoltenVK.dylib */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		503C481B2D15F76200141D3F /* overrides */ = {
+			isa = PBXGroup;
+			children = (
+				503C481A2D15F76200141D3F /* lib */,
+			);
+			path = overrides;
+			sourceTree = "<group>";
+		};
+		503C4BC32D15F76200141D3F /* wine-builder */ = {
+			isa = PBXGroup;
+			children = (
+				503C481B2D15F76200141D3F /* overrides */,
+				503C4BBF2D15F76200141D3F /* build.sh */,
+				503C4BC02D15F76200141D3F /* default.nix */,
+				503C4BC12D15F76200141D3F /* gnutls.nix */,
+				503C4BC22D15F76200141D3F /* setup-hook-darwin.sh */,
+			);
+			path = "wine-builder";
+			sourceTree = "<group>";
+		};
 		50511EB82770E085003A1E9F = {
 			isa = PBXGroup;
 			children = (
@@ -334,6 +395,7 @@
 				50C029062C52638C0085297D /* dxmt */,
 				507D8F2027766F52000F0CB0 /* dxvk */,
 				5043E36B27728BA300E59127 /* wine */,
+				503C4BC32D15F76200141D3F /* wine-builder */,
 				07B529D727D97D2B005B78BF /* Localizable.strings */,
 				07A349882805689200A9D7D0 /* Resources */,
 				07C876DC280B7DD500CB0D8E /* FFXIV-MacDefault.cfg */,
