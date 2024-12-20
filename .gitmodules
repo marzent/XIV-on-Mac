@@ -1,3 +1,6 @@
 [submodule "XIV on Mac/XIVLauncher.NativeAOT/source"]
 	path = XIV on Mac/XIVLauncher.NativeAOT/source
 	url = https://github.com/marzent/FFXIVQuickLauncher
+[submodule "XIV on Mac/wine-builder/source"]
+	path = XIV on Mac/wine-builder/source
+	url = https://github.com/marzent/winecx
