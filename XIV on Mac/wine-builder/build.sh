@@ -1,14 +1,29 @@
 #!/bin/bash
 #set -x
 
-nix-build --max-jobs $(sysctl -n hw.ncpu)
+NIX_BUID_PATH=/nix/var/nix/profiles/default/bin/nix-build
+
+if ! command -v $NIX_BUID_PATH &>/dev/null; then
+    echo "warning: Nix is not installed."
+    cd "$PROJECT_DIR"/XIV\ on\ Mac/
+    [ -d "wine" ] && exit 0
+    echo "warning: No prexisting wine. Attempting archive download..."
+    curl -LO https://github.com/marzent/winecx/releases/download/ff-wine-9.12.1/wine.tar.xz
+    tar -xf wine.tar.xz
+    rm wine.tar.xz
+    exit 0
+fi
+
+rm "result"
+export MACOSX_DEPLOYMENT_TARGET=${MACOSX_DEPLOYMENT_TARGET:-12.0}
+$NIX_BUID_PATH --max-jobs $(sysctl -n hw.ncpu) --argstr darwinMinVersion "$MACOSX_DEPLOYMENT_TARGET"
 
 sourceDir="result/nix/store"
 targetDir="../wine"
 overridesDir="overrides"
 
 if [[ ! -d $sourceDir ]]; then
-    echo "Nix build failed."
+    echo "error: Nix build failed."
     exit 1
 fi
 
