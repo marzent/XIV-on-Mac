@@ -56,13 +56,15 @@ remove_nix_rpaths() {
     local rpaths_to_remove=$(otool -l "$file" | awk '/cmd LC_RPATH/ { getline; getline; if($2 ~ /\/nix\/store/) print $2 }')
 
     for rpath in $rpaths_to_remove; do
-        install_name_tool -delete_rpath "$rpath" "$file"
+        echo "-delete_rpath"
+        echo "$rpath"
     done
 }
 
 process_dylib_dependecy() {
     local dylibPath=$1
     local dylibName=$(basename "$dylibPath")
+    local changes=()
 
     if is_processed "$dylibName"; then
         return 0
@@ -77,13 +79,13 @@ process_dylib_dependecy() {
     else
         cp "$dylibPath" "$libDir"
         chmod +w "$libDir/$dylibName"
-        install_name_tool -id "@rpath/$dylibName" "$libDir/$dylibName"
+        changes+=("-id" "@rpath/$dylibName")
     fi
 
     local dependencies=$(extract_dependencies "$libDir/$dylibName")
     for dep in $dependencies; do
         local depName=$(basename "$dep")
-        install_name_tool -change "$dep" "@rpath/$depName" "$libDir/$dylibName"
+        changes+=("-change" "$dep" "@rpath/$depName")
         process_dylib_dependecy "$dep"
     done
 
@@ -93,26 +95,36 @@ process_dylib_dependecy() {
             for dep in "$rpath"/*.dylib; do
                 if [[ -f "$dep" ]]; then
                     local depName=$(basename "$dep")
-                    install_name_tool -change "$dep" "@rpath/$depName" "$libDir/$dylibName"
+                    changes+=("-change" "$dep" "@rpath/$depName")
                     process_dylib_dependecy "$dep"
                 fi
             done
         fi
     done <<< "$dylibRpaths"
     
-    remove_nix_rpaths "$libDir/$dylibName"
+    while IFS= read -r line; do
+        changes+=("$line")
+    done < <(remove_nix_rpaths "$binaryPath")
+    
+    install_name_tool "${changes[@]}" "$libDir/$dylibName" 2>/dev/null
 }
 
 process_binary() {
     local binaryPath=$1
     local binaryName=$(basename "$binaryPath")
+    local changes=()
+    
+    if is_processed "$binaryName"; then
+        return 0
+    fi
+    processedLibs+=("$binaryName")
 
-    install_name_tool -id "$binaryName" "$binaryPath"
+    changes+=("-id" "$binaryName")
 
     local dependencies=$(extract_dependencies "$binaryPath")
     for dep in $dependencies; do
         local depName=$(basename "$dep")
-        install_name_tool -change "$dep" "@rpath/$depName" "$binaryPath"
+        changes+=("-change" "$dep" "@rpath/$depName")
         process_dylib_dependecy "$dep"
     done
 
@@ -122,23 +134,23 @@ process_binary() {
             for dep in "$rpath"/*.dylib; do
                 if [[ -f "$dep" ]]; then
                     local depName=$(basename "$dep")
-                    install_name_tool -change "$dep" "@rpath/$depName" "$binaryPath"
+                    changes+=("-change" "$dep" "@rpath/$depName")
                     process_dylib_dependecy "$dep"
                 fi
             done
         fi
     done <<< "$binaryRpaths"
     
-    remove_nix_rpaths "$binaryPath"
+    while IFS= read -r line; do
+        changes+=("$line")
+    done < <(remove_nix_rpaths "$binaryPath")
 
-    install_name_tool -add_rpath "@executable_path/../lib" "$binaryPath"
-    install_name_tool -add_rpath "@loader_path/../.." "$binaryPath"
+    changes+=("-add_rpath" "@executable_path/../lib")
+    changes+=("-add_rpath" "@loader_path/../..")
+    install_name_tool "${changes[@]}" "$binaryPath" 2>/dev/null
 }
 
 find "$targetDir" -type f | while read file; do
-    if [[ -d "$file" ]]; then
-        continue
-    fi
     if [[ "$file" == *".dylib" || "$file" == *".so" || -x "$file" ]]; then
         process_binary "$file"
     fi
