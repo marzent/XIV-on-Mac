@@ -205,13 +205,9 @@ class ScreenCapture {
     }
     
     private func filterWindows(_ windows: [SCWindow]) -> [SCWindow] {
-        //let gamePids : [pid_t] = Wine.pidsOf(processName: "ffxiv_dx11.exe")
+        let gameUnixPids = Wine.pidsOf(processName: "ffxiv_dx11.exe").map { Wine.convertToUnixPidFrom(winePid: $0) }
         return windows
-        // Would be BEST to use the pids from above to identify  the process properly, but that's returning Windows PIDs and
-        // currently I don't know how to map them to macOS pids. So we use a hacky filter for now...
-            .filter { $0.owningApplication?.applicationName ?? "" == "wine64-preloader" }
-            .filter { $0.title ?? "" == "FINAL FANTASY XIV" }
-        // We don't really expect more than 1, but just in case let's make the result stable
+            .filter { gameUnixPids.contains($0.owningApplication?.processID ?? -1) }
             .sorted { $0.owningApplication?.processID ?? 0 < $1.owningApplication?.processID ?? 0 }
     }
 

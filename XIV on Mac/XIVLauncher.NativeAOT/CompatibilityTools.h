@@ -10,6 +10,8 @@ void addRegistryKey(const char *key, const char *value, const char *data);
 
 char *getProcessIds(const char *executableName);
 
+int getUnixProcessId(int wineProcessId);
+
 void addEnvironmentVariable(const char *key, const char *value);
 
 void killWine(void);

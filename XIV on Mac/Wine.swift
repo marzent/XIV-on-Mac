@@ -53,6 +53,10 @@ struct Wine {
         Array(String(cString: getProcessIds(processName)).split(separator: " ").compactMap { Int($0) })
     }
     
+    static func convertToUnixPidFrom(winePid: Int) -> pid_t {
+        getUnixProcessId(Int32(winePid))
+    }
+    
     static func running(processName: String) -> Bool {
         pidsOf(processName: processName).count > 0
     }
