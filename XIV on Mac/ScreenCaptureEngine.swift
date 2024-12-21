@@ -110,6 +110,8 @@ private class CaptureEngineStreamOutput: NSObject, SCStreamOutput, SCStreamDeleg
             avWriter?.recordVideo(sampleBuffer: sampleBuffer)
         case .audio:
             avWriter?.recordAudio(sampleBuffer: sampleBuffer)
+        case .microphone:
+            avWriter?.recordAudio(sampleBuffer: sampleBuffer)
         @unknown default:
             fatalError("Encountered unknown stream output type: \(outputType)")
         }
