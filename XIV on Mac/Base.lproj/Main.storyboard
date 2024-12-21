@@ -920,7 +920,7 @@ Gw
                                                                             <rect key="frame" x="215" y="51.5" width="283.5" height="237"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="IrE-W4-l9Q">
-                                                                                <imageReference key="image" image="flag.checkered.2.crossed" catalog="system" symbolScale="large"/>
+                                                                                <imageReference key="image" image="flag.pattern.checkered.2.crossed" catalog="system" symbolScale="large"/>
                                                                             </imageCell>
                                                                         </imageView>
                                                                     </subviews>
@@ -1592,7 +1592,7 @@ Gw
         <image name="NSTouchBarGoDownTemplate" width="18" height="11"/>
         <image name="chevron.left" catalog="system" width="12" height="17"/>
         <image name="chevron.right" catalog="system" width="12" height="17"/>
-        <image name="flag.checkered.2.crossed" catalog="system" width="34" height="22"/>
+        <image name="flag.pattern.checkered.2.crossed" catalog="system" width="34" height="22"/>
         <image name="gear" catalog="system" width="17" height="16"/>
         <image name="puzzlepiece.fill" catalog="system" width="22" height="15"/>
         <image name="snowflake_x2" width="1930" height="884"/>
