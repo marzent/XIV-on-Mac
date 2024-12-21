@@ -941,7 +941,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/XIV\\ on\\ Mac/XIVLauncher.NativeAOT",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
 				MARKETING_VERSION = 4.17.7;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = "dezent.XIV-on-Mac";
@@ -987,7 +987,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/XIV\\ on\\ Mac/XIVLauncher.NativeAOT",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
 				MARKETING_VERSION = 4.17.7;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = "dezent.XIV-on-Mac";
