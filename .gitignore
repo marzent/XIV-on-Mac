@@ -27,6 +27,7 @@ Temporary Items
 
 /XIV\ on\ Mac/wine/
 /XIV\ on\ Mac/wine-builder/result
+/XIV\ on\ Mac/wine-builder/packaged-nix-output
 /XIV\ on\ Mac/XIVLauncher.NativeAOT/XIVLauncher.NativeAOT.dylib
 /XIV\ on\ Mac/XIVLauncher.NativeAOT/libsteam_api64.dylib
 UserInterfaceState.xcuserstate
