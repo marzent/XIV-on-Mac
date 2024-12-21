@@ -91,9 +91,8 @@ class ScreenCapture {
             var notifiyPermission : Bool = false
 
             let center = UNUserNotificationCenter.current()
-            center.getNotificationSettings { settings in
-                notifiyPermission = settings.authorizationStatus == .authorized
-            }
+            let settings = await center.notificationSettings()
+            notifiyPermission = settings.authorizationStatus == .authorized
 
             let alert: NSAlert = .init()
             alert.messageText = NSLocalizedString("SCREEN_CAPTURE_PERMISSION", comment: "")
