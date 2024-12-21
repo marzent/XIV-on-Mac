@@ -154,10 +154,8 @@ class InstallerController: NSViewController {
                 let openPanel = NSOpenPanel()
                 openPanel.title = NSLocalizedString(
                     "INSTALLER_PATH_TITLE", comment: "")
-                if #available(macOS 11.0, *) {
-                    openPanel.subtitle = NSLocalizedString(
-                        "INSTALLER_PATH_SUBTITLE", comment: "")
-                }
+                openPanel.subtitle = NSLocalizedString(
+                    "INSTALLER_PATH_SUBTITLE", comment: "")
                 openPanel.showsResizeIndicator = true
                 openPanel.showsHiddenFiles = true
                 openPanel.canChooseDirectories = true

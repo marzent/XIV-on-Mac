@@ -28,9 +28,7 @@ struct SettingsCaptureView: View {
             }
             HStack {
                 Button("SETTINGS_CAPTURE_PERMISSIONS_CHECK_BUTTON") {
-                    if #available(macOS 13.0, *) {
-                        ScreenCapture.checkCapturePermissions()
-                    }
+                    ScreenCapture.checkCapturePermissions()
                 }.fixedSize()
                 Spacer()
             }

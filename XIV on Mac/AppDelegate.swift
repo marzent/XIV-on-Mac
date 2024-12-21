@@ -17,7 +17,7 @@ import XIVLauncher
     private var firstAidWindow: NSWindow?
     private var launchWinController: NSWindowController?
     private var benchmarkWindow: NSWindow?
-    private var screenCapture: Any? = nil  // Class is only available on 13.0+, so we have to hide its declaration type.
+    private var screenCapture: ScreenCapture?
     @IBOutlet private var sparkle: SPUStandardUpdaterController!
     @IBOutlet private var bhAutoLaunch: NSMenuItem!
 
@@ -63,28 +63,18 @@ import XIVLauncher
         #else
             AppMover.moveIfNecessary()
         #endif
-        if #available(macOS 13.0, *) {
-            // If, in the future, we have a reason to have alerts other than for Screen Capture start/stop, then this
-            // auth request should be moved outside of the availabilty section here.
-            UNUserNotificationCenter.current().requestAuthorization(options: [
-                .alert
-            ]) {
-                (permissionGranted, error) in
-                Log.information(
-                    "Permission not granted for Alerts: \(String(describing: error))"
-                )
-            }
+        UNUserNotificationCenter.current().requestAuthorization(options: [
+            .alert
+        ]) {
+            (permissionGranted, error) in
+            Log.information(
+                "Permission not granted for Alerts: \(String(describing: error))"
+            )
+        }
 
-            screenCapture = ScreenCapture()
-            KeyboardShortcuts.onKeyDown(for: .toggleVideoCapture) { [self] in
-                guard
-                    let concreteScreenCapture = self.screenCapture
-                        as? ScreenCapture
-                else {
-                    return
-                }
-                concreteScreenCapture.toggleScreenCapture()
-            }
+        screenCapture = ScreenCapture()
+        KeyboardShortcuts.onKeyDown(for: .toggleVideoCapture) { [self] in
+            screenCapture?.toggleScreenCapture()
         }
     }
 
@@ -213,10 +203,8 @@ import XIVLauncher
         let openPanel = NSOpenPanel()
         openPanel.title = NSLocalizedString(
             "SELECT_GAME_PATH_PANEL_TITLE", comment: "")
-        if #available(macOS 11.0, *) {
-            openPanel.subtitle = NSLocalizedString(
-                "SELECT_GAME_PATH_PANEL_SUBTITLE", comment: "")
-        }
+        openPanel.subtitle = NSLocalizedString(
+            "SELECT_GAME_PATH_PANEL_SUBTITLE", comment: "")
         openPanel.showsResizeIndicator = true
         openPanel.showsHiddenFiles = true
         openPanel.canChooseDirectories = true

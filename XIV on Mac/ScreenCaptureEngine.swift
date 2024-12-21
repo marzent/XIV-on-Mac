@@ -3,7 +3,6 @@ import Combine
 import Foundation
 import ScreenCaptureKit
 
-@available(macOS 13.0, *)
 class ScreenCaptureEngine: NSObject, @unchecked Sendable {
     public var avWriter: AVWriter?
     private var stream: SCStream?
@@ -77,7 +76,6 @@ class ScreenCaptureEngine: NSObject, @unchecked Sendable {
     }
 }
 
-@available(macOS 13.0, *)
 private class CaptureEngineStreamOutput: NSObject, SCStreamOutput,
     SCStreamDelegate
 {
@@ -153,7 +151,6 @@ private class CaptureEngineStreamOutput: NSObject, SCStreamOutput,
     }
 }
 
-@available(macOS 13.0, *)
 class AVWriter {
 
     private(set) var assetWriter: AVAssetWriter?

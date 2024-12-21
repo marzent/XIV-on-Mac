@@ -41,7 +41,6 @@ struct ScreenCaptureHelper {
 
 }
 
-@available(macOS 13.0, *)
 class ScreenCapture {
     private let screenCaptureEngine = ScreenCaptureEngine()
     private let avWriter: AVWriter = AVWriter()
