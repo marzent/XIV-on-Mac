@@ -261,7 +261,7 @@ public enum Settings {
         }
     }
 
-    private static let dxmtSettingsKey = "DxmtEnabled"
+    private static let dxmtSettingsKey = "DxmtEnabled2"
     static var dxmtEnabled: Bool {
         get {
             guard #available(macOS 14.0, *) else {
@@ -269,7 +269,7 @@ public enum Settings {
                 return false
             }
             return Util.getSetting(
-                settingKey: dxmtSettingsKey, defaultValue: false)
+                settingKey: dxmtSettingsKey, defaultValue: true)
         }
         set {
             storage.set(newValue, forKey: dxmtSettingsKey)
