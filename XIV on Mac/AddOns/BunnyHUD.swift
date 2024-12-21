@@ -8,9 +8,7 @@
 import Foundation
 import ZIPFoundation
 
-struct BunnyHUD {
-    @available(*, unavailable) private init() {}
-
+enum BunnyHUD {
     private static let autoLaunchBHKey = "AutoLaunchBH"
     static var autoLaunch: Bool {
         get {

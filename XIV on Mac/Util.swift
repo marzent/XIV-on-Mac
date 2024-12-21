@@ -14,9 +14,7 @@ extension KeyboardShortcuts.Name {
     static let toggleVideoCapture = Self("toggleVideoCapture")
 }
 
-struct Util {
-    @available(*, unavailable) private init() {}
-
+enum Util {
     static let userHome = FileManager.default.homeDirectoryForCurrentUser
     static let applicationSupport = FileManager.default.urls(
         for: .applicationSupportDirectory, in: .userDomainMask

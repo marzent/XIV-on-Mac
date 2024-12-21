@@ -8,9 +8,7 @@
 import CommonCrypto
 import Foundation
 
-struct Encryption {
-    @available(*, unavailable) private init() {}
-
+enum Encryption {
     static func blowfish(key: String, toEncrypt: [UInt8], broken: Bool = false)
         -> [UInt8]
     {

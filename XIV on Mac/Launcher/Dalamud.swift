@@ -7,9 +7,7 @@
 
 import Foundation
 
-struct Dalamud {
-    @available(*, unavailable) private init() {}
-
+enum Dalamud {
     enum InstallState: UInt8 {
         case ok
         case failed

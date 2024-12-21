@@ -15,8 +15,7 @@ public enum ScreenCaptureCodec: Int {
     case hevc = 1
 }
 
-// A few items available prior to 13.0 to reduce the need to have availability checks everywhere
-struct ScreenCaptureHelper {
+enum ScreenCaptureHelper {
     public static var captureFolderPref: String = "ScreenCaptureDirectory"
     public static var videoCodecPref: String = "ScreenCaptureCodec"
 

@@ -8,9 +8,7 @@
 import Foundation
 import Serilog
 
-struct Log {
-    @available(*, unavailable) private init() {}
-
+enum Log {
     private enum EventLevel: UInt8 {
         /// <summary>
         /// Anything and everything you might want to know about

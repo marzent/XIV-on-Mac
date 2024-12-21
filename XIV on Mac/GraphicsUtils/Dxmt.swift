@@ -7,9 +7,7 @@
 
 import Foundation
 
-struct Dxmt {
-    @available(*, unavailable) private init() {}
-
+enum Dxmt {
     private static let dxmtPath = Bundle.main.url(
         forResource: "dxmt", withExtension: nil, subdirectory: "")!
     private static let d3d11Dll = dxmtPath.appendingPathComponent("d3d11.dll")

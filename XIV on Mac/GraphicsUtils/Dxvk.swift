@@ -8,9 +8,7 @@
 import CompatibilityTools
 import Foundation
 
-struct Dxvk {
-    @available(*, unavailable) private init() {}
-
+enum Dxvk {
     static var options = Options()
     private static let userCacheURL = Wine.prefix.appendingPathComponent(
         "drive_c/ffxiv_dx11.dxvk-cache")

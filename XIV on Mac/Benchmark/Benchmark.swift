@@ -69,11 +69,8 @@ struct BenchmarkOptions {
     var costume: BenchmarkCostumes = .jobGear
 }
 
-struct Benchmark {
-
+enum Benchmark {
     public static var benchmarkFolderPref: String = "benchmarkFolder"
-
-    @available(*, unavailable) private init() {}
 
     // MOST but not all of these arguments are only honored at the command line, and ignored in the INI file.
     // Note that SYS.ScreenMode is required but omitted here; we dynamically fill that in before use below.

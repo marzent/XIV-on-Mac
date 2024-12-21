@@ -7,9 +7,7 @@
 
 import Foundation
 
-struct DiscordBridge {
-    @available(*, unavailable) private init() {}
-
+enum DiscordBridge {
     private static let bridge = Bundle.main.url(
         forResource: "discord_bridge", withExtension: "exe", subdirectory: "")!
 

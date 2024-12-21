@@ -8,9 +8,7 @@
 import CompatibilityTools
 import Foundation
 
-struct Wine {
-    @available(*, unavailable) private init() {}
-
+enum Wine {
     static let wineBinURL = Bundle.main.url(
         forResource: "bin", withExtension: nil, subdirectory: "wine")!
     static let wineDllURL = Bundle.main.url(

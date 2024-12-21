@@ -7,9 +7,7 @@
 
 import Foundation
 
-struct GraphicsInstaller {
-    @available(*, unavailable) private init() {}
-
+enum GraphicsInstaller {
     private static let system32 = Wine.prefix.appendingPathComponent(
         "drive_c/windows/system32")
 
