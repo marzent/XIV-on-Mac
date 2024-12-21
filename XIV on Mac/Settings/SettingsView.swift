@@ -18,13 +18,18 @@ struct SettingsView: View {
 
     var body: some View {
         TabView(selection: $selectedSettingsTab) {
-            generalTabView.tabItem { Text("SETTINGS_TAB_GENERAL_TITLE") }.tag(SettingsTabItem.General)
+            generalTabView.tabItem { Text("SETTINGS_TAB_GENERAL_TITLE") }.tag(
+                SettingsTabItem.General)
             if #available(macOS 13.0, *) {
-                captureView.tabItem { Text("SETTINGS_TAB_CAPTURE_TITLE") }.tag(SettingsTabItem.Capture)
+                captureView.tabItem { Text("SETTINGS_TAB_CAPTURE_TITLE") }.tag(
+                    SettingsTabItem.Capture)
             }
-            graphicsTabView.tabItem { Text("SETTINGS_TAB_GRAPHICS_TITLE") }.tag(SettingsTabItem.Graphics)
-            pluginsTabView.tabItem { Text("SETTINGS_TAB_PLUGINS_TITLE") }.tag(SettingsTabItem.Plugins)
-            advancedTabView.tabItem { Text("SETTINGS_TAB_ADVANCED_TITLE") }.tag(SettingsTabItem.Advanced)
+            graphicsTabView.tabItem { Text("SETTINGS_TAB_GRAPHICS_TITLE") }.tag(
+                SettingsTabItem.Graphics)
+            pluginsTabView.tabItem { Text("SETTINGS_TAB_PLUGINS_TITLE") }.tag(
+                SettingsTabItem.Plugins)
+            advancedTabView.tabItem { Text("SETTINGS_TAB_ADVANCED_TITLE") }.tag(
+                SettingsTabItem.Advanced)
         }
         .padding(.top)
         .frame(minWidth: 720, minHeight: 590)

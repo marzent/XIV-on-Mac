@@ -7,19 +7,22 @@
 
 import Foundation
 
-let FFXIVCheckupConditions: [FFXIVCfgCheckCondition] = [
-]
+let FFXIVCheckupConditions: [FFXIVCfgCheckCondition] = []
 
 // Conditions which only apply to Apple Silicon
 let FFXIVCheckupConditions_AS: [FFXIVCfgCheckCondition] = [
-    FFXIVCfgCheckCondition(title: NSLocalizedString("FIRSTAID_CFGCHECK_TESSELATION_TITLE", comment: ""),
-                           explanation: NSLocalizedString("FIRSTAID_CFGCHECK_TESSELATION_EXP", comment: ""),
-                           type: .advisory, sectionKey: FFXIVCFGSectionLabel.Graphics.rawValue, name: FFXIVCFGOptionKey.Graphics_Tesselation.rawValue, comparisonValue: "3", proposedValue: "2", comparisonType: .lessthan)
+    FFXIVCfgCheckCondition(
+        title: NSLocalizedString(
+            "FIRSTAID_CFGCHECK_TESSELATION_TITLE", comment: ""),
+        explanation: NSLocalizedString(
+            "FIRSTAID_CFGCHECK_TESSELATION_EXP", comment: ""),
+        type: .advisory, sectionKey: FFXIVCFGSectionLabel.Graphics.rawValue,
+        name: FFXIVCFGOptionKey.Graphics_Tesselation.rawValue,
+        comparisonValue: "3", proposedValue: "2", comparisonType: .lessthan)
 ]
 
 // Conditions which only apply to Intel
-let FFXIVCheckupConditions_X64: [FFXIVCfgCheckCondition] = [
-]
+let FFXIVCheckupConditions_X64: [FFXIVCfgCheckCondition] = []
 
 public enum FFXIVCfgConditionType: Int {
     /// This condition  is not a problem, but we want to tell them about it anyway for some reason.
@@ -52,7 +55,11 @@ public class FFXIVCfgCheckCondition: Identifiable {
     var comparisonType: FFXIVCfgConditionComparisonType
     var fixed: Bool = false
 
-    init(title: String, explanation: String, type: FFXIVCfgConditionType, sectionKey: String, name: String, comparisonValue: String, proposedValue: String, comparisonType: FFXIVCfgConditionComparisonType) {
+    init(
+        title: String, explanation: String, type: FFXIVCfgConditionType,
+        sectionKey: String, name: String, comparisonValue: String,
+        proposedValue: String, comparisonType: FFXIVCfgConditionComparisonType
+    ) {
         self.title = title
         self.explanation = explanation
         self.type = type
@@ -80,11 +87,15 @@ public class FFXIVCfgCheckCondition: Identifiable {
             case .notequal:
                 applies = cfgSection.contents[name] != comparisonValue
             case .lessthan:
-                if let currentValue = Int(cfgSection.contents[name]!), let comparisonInt = Int(comparisonValue) {
+                if let currentValue = Int(cfgSection.contents[name]!),
+                    let comparisonInt = Int(comparisonValue)
+                {
                     applies = comparisonInt <= currentValue
                 }
             case .greaterthan:
-                if let currentValue = Int(cfgSection.contents[name]!), let comparisonInt = Int(comparisonValue) {
+                if let currentValue = Int(cfgSection.contents[name]!),
+                    let comparisonInt = Int(comparisonValue)
+                {
                     applies = comparisonInt > currentValue
                 }
             }

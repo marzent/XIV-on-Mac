@@ -37,7 +37,8 @@ public enum FFXIVLanguage: UInt8 {
     var code: String {
         switch self {
         case .english:
-            switch TimeZone.current.identifier.split(separator: "/").first ?? "" {
+            switch TimeZone.current.identifier.split(separator: "/").first ?? ""
+            {
             case "America", "Antarctica", "Pacific":
                 return "en-us"
             default:
@@ -124,7 +125,8 @@ extension FFXIVLoginError: LocalizedError {
         case .killswitch:
             return NSLocalizedString("KILLSWITCH_SHORT", comment: "")
         case .unexpected:
-            return NSLocalizedString("UNEXPECTED_SHORT", comment: "Unexpected Error Title")
+            return NSLocalizedString(
+                "UNEXPECTED_SHORT", comment: "Unexpected Error Title")
         }
     }
 
@@ -153,7 +155,8 @@ extension FFXIVLoginError: LocalizedError {
         case .killswitch:
             return NSLocalizedString("KILLSWITCH", comment: "")
         case .unexpected:
-            return NSLocalizedString("UNEXPECTED", comment: "Unexpected Error Description")
+            return NSLocalizedString(
+                "UNEXPECTED", comment: "Unexpected Error Description")
         }
     }
 }

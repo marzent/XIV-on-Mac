@@ -12,7 +12,9 @@ class LaunchWindowController: NSWindowController {
 
     override func windowDidLoad() {
         super.windowDidLoad()
-        if let currentAutosaveName = window?.frameAutosaveName, currentAutosaveName != autosaveName {
+        if let currentAutosaveName = window?.frameAutosaveName,
+            currentAutosaveName != autosaveName
+        {
             window?.setFrameUsingName(self.autosaveName)
             window?.setFrameAutosaveName(self.autosaveName)
         }
@@ -30,9 +32,14 @@ class FadingScrollView: NSScrollView {
         let maskLayer = CALayer()
         maskLayer.frame = self.bounds
         let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = NSMakeRect(self.bounds.origin.x, 0, self.bounds.size.width, self.bounds.size.height)
+        gradientLayer.frame = NSMakeRect(
+            self.bounds.origin.x, 0, self.bounds.size.width,
+            self.bounds.size.height)
         gradientLayer.colors = [transparent, opaque, opaque, transparent]
-        gradientLayer.locations = [0, NSNumber(value: self.fadePercentage), NSNumber(value: 1 - self.fadePercentage * 2), 1]
+        gradientLayer.locations = [
+            0, NSNumber(value: self.fadePercentage),
+            NSNumber(value: 1 - self.fadePercentage * 2), 1,
+        ]
         maskLayer.addSublayer(gradientLayer)
         self.layer?.mask = maskLayer
     }

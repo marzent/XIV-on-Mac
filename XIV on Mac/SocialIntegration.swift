@@ -9,9 +9,10 @@ import Foundation
 
 struct DiscordBridge {
     @available(*, unavailable) private init() {}
-    
-    private static let bridge = Bundle.main.url(forResource: "discord_bridge", withExtension: "exe", subdirectory: "")!
-    
+
+    private static let bridge = Bundle.main.url(
+        forResource: "discord_bridge", withExtension: "exe", subdirectory: "")!
+
     private static let updateKey = "Discord"
     static var enabled: Bool {
         get {
@@ -22,7 +23,7 @@ struct DiscordBridge {
             setPresence()
         }
     }
-    
+
     static func setPresence() {
         guard enabled else {
             Wine.taskKill(processName: "discord_bridge.exe")

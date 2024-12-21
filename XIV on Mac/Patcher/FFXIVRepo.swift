@@ -14,7 +14,7 @@ public enum FFXIVRepo: String, CaseIterable {
     case boot = "ffxivboot"
     case game = "ffxivgame"
     case ex1, ex2, ex3, ex4, ex5
-    
+
     var ver: String {
         get {
             read(from: verURL)
@@ -23,7 +23,7 @@ public enum FFXIVRepo: String, CaseIterable {
             write(to: verURL, content: newValue)
         }
     }
-    
+
     var bck: String {
         get {
             read(from: bckURL)
@@ -32,13 +32,13 @@ public enum FFXIVRepo: String, CaseIterable {
             write(to: bckURL, content: newValue)
         }
     }
-    
+
     static func verToBck() {
         for var repo in FFXIVRepo.allCases {
             repo.bck = repo.ver
         }
     }
-    
+
     private func read(from: URL) -> String {
         if let data = try? Data(contentsOf: from) {
             let readVer = String(data: data, encoding: .utf8) ?? ""
@@ -46,7 +46,7 @@ public enum FFXIVRepo: String, CaseIterable {
         }
         return baseVer
     }
-    
+
     private func write(to: URL, content: String) {
         Util.make(dir: baseURL)
         let fm = FileManager.default
@@ -55,12 +55,13 @@ public enum FFXIVRepo: String, CaseIterable {
             if fm.fileExists(atPath: file.path) {
                 try fm.removeItem(atPath: file.path)
             }
-            try content.write(to: file, atomically: true, encoding: String.Encoding.utf8)
+            try content.write(
+                to: file, atomically: true, encoding: String.Encoding.utf8)
         } catch {
             Log.error("Error writing version/bck file \(to)")
         }
     }
-    
+
     var baseURL: URL {
         let app = FFXIVApp()
         switch self {
@@ -72,7 +73,7 @@ public enum FFXIVRepo: String, CaseIterable {
             return app.sqpackFolderURL.appendingPathComponent(rawValue)
         }
     }
-    
+
     var patchURL: URL {
         let app = FFXIVApp()
         switch self {
@@ -82,11 +83,11 @@ public enum FFXIVRepo: String, CaseIterable {
             return app.gameRepoURL
         }
     }
-    
+
     var verURL: URL {
         baseURL.appendingPathComponent(rawValue + ".ver")
     }
-    
+
     var bckURL: URL {
         baseURL.appendingPathComponent(rawValue + ".bck")
     }

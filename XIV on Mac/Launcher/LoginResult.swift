@@ -15,14 +15,14 @@ struct LoginResult: Codable {
     let pendingPatches: [Patch]?
     let oauthLogin: OauthLogin?
     let uniqueID: String?
-    
+
     enum CodingKeys: String, CodingKey {
         case _state = "State"
         case pendingPatches = "PendingPatches"
         case oauthLogin = "OauthLogin"
         case uniqueID = "UniqueId"
     }
-    
+
     enum LoginState: Int {
         case Unknown
         case Ok
@@ -32,42 +32,50 @@ struct LoginResult: Codable {
         case NoTerms
         case NoLogin
     }
-    
+
     var state: LoginState {
         LoginState(rawValue: _state) ?? .Unknown
     }
-    
+
     init(_ repair: Bool) throws {
-        let loginResultCString = tryLoginToGame(Settings.credentials!.username, Settings.credentials!.password, Settings.credentials!.oneTimePassword, repair)!
+        let loginResultCString = tryLoginToGame(
+            Settings.credentials!.username, Settings.credentials!.password,
+            Settings.credentials!.oneTimePassword, repair)!
         let loginResultJSON = String(cString: loginResultCString)
         free(UnsafeMutableRawPointer(mutating: loginResultCString))
         do {
-            self = try JSONDecoder().decode(LoginResult.self, from: loginResultJSON.data(using: .utf8)!)
-        }
-        catch {
+            self = try JSONDecoder().decode(
+                LoginResult.self, from: loginResultJSON.data(using: .utf8)!)
+        } catch {
             throw XLError.loginError(loginResultJSON).tryMap
         }
     }
-    
+
     var dalamudInstallState: Dalamud.InstallState {
         Dalamud.InstallState(rawValue: getDalamudInstallState()) ?? .failed
     }
-    
+
     func startGame(_ _dalamudOk: Bool) throws -> ProcessInformation {
-        let loginResultJSON = String(data: try! JSONEncoder().encode(self), encoding: String.Encoding.utf8)!
-        let processInformationCString = XIVLauncher.startGame(loginResultJSON, _dalamudOk)!
+        let loginResultJSON = String(
+            data: try! JSONEncoder().encode(self),
+            encoding: String.Encoding.utf8)!
+        let processInformationCString = XIVLauncher.startGame(
+            loginResultJSON, _dalamudOk)!
         let processInformationJSON = String(cString: processInformationCString)
         free(UnsafeMutableRawPointer(mutating: processInformationCString))
         do {
-            return try JSONDecoder().decode(ProcessInformation.self, from: processInformationJSON.data(using: .utf8)!)
-        }
-        catch {
+            return try JSONDecoder().decode(
+                ProcessInformation.self,
+                from: processInformationJSON.data(using: .utf8)!)
+        } catch {
             throw XLError.startError(processInformationJSON).tryMap
         }
     }
-    
+
     func repairGame() -> String {
-        let loginResultJSON = String(data: try! JSONEncoder().encode(self), encoding: String.Encoding.utf8)!
+        let loginResultJSON = String(
+            data: try! JSONEncoder().encode(self),
+            encoding: String.Encoding.utf8)!
         let repairResultCString = XIVLauncher.repairGame(loginResultJSON)!
         let repairResult = String(cString: repairResultCString)
         free(UnsafeMutableRawPointer(mutating: repairResultCString))
@@ -82,7 +90,7 @@ struct OauthLogin: Codable {
     let region: Int
     let termsAccepted, playable: Bool
     let maxExpansion: Int
-    
+
     enum CodingKeys: String, CodingKey {
         case sessionID = "SessionId"
         case region = "Region"
@@ -97,7 +105,7 @@ struct OauthLogin: Codable {
 struct ProcessInformation: Codable {
     let pid: Int32
     let handle: Int64
-    
+
     var exitCode: Int32 {
         getExitCode(pid)
     }

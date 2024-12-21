@@ -15,25 +15,26 @@ class InstallerController: NSViewController {
         case copy
         case point
     }
-    
+
     private var action = GameFiles.download
-    
+
     @IBOutlet private var status: NSTextField!
     @IBOutlet private var info: NSTextField!
     @IBOutlet private var tabView: NSTabView!
-    
+
     @IBAction func nextTab(_ sender: Any) {
         tabView.selectNextTabViewItem(sender)
     }
-    
+
     @IBAction func previousTab(_ sender: Any) {
         tabView.selectPreviousTabViewItem(sender)
     }
-    
+
     @IBAction func versionSelect(_ sender: NSButton) {
-        Settings.dalamudEnabled = (sender.identifier == NSUserInterfaceItemIdentifier("withDalamud"))
+        Settings.dalamudEnabled =
+            (sender.identifier == NSUserInterfaceItemIdentifier("withDalamud"))
     }
-    
+
     @IBAction func licenseSelect(_ sender: NSButton) {
         switch sender.identifier! {
         case NSUserInterfaceItemIdentifier("windowsLicense"):
@@ -50,7 +51,7 @@ class InstallerController: NSViewController {
             }
         }
     }
-    
+
     @IBAction func gameFileSelect(_ sender: NSButton) {
         switch sender.identifier! {
         case NSUserInterfaceItemIdentifier("copyGame"):
@@ -61,7 +62,7 @@ class InstallerController: NSViewController {
             action = GameFiles.download
         }
     }
-    
+
     @IBAction func startInstall(_ sender: Any) {
         Task {
             switch action {
@@ -80,33 +81,50 @@ class InstallerController: NSViewController {
             }
         }
     }
-    
+
     private func copyGame(gamePath: String) {
         Settings.gamePath = Settings.defaultGameLoc
         Util.make(dir: Settings.defaultGameLoc.deletingLastPathComponent().path)
         do {
-            try FileManager.default.copyItem(atPath: gamePath, toPath: Settings.defaultGameLoc.path)
-        }
-        catch {
+            try FileManager.default.copyItem(
+                atPath: gamePath, toPath: Settings.defaultGameLoc.path)
+        } catch {
             Log.error("Error copying game from \(gamePath)")
         }
     }
-    
+
     private func getGameDirectory() async -> String? {
-        let appSupportFolder = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).last!
-        let gamePaths = [appSupportFolder.appendingPathComponent("FINAL FANTASY XIV ONLINE/Bottles/published_Final_Fantasy/drive_c/Program Files (x86)/SquareEnix/FINAL FANTASY XIV - A Realm Reborn").path,
-                         appSupportFolder.appendingPathComponent("CrossOver/Bottles/Final Fantasy XIV Online/drive_c/Program Files (x86)/SquareEnix/FINAL FANTASY XIV - A Realm Reborn").path]
+        let appSupportFolder = FileManager.default.urls(
+            for: .applicationSupportDirectory, in: .userDomainMask
+        ).last!
+        let gamePaths = [
+            appSupportFolder.appendingPathComponent(
+                "FINAL FANTASY XIV ONLINE/Bottles/published_Final_Fantasy/drive_c/Program Files (x86)/SquareEnix/FINAL FANTASY XIV - A Realm Reborn"
+            ).path,
+            appSupportFolder.appendingPathComponent(
+                "CrossOver/Bottles/Final Fantasy XIV Online/drive_c/Program Files (x86)/SquareEnix/FINAL FANTASY XIV - A Realm Reborn"
+            ).path,
+        ]
         for gamePath in gamePaths {
             if InstallerController.isValidGameDirectory(gamePath: gamePath) {
                 let alertTask = Task { () -> Bool in
                     do {
                         let alert = NSAlert()
-                        alert.messageText = NSLocalizedString("INSTALLER_FOUND_MESSAGE", comment: "")
-                        alert.informativeText = String(format: NSLocalizedString("INSTALLER_FOUND_INFORMATIVE", comment: ""), gamePath)
+                        alert.messageText = NSLocalizedString(
+                            "INSTALLER_FOUND_MESSAGE", comment: "")
+                        alert.informativeText = String(
+                            format: NSLocalizedString(
+                                "INSTALLER_FOUND_INFORMATIVE", comment: ""),
+                            gamePath)
                         alert.alertStyle = .informational
-                        alert.addButton(withTitle: NSLocalizedString("BUTTON_YES", comment: ""))
-                        alert.addButton(withTitle: NSLocalizedString("BUTTON_NO", comment: ""))
-                        let result = await alert.beginSheetModal(for: self.view.window!)
+                        alert.addButton(
+                            withTitle: NSLocalizedString(
+                                "BUTTON_YES", comment: ""))
+                        alert.addButton(
+                            withTitle: NSLocalizedString(
+                                "BUTTON_NO", comment: ""))
+                        let result = await alert.beginSheetModal(
+                            for: self.view.window!)
                         return result == .alertFirstButtonReturn
                     }
                 }
@@ -118,11 +136,15 @@ class InstallerController: NSViewController {
         let alertTask = Task { () -> Bool in
             do {
                 let alert = NSAlert()
-                alert.messageText = NSLocalizedString("INSTALLER_NOT_DETECTED_MESSAGE", comment: "")
-                alert.informativeText = NSLocalizedString("INSTALLER_NOT_DETECTED_INFORMATIVE", comment: "")
+                alert.messageText = NSLocalizedString(
+                    "INSTALLER_NOT_DETECTED_MESSAGE", comment: "")
+                alert.informativeText = NSLocalizedString(
+                    "INSTALLER_NOT_DETECTED_INFORMATIVE", comment: "")
                 alert.alertStyle = .warning
-                alert.addButton(withTitle: NSLocalizedString("BUTTON_YES", comment: ""))
-                alert.addButton(withTitle: NSLocalizedString("BUTTON_NO", comment: ""))
+                alert.addButton(
+                    withTitle: NSLocalizedString("BUTTON_YES", comment: ""))
+                alert.addButton(
+                    withTitle: NSLocalizedString("BUTTON_NO", comment: ""))
                 let result = await alert.beginSheetModal(for: self.view.window!)
                 return result == .alertFirstButtonReturn
             }
@@ -130,9 +152,11 @@ class InstallerController: NSViewController {
         if await alertTask.result.get() {
             let openTask = Task { () -> String? in
                 let openPanel = NSOpenPanel()
-                openPanel.title = NSLocalizedString("INSTALLER_PATH_TITLE", comment: "")
+                openPanel.title = NSLocalizedString(
+                    "INSTALLER_PATH_TITLE", comment: "")
                 if #available(macOS 11.0, *) {
-                    openPanel.subtitle = NSLocalizedString("INSTALLER_PATH_SUBTITLE", comment: "")
+                    openPanel.subtitle = NSLocalizedString(
+                        "INSTALLER_PATH_SUBTITLE", comment: "")
                 }
                 openPanel.showsResizeIndicator = true
                 openPanel.showsHiddenFiles = true
@@ -146,14 +170,19 @@ class InstallerController: NSViewController {
                     return nil
                 }
                 let openPath = openPanel.url!.path
-                if InstallerController.isValidGameDirectory(gamePath: openPath) {
+                if InstallerController.isValidGameDirectory(gamePath: openPath)
+                {
                     return openPath
                 }
                 let alert = NSAlert()
-                alert.messageText = NSLocalizedString("INSTALLER_PATH_INVALID_MESSAGE", comment: "")
-                alert.informativeText = NSLocalizedString("INSTALLER_PATH_INVALID_INFORMATIVE", comment: "")
+                alert.messageText = NSLocalizedString(
+                    "INSTALLER_PATH_INVALID_MESSAGE", comment: "")
+                alert.informativeText = NSLocalizedString(
+                    "INSTALLER_PATH_INVALID_INFORMATIVE", comment: "")
                 alert.alertStyle = .critical
-                alert.addButton(withTitle: NSLocalizedString("INSTALLER_PATH_INVALID_BUTTON", comment: ""))
+                alert.addButton(
+                    withTitle: NSLocalizedString(
+                        "INSTALLER_PATH_INVALID_BUTTON", comment: ""))
                 await alert.beginSheetModal(for: self.view.window!)
                 return nil
             }
@@ -163,24 +192,25 @@ class InstallerController: NSViewController {
         }
         return nil
     }
-    
+
     static func isValidGameDirectory(gamePath: String) -> Bool {
-        let game = gamePath + "/game/ffxiv_dx11.exe" // needed in order to discriminate against SE's app bundle version
+        let game = gamePath + "/game/ffxiv_dx11.exe"  // needed in order to discriminate against SE's app bundle version
         let boot = gamePath + "/boot"
         let validGame = FileManager.default.fileExists(atPath: game)
         let validBoot = FileManager.default.fileExists(atPath: boot)
         return (validGame && validBoot)
     }
-    
+
     @IBAction func cancelInstall(_ sender: Any) {
         Util.quit()
     }
 
     @IBAction func openFAQ(_ sender: Any) {
-        let url = URL(string: "https://www.xivmac.com/xiv-mac-application-help")!
+        let url = URL(
+            string: "https://www.xivmac.com/xiv-mac-application-help")!
         NSWorkspace.shared.open(url)
     }
-    
+
     @IBAction func closeWindow(_ sender: Any) {
         view.window?.close()
         tabView.selectTabViewItem(at: 0)
