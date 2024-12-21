@@ -41,37 +41,45 @@ struct ScreenCaptureHelper
 }
 
 @available(macOS 13.0, *)
-class ScreenCapture
-{
+class ScreenCapture {
     private let screenCaptureEngine = ScreenCaptureEngine()
-    private let avWriter : AVWriter = AVWriter()
-    private var isRecording : Bool = false
-    {
+    private let avWriter: AVWriter = AVWriter()
+    private var isRecording: Bool = false {
         didSet {
-            Task {
-                await MainActor.run{
-                        let center = UNUserNotificationCenter.current()
-                        center.getNotificationSettings { settings in
-                            guard settings.authorizationStatus == .authorized else { return }
-                            let content = UNMutableNotificationContent()
-                            if self.isRecording
-                            {
-                                content.title = NSLocalizedString("NOTIFY_CAPTURE_TITLE", comment: "")
-                                content.subtitle = NSLocalizedString("NOTIFY_CAPTURE_STARTED_SUBTITLE", comment: "")
-                                content.body = String(format:NSLocalizedString("NOTIFY_CAPTURE_STARTED_BODY", comment: ""),"\(self.avWriter.currentRecordingURL?.lastPathComponent ?? "")")
-                            }
-                            else
-                            {
-                                content.title = NSLocalizedString("NOTIFY_CAPTURE_TITLE", comment: "")
-                                content.subtitle = NSLocalizedString("NOTIFY_CAPTURE_STOPPED_SUBTITLE", comment: "")
-                                content.body = String(format:NSLocalizedString("NOTIFY_CAPTURE_STOPPED_BODY", comment: ""),"\(self.avWriter.currentRecordingURL?.lastPathComponent ?? "")")
-                            }
-                            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1 , repeats: false)
-                            let request = UNNotificationRequest(identifier: "com.marzent.XIVOnMac.ScreenCapture", content: content, trigger: trigger)
-                            UNUserNotificationCenter.current().add(request)
-                        }
-                }
+            Task { @MainActor in
+                ScreenCapture.sendScreenCaptureStatusNotification(isRecording: self.isRecording, avWriter: self.avWriter)
             }
+        }
+    }
+    
+    @MainActor
+    static func sendScreenCaptureStatusNotification(isRecording: Bool, avWriter: AVWriter) {
+        let center = UNUserNotificationCenter.current()
+        center.getNotificationSettings { settings in
+            guard settings.authorizationStatus == .authorized else { return }
+            let content = UNMutableNotificationContent()
+            if isRecording {
+                content.title = NSLocalizedString("NOTIFY_CAPTURE_TITLE", comment: "")
+                content.subtitle = NSLocalizedString("NOTIFY_CAPTURE_STARTED_SUBTITLE", comment: "")
+                content.body = String(
+                    format: NSLocalizedString("NOTIFY_CAPTURE_STARTED_BODY", comment: ""),
+                    "\(avWriter.currentRecordingURL?.lastPathComponent ?? "")"
+                )
+            } else {
+                content.title = NSLocalizedString("NOTIFY_CAPTURE_TITLE", comment: "")
+                content.subtitle = NSLocalizedString("NOTIFY_CAPTURE_STOPPED_SUBTITLE", comment: "")
+                content.body = String(
+                    format: NSLocalizedString("NOTIFY_CAPTURE_STOPPED_BODY", comment: ""),
+                    "\(avWriter.currentRecordingURL?.lastPathComponent ?? "")"
+                )
+            }
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+            let request = UNNotificationRequest(
+                identifier: "com.marzent.XIVOnMac.ScreenCapture",
+                content: content,
+                trigger: trigger
+            )
+            UNUserNotificationCenter.current().add(request)
         }
     }
 
