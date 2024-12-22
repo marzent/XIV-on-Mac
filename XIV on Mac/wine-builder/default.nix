@@ -10,7 +10,7 @@
 }:
 
 let
-  mingwGccs = with pkgsCross; [ mingwW64.windows.crossThreadsStdenv.cc ];
+  mingwGccs = with pkgsCross; [ mingwW64.windows.crossThreadsStdenv.cc ]; # mingw32.windows.crossThreadsStdenv.cc ];
   setupHookDarwin = pkgs.makeSetupHook {
     name = "darwin-mingw-hook";
     substitutions = {
@@ -55,7 +55,7 @@ let
 in
 pkgs.stdenv.mkDerivation rec {
   pname = "ff-wine";
-  version = "10.0.0 rc2";
+  version = "10.0.0 rc3";
 
   src = builtins.fetchGit {
     url = builtins.toString ./source;
@@ -113,7 +113,7 @@ pkgs.stdenv.mkDerivation rec {
 
   configureFlags = [
     "--disable-option-checking"
-    "--enable-win64"
+    "--enable-win64" # "--enable-archs=x86_64,i386"
     "--disable-tests"
     "--without-alsa"
     "--without-capi"
