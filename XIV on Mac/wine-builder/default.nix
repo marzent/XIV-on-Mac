@@ -6,7 +6,7 @@
     system = "x86_64-darwin";
   },
   pkgsCross ? pkgs.pkgsCross,
-  darwinMinVersion ? "12.0"
+  darwinMinVersion ? "13.5"
 }:
 
 let
@@ -34,11 +34,17 @@ let
         in
           modifiedInputs;
       });
-  libiconv = pkgs.libiconvReal.overrideAttrs (oldAttrs: {
-    buildInputs = [ target_sdk darwinMinVersionHook ];
-    configureFlags = oldAttrs.configureFlags ++ [ "--enable-relocatable" ];
-    preConfigure =''export CFLAGS="-O3 -march=native -mno-avx"'';
-  });
+  libiconv = (pkgs.libiconvReal
+    .override {
+      enableDarwinABICompat = true;
+    })
+    .overrideAttrs (oldAttrs: {
+      buildInputs = [ target_sdk darwinMinVersionHook ];
+      configureFlags = oldAttrs.configureFlags ++ [ "--enable-relocatable" ];
+      preConfigure = ''
+        export CFLAGS="-O3 -march=native -mno-avx"
+      '';
+    });
   gettext = pkgs.gettext.overrideAttrs (oldAttrs: {
     buildInputs = map addDarwinDepsRecursive (builtins.filter (input: input != pkgs.libiconv) oldAttrs.buildInputs) ++ [ target_sdk darwinMinVersionHook libiconv ];
     configureFlags = oldAttrs.configureFlags ++ [ "--enable-relocatable" ];
@@ -78,6 +84,7 @@ pkgs.stdenv.mkDerivation rec {
     target_sdk
     darwinMinVersionHook
     pkgs.darwin.moltenvk
+    libiconv
     gettext
     SDL2
   ] ++ 
