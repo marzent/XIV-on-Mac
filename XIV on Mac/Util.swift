@@ -7,7 +7,7 @@
 
 import AppKit
 import IOKit
-import KeyboardShortcuts
+@preconcurrency import KeyboardShortcuts
 import SwiftUI
 
 extension KeyboardShortcuts.Name {

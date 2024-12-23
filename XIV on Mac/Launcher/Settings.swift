@@ -9,8 +9,6 @@ import Foundation
 import XIVLauncher
 
 public enum Settings {
-    private static let storage = UserDefaults.standard
-
     static func syncToXL() {
         let gamePathCString = FileManager.default.fileSystemRepresentation(
             withPath: gamePath.path)
@@ -38,7 +36,7 @@ public enum Settings {
                     defaultValue: FFXIVPlatform.mac.rawValue)) ?? .mac
         }
         set {
-            storage.set(newValue.rawValue, forKey: platformKey)
+            UserDefaults.standard.set(newValue.rawValue, forKey: platformKey)
             syncToXL()
             Wine.addReg(
                 key: "HKEY_CURRENT_USER\\Software\\Wine",
@@ -56,13 +54,13 @@ public enum Settings {
                     settingKey: gamePathKey, defaultValue: defaultGameLoc.path))
         }
         set {
-            storage.set(newValue.path, forKey: gamePathKey)
+            UserDefaults.standard.set(newValue.path, forKey: gamePathKey)
             syncToXL()
         }
     }
 
     static func setDefaultGamepath() {
-        storage.removeObject(forKey: gamePathKey)
+        UserDefaults.standard.removeObject(forKey: gamePathKey)
         syncToXL()
     }
 
@@ -77,7 +75,7 @@ public enum Settings {
                     defaultValue: defaultGameConfigLoc.path))
         }
         set {
-            storage.set(newValue.path, forKey: gameConfigPathKey)
+            UserDefaults.standard.set(newValue.path, forKey: gameConfigPathKey)
             syncToXL()
         }
     }
@@ -89,14 +87,14 @@ public enum Settings {
             if let creds = credentialsCache {
                 return creds
             }
-            if let storedUsername = storage.string(forKey: usernameKey) {
+            if let storedUsername = UserDefaults.standard.string(forKey: usernameKey) {
                 return LoginCredentials.storedLogin(username: storedUsername)
             }
             return nil
         }
         set {
             if let creds = newValue {
-                storage.set(creds.username, forKey: usernameKey)
+                UserDefaults.standard.set(creds.username, forKey: usernameKey)
                 creds.saveLogin()
                 credentialsCache = creds
             }
@@ -106,10 +104,10 @@ public enum Settings {
     private static let freeTrialKey = "FreeTrial"
     static var freeTrial: Bool {
         get {
-            storage.bool(forKey: freeTrialKey)
+            UserDefaults.standard.bool(forKey: freeTrialKey)
         }
         set {
-            storage.set(newValue, forKey: freeTrialKey)
+            UserDefaults.standard.set(newValue, forKey: freeTrialKey)
             syncToXL()
         }
     }
@@ -120,11 +118,11 @@ public enum Settings {
             #if DEBUG
                 true
             #else
-                storage.bool(forKey: verboseLoggingKey)
+                UserDefaults.standard.bool(forKey: verboseLoggingKey)
             #endif
         }
         set {
-            storage.set(newValue, forKey: verboseLoggingKey)
+            UserDefaults.standard.set(newValue, forKey: verboseLoggingKey)
         }
     }
 
@@ -134,7 +132,7 @@ public enum Settings {
             Util.getSetting(settingKey: exitWithGameKey, defaultValue: true)
         }
         set {
-            storage.set(newValue, forKey: exitWithGameKey)
+            UserDefaults.standard.set(newValue, forKey: exitWithGameKey)
         }
     }
 
@@ -144,39 +142,39 @@ public enum Settings {
             Util.getSetting(settingKey: nonZeroExitErrorKey, defaultValue: true)
         }
         set {
-            storage.set(newValue, forKey: nonZeroExitErrorKey)
+            UserDefaults.standard.set(newValue, forKey: nonZeroExitErrorKey)
         }
     }
 
     private static let usesOneTimePasswordKey = "UsesOneTimePassword"
     static var usesOneTimePassword: Bool {
         get {
-            storage.bool(forKey: usesOneTimePasswordKey)
+            UserDefaults.standard.bool(forKey: usesOneTimePasswordKey)
         }
         set {
-            storage.set(newValue, forKey: usesOneTimePasswordKey)
+            UserDefaults.standard.set(newValue, forKey: usesOneTimePasswordKey)
         }
     }
 
     private static let autoLoginKey = "AutoLogin"
     static var autoLogin: Bool {
         get {
-            storage.bool(forKey: autoLoginKey)
+            UserDefaults.standard.bool(forKey: autoLoginKey)
         }
         set {
-            storage.set(newValue, forKey: autoLoginKey)
+            UserDefaults.standard.set(newValue, forKey: autoLoginKey)
         }
     }
 
     private static let acceptLanguageKey = "AcceptLanguage"
     static var acceptLanguage: String {
         guard
-            let storedAcceptLanguage = storage.object(forKey: acceptLanguageKey)
+            let storedAcceptLanguage = UserDefaults.standard.object(forKey: acceptLanguageKey)
         else {
             let seed = Int32.random(in: 0..<420)
             let newAcceptLaungage = String(
                 cString: generateAcceptLanguage(seed)!)
-            storage.set(newAcceptLaungage, forKey: acceptLanguageKey)
+            UserDefaults.standard.set(newAcceptLaungage, forKey: acceptLanguageKey)
             return newAcceptLaungage
         }
         return storedAcceptLanguage as! String
@@ -192,7 +190,7 @@ public enum Settings {
             return FFXIVLanguage(rawValue: stored) ?? guess
         }
         set {
-            storage.set(newValue.rawValue, forKey: languageKey)
+            UserDefaults.standard.set(newValue.rawValue, forKey: languageKey)
             syncToXL()
         }
     }
@@ -204,7 +202,7 @@ public enum Settings {
                 settingKey: encryptedArgumentsKey, defaultValue: true)
         }
         set {
-            storage.set(newValue, forKey: encryptedArgumentsKey)
+            UserDefaults.standard.set(newValue, forKey: encryptedArgumentsKey)
             syncToXL()
         }
     }
@@ -212,10 +210,10 @@ public enum Settings {
     private static let dalamudSettingsKey = "DalamudEnabled"
     static var dalamudEnabled: Bool {
         get {
-            storage.bool(forKey: dalamudSettingsKey)
+            UserDefaults.standard.bool(forKey: dalamudSettingsKey)
         }
         set {
-            storage.set(newValue, forKey: dalamudSettingsKey)
+            UserDefaults.standard.set(newValue, forKey: dalamudSettingsKey)
             syncToXL()
         }
     }
@@ -227,7 +225,7 @@ public enum Settings {
                 settingKey: dalamudEntryPointSettingsKey, defaultValue: false)
         }
         set {
-            storage.set(newValue, forKey: dalamudEntryPointSettingsKey)
+            UserDefaults.standard.set(newValue, forKey: dalamudEntryPointSettingsKey)
             syncToXL()
         }
     }
@@ -241,7 +239,7 @@ public enum Settings {
                 defaultValue: defaultInjectionDelay)
         }
         set {
-            storage.set(newValue, forKey: injectionSettingKey)
+            UserDefaults.standard.set(newValue, forKey: injectionSettingKey)
             syncToXL()
         }
     }
@@ -256,8 +254,10 @@ public enum Settings {
                 defaultValue: defaultMetal3PerformanceOverlay)
         }
         set {
-            storage.set(newValue, forKey: metal3PerformanceOverlayKey)
-            Wine.setup()
+            UserDefaults.standard.set(newValue, forKey: metal3PerformanceOverlayKey)
+            DispatchQueue.main.async {
+                Wine.setup()
+            }
         }
     }
 
@@ -272,7 +272,7 @@ public enum Settings {
                 settingKey: dxmtSettingsKey, defaultValue: true)
         }
         set {
-            storage.set(newValue, forKey: dxmtSettingsKey)
+            UserDefaults.standard.set(newValue, forKey: dxmtSettingsKey)
         }
     }
 
@@ -283,8 +283,10 @@ public enum Settings {
                 settingKey: metalFxSpatialSettingsKey, defaultValue: false)
         }
         set {
-            storage.set(newValue, forKey: metalFxSpatialSettingsKey)
-            Wine.setup()
+            UserDefaults.standard.set(newValue, forKey: metalFxSpatialSettingsKey)
+            DispatchQueue.main.async {
+                Wine.setup()
+            }
         }
     }
 
@@ -295,8 +297,10 @@ public enum Settings {
                 settingKey: metalFxSpatialFactorSettingsKey, defaultValue: 2.0)
         }
         set {
-            storage.set(newValue, forKey: metalFxSpatialFactorSettingsKey)
-            Wine.setup()
+            UserDefaults.standard.set(newValue, forKey: metalFxSpatialFactorSettingsKey)
+            DispatchQueue.main.async {
+                Wine.setup()
+            }
         }
     }
 
@@ -308,8 +312,10 @@ public enum Settings {
                 defaultValue: UInt32(Dxvk.options.maxFramerate))
         }
         set {
-            storage.set(newValue, forKey: maxFramerateSettingsKey)
-            Wine.setup()
+            UserDefaults.standard.set(newValue, forKey: maxFramerateSettingsKey)
+            DispatchQueue.main.async {
+                Wine.setup()
+            }
         }
     }
 }

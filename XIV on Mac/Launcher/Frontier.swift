@@ -234,7 +234,7 @@ extension String {
     }
 }
 
-class FrontierTableView: NSObject {
+@MainActor class FrontierTableView: NSObject {
     static let columnText = "text"
     static let columnIcon = "icon"
 

@@ -58,23 +58,27 @@ class LaunchController: NSViewController {
         leftButton.wantsLayer = true
         rightButton.wantsLayer = true
         setSideButtonVisibility(to: false)
-        DispatchQueue.global(qos: .userInitiated).async {
-            self.checkBoot()
+        Task {
+            await self.checkBoot()
         }
         DispatchQueue.global(qos: .userInteractive).async {
             if let frontierInfo = Frontier.info {
-                self.populateNews(frontierInfo)
+                DispatchQueue.main.async {
+                    self.populateNews(frontierInfo)
+                }
             }
             if let frontierBanners = Frontier.banners {
-                self.populateBanners(frontierBanners)
+                DispatchQueue.main.async {
+                    self.populateBanners(frontierBanners)
+                }
             }
         }
     }
 
     @objc func installDone(_ notif: Notification) {
-        DispatchQueue.global(qos: .userInitiated).async {
-            self.checkBoot(skipInstallCheck: true)
-            DispatchQueue.main.async {
+        Task(priority: .userInitiated) {
+            await self.checkBoot()
+            await MainActor.run {
                 self.doLogin()
             }
         }
@@ -96,21 +100,22 @@ class LaunchController: NSViewController {
             alpha: to ? buttonAlpha : 0.0)
     }
 
-    func checkBoot(skipInstallCheck: Bool = false) {
+    @MainActor func checkBoot(skipInstallCheck: Bool = false) async {
         if let bootPatches = try? Patch.bootPatches, !bootPatches.isEmpty,
             FFXIVApp().installed || skipInstallCheck
         {
-            startPatch(bootPatches)
+            await Task.detached(priority: .userInitiated) { [self] in
+                await self.startPatch(bootPatches)
+            }.value
         }
-        DispatchQueue.main.async {
-            self.loginButton.isEnabled = true
-            self.touchBarLoginButton.isEnabled = true
-            if settings.autoLogin
-                && NSEvent.modifierFlags.intersection(
-                    .deviceIndependentFlagsMask) != .shift
-            {
-                self.doLogin()
-            }
+
+        self.loginButton.isEnabled = true
+        self.touchBarLoginButton.isEnabled = true
+        if settings.autoLogin
+            && NSEvent.modifierFlags.intersection(
+                .deviceIndependentFlagsMask) != .shift
+        {
+            self.doLogin()
         }
     }
 
@@ -135,16 +140,12 @@ class LaunchController: NSViewController {
     }
 
     private func populateNews(_ info: Frontier.Info) {
-        DispatchQueue.main.async {
-            self.topicsTable.add(items: info.topics)
-            self.newsTable.add(items: info.pinned + info.news)
-        }
+        self.topicsTable.add(items: info.topics)
+        self.newsTable.add(items: info.pinned + info.news)
     }
 
     private func populateBanners(_ banners: [Frontier.BannerRoot.Banner]) {
-        DispatchQueue.main.async {
-            self.scrollView.banners = banners
-        }
+        self.scrollView.banners = banners
     }
 
     private func update() {
@@ -226,7 +227,7 @@ class LaunchController: NSViewController {
         Settings.credentials = LoginCredentials(
             username: userField.stringValue, password: passwdField.stringValue,
             oneTimePassword: otpField.stringValue)
-        DispatchQueue.global(qos: .default).async {
+        Task.detached(priority: .userInitiated) { [self] in
             do {
                 guard FFXIVApp().installed else {
                     throw FFXIVLoginError.noInstall
@@ -254,11 +255,12 @@ class LaunchController: NSViewController {
                     }
                     return
                 }
-                if !(loginResult.pendingPatches?.isEmpty ?? true) {
+                let dalamudInstallState = loginResult.dalamudInstallState
+                if let pendingPatches = loginResult.pendingPatches, !pendingPatches.isEmpty {
                     DispatchQueue.main.async { [self] in
                         loginSheetWinController?.window?.close()
                     }
-                    self.startPatch(loginResult.pendingPatches!)
+                    await self.startPatch(pendingPatches)
                     DispatchQueue.main.async { [self] in
                         view.window?.beginSheet(
                             loginSheetWinController!.window!)
@@ -270,7 +272,6 @@ class LaunchController: NSViewController {
                 NotificationCenter.default.post(
                     name: .loginInfo, object: nil,
                     userInfo: [Notification.status.info: "Updating Dalamud"])
-                let dalamudInstallState = loginResult.dalamudInstallState
                 DispatchQueue.main.async {
                     if Settings.dalamudEnabled && dalamudInstallState == .failed
                     {
@@ -398,9 +399,10 @@ class userMenuItem: NSMenuItem {
 final class BannerView: NSImageView {
     var banner: Frontier.BannerRoot.Banner? {
         didSet {
+            let bannerURL = URL(string: banner!.lsbBanner)!
             DispatchQueue.global(qos: .background).async { [self] in
                 let bannerImage = Frontier.fetchImage(
-                    url: URL(string: banner!.lsbBanner)!)
+                    url: bannerURL)
                 DispatchQueue.main.async { [self] in
                     image = bannerImage
                 }
@@ -449,11 +451,14 @@ final class AnimatingScrollView: NSScrollView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        let trackingArea = NSTrackingArea(
-            rect: bounds,
-            options: [.activeInKeyWindow, .mouseEnteredAndExited], owner: self,
-            userInfo: nil)
-        addTrackingArea(trackingArea)
+        DispatchQueue.main.async { [self] in
+            let trackingArea = NSTrackingArea(
+                rect: bounds,
+                options: [.activeInKeyWindow, .mouseEnteredAndExited],
+                owner: self,
+                userInfo: nil)
+            addTrackingArea(trackingArea)
+        }
     }
 
     func startTimer() {
@@ -461,7 +466,9 @@ final class AnimatingScrollView: NSScrollView {
         timer = Timer.scheduledTimer(
             withTimeInterval: stayDuration, repeats: true,
             block: { _ in
-                self.animate()
+                DispatchQueue.main.async {
+                    self.animate()
+                }
             })
     }
 

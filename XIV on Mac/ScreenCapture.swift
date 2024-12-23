@@ -8,7 +8,7 @@
 import Foundation
 import OSLog
 import ScreenCaptureKit
-import UserNotifications
+@preconcurrency import UserNotifications
 
 public enum ScreenCaptureCodec: Int {
     case h264 = 0
@@ -16,10 +16,10 @@ public enum ScreenCaptureCodec: Int {
 }
 
 enum ScreenCaptureHelper {
-    public static var captureFolderPref: String = "ScreenCaptureDirectory"
-    public static var videoCodecPref: String = "ScreenCaptureCodec"
+    public static let captureFolderPref: String = "ScreenCaptureDirectory"
+    public static let videoCodecPref: String = "ScreenCaptureCodec"
 
-    public static func chooseFolder() {
+    @MainActor public static func chooseFolder() {
         let openPanel = NSOpenPanel()
         openPanel.message = NSLocalizedString(
             "SELECT_CAPTURE_PATH_PANEL_MESSAGE", comment: "")
@@ -37,23 +37,25 @@ enum ScreenCaptureHelper {
             openPanel.close()
         }
     }
-
 }
 
-class ScreenCapture {
+class ScreenCapture: @unchecked Sendable {
     private let screenCaptureEngine = ScreenCaptureEngine()
     private let avWriter: AVWriter = AVWriter()
     private var isRecording: Bool = false {
         didSet {
-            Task { @MainActor in
-                ScreenCapture.sendScreenCaptureStatusNotification(
-                    isRecording: self.isRecording, avWriter: self.avWriter)
+            Task {
+                await self.sendScreenCaptureStatusNotification()
             }
         }
     }
+    
+    @MainActor func sendScreenCaptureStatusNotification() {
+        ScreenCapture.sendScreenCaptureStatusNotification(
+            isRecording: self.isRecording, avWriter: self.avWriter)
+    }
 
-    @MainActor
-    static func sendScreenCaptureStatusNotification(
+    @MainActor static func sendScreenCaptureStatusNotification(
         isRecording: Bool, avWriter: AVWriter
     ) {
         let center = UNUserNotificationCenter.current()

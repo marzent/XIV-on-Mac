@@ -102,7 +102,7 @@ import XIVLauncher
         return true
     }
 
-    func checkForRosetta() {
+    @MainActor func checkForRosetta() {
         if Util.getXOMRuntimeEnvironment() == .appleSiliconNative {  // No need to do any of this on Intel, and if we're already in Rosetta the answer is self-evident
             if !Util.rosettaIsInstalled() {
                 let alert: NSAlert = NSAlert()
@@ -128,7 +128,7 @@ import XIVLauncher
         }
     }
 
-    func checkGPUSupported() {
+    @MainActor func checkGPUSupported() {
         if !Util.supportedGPU() {
             let alert: NSAlert = .init()
             alert.messageText = NSLocalizedString(

@@ -151,8 +151,7 @@ private class CaptureEngineStreamOutput: NSObject, SCStreamOutput,
     }
 }
 
-class AVWriter {
-
+class AVWriter: @unchecked Sendable {
     private(set) var assetWriter: AVAssetWriter?
     private var assetWriterVideoInput: AVAssetWriterInput?
     private var assetWriterAudioInput: AVAssetWriterInput?

@@ -138,7 +138,9 @@ enum Dxvk {
                 try? PropertyListEncoder().encode(self),
                 forKey: Dxvk.Options.settingKey)
             if withSetup {
-                Wine.setup()
+                DispatchQueue.main.async {
+                    Wine.setup()
+                }
             }
         }
     }
