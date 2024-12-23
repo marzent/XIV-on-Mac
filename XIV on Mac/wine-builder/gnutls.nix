@@ -2,6 +2,10 @@
 
 let
   doCheck = false;
+  libidn2 = pkgs.libidn2.overrideAttrs (oldAttrs: {
+    buildInputs = builtins.filter (input: input != pkgs.libiconv) oldAttrs.buildInputs ++ [ libiconv ];
+    preConfigure =''export CFLAGS="-O3 -march=native -mno-avx"'';
+  });
 in
 
 pkgs.stdenv.mkDerivation rec {
@@ -37,13 +41,14 @@ pkgs.stdenv.mkDerivation rec {
     "--disable-libdane"
     "--without-p11-kit"
     "--disable-doc"
+    "--disable-tests"
   ];
 
   enableParallelBuilding = true;
 
   dontAddExtraLibs = true;
 
-  buildInputs = [ pkgs.lzo pkgs.lzip pkgs.libtasn1 pkgs.libidn2 pkgs.zlib pkgs.gmp pkgs.libunistring gettext libiconv ];
+  buildInputs = [ pkgs.lzo pkgs.lzip pkgs.libtasn1 pkgs.zlib pkgs.gmp pkgs.libunistring gettext libidn2 libiconv ];
 
   nativeBuildInputs = [ pkgs.perl pkgs.pkg-config pkgs.texinfo ] ++ [ pkgs.autoconf pkgs.automake ];
 
