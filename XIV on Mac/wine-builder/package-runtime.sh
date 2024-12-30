@@ -24,7 +24,7 @@ fi
 
 nixResultTarget=$(readlink "$nixResult")
 
-if [[ -e "$receipt" ]]; then
+if [[ -e "$receipt" && -d "$targetDir" ]]; then
   current_content=$(<"$receipt")
   if [[ "$current_content" == "$nixResultTarget" ]]; then
     echo "note: The last built wine package matches the current one. No changes made."
