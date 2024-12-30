@@ -138,6 +138,7 @@ pkgs.stdenv.mkDerivation rec {
     "--without-krb5"
     "--with-vulkan"
     "--without-x"
+    "--without-gstreamer"
   ];
 
   buildPhase = ''
