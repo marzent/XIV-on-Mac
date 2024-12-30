@@ -43,7 +43,7 @@ class CharacterListState: ObservableObject {
     {
         var ReturnMe: [CharacterDataSlot] = [CharacterDataSlot]()
         let highestSlot: Int = cdsArray.max()?.id ?? 0
-        let listSize = max(toSize, highestSlot)
+        let listSize = max(toSize, highestSlot, 1)
         for slot in 1...listSize {
             if let existingData = cdsArray.filter({ $0.id == slot }).first {
                 ReturnMe.append(existingData)
