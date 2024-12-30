@@ -122,6 +122,7 @@ pkgs.stdenv.mkDerivation rec {
     "--disable-option-checking"
     "--enable-win64" # "--enable-archs=x86_64,i386"
     "--disable-tests"
+    "--disable-ir50_32"
     "--without-alsa"
     "--without-capi"
     "--without-dbus"
