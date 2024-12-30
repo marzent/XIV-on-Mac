@@ -20,7 +20,7 @@ public enum FFXIVLanguage: UInt8 {
     case german = 2
 
     static func guessFromLocale() -> FFXIVLanguage {
-        switch Locale.current.languageCode {
+        switch Locale.current.language.languageCode?.identifier {
         case "ja"?:
             return .japanese
         case "en"?:
