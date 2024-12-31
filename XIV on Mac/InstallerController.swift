@@ -7,7 +7,6 @@
 
 import Cocoa
 import SeeURL
-import ZIPFoundation
 
 class InstallerController: NSViewController {
     private enum GameFiles {
