@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import ZIPFoundation
 
 enum BunnyHUD {
     private static let autoLaunchBHKey = "AutoLaunchBH"
