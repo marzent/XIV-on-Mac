@@ -77,7 +77,7 @@ class LaunchController: NSViewController {
 
     @objc func installDone(_ notif: Notification) {
         Task(priority: .userInitiated) {
-            await self.checkBoot()
+            await self.checkBoot(skipInstallCheck: true)
             await MainActor.run {
                 self.doLogin()
             }
