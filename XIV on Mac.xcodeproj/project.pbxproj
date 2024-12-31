@@ -72,7 +72,6 @@
 		507607A127B149F600DDF3E6 /* Frontier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507607A027B149F600DDF3E6 /* Frontier.swift */; };
 		5077A32C27C12A9100D4F1B8 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5077A32B27C12A9100D4F1B8 /* Settings.swift */; };
 		507C600127CAA72000BA3CC2 /* PatchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507C600027CAA72000BA3CC2 /* PatchController.swift */; };
-		507CFBF62781C780007ADEC9 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 507CFBF52781C780007ADEC9 /* ZIPFoundation */; };
 		507D8F2127766F52000F0CB0 /* dxvk in Resources */ = {isa = PBXBuildFile; fileRef = 507D8F2027766F52000F0CB0 /* dxvk */; };
 		508C678F29431BFF0046AA38 /* snowflake_x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 508C678E29431BFF0046AA38 /* snowflake_x2.png */; };
 		509D0E2D2960536A0055367A /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 509D0E2C2960536A0055367A /* KeychainAccess */; };
@@ -235,7 +234,6 @@
 				509D0E302960540C0055367A /* AppMover in Frameworks */,
 				5049B9B3283CFEC600463A2B /* libsteam_api64.dylib in Frameworks */,
 				50D30FA327B93359007A9F66 /* Embassy in Frameworks */,
-				507CFBF62781C780007ADEC9 /* ZIPFoundation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -518,7 +516,6 @@
 			);
 			name = "XIV on Mac";
 			packageProductDependencies = (
-				507CFBF52781C780007ADEC9 /* ZIPFoundation */,
 				50692C8827B3D13700945593 /* Sparkle */,
 				50D30FA227B93359007A9F66 /* Embassy */,
 				50DF1F8727CD261A00DE9DA5 /* OrderedCollections */,
@@ -561,7 +558,6 @@
 			);
 			mainGroup = 50511EB82770E085003A1E9F;
 			packageReferences = (
-				507CFBF42781C780007ADEC9 /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
 				502A18DF27AABF8400144AB9 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				50692C8727B3D13700945593 /* XCRemoteSwiftPackageReference "Sparkle" */,
 				50D30FA127B93359007A9F66 /* XCRemoteSwiftPackageReference "Embassy" */,
@@ -1049,14 +1045,6 @@
 				minimumVersion = 2.0.0;
 			};
 		};
-		507CFBF42781C780007ADEC9 /* XCRemoteSwiftPackageReference "ZIPFoundation" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/weichsel/ZIPFoundation.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.9.15;
-			};
-		};
 		509D0E2E2960540C0055367A /* XCRemoteSwiftPackageReference "AppMover" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/marzent/AppMover";
@@ -1109,11 +1097,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 50692C8727B3D13700945593 /* XCRemoteSwiftPackageReference "Sparkle" */;
 			productName = Sparkle;
-		};
-		507CFBF52781C780007ADEC9 /* ZIPFoundation */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 507CFBF42781C780007ADEC9 /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
-			productName = ZIPFoundation;
 		};
 		509D0E2C2960536A0055367A /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;
