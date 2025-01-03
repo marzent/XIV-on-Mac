@@ -71,6 +71,7 @@
 		50692C8B27B3E48B00945593 /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = 50692C8A27B3E48B00945593 /* Credits.html */; };
 		507607A127B149F600DDF3E6 /* Frontier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507607A027B149F600DDF3E6 /* Frontier.swift */; };
 		5077A32C27C12A9100D4F1B8 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5077A32B27C12A9100D4F1B8 /* Settings.swift */; };
+		507BECDD2D27E142009BE4A5 /* d3dcompiler in Resources */ = {isa = PBXBuildFile; fileRef = 507BECDC2D27E130009BE4A5 /* d3dcompiler */; };
 		507C600127CAA72000BA3CC2 /* PatchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507C600027CAA72000BA3CC2 /* PatchController.swift */; };
 		507D8F2127766F52000F0CB0 /* dxvk in Resources */ = {isa = PBXBuildFile; fileRef = 507D8F2027766F52000F0CB0 /* dxvk */; };
 		508C678F29431BFF0046AA38 /* snowflake_x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 508C678E29431BFF0046AA38 /* snowflake_x2.png */; };
@@ -191,6 +192,7 @@
 		50692C8A27B3E48B00945593 /* Credits.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Credits.html; sourceTree = "<group>"; };
 		507607A027B149F600DDF3E6 /* Frontier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frontier.swift; sourceTree = "<group>"; };
 		5077A32B27C12A9100D4F1B8 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		507BECDC2D27E130009BE4A5 /* d3dcompiler */ = {isa = PBXFileReference; lastKnownFileType = folder; path = d3dcompiler; sourceTree = "<group>"; };
 		507C600027CAA72000BA3CC2 /* PatchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchController.swift; sourceTree = "<group>"; };
 		507D8F2027766F52000F0CB0 /* dxvk */ = {isa = PBXFileReference; lastKnownFileType = folder; path = dxvk; sourceTree = "<group>"; };
 		508C678E29431BFF0046AA38 /* snowflake_x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snowflake_x2.png; sourceTree = "<group>"; };
@@ -394,6 +396,7 @@
 				50692C8A27B3E48B00945593 /* Credits.html */,
 				50511ECA2770E087003A1E9F /* Main.storyboard */,
 				50511ECD2770E087003A1E9F /* XIV_on_Mac.entitlements */,
+				507BECDC2D27E130009BE4A5 /* d3dcompiler */,
 				50C029062C52638C0085297D /* dxmt */,
 				507D8F2027766F52000F0CB0 /* dxvk */,
 				5043E36B27728BA300E59127 /* wine */,
@@ -581,6 +584,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				507BECDD2D27E142009BE4A5 /* d3dcompiler in Resources */,
 				07A3499028056C7600A9D7D0 /* CfgCheckProblems.tiff in Resources */,
 				5046F7EF27E74AC9006C34E1 /* discord_bridge.exe in Resources */,
 				07E8A6662BD05698005AD41B /* ChocoboWalk2.tiff in Resources */,

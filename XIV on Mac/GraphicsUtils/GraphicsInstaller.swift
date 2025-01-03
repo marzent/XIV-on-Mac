@@ -10,6 +10,9 @@ import Foundation
 enum GraphicsInstaller {
     private static let system32 = Wine.prefix.appendingPathComponent(
         "drive_c/windows/system32")
+    private static let d3dcompilerPath = Bundle.main.url(
+        forResource: "d3dcompiler", withExtension: nil, subdirectory: "")!
+    private static let d3dcompilerDll = d3dcompilerPath.appendingPathComponent("d3dcompiler_47.dll")
 
     static func install(dll: URL) {
         let dllName = dll.lastPathComponent
@@ -60,6 +63,7 @@ enum GraphicsInstaller {
     }
 
     static func ensureBackend() {
+        install(dll: d3dcompilerDll)
         if Settings.dxmtEnabled {
             Dxmt.install()
         } else {
