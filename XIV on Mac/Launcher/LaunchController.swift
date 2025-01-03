@@ -58,27 +58,23 @@ class LaunchController: NSViewController {
         leftButton.wantsLayer = true
         rightButton.wantsLayer = true
         setSideButtonVisibility(to: false)
-        Task {
-            await self.checkBoot()
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.checkBoot()
         }
         DispatchQueue.global(qos: .userInteractive).async {
             if let frontierInfo = Frontier.info {
-                DispatchQueue.main.async {
-                    self.populateNews(frontierInfo)
-                }
+                self.populateNews(frontierInfo)
             }
             if let frontierBanners = Frontier.banners {
-                DispatchQueue.main.async {
-                    self.populateBanners(frontierBanners)
-                }
+                self.populateBanners(frontierBanners)
             }
         }
     }
 
     @objc func installDone(_ notif: Notification) {
-        Task(priority: .userInitiated) {
-            await self.checkBoot(skipInstallCheck: true)
-            await MainActor.run {
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.checkBoot(skipInstallCheck: true)
+            DispatchQueue.main.async {
                 self.doLogin()
             }
         }
@@ -100,22 +96,21 @@ class LaunchController: NSViewController {
             alpha: to ? buttonAlpha : 0.0)
     }
 
-    @MainActor func checkBoot(skipInstallCheck: Bool = false) async {
+    func checkBoot(skipInstallCheck: Bool = false) {
         if let bootPatches = try? Patch.bootPatches, !bootPatches.isEmpty,
             FFXIVApp().installed || skipInstallCheck
         {
-            await Task.detached(priority: .userInitiated) { [self] in
-                await self.startPatch(bootPatches)
-            }.value
+            startPatch(bootPatches)
         }
-
-        self.loginButton.isEnabled = true
-        self.touchBarLoginButton.isEnabled = true
-        if settings.autoLogin
-            && NSEvent.modifierFlags.intersection(
-                .deviceIndependentFlagsMask) != .shift
-        {
-            self.doLogin()
+        DispatchQueue.main.async {
+            self.loginButton.isEnabled = true
+            self.touchBarLoginButton.isEnabled = true
+            if settings.autoLogin
+                && NSEvent.modifierFlags.intersection(
+                    .deviceIndependentFlagsMask) != .shift
+            {
+                self.doLogin()
+            }
         }
     }
 
@@ -140,12 +135,16 @@ class LaunchController: NSViewController {
     }
 
     private func populateNews(_ info: Frontier.Info) {
-        self.topicsTable.add(items: info.topics)
-        self.newsTable.add(items: info.pinned + info.news)
+        DispatchQueue.main.async {
+            self.topicsTable.add(items: info.topics)
+            self.newsTable.add(items: info.pinned + info.news)
+        }
     }
 
     private func populateBanners(_ banners: [Frontier.BannerRoot.Banner]) {
-        self.scrollView.banners = banners
+        DispatchQueue.main.async {
+            self.scrollView.banners = banners
+        }
     }
 
     private func update() {
@@ -227,7 +226,7 @@ class LaunchController: NSViewController {
         Settings.credentials = LoginCredentials(
             username: userField.stringValue, password: passwdField.stringValue,
             oneTimePassword: otpField.stringValue)
-        Task.detached(priority: .userInitiated) { [self] in
+        DispatchQueue.global(qos: .default).async {
             do {
                 guard FFXIVApp().installed else {
                     throw FFXIVLoginError.noInstall
@@ -255,12 +254,11 @@ class LaunchController: NSViewController {
                     }
                     return
                 }
-                let dalamudInstallState = loginResult.dalamudInstallState
-                if let pendingPatches = loginResult.pendingPatches, !pendingPatches.isEmpty {
+                if !(loginResult.pendingPatches?.isEmpty ?? true) {
                     DispatchQueue.main.async { [self] in
                         loginSheetWinController?.window?.close()
                     }
-                    await self.startPatch(pendingPatches)
+                    self.startPatch(loginResult.pendingPatches!)
                     DispatchQueue.main.async { [self] in
                         view.window?.beginSheet(
                             loginSheetWinController!.window!)
@@ -272,6 +270,7 @@ class LaunchController: NSViewController {
                 NotificationCenter.default.post(
                     name: .loginInfo, object: nil,
                     userInfo: [Notification.status.info: "Updating Dalamud"])
+                let dalamudInstallState = loginResult.dalamudInstallState
                 DispatchQueue.main.async {
                     if Settings.dalamudEnabled && dalamudInstallState == .failed
                     {
