@@ -61,7 +61,7 @@ let
 in
 pkgs.stdenv.mkDerivation rec {
   pname = "ff-wine";
-  version = "10.0.0 rc3";
+  version = "10.0.0";
 
   src = builtins.fetchGit {
     url = builtins.toString ./source;
