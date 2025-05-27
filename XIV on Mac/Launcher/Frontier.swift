@@ -16,7 +16,7 @@ class Frontier {
     }
 
     public static let frontierURLTemplate =
-        "https://launcher.finalfantasyxiv.com/v710/index.html?rc_lang={0}&time={1}"
+        "https://launcher.finalfantasyxiv.com/v720/index.html?rc_lang={0}&time={1}"
 
     private static func generateReferer(lang: FFXIVLanguage) -> URL {
         let dateFormatter = DateFormatter()
