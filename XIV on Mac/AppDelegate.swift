@@ -34,10 +34,36 @@ import XIVLauncher
         let build = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion")!
         let storagePath = FileManager.default.fileSystemRepresentation(
             withPath: Util.applicationSupport.path)
+        registerWineAppWillActivateNotification()
         initXL(
             "XIV on Mac \(version) build \(build)", storagePath,
             Settings.verboseLogging, Frontier.frontierURLTemplate)
         Wine.setup()
+    }
+
+    func registerWineAppWillActivateNotification() {
+        if #available(macOS 14.0, *) {
+            DistributedNotificationCenter.default().addObserver(
+                self,
+                selector: #selector(wineAppWillActivate(_:)),
+                name: Notification.Name("WineAppWillActivateNotification"),
+                object: nil,
+                suspensionBehavior: .deliverImmediately
+            )
+        }
+    }
+
+    @objc func wineAppWillActivate(_ notification: Notification) {
+        guard
+            let winePID = notification.userInfo?["ActivatingAppPID"] as? Int32,
+            let wineApp = NSRunningApplication(processIdentifier: winePID)
+        else { return }
+
+        if #available(macOS 14.0, *) {
+            Log.debug("yielding activation to \(wineApp)")
+            NSApp.yieldActivation(to: wineApp)
+            wineApp.activate(from: NSRunningApplication.current, options: [])
+        }
     }
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
