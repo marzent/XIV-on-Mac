@@ -1,0 +1,750 @@
+
+/* Class = "NSViewController"; title = "General"; ObjectID = "0Rv-P7-893"; */
+"0Rv-P7-893.title" = "一般";
+
+/* Class = "NSButtonCell"; title = "Launch with Dalamud Plugin Support"; ObjectID = "0ZX-g7-76H"; */
+"0ZX-g7-76H.title" = "啟動時使用 Dalamud 外掛"
+
+/* Class = "NSTextFieldCell"; title = "Point XIV on Mac towards a custom folder."; ObjectID = "0iQ-Qw-vtu"; */
+"0iQ-Qw-vtu.title" = "將 XIV on Mac 指向自訂資料夾。";
+
+/* Class = "NSMenuItem"; title = "Auto-Launch Bunny HUD"; ObjectID = "1Do-e8-DyE"; */
+"1Do-e8-DyE.title" = "自動啟動 Bunny HUD";
+
+/* Class = "NSTextFieldCell"; title = "Downloading"; ObjectID = "1Lo-aA-aE9"; */
+"1Lo-aA-aE9.title" = "下載中";
+
+/* Class = "NSMenuItem"; title = "Wine Configuration"; ObjectID = "1UK-8n-QPP"; */
+"1UK-8n-QPP.title" = "Wine 設定";
+
+/* Class = "NSMenuItem"; title = "XIV on Mac"; ObjectID = "1Xt-HY-uBw"; */
+"1Xt-HY-uBw.title" = "XIV on Mac";
+
+/* Class = "NSMenu"; title = "Find"; ObjectID = "1b7-l0-nxx"; */
+"1b7-l0-nxx.title" = "尋找";
+
+/* Class = "NSWindow"; title = "Settings"; ObjectID = "2hl-BH-elL"; */
+"2hl-BH-elL.title" = "設定";
+
+/* Class = "NSMenuItem"; title = "Transformations"; ObjectID = "2oI-Rn-ZJC"; */
+"2oI-Rn-ZJC.title" = "轉換";
+
+/* Class = "NSMenu"; title = "Spelling"; ObjectID = "3IN-sU-3Bg"; */
+"3IN-sU-3Bg.title" = "拼字檢查";
+
+/* Class = "NSMenu"; title = "Speech"; ObjectID = "3rS-ZA-NoH"; */
+"3rS-ZA-NoH.title" = "語音";
+
+/* Class = "NSMenuItem"; title = "Find"; ObjectID = "4EN-yA-p0u"; */
+"4EN-yA-p0u.title" = "尋找";
+
+/* Class = "NSViewController"; title = "Advanced"; ObjectID = "4Nu-Eh-h4G"; */
+"4Nu-Eh-h4G.title" = "進階";
+
+/* Class = "NSButtonCell"; title = "Quit"; ObjectID = "4W4-r3-YqJ"; */
+"4W4-r3-YqJ.title" = "結束";
+
+/* Class = "NSButtonCell"; title = "Async"; ObjectID = "4l9-XH-Dbl"; */
+"4l9-XH-Dbl.title" = "非同步";
+
+/* Class = "NSMenuItem"; title = "Quit XIV on Mac"; ObjectID = "4sb-4s-VLi"; */
+"4sb-4s-VLi.title" = "結束 XIV on Mac";
+
+/* Class = "NSTextFieldCell"; title = "Plugins are enabled by a project called Dalamud, which enables extra functionality in your game. If you do not know why you would want a plugin or do not wish to use them, you may safely leave this disabled. To learn more about Dalamud please visit:\nhttps://github.com/goatcorp/Dalamud"; ObjectID = "4uL-Sg-0m9"; */
+"4uL-Sg-0m9.title" = "外掛是由 Dalamud 啟用，能為你的遊戲增加額外功能。如果你不知道為什麼需要外掛，或是不想使用外掛，可以放心地保持停用。想了解更多關於 Dalamud，請造訪：\nhttps://github.com/goatcorp/Dalamud";
+
+/* Class = "NSTextFieldCell"; placeholderString = "optional"; ObjectID = "5FC-rM-Oay"; */
+"5FC-rM-Oay.placeholderString" = "選填";
+
+/* Class = "NSMenuItem"; title = "Edit"; ObjectID = "5QF-Oa-p0T"; */
+"5QF-Oa-p0T.title" = "編輯";
+
+/* Class = "NSMenuItem"; title = "About XIV on Mac"; ObjectID = "5kV-Vb-QxS"; */
+"5kV-Vb-QxS.title" = "關於 XIV on Mac";
+
+/* Class = "NSMenuItem"; title = "Auto-Launch ACT"; ObjectID = "6JE-Fn-nLi"; */
+"6JE-Fn-nLi.title" = "自動啟動 ACT";
+
+/* Class = "NSTextFieldCell"; title = "s"; ObjectID = "6Ur-qN-wMK"; */
+"6Ur-qN-wMK.title" = "秒";
+
+/* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "6Z2-gP-gHf"; */
+"6Z2-gP-gHf.title" = "取消";
+
+/* Class = "NSMenuItem"; title = "Redo"; ObjectID = "6dh-zS-Vam"; */
+"6dh-zS-Vam.title" = "重做";
+
+/* Class = "NSTextFieldCell"; title = "HUD Options are informational items displayed in the upper left corner during play that can aid you in determining how in-game settings are affecting your performance. They are entirely optional."; ObjectID = "74A-cF-fLc"; */
+"74A-cF-fLc.title" = "HUD 選項是在遊戲過程中顯示在左上角的資訊項目，可以幫助您了解遊戲內設定如何影響您的效能。這些選項完全是可選的。";
+
+/* Class = "NSMenuItem"; title = "Correct Spelling Automatically"; ObjectID = "78Y-hA-62v"; */
+"78Y-hA-62v.title" = "自動修正拼字";
+
+/* Class = "NSTextFieldCell"; title = "Language:"; ObjectID = "7QP-ih-obw"; */
+"7QP-ih-obw.title" = "語言：";
+
+/* Class = "NSTabViewItem"; label = "Installing"; ObjectID = "7fh-eq-btc"; */
+"7fh-eq-btc.label" = "安裝中";
+
+/* Class = "NSButtonCell"; title = "Enable macOS scaling"; ObjectID = "7vx-YJ-IUo"; */
+"7vx-YJ-IUo.title" = "啟用 macOS 縮放";
+
+/* Class = "NSButtonCell"; title = "Draw Calls and Render Passes"; ObjectID = "7xs-cj-Vij"; */
+"7xs-cj-Vij.title" = "繪製呼叫和渲染通道";
+
+/* Class = "NSMenuItem"; title = "Auto Install"; ObjectID = "8FT-OM-tMB"; */
+"8FT-OM-tMB.title" = "自動安裝";
+
+/* Class = "NSMenuItem"; title = "Microsoft .NET Framework"; ObjectID = "8SF-gz-CjR"; */
+"8SF-gz-CjR.title" = "Microsoft .NET Framework";
+
+/* Class = "NSMenuItem"; title = "Mac"; ObjectID = "8gA-hG-foX"; */
+"8gA-hG-foX.title" = "Mac";
+
+/* Class = "NSButtonCell"; title = "Command Buffer Submissions"; ObjectID = "8s1-ty-wL8"; */
+"8s1-ty-wL8.title" = "命令緩衝區提交";
+
+/* Class = "NSMenuItem"; title = "GShade"; ObjectID = "9VN-cs-jNP"; */
+"9VN-cs-jNP.title" = "GShade";
+
+/* Class = "NSTextFieldCell"; title = "D2013.06.18.0000.0000"; ObjectID = "9gQ-FA-62f"; */
+"9gQ-FA-62f.title" = "D2013.06.18.0000.0000";
+
+/* Class = "NSMenuItem"; title = "Substitutions"; ObjectID = "9ic-FL-obx"; */
+"9ic-FL-obx.title" = "替代";
+
+/* Class = "NSButtonCell"; title = "Quit XIV on Mac upon game exit"; ObjectID = "9ie-LK-Dur"; */
+"9ie-LK-Dur.title" = "遊戲結束時自動關閉 XIV on Mac";
+
+/* Class = "NSTextFieldCell"; title = "Copy existing game data to \"XIV on Mac\" prefix."; ObjectID = "9yd-8A-qFs"; */
+"9yd-8A-qFs.title" = "複製現有遊戲資料到「XIV on Mac」前綴。";
+
+/* Class = "NSMenuItem"; title = "Smart Copy/Paste"; ObjectID = "9yt-4B-nSM"; */
+"9yt-4B-nSM.title" = "智慧複製/貼上";
+
+/* Class = "NSViewController"; title = "Plugins (Dalamud)"; ObjectID = "A8Q-Gs-kK7"; */
+"A8Q-Gs-kK7.title" = "外掛程式 (Dalamud)";
+
+/* Class = "NSMenu"; title = "Add On"; ObjectID = "A9a-u7-hsU"; */
+"A9a-u7-hsU.title" = "附加元件";
+
+/* Class = "NSButtonCell"; title = "Reset Configuration"; ObjectID = "AGp-z2-0Vw"; */
+"AGp-z2-0Vw.title" = "重置設定";
+
+/* Class = "NSButtonCell"; title = "Download"; ObjectID = "AHs-hu-DAo"; */
+"AHs-hu-DAo.title" = "下載";
+
+/* Class = "NSTextFieldCell"; title = "MB/sec"; ObjectID = "ARN-hb-Lmx"; */
+"ARN-hb-Lmx.title" = "MB/秒";
+
+/* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
+"AYu-sK-qS6.title" = "主選單";
+
+/* Class = "NSMenu"; title = "GShade"; ObjectID = "AgC-OX-7rb"; */
+"AgC-OX-7rb.title" = "GShade";
+
+/* Class = "NSTextFieldCell"; title = "Base Game"; ObjectID = "Ah7-q5-p6m"; */
+"Ah7-q5-p6m.title" = "基礎遊戲";
+
+/* Class = "NSMenuItem"; title = "Steam"; ObjectID = "Azf-g8-OxM"; */
+"Azf-g8-OxM.title" = "Steam";
+
+/* Class = "NSButtonCell"; title = "Previous"; ObjectID = "BDK-br-7Ao"; */
+"BDK-br-7Ao.title" = "上一步";
+
+/* Class = "NSButtonCell"; title = "Reset"; ObjectID = "BHo-QR-6f8"; */
+"BHo-QR-6f8.title" = "重置";
+
+/* Class = "NSTextFieldCell"; title = "fps"; ObjectID = "BMg-PA-pZ1"; */
+"BMg-PA-pZ1.title" = "fps";
+
+/* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "BOF-NM-1cW"; */
+"BOF-NM-1cW.title" = "偏好設定…";
+
+/* Class = "NSButtonCell"; title = "Fix"; ObjectID = "CIy-Lt-yyH"; */
+"CIy-Lt-yyH.title" = "修復";
+
+/* Class = "NSButtonCell"; title = "Copy existing install"; ObjectID = "CKg-pw-iZA"; */
+"CKg-pw-iZA.title" = "複製現有安裝檔案";
+
+/* Class = "NSButtonCell"; title = "Windows"; ObjectID = "CqV-50-MBO"; */
+"CqV-50-MBO.title" = "Windows";
+
+/* Class = "NSMenuItem"; title = "Close"; ObjectID = "DVo-aG-piG"; */
+"DVo-aG-piG.title" = "關閉";
+
+/* Class = "NSMenuItem"; title = "Start ACT"; ObjectID = "Dbv-Cm-iXv"; */
+"Dbv-Cm-iXv.title" = "啟動 ACT";
+
+/* Class = "NSTextFieldCell"; title = "One-Time Password"; ObjectID = "Def-J0-BrB"; */
+"Def-J0-BrB.title" = "一次性密碼 OTP";
+
+/* Class = "NSMenuItem"; title = "Spelling and Grammar"; ObjectID = "Dv1-io-Yv7"; */
+"Dv1-io-Yv7.title" = "拼字和文法";
+
+/* Class = "NSTextFieldCell"; title = "XIV on Mac can identify potential problems, or make recommended changes to your FFXIV Configuration file to give you the best experience available on the Mac."; ObjectID = "Dv8-bd-owY"; */
+"Dv8-bd-owY.title" = "XIV on Mac 可以協助偵測潛在問題，或對你的 FFXIV 設定檔提出建議修改，讓你在 Mac 上獲得最佳體驗。";
+
+/* Class = "NSButtonCell"; title = "Discord Rich Presence Wine Bridge"; ObjectID = "EJl-D1-TzE"; */
+"EJl-D1-TzE.title" = "Discord Rich Presence Wine 橋接";
+
+/* Class = "NSTabViewItem"; label = "Select Version"; ObjectID = "Ebe-6x-j5a"; */
+"Ebe-6x-j5a.label" = "選擇版本";
+
+/* Class = "NSMenu"; title = "Help"; ObjectID = "F2S-fz-NVQ"; */
+"F2S-fz-NVQ.title" = "說明";
+
+/* Class = "NSMenuItem"; title = "XIV on Mac Help"; ObjectID = "FKE-Sm-Kum"; */
+"FKE-Sm-Kum.title" = "XIV on Mac 說明";
+
+/* Class = "NSTextFieldCell"; title = "Done"; ObjectID = "FS5-VI-VER"; */
+"FS5-VI-VER.title" = "完成";
+
+/* Class = "NSTextFieldCell"; title = "Repairing"; ObjectID = "FSD-me-yOd"; */
+"FSD-me-yOd.title" = "修復中";
+
+/* Class = "NSMenuItem"; title = "4.8"; ObjectID = "FaC-aE-BV7"; */
+"FaC-aE-BV7.title" = "4.8";
+
+/* Class = "NSMenuItem"; title = "4.8.1"; ObjectID = "FaC-aE-BV8"; */
+"FaC-aE-BV8.title" = "4.8.1";
+
+/* Class = "NSMenu"; title = "Substitutions"; ObjectID = "FeM-D8-WVr"; */
+"FeM-D8-WVr.title" = "替代";
+
+/* Class = "NSTextFieldCell"; title = "These settings are mainly for troubleshooting purposes and generally shouldn't need to be changed."; ObjectID = "Fee-RW-Fzh"; */
+"Fee-RW-Fzh.title" = "這些設定主要用於疑難排解，一般情況下不需要更改。";
+
+/* Class = "NSBox"; title = "HUD"; ObjectID = "Fq2-37-Vx7"; */
+"Fq2-37-Vx7.title" = "HUD";
+
+/* Class = "NSButtonCell"; title = "Keep Patches"; ObjectID = "GI5-jN-ZaJ"; */
+"GI5-jN-ZaJ.title" = "保留更新檔";
+
+/* Class = "NSTextFieldCell"; title = "The bridge enables the Discord Rich Presence Dalamud plugin to update your Discord status. If you do not plan to use this plugin, you can disable this setting."; ObjectID = "H7k-pX-G8j"; */
+"H7k-pX-G8j.title" = "此橋接功能可讓 Discord Rich Presence Dalamud 外掛更新你的 Discord 狀態。如果你不打算使用這個外掛，可以停用這個設定。";
+
+/* Class = "NSMenuItem"; title = "Tools"; ObjectID = "H8h-7b-M4v"; */
+"H8h-7b-M4v.title" = "工具";
+
+/* Class = "NSMenuItem"; title = "Text Replacement"; ObjectID = "HFQ-gK-NFA"; */
+"HFQ-gK-NFA.title" = "文字替代";
+
+/* Class = "NSMenuItem"; title = "Show Spelling and Grammar"; ObjectID = "HFo-cy-zxI"; */
+"HFo-cy-zxI.title" = "顯示拼字和文法";
+
+/* Class = "NSTextFieldCell"; title = "0.00 GB of 0.00 GB"; ObjectID = "HQX-r7-1tH"; */
+"HQX-r7-1tH.title" = "0.00 GB / 0.00 GB";
+
+/* Class = "NSMenu"; title = "Tools"; ObjectID = "HyV-fh-RgO"; */
+"HyV-fh-RgO.title" = "工具";
+
+/* Class = "NSMenuItem"; title = "Open…"; ObjectID = "IAo-SY-fd9"; */
+"IAo-SY-fd9.title" = "開啟…";
+
+/* Class = "NSWindow"; title = "Installer"; ObjectID = "IQv-IB-iLA"; */
+"IQv-IB-iLA.title" = "安裝程式";
+
+/* Class = "NSButtonCell"; title = "Encrypt Game Arguments"; ObjectID = "Iv2-C2-31G"; */
+"Iv2-C2-31G.title" = "加密遊戲參數";
+
+/* Class = "NSButtonCell"; title = "Auto-Login"; ObjectID = "J8n-OX-VtC"; */
+"J8n-OX-VtC.title" = "自動登入";
+
+/* Class = "NSMenuItem"; title = "French"; ObjectID = "JVS-ez-96D"; */
+"JVS-ez-96D.title" = "法文";
+
+/* Class = "NSTextFieldCell"; title = "You can chose to enable Dalamud later"; ObjectID = "Jbf-yx-ZQ7"; */
+"Jbf-yx-ZQ7.title" = "您可以稍後選擇啟用 Dalamud";
+
+/* Class = "NSMenuItem"; title = "Check for Updates..."; ObjectID = "Jeg-Jn-PWU"; */
+"Jeg-Jn-PWU.title" = "檢查更新…";
+
+/* Class = "NSMenuItem"; title = "4.0"; ObjectID = "K16-kg-NW2"; */
+"K16-kg-NW2.title" = "4.0";
+
+/* Class = "NSTextFieldCell"; title = "License:"; ObjectID = "KR1-HA-AnN"; */
+"KR1-HA-AnN.title" = "憑證：";
+
+/* Class = "NSButtonCell"; title = "Limit Download Speed to"; ObjectID = "KSs-CO-Vc9"; */
+"KSs-CO-Vc9.title" = "限制下載速度至";
+
+/* Class = "NSMenuItem"; title = "Show All"; ObjectID = "Kd2-mp-pUS"; */
+"Kd2-mp-pUS.title" = "顯示全部";
+
+/* Class = "NSTextFieldCell"; title = "This is the normal Mac License"; ObjectID = "KhY-Wz-XDC"; */
+"KhY-Wz-XDC.title" = "這是標準的 Mac 憑證";
+
+/* Class = "NSWindow"; title = "Window"; ObjectID = "Knf-sg-4vr"; */
+"Knf-sg-4vr.title" = "視窗";
+
+/* Class = "NSMenuItem"; title = "Bring All to Front"; ObjectID = "LE2-aR-0XJ"; */
+"LE2-aR-0XJ.title" = "全部視窗移到最前面";
+
+/* Class = "NSTextFieldCell"; title = "Waiting for download to finish..."; ObjectID = "LLv-Yk-R7e"; */
+"LLv-Yk-R7e.title" = "等待下載完成…";
+
+/* Class = "NSTextFieldCell"; title = "You can disable Dalamud anytime"; ObjectID = "LPN-SN-8np"; */
+"LPN-SN-8np.title" = "您可以隨時停用 Dalamud";
+
+/* Class = "NSButtonCell"; title = "Mac"; ObjectID = "LRc-OZ-739"; */
+"LRc-OZ-739.title" = "Mac";
+
+/* Class = "NSTextFieldCell"; title = "Select how you want to handle the game files:"; ObjectID = "LTb-VO-T18"; */
+"LTb-VO-T18.title" = "選擇您想要如何處理遊戲檔案：";
+
+/* Class = "NSButtonCell"; title = "Choose existing install"; ObjectID = "Loh-1J-Ipp"; */
+"Loh-1J-Ipp.title" = "選擇現有安裝";
+
+/* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "LsB-Af-NpT"; */
+"LsB-Af-NpT.title" = "取消";
+
+/* Class = "NSButtonCell"; title = "Windows (Steam)"; ObjectID = "NHb-zd-owg"; */
+"NHb-zd-owg.title" = "Windows (Steam)";
+
+/* Class = "NSMenuItem"; title = "Services"; ObjectID = "NMo-om-nkz"; */
+"NMo-om-nkz.title" = "服務";
+
+/* Class = "NSTextFieldCell"; title = "0.0 MB of 0.0 MB (0.0 MB/sec)"; ObjectID = "OFS-xw-3KL"; */
+"OFS-xw-3KL.title" = "0.0 MB / 0.0 MB (0.0 MB/秒)";
+
+/* Class = "NSTextFieldCell"; title = "Current File"; ObjectID = "OHo-zg-md7"; */
+"OHo-zg-md7.title" = "目前檔案";
+
+/* Class = "NSMenuItem"; title = "Minimize"; ObjectID = "OY7-WF-poV"; */
+"OY7-WF-poV.title" = "最小化";
+
+/* Class = "NSMenuItem"; title = "Hide XIV on Mac"; ObjectID = "Olw-nP-bQN"; */
+"Olw-nP-bQN.title" = "隱藏 XIV on Mac";
+
+/* Class = "NSMenuItem"; title = "Find Previous"; ObjectID = "OwM-mh-QMV"; */
+"OwM-mh-QMV.title" = "尋找上一個";
+
+/* Class = "NSMenuItem"; title = "Stop Speaking"; ObjectID = "Oyz-dy-DGm"; */
+"Oyz-dy-DGm.title" = "停止語音";
+
+/* Class = "NSTextFieldCell"; title = "Square Enix Password"; ObjectID = "P4p-qs-m93"; */
+"P4p-qs-m93.title" = "Square Enix 密碼";
+
+/* Class = "NSButtonCell"; title = "D3D Feature Level"; ObjectID = "Prr-45-dEP"; */
+"Prr-45-dEP.title" = "D3D 功能等級";
+
+/* Class = "NSButtonCell"; title = "Configuration Checkup"; ObjectID = "QKx-3N-AcM"; */
+"QKx-3N-AcM.title" = "設定檢查";
+
+/* Class = "NSButtonCell"; title = "Close Installer"; ObjectID = "Qa2-wP-4fw"; */
+"Qa2-wP-4fw.title" = "關閉安裝程式";
+
+/* Class = "NSTextFieldCell"; title = "0 out of 0 Patches installed"; ObjectID = "QxC-ZE-CiG"; */
+"QxC-ZE-CiG.title" = "已安裝 0 個更新檔，共 0 個";
+
+/* Class = "NSMenuItem"; title = "Zoom"; ObjectID = "R4o-n2-Eq4"; */
+"R4o-n2-Eq4.title" = "縮放";
+
+/* Class = "NSButtonCell"; title = "DXVK Version"; ObjectID = "RHk-LT-kFy"; */
+"RHk-LT-kFy.title" = "DXVK 版本";
+
+/* Class = "NSTextFieldCell"; title = "This is the normal non-Steam Windows License"; ObjectID = "RY6-Fp-v5E"; */
+"RY6-Fp-v5E.title" = "這是標準的非 Steam Windows 憑證";
+
+/* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "RlD-3e-c2c"; */
+"RlD-3e-c2c.title" = "取消";
+
+/* Class = "NSMenuItem"; title = "Select All"; ObjectID = "Ruw-6m-B2m"; */
+"Ruw-6m-B2m.title" = "全選";
+
+/* Class = "NSMenuItem"; title = "Jump to Selection"; ObjectID = "S0p-oC-mLd"; */
+"S0p-oC-mLd.title" = "跳到選取項目";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "S5j-az-Mvs"; */
+"S5j-az-Mvs.title" = "文字儲存格";
+
+/* Class = "NSMenuItem"; title = "x64"; ObjectID = "SYN-Tz-ix0"; */
+"SYN-Tz-ix0.title" = "x64";
+
+/* Class = "NSButtonCell"; title = "Login"; ObjectID = "TON-Zk-2g1"; */
+"TON-Zk-2g1.title" = "登入";
+
+/* Class = "NSMenuItem"; title = "Manual Install"; ObjectID = "Taa-Lw-mwf"; */
+"Taa-Lw-mwf.title" = "手動安裝";
+
+/* Class = "NSMenu"; title = "Window"; ObjectID = "Td7-aD-5lo"; */
+"Td7-aD-5lo.title" = "視窗";
+
+/* Class = "NSTextFieldCell"; title = "Select an option:"; ObjectID = "TeW-Wy-5YR"; */
+"TeW-Wy-5YR.title" = "選擇一個選項：";
+
+/* Class = "NSSecureTextFieldCell"; placeholderString = "required"; ObjectID = "TfY-Li-gp6"; */
+"TfY-Li-gp6.placeholderString" = "必填";
+
+/* Class = "NSMenuItem"; title = "4.6.2"; ObjectID = "ThK-Bg-ZyU"; */
+"ThK-Bg-ZyU.title" = "4.6.2";
+
+/* Class = "NSMenuItem"; title = "Capitalize"; ObjectID = "UEZ-Bs-lqG"; */
+"UEZ-Bs-lqG.title" = "首字母大寫";
+
+/* Class = "NSTextFieldCell"; title = "Current Step"; ObjectID = "Uem-xO-XvC"; */
+"Uem-xO-XvC.title" = "目前步驟";
+
+/* Class = "NSTextFieldCell"; title = "If Dalamud is not loading succesfully, you can try adjusting the load delay up or down to find a value that works for your Mac."; ObjectID = "VZh-e3-0dP"; */
+"VZh-e3-0dP.title" = "如果 Dalamud 沒有成功載入，你可以嘗試調整載入延遲的時間，增加或減少，來找到適合你 Mac 的數值。";
+
+/* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "Vdr-fp-XzO"; */
+"Vdr-fp-XzO.title" = "隱藏其他";
+
+/* Class = "NSMenu"; title = "Edit"; ObjectID = "W48-6f-4Dl"; */
+"W48-6f-4Dl.title" = "編輯";
+
+/* Class = "NSMenuItem"; title = "Open Install Folder"; ObjectID = "Was-JA-tGl"; */
+"Was-JA-tGl.title" = "開啟安裝資料夾";
+
+/* Class = "NSTextFieldCell"; title = "Shader Cache"; ObjectID = "Wum-vu-uC1"; */
+"Wum-vu-uC1.title" = "著色器快取";
+
+/* Class = "NSTextFieldCell"; title = "Installing..."; ObjectID = "X9z-xO-PQz"; */
+"X9z-xO-PQz.title" = "安裝中…";
+
+/* Class = "NSMenuItem"; title = "x86"; ObjectID = "XO2-yP-LkT"; */
+"XO2-yP-LkT.title" = "x86";
+
+/* Class = "NSMenuItem"; title = "Find…"; ObjectID = "Xz5-n4-O0W"; */
+"Xz5-n4-O0W.title" = "尋找…";
+
+/* Class = "NSMenuItem"; title = "Find and Replace…"; ObjectID = "YEy-JH-Tfz"; */
+"YEy-JH-Tfz.title" = "尋找和取代…";
+
+/* Class = "NSButtonCell"; title = "Device Info"; ObjectID = "YOz-MM-jki"; */
+"YOz-MM-jki.title" = "裝置資訊";
+
+/* Class = "NSTextFieldCell"; title = "MoltenVK is one of the graphics libraries used by Final Fantasy XIV. Different versions may be needed on certain Macs for best results. If you're finding that your game is crashing - particularly in Azys Lla - try changing this value."; ObjectID = "Ybh-kW-gyy"; */
+"Ybh-kW-gyy.title" = "MoltenVK 是 Final Fantasy XIV 使用的圖形函式庫之一。某些 Mac 可能需要不同版本才能獲得最佳結果。如果你發現遊戲崩潰，特別是在阿濟茲拉 Azys Lla，請嘗試更改此數值。
+
+/* Class = "NSMenuItem"; title = "Start Speaking"; ObjectID = "Ynk-f8-cLZ"; */
+"Ynk-f8-cLZ.title" = "開始語音";
+
+/* Class = "NSTextFieldCell"; title = "If you've misconfigured your game in a way that prevents you from playing it, such as a bad graphics setting, you can try resetting your configuration to default."; ObjectID = "YxS-mf-FNj"; */
+"YxS-mf-FNj.title" = "如果你因為設定錯誤（例如不當的顯示設定）導致無法遊玩，可以嘗試將設定重置為預設值。";
+
+/* Class = "NSMenuItem"; title = "Japanese"; ObjectID = "Z2I-xl-N2E"; */
+"Z2I-xl-N2E.title" = "日文";
+
+/* Class = "NSButtonCell"; title = "Enable Dalamud"; ObjectID = "Z8s-GL-J9H"; */
+"Z8s-GL-J9H.title" = "啟用 Dalamud";
+
+/* Class = "NSWindow"; title = "Window"; ObjectID = "ZbU-CB-bBy"; */
+"ZbU-CB-bBy.title" = "視窗";
+
+/* Class = "NSButtonCell"; title = "Previous"; ObjectID = "Zet-Lk-NVj"; */
+"Zet-Lk-NVj.title" = "上一步";
+
+/* Class = "NSMenu"; title = "Microsoft Visual C++ Redistributables"; ObjectID = "a5q-2b-gk9"; */
+"a5q-2b-gk9.title" = "Microsoft Visual C++ 可轉散發套件";
+
+/* Class = "NSButtonCell"; title = "Free Trial"; ObjectID = "aRR-m7-gaN"; */
+"aRR-m7-gaN.title" = "免費試玩";
+
+/* Class = "NSTextFieldCell"; title = "When using the Free Trial, you must choose the same license type you used when you signed up for the trial. Additionally, your Final Fantasy XIV account must already have an active trial, as XIV On Mac cannot sign you up automatically."; ObjectID = "aSj-n5-8bQ"; */
+"aSj-n5-8bQ.title" = "使用免費試玩時，您必須選擇與註冊試玩時相同的授權類型。此外，您的 Final Fantasy XIV 帳戶必須已經有有效的試玩期，因為 XIV on Mac 無法自動為您註冊。";
+
+/* Class = "NSMenuItem"; title = "Window"; ObjectID = "aUF-d1-5bR"; */
+"aUF-d1-5bR.title" = "視窗";
+
+/* Class = "NSButtonCell"; title = "Next"; ObjectID = "aez-gT-7io"; */
+"aez-gT-7io.title" = "下一步";
+
+/* Class = "NSMenu"; title = "File"; ObjectID = "bib-Uj-vzu"; */
+"bib-Uj-vzu.title" = "檔案";
+
+/* Class = "NSMenuItem"; title = "Use Selection for Find"; ObjectID = "buJ-ug-pKt"; */
+"buJ-ug-pKt.title" = "使用選取項目進行尋找";
+
+/* Class = "NSButtonCell"; title = "Delete User Shader Cache"; ObjectID = "bvg-G5-hBV"; */
+"bvg-G5-hBV.title" = "刪除使用者著色器快取";
+
+/* Class = "NSMenu"; title = "Microsoft .NET Framework"; ObjectID = "c0q-Kl-Wr3"; */
+"c0q-Kl-Wr3.title" = "Microsoft .NET Framework";
+
+/* Class = "NSMenuItem"; title = "Microsoft .NET 6.0"; ObjectID = "c2g-j3-NbA"; */
+"c2g-j3-NbA.title" = "Microsoft .NET 6.0";
+
+/* Class = "NSMenu"; title = "Transformations"; ObjectID = "c8a-y6-VQd"; */
+"c8a-y6-VQd.title" = "轉換";
+
+/* Class = "NSButtonCell"; title = "Quit"; ObjectID = "cHd-1O-1aa"; */
+"cHd-1O-1aa.title" = "結束";
+
+/* Class = "NSWindow"; title = "Window"; ObjectID = "cnG-sE-eCO"; */
+"cnG-sE-eCO.title" = "視窗";
+
+/* Class = "NSButtonCell"; title = "Warn if game exits with non-zero exit code"; ObjectID = "cqe-Mq-QD3"; */
+"cqe-Mq-QD3.title" = "若遊戲以非零代碼結束時警告";
+
+/* Class = "NSMenuItem"; title = "Smart Links"; ObjectID = "cwL-P1-jid"; */
+"cwL-P1-jid.title" = "智慧連結";
+
+/* Class = "NSTextFieldCell"; title = "XIV On Mac can work with Mac, Windows, and Steam licenses. You must already own the license type you choose, if you are unsure you can check your account status through Mogstation. Steam accounts must have been previously linked to your Final Fantasy XIV service account by logging in on a Windows PC, and further require the macOS version of Steam to be running."; ObjectID = "d5H-SM-vjt"; */
+"d5H-SM-vjt.title" = "XIV on Mac 可以與 Mac、Windows 和 Steam 授權一起運作。您必須已經擁有您選擇的授權類型，如果您不確定，可以透過 Mogstation 檢查您的帳戶狀態。Steam 帳戶必須先前透過在 Windows PC 上登入來連結到您的 Final Fantasy XIV 服務帳戶，並且還需要運行 macOS 版本的 Steam。";
+
+/* Class = "NSMenuItem"; title = "Make Lower Case"; ObjectID = "d9M-CD-aMd"; */
+"d9M-CD-aMd.title" = "轉為小寫";
+
+/* Class = "NSMenuItem"; title = "Start IINACT"; ObjectID = "dC8-zW-bPm"; */
+"dC8-zW-bPm.title" = "啟動 IINACT";
+
+/* Class = "NSButtonCell"; title = "Next"; ObjectID = "dED-GZ-u7J"; */
+"dED-GZ-u7J.title" = "下一步";
+
+/* Class = "NSButtonCell"; title = "Previous"; ObjectID = "dJF-V2-Tu9"; */
+"dJF-V2-Tu9.title" = "上一步";
+
+/* Class = "NSMenuItem"; title = "File"; ObjectID = "dMs-cI-mzQ"; */
+"dMs-cI-mzQ.title" = "檔案";
+
+/* Class = "NSTabViewItem"; label = "License selector"; ObjectID = "dP0-z3-3xE"; */
+"dP0-z3-3xE.label" = "憑證選擇器";
+
+/* Class = "NSMenuItem"; title = "Undo"; ObjectID = "dRJ-4n-Yzg"; */
+"dRJ-4n-Yzg.title" = "復原";
+
+/* Class = "NSTextFieldCell"; title = "Square Enix ID"; ObjectID = "dYN-5e-LY1"; */
+"dYN-5e-LY1.title" = "Square Enix ID";
+
+/* Class = "NSButton"; ibShadowedToolTip = "Wine has a bug when starting up in Fullscreen modes with non-scaled set which makes the application difficult to interact with. This option will automatically change your game to Windowed mode on every startup, after which you can change back to fullscreen to avoid the bug."; ObjectID = "dcJ-iB-Eb4"; */
+"dcJ-iB-Eb4.ibShadowedToolTip" = "Wine 在非縮放的全螢幕模式下啟動時有一個錯誤，會讓應用程式難以互動。此選項會在每次啟動時自動將您的遊戲改為視窗模式，之後您可以改回全螢幕以避免此錯誤。";
+
+/* Class = "NSButtonCell"; title = "Graphics and Compute Pipelines"; ObjectID = "dkA-rO-6VD"; */
+"dkA-rO-6VD.title" = "圖形和計算管線";
+
+/* Class = "NSMenuItem"; title = "Select Game Path"; ObjectID = "dxd-Xu-JNa"; */
+"dxd-Xu-JNa.title" = "選擇遊戲路徑";
+
+/* Class = "NSMenuItem"; title = "Repair Game Files"; ObjectID = "eHZ-Vy-9pF"; */
+"eHZ-Vy-9pF.title" = "修復遊戲檔案";
+
+/* Class = "NSButtonCell"; title = "Select All"; ObjectID = "fgq-sv-nxT"; */
+"fgq-sv-nxT.title" = "全選";
+
+/* Class = "NSTextFieldCell"; title = "Delay:"; ObjectID = "fjk-PO-eLj"; */
+"fjk-PO-eLj.title" = "延遲：";
+
+/* Class = "NSTextFieldCell"; title = "Downloading"; ObjectID = "fxE-2U-5uR"; */
+"fxE-2U-5uR.title" = "下載中";
+
+/* Class = "NSButtonCell"; title = "Shader Compiler Activity"; ObjectID = "g1m-2P-tRE"; */
+"g1m-2P-tRE.title" = "著色器編譯器活動";
+
+/* Class = "NSMenuItem"; title = "Paste"; ObjectID = "gVA-U4-sdL"; */
+"gVA-U4-sdL.title" = "貼上";
+
+/* Class = "NSTextFieldCell"; title = "Explanation"; ObjectID = "goQ-kK-3ab"; */
+"goQ-kK-3ab.title" = "說明";
+
+/* Class = "NSButtonCell"; title = "GPU Load"; ObjectID = "h1g-uy-cTN"; */
+"h1g-uy-cTN.title" = "GPU 負載";
+
+/* Class = "NSMenuItem"; title = "4.7.2"; ObjectID = "h6P-A1-h9S"; */
+"h6P-A1-h9S.title" = "4.7.2";
+
+/* Class = "NSMenuItem"; title = "Smart Quotes"; ObjectID = "hQb-2v-fYv"; */
+"hQb-2v-fYv.title" = "智慧引號";
+
+/* Class = "NSTextFieldCell"; title = "Select a License"; ObjectID = "hfH-NT-WKX"; */
+"hfH-NT-WKX.title" = "選擇憑證：";
+
+/* Class = "NSButtonCell"; title = "Select None"; ObjectID = "hhJ-G0-ma9"; */
+"hhJ-G0-ma9.title" = "取消全選";
+
+/* Class = "NSButtonCell"; title = "Auto-OTP"; ObjectID = "hjS-RC-X85"; */
+"hjS-RC-X85.title" = "自動 OTP";
+
+/* Class = "NSMenuItem"; title = "Check Document Now"; ObjectID = "hz2-CU-CR7"; */
+"hz2-CU-CR7.title" = "立即檢查文件";
+
+/* Class = "NSMenu"; title = "Services"; ObjectID = "hz9-B4-Xy5"; */
+"hz9-B4-Xy5.title" = "服務";
+
+/* Class = "NSMenuItem"; title = "Install"; ObjectID = "i3J-kg-a1T"; */
+"i3J-kg-a1T.title" = "安裝";
+
+/* Class = "NSViewController"; title = "Graphics"; ObjectID = "iZP-JQ-P1x"; */
+"iZP-JQ-P1x.title" = "圖形";
+
+/* Class = "NSMenuItem"; title = "English"; ObjectID = "isk-p1-eED"; */
+"isk-p1-eED.title" = "英文";
+
+/* Class = "NSMenuItem"; title = "Microsoft Visual C++ Redistributables"; ObjectID = "jJ3-H2-GqS"; */
+"jJ3-H2-GqS.title" = "Microsoft Visual C++ 可轉散發套件";
+
+/* Class = "NSButtonCell"; title = "Memory Used"; ObjectID = "jUY-i2-XaI"; */
+"jUY-i2-XaI.title" = "已使用記憶體";
+
+/* Class = "NSMenuItem"; title = "Auto-Launch IINACT"; ObjectID = "jii-Yc-y26"; */
+"jii-Yc-y26.title" = "自動啟動 IINACT";
+
+/* Class = "NSTextFieldCell"; title = "Installing"; ObjectID = "jlY-cG-zUT"; */
+"jlY-cG-zUT.title" = "安裝中";
+
+/* Class = "NSButtonCell"; title = "Previous"; ObjectID = "k2T-TU-mVb"; */
+"k2T-TU-mVb.title" = "上一步";
+
+/* Class = "NSMenuItem"; title = "Command Line"; ObjectID = "kIP-vf-haE"; */
+"kIP-vf-haE.title" = "命令列";
+
+/* Class = "NSMenuItem"; title = "Start Bunny HUD"; ObjectID = "lTa-gf-Qso"; */
+"lTa-gf-Qso.title" = "啟動 Bunny HUD";
+
+/* Class = "NSTextFieldCell"; title = "FFXIV Configuration"; ObjectID = "lrU-zH-Qo8"; */
+"lrU-zH-Qo8.title" = "FFXIV 設定";
+
+/* Class = "NSTextFieldCell"; title = "Everything looks good!"; ObjectID = "m1p-mc-zbM"; */
+"m1p-mc-zbM.title" = "一切看起來都很好！";
+
+/* Class = "NSMenuItem"; title = "Check Grammar With Spelling"; ObjectID = "mK6-2p-4JG"; */
+"mK6-2p-4JG.title" = "拼字時檢查文法";
+
+/* Class = "NSButtonCell"; title = "Bugfix for non-scaling mode"; ObjectID = "mSR-A7-gAD"; */
+"mSR-A7-gAD.title" = "全螢幕非縮放模式的錯誤修正";
+
+/* Class = "NSWindow"; title = "XIV on Mac"; ObjectID = "msO-z3-Trw"; */
+"msO-z3-Trw.title" = "XIV on Mac";
+
+/* Class = "NSTextFieldCell"; title = "Wine Debug:"; ObjectID = "nXs-Qb-iRe"; */
+"nXs-Qb-iRe.title" = "Wine 除錯：";
+
+/* Class = "NSMenuItem"; title = "Add On"; ObjectID = "ngK-lv-alc"; */
+"ngK-lv-alc.title" = "附加元件";
+
+/* Class = "NSMenuItem"; title = "Troubleshooting…"; ObjectID = "nwX-vr-aWN"; */
+"nwX-vr-aWN.title" = "疑難排解…";
+
+/* Class = "NSButtonCell"; title = "Next"; ObjectID = "o4g-vh-B1L"; */
+"o4g-vh-B1L.title" = "下一步";
+
+/* Class = "NSTabViewItem"; label = "Copy game folder"; ObjectID = "o5w-vX-Qqm"; */
+"o5w-vX-Qqm.label" = "複製遊戲資料夾";
+
+/* Class = "NSButtonCell"; title = "Esync"; ObjectID = "o9I-0w-Ncp"; */
+"o9I-0w-Ncp.title" = "Esync 同步";
+
+/* Class = "NSWindow"; title = "Troubleshooting"; ObjectID = "oJM-9v-5CI"; */
+"oJM-9v-5CI.title" = "疑難排解";
+
+/* Class = "NSButtonCell"; title = "Frame Rate"; ObjectID = "olm-gB-DgF"; */
+"olm-gB-DgF.title" = "幀率";
+
+/* Class = "NSMenuItem"; title = "Delete"; ObjectID = "pa3-QI-u2k"; */
+"pa3-QI-u2k.title" = "刪除";
+
+/* Class = "NSButtonCell"; title = "Next"; ObjectID = "phh-fm-6OL"; */
+"phh-fm-6OL.title" = "下一步";
+
+/* Class = "NSTextFieldCell"; title = "If your game is freezing at startup, \"Compiling Shaders…\" forever, missing lighting or randomly freezing, the problem may be with your shader cache. Deleting it will cause a new one to be rebuilt, though it may result in occasional stutters during play initially."; ObjectID = "piU-pX-vSl"; */
+"piU-pX-vSl.title" = "如果你的遊戲在啟動時凍結，長時間顯示「正在編譯著色器…」、出現光影異常或隨機凍結，問題可能出在你的著色器快取。刪除它會讓系統重新建立一個新的快取，但初期遊玩時可能會偶爾出現卡頓現象。";
+
+/* Class = "NSMenuItem"; title = "Find Next"; ObjectID = "q09-fT-Sye"; */
+"q09-fT-Sye.title" = "尋找下一個";
+
+/* Class = "NSButtonCell"; title = "Launch Vanilla Game"; ObjectID = "qDd-CO-Fjs"; */
+"qDd-CO-Fjs.title" = "啟動原版遊戲";
+
+/* Class = "NSTextFieldCell"; title = "Logging In"; ObjectID = "qM7-gN-uyd"; */
+"qM7-gN-uyd.title" = "登入中";
+
+/* Class = "NSMenuItem"; title = "Windows"; ObjectID = "qRO-Pi-PbC"; */
+"qRO-Pi-PbC.title" = "Windows";
+
+/* Class = "NSButtonCell"; title = "Maximum Frame Rate"; ObjectID = "qVB-Tz-GDg"; */
+"qVB-Tz-GDg.title" = "最大幀率";
+
+/* Class = "NSButtonCell"; title = "Modern MoltenVK"; ObjectID = "rDp-vS-WkQ"; */
+"rDp-vS-WkQ.title" = "現代 MoltenVK";
+
+/* Class = "NSTextFieldCell"; title = "This is the special Steam-only Windows License"; ObjectID = "rFx-Wl-XRP"; */
+"rFx-Wl-XRP.title" = "這是特殊的僅限 Steam Windows 授權";
+
+/* Class = "NSMenuItem"; title = "Microsoft .NET 7.0"; ObjectID = "rPG-F8-HwW"; */
+"rPG-F8-HwW.title" = "Microsoft .NET 7.0";
+
+/* Class = "NSMenuItem"; title = "Check Spelling While Typing"; ObjectID = "rbD-Rh-wIN"; */
+"rbD-Rh-wIN.title" = "輸入時檢查拼字";
+
+/* Class = "NSMenuItem"; title = "Smart Dashes"; ObjectID = "rgM-f4-ycn"; */
+"rgM-f4-ycn.title" = "智慧破折號";
+
+/* Class = "NSTabViewItem"; label = "Done"; ObjectID = "sdf-Re-eaB"; */
+"sdf-Re-eaB.label" = "完成";
+
+/* Class = "NSMenuItem"; title = "Edit Registry"; ObjectID = "snW-S8-Cw5"; */
+"snW-S8-Cw5.title" = "編輯登錄檔";
+
+/* Class = "NSMenuItem"; title = "Data Detectors"; ObjectID = "tRr-pd-1PS"; */
+"tRr-pd-1PS.title" = "資料偵測器";
+
+/* Class = "NSButtonCell"; title = "Frame Time Graph"; ObjectID = "ti2-f2-LWe"; */
+"ti2-f2-LWe.title" = "幀數時間圖表";
+
+/* Class = "NSTextFieldCell"; title = "When selecting a custom folder, please select one your game is installed in. It should contain the folders \"game\" and \"boot\". Otherwise XIV on Mac will redownload your game."; ObjectID = "uJx-kU-CQH"; */
+"uJx-kU-CQH.title" = "選擇自訂資料夾時，請選擇您的遊戲安裝所在的資料夾。它應該包含「game」和「boot」資料夾。否則 XIV on Mac 將重新下載您的遊戲。";
+
+/* Class = "NSMenu"; title = "XIV on Mac"; ObjectID = "uQy-DD-JDr"; */
+"uQy-DD-JDr.title" = "XIV on Mac";
+
+/* Class = "NSMenuItem"; title = "Cut"; ObjectID = "uRl-iY-unG"; */
+"uRl-iY-unG.title" = "剪下";
+
+/* Class = "NSTextFieldCell"; title = "Download and Install the game."; ObjectID = "uai-Rg-ZEO"; */
+"uai-Rg-ZEO.title" = "下載並安裝遊戲。";
+
+/* Class = "NSMenuItem"; title = "Make Upper Case"; ObjectID = "vmV-6d-7jI"; */
+"vmV-6d-7jI.title" = "轉為大寫";
+
+/* Class = "NSTextFieldCell"; title = "Scale:"; ObjectID = "vsK-LN-gvZ"; */
+"vsK-LN-gvZ.title" = "縮放：";
+
+/* Class = "NSMenu"; title = "Install"; ObjectID = "w9C-j3-R4E"; */
+"w9C-j3-R4E.title" = "安裝";
+
+/* Class = "NSTextFieldCell"; title = "Problem Desc."; ObjectID = "wFT-bh-S63"; */
+"wFT-bh-S63.title" = "問題描述";
+
+/* Class = "NSMenuItem"; title = "Help"; ObjectID = "wpr-3q-Mcd"; */
+"wpr-3q-Mcd.title" = "說明";
+
+/* Class = "NSMenuItem"; title = "Copy"; ObjectID = "x3v-GG-iWU"; */
+"x3v-GG-iWU.title" = "複製";
+
+/* Class = "NSMenuItem"; title = "Speech"; ObjectID = "xrE-MZ-jX0"; */
+"xrE-MZ-jX0.title" = "語音";
+
+/* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "y4B-9n-VX2"; */
+"y4B-9n-VX2.title" = "取消";
+
+/* Class = "NSMenuItem"; title = "Start Anamnesis"; ObjectID = "yWN-Fm-lto"; */
+"yWN-Fm-lto.title" = "啟動 Anamnesis";
+
+/* Class = "NSMenuItem"; title = "Show Substitutions"; ObjectID = "z6F-FW-3nz"; */
+"z6F-FW-3nz.title" = "顯示替代項目";
+
+/* Class = "NSMenuItem"; title = "German"; ObjectID = "z71-AL-d6f"; */
+"z71-AL-d6f.title" = "德文";
+
+/* Class = "NSButtonCell"; title = "Login"; ObjectID = "803-uu-sDq"; */
+"803-uu-sDq.title" = "登入";
+
+/* Class = "NSButtonCell"; title = "Troubleshooting"; ObjectID = "d7x-jG-QDv"; */
+"d7x-jG-QDv.title" = "疑難排解";
+
+/* Class = "NSPopoverTouchBarItem"; label = "Add-ons"; ObjectID = "SdX-YA-r4b"; */
+"SdX-YA-r4b.collapsedRepresentationLabel" = "附加元件";
+
+/* Class = "NSButtonCell"; title = "Login"; ObjectID = "JKW-MG-0U8"; */
+"JKW-MG-0U8.title" = "ACT";
+
+/* Class = "NSButtonCell"; title = "IINACT"; ObjectID = "EDf-k2-DjN"; */
+"EDf-k2-DjN.title" = "IINACT";
+
+/* Class = "NSButtonCell"; title = "Bunny HUD"; ObjectID = "0Nw-cb-lDZ"; */
+"0Nw-cb-lDZ.title" = "Bunny HUD";
+
+/* Class = "NSButtonCell"; title = "Anamnesis"; ObjectID = "eFL-CT-TsU"; */
+"eFL-CT-TsU.title" = "Anamnesis";
