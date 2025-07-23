@@ -1,0 +1,346 @@
+/* 
+  Localizable.strings
+  XIV on Mac
+
+  Created by Chris Backas on 3/9/22.
+  
+*/
+
+"BUTTON_YES" = "同意";
+"BUTTON_NO" = "不同意";
+"BUTTON_OK" = "同意";
+"BUTTON_CANCEL" = "取消";
+"BUTTON_CLOSE" = "關閉";
+"BUTTON_DONE" = "完成";
+"BUTTON_DELETE" = "刪除";
+"REVEAL_IN_FINDER" = "開啟資料夾";
+
+"LOGIN_ERROR" = "登入錯誤";
+"START_ERROR" = "啟動 FFXIV 遇到錯誤。";
+"INCORRECT_CREDENTIALS_SHORT" = "錯誤的憑證";
+"INCORRECT_CREDENTIALS" = "登入伺服器無法接受您提供的憑證。";
+"NO_STEAM_TICKET_SHORT" = "無法連接到 Steam";
+"NO_STEAM_TICKET" = "XIV on Mac 無法取得 Final Fantasy XIV 的有效 Steam 計票。請確保 Steam 正在運行，您已登入，並且已連結您的 Steam 帳戶。";
+"STEAM_USER_ERROR_SHORT" = "Steam 出現錯誤";
+"STEAM_USER_ERROR" = "您提供的使用者名稱和 Steam 帳戶無法連接。";
+"NOT_PLAYABLE_SHORT" = "訂閱授權錯誤";
+"NOT_PLAYABLE" = "登入伺服器的回應顯示您目前無法遊玩遊戲。請確保您有有效的訂閱，並在設定中選擇正確的授權類型（Windows、Steam 或 Mac）。";
+"NO_TERMS_SHORT" = "登入系統錯誤";
+"NO_TERMS" = "請在官方啟動器中接受 Final Fantasy XIV 的使用條款。";
+"PROTOCOL_ERROR_SHORT" = "登入系統錯誤";
+"PROTOCOL_ERROR" = "登入伺服器無法接受請求。請確保您有穩定的網路連接到 FFXIV 伺服器。";
+"NETWORK_ERROR_SHORT" = "網路錯誤";
+"NETWORK_ERROR" = "請確保您的網路連線狀態，或是稍後再試。FFXIV 伺服器是否維修中？";
+"NO_INSTALL_SHORT" = "您尚未安裝 Final Fantasy XIV！";
+"NO_INSTALL" = "找不到啟動程式所需的遊戲檔案。\nStarting Installer…";
+"MAINTENANCE_SHORT" = "伺服器維修中";
+"MAINTENANCE" = "請等候伺服器完成維修再進行登入。";
+"MULTIBOX_SHORT" = "已有兩個遊戲視窗正在運行";
+"MULTIBOX" = "在啟動新的遊戲視窗前，請關閉您的其中一個遊戲視窗。";
+"KILLSWITCH_SHORT" = "登入流程改變";
+"KILLSWITCH" = "由於 Square Enix 對登入流程進行了更改，我們需要驗證 XIV on Mac 能夠正確且安全地運作。在此期間，請使用官方啟動器。";
+"UNEXPECTED_SHORT" = "無法預期的錯誤";
+"UNEXPECTED" = "發生無法預期的錯誤。";
+
+"REPAIR_RESULT" = "修復結果";
+
+"DALAMUD_START_FAILURE" = "Dalamud 無法使用";
+"DALAMUD_START_FAILURE_INFORMATIONAL" = "下載和安裝 Dalamud 時發生錯誤。請檢查您的網路連線，並確保 Dalamud 與當前遊戲版本相容。";
+"GAME_START_FAILURE" = "Final Fantasy XIV 啟動失敗";
+"GAME_START_FAILURE_INFORMATIONAL" = "在啟動遊戲時發生了錯誤，請在 Mac 上重新啟動 XIV。";
+
+"FIRSTAID_GAME_RUNNING" = "Final Fantasy XIV 正在執行中";
+"FIRSTAID_GAME_RUNNING_INFORMATIONAL" = "在進行任何故障排除操作之前，請關閉所有正在運行的 Final Fantasy XIV 程序。";
+
+"DXVK_USER_CACHE_DELETED" = "刪除著色器暫存";
+"DXVK_USER_CACHE_DELETED_INFORMATIVE" = "著色器暫存檔案已經成功刪除。請試著重新啟動遊戲看問題是否已解決。";
+"DXVK_USER_CACHE_DELETE_FAILED" = "刪除著色器暫存失敗";
+"DXVK_USER_CACHE_DELETE_FAILED_INFORMATIVE" = "無法刪除著色器暫存檔案. 請您嘗試至以下路徑手動刪除 File->Open Wine Prefix.";
+
+"GAME_CONFIG_RESET" = "重置設定";
+"GAME_CONFIG_RESET_INFORMATIVE" = "您的遊戲設定已經重置成功。";
+"GAME_CONFIG_RESET_FAILED" = "設定重置失敗";
+"GAME_CONFIG_RESET_FAILED_INFORMATIVE" = "無法重置設定。您必須在系統設定、安全性偏好設定中授權 XIV On Mac 取得你的下載資料夾權限。";
+
+"DOCUMENTS_PERM_STILL_BAD" = "XIV On Mac 仍然無法讀取和/或寫入您的文件資料夾。如果您的安全性偏好設定面板顯示正確的權限，請嘗試刪除該項目並重新建立。";
+
+"UNSUPPORTED_GPU" = "找不到支援的 GPU";
+"UNSUPPORTED_GPU_INFORMATIVE" = "XIV On Mac 無法在您的 Mac 上找到支援的 GPU。如果您繼續，遊戲可能會無法正常運作、崩潰或以標準的方式執行。如需更多詳細資訊，請參閱我們的相容性清單。";
+"SEE_COMPATABILITY_BUTTON" = "相容性清單";
+
+"RETINA_WARNING" = "警告";
+"RETINA_WARNING_INFORMATIVE" = "停用縮放可以將遊戲的像素數量增加到最多 4 倍，這會對您的效能造成嚴重影響。除非是為了截圖目的，否則請不要在非 Retina 顯示器上啟用此功能。";
+"RETINA_ENABLE_BUTTON" = "了解";
+
+"ROSETTA_REQUIRED" = "需要 Rosetta 2。";
+"ROSETTA_REQUIRED_INFORMATIVE" = "XIV On Mac 需要在您的 Apple Silicon Mac 上安裝 Apple 的 Rosetta 2 才能運作。如果您選擇不安裝，您的遊戲將無法啟動。Rosetta 要求您閱讀並同意軟體授權協議條款：http://www.apple.com/legal/sla/。您現在要安裝 Rosetta 嗎？";
+"ROSETTA_REQUIRED_INSTALL_BUTTON" = "安裝 Rosetta";
+"ROSETTA_REQUIRED_CANCEL_BUTTON" = "取消";
+
+"FIRSTAID_CFGCHECK_GOOD_RESULT" = "您的設定看起來很好！";
+"FIRSTAID_CFGCHECK_ADVISORY_RESULT" = "您的設定看起來很好，但有一些項目您可能想要了解。";
+"FIRSTAID_CFGCHECK_RECOMMENDATION_RESULT" = "透過一些更改，您可能會獲得更好的結果或效能。";
+"FIRSTAID_CFGCHECK_PROBLEM_RESULT" = "在您的設定中發現了一個或多個已知會造成問題的問題。";
+
+"FIRSTAID_CFGCHECK_FIXED" = "已修復！";
+"FIRSTAID_CFGCHECK_TESSELATION_TITLE" = "曲面細分 Tessellation ";
+"FIRSTAID_CFGCHECK_TESSELATION_EXP" = "高於「一般」的值已知會在 Apple Silicon Mac 上造成嚴重的效能問題，同時不會提供視覺改善。";
+
+"SELECT_GAME_PATH_PANEL_TITLE" = "選擇 FFXIV 安裝位置";
+"SELECT_GAME_PATH_PANEL_SUBTITLE" = "它應該包含「game」和「boot」資料夾";
+"SELECT_GAME_PATH_ERROR_MESSAGE" = "您為遊戲安裝選擇的資料夾似乎無效";
+"SELECT_GAME_PATH_ERROR_INFORMATIVE" = "您仍然想要使用它嗎？";
+
+"SELECT_BENCHMARK_PATH_PANEL_MESSAGE" = "請選擇 FFXIV 效能測試位置";
+"BENCHMARK_TITLE" = "FINAL FANTASY XIV 效能測試";
+"SELECT_BENCHMARK_PATH_ERROR_INFORMATIVE" = "您為遊戲效能測試選擇的資料夾似乎無效。\n 它應該包含「ffxiv-endwalker-bench.exe」和「game\」資料夾";
+"BENCHMARK_RESULT" = "分數：%@\n平均 FPS： %@";
+
+"PATCH_INSTALLATION_WAITING" = "等待下載完成…";
+"PATCH_INSTALLATION_PROGRESS_INIT" = "已安裝 0 個更新程式，共 %d 個";
+"PATCH_INSTALLATION_PROGRESS" = "已安裝 %d 個更新程式，共 %d 個";
+"PATCH_INSTALLATION_ERROR_BUTTON" = "關閉";
+"PATCH_INSTALLATION_ERROR_MESSAGE" = "下載錯誤";
+"PATCH_INSTALLATION_ERROR_INFORMATIVE" = "XIV on Mac 在 %d 次嘗試後仍無法下載 %@";
+"PATCH_INSTALLATION_DOWNLOAD_STATUS" = "%@ / %@";
+"PATCH_INSTALLATION_DOWNLOAD_STATUS_PATCH" = "%@ / %@ (%@/秒)";
+
+"PATCH_ERROR_MESSAGE" = "更新程式安裝器錯誤";
+"PATCH_ERROR_INFORMATIVE" = "更新程式驗證失敗";
+"PATCH_ERROR_BUTTON" = "關閉";
+
+"OTP_MESSAGE" = "使用者「%@」的 OTP 密鑰";
+"OTP_INFORMATIVE" = "如果您信任您的本地密鑰，您可以在下方提供 BASE32 編碼的密鑰，讓 XIV on Mac 為您處理 OTP 生成：";
+
+"GSHADE_MESSAGE" = "在 Catalina 運行時，您必須安裝 Wine 或 CrossOver";
+"GSHADE_INFORMATIVE" = "您也可以手動將 XIV on Mac.app 附帶的 Wine 版本添加到您的 $PATH 中";
+
+"INSTALLER_FOUND_MESSAGE" = "找到 FINAL FANTASY XIV ONLINE 安裝！";
+"INSTALLER_FOUND_INFORMATIVE" = "您想要使用位於 %@ 的安裝嗎？";
+"INSTALLER_NOT_DETECTED_MESSAGE" = "未檢測到 FINAL FANTASY XIV ONLINE 安裝…";
+"INSTALLER_NOT_DETECTED_INFORMATIVE" = "您想要手動選擇資料夾嗎？";
+
+"INSTALLER_PATH_TITLE" = "選擇包含現有安裝檔案的資料夾";
+"INSTALLER_PATH_SUBTITLE" = "它應該包含「game\」和「boot\」資料夾以及遊戲執行檔。";
+"INSTALLER_PATH_INVALID_MESSAGE" = "無效的 FFXIV 目錄";
+"INSTALLER_PATH_INVALID_INFORMATIVE" = "它應該包含「game\」和「boot\」資料夾以及遊戲執行檔。";
+"INSTALLER_PATH_INVALID_BUTTON" = "以十二神之名！";
+
+"INSTALLER_DOWNLOAD_ERROR_MESSAGE" = "下載錯誤";
+"INSTALLER_DOWNLOAD_ERROR_INFORMATIVE" = "XIV on Mac 無法下載基礎遊戲檔案";
+
+"INSTALLER_EXTRACTING" = "解壓縮中";
+
+"LOGGING_IN" = "登入中";
+
+"AUTOLOGIN_MESSAGE" = "自動登入";
+"AUTOLOGIN_INFORMATIVE" = "您可以在應用程式啟動時按住 SHIFT 鍵來覆寫自動登入。";
+
+"SETTINGS_WINDOW_TITLE" = "設定";
+"SETTINGS_TAB_GENERAL_TITLE" = "一般";
+"SETTINGS_TAB_CAPTURE_TITLE" = "螢幕錄影";
+"SETTINGS_TAB_GRAPHICS_TITLE" = "圖形";
+"SETTINGS_TAB_PLUGINS_TITLE" = "外掛程式 (Dalamud)";
+"SETTINGS_TAB_ADVANCED_TITLE" = "進階";
+
+// General Settings tab items
+"SETTINGS_GENERAL_TITLE_LICENSE" = "憑證";
+"SETTINGS_GENERAL_LANGUAGE_AND_LICENSE_BLURB" = "XIV on Mac 可以與 Mac、Windows 和 Steam 授權一起運作。您必須已經擁有您選擇的授權類型，如果您不確定，可以透過 Mogstation 檢查您的帳戶狀態。Steam 帳戶必須先前透過在 Windows PC 上登入來連結到您的 Final Fantasy XIV 服務帳戶，並且還需要運行 macOS 版本的 Steam。";
+"SETTINGS_LANGUAGE_PICKER" = "語言:";
+"SETTINGS_LANGUAGE_JAPANESE" = "日文";
+"SETTINGS_LANGUAGE_ENGLISH" = "英文";
+"SETTINGS_LANGUAGE_FRENCH" = "法文";
+"SETTINGS_LANGUAGE_GERMAN" = "德文";
+"SETTINGS_PLATFORM_PICKER" = "憑證:";
+"SETTINGS_PLATFORM_MAC" = "Mac";
+"SETTINGS_PLATFORM_WINDOWS" = "Windows";
+"SETTINGS_PLATFORM_STEAM" = "Steam";
+"SETTINGS_FREE_TRIAL" = "免費試玩";
+"SETTINGS_GENERAL_FREE_TRIAL_BLURB" = "使用免費試玩時，您必須選擇與註冊試玩時相同的授權類型。此外，您的 Final Fantasy XIV 帳戶必須已經有有效的試玩期，因為 XIV on Mac 無法自動為您註冊。";
+"SETTINGS_GENERAL_TITLE_NETWORK" = "網路";
+"SETTINGS_DOWNLOAD_LIMIT" = "限制下載速度";
+"SETTINGS_DOWNLOAD_LIMIT_PLACEHOLDER" = "0.0";
+"SETTINGS_DOWNLOAD_LIMIT_UNITS" = "MB/秒";
+"SETTINGS_GENERAL_TITLE_INPUT" = "按鍵設置";
+"SETTINGS_GENERAL_INPUT_LEFT_OPTION" = "左 option:";
+"SETTINGS_GENERAL_INPUT_RIGHT_OPTION" = "右 option:";
+"SETTINGS_GENERAL_INPUT_BUTTON_WINDOWS_ALT" = "Windows alt";
+"SETTINGS_GENERAL_INPUT_BUTTON_MACOS_OPTION" = "macOS option";
+"SETTINGS_GENERAL_INPUT_LEFT_COMMAND" = "左 command:";
+"SETTINGS_GENERAL_INPUT_RIGHT_COMMAND" = "右 command:";
+"SETTINGS_GENERAL_INPUT_BUTTON_CTRL" = "Ctrl";
+"SETTINGS_GENERAL_INPUT_BUTTON_ALT" = "Alt";
+
+// Screen Capture tab items
+"SETTINGS_TOGGLE_SCREEN_RECORDING" = "開始/結束 螢幕錄影";
+"SETTINGS_CAPTURE_PERMISSIONS_CHECK" = "XIV On Mac 需要取得擷取螢幕的權限，如果你想要在開始/暫停結束螢幕錄影時收到通知的話，您也需要打開通知的權限。";
+"SETTINGS_CAPTURE_PERMISSIONS_CHECK_BUTTON" = "權限檢查中…";
+"CAPTURE_FOLDER_LABEL" = "檔案存放位置:";
+"CAPTURE_FOLDER_SELECT_BUTTON" = "選擇…";
+"SELECT_CAPTURE_PATH_PANEL_MESSAGE" = "選擇資料夾存放你的螢幕錄影檔案";
+"SETTINGS_CAPTURE_CODEC" = "影片編碼:";
+"SETTINGS_CAPTURE_CODEC_H264" = "H.264";
+"SETTINGS_CAPTURE_CODEC_HEVC" = "HEVC";
+"SCREEN_CAPTURE_PERMISSION" = "螢幕擷取權限";
+"SCREEN_CAPTURE_PERMISSION_HAVE_NONE" = "XIV On Mac 需要螢幕擷取權限才能錄製。您可能還想要授予通知權限以了解錄製何時開始或停止。";
+"SCREEN_CAPTURE_PERMISSION_NO_NOTIFY" = "XIV On Mac 需要通知權限來告知您錄製何時開始或停止。螢幕錄製在沒有此權限的情況下仍可運作。";
+"SCREEN_CAPTURE_PERMISSION_NO_RECORD" = "XIV On Mac 需要螢幕擷取權限才能錄製。";
+"SCREEN_CAPTURE_PERMISSION_HAVE_ALL" = "XIV On Mac 擁有所有需要的權限！";
+"SCREEN_CAPTURE_PERMISSION_OPEN_PREF_BUTTON" = "開啟安全性設定…";
+"NOTIFY_CAPTURE_TITLE" = "螢幕錄影";
+"NOTIFY_CAPTURE_STARTED_SUBTITLE" = "開始螢幕錄影";
+"NOTIFY_CAPTURE_STARTED_BODY" = "錄製到 %@";
+"NOTIFY_CAPTURE_STOPPED_SUBTITLE" = "結束螢幕錄影";
+"NOTIFY_CAPTURE_STOPPED_BODY" = "錄影檔案儲存到 %@";
+
+
+// Graphics Settings tab items
+"DXMT_ENABLED" = "使用 DXMT 將 D3D11 直接轉譯為 Metal";
+"METALFX_SPATIAL_ENABLED" = "啟用 MetalFX 空間放大";
+"SETTINGS_FPS_LIMIT" = "最大幀率";
+"SETTINGS_FPS_LIMIT_PLACEHOLDER" = "0";
+"SETTINGS_FPS_LIMIT_UNITS" = "fps";
+"SETTINGS_GRAPHICS_ASYNC" = "非同步";
+"SETTINGS_GRAPHICS_HUD" = "HUD";
+"SETTINGS_GRAPHICS_DXVK_HUD_HEADER" = "DXVK HUD 選項";
+"SETTINGS_GRAPHICS_HUD_BLURB" = "HUD 選項是在遊戲過程中顯示在左上角的資訊項目，可以幫助您了解遊戲內設定如何影響您的效能。這些選項完全是可選的。";
+"SETTINGS_GRAPHICS_HUD_SCALE" = "縮放:";
+"SETTINGS_GRAPHICS_RESET_SCALE_BUTTON" = "重置";
+"SETTINGS_GRAPHICS_METAL3_HUD" = "Metal 3 效能 HUD";
+"SETTINGS_GRAPHICS_DEVICE_INFO" = "裝置資訊";
+"SETTINGS_GRAPHICS_GPU_LOAD" = "GPU 負載";
+"SETTINGS_GRAPHICS_FRAME_RATE_HUD" = "幀率";
+"SETTINGS_GRAPHICS_DXVK_VERSION" = "DXVK 版本";
+"SETTINGS_GRAPHICS_FRAME_TIME" = "幀數時間圖表";
+"SETTINGS_GRAPHICS_FEATURE_LEVEL" = "D3D 功能等級";
+"SETTINGS_GRAPHICS_BUFFER_SUBMISSIONS" = "命令緩衝區提交";
+"SETTINGS_GRAPHICS_COMPILER" = "著色器編譯器活動";
+"SETTINGS_GRAPHICS_DRAWCALLS" = "繪製呼叫和渲染通道";
+"SETTINGS_GRAPHICS_PIPELINES" = "圖形和計算管線";
+"SETTINGS_GRAPHICS_MEMORY" = "已使用記憶體";
+"SETTINGS_GRAPHICS_ALL_DXVK_ON_BUTTON" = "啟用完整 DXVK HUD";
+"SETTINGS_GRAPHICS_ALL_DXVK_OFF_BUTTON" = "停用完整 DXVK HUD";
+"SETTINGS_GRAPHICS_RETINA" = "啟用 macOS 縮放";
+"SETTINGS_GRAPHICS_RETINA_BUGFIX" = "全螢幕非縮放模式的錯誤修正";
+
+// Plugins/Dalamud tab items
+"SETTINGS_PLUGINS_WHAT_IS_DALAMUD_BLURB" = "外掛是由一個名為 Dalamud 的專案啟用，能為你的遊戲增加額外功能。如果你不知道為什麼需要外掛，或是不想使用外掛，可以放心地保持停用。想了解更多關於 Dalamud，請造訪：\nhttps://github.com/goatcorp/Dalamud";
+"SETTINGS_PLUGINS_DALAMUD_ENABLE" = "啟用 Dalamud";
+"SETTINGS_PLUGINS_DALAMUD_ENTRYPOINT" = "進入點";
+"SETTINGS_PLUGINS_DALAMUD_DELAY_BLURB" = "如果 Dalamud 沒有成功載入，你可以嘗試調整載入延遲的時間，增加或減少，來找到適合你 Mac 的數值。";
+"SETTINGS_PLUGINS_DALAMUD_DELAY_UNITS" = "秒";
+"SETTINGS_PLUGINS_DALAMUD_DELAY_LABEL" = "延遲：";
+"SETTINGS_PLUGINS_DISCORD_BLURB" = "此橋接功能可讓 Discord Rich Presence Dalamud 外掛更新你的 Discord 狀態。如果你不打算使用這個外掛，可以停用這個設定。";
+"SETTINGS_PLUGINS_DISCORD_TOGGLE" = "Discord Rich Presence Wine 橋接";
+
+// Advanced Settings tab items
+"SETTINGS_ADVANCED_BLURB" = "這些設定主要用於疑難排解，一般情況下不需要更改。";
+"SETTINGS_ADVANCED_KEEP_PATCHES" = "保留更新檔";
+"SETTINGS_ADVANCED_MSYNC" = "Msync 同步";
+"SETTINGS_ADVANCED_ESYNC" = "Esync 同步";
+"SETTINGS_ADVANCED_ENCRYPT_ARGS" = "加密遊戲參數";
+"SETTINGS_ADVANCED_AUTO_EXIT" = "遊戲結束時自動關閉 XIV on Mac";
+"SETTINGS_ADVANCED_ERROR_EXIT" = "若遊戲以非零代碼結束時警告";
+"SETTINGS_ADVANCED_WINE_DEBUG" = "Wine 除錯：";
+
+// First Aid/Troubleshooting Window
+"FIRSTAID_WINDOW_TITLE" = "急救";
+"FIRSTAID_SHADER_CACHE_HEADING" = "著色器快取";
+"FIRSTAID_SHADER_CACHE_BLURB" = "如果你的遊戲在啟動時凍結，長時間顯示「正在編譯著色器…」、出現光影異常或隨機凍結，問題可能出在你的著色器快取。刪除它會讓系統重新建立一個新的快取，但初期遊玩時可能會偶爾出現卡頓現象。";
+"FIRSTAID_SHADER_CACHE_BUTTON" = "刪除使用者著色器快取";
+"FIRSTAID_CONFIG_HEADING" = "FFXIV 設定";
+"FIRSTAID_RESET_CONFIG_BLURB" = "如果你因為設定錯誤（例如不當的顯示設定）導致無法遊玩，可以嘗試將設定重置為預設值。";
+"FIRSTAID_RESET_CONFIG_BUTTON" = "重置設定";
+"FIRSTAID_CHECKUP_BLURB" = "XIV on Mac 可以協助偵測潛在問題，或對你的 FFXIV 設定檔提出建議修改，讓你在 Mac 上獲得最佳體驗。";
+"FIRSTAID_CHECKUP_BUTTON" = "設定檢查";
+"FIRSTAID_CFGCHECK_FIX_BUTTON" = "修復";
+
+// Benchmark Window
+"BENCHMARK_WINDOW_TITLE" = "Final Fantasy XIV 效能測試";
+"BENCHMARK_MODE_LABEL" = "模式";
+"BENCHMARK_MODE_BENCHMARK_LABEL" = "效能測試";
+"BENCHMARK_MODE_CREATOR_LABEL" = "角色創建器";
+"BENCHMARK_FOLDER_LABEL" = "效能測試資料夾位置：";
+"BENCHMARK_FOLDER_SELECT_BUTTON" = "選擇…";
+"BENCHMARK_FOLDER_NOT_SET" = "尚未設定…";
+"BENCHMARK_SET_DEFAULTS" = "套用建議設定";
+"BENCHMARK_TYPE_LABEL" = "效能測試類型";
+"BENCHMARK_TYPE_HD" = "視窗化 HD：1920 x 1080";
+"BENCHMARK_TYPE_QHD" = "視窗化 WQHD：2560 × 1440";
+"BENCHMARK_TYPE_CUSTOM" = "全螢幕：桌面解析度";
+"BENCHMARK_START_BUTTON" = "開始效能測試";
+"BENCHMARK_CHARACTER_APPEARANCE_FORMAT" = "欄位 %d – %@";
+"BENCHMARK_CHARACTER_APPEARANCE" = "角色外觀";
+"BENCHMARK_DEFAULT_APPEARANCE" = "預設";
+"BENCHMARK_CHARACTER_UNNAMED" = "未命名";
+"BENCHMARK_CHARACTER_COSTUME" = "角色服裝";
+"BENCHMARK_IMPORT_CHARACTER_BUTTON" = "匯入角色外觀…";
+"BENCHMARK_SLOT_DELETE_BUTTON" = "刪除欄位…";
+"BENCHMARK_SLOT_IMPORT_BUTTON" = "匯入欄位";
+"BENCHMARK_SLOT_EXPORT_BUTTON" = "匯出欄位";
+"BENCHMARK_CONFIRM_SLOT_DELETE" = "確定要刪除此角色外觀嗎？";
+"BENCHMARK_CONFIRM_SLOT_DELETE_INFORMATIVE" = "此操作無法復原。";
+"BENCHMARK_DISCORD_BLURB" = "感謝你摸了陸行鳥！作為獎勵，這裡有幾位 XIV on Mac 開發者和 Discord 人物的個人角色，讓你在效能測試中試用！";
+
+"BENCHMARK_COSTUME_0" = "職業裝備";
+"BENCHMARK_COSTUME_1" = "種族裝備";
+"BENCHMARK_COSTUME_2" = "龍神裝";
+"BENCHMARK_COSTUME_3" = "鐵工裝";
+"BENCHMARK_COSTUME_4" = "亞歷山大裝";
+"BENCHMARK_COSTUME_5" = "墜龍裝";
+"BENCHMARK_COSTUME_6" = "暴風精英裝";
+"BENCHMARK_COSTUME_7" = "毒蛇精英裝";
+"BENCHMARK_COSTUME_8" = "烈焰精英裝";
+"BENCHMARK_COSTUME_9" = "源氏裝";
+"BENCHMARK_COSTUME_10" = "奧米加裝";
+"BENCHMARK_COSTUME_11" = "地獄犬裝";
+"BENCHMARK_COSTUME_12" = "矮人裝";
+"BENCHMARK_COSTUME_13" = "伊甸晨曦裝";
+"BENCHMARK_COSTUME_14" = "阿那巴斯奧斯裝";
+"BENCHMARK_COSTUME_15" = "傳承裝";
+"BENCHMARK_COSTUME_16" = "野薔薇裝";
+"BENCHMARK_COSTUME_17" = "月衛裝";
+"BENCHMARK_COSTUME_18" = "斯特萊夫裝";
+"BENCHMARK_COSTUME_19" = "里昂哈特服飾";
+"BENCHMARK_COSTUME_20" = "坦塔羅斯服飾";
+"BENCHMARK_COSTUME_21" = "阿貝斯/大召喚士服飾";
+"BENCHMARK_COSTUME_22" = "史諾/雷霆服飾";
+"BENCHMARK_COSTUME_23" = "沙利安神童西裝";
+"BENCHMARK_COSTUME_24" = "路西斯王子服飾";
+"BENCHMARK_COSTUME_25" = "梅提安服飾";
+"BENCHMARK_COSTUME_26" = "豬豬裝";
+"BENCHMARK_SLOTS_LIST_LABEL" = "效能測試角色";
+"AVAILABLE_SLOTS_LIST_LABEL" = "可匯入角色";
+"APPEARANCE_DATA_ERROR_LOADING" = "空欄位";
+
+"APPEARANCE_GENDER_0" = "男性";
+"APPEARANCE_GENDER_1" = "女性";
+"APPEARANCE_GENDER_255" = "未知";
+"APPEARANCE_RACE_0" = "未知";
+"APPEARANCE_RACE_1" = "人族";
+"APPEARANCE_RACE_2" = "精靈族";
+"APPEARANCE_RACE_3" = "拉拉菲爾族";
+"APPEARANCE_RACE_4" = "貓魅族";
+"APPEARANCE_RACE_5" = "魯加族";
+"APPEARANCE_RACE_6" = "敖龍族";
+"APPEARANCE_RACE_7" = "硌獅族";
+"APPEARANCE_RACE_8" = "維艾拉族";
+"APPEARANCE_TRIBE_0" = "未知";
+"APPEARANCE_TRIBE_1" = "中原之民";
+"APPEARANCE_TRIBE_2" = "高地之民";
+"APPEARANCE_TRIBE_3" = "森林之民";
+"APPEARANCE_TRIBE_4" = "黑影之民";
+"APPEARANCE_TRIBE_5" = "平原之民";
+"APPEARANCE_TRIBE_6" = "沙漠之民";
+"APPEARANCE_TRIBE_7" = "太陽之民";
+"APPEARANCE_TRIBE_8" = "月亮之民";
+"APPEARANCE_TRIBE_9" = "北洋之民";
+"APPEARANCE_TRIBE_10" = "红焰之民";
+"APPEARANCE_TRIBE_11" = "晨曦之民";
+"APPEARANCE_TRIBE_12" = "暮暉之民";
+"APPEARANCE_TRIBE_13" = "掠日之民";
+"APPEARANCE_TRIBE_14" = "迷蹤之民";
+"APPEARANCE_TRIBE_15" = "密林之民";
+"APPEARANCE_TRIBE_16" = "山林之民";
+
+
