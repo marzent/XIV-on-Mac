@@ -79,6 +79,7 @@
 		509D0E302960540C0055367A /* AppMover in Frameworks */ = {isa = PBXBuildFile; productRef = 509D0E2F2960540C0055367A /* AppMover */; };
 		509FE19A27E3654E008D56D6 /* FFXIVEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509FE19927E3654E008D56D6 /* FFXIVEnums.swift */; };
 		509FE19C27E39DCB008D56D6 /* FFXIVApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509FE19B27E39DCB008D56D6 /* FFXIVApp.swift */; };
+		50A4E6F12E796A8F003BAA95 /* XOM.icon in Resources */ = {isa = PBXBuildFile; fileRef = 50A4E6F02E796A8F003BAA95 /* XOM.icon */; };
 		50B1C5B827D25620006DA54E /* SeeURL in Frameworks */ = {isa = PBXBuildFile; productRef = 50B1C5B727D25620006DA54E /* SeeURL */; };
 		50B2A2B527AC1BC400EFA0A2 /* LoginSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A2B427AC1BC400EFA0A2 /* LoginSheetController.swift */; };
 		50BD278727785418002B0D1F /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BD278627785418002B0D1F /* Notifications.swift */; };
@@ -200,6 +201,7 @@
 		508C6791294324BC0046AA38 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		509FE19927E3654E008D56D6 /* FFXIVEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFXIVEnums.swift; sourceTree = "<group>"; };
 		509FE19B27E39DCB008D56D6 /* FFXIVApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFXIVApp.swift; sourceTree = "<group>"; };
+		50A4E6F02E796A8F003BAA95 /* XOM.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = XOM.icon; sourceTree = "<group>"; };
 		50B2A2B327ABEF6800EFA0A2 /* XIV-on-Mac-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "XIV-on-Mac-Info.plist"; sourceTree = SOURCE_ROOT; };
 		50B2A2B427AC1BC400EFA0A2 /* LoginSheetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSheetController.swift; sourceTree = "<group>"; };
 		50BD278627785418002B0D1F /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
@@ -353,6 +355,7 @@
 		50511EB82770E085003A1E9F = {
 			isa = PBXGroup;
 			children = (
+				50A4E6F02E796A8F003BAA95 /* XOM.icon */,
 				50511EC32770E085003A1E9F /* XIV on Mac */,
 				50511EC22770E085003A1E9F /* Products */,
 				503B819328391054006197C1 /* Frameworks */,
@@ -591,6 +594,7 @@
 				50C029072C52638C0085297D /* dxmt in Resources */,
 				07A3498C2805689200A9D7D0 /* CfgCheckProbFailed.tiff in Resources */,
 				508C678F29431BFF0046AA38 /* snowflake_x2.png in Resources */,
+				50A4E6F12E796A8F003BAA95 /* XOM.icon in Resources */,
 				073649AD281E35C700DA41F7 /* PrefsGraphics.tiff in Resources */,
 				07BF3AFB2806507800794155 /* CfgCheckAdvFixed.tiff in Resources */,
 				50692C8B27B3E48B00945593 /* Credits.html in Resources */,
@@ -914,8 +918,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = arm64;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = XOM;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "XIV on Mac/XIV_on_Mac.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -960,8 +965,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = arm64;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = XOM;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "XIV on Mac/XIV_on_Mac.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
