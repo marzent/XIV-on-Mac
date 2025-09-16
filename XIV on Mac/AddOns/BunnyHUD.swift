@@ -21,7 +21,9 @@ enum BunnyHUD {
 
     static func launchNotify() {
         if autoLaunch {
-            launch()
+            DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 10) { @Sendable in
+                Self.launch()
+            }
         }
     }
 
@@ -37,3 +39,4 @@ enum BunnyHUD {
         }
     }
 }
+
