@@ -34,3 +34,20 @@ UserInterfaceState.xcuserstate
 
 # Personal user data files
 xcuserdata/
+
+# Build products
+*.xcscmblueprint
+*.xccheckout
+*.moved-aside
+*.xcuserstate
+*.xcworkspace/xcuserdata/
+build/
+*.app
+DerivedData/
+
+# VS Code (optional, uncomment if you don't want to track VS Code settings)
+# .vscode/
+
+# Temporary files
+*.tmp
+*.temp

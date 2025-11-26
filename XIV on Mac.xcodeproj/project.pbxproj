@@ -676,7 +676,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/zsh;
-			shellScript = "#!/bin/zsh\n\nDOTNET_PATH=\"/usr/local/share/dotnet/dotnet\"\n# Xcode sets TARGETNAME, however dotnet also uses that env var to determine the target dll name...\n# Unset it here to avoid name conflicts in the build.\nunset TARGETNAME\n\nif ! command -v $DOTNET_PATH &>/dev/null; then\n    echo \"error: .NET SDK is not installed.\"\n    exit 1\nfi\n\npushd \"$PROJECT_DIR\"/XIV\\ on\\ Mac/XIVLauncher.NativeAOT\npushd source/src/XIVLauncher.NativeAOT\nif [ \"${CONFIGURATION}\" = \"Release\" ] ; then\n    $DOTNET_PATH publish -r osx-arm64 -c release || {\n        echo \"error: .NET build failed.\"\n        exit 2\n    }\n    popd\n    cp source/src/XIVLauncher.NativeAOT/bin/release/net8.0/osx-arm64/publish/XIVLauncher.NativeAOT.dylib . || {\n        echo \"error: Failed to copy XIVLauncher.NativeAOT.dylib.\"\n        exit 3\n    }\n    cp source/src/XIVLauncher.NativeAOT/bin/release/net8.0/osx-arm64/publish/libsteam_api64.dylib . || {\n        echo \"error: Failed to copy libsteam_api64.dylib.\"\n        exit 4\n    }\nelse\n    $DOTNET_PATH publish -r osx-arm64 -c debug || {\n        echo \"error: .NET build failed.\"\n        exit 2\n    }\n    popd\n    cp source/src/XIVLauncher.NativeAOT/bin/debug/net8.0/osx-arm64/publish/XIVLauncher.NativeAOT.dylib . || {\n        echo \"error: Failed to copy XIVLauncher.NativeAOT.dylib.\"\n        exit 3\n    }\n    cp source/src/XIVLauncher.NativeAOT/bin/debug/net8.0/osx-arm64/publish/libsteam_api64.dylib . || {\n        echo \"error: Failed to copy libsteam_api64.dylib.\"\n        exit 4\n    }\nfi\n\ninstall_name_tool -id @executable_path/../Frameworks/XIVLauncher.NativeAOT.dylib XIVLauncher.NativeAOT.dylib\n# Ignore wanrnings about libsteam_api64 code signature invalidations, we will resign it later\ninstall_name_tool -id @executable_path/../Frameworks/libsteam_api64.dylib libsteam_api64.dylib 2>/dev/null\npopd\n";
+			shellScript = "#!/bin/zsh\n\nDOTNET_PATH=\"/usr/local/share/dotnet/dotnet\"\n# Xcode sets TARGETNAME, however dotnet also uses that env var to determine the target dll name...\n# Unset it here to avoid name conflicts in the build.\nunset TARGETNAME\n\nif ! command -v $DOTNET_PATH &>/dev/null; then\n    echo \"error: .NET SDK is not installed.\"\n    exit 1\nfi\n\npushd \"$PROJECT_DIR\"/XIV\\ on\\ Mac/XIVLauncher.NativeAOT\npushd source/src/XIVLauncher.NativeAOT\nif [ \"${CONFIGURATION}\" = \"Release\" ] ; then\n    $DOTNET_PATH publish -r osx-arm64 -c release || {\n        echo \"error: .NET build failed.\"\n        exit 2\n    }\n    popd\n    cp source/src/XIVLauncher.NativeAOT/bin/release/net9.0/osx-arm64/publish/XIVLauncher.NativeAOT.dylib . || {\n        echo \"error: Failed to copy XIVLauncher.NativeAOT.dylib.\"\n        exit 3\n    }\n    cp source/src/XIVLauncher.NativeAOT/bin/release/net9.0/osx-arm64/publish/libsteam_api64.dylib . || {\n        echo \"error: Failed to copy libsteam_api64.dylib.\"\n        exit 4\n    }\nelse\n    $DOTNET_PATH publish -r osx-arm64 -c debug || {\n        echo \"error: .NET build failed.\"\n        exit 2\n    }\n    popd\n    cp source/src/XIVLauncher.NativeAOT/bin/debug/net9.0/osx-arm64/publish/XIVLauncher.NativeAOT.dylib . || {\n        echo \"error: Failed to copy XIVLauncher.NativeAOT.dylib.\"\n        exit 3\n    }\n    cp source/src/XIVLauncher.NativeAOT/bin/debug/net9.0/osx-arm64/publish/libsteam_api64.dylib . || {\n        echo \"error: Failed to copy libsteam_api64.dylib.\"\n        exit 4\n    }\nfi\n\ninstall_name_tool -id @executable_path/../Frameworks/XIVLauncher.NativeAOT.dylib XIVLauncher.NativeAOT.dylib\n# Ignore wanrnings about libsteam_api64 code signature invalidations, we will resign it later\ninstall_name_tool -id @executable_path/../Frameworks/libsteam_api64.dylib libsteam_api64.dylib 2>/dev/null\npopd\n";
 		};
 		5592FEB42778D3CB00FA304B /* Fix Codesign (Runtime) */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -925,11 +925,12 @@
 				CODE_SIGN_ENTITLEMENTS = "XIV on Mac/XIV_on_Mac.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 181;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = TQJJTJ6364;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = A7Z56NZJ7Q;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "XIV-on-Mac-Info.plist";
@@ -972,11 +973,12 @@
 				CODE_SIGN_ENTITLEMENTS = "XIV on Mac/XIV_on_Mac.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 181;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = TQJJTJ6364;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = A7Z56NZJ7Q;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "XIV-on-Mac-Info.plist";
@@ -1017,7 +1019,7 @@
 				50511ECF2770E087003A1E9F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		50511ED02770E087003A1E9F /* Build configuration list for PBXNativeTarget "XIV on Mac" */ = {
 			isa = XCConfigurationList;
@@ -1026,7 +1028,7 @@
 				50511ED22770E087003A1E9F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 
