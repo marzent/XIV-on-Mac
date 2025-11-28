@@ -89,7 +89,7 @@ final class RecaptchaTokenProvider: NSObject, WKScriptMessageHandler {
     }
 }
 
-class LaunchController: NSViewController {
+class LaunchController: NSViewController, WKNavigationDelegate {
     var loginSheetWinController: NSWindowController?
     var installerWinController: NSWindowController?
     var patchWinController: NSWindowController?
@@ -97,6 +97,7 @@ class LaunchController: NSViewController {
     var patchController: PatchController?
     var repairController: RepairController?
     var newsTable: FrontierTableView!
+    var newsWebView: WKWebView!  // 新增：WebView 覆蓋層
     var topicsTable: FrontierTableView!
     var otp: OTP?
 
@@ -142,6 +143,47 @@ class LaunchController: NSViewController {
         rightButton.wantsLayer = true
         setSideButtonVisibility(to: false)
         newsContainerView.isHidden = true
+        newsContainerView.removeFromSuperview()
+
+        // 移動 scrollView 向下填補新聞區域空間 (新聞區域高度124px)
+        if let scrollView = self.scrollView {
+            var frame = scrollView.frame
+            frame.origin.y -= 124  // 向下移動124px
+            frame.size.height += 124  // 增加高度124px
+            scrollView.frame = frame
+            // 禁用自動調整大小，完全手動控制位置
+            scrollView.translatesAutoresizingMaskIntoConstraints = true
+            scrollView.autoresizingMask = []
+        }
+
+        // 新增：建立 WebView 覆蓋層
+        let webViewConfiguration = WKWebViewConfiguration()
+        newsWebView = WKWebView(frame: .zero, configuration: webViewConfiguration)
+        newsWebView.translatesAutoresizingMaskIntoConstraints = false
+        newsWebView.navigationDelegate = self
+        // 設置圓角
+        newsWebView.layer?.cornerRadius = 8.0
+        newsWebView.layer?.masksToBounds = true
+
+        // 將 WebView 添加到與 scrollView 相同的父視圖
+        if let parentView = scrollView.superview {
+            parentView.addSubview(newsWebView)
+
+            // 設定約束，使 WebView 覆蓋整個 scrollView
+            NSLayoutConstraint.activate([
+                newsWebView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+                newsWebView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+                newsWebView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+                newsWebView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
+            ])
+
+            // 載入指定的網頁
+            if let url = URL(string: "https://user-cdn.ffxiv.com.tw/news/251115/launcher_left.html") {
+                let request = URLRequest(url: url)
+                newsWebView.load(request)
+            }
+        }
+        
         DispatchQueue.global(qos: .userInitiated).async {
             self.checkBoot()
         }
@@ -655,5 +697,91 @@ final class AnimatingScrollView: NSScrollView {
     override func mouseExited(with theEvent: NSEvent) {
         super.mouseExited(with: theEvent)
         NotificationCenter.default.post(name: .bannerLeft, object: nil)
+    }
+}
+
+// MARK: - WKNavigationDelegate
+extension LaunchController {
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        // WebView 載入完成後，調整 scrollView 高度以適應內容
+        webView.evaluateJavaScript("document.body.scrollHeight") { [weak self] (result, error) in
+            guard let self = self, let height = result as? CGFloat, error == nil else { return }
+            
+            DispatchQueue.main.async {
+                self.adjustScrollViewHeight(for: height)
+            }
+        }
+    }
+    
+    private func adjustWindowHeight(for contentHeight: CGFloat) {
+        guard let window = view.window else { return }
+        
+        // 計算新的視窗高度
+        // 考慮到其他 UI 元素的高度（如標題欄、按鈕等）
+        let currentFrame = window.frame
+        let titleBarHeight: CGFloat = 28  // 標題欄高度估計
+        let buttonAreaHeight: CGFloat = 80  // 按鈕區域高度估計
+        let minHeight: CGFloat = 400  // 最小視窗高度
+        let maxHeight: CGFloat = 800  // 最大視窗高度
+        
+        // 新的視窗高度 = 內容高度 + 標題欄 + 按鈕區域
+        var newHeight = contentHeight + titleBarHeight + buttonAreaHeight
+        newHeight = max(minHeight, min(newHeight, maxHeight))  // 限制在合理範圍內
+        
+        // 調整視窗框架，保持視窗頂部位置不變
+        let newFrame = NSRect(
+            x: currentFrame.origin.x,
+            y: currentFrame.origin.y + currentFrame.height - newHeight,
+            width: currentFrame.width,
+            height: newHeight
+        )
+        
+        window.setFrame(newFrame, display: true, animate: true)
+    }
+    
+    private func adjustScrollViewHeight(for contentHeight: CGFloat) {
+        guard let scrollView = self.scrollView, let window = view.window else { return }
+
+        // 設定高度上限為640px
+        let maxHeight: CGFloat = 640
+        let newHeight = min(contentHeight, maxHeight)
+
+        // 獲取當前scrollView frame
+        let currentScrollViewFrame = scrollView.frame
+
+        // 計算高度變化量
+        let heightDifference = newHeight - currentScrollViewFrame.height
+
+        // 如果高度沒有變化，不需要調整
+        guard heightDifference != 0 else { return }
+
+        // 創建新的scrollView frame，保持頂部位置不變，只改變高度
+        let newScrollViewFrame = NSRect(
+            x: currentScrollViewFrame.origin.x,
+            y: currentScrollViewFrame.origin.y,  // 保持頂部Y座標不變
+            width: currentScrollViewFrame.width,
+            height: newHeight
+        )
+
+        // 調整視窗高度
+        let currentWindowFrame = window.frame
+        let newWindowHeight = currentWindowFrame.height + heightDifference
+
+        // 計算新的視窗frame，保持在畫面中央（水平和垂直）
+        let screenFrame = NSScreen.main?.visibleFrame ?? NSScreen.main!.frame
+        let newWindowFrame = NSRect(
+            x: screenFrame.midX - currentWindowFrame.width / 2,  // 水平居中
+            y: screenFrame.midY - newWindowHeight / 2,  // 垂直居中
+            width: currentWindowFrame.width,
+            height: newWindowHeight
+        )
+
+        // 同時調整scrollView和視窗
+        NSAnimationContext.runAnimationGroup { context in
+            context.duration = 0.3
+            context.allowsImplicitAnimation = true
+            scrollView.frame = newScrollViewFrame
+            window.setFrame(newWindowFrame, display: true)
+        }
     }
 }
