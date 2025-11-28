@@ -101,15 +101,17 @@ class PatchController: NSViewController {
         _ patch: Patch, totalSize: Int64, partialSize: Int64, tries: Int = 0,
         maxTries: Int = 3
     ) {
+        Log.information("Downloading patch: \(patch.path)")
         let headers: OrderedDictionary = [
             "User-Agent": Patch.userAgent,
             "Accept-Encoding":
                 "*/*,application/metalink4+xml,application/metalink+xml",
-            "Host": "patch-dl.ffxiv.com",
             "Connection": "Keep-Alive",
             "Want-Digest": "SHA-512;q=1, SHA-256;q=1, SHA;q=0.1",
         ]
         let destination = Patch.dir.appendingPathComponent(patch.path)
+        Log.information("Patch.dir: \(Patch.dir.path), exists: \(FileManager.default.fileExists(atPath: Patch.dir.path))")
+        Log.information("Download destination: \(destination.path)")
         do {
             try HTTPClient.fetchFile(
                 url: patch.url, destinationUrl: destination, headers: headers
@@ -121,6 +123,7 @@ class PatchController: NSViewController {
                     speed: speed)
             }
         } catch {
+            Log.error("Download failed for patch \(patch.path): \(error.localizedDescription)")
             guard tries < maxTries else {
                 DispatchQueue.main.sync {
                     let alert = NSAlert()

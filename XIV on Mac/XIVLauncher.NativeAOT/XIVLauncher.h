@@ -8,7 +8,7 @@ void loadConfig(const char *acceptLanguage, const char *gamePath, const char *ga
 
 void fakeLogin(void);
 
-const char *tryLoginToGame(const char *username, const char *password, const char *otp, bool repair);
+const char *tryLoginToGame(const char *username, const char *password, const char *otp, const char *recaptchaToken, bool repair);
 
 unsigned char getDalamudInstallState(void);
 
