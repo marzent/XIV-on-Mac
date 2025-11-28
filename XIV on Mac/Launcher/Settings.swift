@@ -210,7 +210,10 @@ public enum Settings {
     private static let dalamudSettingsKey = "DalamudEnabled"
     static var dalamudEnabled: Bool {
         get {
-            UserDefaults.standard.bool(forKey: dalamudSettingsKey)
+            // TEMPORARILY DISABLED: Dalamud functionality
+            // To re-enable: Uncomment the line below and comment out return false
+            // return UserDefaults.standard.bool(forKey: dalamudSettingsKey)
+            return false
         }
         set {
             UserDefaults.standard.set(newValue, forKey: dalamudSettingsKey)

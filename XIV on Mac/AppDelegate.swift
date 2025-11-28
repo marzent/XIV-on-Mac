@@ -82,7 +82,9 @@ import XIVLauncher
             // The final piece of migration has to happen after wine is ready for use.
             PrefixMigrator.migrateWineRegistrySettings()
         }
-        sparkle.updater.checkForUpdatesInBackground()
+        // TEMPORARILY DISABLED: Auto-update check
+        // To re-enable: Uncomment the line below
+        // sparkle.updater.checkForUpdatesInBackground()
         Util.make(dir: Util.cache.path)
         #if DEBUG
             Log.debug("Running in debug mode")

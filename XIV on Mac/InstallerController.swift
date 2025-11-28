@@ -30,8 +30,12 @@ class InstallerController: NSViewController {
     }
 
     @IBAction func versionSelect(_ sender: NSButton) {
+        // TEMPORARILY DISABLED: Dalamud installation option
+        // To re-enable: Uncomment the block below
+        /*
         Settings.dalamudEnabled =
             (sender.identifier == NSUserInterfaceItemIdentifier("withDalamud"))
+        */
     }
 
     @IBAction func licenseSelect(_ sender: NSButton) {

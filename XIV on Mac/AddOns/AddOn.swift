@@ -7,6 +7,8 @@
 
 enum AddOn {
     static func launchNotify() {
-        BunnyHUD.launchNotify()
+        // TEMPORARILY DISABLED: Plugin auto-launch functionality
+        // To re-enable: Uncomment the line below
+        // BunnyHUD.launchNotify()
     }
 }

@@ -144,12 +144,16 @@ class LaunchController: NSViewController {
             self.checkBoot()
         }
         DispatchQueue.global(qos: .userInteractive).async {
+            // TEMPORARILY DISABLED: News and banners loading
+            // To re-enable: Uncomment the block below
+            /*
             if let frontierInfo = Frontier.info {
                 self.populateNews(frontierInfo)
             }
             if let frontierBanners = Frontier.banners {
                 self.populateBanners(frontierBanners)
             }
+            */
         }
     }
 
@@ -179,11 +183,15 @@ class LaunchController: NSViewController {
     }
 
     func checkBoot(skipInstallCheck: Bool = false) {
+        // TEMPORARILY DISABLED: Boot patches check
+        // To re-enable: Uncomment the block below
+        /*
         if let bootPatches = try? Patch.bootPatches, !bootPatches.isEmpty,
             FFXIVApp().installed || skipInstallCheck
         {
             startPatch(bootPatches)
         }
+        */
         DispatchQueue.main.async {
             self.loginButton.isEnabled = true
             self.touchBarLoginButton.isEnabled = true
