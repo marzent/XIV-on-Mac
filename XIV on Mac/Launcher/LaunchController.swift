@@ -428,10 +428,11 @@ class LaunchController: NSViewController, WKNavigationDelegate {
                 if Frontier.gameMaintenance {
                     throw FFXIVLoginError.maintenance
                 }
-                NotificationCenter.default.post(
-                    name: .loginInfo, object: nil,
-                    userInfo: [Notification.status.info: "Updating Dalamud"])
-                let dalamudInstallState = loginResult.dalamudInstallState
+                // NotificationCenter.default.post(
+                //     name: .loginInfo, object: nil,
+                //     userInfo: [Notification.status.info: "Updating Dalamud"])
+                // TC Temporarily set dalamudInstallState to .ok
+                let dalamudInstallState: Dalamud.InstallState = .failed
                 DispatchQueue.main.async {
                     if Settings.dalamudEnabled && dalamudInstallState == .failed
                     {
