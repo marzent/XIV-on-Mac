@@ -110,6 +110,7 @@ class LaunchController: NSViewController {
     @IBOutlet private var scrollView: AnimatingScrollView!
     @IBOutlet private var newsView: NSScrollView!
     @IBOutlet private var topicsView: NSScrollView!
+    @IBOutlet private var newsContainerView: NSView!
     @IBOutlet var discloseButton: NSButton!
     @IBOutlet private var touchBarLoginButton: NSButtonTouchBarItem!
     @IBOutlet var leftButton: NSButton!
@@ -140,6 +141,7 @@ class LaunchController: NSViewController {
         leftButton.wantsLayer = true
         rightButton.wantsLayer = true
         setSideButtonVisibility(to: false)
+        newsContainerView.isHidden = true
         DispatchQueue.global(qos: .userInitiated).async {
             self.checkBoot()
         }

@@ -1116,80 +1116,86 @@ Gw
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                     </scrollView>
-                                    <button wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tBx-dX-l3A" userLabel="Left">
-                                        <rect key="frame" x="20" y="144" width="16" height="253"/>
-                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="LUF-1H-RXN">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                            <imageReference key="image" image="chevron.left" catalog="system" symbolScale="large" variableValue="1"/>
-                                        </buttonCell>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="245" id="EzR-1i-guR"/>
-                                            <constraint firstAttribute="width" constant="16" id="ghM-Fl-wAo"/>
-                                        </constraints>
-                                        <connections>
-                                            <action selector="scrollLeft:" target="sya-zo-KBW" id="LlY-Dc-N1j"/>
-                                        </connections>
-                                    </button>
-                                    <button wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YtN-Rh-od1" userLabel="Right">
-                                        <rect key="frame" x="644" y="144" width="16" height="253"/>
-                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="vFE-9l-3Rf">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                            <imageReference key="image" image="chevron.right" catalog="system" symbolScale="large"/>
-                                        </buttonCell>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="245" id="VF9-7D-nWO"/>
-                                            <constraint firstAttribute="width" constant="16" id="Wrg-Y3-udI"/>
-                                        </constraints>
-                                        <connections>
-                                            <action selector="scrollRight:" target="sya-zo-KBW" id="eEO-ch-MRR"/>
-                                        </connections>
-                                    </button>
-                                    <scrollView fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="3" verticalPageScroll="3" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pE4-Pq-abN" customClass="FadingScrollView" customModule="XIV_on_Mac" customModuleProvider="target">
-                                        <rect key="frame" x="493" y="13" width="472" height="124"/>
+                                    <view fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="newsContainerView">
+                                        <rect key="frame" x="0.0" y="13" width="965" height="124"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <clipView key="contentView" drawsBackground="NO" id="cFn-Gm-zRu">
-                                            <rect key="frame" x="0.0" y="0.0" width="472" height="124"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <subviews>
-                                                <view id="6jO-fh-5Sq">
-                                                    <rect key="frame" x="0.0" y="0.0" width="456" height="124"/>
+                                        <subviews>
+                                            <scrollView fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="3" verticalPageScroll="3" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VFB-VA-Nbg" customClass="FadingScrollView" customModule="XIV_on_Mac" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="488" height="124"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                <clipView key="contentView" drawsBackground="NO" id="5Xp-Li-WIM">
+                                                    <rect key="frame" x="0.0" y="0.0" width="488" height="124"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                </view>
-                                            </subviews>
-                                        </clipView>
-                                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="8B1-1j-P2A">
-                                            <rect key="frame" x="-100" y="-100" width="453" height="15"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </scroller>
-                                        <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="hhb-o4-sRe">
-                                            <rect key="frame" x="453" y="0.0" width="15" height="110"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </scroller>
-                                    </scrollView>
-                                    <scrollView fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="3" verticalPageScroll="3" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VFB-VA-Nbg" customClass="FadingScrollView" customModule="XIV_on_Mac" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="13" width="488" height="124"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <clipView key="contentView" drawsBackground="NO" id="5Xp-Li-WIM">
-                                            <rect key="frame" x="0.0" y="0.0" width="488" height="124"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <subviews>
-                                                <view id="iRI-SQ-efp">
+                                                    <subviews>
+                                                        <view id="iRI-SQ-efp">
+                                                            <rect key="frame" x="0.0" y="0.0" width="472" height="124"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        </view>
+                                                    </subviews>
+                                                </clipView>
+                                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="Jb3-cq-YJ8">
+                                                    <rect key="frame" x="-100" y="-100" width="453" height="15"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </scroller>
+                                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="Bqo-um-UJn">
+                                                    <rect key="frame" x="453" y="0.0" width="15" height="110"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </scroller>
+                                            </scrollView>
+                                            <scrollView fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="3" verticalPageScroll="3" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pE4-Pq-abN" customClass="FadingScrollView" customModule="XIV_on_Mac" customModuleProvider="target">
+                                                <rect key="frame" x="493" y="0.0" width="472" height="124"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                <clipView key="contentView" drawsBackground="NO" id="cFn-Gm-zRu">
                                                     <rect key="frame" x="0.0" y="0.0" width="472" height="124"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                </view>
-                                            </subviews>
-                                        </clipView>
-                                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="Jb3-cq-YJ8">
-                                            <rect key="frame" x="-100" y="-100" width="453" height="15"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </scroller>
-                                        <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="Bqo-um-UJn">
-                                            <rect key="frame" x="453" y="0.0" width="15" height="110"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </scroller>
-                                    </scrollView>
+                                                    <subviews>
+                                                        <view id="6jO-fh-5Sq">
+                                                            <rect key="frame" x="0.0" y="0.0" width="456" height="124"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        </view>
+                                                    </subviews>
+                                                </clipView>
+                                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="8B1-1j-P2A">
+                                                    <rect key="frame" x="-100" y="-100" width="453" height="15"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </scroller>
+                                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="hhb-o4-sRe">
+                                                    <rect key="frame" x="453" y="0.0" width="15" height="110"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </scroller>
+                                            </scrollView>
+                                            <button wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tBx-dX-l3A-new" userLabel="Left">
+                                                <rect key="frame" x="20" y="0.0" width="16" height="124"/>
+                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="LUF-1H-RXN-new">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                    <imageReference key="image" image="chevron.left" catalog="system" symbolScale="large" variableValue="1"/>
+                                                </buttonCell>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="124" id="EzR-1i-guR-new"/>
+                                                    <constraint firstAttribute="width" constant="16" id="ghM-Fl-wAo-new"/>
+                                                </constraints>
+                                                <connections>
+                                                    <action selector="scrollLeft:" target="sya-zo-KBW" id="LlY-Dc-N1j-new"/>
+                                                </connections>
+                                            </button>
+                                            <button wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YtN-Rh-od1-new" userLabel="Right">
+                                                <rect key="frame" x="644" y="0.0" width="16" height="124"/>
+                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="vFE-9l-3Rf-new">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                    <imageReference key="image" image="chevron.right" catalog="system" symbolScale="large"/>
+                                                </buttonCell>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="124" id="VF9-7D-nWO-new"/>
+                                                    <constraint firstAttribute="width" constant="16" id="Wrg-Y3-udI-new"/>
+                                                </constraints>
+                                                <connections>
+                                                    <action selector="scrollRight:" target="sya-zo-KBW" id="eEO-ch-MRR-new"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </view>
                                     <button wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R5T-I0-Kje" userLabel="Disclose Button">
                                         <rect key="frame" x="919" y="358" width="29.5" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -1203,10 +1209,6 @@ Gw
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="YtN-Rh-od1" firstAttribute="centerY" secondItem="3yp-No-o33" secondAttribute="centerY" id="EoV-Lk-1Ps"/>
-                                    <constraint firstItem="tBx-dX-l3A" firstAttribute="centerY" secondItem="3yp-No-o33" secondAttribute="centerY" id="Glb-8f-Wp4"/>
-                                    <constraint firstItem="YtN-Rh-od1" firstAttribute="trailing" secondItem="3yp-No-o33" secondAttribute="trailing" id="Kbv-aG-1R9"/>
-                                    <constraint firstItem="tBx-dX-l3A" firstAttribute="leading" secondItem="3yp-No-o33" secondAttribute="leading" id="oyJ-tQ-rsw"/>
                                 </constraints>
                             </visualEffectView>
                         </subviews>
@@ -1273,13 +1275,14 @@ Gw
                     <connections>
                         <outlet property="autoLoginCheck" destination="fhv-Eb-PmW" id="ZbX-wj-4b6"/>
                         <outlet property="discloseButton" destination="R5T-I0-Kje" id="ALW-vS-IBY"/>
-                        <outlet property="leftButton" destination="tBx-dX-l3A" id="hfY-Eb-j7x"/>
+                        <outlet property="leftButton" destination="tBx-dX-l3A-new" id="hfY-Eb-j7x"/>
                         <outlet property="loginButton" destination="Cgh-yM-JG5" id="gcf-Am-XLt"/>
                         <outlet property="newsView" destination="VFB-VA-Nbg" id="Joc-Vj-rNh"/>
+                        <outlet property="newsContainerView" destination="newsContainerView" id="newsContainerViewOutlet"/>
                         <outlet property="otpCheck" destination="xhX-md-4MR" id="16N-02-2YO"/>
                         <outlet property="otpField" destination="hjj-4f-wNd" id="Qbt-Wl-rev"/>
                         <outlet property="passwdField" destination="Bhg-a8-aUl" id="C2s-Nr-4j7"/>
-                        <outlet property="rightButton" destination="YtN-Rh-od1" id="wgw-Sa-chY"/>
+                        <outlet property="rightButton" destination="YtN-Rh-od1-new" id="wgw-Sa-chY"/>
                         <outlet property="scrollView" destination="kUd-Jw-ky7" id="GXL-go-HMw"/>
                         <outlet property="topicsView" destination="pE4-Pq-abN" id="8cB-5W-RZq"/>
                         <outlet property="touchBarLoginButton" destination="dHG-Nt-Pvm" id="98v-Wp-QUY"/>
