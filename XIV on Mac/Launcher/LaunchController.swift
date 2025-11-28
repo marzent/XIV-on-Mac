@@ -6,6 +6,88 @@
 //
 
 import Cocoa
+import WebKit
+import XIVLauncher
+
+class RecaptchaSchemeHandler: NSObject, WKURLSchemeHandler {
+    func webView(_ webView: WKWebView, start urlSchemeTask: WKURLSchemeTask) {
+        guard urlSchemeTask.request.url?.absoluteString == "recaptcha://user.ffxiv.com.tw/recaptcha_page.html" else {
+            urlSchemeTask.didFailWithError(NSError(domain: "RecaptchaSchemeHandler", code: -1, userInfo: [NSLocalizedDescriptionKey: "Unsupported URL"]))
+            return
+        }
+        
+        guard let htmlPath = Bundle.main.path(forResource: "recaptcha_page", ofType: "html"),
+              let htmlContent = try? String(contentsOfFile: htmlPath, encoding: .utf8) else {
+            urlSchemeTask.didFailWithError(NSError(domain: "RecaptchaSchemeHandler", code: -1, userInfo: [NSLocalizedDescriptionKey: "HTML file not found"]))
+            return
+        }
+        
+        let response = HTTPURLResponse(
+            url: urlSchemeTask.request.url!,
+            statusCode: 200,
+            httpVersion: "HTTP/1.1",
+            headerFields: ["Content-Type": "text/html; charset=utf-8"]
+        )!
+        
+        urlSchemeTask.didReceive(response)
+        urlSchemeTask.didReceive(htmlContent.data(using: .utf8)!)
+        urlSchemeTask.didFinish()
+    }
+    
+    func webView(_ webView: WKWebView, stop urlSchemeTask: WKURLSchemeTask) {
+        // No-op
+    }
+}
+
+final class RecaptchaTokenProvider: NSObject, WKScriptMessageHandler {
+    static let shared = RecaptchaTokenProvider()
+
+    private var completion: ((Result<String, Error>) -> Void)?
+    private var webView: WKWebView?
+
+    func fetchToken(completion: @escaping (Result<String, Error>) -> Void) {
+        DispatchQueue.main.async {
+            self.cancel()
+            self.completion = completion
+
+            let contentController = WKUserContentController()
+            contentController.add(self, name: "recaptchaToken")
+
+            let config = WKWebViewConfiguration()
+            config.userContentController = contentController
+            config.setURLSchemeHandler(RecaptchaSchemeHandler(), forURLScheme: "recaptcha")
+
+            let webView = WKWebView(frame: .zero, configuration: config)
+            webView.isHidden = true
+            self.webView = webView
+
+            guard let url = URL(string: "recaptcha://user.ffxiv.com.tw/recaptcha_page.html") else {
+                completion(.failure(NSError(
+                    domain: "RecaptchaTokenProvider", code: -1,
+                    userInfo: [NSLocalizedDescriptionKey: "Invalid recaptcha URL"])))
+                self.cancel()
+                return
+            }
+
+            webView.load(URLRequest(url: url))
+        }
+    }
+
+    func userContentController(_ userContentController: WKUserContentController,
+                               didReceive message: WKScriptMessage) {
+        guard message.name == "recaptchaToken" else { return }
+
+        let token = message.body as? String ?? ""
+        completion?(.success(token))
+        cancel()
+    }
+
+    private func cancel() {
+        webView?.stopLoading()
+        webView = nil
+        completion = nil
+    }
+}
 
 class LaunchController: NSViewController {
     var loginSheetWinController: NSWindowController?
@@ -226,6 +308,33 @@ class LaunchController: NSViewController {
         Settings.credentials = LoginCredentials(
             username: userField.stringValue, password: passwdField.stringValue,
             oneTimePassword: otpField.stringValue)
+        RecaptchaTokenProvider.shared.fetchToken { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case let .success(token):
+                // 印出取得的 reCaptcha token
+                Log.information("Recaptcha token obtained: \(token)")
+                print("Recaptcha token obtained: \(token)")
+                
+                // 繼續執行登入流程
+                self.executeLogin(repair: repair, recaptchaToken: token)
+            case let .failure(error):
+                DispatchQueue.main.async {
+                    self.loginSheetWinController?.window?.close()
+                    let alert = NSAlert()
+                    alert.addButton(
+                        withTitle: NSLocalizedString("BUTTON_OK", comment: ""))
+                    alert.alertStyle = .critical
+                    alert.messageText = NSLocalizedString(
+                        "LOGIN_RECAPTCHA_FAILED", comment: "")
+                    alert.informativeText = error.localizedDescription
+                    alert.runModal()
+                }
+            }
+        }
+    }
+
+    private func executeLogin(repair: Bool, recaptchaToken: String) {
         DispatchQueue.global(qos: .default).async {
             do {
                 guard FFXIVApp().installed else {
@@ -238,7 +347,7 @@ class LaunchController: NSViewController {
                 if Frontier.loginMaintenance {
                     throw FFXIVLoginError.maintenance
                 }
-                let loginResult = try LoginResult(repair)
+                let loginResult = try LoginResult(repair, recaptchaToken: recaptchaToken)
                 guard loginResult.state != .NoService else {
                     throw FFXIVLoginError.notPlayable
                 }
