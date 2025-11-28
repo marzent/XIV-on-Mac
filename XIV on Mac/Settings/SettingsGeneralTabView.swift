@@ -44,6 +44,7 @@ struct SettingsGeneralTabView: View {
                         }
                         .padding(.bottom)
                         .fixedSize(horizontal: true, vertical: false)
+                        .disabled(true)
 
                         Picker(
                             selection: $viewModel.platform,
@@ -57,6 +58,7 @@ struct SettingsGeneralTabView: View {
                         }
                         .padding(.bottom)
                         .fixedSize(horizontal: true, vertical: false)
+                        .disabled(true)
 
                         Spacer()
                     }
@@ -182,11 +184,11 @@ struct SettingsGeneralTabView_Previews: PreviewProvider {
 
 extension SettingsGeneralTabView {
     @MainActor class ViewModel: ObservableObject {
-        @Published var language: FFXIVLanguage = Settings.language {
+        @Published var language: FFXIVLanguage = .english {
             didSet { Settings.language = language }
         }
 
-        @Published var platform: FFXIVPlatform = Settings.platform {
+        @Published var platform: FFXIVPlatform = .windows {
             didSet { Settings.platform = platform }
         }
 
