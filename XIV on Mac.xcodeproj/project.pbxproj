@@ -75,7 +75,6 @@
 		507C600127CAA72000BA3CC2 /* PatchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507C600027CAA72000BA3CC2 /* PatchController.swift */; };
 		507D8F2127766F52000F0CB0 /* dxvk in Resources */ = {isa = PBXBuildFile; fileRef = 507D8F2027766F52000F0CB0 /* dxvk */; };
 		508C678F29431BFF0046AA38 /* snowflake_x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 508C678E29431BFF0046AA38 /* snowflake_x2.png */; };
-		5A1B2C3D4E5F678A /* recaptcha_page.html in Resources */ = {isa = PBXBuildFile; fileRef = 5A1B2C3D4E5F6789 /* recaptcha_page.html */; };
 		509D0E2D2960536A0055367A /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 509D0E2C2960536A0055367A /* KeychainAccess */; };
 		509D0E302960540C0055367A /* AppMover in Frameworks */ = {isa = PBXBuildFile; productRef = 509D0E2F2960540C0055367A /* AppMover */; };
 		509FE19A27E3654E008D56D6 /* FFXIVEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509FE19927E3654E008D56D6 /* FFXIVEnums.swift */; };
@@ -99,6 +98,7 @@
 		50F6CBAA27A975A000013301 /* Wine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F6CBA927A975A000013301 /* Wine.swift */; };
 		50FC2DFF27F974D300871760 /* DxvkStateCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC2DFE27F974D300871760 /* DxvkStateCache.swift */; };
 		50FC2E0127F9751600871760 /* DxvkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC2E0027F9751600871760 /* DxvkError.swift */; };
+		5A1B2C3D4E5F678A /* recaptcha_page.html in Resources */ = {isa = PBXBuildFile; fileRef = 5A1B2C3D4E5F6789 /* recaptcha_page.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -218,11 +218,11 @@
 		50F6CBA927A975A000013301 /* Wine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wine.swift; sourceTree = "<group>"; };
 		50FC2DFE27F974D300871760 /* DxvkStateCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DxvkStateCache.swift; sourceTree = "<group>"; };
 		50FC2E0027F9751600871760 /* DxvkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DxvkError.swift; sourceTree = "<group>"; };
+		5A1B2C3D4E5F6789 /* recaptcha_page.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = recaptcha_page.html; sourceTree = "<group>"; };
 		F46BBF18291C0494000C4672 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		F46BBF19291C0494000C4672 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FC2A0719289A5E4300C25C34 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
 		FC2A071A289A5E4300C25C34 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
-		5A1B2C3D4E5F6789 /* recaptcha_page.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = recaptcha_page.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -954,7 +954,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 13.5;
 				MARKETING_VERSION = 5.2.3;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
-				PRODUCT_BUNDLE_IDENTIFIER = "dezent.XIV-on-Mac";
+				PRODUCT_BUNDLE_IDENTIFIER = "plusone.XIV-on-Mac-in-TC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1002,7 +1002,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 13.5;
 				MARKETING_VERSION = 5.2.3;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
-				PRODUCT_BUNDLE_IDENTIFIER = "dezent.XIV-on-Mac";
+				PRODUCT_BUNDLE_IDENTIFIER = "plusone.XIV-on-Mac-in-TC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;

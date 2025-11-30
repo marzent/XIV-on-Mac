@@ -33,7 +33,7 @@ public enum Settings {
             FFXIVPlatform(
                 rawValue: Util.getSetting(
                     settingKey: platformKey,
-                    defaultValue: FFXIVPlatform.mac.rawValue)) ?? .mac
+                    defaultValue: FFXIVPlatform.windows.rawValue)) ?? .windows
         }
         set {
             UserDefaults.standard.set(newValue.rawValue, forKey: platformKey)
