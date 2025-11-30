@@ -46,7 +46,10 @@ public struct FFXIVApp {
     }
 
     var installed: Bool {
-        bootFiles.allSatisfy { FileManager.default.fileExists(atPath: $0.path) }
+        // bootFiles.allSatisfy { FileManager.default.fileExists(atPath: $0.path) }
+        let bootExists = FileManager.default.fileExists(atPath: bootRepoURL.path)
+        let gameExists = FileManager.default.fileExists(atPath: gameRepoURL.path)
+        return bootExists && gameExists
     }
 
     private static func createConfigDirectory() {
