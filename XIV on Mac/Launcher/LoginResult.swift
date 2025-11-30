@@ -106,6 +106,11 @@ struct ProcessInformation: Codable {
     let pid: Int32
     let handle: Int64
 
+    enum CodingKeys: String, CodingKey {
+        case pid = "Pid"
+        case handle = "Handle"
+    }
+
     var exitCode: Int32 {
         getExitCode(pid)
     }
