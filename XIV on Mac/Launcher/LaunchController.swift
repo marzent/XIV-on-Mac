@@ -396,9 +396,10 @@ class LaunchController: NSViewController, WKNavigationDelegate {
                     DiscordBridge.setPresence()
                     GraphicsInstaller.ensureBackend()
                 }
-                if Frontier.loginMaintenance {
-                    throw FFXIVLoginError.maintenance
-                }
+                // TC Region: maintenance checks disabled
+                // if Frontier.loginMaintenance {
+                //     throw FFXIVLoginError.maintenance
+                // }
                 let loginResult = try LoginResult(repair, recaptchaToken: recaptchaToken)
                 guard loginResult.state != .NoService else {
                     throw FFXIVLoginError.notPlayable
@@ -425,9 +426,10 @@ class LaunchController: NSViewController, WKNavigationDelegate {
                             loginSheetWinController!.window!)
                     }
                 }
-                if Frontier.gameMaintenance {
-                    throw FFXIVLoginError.maintenance
-                }
+                // TC Region: maintenance checks disabled
+                // if Frontier.gameMaintenance {
+                //     throw FFXIVLoginError.maintenance
+                // }
                 // NotificationCenter.default.post(
                 //     name: .loginInfo, object: nil,
                 //     userInfo: [Notification.status.info: "Updating Dalamud"])

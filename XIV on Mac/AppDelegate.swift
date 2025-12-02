@@ -39,6 +39,7 @@ import XIVLauncher
             "XIV on Mac \(version) build \(build)", storagePath,
             Settings.verboseLogging, Frontier.frontierURLTemplate)
         Wine.setup()
+        GraphicsInstaller.ensureBackend()
     }
 
     func registerWineAppWillActivateNotification() {

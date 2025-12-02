@@ -99,6 +99,7 @@
 		50FC2DFF27F974D300871760 /* DxvkStateCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC2DFE27F974D300871760 /* DxvkStateCache.swift */; };
 		50FC2E0127F9751600871760 /* DxvkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC2E0027F9751600871760 /* DxvkError.swift */; };
 		5A1B2C3D4E5F678A /* recaptcha_page.html in Resources */ = {isa = PBXBuildFile; fileRef = 5A1B2C3D4E5F6789 /* recaptcha_page.html */; };
+		CC9B3FA62EDF5E7C0029BF87 /* FFXIV-TcDefault.cfg in Resources */ = {isa = PBXBuildFile; fileRef = CC9B3FA52EDF5E7C0029BF87 /* FFXIV-TcDefault.cfg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -219,6 +220,7 @@
 		50FC2DFE27F974D300871760 /* DxvkStateCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DxvkStateCache.swift; sourceTree = "<group>"; };
 		50FC2E0027F9751600871760 /* DxvkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DxvkError.swift; sourceTree = "<group>"; };
 		5A1B2C3D4E5F6789 /* recaptcha_page.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = recaptcha_page.html; sourceTree = "<group>"; };
+		CC9B3FA52EDF5E7C0029BF87 /* FFXIV-TcDefault.cfg */ = {isa = PBXFileReference; lastKnownFileType = text; path = "FFXIV-TcDefault.cfg"; sourceTree = "<group>"; };
 		F46BBF18291C0494000C4672 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		F46BBF19291C0494000C4672 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FC2A0719289A5E4300C25C34 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
@@ -410,6 +412,7 @@
 				07B529D727D97D2B005B78BF /* Localizable.strings */,
 				07A349882805689200A9D7D0 /* Resources */,
 				07C876DC280B7DD500CB0D8E /* FFXIV-MacDefault.cfg */,
+				CC9B3FA52EDF5E7C0029BF87 /* FFXIV-TcDefault.cfg */,
 				07B3507229A4829C0010C1F5 /* ffxivbenchmarklauncher-Default.ini */,
 				5046F7EE27E74A9A006C34E1 /* discord_bridge.exe */,
 			);
@@ -599,6 +602,7 @@
 				508C678F29431BFF0046AA38 /* snowflake_x2.png in Resources */,
 				5A1B2C3D4E5F678A /* recaptcha_page.html in Resources */,
 				50A4E6F12E796A8F003BAA95 /* XOM.icon in Resources */,
+				CC9B3FA62EDF5E7C0029BF87 /* FFXIV-TcDefault.cfg in Resources */,
 				073649AD281E35C700DA41F7 /* PrefsGraphics.tiff in Resources */,
 				07BF3AFB2806507800794155 /* CfgCheckAdvFixed.tiff in Resources */,
 				50692C8B27B3E48B00945593 /* Credits.html in Resources */,

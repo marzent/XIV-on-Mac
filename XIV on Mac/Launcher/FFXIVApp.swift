@@ -100,7 +100,7 @@ public struct FFXIVApp {
             )
             do {
                 let defaultCfgURL = Bundle.main.url(
-                    forResource: "FFXIV-MacDefault", withExtension: "cfg")!
+                    forResource: "FFXIV-TcDefault", withExtension: "cfg")!
                 try FileManager.default.copyItem(
                     at: defaultCfgURL, to: FFXIVApp.configURL)
             } catch let createError as NSError {
