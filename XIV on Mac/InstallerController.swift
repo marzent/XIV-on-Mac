@@ -15,7 +15,7 @@ class InstallerController: NSViewController {
         case point
     }
 
-    private var action = GameFiles.download
+    private var action = GameFiles.point
 
     @IBOutlet private var status: NSTextField!
     @IBOutlet private var info: NSTextField!
