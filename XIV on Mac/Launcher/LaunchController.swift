@@ -392,9 +392,10 @@ class LaunchController: NSViewController, WKNavigationDelegate {
                 guard FFXIVApp().installed else {
                     throw FFXIVLoginError.noInstall
                 }
+                // Ensure graphics backend is installed before starting the game
+                GraphicsInstaller.ensureBackend()
                 DispatchQueue.global(qos: .userInitiated).async {
                     DiscordBridge.setPresence()
-                    GraphicsInstaller.ensureBackend()
                 }
                 // TC Region: maintenance checks disabled
                 // if Frontier.loginMaintenance {

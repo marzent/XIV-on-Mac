@@ -29,10 +29,16 @@ enum Wine {
         addEnvironmentVariable(
             "DXMT_METALFX_SPATIAL_SWAPCHAIN",
             Settings.metalFxSpatialEnabled ? "1" : "0")
+        addEnvironmentVariable("XL_DXMT_ENABLED", Settings.dxmtEnabled ? "1" : "0")
         addEnvironmentVariable("LANG", "en_US")
         addEnvironmentVariable("MVK_ALLOW_METAL_FENCES", "1")  // XXX Required by DXVK for Apple/NVidia GPUs (better FPS than CPU Emulation)
         addEnvironmentVariable("MVK_CONFIG_FULL_IMAGE_VIEW_SWIZZLE", "1")  // XXX Required by DXVK for Intel/NVidia GPUs
         addEnvironmentVariable("MVK_CONFIG_RESUME_LOST_DEVICE", "1")  // XXX Required by WINE (doesn't handle VK_ERROR_DEVICE_LOST correctly)
+        // DXMT requires Metal Argument Buffers (Metal 3.1+)
+        if Settings.dxmtEnabled {
+            addEnvironmentVariable("MVK_CONFIG_USE_METAL_ARGUMENT_BUFFERS", "1")
+        }
+        // DXVK settings (also used by DXMT for compatibility)
         addEnvironmentVariable("DXVK_HUD", Dxvk.options.getHud())
         addEnvironmentVariable("DXVK_ASYNC", Dxvk.options.getAsync())
         addEnvironmentVariable("DXVK_FRAME_RATE", String(Settings.maxFramerate))
