@@ -11,7 +11,7 @@ public struct FFXIVApp {
     static let configURL = Settings.gameConfigPath.appendingPathComponent(
         "FFXIV.cfg")
     static let seConfigURL = Util.userHome.appendingPathComponent(
-        "/Documents/My Games/FINAL FANTASY XIV - A Realm Reborn/",
+        "/Documents/My Games/FINAL FANTASY XIV TC/",
         isDirectory: true)
     let bootRepoURL, bootExeURL, bootExe64URL, launcherExe64URL,
         updaterExe64URL: URL
@@ -130,8 +130,9 @@ public struct FFXIVApp {
             at: FFXIVApp.configURL, to: xomConfigBackupURL)
         try FileManager.default.removeItem(at: FFXIVApp.configURL)
         let defaultCfgURL = Bundle.main.url(
-            forResource: "FFXIV-MacDefault", withExtension: "cfg")!
+            forResource: "FFXIV-TcDefault", withExtension: "cfg")!
         try FileManager.default.copyItem(
             at: defaultCfgURL, to: FFXIVApp.configURL)
+        Settings.setDefaultGameConfigPath()
     }
 }

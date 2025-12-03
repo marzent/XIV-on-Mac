@@ -185,7 +185,7 @@
 		5049B9B1283CA89F00463A2B /* CompatibilityTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CompatibilityTools.h; sourceTree = "<group>"; };
 		5049B9B2283CFEC600463A2B /* libsteam_api64.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsteam_api64.dylib; path = "XIV on Mac/XIVLauncher.NativeAOT/libsteam_api64.dylib"; sourceTree = "<group>"; };
 		504DF38B28C2BEA000535ED4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
-		50511EC12770E085003A1E9F /* XIV on Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "XIV on Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		50511EC12770E085003A1E9F /* XIV on Mac in TC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "XIV on Mac in TC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50511EC42770E085003A1E9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50511EC62770E085003A1E9F /* InstallerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallerController.swift; sourceTree = "<group>"; };
 		50511EC82770E087003A1E9F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -370,7 +370,7 @@
 		50511EC22770E085003A1E9F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				50511EC12770E085003A1E9F /* XIV on Mac.app */,
+				50511EC12770E085003A1E9F /* XIV on Mac in TC.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -509,9 +509,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		50511EC02770E085003A1E9F /* XIV on Mac */ = {
+		50511EC02770E085003A1E9F /* XIV on Mac in TC */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 50511ED02770E087003A1E9F /* Build configuration list for PBXNativeTarget "XIV on Mac" */;
+			buildConfigurationList = 50511ED02770E087003A1E9F /* Build configuration list for PBXNativeTarget "XIV on Mac in TC" */;
 			buildPhases = (
 				5049B9AB283B8E1300463A2B /* Build  XIVLauncher.NativeAOT */,
 				503C4F5B2D16074F00141D3F /* Build Wine */,
@@ -526,7 +526,7 @@
 			);
 			dependencies = (
 			);
-			name = "XIV on Mac";
+			name = "XIV on Mac in TC";
 			packageProductDependencies = (
 				50692C8827B3D13700945593 /* Sparkle */,
 				50D30FA227B93359007A9F66 /* Embassy */,
@@ -538,7 +538,7 @@
 				0786F05929BAD9E300009AD5 /* KeyboardShortcuts */,
 			);
 			productName = "XIV on Mac";
-			productReference = 50511EC12770E085003A1E9F /* XIV on Mac.app */;
+			productReference = 50511EC12770E085003A1E9F /* XIV on Mac in TC.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -557,9 +557,9 @@
 					};
 				};
 			};
-			buildConfigurationList = 50511EBC2770E085003A1E9F /* Build configuration list for PBXProject "XIV on Mac" */;
+			buildConfigurationList = 50511EBC2770E085003A1E9F /* Build configuration list for PBXProject "XIV on Mac in TC" */;
 			compatibilityVersion = "Xcode 15.0";
-			developmentRegion = en;
+			developmentRegion = "zh-tw";
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -567,6 +567,7 @@
 				ja,
 				fr,
 				de,
+				"zh-tw",
 			);
 			mainGroup = 50511EB82770E085003A1E9F;
 			packageReferences = (
@@ -583,7 +584,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				50511EC02770E085003A1E9F /* XIV on Mac */,
+				50511EC02770E085003A1E9F /* XIV on Mac in TC */,
 			);
 		};
 /* End PBXProject section */
@@ -1020,7 +1021,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		50511EBC2770E085003A1E9F /* Build configuration list for PBXProject "XIV on Mac" */ = {
+		50511EBC2770E085003A1E9F /* Build configuration list for PBXProject "XIV on Mac in TC" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				50511ECE2770E087003A1E9F /* Debug */,
@@ -1029,7 +1030,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		50511ED02770E087003A1E9F /* Build configuration list for PBXNativeTarget "XIV on Mac" */ = {
+		50511ED02770E087003A1E9F /* Build configuration list for PBXNativeTarget "XIV on Mac in TC" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				50511ED12770E087003A1E9F /* Debug */,

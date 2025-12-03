@@ -64,6 +64,11 @@ public enum Settings {
         syncToXL()
     }
 
+    static func setDefaultGameConfigPath() {
+        UserDefaults.standard.removeObject(forKey: gameConfigPathKey)
+        syncToXL()
+    }
+
     private static let gameConfigPathKey = "GameConfigPath"
     static let defaultGameConfigLoc = Util.applicationSupport
         .appendingPathComponent("ffxivConfig")

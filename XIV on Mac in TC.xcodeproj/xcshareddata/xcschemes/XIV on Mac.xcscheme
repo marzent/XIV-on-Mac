@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "50511EC02770E085003A1E9F"
-               BuildableName = "XIV on Mac.app"
-               BlueprintName = "XIV on Mac"
-               ReferencedContainer = "container:XIV on Mac.xcodeproj">
+               BuildableName = "XIV on Mac in TC.app"
+               BlueprintName = "XIV on Mac in TC"
+               ReferencedContainer = "container:XIV on Mac in TC.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -46,9 +46,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "50511EC02770E085003A1E9F"
-            BuildableName = "XIV on Mac.app"
-            BlueprintName = "XIV on Mac"
-            ReferencedContainer = "container:XIV on Mac.xcodeproj">
+            BuildableName = "XIV on Mac in TC.app"
+            BlueprintName = "XIV on Mac in TC"
+            ReferencedContainer = "container:XIV on Mac in TC.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -63,9 +63,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "50511EC02770E085003A1E9F"
-            BuildableName = "XIV on Mac.app"
-            BlueprintName = "XIV on Mac"
-            ReferencedContainer = "container:XIV on Mac.xcodeproj">
+            BuildableName = "XIV on Mac in TC.app"
+            BlueprintName = "XIV on Mac in TC"
+            ReferencedContainer = "container:XIV on Mac in TC.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

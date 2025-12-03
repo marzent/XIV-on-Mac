@@ -323,8 +323,8 @@
 /* Class = "NSMenuItem"; title = "Stop Speaking"; ObjectID = "Oyz-dy-DGm"; */
 "Oyz-dy-DGm.title" = "停止語音";
 
-/* Class = "NSTextFieldCell"; title = "Square Enix Password"; ObjectID = "P4p-qs-m93"; */
-"P4p-qs-m93.title" = "Square Enix 密碼";
+/* Class = "NSTextFieldCell"; title = "Password"; ObjectID = "P4p-qs-m93"; */
+"P4p-qs-m93.title" = "密碼";
 
 /* Class = "NSButtonCell"; title = "D3D Feature Level"; ObjectID = "Prr-45-dEP"; */
 "Prr-45-dEP.title" = "D3D 功能等級";
@@ -506,8 +506,8 @@
 /* Class = "NSMenuItem"; title = "Undo"; ObjectID = "dRJ-4n-Yzg"; */
 "dRJ-4n-Yzg.title" = "復原";
 
-/* Class = "NSTextFieldCell"; title = "Square Enix ID"; ObjectID = "dYN-5e-LY1"; */
-"dYN-5e-LY1.title" = "Square Enix ID";
+/* Class = "NSTextFieldCell"; title = "Account"; ObjectID = "dYN-5e-LY1"; */
+"dYN-5e-LY1.title" = "帳號";
 
 /* Class = "NSButton"; ibShadowedToolTip = "Wine has a bug when starting up in Fullscreen modes with non-scaled set which makes the application difficult to interact with. This option will automatically change your game to Windowed mode on every startup, after which you can change back to fullscreen to avoid the bug."; ObjectID = "dcJ-iB-Eb4"; */
 "dcJ-iB-Eb4.ibShadowedToolTip" = "Wine 在非縮放的全螢幕模式下啟動時有一個錯誤，會讓應用程式難以互動。此選項會在每次啟動時自動將您的遊戲改為視窗模式，之後您可以改回全螢幕以避免此錯誤。";
@@ -605,8 +605,8 @@
 /* Class = "NSButtonCell"; title = "Bugfix for non-scaling mode"; ObjectID = "mSR-A7-gAD"; */
 "mSR-A7-gAD.title" = "全螢幕非縮放模式的錯誤修正";
 
-/* Class = "NSWindow"; title = "XIV on Mac"; ObjectID = "msO-z3-Trw"; */
-"msO-z3-Trw.title" = "XIV on Mac";
+/* Class = "NSWindow"; title = "XIV on Mac in TC"; ObjectID = "msO-z3-Trw"; */
+"msO-z3-Trw.title" = "XIV on Mac in TC";
 
 /* Class = "NSTextFieldCell"; title = "Wine Debug:"; ObjectID = "nXs-Qb-iRe"; */
 "nXs-Qb-iRe.title" = "Wine 除錯：";

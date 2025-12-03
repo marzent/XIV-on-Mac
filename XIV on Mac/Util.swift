@@ -18,7 +18,7 @@ enum Util {
     static let userHome = FileManager.default.homeDirectoryForCurrentUser
     static let applicationSupport = FileManager.default.urls(
         for: .applicationSupportDirectory, in: .userDomainMask
-    ).last!.appendingPathComponent("XIV on Mac")
+    ).last!.appendingPathComponent("XIV on Mac in TC")
     static let cache = applicationSupport.appendingPathComponent("cache")
     static let appleReceiptsPath = URL(
         fileURLWithPath: "/Library/Apple/System/Library/Receipts/")

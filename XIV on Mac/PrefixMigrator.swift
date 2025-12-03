@@ -82,12 +82,12 @@ class PrefixMigrator {
 
         // Now retrieve some stuff from the old prefix into the new.
         let oldProgramFilesXIVOnMacPath = oldPrefixPath.appendingPathComponent(
-            "drive_c/Program Files/XIV on Mac/", isDirectory: true)
+            "drive_c/Program Files/XIV on Mac in TC/", isDirectory: true)
         let itemsToRetrieve: [(URL, URL)] = [
             // First we move the game data itself
             (
                 oldPrefixPath.appendingPathComponent(
-                    "drive_c/Program Files (x86)/SquareEnix/FINAL FANTASY XIV - A Realm Reborn/",
+                    "drive_c/Program Files/USERJOY GAMES/FINAL FANTASY XIV TC/",
                     isDirectory: true),
                 Util.applicationSupport.appendingPathComponent(
                     "ffxiv/", isDirectory: true)

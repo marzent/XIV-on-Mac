@@ -102,10 +102,10 @@ class InstallerController: NSViewController {
         ).last!
         let gamePaths = [
             appSupportFolder.appendingPathComponent(
-                "FINAL FANTASY XIV ONLINE/Bottles/published_Final_Fantasy/drive_c/Program Files (x86)/SquareEnix/FINAL FANTASY XIV - A Realm Reborn"
+                "FINAL FANTASY XIV ONLINE/Bottles/published_Final_Fantasy/drive_c/Program Files/USERJOY GAMES/FINAL FANTASY XIV TC/"
             ).path,
             appSupportFolder.appendingPathComponent(
-                "CrossOver/Bottles/Final Fantasy XIV Online/drive_c/Program Files (x86)/SquareEnix/FINAL FANTASY XIV - A Realm Reborn"
+                "CrossOver/Bottles/Final Fantasy XIV Online/drive_c/Program Files/USERJOY GAMES/FINAL FANTASY XIV TC/"
             ).path,
         ]
         for gamePath in gamePaths {
