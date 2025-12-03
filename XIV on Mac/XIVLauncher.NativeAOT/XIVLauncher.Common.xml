@@ -1,0 +1,362 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>XIVLauncher.Common</name>
+    </assembly>
+    <members>
+        <member name="M:XIVLauncher.Common.Dalamud.AssetManager.CheckAssetRefreshNeeded(System.Net.Http.HttpClient,System.IO.DirectoryInfo)">
+            <summary>
+                Check if an asset update is needed. When this fails, just return false - the route to github
+                might be bad, don't wanna just bail out in that case
+            </summary>
+            <param name="baseDir">Base directory for assets</param>
+            <returns>Update state</returns>
+        </member>
+        <member name="P:XIVLauncher.Common.Encryption.BlockCipher.Blowfish.BlockSize">
+            <inheritdoc />
+        </member>
+        <member name="M:XIVLauncher.Common.Encryption.BlockCipher.Blowfish.#ctor(System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Initializes a new instance of the Blowfish class.
+            </summary>
+            <remarks>
+            This function also calculates P-array and S-boxes from the given key. This is most expensive operation in blowfish algorithm.
+            </remarks>
+            <param name="key">A secret key used for blowfish. Key length must be between 32 and 448 bits.</param>
+            <exception cref="T:System.ArgumentException">Length of the key is either too short or too long.</exception>
+        </member>
+        <member name="M:XIVLauncher.Common.Encryption.BlockCipher.BlowfishState.EncryptBlock(System.UInt32,System.UInt32)">
+            <summary>
+            Encrypts a block.
+            </summary>
+            <param name="xl">A left side of the block.</param>
+            <param name="xr">A right side of the block.</param>
+        </member>
+        <member name="M:XIVLauncher.Common.Encryption.BlockCipher.BlowfishState.DecryptBlock(System.UInt32,System.UInt32)">
+            <summary>
+            Decrypts a block.
+            </summary>
+            <param name="xl">A left side of the block.</param>
+            <param name="xr">A right side of the blick.</param>
+        </member>
+        <member name="M:XIVLauncher.Common.Encryption.BlockCipher.BlowfishState.InitKey(System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Initializes P-array and S-boxes with given key. P-array and S-boxes must be initialized to initial values beforehand.
+            </summary>
+            <param name="key">A setup key.</param>
+        </member>
+        <member name="P:XIVLauncher.Common.Encryption.BlockCipher.IBlockCipher.BlockSize">
+            <summary>
+            A number of bytes that can be processed in a single operation.
+            </summary>
+            <remarks>
+            This property is assumed to be immutable once the block cipher object is created.
+            Breaking this assumption may cause an undefined behavior.
+            </remarks>
+        </member>
+        <member name="M:XIVLauncher.Common.Encryption.BlockCipher.IBlockCipher.EncryptBlockUnsafe(System.Byte*,System.Byte*)">
+            <summary>
+            Encrypts a single block.
+            </summary>
+            <param name="input">
+            A pointer to the data needs to be encrypted.
+            It must be valid to read bytes from the pointer where size is indicated by BlockSize property.
+            </param>
+            <param name="output">
+            A pointer to the buffer to store the result of the operation.
+            It must be valid to write bytes to the pointer where size is indicated by BlockSize property.
+            </param>
+            <remarks>
+            A pointer to input and output **can** overlap to perform in-place operation.
+            </remarks>
+        </member>
+        <member name="M:XIVLauncher.Common.Encryption.BlockCipher.IBlockCipher.DecryptBlockUnsafe(System.Byte*,System.Byte*)">
+            <summary>
+            Decrypts a single block.
+            </summary>
+            <param name="input">
+            A pointer to the data needs to be decrypted.
+            It must be valid to read bytes from the pointer where size is indicated by BlockSize property.
+            </param>
+            <param name="output">
+            A pointer to the buffer to store the result of the operation.
+            It must be valid to write bytes to the pointer where size is indicated by BlockSize property.
+            </param>
+            <remarks>
+            A pointer to input and output **can** overlap to perform in-place operation.
+            </remarks>
+        </member>
+        <member name="M:XIVLauncher.Common.Encryption.LegacyBlowfish.#ctor(System.Byte[])">
+            <summary>
+            Initialize a new blowfish.
+            </summary>
+            <param name="key">The key to use.</param>
+            <param name="fucked">Whether or not a sign confusion should be introduced during key init. This is needed for SE's implementation of blowfish.</param>
+        </member>
+        <member name="T:XIVLauncher.Common.ExistingProcess">
+            <summary>
+            Class allowing the creation of a Process object based on an already held handle.
+            </summary>
+        </member>
+        <member name="M:XIVLauncher.Common.Game.Launcher.EnsureVersionSanity(System.IO.DirectoryInfo,System.Int32)">
+            <summary>
+            Check ver and bck files for sanity.
+            </summary>
+            <param name="gamePath"></param>
+            <param name="exLevel"></param>
+        </member>
+        <member name="M:XIVLauncher.Common.Game.Launcher.GetBootVersionHash(System.IO.DirectoryInfo)">
+            <summary>
+            Calculate the hash that is sent to patch-gamever for version verification/tamper protection.
+            This same hash is also sent in lobby, but for ffxiv.exe and ffxiv_dx11.exe.
+            </summary>
+            <returns>String of hashed EXE files.</returns>
+        </member>
+        <member name="T:XIVLauncher.Common.Game.Patch.Acquisition.Aria.JsonRpc.JsonRpcHttpClient">
+            <summary>
+            Bodge JSON-RPC 2.0 http client implementation
+            </summary>
+        </member>
+        <member name="T:XIVLauncher.Common.Patching.IndexedZiPatch.IIndexedZiPatchIndexInstaller">
+            <summary>Common functions for ZiPatch index installers.</summary>
+        </member>
+        <member name="E:XIVLauncher.Common.Patching.IndexedZiPatch.IIndexedZiPatchIndexInstaller.OnInstallProgress">
+            <summary>Invoked whenever install progress changes, with rate throttling specified from <see cref="M:XIVLauncher.Common.Patching.IndexedZiPatch.IIndexedZiPatchIndexInstaller.ConstructFromPatchFile(XIVLauncher.Common.Patching.IndexedZiPatch.IndexedZiPatchIndex,System.TimeSpan)"/>.</summary>
+        </member>
+        <member name="E:XIVLauncher.Common.Patching.IndexedZiPatch.IIndexedZiPatchIndexInstaller.OnVerifyProgress">
+            <summary>Invoked whenever verify progress changes, with rate throttling specified from <see cref="M:XIVLauncher.Common.Patching.IndexedZiPatch.IIndexedZiPatchIndexInstaller.ConstructFromPatchFile(XIVLauncher.Common.Patching.IndexedZiPatch.IndexedZiPatchIndex,System.TimeSpan)"/>.</summary>
+        </member>
+        <member name="M:XIVLauncher.Common.Patching.IndexedZiPatch.IIndexedZiPatchIndexInstaller.ConstructFromPatchFile(XIVLauncher.Common.Patching.IndexedZiPatch.IndexedZiPatchIndex,System.TimeSpan)">
+            <summary>Initializes the installer from the given patch file.</summary>
+            <param name="patchIndex">Patch index file to load.</param>
+            <param name="progressReportInterval">Rate of <see cref="E:XIVLauncher.Common.Patching.IndexedZiPatch.IIndexedZiPatchIndexInstaller.OnInstallProgress"/> and <see cref="E:XIVLauncher.Common.Patching.IndexedZiPatch.IIndexedZiPatchIndexInstaller.OnVerifyProgress"/> being called. If default, then 250ms will be used.</param>
+            <returns>A task representing the operation state.</returns>
+        </member>
+        <member name="M:XIVLauncher.Common.Patching.IndexedZiPatch.IIndexedZiPatchIndexInstaller.VerifyFiles(System.Boolean,System.Int32,System.Threading.CancellationToken)">
+            <summary>Verifies all files that can be verified from the currently loaded patch index file.</summary>
+            <param name="refine">If set, only verify the parts that are registered as missing part indices per target file.</param>
+            <param name="concurrentCount">Number of threads for concurrent operation.</param>
+            <param name="cancellationToken">Cancellation token.</param>
+            <returns>A task representing the operation state.</returns>
+        </member>
+        <member name="M:XIVLauncher.Common.Patching.IndexedZiPatch.IIndexedZiPatchIndexInstaller.MarkFileAsMissing(System.Int32,System.Threading.CancellationToken)">
+            <summary>Marks a file as missing.</summary>
+            <param name="targetIndex">Index of the target file in the patch index file.</param>
+            <param name="cancellationToken">Cancellation token.</param>
+            <returns>A task representing the operation state.</returns>
+        </member>
+        <member name="M:XIVLauncher.Common.Patching.IndexedZiPatch.IIndexedZiPatchIndexInstaller.SetTargetStreamFromPathReadOnly(System.Int32,System.String,System.Threading.CancellationToken)">
+            <summary>Opens a file specified for reading and use that stream as the file corresponding to the target index.</summary>
+            <param name="targetIndex">Index of the target file in the patch index file.</param>
+            <param name="path">Path of the file on the local file system.</param>
+            <param name="cancellationToken">Cancellation token.</param>
+            <returns>A task representing the operation state.</returns>
+        </member>
+        <member name="M:XIVLauncher.Common.Patching.IndexedZiPatch.IIndexedZiPatchIndexInstaller.SetTargetStreamFromPathReadWrite(System.Int32,System.String,System.Threading.CancellationToken)">
+            <summary>Opens a file specified for reading and writing and use that stream as the file corresponding to the target index.</summary>
+            <param name="targetIndex">Index of the target file in the patch index file.</param>
+            <param name="path">Path of the file on the local file system.</param>
+            <param name="cancellationToken">Cancellation token.</param>
+            <returns>A task representing the operation state.</returns>
+        </member>
+        <member name="M:XIVLauncher.Common.Patching.IndexedZiPatch.IIndexedZiPatchIndexInstaller.SetTargetStreamsFromPathReadOnly(System.String,System.Threading.CancellationToken)">
+            <summary>Opens all files inside a root directory that are specified from the patch index file for reading.</summary>
+            <param name="rootPath">Root path to find the files specified from the patch index file.</param>
+            <param name="cancellationToken">Cancellation token.</param>
+            <returns>A task representing the operation state.</returns>
+        </member>
+        <member name="M:XIVLauncher.Common.Patching.IndexedZiPatch.IIndexedZiPatchIndexInstaller.SetTargetStreamsFromPathReadWriteForMissingFiles(System.String,System.Threading.CancellationToken)">
+            <summary>Opens all files inside a root directory that are specified from the patch index file for reading and writing.</summary>
+            <param name="rootPath">Root path to find the files specified from the patch index file.</param>
+            <param name="cancellationToken">Cancellation token.</param>
+            <returns>A task representing the operation state.</returns>
+        </member>
+        <member name="M:XIVLauncher.Common.Patching.IndexedZiPatch.IIndexedZiPatchIndexInstaller.RepairNonPatchData(System.Threading.CancellationToken)">
+            <summary>Writes files that are not directly stored in patch files, such as blocks of zeroes.</summary>
+            <param name="cancellationToken">Cancellation token.</param>
+            <returns>A task representing the operation state.</returns>
+        </member>
+        <member name="M:XIVLauncher.Common.Patching.IndexedZiPatch.IIndexedZiPatchIndexInstaller.WriteVersionFiles(System.String,System.Threading.CancellationToken)">
+            <summary>Writes version files.</summary>
+            <param name="rootPath">Path of the directory to write version files to.</param>
+            <param name="cancellationToken">Cancellation token.</param>
+            <returns>A task representing the operation state.</returns>
+        </member>
+        <member name="M:XIVLauncher.Common.Patching.IndexedZiPatch.IIndexedZiPatchIndexInstaller.QueueInstall(System.Int32,System.Uri,System.String,System.Int32,System.Threading.CancellationToken)">
+            <summary>Queues installation from a patch file.</summary>
+            <param name="sourceIndex">Index of the patch file.</param>
+            <param name="sourceUrl">URL of the patch file.</param>
+            <param name="sid">Session ID to use to authenticate against file servers.</param>
+            <param name="splitBy">Number of chunks to divide the request.</param>
+            <param name="cancellationToken">Cancellation token.</param>
+            <returns>A task representing the operation state.</returns>
+        </member>
+        <member name="M:XIVLauncher.Common.Patching.IndexedZiPatch.IIndexedZiPatchIndexInstaller.QueueInstall(System.Int32,System.IO.FileInfo,System.Int32,System.Threading.CancellationToken)">
+            <summary>Queues installation from a patch file.</summary>
+            <param name="sourceIndex">Index of the patch file.</param>
+            <param name="sourceFile">Local path of the patch file.</param>
+            <param name="splitBy">Number of chunks to divide the processing.</param>
+            <param name="cancellationToken">Cancellation token.</param>
+            <returns>A task representing the operation state.</returns>
+        </member>
+        <member name="M:XIVLauncher.Common.Patching.IndexedZiPatch.IIndexedZiPatchIndexInstaller.Install(System.Int32,System.Threading.CancellationToken)">
+            <summary>Installs from the queued patch files.</summary>
+            <param name="concurrentCount">Number of concurrent operations.</param>
+            <param name="cancellationToken">Cancellation token.</param>
+            <returns>A task representing the operation state.</returns>
+        </member>
+        <member name="M:XIVLauncher.Common.Patching.IndexedZiPatch.IIndexedZiPatchIndexInstaller.GetMissingPartIndicesPerPatch(System.Threading.CancellationToken)">
+            <summary>Gets the missing part indices per patch file.</summary>
+            <param name="cancellationToken">Cancellation token.</param>
+            <returns>A task representing the operation state.</returns>
+        </member>
+        <member name="M:XIVLauncher.Common.Patching.IndexedZiPatch.IIndexedZiPatchIndexInstaller.GetMissingPartIndicesPerTargetFile(System.Threading.CancellationToken)">
+            <summary>Gets the missing part indices per target file.</summary>
+            <param name="cancellationToken">Cancellation token.</param>
+            <returns>A task representing the operation state.</returns>
+        </member>
+        <member name="M:XIVLauncher.Common.Patching.IndexedZiPatch.IIndexedZiPatchIndexInstaller.GetSizeMismatchTargetFileIndices(System.Threading.CancellationToken)">
+            <summary>Gets the target file indices for the files with incorrect file sizes.</summary>
+            <param name="cancellationToken">Cancellation token.</param>
+            <returns>A task representing the operation state.</returns>
+        </member>
+        <member name="M:XIVLauncher.Common.Patching.IndexedZiPatch.IIndexedZiPatchIndexInstaller.SetWorkerProcessPriority(System.Diagnostics.ProcessPriorityClass,System.Threading.CancellationToken)">
+            <summary>Sets worker process' priority, if applicable.</summary>
+            <param name="subprocessPriority">Desired process priority.</param>
+            <param name="cancellationToken">Cancellation token.</param>
+            <returns>A task representing the operation state.</returns>
+        </member>
+        <member name="M:XIVLauncher.Common.Patching.IndexedZiPatch.IIndexedZiPatchIndexInstaller.MoveFile(System.String,System.String,System.Threading.CancellationToken)">
+            <summary>Moves a file using the worker process' permissions.</summary>
+            <param name="sourceFile">Path of the source file.</param>
+            <param name="targetFile">New path to move the source file to.</param>
+            <param name="cancellationToken">Cancellation token.</param>
+            <returns>A task representing the operation state.</returns>
+        </member>
+        <member name="M:XIVLauncher.Common.Patching.IndexedZiPatch.IIndexedZiPatchIndexInstaller.CreateDirectory(System.String,System.Threading.CancellationToken)">
+            <summary>Creates a directory using the worker process' permissions.</summary>
+            <param name="dir">Directory to create.</param>
+            <param name="cancellationToken">Cancellation token.</param>
+            <returns>A task representing the operation state.</returns>
+        </member>
+        <member name="M:XIVLauncher.Common.Patching.IndexedZiPatch.IIndexedZiPatchIndexInstaller.RemoveDirectory(System.String,System.Boolean,System.Threading.CancellationToken)">
+            <summary>Removes a directory using the worker process' permissions.</summary>
+            <param name="dir">Directory to remove.</param>
+            <param name="recursive">Whether to remove the directory recursively.</param>
+            <param name="cancellationToken">Cancellation token.</param>
+            <returns>A task representing the operation state.</returns>
+        </member>
+        <member name="T:XIVLauncher.Common.Patching.Util.Crc32">
+            <summary>
+            Performs the 32-bit reversed variant of the cyclic redundancy check algorithm
+            </summary>
+        </member>
+        <member name="M:XIVLauncher.Common.Patching.Util.Crc32.Init">
+            <summary>
+            Initializes Crc32's state
+            </summary>
+        </member>
+        <member name="M:XIVLauncher.Common.Patching.Util.Crc32.Update(System.Byte[])">
+            <summary>
+            Updates Crc32's state with new data
+            </summary>
+            <param name="data">Data to calculate the new CRC from</param>
+        </member>
+        <member name="P:XIVLauncher.Common.Patching.ZiPatch.Chunk.ZiPatchChunk.CalculatedChecksum">
+            <summary>
+            The checksum calculated from the chunk's data.
+            This WILL! be 0 if the file has not been loaded with checksums enabled.
+            </summary>
+        </member>
+        <member name="M:XIVLauncher.Common.Patching.ZiPatch.ZiPatchFile.#ctor(System.IO.Stream,System.Boolean)">
+            <summary>
+            Instantiates a ZiPatchFile from a Stream
+            </summary>
+            <param name="stream">Stream to a ZiPatch</param>
+        </member>
+        <member name="M:XIVLauncher.Common.Patching.ZiPatch.ZiPatchFile.FromFileName(System.String)">
+            <summary>
+            Instantiates a ZiPatchFile from a file path
+            </summary>
+            <param name="filepath">Path to patch file</param>
+        </member>
+        <member name="M:XIVLauncher.Common.Storage.GetFolder(System.String)">
+            <summary>
+            Gets a folder and makes sure that it exists.
+            </summary>
+            <param name="folderName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:XIVLauncher.Common.Support.SerilogEventSink">
+            <summary>
+            Serilog event sink.
+            </summary>
+        </member>
+        <member name="M:XIVLauncher.Common.Support.SerilogEventSink.#ctor(System.IFormatProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:XIVLauncher.Common.Support.SerilogEventSink"/> class.
+            </summary>
+            <param name="formatProvider">Logging format provider.</param>
+        </member>
+        <member name="E:XIVLauncher.Common.Support.SerilogEventSink.LogLine">
+            <summary>
+            Event on a log line being emitted.
+            </summary>
+        </member>
+        <member name="P:XIVLauncher.Common.Support.SerilogEventSink.Instance">
+            <summary>
+            Gets the default instance.
+            </summary>
+        </member>
+        <member name="M:XIVLauncher.Common.Support.SerilogEventSink.Emit(Serilog.Events.LogEvent)">
+            <summary>
+            Emit a log event.
+            </summary>
+            <param name="logEvent">Log event to be emitted.</param>
+        </member>
+        <member name="M:XIVLauncher.Common.Util.ApiHelpers.GetAttribute``1(System.Enum)">
+            <summary>
+            Gets an attribute on an enum.
+            </summary>
+            <typeparam name="TAttribute">The type of attribute to get.</typeparam>
+            <param name="value">The enum value that has an attached attribute.</param>
+            <returns>The attached attribute, if any.</returns>
+        </member>
+        <member name="M:XIVLauncher.Common.Util.DebugHelpers.ByteArrayToHex(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Create a hexdump of the provided bytes.
+            </summary>
+            <param name="bytes">The bytes to hexdump.</param>
+            <param name="offset">The offset in the byte array to start at.</param>
+            <param name="bytesPerLine">The amount of bytes to display per line.</param>
+            <returns>The generated hexdump in string form.</returns>
+        </member>
+        <member name="M:XIVLauncher.Common.Util.GameHelpers.IsRegionNorthAmerica">
+            <summary>
+                Returns <see langword="true"/> if the current system region is set to North America.
+            </summary>
+        </member>
+        <member name="M:XIVLauncher.Common.Util.PlatformHelpers.GetTempFileName">
+            <summary>
+                Generates a temporary file name.
+            </summary>
+            <returns>A temporary file name that is almost guaranteed to be unique.</returns>
+        </member>
+        <member name="M:XIVLauncher.Common.Util.PlatformHelpers.CreateDirectoryHierarchy(System.IO.DirectoryInfo)">
+            <summary>
+            Recursively create all directories in the specified path.
+            </summary>
+            <param name="dir"></param>
+        </member>
+        <member name="M:XIVLauncher.Common.Util.PlatformHelpers.IsElevationRequiredForWrite(System.IO.DirectoryInfo)">
+             <summary>
+             Check if elevation is required to write to the specified directory.
+             This is done by attempting to write a temporary file to the directory.
+            
+             Creates the directory if it does not exist.
+             </summary>
+             <param name="dir">The directory to check.</param>
+             <returns>Whether elevation is required.</returns>
+        </member>
+    </members>
+</doc>

@@ -36,6 +36,9 @@ enum GraphicsInstaller {
             }
             do {
                 try fm.copyItem(atPath: dll.path, toPath: winDllPath)
+                // Ensure the DLL has executable permissions for Wine
+                try fm.setAttributes([.posixPermissions: 0o755], ofItemAtPath: winDllPath)
+                Log.information("[GraphicsInstaller] installed \(dllName)")
             } catch {
                 Log.error("[GraphicsInstaller] error copying dx dll \(error)")
             }
@@ -51,6 +54,8 @@ enum GraphicsInstaller {
             do {
                 try fm.removeItem(atPath: winDllPath)
                 try fm.moveItem(atPath: oldDllPath, toPath: winDllPath)
+                // Ensure restored DLL has executable permissions for Wine
+                try fm.setAttributes([.posixPermissions: 0o755], ofItemAtPath: winDllPath)
                 Log.information(
                     "[GraphicsInstaller] restored old wine dx dll \(oldDllPath) to \(winDllPath)"
                 )

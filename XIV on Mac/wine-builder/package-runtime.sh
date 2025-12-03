@@ -48,6 +48,12 @@ libDir="$targetDir/lib"
 mkdir -p "$libDir"
 processedLibs=("libMoltenVK.dylib")
 
+# Strip existing code signatures before modifying binaries to avoid warnings
+# install_name_tool will otherwise print that changes invalidate the signature.
+find "$targetDir" -type f \
+    \( -name "*.dylib" -o -name "*.so" -o -perm -111 \) \
+    -exec sh -c 'codesign --remove-signature "$1" 2>/dev/null || true' _ {} \;
+
 is_processed() {
     local libName=$1
     for processedLib in "${processedLibs[@]}"; do

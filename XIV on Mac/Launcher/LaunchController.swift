@@ -462,7 +462,8 @@ class LaunchController: NSViewController, WKNavigationDelegate {
                 let exitCode = process.exitCode
                 Log.information("Game exited with exit code \(exitCode)")
                 DispatchQueue.main.async {
-                    if exitCode != 0 && Settings.nonZeroExitError {
+                    // Exit codes 0 and 1 are considered normal (1 = user quit from title screen)
+                    if exitCode != 0 && exitCode != 1 && Settings.nonZeroExitError {
                         let alert = NSAlert()
                         alert.addButton(
                             withTitle: NSLocalizedString(
