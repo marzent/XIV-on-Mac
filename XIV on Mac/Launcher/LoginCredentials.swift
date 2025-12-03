@@ -10,7 +10,7 @@ import KeychainAccess
 import OrderedCollections
 
 public struct LoginCredentials {
-    static let squareServer = "https://secure.square-enix.com"
+    static let squareServer = "https://www.ffxiv.com.tw"
     let username: String
     let password: String
     var oneTimePassword: String?

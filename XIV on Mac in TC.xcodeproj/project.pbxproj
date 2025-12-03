@@ -559,7 +559,7 @@
 			};
 			buildConfigurationList = 50511EBC2770E085003A1E9F /* Build configuration list for PBXProject "XIV on Mac in TC" */;
 			compatibilityVersion = "Xcode 15.0";
-			developmentRegion = "zh-tw";
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
