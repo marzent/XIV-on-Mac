@@ -14,7 +14,7 @@ class OTP {
     private let loop: SelectorEventLoop
     private var server: DefaultHTTPServer?
     private static let keychain = Keychain(
-        server: "https://secure.square-enix.com", protocolType: .https)
+        server: "https://www.ffxiv.com.tw", protocolType: .https)
     private var generator: TOTP?
     private var timer = Timer()
 
