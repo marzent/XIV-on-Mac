@@ -324,7 +324,7 @@
 "Oyz-dy-DGm.title" = "Stop Speaking";
 
 /* Class = "NSTextFieldCell"; title = "Square Enix Password"; ObjectID = "P4p-qs-m93"; */
-"P4p-qs-m93.title" = "Square Enix Password";
+"P4p-qs-m93.title" = "Password";
 
 /* Class = "NSButtonCell"; title = "D3D Feature Level"; ObjectID = "Prr-45-dEP"; */
 "Prr-45-dEP.title" = "D3D Feature Level";
@@ -507,7 +507,7 @@
 "dRJ-4n-Yzg.title" = "Undo";
 
 /* Class = "NSTextFieldCell"; title = "Square Enix ID"; ObjectID = "dYN-5e-LY1"; */
-"dYN-5e-LY1.title" = "Square Enix ID";
+"dYN-5e-LY1.title" = "FFXIV Account";
 
 /* Class = "NSButton"; ibShadowedToolTip = "Wine has a bug when starting up in Fullscreen modes with non-scaled set which makes the application difficult to interact with. This option will automatically change your game to Windowed mode on every startup, after which you can change back to fullscreen to avoid the bug."; ObjectID = "dcJ-iB-Eb4"; */
 "dcJ-iB-Eb4.ibShadowedToolTip" = "Wine has a bug when starting up in Fullscreen modes with non-scaled set which makes the application difficult to interact with. This option will automatically change your game to Windowed mode on every startup, after which you can change back to fullscreen to avoid the bug.";
@@ -606,7 +606,7 @@
 "mSR-A7-gAD.title" = "Bugfix for non-scaling mode";
 
 /* Class = "NSWindow"; title = "XIV on Mac"; ObjectID = "msO-z3-Trw"; */
-"msO-z3-Trw.title" = "XIV on Mac";
+"msO-z3-Trw.title" = "XIV on Mac inn TC";
 
 /* Class = "NSTextFieldCell"; title = "Wine Debug:"; ObjectID = "nXs-Qb-iRe"; */
 "nXs-Qb-iRe.title" = "Wine Debug:";
