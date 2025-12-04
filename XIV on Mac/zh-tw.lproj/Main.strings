@@ -693,7 +693,7 @@
 "uRl-iY-unG.title" = "剪下";
 
 /* Class = "NSTextFieldCell"; title = "Download and Install the game."; ObjectID = "uai-Rg-ZEO"; */
-"uai-Rg-ZEO.title" = "下載並安裝遊戲。";
+"uai-Rg-ZEO.title" = "建立遊戲目錄結構並繼續下載。";
 
 /* Class = "NSMenuItem"; title = "Make Upper Case"; ObjectID = "vmV-6d-7jI"; */
 "vmV-6d-7jI.title" = "轉為大寫";

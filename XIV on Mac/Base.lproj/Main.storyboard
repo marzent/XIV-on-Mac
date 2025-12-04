@@ -25,11 +25,8 @@
                                                 <action selector="orderFrontStandardAboutPanel:" target="Ady-hI-5gd" id="Exp-CZ-Vem"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Check for Updates..." id="Jeg-Jn-PWU">
+                                        <menuItem title="Check for Updates..." hidden="YES" id="Jeg-Jn-PWU">
                                             <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="checkForUpdates:" target="yc9-Mt-LbV" id="USo-yK-5Ni"/>
-                                            </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
                                         <menuItem title="Settings…" keyEquivalent="," id="BOF-NM-1cW">
@@ -88,7 +85,8 @@
                                                 <action selector="selectGamePath:" target="Voe-Tx-rLC" id="68k-0i-emw"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Repair Game Files" keyEquivalent="r" id="eHZ-Vy-9pF">
+                                        <menuItem title="Repair Game Files" hidden="YES" enabled="NO" id="eHZ-Vy-9pF">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="doRepair:" target="Ady-hI-5gd" id="e7T-S8-fwl"/>
                                             </connections>
@@ -354,17 +352,17 @@
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Add On" id="ngK-lv-alc">
+                            <menuItem title="Add On" enabled="NO" id="ngK-lv-alc">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Add On" id="A9a-u7-hsU">
                                     <items>
-                                        <menuItem title="Start Bunny HUD" id="lTa-gf-Qso">
+                                        <menuItem title="Start Bunny HUD" hidden="YES" enabled="NO" id="lTa-gf-Qso">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="startBH:" target="Voe-Tx-rLC" id="RLt-PI-tKQ"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Auto-Launch Bunny HUD" id="1Do-e8-DyE">
+                                        <menuItem title="Auto-Launch Bunny HUD" hidden="YES" enabled="NO" id="1Do-e8-DyE">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="toggleBH:" target="Voe-Tx-rLC" id="JYB-PA-S2z"/>
@@ -419,15 +417,9 @@
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="XIV_on_Mac_in_TC" customModuleProvider="target">
                     <connections>
                         <outlet property="bhAutoLaunch" destination="1Do-e8-DyE" id="Sif-eR-Xui"/>
-                        <outlet property="sparkle" destination="yc9-Mt-LbV" id="5O3-N6-awX"/>
                     </connections>
                 </customObject>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
-                <customObject id="yc9-Mt-LbV" customClass="SPUStandardUpdaterController">
-                    <connections>
-                        <outlet property="updaterDelegate" destination="Voe-Tx-rLC" id="mXy-u1-5Eq"/>
-                    </connections>
-                </customObject>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="24" y="1058"/>
@@ -767,7 +759,7 @@ Gw
                                                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I75-eh-bU9">
                                                                             <rect key="frame" x="227" y="220" width="405" height="18"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                            <buttonCell key="cell" type="radio" title="Download" bezelStyle="regularSquare" imagePosition="left" alignment="left" enabled="NO" inset="2" id="AHs-hu-DAo">
+                                                                            <buttonCell key="cell" type="radio" title="Download" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="AHs-hu-DAo">
                                                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                                 <font key="font" metaFont="system"/>
                                                                             </buttonCell>
@@ -789,7 +781,7 @@ Gw
                                                                         <button identifier="pointGame" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LLy-8u-ygg">
                                                                             <rect key="frame" x="227" y="124" width="405" height="18"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                            <buttonCell key="cell" type="radio" title="Choose existing install" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="Loh-1J-Ipp">
+                                                                            <buttonCell key="cell" type="radio" title="Choose existing install" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="Loh-1J-Ipp">
                                                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                                 <font key="font" metaFont="system"/>
                                                                             </buttonCell>

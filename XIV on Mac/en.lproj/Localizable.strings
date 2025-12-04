@@ -344,4 +344,8 @@ Do not enable this on non-retina displays, unless for screenshot purposes.";
 "APPEARANCE_TRIBE_15" = "Rava";
 "APPEARANCE_TRIBE_16" = "Veena";
 
+"SELECT_GAME_ROOT_TITLE" = "Select Game Root Directory";
+"SELECT_GAME_ROOT_SUBTITLE" = "Choose where to create the game and boot folders";
+"DIRECTORY_CREATION_FAILED" = "Failed to create game directories";
+
 

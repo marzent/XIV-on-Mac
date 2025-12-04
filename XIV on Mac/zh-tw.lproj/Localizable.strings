@@ -343,4 +343,8 @@
 "APPEARANCE_TRIBE_15" = "密林之民";
 "APPEARANCE_TRIBE_16" = "山林之民";
 
+"SELECT_GAME_ROOT_TITLE" = "選擇遊戲根目錄";
+"SELECT_GAME_ROOT_SUBTITLE" = "選擇要建立 game 和 boot 資料夾的位置";
+"DIRECTORY_CREATION_FAILED" = "建立遊戲目錄失敗";
+
 

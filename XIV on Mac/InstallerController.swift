@@ -15,7 +15,7 @@ class InstallerController: NSViewController {
         case point
     }
 
-    private var action = GameFiles.point
+    private var action = GameFiles.download
 
     @IBOutlet private var status: NSTextField!
     @IBOutlet private var info: NSTextField!
@@ -70,7 +70,10 @@ class InstallerController: NSViewController {
         Task {
             switch action {
             case .download:
-                tabView.selectNextTabViewItem(sender)
+                if let gamePath = await createGameDirectory() {
+                    Settings.gamePath = gamePath
+                    tabView.selectNextTabViewItem(sender)
+                }
             case .copy:
                 if let gamePath = await getGameDirectory() {
                     copyGame(gamePath: gamePath)
@@ -94,6 +97,45 @@ class InstallerController: NSViewController {
         } catch {
             Log.error("Error copying game from \(gamePath)")
         }
+    }
+
+    private func createGameDirectory() async -> URL? {
+        // 顯示目錄選擇器讓用戶選擇遊戲根目錄
+        let openPanel = NSOpenPanel()
+        openPanel.title = NSLocalizedString("SELECT_GAME_ROOT_TITLE", comment: "")
+        openPanel.subtitle = NSLocalizedString("SELECT_GAME_ROOT_SUBTITLE", comment: "")
+        openPanel.showsResizeIndicator = true
+        openPanel.showsHiddenFiles = false
+        openPanel.canChooseDirectories = true
+        openPanel.canChooseFiles = false
+        openPanel.canCreateDirectories = true
+        openPanel.allowsMultipleSelection = false
+        
+        let result = await openPanel.beginSheetModal(for: view.window!)
+        openPanel.close()
+        
+        if result == .OK, let selectedURL = openPanel.url {
+            // 建立 game 和 boot 子目錄
+            let gameDir = selectedURL.appendingPathComponent("game")
+            let bootDir = selectedURL.appendingPathComponent("boot")
+            
+            do {
+                try FileManager.default.createDirectory(at: gameDir, withIntermediateDirectories: true)
+                try FileManager.default.createDirectory(at: bootDir, withIntermediateDirectories: true)
+                return selectedURL
+            } catch {
+                Log.error("Failed to create game directories: \(error.localizedDescription)")
+                // 顯示錯誤對話框
+                let alert = NSAlert()
+                alert.messageText = NSLocalizedString("DIRECTORY_CREATION_FAILED", comment: "")
+                alert.informativeText = error.localizedDescription
+                alert.alertStyle = .critical
+                alert.addButton(withTitle: NSLocalizedString("BUTTON_OK", comment: ""))
+                await alert.beginSheetModal(for: self.view.window!)
+                return nil
+            }
+        }
+        return nil
     }
 
     private func getGameDirectory() async -> String? {
