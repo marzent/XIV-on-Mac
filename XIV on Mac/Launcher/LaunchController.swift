@@ -9,82 +9,98 @@ import Cocoa
 import WebKit
 import XIVLauncher
 
-class RecaptchaSchemeHandler: NSObject, WKURLSchemeHandler {
-    func webView(_ webView: WKWebView, start urlSchemeTask: WKURLSchemeTask) {
-        guard urlSchemeTask.request.url?.absoluteString == "recaptcha://user.ffxiv.com.tw/recaptcha_page.html" else {
-            urlSchemeTask.didFailWithError(NSError(domain: "RecaptchaSchemeHandler", code: -1, userInfo: [NSLocalizedDescriptionKey: "Unsupported URL"]))
-            return
-        }
-        
-        guard let htmlPath = Bundle.main.path(forResource: "recaptcha_page", ofType: "html"),
-              let htmlContent = try? String(contentsOfFile: htmlPath, encoding: .utf8) else {
-            urlSchemeTask.didFailWithError(NSError(domain: "RecaptchaSchemeHandler", code: -1, userInfo: [NSLocalizedDescriptionKey: "HTML file not found"]))
-            return
-        }
-        
-        let response = HTTPURLResponse(
-            url: urlSchemeTask.request.url!,
-            statusCode: 200,
-            httpVersion: "HTTP/1.1",
-            headerFields: ["Content-Type": "text/html; charset=utf-8"]
-        )!
-        
-        urlSchemeTask.didReceive(response)
-        urlSchemeTask.didReceive(htmlContent.data(using: .utf8)!)
-        urlSchemeTask.didFinish()
-    }
-    
-    func webView(_ webView: WKWebView, stop urlSchemeTask: WKURLSchemeTask) {
-        // No-op
-    }
-}
 
-final class RecaptchaTokenProvider: NSObject, WKScriptMessageHandler {
+class RecaptchaTokenProvider: NSObject, WKScriptMessageHandler {
     static let shared = RecaptchaTokenProvider()
 
+    private let siteKey = "6Ld6VmorAAAAANQdQeqkaOeScR42qHC7Hyalq00r"
+    private let handlerName = "recaptchaToken"
     private var completion: ((Result<String, Error>) -> Void)?
-    private var webView: WKWebView?
+    private enum RecaptchaTokenError: Error {
+        case emptyToken
+    }
 
-    func fetchToken(completion: @escaping (Result<String, Error>) -> Void) {
-        DispatchQueue.main.async {
-            self.cancel()
-            self.completion = completion
+    private var bootstrapScript: String {
+        """
+        (function() {
+          const SITE_KEY = '\(siteKey)';
 
-            let contentController = WKUserContentController()
-            contentController.add(self, name: "recaptchaToken")
+          function postTokenToHost(token) {
+            try {
+              window.webkit.messageHandlers.\(handlerName).postMessage(token || '');
+            } catch (_) {}
+          }
 
-            let config = WKWebViewConfiguration()
-            config.userContentController = contentController
-            config.setURLSchemeHandler(RecaptchaSchemeHandler(), forURLScheme: "recaptcha")
+          function ensureRecaptcha() {
+            return new Promise(function(resolve) {
+              try {
+                if (window.grecaptcha && window.grecaptcha.enterprise) { resolve(); return; }
+                var s = document.createElement('script');
+                s.src = 'https://www.google.com/recaptcha/enterprise.js?render=' + SITE_KEY;
+                s.async = true;
+                s.defer = true;
+                s.onload = function() { resolve(); };
+                s.onerror = function() { resolve(); };
+                document.head.appendChild(s);
+              } catch (_) { resolve(); }
+            });
+          }
 
-            let webView = WKWebView(frame: .zero, configuration: config)
-            webView.isHidden = true
-            self.webView = webView
+          window.getToken = function() {
+            ensureRecaptcha().then(function() {
+              try {
+                if (!window.grecaptcha || !window.grecaptcha.enterprise) {
+                  postTokenToHost('');
+                  return;
+                }
+                window.grecaptcha.enterprise.ready(function() {
+                  window.grecaptcha.enterprise.execute(SITE_KEY, { action: 'LOGIN' })
+                    .then(function(token) { postTokenToHost(token); })
+                    .catch(function() { postTokenToHost(''); });
+                });
+              } catch (_) { postTokenToHost(''); }
+            });
+          };
 
-            guard let url = URL(string: "recaptcha://user.ffxiv.com.tw/recaptcha_page.html") else {
-                completion(.failure(NSError(
-                    domain: "RecaptchaTokenProvider", code: -1,
-                    userInfo: [NSLocalizedDescriptionKey: "Invalid recaptcha URL"])))
-                self.cancel()
-                return
-            }
+          ensureRecaptcha();
+        })();
+        """
+    }
 
-            webView.load(URLRequest(url: url))
+    func installScript(using webView: WKWebView) {
+        let contentController = webView.configuration.userContentController
+        contentController.removeScriptMessageHandler(forName: handlerName)
+        contentController.add(self, name: handlerName)
+
+        let userScript = WKUserScript(
+            source: bootstrapScript, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
+        if !contentController.userScripts.contains(where: { $0.source == bootstrapScript }) {
+            contentController.addUserScript(userScript)
         }
+        webView.evaluateJavaScript(bootstrapScript, completionHandler: nil)
+    }
+
+    func fetchToken(using webView: WKWebView,
+                    completion: @escaping (Result<String, Error>) -> Void) {
+        self.completion = completion
+        webView.evaluateJavaScript("getToken();", completionHandler: { _, error in
+            if let error = error {
+                completion(.failure(error))
+                self.completion = nil
+            }
+        })
     }
 
     func userContentController(_ userContentController: WKUserContentController,
                                didReceive message: WKScriptMessage) {
-        guard message.name == "recaptchaToken" else { return }
-
+        guard message.name == handlerName else { return }
         let token = message.body as? String ?? ""
+        guard !token.isEmpty else {
+            completion?(.failure(RecaptchaTokenError.emptyToken))
+            completion = nil
+            return
+        }
         completion?(.success(token))
-        cancel()
-    }
-
-    private func cancel() {
-        webView?.stopLoading()
-        webView = nil
         completion = nil
     }
 }
@@ -183,6 +199,8 @@ class LaunchController: NSViewController, WKNavigationDelegate {
                 newsWebView.load(request)
             }
         }
+
+        RecaptchaTokenProvider.shared.installScript(using: newsWebView)
         
         DispatchQueue.global(qos: .userInitiated).async {
             self.checkBoot()
@@ -360,7 +378,9 @@ class LaunchController: NSViewController, WKNavigationDelegate {
         Settings.credentials = LoginCredentials(
             username: userField.stringValue, password: passwdField.stringValue,
             oneTimePassword: otpField.stringValue)
-        RecaptchaTokenProvider.shared.fetchToken { [weak self] result in
+
+
+        RecaptchaTokenProvider.shared.fetchToken(using: newsWebView) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case let .success(token):
@@ -374,12 +394,10 @@ class LaunchController: NSViewController, WKNavigationDelegate {
                 DispatchQueue.main.async {
                     self.loginSheetWinController?.window?.close()
                     let alert = NSAlert()
-                    alert.addButton(
-                        withTitle: NSLocalizedString("BUTTON_OK", comment: ""))
+                    alert.addButton(withTitle: "OK")
                     alert.alertStyle = .critical
-                    alert.messageText = NSLocalizedString(
-                        "LOGIN_RECAPTCHA_FAILED", comment: "")
-                    alert.informativeText = error.localizedDescription
+                    alert.messageText = "Failed to get reCAPTCHA token"
+                    alert.informativeText = "Please try again."
                     alert.runModal()
                 }
             }
