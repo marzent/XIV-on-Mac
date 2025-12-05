@@ -7,6 +7,42 @@
       "blur-material" : 0.3,
       "layers" : [
         {
+          "blend-mode" : "normal",
+          "fill-specializations" : [
+            {
+              "value" : {
+                "automatic-gradient" : "display-p3:0.00000,0.00000,0.00000,1.00000"
+              }
+            },
+            {
+              "appearance" : "dark",
+              "value" : {
+                "linear-gradient" : [
+                  "display-p3:1.00000,0.97850,0.92366,1.00000",
+                  "display-p3:0.69410,0.69410,0.69410,1.00000"
+                ]
+              }
+            },
+            {
+              "appearance" : "tinted",
+              "value" : {
+                "solid" : "extended-gray:1.00000,1.00000"
+              }
+            }
+          ],
+          "glass" : true,
+          "hidden" : false,
+          "image-name" : "TC.png",
+          "name" : "TC",
+          "position" : {
+            "scale" : 0.58,
+            "translation-in-points" : [
+              -25.624251321740758,
+              225.93749999999994
+            ]
+          }
+        },
+        {
           "fill-specializations" : [
             {
               "value" : {
@@ -32,14 +68,15 @@
               }
             }
           ],
+          "glass" : true,
           "hidden" : false,
           "image-name" : "font.png",
           "name" : "font",
           "position" : {
-            "scale" : 0.42,
+            "scale" : 0.35,
             "translation-in-points" : [
-              -12.5390625,
-              8.46875
+              -30.334251321740794,
+              -130.59887190650494
             ]
           }
         }
@@ -66,10 +103,10 @@
       "blur-material" : 1,
       "layers" : [
         {
-          "image-name" : "background.png",
-          "name" : "background",
+          "image-name" : "Gemini_Generated_Image_22fzzr22fzzr22fz.png",
+          "name" : "Gemini_Generated_Image_22fzzr22fzzr22fz",
           "position" : {
-            "scale" : 0.25,
+            "scale" : 0.5,
             "translation-in-points" : [
               0,
               0

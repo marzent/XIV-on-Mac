@@ -23,15 +23,15 @@ enum Dxvk {
         
         // Check if user cache exists
         if FileManager.default.fileExists(atPath: userCacheURL.path) {
-            // Try to parse and merge caches
-            let userCache = try? DxvkStateCache(
-                inputData: (try? Data(contentsOf: userCacheURL)) ?? Data())
-            let baseCache = try? DxvkStateCache(
-                inputData: (try? Data(contentsOf: baseCacheBundled)) ?? Data())
+            let userData = (try? Data(contentsOf: userCacheURL)) ?? Data()
+            let baseData = (try? Data(contentsOf: baseCacheBundled)) ?? Data()
+            
+            let userCache = try? DxvkStateCache(inputData: userData)
+            let baseCache = try? DxvkStateCache(inputData: baseData)
             
             if let userCache = userCache, let baseCache = baseCache {
                 guard userCache.header.version == baseCache.header.version else {
-                    Log.warning("[DXVK] Base and user cache versions do not match, resetting")
+                    Log.warning("[DXVK] Base and user cache versions do not match")
                     try? resetCache()
                     return
                 }
@@ -41,17 +41,16 @@ enum Dxvk {
                     entries: Array(Set(userCache.entries + baseCache.entries)))
                 do {
                     try mergedCache.rawData.write(to: userCacheURL)
-                    Log.information("[DXVK] Merged cache successfully")
                 } catch {
-                    Log.error("[DXVK] Failed to write merged cache: \(error.localizedDescription)")
+                    Log.error(error.localizedDescription)
                 }
             } else if userCache == nil && baseCache == nil {
-                Log.warning("[DXVK] Both caches corrupt, keeping existing user cache")
+                Log.warning("[DXVK] Both caches corrupt")
+            } else if userCache == nil {
+                try? resetCache()
             }
-            // If only one cache is corrupt, keep the existing user cache
         } else {
-            // No user cache exists - copy base cache directly without parsing
-            Log.information("[DXVK] No user cache found, copying base cache")
+            // No user cache exists - copy base cache directly
             try? resetCache()
         }
     }

@@ -83,10 +83,11 @@ struct DxvkStateCache {
     init(inputData: Data) throws {
         header = try Header(inputData.prefix(Header.byteSize))
         var dataToProcess = inputData.dropFirst(Header.byteSize)
-        while dataToProcess.count > 0 {
-            entries.append(try Entry(dataToProcess))
-            dataToProcess = dataToProcess.dropFirst(
-                entries.last!.data.count + Entry.headerByteSize)
+        
+        while dataToProcess.count >= Entry.headerByteSize {
+            let entry = try Entry(dataToProcess)
+            entries.append(entry)
+            dataToProcess = dataToProcess.dropFirst(entry.data.count + Entry.headerByteSize)
         }
     }
 }
