@@ -1,53 +1,93 @@
-<p align="center"> <img src="xom_logo.png"></a> </p>
-<p align="center"> <img src="xom_animated.gif"></a> <br><br>
-Wine Wrapper, Setup tool and alternative launcher for FFXIV on MacOS.</p>
+<div align="center">
 
----
+<img src="xom_logo.png" alt="XIV on Mac Logo" width="400">
 
-<b>The "XIV on Mac" application is a superior way of playing FFXIV on Apple Silicon Macs.<br> It provides improved performance and more features vs Square Enix's native MacOS launcher. <br><br><b>This project is 100% open source.</b>
-
----
-<h3>Features:</h3>
-
-- Support for Apple Silicon Macs (Intel Macs are NOT SUPPORTED!)
-- User friendly setup
-- Fast game patching and game repair
-- Mod support: Dalamud, IINACT and more!
-- Runs the official benchmark
-- Performance enhancements; Better FPS vs Native Mac launcher & Crossover, updated DXVK/MoltenVK libraries, etc.
-- User Support in our <a href="https://discord.gg/dWN5bTC4Yv">Discord.</a>
-- Wine is based on the latest release from https://github.com/marzent/winecx
-
-<h6>*FPS may vary based on hardware, but in most cases FPS should be better!</h6>
-
----
-Visit our website www.xivmac.com for details about our team and the project!<br>
-You can read our depreciated Crossover setup guide <a href="https://github.com/seathasky/FF14-MAC_ModSupport">here.</a>
 <br>
 
----
+<img src="xom_animated.gif" alt="XIV on Mac Preview" width="600">
 
-<h3>Our current team:</h3>
-<h4><a href="https://github.com/Marzent">Marzent (ウサギ)</a> (Head Developer, Technical Support)<br>
-<a href="https://github.com/Seathasky">Seathasky</a> (Project Manager, Support)<br>
-<a href="https://github.com/FleetAdmiralButter">FleetAdmiralButter</a> (Web Developer, Support)<br>
-<a href="https://github.com/cbackas42">Wyldfire</a> (Contributor, Mac Development, Support)<br>
-<a href="https://github.com/Gcenx">Gcenx</a> (Contributor, Head macOS Wine maintainer, Support)<br></h4>
+### The Ultimate FFXIV Experience on macOS
 
----
+**Wine Wrapper, Setup Tool & Alternative Launcher for Final Fantasy XIV**
 
-  <b><i>Special Thanks to:</i></b>
-<h6><a href="https://github.com/goaaats">goaaats</a> - for the amazing XIVLauncher and cross-platform efforts.<br>
-<a href="https://github.com/redstrate">redstrate</a> - for his nativelauncher which made Dalamud injection easy to implement without .net framework<br>
-<a href="https://github.com/tyrone-sudeium">tyrone-sudeium</a> - for his LaunchXIV App, upon which most of the login flow code was based upon.<br>
-<a href="https://github.com/reiichi001">Franz Renatus</a> - for helping out with support and his ever useful Franzbot.<br>
-<a href="https://www.quantcdn.io/">QuantCDN</a> - for letting us use their service free of charge to host our website and auto-update system.<br>
-<a href="https://www.codeweavers.com/">Codeweavers</a> - for giving us permission to use their MoltenVK dylib from Crossover.<br>
-<a href="https://github.com/zoeyrae">Zoey Ronain</a> - for her year long contribution to the project.<br><br></h6>
-
-
-And very special thanks to our wonderful community and contributors. Without your love for this project, we would not exist!
+[![macOS](https://img.shields.io/badge/macOS-Apple%20Silicon-black?style=for-the-badge&logo=apple&logoColor=white)](https://xivmac.com)
+[![Open Source](https://img.shields.io/badge/Open%20Source-100%25-brightgreen?style=for-the-badge&logo=github)](https://github.com/XIV-on-Mac)
+[![Discord](https://img.shields.io/badge/Discord-Join%20Us-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/dWN5bTC4Yv)
 
 ---
 
-<div align="center"><b>FINAL FANTASY is a registered trademark of Square Enix Holdings Co., Ltd.<br>XIV on Mac is not affiliated with Square Enix Holdings Co., Ltd in any way, shape, or form.</b></div>
+<a href="https://www.xivmac.com">
+  <img src="https://img.shields.io/badge/Download-XIV%20on%20Mac-blue?style=for-the-badge&logo=apple&logoColor=white&labelColor=000000" alt="Download XIV on Mac" height="50">
+</a>
+
+**[ Get the latest release at xivmac.com](https://www.xivmac.com)**
+
+---
+
+</div>
+
+##  Why XIV on Mac?
+
+**XIV on Mac** delivers a **superior FFXIV experience** on Apple Silicon Macs, outperforming Square Enix's native macOS launcher with enhanced performance and powerful features.
+
+> **Note:** Intel Macs are NOT supported. Apple Silicon only.
+
+---
+
+## Features
+
+| Feature | Description |
+|---------|-------------|
+| **Apple Silicon Native** | Optimized exclusively for M1/M2/M3/M4 Macs |
+| **Easy Setup** | User-friendly installation wizard |
+| **Fast Patching** | Quick game updates and repair functionality |
+| **Mod Support** | Full support for Dalamud, IINACT, and more |
+| **Benchmark Tool** | Run the official FFXIV benchmark |
+| **Performance Boost** | Better FPS than Native Mac launcher & Crossover* |
+| **Updated Libraries** | Latest DXVK/MoltenVK implementations |
+| **Community Support** | Active [Discord community](https://discord.gg/dWN5bTC4Yv) |
+
+> *FPS improvements may vary based on hardware configuration
+
+**Wine Base:** Built on the latest release from [marzent/winecx](https://github.com/marzent/winecx)
+
+---
+
+## 👥 Our Team
+
+| Member | Role |
+|--------|------|
+| **[Marzent (ウサギ)](https://github.com/Marzent)** | Head Developer, Technical Support |
+| **[Seathasky](https://github.com/Seathasky)** | Project Manager, Support |
+| **[FleetAdmiralButter](https://github.com/FleetAdmiralButter)** | Web Developer, Support |
+| **[Wyldfire](https://github.com/cbackas42)** | Contributor, Mac Development, Support |
+| **[Gcenx](https://github.com/Gcenx)** | Contributor, Head macOS Wine Maintainer, Support |
+
+---
+
+## Special Thanks
+
+We're grateful to the incredible contributors who made this project possible:
+
+- **[goaaats](https://github.com/goaaats)** — For the amazing XIVLauncher and cross-platform efforts
+- **[QuantCDN](https://www.quantcdn.io/)** — For generously hosting our website and auto-update system
+- **[Codeweavers](https://www.codeweavers.com/)** — For permission to use their MoltenVK dylib from Crossover
+- **[Zoey Ronain](https://github.com/zoeyrae)** — For her year-long dedication to the project
+
+---
+
+## Resources
+
+- 🌐 **Website:** [xivmac.com](https://www.xivmac.com)
+- 💬 **Discord:** [Join our community](https://discord.gg/dWN5bTC4Yv)
+- 📖 **Legacy Guide:** [Crossover Setup Guide](https://github.com/seathasky/FF14-MAC_ModSupport) *(deprecated)*
+
+---
+
+<div align="center">
+
+**Made with ❤️ for the FFXIV Mac Community**
+
+[![Stars](https://img.shields.io/github/stars/XIV-on-Mac/XIV-on-Mac?style=social)](https://github.com/XIV-on-Mac/XIV-on-Mac)
+
+</div>
