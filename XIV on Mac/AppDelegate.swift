@@ -37,7 +37,7 @@ import XIVLauncher
         registerWineAppWillActivateNotification()
         initXL(
             "XIV on Mac \(version) build \(build)", storagePath,
-            Settings.verboseLogging, Frontier.frontierURLTemplate)
+            Settings.verboseLogging, Frontier.frontierURLTemplate, nil, nil)
         Wine.setup()
     }
 
