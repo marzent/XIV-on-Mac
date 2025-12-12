@@ -33,6 +33,7 @@ enum Wine {
         addEnvironmentVariable("MVK_ALLOW_METAL_FENCES", "1")  // XXX Required by DXVK for Apple/NVidia GPUs (better FPS than CPU Emulation)
         addEnvironmentVariable("MVK_CONFIG_FULL_IMAGE_VIEW_SWIZZLE", "1")  // XXX Required by DXVK for Intel/NVidia GPUs
         addEnvironmentVariable("MVK_CONFIG_RESUME_LOST_DEVICE", "1")  // XXX Required by WINE (doesn't handle VK_ERROR_DEVICE_LOST correctly)
+        addEnvironmentVariable("MVK_CONFIG_LOG_LEVEL", "mvk_error")
         addEnvironmentVariable("DXVK_HUD", Dxvk.options.getHud())
         addEnvironmentVariable("DXVK_ASYNC", Dxvk.options.getAsync())
         addEnvironmentVariable("DXVK_FRAME_RATE", String(Settings.maxFramerate))
