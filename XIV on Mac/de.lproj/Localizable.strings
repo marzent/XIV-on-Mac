@@ -232,6 +232,18 @@ Zusätzlich kann die Berechtigung für \"Mitteilungen\" aktiviert werden um beim
 "SETTINGS_PLUGINS_DALAMUD_DELAY_LABEL" = "Ladeverzögerung:";
 "SETTINGS_PLUGINS_DISCORD_BLURB" = "Die Brücke erlaubt es dem Discord Rich Presence Dalamud-Plugin deinen Discord-Status zu aktualisieren. Wenn Sie nicht vorhaben, dieses Plugin zu verwenden, können Sie diese Einstellung deaktivieren.";
 "SETTINGS_PLUGINS_DISCORD_TOGGLE" = "Discord Rich Presence Wine Brücke";
+"SETTINGS_PLUGINS_DALAMUD_BRANCH_BLURB" = "Wähle die zu verwendende Dalamud-Branch. Versteckte Branches werden durch Eingabe eines Beta-Schlüssels sichtbar.";
+"SETTINGS_PLUGINS_DALAMUD_BRANCH_LABEL" = "Branch";
+"SETTINGS_PLUGINS_DALAMUD_BRANCH_UNAVAILABLE" = "Diese Branch ist für die aktuelle Spielversion nicht verfügbar.";
+"SETTINGS_PLUGINS_DALAMUD_TRACK_FORMAT" = "Branch: %@";
+"SETTINGS_PLUGINS_DALAMUD_KEY_FORMAT" = "Schlüssel: %@";
+"SETTINGS_PLUGINS_DALAMUD_ENTER_BETA_KEY" = "Beta-Schlüssel eingeben…";
+"SETTINGS_PLUGINS_DALAMUD_UNAVAILABLE_SUFFIX" = "(nicht verfügbar)";
+"SETTINGS_PLUGINS_DALAMUD_FETCH_ERROR_INVALID_URL" = "Ungültige Metadaten-URL";
+"SETTINGS_PLUGINS_DALAMUD_FETCH_ERROR_HTTP" = "Branches konnten nicht geladen werden (HTTP %d).";
+"SETTINGS_PLUGINS_DALAMUD_FETCH_ERROR_GENERIC" = "Branches konnten nicht geladen werden: %@";
+"SETTINGS_PLUGINS_DALAMUD_ENTER_BETA_KEY_TITLE" = "Dalamud-Beta-Schlüssel eingeben";
+"SETTINGS_PLUGINS_DALAMUD_ENTER_BETA_KEY_INFO" = "Füge den Schlüssel ein, um versteckte Branches anzuzeigen.";
 
 // Advanced Settings tab items
 "SETTINGS_ADVANCED_BLURB" = "Diese Einstellungen dienen hauptsächlich der Fehlersuche und sollten im Allgemeinen nicht verändert werden.";

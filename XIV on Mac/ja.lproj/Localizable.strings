@@ -234,6 +234,18 @@
 "SETTINGS_PLUGINS_DALAMUD_DELAY_LABEL" = "遅延:";
 "SETTINGS_PLUGINS_DISCORD_BLURB" = "以下をチェックするとDalamudのDiscord Rich Presenceプラグインを利用可能にし、Discord のステータスを更新できるようになります。このプラグインを使用する予定がない場合は、この設定を無効できます。";
 "SETTINGS_PLUGINS_DISCORD_TOGGLE" = "Discord Rich Presence Wineブリッジ";
+"SETTINGS_PLUGINS_DALAMUD_BRANCH_BLURB" = "使用する Dalamud のブランチを選択します。ベータキーを入力すると非表示のブランチが表示されます。";
+"SETTINGS_PLUGINS_DALAMUD_BRANCH_LABEL" = "ブランチ";
+"SETTINGS_PLUGINS_DALAMUD_BRANCH_UNAVAILABLE" = "このブランチは現在のゲームバージョンでは利用できません。";
+"SETTINGS_PLUGINS_DALAMUD_TRACK_FORMAT" = "ブランチ: %@";
+"SETTINGS_PLUGINS_DALAMUD_KEY_FORMAT" = "キー: %@";
+"SETTINGS_PLUGINS_DALAMUD_ENTER_BETA_KEY" = "ベータキーを入力…";
+"SETTINGS_PLUGINS_DALAMUD_UNAVAILABLE_SUFFIX" = "(利用不可)";
+"SETTINGS_PLUGINS_DALAMUD_FETCH_ERROR_INVALID_URL" = "メタデータ URL が無効です";
+"SETTINGS_PLUGINS_DALAMUD_FETCH_ERROR_HTTP" = "ブランチの取得に失敗しました (HTTP %d)。";
+"SETTINGS_PLUGINS_DALAMUD_FETCH_ERROR_GENERIC" = "ブランチの取得に失敗しました: %@";
+"SETTINGS_PLUGINS_DALAMUD_ENTER_BETA_KEY_TITLE" = "Dalamud ベータキーを入力";
+"SETTINGS_PLUGINS_DALAMUD_ENTER_BETA_KEY_INFO" = "キーを貼り付けると非表示のブランチが表示されます。";
 
 // Advanced Settings tab items
 "SETTINGS_ADVANCED_BLURB" = "これらの設定は主にトラブルシューティングのためのもので、通常変更する必要はありません。";

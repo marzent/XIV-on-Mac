@@ -36,8 +36,13 @@ import XIVLauncher
             withPath: Util.applicationSupport.path)
         registerWineAppWillActivateNotification()
         initXL(
-            "XIV on Mac \(version) build \(build)", storagePath,
-            Settings.verboseLogging, Frontier.frontierURLTemplate, nil, nil)
+            "XIV on Mac \(version) build \(build)",
+            storagePath,
+            Settings.verboseLogging,
+            Frontier.frontierURLTemplate,
+            Settings.dalamudBetaKind,
+            Settings.dalamudBetaKey
+        )
         Wine.setup()
     }
 

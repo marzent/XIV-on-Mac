@@ -231,6 +231,18 @@ Ne l'activez pas sur les écrans autres que écrans Retina, sauf à des fins de 
 "SETTINGS_PLUGINS_DALAMUD_DELAY_LABEL" = "Délai :";
 "SETTINGS_PLUGINS_DISCORD_BLURB" = "Le \"Bridge\" permet au plugin \"Discord Rich Presence Dalamud\" de mettre à jour votre statut Discord. Si vous ne prévoyez pas d'utiliser ce plugin, vous pouvez désactiver ce paramètre.";
 "SETTINGS_PLUGINS_DISCORD_TOGGLE" = "Discord Rich Presence Wine Bridge";
+"SETTINGS_PLUGINS_DALAMUD_BRANCH_BLURB" = "Choisissez la branche de Dalamud à utiliser. Les branches masquées sont révélées en entrant une clé bêta.";
+"SETTINGS_PLUGINS_DALAMUD_BRANCH_LABEL" = "Branche";
+"SETTINGS_PLUGINS_DALAMUD_BRANCH_UNAVAILABLE" = "Cette branche n’est pas disponible pour la version actuelle du jeu.";
+"SETTINGS_PLUGINS_DALAMUD_TRACK_FORMAT" = "Branche : %@";
+"SETTINGS_PLUGINS_DALAMUD_KEY_FORMAT" = "Clé : %@";
+"SETTINGS_PLUGINS_DALAMUD_ENTER_BETA_KEY" = "Entrer la clé bêta…";
+"SETTINGS_PLUGINS_DALAMUD_UNAVAILABLE_SUFFIX" = "(indisponible)";
+"SETTINGS_PLUGINS_DALAMUD_FETCH_ERROR_INVALID_URL" = "URL des métadonnées invalide";
+"SETTINGS_PLUGINS_DALAMUD_FETCH_ERROR_HTTP" = "Échec du chargement des branches (HTTP %d).";
+"SETTINGS_PLUGINS_DALAMUD_FETCH_ERROR_GENERIC" = "Échec du chargement des branches : %@";
+"SETTINGS_PLUGINS_DALAMUD_ENTER_BETA_KEY_TITLE" = "Entrer la clé bêta de Dalamud";
+"SETTINGS_PLUGINS_DALAMUD_ENTER_BETA_KEY_INFO" = "Collez la clé pour révéler les branches masquées.";
 
 // Advanced Settings tab items
 "SETTINGS_ADVANCED_BLURB" = "Ces paramètres sont principalement destinés à des fins de dépannage et ne doivent généralement pas être modifiés.";

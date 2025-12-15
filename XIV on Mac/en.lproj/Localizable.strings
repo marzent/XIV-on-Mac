@@ -233,6 +233,18 @@ Do not enable this on non-retina displays, unless for screenshot purposes.";
 "SETTINGS_PLUGINS_DALAMUD_DELAY_LABEL" = "Delay:";
 "SETTINGS_PLUGINS_DISCORD_BLURB" = "The bridge enables the Discord Rich Presence Dalamud plugin to update your Discord status. If you do not plan to use this plugin, you can disable this setting.";
 "SETTINGS_PLUGINS_DISCORD_TOGGLE" = "Discord Rich Presence Wine Bridge";
+"SETTINGS_PLUGINS_DALAMUD_BRANCH_BLURB" = "Choose which Dalamud branch to use. Hidden branches are revealed by entering a beta key.";
+"SETTINGS_PLUGINS_DALAMUD_BRANCH_LABEL" = "Branch";
+"SETTINGS_PLUGINS_DALAMUD_BRANCH_UNAVAILABLE" = "This branch is not available for the current game version.";
+"SETTINGS_PLUGINS_DALAMUD_TRACK_FORMAT" = "Track: %@";
+"SETTINGS_PLUGINS_DALAMUD_KEY_FORMAT" = "Key: %@";
+"SETTINGS_PLUGINS_DALAMUD_ENTER_BETA_KEY" = "Enter Beta Key…";
+"SETTINGS_PLUGINS_DALAMUD_UNAVAILABLE_SUFFIX" = "(unavailable)";
+"SETTINGS_PLUGINS_DALAMUD_FETCH_ERROR_INVALID_URL" = "Invalid metadata URL";
+"SETTINGS_PLUGINS_DALAMUD_FETCH_ERROR_HTTP" = "Failed to fetch branches (HTTP %d).";
+"SETTINGS_PLUGINS_DALAMUD_FETCH_ERROR_GENERIC" = "Failed to fetch branches: %@";
+"SETTINGS_PLUGINS_DALAMUD_ENTER_BETA_KEY_TITLE" = "Enter Dalamud beta key";
+"SETTINGS_PLUGINS_DALAMUD_ENTER_BETA_KEY_INFO" = "Paste the key to reveal hidden branches.";
 
 // Advanced Settings tab items
 "SETTINGS_ADVANCED_BLURB" = "These settings are mainly for troubleshooting purposes and generally shouldn't need to be changed.";

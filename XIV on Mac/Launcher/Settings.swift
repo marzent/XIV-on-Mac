@@ -230,6 +230,26 @@ public enum Settings {
         }
     }
 
+    private static let dalamudBetaKindKey = "DalamudBetaKind"
+    static var dalamudBetaKind: String {
+        get {
+            Util.getSetting(settingKey: dalamudBetaKindKey, defaultValue: "")
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: dalamudBetaKindKey)
+        }
+    }
+
+    private static let dalamudBetaKeyKey = "DalamudBetaKey"
+    static var dalamudBetaKey: String {
+        get {
+            Util.getSetting(settingKey: dalamudBetaKeyKey, defaultValue: "")
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: dalamudBetaKeyKey)
+        }
+    }
+
     public static let defaultInjectionDelay = 4.0
     private static let injectionSettingKey = "InjectionDelaySetting"
     static var injectionDelay: Double {
