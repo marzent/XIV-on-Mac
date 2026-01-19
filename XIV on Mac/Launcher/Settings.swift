@@ -222,7 +222,7 @@ public enum Settings {
     static var dalamudEntryPoint: Bool {
         get {
             Util.getSetting(
-                settingKey: dalamudEntryPointSettingsKey, defaultValue: false)
+                settingKey: dalamudEntryPointSettingsKey, defaultValue: true)
         }
         set {
             UserDefaults.standard.set(newValue, forKey: dalamudEntryPointSettingsKey)
