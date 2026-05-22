@@ -61,7 +61,7 @@ let
 in
 pkgs.stdenv.mkDerivation rec {
   pname = "ff-wine";
-  version = "10.0.0";
+  version = "11.0.0";
 
   src = builtins.fetchGit {
     url = builtins.toString ./source;
@@ -99,8 +99,8 @@ pkgs.stdenv.mkDerivation rec {
 
   preConfigure = ''
     export CC="clang"
-    export CFLAGS="-O3 -march=native -mno-avx -Wno-int-conversion"
-    export CROSSCFLAGS="-s -O3 -march=native -mno-avx"
+    export CFLAGS="-O2 -march=nehalem -msse4.2 -mtune=haswell -mno-avx -Wno-int-conversion"
+    export CROSSCFLAGS="-s -O2 -march=nehalem -msse4.2 -mtune=haswell -mno-avx"
     export ac_cv_lib_soname_vulkan=""
     export ac_cv_lib_soname_MoltenVK="libMoltenVK.dylib"
     $CC --version
