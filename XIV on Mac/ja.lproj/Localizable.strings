@@ -217,7 +217,6 @@
 "SETTINGS_ADVANCED_BLURB" = "これらの設定は主にトラブルシューティングのためのもので、通常変更する必要はありません。";
 "SETTINGS_ADVANCED_KEEP_PATCHES" = "パッチを保持する";
 "SETTINGS_ADVANCED_MSYNC" = "Msync";
-"SETTINGS_ADVANCED_ESYNC" = "Esyncを有効化";
 "SETTINGS_ADVANCED_ENCRYPT_ARGS" = "ゲームの引数を暗号化する";
 "SETTINGS_ADVANCED_AUTO_EXIT" = "ゲームを終了時にXIV on Macも終了させる";
 "SETTINGS_ADVANCED_ERROR_EXIT" = "ゲーム本体が0以外の終了コードを返して終了した場合に警告する";

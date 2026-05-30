@@ -36,7 +36,7 @@ enum Wine {
             "MTL_HUD_ENABLED", Settings.metal3PerformanceOverlay ? "1" : "0")
         createCompatToolsInstance(
             FileManager.default.fileSystemRepresentation(
-                withPath: wineBinURL.path), debug, esync)
+                withPath: wineBinURL.path), debug, false)
     }
 
     static func boot() {
@@ -81,19 +81,6 @@ enum Wine {
         launch(command: "cmd /c dir \"%userprofile%/My Documents\" > nul")
     }
 
-    private static let esyncSettingKey = "EsyncSetting"
-    static var esync: Bool {
-        get {
-            Util.getSetting(settingKey: esyncSettingKey, defaultValue: true)
-        }
-        set {
-            UserDefaults.standard.set(newValue, forKey: esyncSettingKey)
-            createCompatToolsInstance(
-                FileManager.default.fileSystemRepresentation(
-                    withPath: wineBinURL.path), debug, esync)
-        }
-    }
-
     private static let msyncSettingKey = "MsyncSetting"
     static var msync: Bool {
         get {
@@ -115,7 +102,7 @@ enum Wine {
             UserDefaults.standard.set(newValue, forKey: wineDebugSettingKey)
             createCompatToolsInstance(
                 FileManager.default.fileSystemRepresentation(
-                    withPath: wineBinURL.path), debug, esync)
+                    withPath: wineBinURL.path), debug, false)
         }
     }
 

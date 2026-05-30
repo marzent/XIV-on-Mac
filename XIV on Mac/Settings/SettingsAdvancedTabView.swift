@@ -32,13 +32,6 @@ struct SettingsAdvancedTabView: View {
                 Spacer()
             }
             HStack {
-                Toggle(isOn: $viewModel.eSync) {
-                    Text("SETTINGS_ADVANCED_ESYNC")
-                }
-                .padding(.leading)
-                Spacer()
-            }
-            HStack {
                 Toggle(isOn: $viewModel.encryptArgs) {
                     Text("SETTINGS_ADVANCED_ENCRYPT_ARGS")
                 }
@@ -84,10 +77,6 @@ extension SettingsAdvancedTabView {
 
         @Published var mSync: Bool = Wine.msync {
             didSet { Wine.msync = mSync }
-        }
-
-        @Published var eSync: Bool = Wine.esync {
-            didSet { Wine.esync = eSync }
         }
 
         @Published var encryptArgs: Bool = Settings.encryptedArguments {

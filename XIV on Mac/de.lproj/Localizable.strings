@@ -214,7 +214,6 @@ Zusätzlich kann die Berechtigung für \"Mitteilungen\" aktiviert werden um beim
 "SETTINGS_ADVANCED_BLURB" = "Diese Einstellungen dienen hauptsächlich der Fehlersuche und sollten im Allgemeinen nicht verändert werden.";
 "SETTINGS_ADVANCED_KEEP_PATCHES" = "Patches behalten";
 "SETTINGS_ADVANCED_MSYNC" = "Msync";
-"SETTINGS_ADVANCED_ESYNC" = "Esync";
 "SETTINGS_ADVANCED_ENCRYPT_ARGS" = "Spielargumente verschlüsseln";
 "SETTINGS_ADVANCED_AUTO_EXIT" = "XIV on Mac beim Beenden des Spiels beenden";
 "SETTINGS_ADVANCED_ERROR_EXIT" = "Eine Warnung einblenden, wenn das Spiel mit einem nicht Null Exit-Code beendet wird";
