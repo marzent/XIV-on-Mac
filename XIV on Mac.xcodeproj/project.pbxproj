@@ -73,7 +73,6 @@
 		5077A32C27C12A9100D4F1B8 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5077A32B27C12A9100D4F1B8 /* Settings.swift */; };
 		507BECDD2D27E142009BE4A5 /* d3dcompiler in Resources */ = {isa = PBXBuildFile; fileRef = 507BECDC2D27E130009BE4A5 /* d3dcompiler */; };
 		507C600127CAA72000BA3CC2 /* PatchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507C600027CAA72000BA3CC2 /* PatchController.swift */; };
-		507D8F2127766F52000F0CB0 /* dxvk in Resources */ = {isa = PBXBuildFile; fileRef = 507D8F2027766F52000F0CB0 /* dxvk */; };
 		508C678F29431BFF0046AA38 /* snowflake_x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 508C678E29431BFF0046AA38 /* snowflake_x2.png */; };
 		509D0E2D2960536A0055367A /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 509D0E2C2960536A0055367A /* KeychainAccess */; };
 		509D0E302960540C0055367A /* AppMover in Frameworks */ = {isa = PBXBuildFile; productRef = 509D0E2F2960540C0055367A /* AppMover */; };
@@ -94,10 +93,7 @@
 		50E7EB9A29A16F29001BC287 /* Benchmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E7EB9929A16F29001BC287 /* Benchmark.swift */; };
 		50E980DE2840A65000050151 /* RepairController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E980DD2840A65000050151 /* RepairController.swift */; };
 		50ED0DB52773CA8C002E9854 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ED0DB42773CA8C002E9854 /* Networking.swift */; };
-		50F4BD2427CFA70A00FB165D /* Dxvk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F4BD2327CFA70A00FB165D /* Dxvk.swift */; };
 		50F6CBAA27A975A000013301 /* Wine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F6CBA927A975A000013301 /* Wine.swift */; };
-		50FC2DFF27F974D300871760 /* DxvkStateCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC2DFE27F974D300871760 /* DxvkStateCache.swift */; };
-		50FC2E0127F9751600871760 /* DxvkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC2E0027F9751600871760 /* DxvkError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -195,7 +191,6 @@
 		5077A32B27C12A9100D4F1B8 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		507BECDC2D27E130009BE4A5 /* d3dcompiler */ = {isa = PBXFileReference; lastKnownFileType = folder; path = d3dcompiler; sourceTree = "<group>"; };
 		507C600027CAA72000BA3CC2 /* PatchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchController.swift; sourceTree = "<group>"; };
-		507D8F2027766F52000F0CB0 /* dxvk */ = {isa = PBXFileReference; lastKnownFileType = folder; path = dxvk; sourceTree = "<group>"; };
 		508C678E29431BFF0046AA38 /* snowflake_x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snowflake_x2.png; sourceTree = "<group>"; };
 		508C6790294324BC0046AA38 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		508C6791294324BC0046AA38 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -213,10 +208,7 @@
 		50E7EB9929A16F29001BC287 /* Benchmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Benchmark.swift; sourceTree = "<group>"; };
 		50E980DD2840A65000050151 /* RepairController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepairController.swift; sourceTree = "<group>"; };
 		50ED0DB42773CA8C002E9854 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
-		50F4BD2327CFA70A00FB165D /* Dxvk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dxvk.swift; sourceTree = "<group>"; };
 		50F6CBA927A975A000013301 /* Wine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wine.swift; sourceTree = "<group>"; };
-		50FC2DFE27F974D300871760 /* DxvkStateCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DxvkStateCache.swift; sourceTree = "<group>"; };
-		50FC2E0027F9751600871760 /* DxvkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DxvkError.swift; sourceTree = "<group>"; };
 		F46BBF18291C0494000C4672 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		F46BBF19291C0494000C4672 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FC2A0719289A5E4300C25C34 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
@@ -401,7 +393,6 @@
 				50511ECD2770E087003A1E9F /* XIV_on_Mac.entitlements */,
 				507BECDC2D27E130009BE4A5 /* d3dcompiler */,
 				50C029062C52638C0085297D /* dxmt */,
-				507D8F2027766F52000F0CB0 /* dxvk */,
 				5043E36B27728BA300E59127 /* wine */,
 				503C4BC32D15F76200141D3F /* wine-builder */,
 				07B529D727D97D2B005B78BF /* Localizable.strings */,
@@ -491,11 +482,8 @@
 		50FC2DFD27F9744700871760 /* GraphicsUtils */ = {
 			isa = PBXGroup;
 			children = (
-				50F4BD2327CFA70A00FB165D /* Dxvk.swift */,
 				50C029022C5256630085297D /* Dxmt.swift */,
 				50C029042C5257050085297D /* GraphicsInstaller.swift */,
-				50FC2DFE27F974D300871760 /* DxvkStateCache.swift */,
-				50FC2E0027F9751600871760 /* DxvkError.swift */,
 			);
 			path = GraphicsUtils;
 			sourceTree = "<group>";
@@ -611,7 +599,6 @@
 				07B3507329A4829C0010C1F5 /* ffxivbenchmarklauncher-Default.ini in Resources */,
 				07E8A67A2BD0AA11005AD41B /* DISCORD_TEAM_FLEET_03.dat in Resources */,
 				07E8A6762BD0A535005AD41B /* DISCORD_TEAM_SEATHASKY_02.dat in Resources */,
-				507D8F2127766F52000F0CB0 /* dxvk in Resources */,
 				50511ECC2770E087003A1E9F /* Main.storyboard in Resources */,
 				5043E36C27728BA300E59127 /* wine in Resources */,
 				07E8A6722BD0A3D4005AD41B /* DISCORD_TEAM_USAGI_01.dat in Resources */,
@@ -723,7 +710,6 @@
 				07B3507129A4717B0010C1F5 /* INIReadWrite.swift in Sources */,
 				0786F05E29BBF67400009AD5 /* ScreenCaptureEngine.swift in Sources */,
 				50E980DE2840A65000050151 /* RepairController.swift in Sources */,
-				50FC2DFF27F974D300871760 /* DxvkStateCache.swift in Sources */,
 				07E8A66A2BD056C0005AD41B /* CharacterSlotView.swift in Sources */,
 				07E8A66D2BD05987005AD41B /* CharacterDataImportView.swift in Sources */,
 				07E8A66B2BD056C0005AD41B /* KwehView.swift in Sources */,
@@ -735,10 +721,8 @@
 				50F6CBAA27A975A000013301 /* Wine.swift in Sources */,
 				0762AB922973AEB400A4D6E0 /* SettingsGraphicsTabView.swift in Sources */,
 				505C0D9B277333920008A344 /* Util.swift in Sources */,
-				50F4BD2427CFA70A00FB165D /* Dxvk.swift in Sources */,
 				50511EC72770E085003A1E9F /* InstallerController.swift in Sources */,
 				50D30FA027B92EDB007A9F66 /* OTP.swift in Sources */,
-				50FC2E0127F9751600871760 /* DxvkError.swift in Sources */,
 				5049B9AE283BAFE600463A2B /* Log.swift in Sources */,
 				0762AB942973AED200A4D6E0 /* SettingsPluginsTabView.swift in Sources */,
 				5015D4C72881E97C004BA6D8 /* BunnyHUD.swift in Sources */,

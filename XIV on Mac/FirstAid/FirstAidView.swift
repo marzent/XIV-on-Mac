@@ -100,7 +100,7 @@ struct FirstAidView: View {
                     }
                     let alert = NSAlert()
                     do {
-                        try Dxvk.resetCache()
+                        // try Dxvk.resetCache()
                         alert.alertStyle = .informational
                         alert.messageText = NSLocalizedString(
                             "DXVK_USER_CACHE_DELETED", comment: "")

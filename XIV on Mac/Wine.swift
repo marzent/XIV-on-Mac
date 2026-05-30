@@ -30,16 +30,7 @@ enum Wine {
             "DXMT_METALFX_SPATIAL_SWAPCHAIN",
             Settings.metalFxSpatialEnabled ? "1" : "0")
         addEnvironmentVariable("LANG", "en_US")
-        addEnvironmentVariable("MVK_ALLOW_METAL_FENCES", "1")  // XXX Required by DXVK for Apple/NVidia GPUs (better FPS than CPU Emulation)
-        addEnvironmentVariable("MVK_CONFIG_FULL_IMAGE_VIEW_SWIZZLE", "1")  // XXX Required by DXVK for Intel/NVidia GPUs
-        addEnvironmentVariable("MVK_CONFIG_RESUME_LOST_DEVICE", "1")  // XXX Required by WINE (doesn't handle VK_ERROR_DEVICE_LOST correctly)
         addEnvironmentVariable("MVK_CONFIG_LOG_LEVEL", "mvk_error")
-        addEnvironmentVariable("DXVK_HUD", Dxvk.options.getHud())
-        addEnvironmentVariable("DXVK_ASYNC", Dxvk.options.getAsync())
-        addEnvironmentVariable("DXVK_FRAME_RATE", String(Settings.maxFramerate))
-        addEnvironmentVariable("DXVK_CONFIG_FILE", "C:\\dxvk.conf")
-        addEnvironmentVariable("DXVK_STATE_CACHE_PATH", "C:\\")
-        addEnvironmentVariable("DXVK_LOG_PATH", "C:\\")
         addEnvironmentVariable("DOTNET_EnableWriteXorExecute", "0")  // XXX Required for Apple Silicon and .NET 7+
         addEnvironmentVariable(
             "MTL_HUD_ENABLED", Settings.metal3PerformanceOverlay ? "1" : "0")
