@@ -10,7 +10,6 @@
 "BUTTON_NO" = "No";
 "BUTTON_OK" = "OK";
 "BUTTON_CANCEL" = "Cancel";
-"BUTTON_CLOSE" = "Close";
 "BUTTON_DONE" = "Done";
 "BUTTON_DELETE" = "Delete";
 "REVEAL_IN_FINDER" = "Reveal in Finder";
@@ -50,7 +49,6 @@
 "GAME_START_FAILURE_INFORMATIONAL" = "An error occured starting the game. Please try restarting XIV on Mac.";
 
 "FIRSTAID_GAME_RUNNING" = "Final Fantasy XIV is Running";
-"FIRSTAID_GAME_RUNNING_INFORMATIONAL" = "Please close any copies of Final Fantasy XIV that are running before taking any Troubleshooting actions.";
 
 "DXVK_USER_CACHE_DELETED" = "Shader Cache Deleted";
 "DXVK_USER_CACHE_DELETED_INFORMATIVE" = "The shader cache was deleted succesfully. Try starting the game to see if your problem has been addressed.";
@@ -61,8 +59,6 @@
 "GAME_CONFIG_RESET_INFORMATIVE" = "Your game configuration was succesfully reset.";
 "GAME_CONFIG_RESET_FAILED" = "Resetting Configuration Failed";
 "GAME_CONFIG_RESET_FAILED_INFORMATIVE" = "Unable to reset configuration. You may need to grant XIV On Mac access to your Downloads folder in System Preferences, Security.";
-
-"DOCUMENTS_PERM_STILL_BAD" = "XIV On Mac is still unable to read and/or write to your Documents folder. If your Security Preference Pane shows the correct permissions, try deleting the entry and re-creating it.";
 
 "UNSUPPORTED_GPU" = "No Supported GPU Found";
 "UNSUPPORTED_GPU_INFORMATIVE" = "XIV On Mac did not find any supported GPUs in your Mac. If you continue, the game may fail to function, crash, or otherwise perform in a substandard manner. For more details please see our Compatibility List.";
@@ -113,9 +109,6 @@ Do not enable this on non-retina displays, unless for screenshot purposes.";
 "OTP_MESSAGE" = "OTP Secret for user \"%@\"";
 "OTP_INFORMATIVE" = "If you trust your local Keychain you can let XIV on Mac handle OTP generation for you if you provide a BASE32 encoded secret below:";
 
-"GSHADE_MESSAGE" = "When running Catalina you must have Wine or CrossOver installed";
-"GSHADE_INFORMATIVE" = "You can also manually add the Wine version bundled with the XIV on Mac.app to your $PATH";
-
 "INSTALLER_FOUND_MESSAGE" = "FINAL FANTASY XIV ONLINE install found!";
 "INSTALLER_FOUND_INFORMATIVE" = "Would you like to use the install located at %@?";
 "INSTALLER_NOT_DETECTED_MESSAGE" = "No FINAL FANTASY XIV ONLINE installs were detected…";
@@ -126,11 +119,6 @@ Do not enable this on non-retina displays, unless for screenshot purposes.";
 "INSTALLER_PATH_INVALID_MESSAGE" = "Invalid FFXIV Directory";
 "INSTALLER_PATH_INVALID_INFORMATIVE" = "It should contain the folders \"game\" and \"boot\" and the game executable.";
 "INSTALLER_PATH_INVALID_BUTTON" = "By the Twelve!";
-
-"INSTALLER_DOWNLOAD_ERROR_MESSAGE" = "Download Error";
-"INSTALLER_DOWNLOAD_ERROR_INFORMATIVE" = "XIV on Mac could not download the base game archive";
-
-"INSTALLER_EXTRACTING" = "Extracting";
 
 "LOGGING_IN" = "Logging In";
 
@@ -194,35 +182,12 @@ Do not enable this on non-retina displays, unless for screenshot purposes.";
 "NOTIFY_CAPTURE_STOPPED_SUBTITLE" = "Stopped Screen Recording";
 "NOTIFY_CAPTURE_STOPPED_BODY" = "Recording saved to %@";
 
-
 // Graphics Settings tab items
-"DXMT_ENABLED" = "Use direct translation of D3D11 to Metal via DXMT";
 "METALFX_SPATIAL_ENABLED" = "Enable MetalFX spatial upscaling";
 "SETTINGS_FPS_LIMIT" = "Maximum Frame Rate";
 "SETTINGS_FPS_LIMIT_PLACEHOLDER" = "0";
 "SETTINGS_FPS_LIMIT_UNITS" = "fps";
-"SETTINGS_GRAPHICS_ASYNC" = "Async";
-"SETTINGS_GRAPHICS_HUD" = "HUD";
-"SETTINGS_GRAPHICS_DXVK_HUD_HEADER" = "DXVK HUD Options";
-"SETTINGS_GRAPHICS_HUD_BLURB" = "HUD Options are informational items displayed in the upper left corner during play that can aid you in determining how in-game settings are affecting your performance. They are entirely optional.";
-"SETTINGS_GRAPHICS_HUD_SCALE" = "Scale:";
-"SETTINGS_GRAPHICS_RESET_SCALE_BUTTON" = "Reset";
-"SETTINGS_GRAPHICS_METAL3_HUD" = "Metal 3 Performance HUD";
-"SETTINGS_GRAPHICS_DEVICE_INFO" = "Device Info";
-"SETTINGS_GRAPHICS_GPU_LOAD" = "GPU Load";
-"SETTINGS_GRAPHICS_FRAME_RATE_HUD" = "Frame Rate";
-"SETTINGS_GRAPHICS_DXVK_VERSION" = "DXVK Version";
-"SETTINGS_GRAPHICS_FRAME_TIME" = "Frame Time Graph";
-"SETTINGS_GRAPHICS_FEATURE_LEVEL" = "D3D Feature Level";
-"SETTINGS_GRAPHICS_BUFFER_SUBMISSIONS" = "Command Buffer Submissions";
-"SETTINGS_GRAPHICS_COMPILER" = "Shader Compiler Activity";
-"SETTINGS_GRAPHICS_DRAWCALLS" = "Draw Calls and Render Passes";
-"SETTINGS_GRAPHICS_PIPELINES" = "Graphics and Compute Pipelines";
-"SETTINGS_GRAPHICS_MEMORY" = "Memory Used";
-"SETTINGS_GRAPHICS_ALL_DXVK_ON_BUTTON" = "Enable Entire DXVK HUD";
-"SETTINGS_GRAPHICS_ALL_DXVK_OFF_BUTTON" = "Disable Entire DXVK HUD";
 "SETTINGS_GRAPHICS_RETINA" = "Enable macOS Scaling";
-"SETTINGS_GRAPHICS_RETINA_BUGFIX" = "Bugfix for non-scaling mode in fullscreen";
 
 // Plugins/Dalamud tab items
 "SETTINGS_PLUGINS_WHAT_IS_DALAMUD_BLURB" = "Plugins are enabled by a project called Dalamud, which enables extra functionality in your game. If you do not know why you would want a plugin or do not wish to use them, you may safely leave this disabled. To learn more about Dalamud please visit:\nhttps://github.com/goatcorp/Dalamud";
@@ -275,14 +240,12 @@ Do not enable this on non-retina displays, unless for screenshot purposes.";
 "BENCHMARK_MODE_CREATOR_LABEL" = "Character Creator";
 "BENCHMARK_FOLDER_LABEL" = "Benchmark Folder Location:";
 "BENCHMARK_FOLDER_SELECT_BUTTON" = "Select…";
-"BENCHMARK_FOLDER_NOT_SET" = "Not Set…";
 "BENCHMARK_SET_DEFAULTS" = "Apply Recommended Settings";
 "BENCHMARK_TYPE_LABEL" = "Benchmark Type";
 "BENCHMARK_TYPE_HD" = "Windowed HD: 1920 x 1080";
 "BENCHMARK_TYPE_QHD" = "Windowed WQHD: 2560 × 1440";
 "BENCHMARK_TYPE_CUSTOM" = "Borderless Fullscreen: Desktop Resolution";
 "BENCHMARK_START_BUTTON" = "Start Benchmark";
-"BENCHMARK_CHARACTER_APPEARANCE_FORMAT" = "Slot %d – %@";
 "BENCHMARK_CHARACTER_APPEARANCE" = "Character Appearance";
 "BENCHMARK_DEFAULT_APPEARANCE" = "Default";
 "BENCHMARK_CHARACTER_UNNAMED" = "Unnamed";

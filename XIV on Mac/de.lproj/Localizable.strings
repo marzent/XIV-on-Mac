@@ -10,7 +10,6 @@
 "BUTTON_NO" = "Nein";
 "BUTTON_OK" = "OK";
 "BUTTON_CANCEL" = "Abbrechen";
-"BUTTON_CLOSE" = "Schließen";
 
 "LOGIN_ERROR" = "Login Fehler";
 "START_ERROR" = "Fehler beim starten von FFXIV";
@@ -47,7 +46,6 @@
 "GAME_START_FAILURE_INFORMATIONAL" = "Beim Starten des Spiels ist ein Fehler aufgetreten. Bitte versuche XIV on Mac neu zu starten.";
 
 "FIRSTAID_GAME_RUNNING" = "Final Fantasy XIV läuft";
-"FIRSTAID_GAME_RUNNING_INFORMATIONAL" = "Bitte schließe all noch laufenden Kopien von Final Fantasy XIV, bevor du Maßnahmen zur Fehlerbehebung ergreifst.";
 
 "DXVK_USER_CACHE_DELETED" = "Shader Cache gelöscht";
 "DXVK_USER_CACHE_DELETED_INFORMATIVE" = "Der Shader Cache wurde erfolgreich gelöscht. Versuche das Spiel zu starten, um zu sehen, ob dein Problem behoben wurde.";
@@ -58,8 +56,6 @@
 "GAME_CONFIG_RESET_INFORMATIVE" = "Deine Spielkonfiguration wurde erfolgreich zurückgesetzt.";
 "GAME_CONFIG_RESET_FAILED" = "Zurücksetzen der Konfiguration fehlgeschlagen";
 "GAME_CONFIG_RESET_FAILED_INFORMATIVE" = "Die Konfiguration kann nicht zurückgesetzt werden. Möglicherweise musst du XIV On Mac in den Systemeinstellungen, Sicherheit, Zugriff auf den Ordner Downloads gewähren.";
-
-"DOCUMENTS_PERM_STILL_BAD" = "XIV On Mac ist immer noch nicht in der Lage, Deinen Dokumentenordner zu lesen und/oder zu beschreiben. Wenn dein Sicherheitseinstellungsfenster die richtigen Berechtigungen anzeigt, versuche den Eintrag zu löschen und neu zu erstellen.";
 
 "UNSUPPORTED_GPU" = "Keine unterstützte GPU gefunden";
 "UNSUPPORTED_GPU_INFORMATIVE" = "XIV On Mac hat keine unterstützten GPUs in deinem Mac gefunden. Wenn du fortfährst, kann es sein, dass das Spiel nicht funktioniert, abstürzt oder anderweitig unzureichend funktioniert. Weitere Details findest du in unserer Kompatibilitätsliste.";
@@ -110,9 +106,6 @@ Aktiviere dies auf Nicht-Retina-Displays nur, wenn du Bildschirmfotos aufnehmen 
 "OTP_MESSAGE" = "OTP-Schlüssel für Benutzer \"%@\"";
 "OTP_INFORMATIVE" = "Wenn du deinem lokalen Schlüsselbund vertraust, kann XIV on Mac die OTP-Generierung für dich übernehmen, wenn du unten einen BASE32-kodierten Schlüssel angibst:";
 
-"GSHADE_MESSAGE" = "Wenn du Catalina ausführst, musst du Wine oder CrossOver installiert haben";
-"GSHADE_INFORMATIVE" = "Du kannst die Wine-Version, die mit der XIV on Mac.app ausgeliefert wird, auch manuell zu deinem $PATH hinzufügen";
-
 "INSTALLER_FOUND_MESSAGE" = "FINAL FANTASY XIV ONLINE Installation gefunden!";
 "INSTALLER_FOUND_INFORMATIVE" = "Möchtest du die Installation unter %@ verwenden?";
 "INSTALLER_NOT_DETECTED_MESSAGE" = "Es wurden keine FINAL FANTASY XIV ONLINE-Installationen gefunden..";
@@ -123,11 +116,6 @@ Aktiviere dies auf Nicht-Retina-Displays nur, wenn du Bildschirmfotos aufnehmen 
 "INSTALLER_PATH_INVALID_MESSAGE" = "Ungültiges FFXIV-Verzeichnis";
 "INSTALLER_PATH_INVALID_INFORMATIVE" = "Es sollte die Verzeichnisse \"game\" und \"boot\" sowie die ausführbare Datei des Spiels enthalten.";
 "INSTALLER_PATH_INVALID_BUTTON" = "Bei den Zwölfen!";
-
-"INSTALLER_DOWNLOAD_ERROR_MESSAGE" = "Fehler beim Download / Herunterladen";
-"INSTALLER_DOWNLOAD_ERROR_INFORMATIVE" = "XIV on Mac konnte das Archiv des Basisspiels nicht herunterladen";
-
-"INSTALLER_EXTRACTING" = "Entpacken";
 
 "LOGGING_IN" = "Einloggen";
 
@@ -193,35 +181,12 @@ Zusätzlich kann die Berechtigung für \"Mitteilungen\" aktiviert werden um beim
 "NOTIFY_CAPTURE_STOPPED_SUBTITLE" = "Gestoppte Bildschirmaufnahme";
 "NOTIFY_CAPTURE_STOPPED_BODY" = "Aufnahme gespeichert in %@";
 
-
 // Graphics Settings tab items
-"DXMT_ENABLED" = "Direkte Übersetzung von D3D11 zu Metal verwenden (DXMT)";
 "METALFX_SPATIAL_ENABLED" = "MetalFX räumliches Upscaling aktivieren";
 "SETTINGS_FPS_LIMIT" = "Maximale Framerate";
 "SETTINGS_FPS_LIMIT_PLACEHOLDER" = "0";
 "SETTINGS_FPS_LIMIT_UNITS" = "fps";
-"SETTINGS_GRAPHICS_ASYNC" = "Async";
-"SETTINGS_GRAPHICS_HUD" = "HUD";
-"SETTINGS_GRAPHICS_DXVK_HUD_HEADER" = "DXVK HUD Optionen";
-"SETTINGS_GRAPHICS_HUD_BLURB" = "HUD-Optionen sind Informationselemente, die während des Spiels in der oberen linken Ecke angezeigt werden und dir dabei helfen können festzustellen, wie sich die Einstellungen im Spiel auf Ihre Leistung auswirken. Sie sind vollkommen optional.";
-"SETTINGS_GRAPHICS_HUD_SCALE" = "Skalierung:";
-"SETTINGS_GRAPHICS_RESET_SCALE_BUTTON" = "Zurücksetzen";
-"SETTINGS_GRAPHICS_METAL3_HUD" = "Metal 3 Performance HUD";
-"SETTINGS_GRAPHICS_DEVICE_INFO" = "Geräte-Info";
-"SETTINGS_GRAPHICS_GPU_LOAD" = "GPU-Auslastung";
-"SETTINGS_GRAPHICS_FRAME_RATE_HUD" = "Framerate";
-"SETTINGS_GRAPHICS_DXVK_VERSION" = "DXVK Version";
-"SETTINGS_GRAPHICS_FRAME_TIME" = "Frametime Graph";
-"SETTINGS_GRAPHICS_FEATURE_LEVEL" = "D3D Feature Level";
-"SETTINGS_GRAPHICS_BUFFER_SUBMISSIONS" = "Command Buffer Submissions";
-"SETTINGS_GRAPHICS_COMPILER" = "Shader Compiler Aktivität";
-"SETTINGS_GRAPHICS_DRAWCALLS" = "Draw Calls und Render Passes";
-"SETTINGS_GRAPHICS_PIPELINES" = "Graphics und Compute Pipelines";
-"SETTINGS_GRAPHICS_MEMORY" = "Genutzter Speicher";
-"SETTINGS_GRAPHICS_ALL_DXVK_ON_BUTTON" = "Alle DXVK HUD Optionen aktivieren";
-"SETTINGS_GRAPHICS_ALL_DXVK_OFF_BUTTON" = "Alle DXVK HUD Optionen deaktivieren";
 "SETTINGS_GRAPHICS_RETINA" = "macOS Skalierung aktivieren";
-"SETTINGS_GRAPHICS_RETINA_BUGFIX" = "Bugfix für deaktivierte macOS Skalierung im Vollbildmodus";
 
 // Plugins/Dalamud tab items
 "SETTINGS_PLUGINS_WHAT_IS_DALAMUD_BLURB" = "Plugins werden durch ein Projekt namens Dalamud geladen, das zusätzliche Funktionen in deinem Spiel ermöglicht. Wenn du nicht weißt, wozu du ein Plugin benötigen oder es nicht verwenden möchten, kann Dalamud bedenkenlos deaktiviert bleiben. Mehr über Dalamud kannst du hier erfahren:\nhttps://github.com/goatcorp/Dalamud";
@@ -271,7 +236,6 @@ Zusätzlich kann die Berechtigung für \"Mitteilungen\" aktiviert werden um beim
 "BENCHMARK_WINDOW_TITLE" = "Final Fantasy XIV Benchmark";
 "BENCHMARK_FOLDER_LABEL" = "Benchmark-Ordner:";
 "BENCHMARK_FOLDER_SELECT_BUTTON" = "Auswählen…";
-"BENCHMARK_FOLDER_NOT_SET" = "Nicht ausgewählt…";
 "BENCHMARK_SET_DEFAULTS" = "Empfohlene Einstellungen übernehmen";
 "BENCHMARK_TYPE_LABEL" = "Benchmark-Typ";
 "BENCHMARK_TYPE_HD" = "Fenster HD: 1920 x 1080";

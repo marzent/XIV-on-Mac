@@ -12,7 +12,6 @@
 "BUTTON_NO" = "いいえ";
 "BUTTON_OK" = "OK";
 "BUTTON_CANCEL" = "キャンセル";
-"BUTTON_CLOSE" = "閉じる";
 "BUTTON_DONE" = "完了";
 "BUTTON_DELETE" = "削除";
 "REVEAL_IN_FINDER" = "Finderで表示";
@@ -52,7 +51,6 @@
 "GAME_START_FAILURE_INFORMATIONAL" = "ゲーム開始時にエラーが発生しました。XIV on Macを再起動してみてください。";
 
 "FIRSTAID_GAME_RUNNING" = "ファイナルファンタジーXIVが実行されています";
-"FIRSTAID_GAME_RUNNING_INFORMATIONAL" = "トラブルシューティングを行う前に、起動中のゲームクライアントを終了させてください。";
 
 "DXVK_USER_CACHE_DELETED" = "シェーダーキャッシュの削除成功";
 "DXVK_USER_CACHE_DELETED_INFORMATIVE" = "シェーダーキャッシュを削除しました。ゲームを起動し、問題が解決されたかご確認ください。";
@@ -63,8 +61,6 @@
 "GAME_CONFIG_RESET_INFORMATIVE" = "ゲームの設定ファイルのリセットに成功しました。";
 "GAME_CONFIG_RESET_FAILED" = "設定ファイルのリセット失敗";
 "GAME_CONFIG_RESET_FAILED_INFORMATIVE" = "設定ファイルのリセットができませんでした。システム環境設定のセキュリティとプライバシーで、XIV on Macにダウンロードフォルダへのアクセス許可を与える必要があります。";
-
-"DOCUMENTS_PERM_STILL_BAD" = "XIV on Macは書類フォルダへの読み書きが許可されていません。システム環境設定で正しく設定されている場合、一旦当該項目のチェックを外し、もう一度チェックを入れてみてください。";
 
 "UNSUPPORTED_GPU" = "GPUが対応していません";
 "UNSUPPORTED_GPU_INFORMATIVE" = "XIV on Macは、お使いのMac上にサポートされているGPUを見つけられませんでした。ゲームが正しく動作しなかったり、クラッシュする可能性があります。詳しくは互換性リストを参照してください。";
@@ -115,9 +111,6 @@
 "OTP_MESSAGE" = "ユーザー\"%@\"用のOTP秘密鍵";
 "OTP_INFORMATIVE" = "もしあなたがローカルのキーチェーンを信頼しているのであれば、以下にBASE32形式で秘密鍵を入力することでXIV on Macが自動的にOTPを生成することができます。";
 
-"GSHADE_MESSAGE" = "Catalinaで実行する場合、WineまたはCrossOverがインストールされている必要があります。";
-"GSHADE_INFORMATIVE" = "XIV on Mac.appにバンドルされているWineを手動で$PATHに追加することもできます。";
-
 "INSTALLER_FOUND_MESSAGE" = "FINAL FANTASY XIV ONLINEのインストールファイルを検出しました！";
 "INSTALLER_FOUND_INFORMATIVE" = "%@に存在するインストールファイルを使用したいですか？";
 "INSTALLER_NOT_DETECTED_MESSAGE" = "FINAL FANTASY XIV ONLINEのインストールファイルが見つかりませんでした";
@@ -128,11 +121,6 @@
 "INSTALLER_PATH_INVALID_MESSAGE" = "FF14のフォルダではありません";
 "INSTALLER_PATH_INVALID_INFORMATIVE" = "当該フォルダには「game」と「boot」フォルダ、およびゲームの実行ファイルが含まれています。";
 "INSTALLER_PATH_INVALID_BUTTON" = "ルイゾワのじっちゃんの名に賭けて！";
-
-"INSTALLER_DOWNLOAD_ERROR_MESSAGE" = "ダウンロードエラー";
-"INSTALLER_DOWNLOAD_ERROR_INFORMATIVE" = "XIV on Macはゲームの基本部分をダウンロードできませんでした。";
-
-"INSTALLER_EXTRACTING" = "展開中";
 
 "LOGGING_IN" = "ログイン中";
 
@@ -197,33 +185,11 @@
 "NOTIFY_CAPTURE_STOPPED_BODY" = "保存先: %@";
 
 // Graphics Settings tab items
-"DXMT_ENABLED" = "D3D11をMetalに直接変換する(DXMT)";
 "METALFX_SPATIAL_ENABLED" = "MetalFX空間アップスケーリングを有効にする";
 "SETTINGS_FPS_LIMIT" = "最大フレームレート";
 "SETTINGS_FPS_LIMIT_PLACEHOLDER" = "0";
 "SETTINGS_FPS_LIMIT_UNITS" = "fps";
-"SETTINGS_GRAPHICS_ASYNC" = "非同期";
-"SETTINGS_GRAPHICS_HUD" = "HUD";
-"SETTINGS_GRAPHICS_DXVK_HUD_HEADER" = "DXVK HUDオプション";
-"SETTINGS_GRAPHICS_HUD_BLURB" = "HUDオプションは、プレイ中に左上に表示される情報で、ゲーム内の設定がパフォーマンスにどのような影響を及ぼしているか判断するのに役立ちます。全ての項目は任意に設定可能です。";
-"SETTINGS_GRAPHICS_HUD_SCALE" = "拡大率:";
-"SETTINGS_GRAPHICS_RESET_SCALE_BUTTON" = "リセット";
-"SETTINGS_GRAPHICS_METAL3_HUD" = "Metal 3 Performance HUD";
-"SETTINGS_GRAPHICS_DEVICE_INFO" = "Device Info";
-"SETTINGS_GRAPHICS_GPU_LOAD" = "GPU Load";
-"SETTINGS_GRAPHICS_FRAME_RATE_HUD" = "Frame Rate";
-"SETTINGS_GRAPHICS_DXVK_VERSION" = "DXVK Version";
-"SETTINGS_GRAPHICS_FRAME_TIME" = "Frame Time Graph";
-"SETTINGS_GRAPHICS_FEATURE_LEVEL" = "D3D Feature Level";
-"SETTINGS_GRAPHICS_BUFFER_SUBMISSIONS" = "Command Buffer Submissions";
-"SETTINGS_GRAPHICS_COMPILER" = "Shader Compiler Activity";
-"SETTINGS_GRAPHICS_DRAWCALLS" = "Draw Calls and Render Passes";
-"SETTINGS_GRAPHICS_PIPELINES" = "Graphics and Compute Pipelines";
-"SETTINGS_GRAPHICS_MEMORY" = "Memory Used";
-"SETTINGS_GRAPHICS_ALL_DXVK_ON_BUTTON" = "全てを選択";
-"SETTINGS_GRAPHICS_ALL_DXVK_OFF_BUTTON" = "全てを選択解除";
 "SETTINGS_GRAPHICS_RETINA" = "macOSのスケーリングを有効化";
-"SETTINGS_GRAPHICS_RETINA_BUGFIX" = "全画面時のスケーリングモードのバグフィックス";
 
 // Plugins/Dalamud tab items
 "SETTINGS_PLUGINS_WHAT_IS_DALAMUD_BLURB" = "プラグイン機能はDalamudプロジェクトによって提供され、あなたのゲームに色々な（余計な）機能を追加できます。プラグインが必要な理由がわからない場合や、プラグインを使用したくない場合はこの機能を無効にした方が安全です。詳細は下記のWebサイトをご覧ください。\nhttps://github.com/goatcorp/Dalamud";
@@ -276,7 +242,6 @@
 "BENCHMARK_MODE_CREATOR_LABEL" = "キャラクターコンフィグ";
 "BENCHMARK_FOLDER_LABEL" = "ベンチマークフォルダ:";
 "BENCHMARK_FOLDER_SELECT_BUTTON" = "選択…";
-"BENCHMARK_FOLDER_NOT_SET" = "未設定…";
 "BENCHMARK_SET_DEFAULTS" = "推奨設定を使用する";
 "BENCHMARK_TYPE_LABEL" = "画面設定";
 "BENCHMARK_TYPE_HD" = "ウィンドウモード: 1920 x 1080[HD]";
@@ -284,7 +249,6 @@
 "BENCHMARK_TYPE_CUSTOM" = "仮想フルスクリーン";
 "BENCHMARK_START_BUTTON" = "ベンチマークを実行";
 
-"BENCHMARK_CHARACTER_APPEARANCE_FORMAT" = "スロット %d – %@";
 "BENCHMARK_CHARACTER_APPEARANCE" = "キャラクターの容姿";
 "BENCHMARK_DEFAULT_APPEARANCE" = "デフォルト";
 "BENCHMARK_CHARACTER_UNNAMED" = "名称未設定";

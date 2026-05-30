@@ -10,7 +10,6 @@
 "BUTTON_NO" = "不同意";
 "BUTTON_OK" = "同意";
 "BUTTON_CANCEL" = "取消";
-"BUTTON_CLOSE" = "關閉";
 "BUTTON_DONE" = "完成";
 "BUTTON_DELETE" = "刪除";
 "REVEAL_IN_FINDER" = "開啟資料夾";
@@ -50,7 +49,6 @@
 "GAME_START_FAILURE_INFORMATIONAL" = "在啟動遊戲時發生了錯誤，請在 Mac 上重新啟動 XIV。";
 
 "FIRSTAID_GAME_RUNNING" = "Final Fantasy XIV 正在執行中";
-"FIRSTAID_GAME_RUNNING_INFORMATIONAL" = "在進行任何故障排除操作之前，請關閉所有正在運行的 Final Fantasy XIV 程序。";
 
 "DXVK_USER_CACHE_DELETED" = "刪除著色器暫存";
 "DXVK_USER_CACHE_DELETED_INFORMATIVE" = "著色器暫存檔案已經成功刪除。請試著重新啟動遊戲看問題是否已解決。";
@@ -61,8 +59,6 @@
 "GAME_CONFIG_RESET_INFORMATIVE" = "您的遊戲設定已經重置成功。";
 "GAME_CONFIG_RESET_FAILED" = "設定重置失敗";
 "GAME_CONFIG_RESET_FAILED_INFORMATIVE" = "無法重置設定。您必須在系統設定、安全性偏好設定中授權 XIV On Mac 取得你的下載資料夾權限。";
-
-"DOCUMENTS_PERM_STILL_BAD" = "XIV On Mac 仍然無法讀取和/或寫入您的文件資料夾。如果您的安全性偏好設定面板顯示正確的權限，請嘗試刪除該項目並重新建立。";
 
 "UNSUPPORTED_GPU" = "找不到支援的 GPU";
 "UNSUPPORTED_GPU_INFORMATIVE" = "XIV On Mac 無法在您的 Mac 上找到支援的 GPU。如果您繼續，遊戲可能會無法正常運作、崩潰或以標準的方式執行。如需更多詳細資訊，請參閱我們的相容性清單。";
@@ -112,8 +108,6 @@
 "OTP_MESSAGE" = "使用者「%@」的 OTP 密鑰";
 "OTP_INFORMATIVE" = "如果您信任您的本地密鑰，您可以在下方提供 BASE32 編碼的密鑰，讓 XIV on Mac 為您處理 OTP 生成：";
 
-"GSHADE_MESSAGE" = "在 Catalina 運行時，您必須安裝 Wine 或 CrossOver";
-"GSHADE_INFORMATIVE" = "您也可以手動將 XIV on Mac.app 附帶的 Wine 版本添加到您的 $PATH 中";
 
 "INSTALLER_FOUND_MESSAGE" = "找到 FINAL FANTASY XIV ONLINE 安裝！";
 "INSTALLER_FOUND_INFORMATIVE" = "您想要使用位於 %@ 的安裝嗎？";
@@ -126,10 +120,6 @@
 "INSTALLER_PATH_INVALID_INFORMATIVE" = "它應該包含「game\」和「boot\」資料夾以及遊戲執行檔。";
 "INSTALLER_PATH_INVALID_BUTTON" = "以十二神之名！";
 
-"INSTALLER_DOWNLOAD_ERROR_MESSAGE" = "下載錯誤";
-"INSTALLER_DOWNLOAD_ERROR_INFORMATIVE" = "XIV on Mac 無法下載基礎遊戲檔案";
-
-"INSTALLER_EXTRACTING" = "解壓縮中";
 
 "LOGGING_IN" = "登入中";
 
@@ -193,35 +183,12 @@
 "NOTIFY_CAPTURE_STOPPED_SUBTITLE" = "結束螢幕錄影";
 "NOTIFY_CAPTURE_STOPPED_BODY" = "錄影檔案儲存到 %@";
 
-
 // Graphics Settings tab items
-"DXMT_ENABLED" = "使用 DXMT 將 D3D11 直接轉譯為 Metal";
 "METALFX_SPATIAL_ENABLED" = "啟用 MetalFX 空間放大";
 "SETTINGS_FPS_LIMIT" = "最大幀率";
 "SETTINGS_FPS_LIMIT_PLACEHOLDER" = "0";
 "SETTINGS_FPS_LIMIT_UNITS" = "fps";
-"SETTINGS_GRAPHICS_ASYNC" = "非同步";
-"SETTINGS_GRAPHICS_HUD" = "HUD";
-"SETTINGS_GRAPHICS_DXVK_HUD_HEADER" = "DXVK HUD 選項";
-"SETTINGS_GRAPHICS_HUD_BLURB" = "HUD 選項是在遊戲過程中顯示在左上角的資訊項目，可以幫助您了解遊戲內設定如何影響您的效能。這些選項完全是可選的。";
-"SETTINGS_GRAPHICS_HUD_SCALE" = "縮放:";
-"SETTINGS_GRAPHICS_RESET_SCALE_BUTTON" = "重置";
-"SETTINGS_GRAPHICS_METAL3_HUD" = "Metal 3 效能 HUD";
-"SETTINGS_GRAPHICS_DEVICE_INFO" = "裝置資訊";
-"SETTINGS_GRAPHICS_GPU_LOAD" = "GPU 負載";
-"SETTINGS_GRAPHICS_FRAME_RATE_HUD" = "幀率";
-"SETTINGS_GRAPHICS_DXVK_VERSION" = "DXVK 版本";
-"SETTINGS_GRAPHICS_FRAME_TIME" = "幀數時間圖表";
-"SETTINGS_GRAPHICS_FEATURE_LEVEL" = "D3D 功能等級";
-"SETTINGS_GRAPHICS_BUFFER_SUBMISSIONS" = "命令緩衝區提交";
-"SETTINGS_GRAPHICS_COMPILER" = "著色器編譯器活動";
-"SETTINGS_GRAPHICS_DRAWCALLS" = "繪製呼叫和渲染通道";
-"SETTINGS_GRAPHICS_PIPELINES" = "圖形和計算管線";
-"SETTINGS_GRAPHICS_MEMORY" = "已使用記憶體";
-"SETTINGS_GRAPHICS_ALL_DXVK_ON_BUTTON" = "啟用完整 DXVK HUD";
-"SETTINGS_GRAPHICS_ALL_DXVK_OFF_BUTTON" = "停用完整 DXVK HUD";
 "SETTINGS_GRAPHICS_RETINA" = "啟用 macOS 縮放";
-"SETTINGS_GRAPHICS_RETINA_BUGFIX" = "全螢幕非縮放模式的錯誤修正";
 
 // Plugins/Dalamud tab items
 "SETTINGS_PLUGINS_WHAT_IS_DALAMUD_BLURB" = "外掛是由一個名為 Dalamud 的專案啟用，能為你的遊戲增加額外功能。如果你不知道為什麼需要外掛，或是不想使用外掛，可以放心地保持停用。想了解更多關於 Dalamud，請造訪：\nhttps://github.com/goatcorp/Dalamud";
@@ -262,14 +229,12 @@
 "BENCHMARK_MODE_CREATOR_LABEL" = "角色創建器";
 "BENCHMARK_FOLDER_LABEL" = "效能測試資料夾位置：";
 "BENCHMARK_FOLDER_SELECT_BUTTON" = "選擇…";
-"BENCHMARK_FOLDER_NOT_SET" = "尚未設定…";
 "BENCHMARK_SET_DEFAULTS" = "套用建議設定";
 "BENCHMARK_TYPE_LABEL" = "效能測試類型";
 "BENCHMARK_TYPE_HD" = "視窗化 HD：1920 x 1080";
 "BENCHMARK_TYPE_QHD" = "視窗化 WQHD：2560 × 1440";
 "BENCHMARK_TYPE_CUSTOM" = "全螢幕：桌面解析度";
 "BENCHMARK_START_BUTTON" = "開始效能測試";
-"BENCHMARK_CHARACTER_APPEARANCE_FORMAT" = "欄位 %d – %@";
 "BENCHMARK_CHARACTER_APPEARANCE" = "角色外觀";
 "BENCHMARK_DEFAULT_APPEARANCE" = "預設";
 "BENCHMARK_CHARACTER_UNNAMED" = "未命名";
