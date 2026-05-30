@@ -26,6 +26,7 @@ enum Wine {
             "DXMT_CONFIG",
             "d3d11.metalSpatialUpscaleFactor=\(Settings.metalFxSpatialFactor);d3d11.preferredMaxFrameRate=\(Settings.maxFramerate);"
         )
+        addEnvironmentVariable("DXMT_ENABLE_NVEXT", "1")
         addEnvironmentVariable(
             "DXMT_METALFX_SPATIAL_SWAPCHAIN",
             Settings.metalFxSpatialEnabled ? "1" : "0")

@@ -64,6 +64,5 @@ enum GraphicsInstaller {
 
     static func ensureBackend() {
         install(dll: d3dcompilerDll)
-        Dxmt.install()
     }
 }
