@@ -61,7 +61,7 @@ let
 in
 pkgs.stdenv.mkDerivation rec {
   pname = "ff-wine";
-  version = "11.0.0";
+  version = "11.17.0";
 
   src = builtins.fetchGit {
     url = builtins.toString ./source;
@@ -140,6 +140,13 @@ pkgs.stdenv.mkDerivation rec {
     "--with-vulkan"
     "--without-x"
     "--without-gstreamer"
+    "--disable-icu"
+    "--disable-icuuc"
+    "--disable-icuin"
+    "--disable-icucommon"
+    "--disable-icui18n"
+    "--disable-dmsynth"
+    "--disable-fluidsynth"
   ];
 
   buildPhase = ''
