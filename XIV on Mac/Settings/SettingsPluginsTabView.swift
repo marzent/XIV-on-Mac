@@ -49,20 +49,6 @@ struct SettingsPluginsTabView: View {
                 }
             }
             Divider().padding([.top])
-            Text("SETTINGS_PLUGINS_DISCORD_BLURB")
-                .multilineTextAlignment(.leading)
-                .lineLimit(nil)
-                .padding([.top, .leading, .trailing])
-                .frame(maxWidth: .infinity, alignment: .leading)
-
-            HStack {
-                Toggle(isOn: $viewModel.discordBridge) {
-                    Text("SETTINGS_PLUGINS_DISCORD_TOGGLE")
-                }
-                .padding(.leading)
-                Spacer()
-            }
-            Divider().padding([.top])
             VStack(alignment: .leading, spacing: 8) {
                 Text("SETTINGS_PLUGINS_DALAMUD_BRANCH_BLURB")
                     .multilineTextAlignment(.leading)
@@ -157,10 +143,6 @@ extension SettingsPluginsTabView {
 
         @Published var dalamudDelay: String = .init(Settings.injectionDelay) {
             didSet { Settings.injectionDelay = Double(dalamudDelay) ?? 0 }
-        }
-
-        @Published var discordBridge: Bool = DiscordBridge.enabled {
-            didSet { DiscordBridge.enabled = discordBridge }
         }
 
         @Published fileprivate var branches: [DalamudBranch] = []
