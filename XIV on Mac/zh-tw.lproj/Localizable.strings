@@ -188,6 +188,7 @@
 "SETTINGS_FPS_LIMIT" = "最大幀率";
 "SETTINGS_FPS_LIMIT_PLACEHOLDER" = "0";
 "SETTINGS_FPS_LIMIT_UNITS" = "fps";
+"SETTINGS_GRAPHICS_METAL3_HUD" = "Metal 3 效能 HUD";
 "SETTINGS_GRAPHICS_RETINA" = "啟用 macOS 縮放";
 
 // Plugins/Dalamud tab items

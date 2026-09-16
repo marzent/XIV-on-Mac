@@ -13,6 +13,10 @@ struct SettingsGraphicsTabView: View {
     var body: some View {
         HStack(alignment: .top, spacing: 16) {
             VStack(alignment: .leading, spacing: 12) {
+                Toggle(isOn: $viewModel.metal3Hud) {
+                    Text("SETTINGS_GRAPHICS_METAL3_HUD")
+                }
+
                 Toggle(isOn: $viewModel.metalFxSpatialEnabled) {
                     Text("METALFX_SPATIAL_ENABLED")
                 }

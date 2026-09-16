@@ -187,6 +187,7 @@ Do not enable this on non-retina displays, unless for screenshot purposes.";
 "SETTINGS_FPS_LIMIT" = "Maximum Frame Rate";
 "SETTINGS_FPS_LIMIT_PLACEHOLDER" = "0";
 "SETTINGS_FPS_LIMIT_UNITS" = "fps";
+"SETTINGS_GRAPHICS_METAL3_HUD" = "Metal 3 Performance HUD";
 "SETTINGS_GRAPHICS_RETINA" = "Enable macOS Scaling";
 
 // Plugins/Dalamud tab items

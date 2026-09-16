@@ -185,6 +185,7 @@ Ne l'activez pas sur les écrans autres que écrans Retina, sauf à des fins de 
 "SETTINGS_FPS_LIMIT" = "Fréquence d'images maximale";
 "SETTINGS_FPS_LIMIT_PLACEHOLDER" = "0";
 "SETTINGS_FPS_LIMIT_UNITS" = "ips";
+"SETTINGS_GRAPHICS_METAL3_HUD" = "ATH de performances Metal 3";
 "SETTINGS_GRAPHICS_RETINA" = "Activer la mise à l'échelle macOS";
 
 // Plugins/Dalamud tab items
