@@ -227,6 +227,15 @@
 "FIRSTAID_SHADER_CACHE_HEADING" = "シェーダーキャッシュ";
 "FIRSTAID_SHADER_CACHE_BLURB" = "起動時にフリーズしたり、ライトが欠けたり、ランダムにフリーズする場合は、シェーダーキャッシュに問題がある可能性があります。シェーダーキャッシュを削除すると新しいキャッシュが再構築されますが、初期状態ではプレイ中に時々カクカクすることがあります。";
 "FIRSTAID_SHADER_CACHE_BUTTON" = "シェーダーキャッシュの削除";
+"FIRSTAID_PREFIX_HEADING" = "Wine Prefix";
+"FIRSTAID_PREFIX_BLURB" = "XIV on Macのアップデート後にゲームが起動しない場合や、Wine自体に問題がある場合は、Wine Prefixを削除すると改善することがあります。ゲーム本体とFF14の設定は削除されません。新しいPrefixは自動的に作成されます。";
+"FIRSTAID_PREFIX_BUTTON" = "Wine Prefixを削除";
+"FIRSTAID_PREFIX_CONFIRM" = "Wine Prefixを削除しますか？";
+"FIRSTAID_PREFIX_CONFIRM_INFORMATIVE" = "この操作は元に戻せません。ゲームのインストールとFF14の設定は保持されます。";
+"FIRSTAID_PREFIX_DELETED" = "Wine Prefixを削除しました";
+"FIRSTAID_PREFIX_DELETED_INFORMATIVE" = "Wine Prefixを削除しました。新しいPrefixは自動的に作成されます。";
+"FIRSTAID_PREFIX_DELETE_FAILED" = "Wine Prefixの削除に失敗しました";
+"FIRSTAID_PREFIX_DELETE_FAILED_INFORMATIVE" = "Wine Prefixを削除できません。";
 "FIRSTAID_CONFIG_HEADING" = "FF14の設定";
 "FIRSTAID_RESET_CONFIG_BLURB" = "グラフィック設定を失敗するなどして、ゲームをプレイできないような設定になっている場合は、設定をデフォルトに戻してみてください。";
 "FIRSTAID_RESET_CONFIG_BUTTON" = "設定をリセットする";

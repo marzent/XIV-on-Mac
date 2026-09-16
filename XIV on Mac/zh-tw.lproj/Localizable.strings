@@ -215,6 +215,15 @@
 "FIRSTAID_SHADER_CACHE_HEADING" = "著色器快取";
 "FIRSTAID_SHADER_CACHE_BLURB" = "如果你的遊戲在啟動時凍結，出現光影異常或隨機凍結，問題可能出在你的著色器快取。刪除它會讓系統重新建立一個新的快取，但初期遊玩時可能會偶爾出現卡頓現象。";
 "FIRSTAID_SHADER_CACHE_BUTTON" = "刪除使用者著色器快取";
+"FIRSTAID_PREFIX_HEADING" = "Wine Prefix";
+"FIRSTAID_PREFIX_BLURB" = "如果你在更新 XIV on Mac 後無法啟動遊戲，或 Wine 本身出現問題，刪除 Wine Prefix 可能有幫助。遊戲檔案與 FFXIV 設定不會被刪除。系統會自動建立新的 Prefix。";
+"FIRSTAID_PREFIX_BUTTON" = "刪除 Wine Prefix";
+"FIRSTAID_PREFIX_CONFIRM" = "確定要刪除 Wine Prefix？";
+"FIRSTAID_PREFIX_CONFIRM_INFORMATIVE" = "此操作無法復原。你的遊戲安裝與 FFXIV 設定將會保留。";
+"FIRSTAID_PREFIX_DELETED" = "已刪除 Wine Prefix";
+"FIRSTAID_PREFIX_DELETED_INFORMATIVE" = "Wine Prefix 已成功刪除。系統將自動建立新的 Prefix。";
+"FIRSTAID_PREFIX_DELETE_FAILED" = "刪除 Wine Prefix 失敗";
+"FIRSTAID_PREFIX_DELETE_FAILED_INFORMATIVE" = "無法刪除 Wine Prefix。";
 "FIRSTAID_CONFIG_HEADING" = "FFXIV 設定";
 "FIRSTAID_RESET_CONFIG_BLURB" = "如果你因為設定錯誤（例如不當的顯示設定）導致無法遊玩，可以嘗試將設定重置為預設值。";
 "FIRSTAID_RESET_CONFIG_BUTTON" = "重置設定";

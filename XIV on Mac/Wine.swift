@@ -43,6 +43,7 @@ enum Wine {
     static func boot() {
         DispatchQueue.global(qos: .utility).async {
             ensurePrefix()
+            restorePersistentSettings()
         }
     }
 
@@ -109,6 +110,23 @@ enum Wine {
 
     static func kill() {
         killWine()
+    }
+
+    static func deletePrefix() throws {
+        kill()
+        if FileManager.default.fileExists(atPath: prefix.path) {
+            try FileManager.default.removeItem(at: prefix)
+        }
+        boot()
+    }
+
+    private static func restorePersistentSettings() {
+        retina = retina
+        leftOptionIsAlt = leftOptionIsAlt
+        rightOptionIsAlt = rightOptionIsAlt
+        leftCommandIsCtrl = leftCommandIsCtrl
+        rightCommandIsCtrl = rightCommandIsCtrl
+        Settings.platform = Settings.platform
     }
 
     static func addReg(key: String, value: String, data: String) {

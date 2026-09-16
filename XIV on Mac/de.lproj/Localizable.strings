@@ -224,6 +224,15 @@ Zusätzlich kann die Berechtigung für \"Mitteilungen\" aktiviert werden um beim
 "FIRSTAID_SHADER_CACHE_HEADING" = "Shader Cache";
 "FIRSTAID_SHADER_CACHE_BLURB" = "Wenn dein Spiel beim Start einfriert, die Beleuchtung fehlt oder das Spiel zufällig einfriert, liegt das Problem möglicherweise an deinem Shader-Cache. Wenn du ihn löschst, wird ein neuer Cache erstellt, auch wenn dies anfangs zu gelegentlichen Stottern beim Spielen führen kann.";
 "FIRSTAID_SHADER_CACHE_BUTTON" = "Benutzer Shader Cache löschen";
+"FIRSTAID_PREFIX_HEADING" = "Wine Prefix";
+"FIRSTAID_PREFIX_BLURB" = "Wenn das Spiel nach einem Update von XIV on Mac nicht startet oder Wine selbst Probleme macht, kann das Löschen des Wine-Prefix helfen. Deine Spieldateien und FFXIV-Einstellungen bleiben erhalten. Ein neues Prefix wird automatisch erstellt.";
+"FIRSTAID_PREFIX_BUTTON" = "Wine Prefix löschen";
+"FIRSTAID_PREFIX_CONFIRM" = "Wine Prefix löschen?";
+"FIRSTAID_PREFIX_CONFIRM_INFORMATIVE" = "Dieser Vorgang kann nicht rückgängig gemacht werden. Deine Spielinstallation und FFXIV-Konfiguration bleiben erhalten.";
+"FIRSTAID_PREFIX_DELETED" = "Wine Prefix gelöscht";
+"FIRSTAID_PREFIX_DELETED_INFORMATIVE" = "Das Wine Prefix wurde erfolgreich gelöscht. Ein neues wird automatisch erstellt.";
+"FIRSTAID_PREFIX_DELETE_FAILED" = "Wine Prefix löschen fehlgeschlagen";
+"FIRSTAID_PREFIX_DELETE_FAILED_INFORMATIVE" = "Das Wine Prefix kann nicht gelöscht werden.";
 "FIRSTAID_CONFIG_HEADING" = "FFXIV Konfiguration";
 "FIRSTAID_RESET_CONFIG_BLURB" = "Wenn du dein Spiel auf eine Weise falsch konfiguriert hast, die dich daran hindert, es zu spielen, wie z.B. eine schlechte Grafikeinstellung, kannst du versuchen, deine Konfiguration auf die Standardeinstellungen zurückzusetzen.";
 "FIRSTAID_RESET_CONFIG_BUTTON" = "Konfiguration zurücksetzen";

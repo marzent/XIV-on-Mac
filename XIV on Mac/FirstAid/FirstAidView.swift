@@ -123,6 +123,59 @@ struct FirstAidView: View {
             }
             Divider()
             Group {
+                Text("FIRSTAID_PREFIX_HEADING")
+                    .font(Font.title)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+
+                Text("FIRSTAID_PREFIX_BLURB")
+                    .multilineTextAlignment(.leading)
+                    .lineLimit(nil)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding([.leading, .trailing])
+                Button("FIRSTAID_PREFIX_BUTTON") {
+                    guard checkIfNotRunning() else {
+                        return
+                    }
+                    let confirm = NSAlert()
+                    confirm.alertStyle = .warning
+                    confirm.messageText = NSLocalizedString(
+                        "FIRSTAID_PREFIX_CONFIRM", comment: "")
+                    confirm.informativeText = NSLocalizedString(
+                        "FIRSTAID_PREFIX_CONFIRM_INFORMATIVE", comment: "")
+                    confirm.addButton(
+                        withTitle: NSLocalizedString(
+                            "BUTTON_DELETE", comment: ""))
+                    confirm.addButton(
+                        withTitle: NSLocalizedString(
+                            "BUTTON_CANCEL", comment: ""))
+                    guard confirm.runModal() == .alertFirstButtonReturn else {
+                        return
+                    }
+                    let alert = NSAlert()
+                    do {
+                        try Wine.deletePrefix()
+                        alert.alertStyle = .informational
+                        alert.messageText = NSLocalizedString(
+                            "FIRSTAID_PREFIX_DELETED", comment: "")
+                        alert.informativeText = NSLocalizedString(
+                            "FIRSTAID_PREFIX_DELETED_INFORMATIVE", comment: "")
+                    } catch {
+                        Log.error(error.localizedDescription)
+                        alert.alertStyle = .warning
+                        alert.messageText = NSLocalizedString(
+                            "FIRSTAID_PREFIX_DELETE_FAILED", comment: "")
+                        alert.informativeText = NSLocalizedString(
+                            "FIRSTAID_PREFIX_DELETE_FAILED_INFORMATIVE",
+                            comment: "")
+                    }
+                    alert.addButton(
+                        withTitle: NSLocalizedString("BUTTON_OK", comment: ""))
+                    alert.runModal()
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+            }
+            Divider()
+            Group {
                 Text("FIRSTAID_CONFIG_HEADING")
                     .font(Font.title)
                     .frame(maxWidth: .infinity, alignment: .leading)
