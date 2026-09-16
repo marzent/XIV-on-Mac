@@ -50,10 +50,10 @@
 
 "FIRSTAID_GAME_RUNNING" = "Final Fantasy XIV 正在執行中";
 
-"DXVK_USER_CACHE_DELETED" = "刪除著色器暫存";
-"DXVK_USER_CACHE_DELETED_INFORMATIVE" = "著色器暫存檔案已經成功刪除。請試著重新啟動遊戲看問題是否已解決。";
-"DXVK_USER_CACHE_DELETE_FAILED" = "刪除著色器暫存失敗";
-"DXVK_USER_CACHE_DELETE_FAILED_INFORMATIVE" = "無法刪除著色器暫存檔案. 請您嘗試至以下路徑手動刪除 File->Open Wine Prefix.";
+"DXMT_USER_CACHE_DELETED" = "刪除著色器暫存";
+"DXMT_USER_CACHE_DELETED_INFORMATIVE" = "著色器暫存檔案已經成功刪除。請試著重新啟動遊戲看問題是否已解決。";
+"DXMT_USER_CACHE_DELETE_FAILED" = "刪除著色器暫存失敗";
+"DXMT_USER_CACHE_DELETE_FAILED_INFORMATIVE" = "無法刪除著色器暫存檔案.";
 
 "GAME_CONFIG_RESET" = "重置設定";
 "GAME_CONFIG_RESET_INFORMATIVE" = "您的遊戲設定已經重置成功。";
@@ -213,7 +213,7 @@
 // First Aid/Troubleshooting Window
 "FIRSTAID_WINDOW_TITLE" = "急救";
 "FIRSTAID_SHADER_CACHE_HEADING" = "著色器快取";
-"FIRSTAID_SHADER_CACHE_BLURB" = "如果你的遊戲在啟動時凍結，長時間顯示「正在編譯著色器…」、出現光影異常或隨機凍結，問題可能出在你的著色器快取。刪除它會讓系統重新建立一個新的快取，但初期遊玩時可能會偶爾出現卡頓現象。";
+"FIRSTAID_SHADER_CACHE_BLURB" = "如果你的遊戲在啟動時凍結，出現光影異常或隨機凍結，問題可能出在你的著色器快取。刪除它會讓系統重新建立一個新的快取，但初期遊玩時可能會偶爾出現卡頓現象。";
 "FIRSTAID_SHADER_CACHE_BUTTON" = "刪除使用者著色器快取";
 "FIRSTAID_CONFIG_HEADING" = "FFXIV 設定";
 "FIRSTAID_RESET_CONFIG_BLURB" = "如果你因為設定錯誤（例如不當的顯示設定）導致無法遊玩，可以嘗試將設定重置為預設值。";

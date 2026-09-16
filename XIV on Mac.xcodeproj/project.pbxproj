@@ -81,6 +81,7 @@
 		50B2A2B527AC1BC400EFA0A2 /* LoginSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B2A2B427AC1BC400EFA0A2 /* LoginSheetController.swift */; };
 		50BD278727785418002B0D1F /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BD278627785418002B0D1F /* Notifications.swift */; };
 		50C029052C5257050085297D /* GraphicsInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C029042C5257050085297D /* GraphicsInstaller.swift */; };
+		50C1A0012F9A1B000085297D /* Dxmt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C1A0002F9A1B000085297D /* Dxmt.swift */; };
 		50D30FA027B92EDB007A9F66 /* OTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D30F9F27B92EDB007A9F66 /* OTP.swift */; };
 		50D30FA327B93359007A9F66 /* Embassy in Frameworks */ = {isa = PBXBuildFile; productRef = 50D30FA227B93359007A9F66 /* Embassy */; };
 		50DC355E27E9CEEE00DBA62C /* Base32 in Frameworks */ = {isa = PBXBuildFile; productRef = 50DC355D27E9CEEE00DBA62C /* Base32 */; };
@@ -195,6 +196,7 @@
 		50B2A2B427AC1BC400EFA0A2 /* LoginSheetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSheetController.swift; sourceTree = "<group>"; };
 		50BD278627785418002B0D1F /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		50C029042C5257050085297D /* GraphicsInstaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicsInstaller.swift; sourceTree = "<group>"; };
+		50C1A0002F9A1B000085297D /* Dxmt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dxmt.swift; sourceTree = "<group>"; };
 		50D30F9F27B92EDB007A9F66 /* OTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTP.swift; sourceTree = "<group>"; };
 		50DF1F8427CCB83300DE9DA5 /* FFXIVRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFXIVRepo.swift; sourceTree = "<group>"; };
 		50E7EB9929A16F29001BC287 /* Benchmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Benchmark.swift; sourceTree = "<group>"; };
@@ -471,6 +473,7 @@
 		50FC2DFD27F9744700871760 /* GraphicsUtils */ = {
 			isa = PBXGroup;
 			children = (
+				50C1A0002F9A1B000085297D /* Dxmt.swift */,
 				50C029042C5257050085297D /* GraphicsInstaller.swift */,
 			);
 			path = GraphicsUtils;
@@ -687,6 +690,7 @@
 				501AF2F1299641A700754CC6 /* Dalamud.swift in Sources */,
 				509FE19A27E3654E008D56D6 /* FFXIVEnums.swift in Sources */,
 				50C029052C5257050085297D /* GraphicsInstaller.swift in Sources */,
+				50C1A0012F9A1B000085297D /* Dxmt.swift in Sources */,
 				5010EFE427E4CE40001D2FEC /* Encryption.swift in Sources */,
 				07E8A6712BD07041005AD41B /* CharacterAppearanceData.swift in Sources */,
 				5020957927C9611A00BD76CC /* Patch.swift in Sources */,

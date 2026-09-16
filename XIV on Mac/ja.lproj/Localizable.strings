@@ -52,10 +52,10 @@
 
 "FIRSTAID_GAME_RUNNING" = "ファイナルファンタジーXIVが実行されています";
 
-"DXVK_USER_CACHE_DELETED" = "シェーダーキャッシュの削除成功";
-"DXVK_USER_CACHE_DELETED_INFORMATIVE" = "シェーダーキャッシュを削除しました。ゲームを起動し、問題が解決されたかご確認ください。";
-"DXVK_USER_CACHE_DELETE_FAILED" = "シェーダーキャッシュ削除失敗";
-"DXVK_USER_CACHE_DELETE_FAILED_INFORMATIVE" = "シェーダーキャッシュを削除できません。ファイル→Wine Prefixを開く…を使用して手動で削除してみてください。";
+"DXMT_USER_CACHE_DELETED" = "シェーダーキャッシュの削除成功";
+"DXMT_USER_CACHE_DELETED_INFORMATIVE" = "シェーダーキャッシュを削除しました。ゲームを起動し、問題が解決されたかご確認ください。";
+"DXMT_USER_CACHE_DELETE_FAILED" = "シェーダーキャッシュ削除失敗";
+"DXMT_USER_CACHE_DELETE_FAILED_INFORMATIVE" = "シェーダーキャッシュを削除できません。";
 
 "GAME_CONFIG_RESET" = "設定ファイルをリセット";
 "GAME_CONFIG_RESET_INFORMATIVE" = "ゲームの設定ファイルのリセットに成功しました。";
@@ -225,7 +225,7 @@
 // First Aid/Troubleshooting Window
 "FIRSTAID_WINDOW_TITLE" = "トラブルシューティング";
 "FIRSTAID_SHADER_CACHE_HEADING" = "シェーダーキャッシュ";
-"FIRSTAID_SHADER_CACHE_BLURB" = "起動時にフリーズしたり、Compiling Shaders… が無限に続いたり、ライトが欠けたり、ランダムにフリーズする場合は、シェーダーキャッシュに問題がある可能性があります。シェーダーキャッシュを削除すると新しいキャッシュが再構築されますが、初期状態ではプレイ中に時々カクカクすることがあります。";
+"FIRSTAID_SHADER_CACHE_BLURB" = "起動時にフリーズしたり、ライトが欠けたり、ランダムにフリーズする場合は、シェーダーキャッシュに問題がある可能性があります。シェーダーキャッシュを削除すると新しいキャッシュが再構築されますが、初期状態ではプレイ中に時々カクカクすることがあります。";
 "FIRSTAID_SHADER_CACHE_BUTTON" = "シェーダーキャッシュの削除";
 "FIRSTAID_CONFIG_HEADING" = "FF14の設定";
 "FIRSTAID_RESET_CONFIG_BLURB" = "グラフィック設定を失敗するなどして、ゲームをプレイできないような設定になっている場合は、設定をデフォルトに戻してみてください。";

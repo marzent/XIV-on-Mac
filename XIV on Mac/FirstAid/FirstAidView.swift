@@ -100,19 +100,19 @@ struct FirstAidView: View {
                     }
                     let alert = NSAlert()
                     do {
-                        // try Dxvk.resetCache()
+                        try Dxmt.resetCache()
                         alert.alertStyle = .informational
                         alert.messageText = NSLocalizedString(
-                            "DXVK_USER_CACHE_DELETED", comment: "")
+                            "DXMT_USER_CACHE_DELETED", comment: "")
                         alert.informativeText = NSLocalizedString(
-                            "DXVK_USER_CACHE_DELETED_INFORMATIVE", comment: "")
+                            "DXMT_USER_CACHE_DELETED_INFORMATIVE", comment: "")
                     } catch {
                         Log.error(error.localizedDescription)
                         alert.alertStyle = .warning
                         alert.messageText = NSLocalizedString(
-                            "DXVK_USER_CACHE_DELETE_FAILED", comment: "")
+                            "DXMT_USER_CACHE_DELETE_FAILED", comment: "")
                         alert.informativeText = NSLocalizedString(
-                            "DXVK_USER_CACHE_DELETE_FAILED_INFORMATIVE",
+                            "DXMT_USER_CACHE_DELETE_FAILED_INFORMATIVE",
                             comment: "")
                     }
                     alert.addButton(

@@ -47,10 +47,10 @@
 
 "FIRSTAID_GAME_RUNNING" = "Final Fantasy XIV läuft";
 
-"DXVK_USER_CACHE_DELETED" = "Shader Cache gelöscht";
-"DXVK_USER_CACHE_DELETED_INFORMATIVE" = "Der Shader Cache wurde erfolgreich gelöscht. Versuche das Spiel zu starten, um zu sehen, ob dein Problem behoben wurde.";
-"DXVK_USER_CACHE_DELETE_FAILED" = "Shader Cache löschen fehlgeschlagen";
-"DXVK_USER_CACHE_DELETE_FAILED_INFORMATIVE" = "Der Shader-Cache kann nicht gelöscht werden. Du kannst versuchen, ihn manuell über File->Open Wine Prefix öffnen zu löschen.";
+"DXMT_USER_CACHE_DELETED" = "Shader Cache gelöscht";
+"DXMT_USER_CACHE_DELETED_INFORMATIVE" = "Der Shader Cache wurde erfolgreich gelöscht. Versuche das Spiel zu starten, um zu sehen, ob dein Problem behoben wurde.";
+"DXMT_USER_CACHE_DELETE_FAILED" = "Shader Cache löschen fehlgeschlagen";
+"DXMT_USER_CACHE_DELETE_FAILED_INFORMATIVE" = "Der Shader-Cache kann nicht gelöscht werden.";
 
 "GAME_CONFIG_RESET" = "Zurücksetzen der Konfiguration";
 "GAME_CONFIG_RESET_INFORMATIVE" = "Deine Spielkonfiguration wurde erfolgreich zurückgesetzt.";
@@ -222,7 +222,7 @@ Zusätzlich kann die Berechtigung für \"Mitteilungen\" aktiviert werden um beim
 // First Aid/Troubleshooting Window
 "FIRSTAID_WINDOW_TITLE" = "Erste Hilfe";
 "FIRSTAID_SHADER_CACHE_HEADING" = "Shader Cache";
-"FIRSTAID_SHADER_CACHE_BLURB" = "Wenn dein Spiel beim Start einfriert, \"Compiling Shaders...\" ewig dauert, die Beleuchtung fehlt oder das Spiel zufällig einfriert, liegt das Problem möglicherweise an deinem Shader-Cache. Wenn du ihn löschst, wird ein neuer Cache erstellt, auch wenn dies anfangs zu gelegentlichen Stottern beim Spielen führen kann.";
+"FIRSTAID_SHADER_CACHE_BLURB" = "Wenn dein Spiel beim Start einfriert, die Beleuchtung fehlt oder das Spiel zufällig einfriert, liegt das Problem möglicherweise an deinem Shader-Cache. Wenn du ihn löschst, wird ein neuer Cache erstellt, auch wenn dies anfangs zu gelegentlichen Stottern beim Spielen führen kann.";
 "FIRSTAID_SHADER_CACHE_BUTTON" = "Benutzer Shader Cache löschen";
 "FIRSTAID_CONFIG_HEADING" = "FFXIV Konfiguration";
 "FIRSTAID_RESET_CONFIG_BLURB" = "Wenn du dein Spiel auf eine Weise falsch konfiguriert hast, die dich daran hindert, es zu spielen, wie z.B. eine schlechte Grafikeinstellung, kannst du versuchen, deine Konfiguration auf die Standardeinstellungen zurückzusetzen.";
