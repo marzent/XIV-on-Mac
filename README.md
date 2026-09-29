@@ -88,6 +88,6 @@ We're grateful to the incredible contributors who made this project possible:
 
 **Made with ❤️ for the FFXIV Mac Community**
 
-[![Stars](https://img.shields.io/github/stars/XIV-on-Mac/XIV-on-Mac?style=social)](https://github.com/XIV-on-Mac/XIV-on-Mac)
+[![Stars](https://img.shields.io/github/stars/marzent/XIV-on-Mac?style=social)](https://github.com/marzent/XIV-on-Mac)
 
 </div>
