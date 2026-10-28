@@ -28,6 +28,9 @@ struct SettingsAdvancedTabView: View {
                 Toggle(
                     "SETTINGS_ADVANCED_ERROR_EXIT",
                     isOn: $viewModel.nonZeroExitError)
+                Toggle(
+                    "SETTINGS_ADVANCED_GAME_CONTROLLER_FRAMEWORK",
+                    isOn: $viewModel.gameControllerFramework)
             }
             SettingsSection(title: "Diagnostics", symbol: "terminal") {
                 TextField(
@@ -69,6 +72,12 @@ extension SettingsAdvancedTabView {
 
         @Published var exitWithGame: Bool = Settings.exitWithGame {
             didSet { Settings.exitWithGame = exitWithGame }
+        }
+
+        @Published var gameControllerFramework: Bool = Wine
+            .gameControllerFramework
+        {
+            didSet { Wine.gameControllerFramework = gameControllerFramework }
         }
 
         @Published var wineDebug: String = Wine.debug {
