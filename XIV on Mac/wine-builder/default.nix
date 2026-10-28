@@ -1,7 +1,7 @@
 { 
   pkgs ? import (fetchTarball {
-    url = "https://github.com/NixOS/nixpkgs/archive/b6426c549d0994c662f0a26e1a2ad1663e865f9c.tar.gz";
-    sha256 = "0xxxdzkd6a39528wsrizfmgwbz6rh2z485rwgh32ixixdvfqpw6s";
+    url = "https://github.com/NixOS/nixpkgs/archive/1e67485f1727d2f653b370efaaac93434ba2899b.tar.gz";
+    sha256 = "1yv7i068yh8ji7s5wyi920j2sbb40nphf3wzwv5b8z14561ifbdg";
   }) {
     system = "x86_64-darwin";
   },
@@ -18,7 +18,7 @@ let
       mingwGccsSuffixSalts = map (gcc: gcc.suffixSalt) mingwGccs;
     };
   } ./setup-hook-darwin.sh;
-  target_sdk = pkgs.apple-sdk_15;
+  target_sdk = pkgs.apple-sdk_26;
   darwinMinVersionHook = (pkgs.darwinMinVersionHook darwinMinVersion);
   addDarwinDepsRecursive = drv:
     if pkgs.lib.elem drv [ pkgs.darwinMinVersionHook target_sdk pkgs.stdenv pkgs.bash ] then
@@ -33,6 +33,14 @@ let
             else map addDarwinDepsRecursive existingInputs ++ [ target_sdk darwinMinVersionHook ];
         in
           modifiedInputs;
+      } // pkgs.lib.optionalAttrs ((oldAttrs.pname or "") == "bash") {
+        env = oldAttrs.env // {
+          NIX_CFLAGS_COMPILE = oldAttrs.env.NIX_CFLAGS_COMPILE + " -Wno-error=unguarded-availability-new";
+        };
+        preConfigure = ''
+          ${oldAttrs.preConfigure or ""}
+          export bash_cv_func_strchrnul_works=no
+        '';
       });
   libiconv = (pkgs.libiconvReal
     .override {
@@ -49,13 +57,21 @@ let
     buildInputs = map addDarwinDepsRecursive (builtins.filter (input: input != pkgs.libiconv) oldAttrs.buildInputs) ++ [ target_sdk darwinMinVersionHook libiconv ];
     configureFlags = oldAttrs.configureFlags ++ [ "--enable-relocatable" ];
     patches = builtins.filter (patch: builtins.match ".*absolute-paths.diff" (toString patch) == null) oldAttrs.patches;
-    preConfigure =''export CFLAGS="-O3 -march=native -mno-avx"'';
+    preConfigure = ''
+      export CFLAGS="-O3 -march=native -mno-avx -Wno-error=unguarded-availability-new"
+      export gl_cv_onwards_func_strchrnul="future OS version"
+    '';
   });
   gnutls = import ./gnutls.nix {
     inherit pkgs target_sdk darwinMinVersionHook addDarwinDepsRecursive libiconv gettext;
   };
+  libinotify-kqueue = pkgs.libinotify-kqueue.overrideAttrs (oldAttrs: {
+    preConfigure = ''
+      export ac_cv_func_fdclosedir=no
+    '';
+  });
   SDL2 = pkgs.SDL2.overrideAttrs (oldAttrs: {
-    buildInputs = [ target_sdk darwinMinVersionHook libiconv ];
+    buildInputs = builtins.filter (dep: dep != null) oldAttrs.buildInputs ++ [ target_sdk darwinMinVersionHook libiconv ];
     preConfigure =''export CFLAGS="-O3 -march=native -mno-avx"'';
   });
 in
@@ -76,7 +92,7 @@ pkgs.stdenv.mkDerivation rec {
     pkgs.flex
     pkgs.fontforge
     pkgs.pkg-config
-    mingwGccs
+  ] ++ mingwGccs ++ [
     setupHookDarwin
   ];
 
@@ -90,7 +106,7 @@ pkgs.stdenv.mkDerivation rec {
   ] ++ 
   map addDarwinDepsRecursive
   [
-    pkgs.libinotify-kqueue
+    libinotify-kqueue
     pkgs.libpcap
     pkgs.freetype
     gnutls

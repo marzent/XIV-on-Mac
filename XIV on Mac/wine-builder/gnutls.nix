@@ -50,7 +50,7 @@ pkgs.stdenv.mkDerivation rec {
 
   buildInputs = [ pkgs.lzo pkgs.lzip pkgs.libtasn1 pkgs.zlib pkgs.gmp pkgs.libunistring gettext libidn2 libiconv ];
 
-  nativeBuildInputs = [ pkgs.perl pkgs.pkg-config pkgs.texinfo ] ++ [ pkgs.autoconf pkgs.automake ];
+  nativeBuildInputs = [ pkgs.perl pkgs.pkg-config pkgs.texinfo ] ++ [ pkgs.autoconf pkgs.automake116x ];
 
   propagatedBuildInputs = map addDarwinDepsRecursive [ pkgs.nettle ];
 
