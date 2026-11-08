@@ -54,10 +54,12 @@ struct XIVOnMacApp: App {
 #endif
 
 @MainActor
-final class AppDelegate: NSObject, NSApplicationDelegate {
+final class AppDelegate: NSObject, NSApplicationDelegate,
+    @preconcurrency SPUUpdaterDelegate
+{
     let launcher = LauncherModel()
-    let updater = SPUStandardUpdaterController(
-        startingUpdater: !Util.isPreview, updaterDelegate: nil,
+    lazy var updater = SPUStandardUpdaterController(
+        startingUpdater: false, updaterDelegate: self,
         userDriverDelegate: nil)
     private var screenCapture: ScreenCapture?
 
@@ -105,8 +107,58 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         KeyboardShortcuts.onKeyDown(for: .toggleVideoCapture) { [weak self] in
             self?.screenCapture?.toggleScreenCapture()
         }
+        if Settings.skipAutoLoginAfterUpdate {
+            Settings.skipAutoLoginAfterUpdate = false
+            launcher.suppressAutoLoginForSession()
+        }
+        do {
+            try updater.updater.start()
+        } catch {
+            Log.warning(error.localizedDescription)
+            launcher.launcherUpdateCheckFinished()
+        }
         // Start independently of SwiftUI window creation.
         Task { await launcher.start(migrated: migrated) }
+    }
+
+    func updater(
+        _ updater: SPUUpdater, mayPerform updateCheck: SPUUpdateCheck
+    ) throws {
+        launcher.launcherUpdateCheckStarted()
+    }
+
+    func updater(
+        _ updater: SPUUpdater,
+        didFinishUpdateCycleFor updateCheck: SPUUpdateCheck, error: Error?
+    ) {
+        launcher.launcherUpdateCheckFinished()
+    }
+
+    func updater(
+        _ updater: SPUUpdater, willScheduleUpdateCheckAfterDelay delay: TimeInterval
+    ) {
+        launcher.launcherUpdateCheckFinished()
+    }
+
+    func updaterWillNotScheduleUpdateCheck(_ updater: SPUUpdater) {
+        launcher.launcherUpdateCheckFinished()
+    }
+
+    func updater(
+        _ updater: SPUUpdater, userDidMake choice: SPUUserUpdateChoice,
+        forUpdate update: SUAppcastItem, state: SPUUserUpdateState
+    ) {
+        if choice == .install { launcher.suppressAutoLoginForSession() }
+    }
+
+    func updater(_ updater: SPUUpdater, willInstallUpdate item: SUAppcastItem) {
+        launcher.suppressAutoLoginForSession()
+        Settings.skipAutoLoginAfterUpdate = true
+    }
+
+    func updaterWillRelaunchApplication(_ updater: SPUUpdater) {
+        launcher.suppressAutoLoginForSession()
+        Settings.skipAutoLoginAfterUpdate = true
     }
 
     @objc private func wineAppWillActivate(_ notification: Notification) {

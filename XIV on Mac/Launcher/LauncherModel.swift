@@ -56,6 +56,9 @@ final class LauncherModel: ObservableObject {
     private var started = false
     private var migrated = false
     private var refreshingNews = false
+    private var launcherUpdatePending = true
+    private var pendingAutoLogin = false
+    private var autoLoginSuppressed = false
     private let bannerImages = MemoryPrefetchCache<NSImage> { url in
         try? await backgroundWork { Frontier.fetchImage(url: url) }
     }
@@ -156,12 +159,40 @@ final class LauncherModel: ObservableObject {
             phase = .ready
             status = String(localized: "Ready to play")
             let bypass = NSEvent.modifierFlags.contains(.shift)
-            if thenLogin || (autoLogin && !bypass) { login() }
+            if thenLogin {
+                login()
+            } else {
+                pendingAutoLogin = autoLogin && !bypass
+                attemptAutoLogin()
+            }
         } catch {
             restoreIdle()
             notice = AppNotice(
                 "PATCH_ERROR_MESSAGE", error.localizedDescription)
         }
+    }
+
+    func launcherUpdateCheckStarted() {
+        launcherUpdatePending = true
+    }
+
+    func launcherUpdateCheckFinished() {
+        launcherUpdatePending = false
+        attemptAutoLogin()
+    }
+
+    func suppressAutoLoginForSession() {
+        autoLoginSuppressed = true
+        pendingAutoLogin = false
+    }
+
+    private func attemptAutoLogin() {
+        guard pendingAutoLogin, !launcherUpdatePending else { return }
+        pendingAutoLogin = false
+        guard autoLogin, !autoLoginSuppressed, phase == .ready,
+            runningGames == 0, !NSEvent.modifierFlags.contains(.shift)
+        else { return }
+        login()
     }
 
     func refreshNews() async {
@@ -248,6 +279,7 @@ final class LauncherModel: ObservableObject {
 
     func login(repair: Bool = false) {
         guard canLogin else { return }
+        pendingAutoLogin = false
         if FirstAidModel().cfgCheckSevereProblems() {
             needsFirstAid = true
             return

@@ -156,6 +156,16 @@ public enum Settings {
         }
     }
 
+    private static let skipAutoLoginAfterUpdateKey = "SkipAutoLoginAfterLauncherUpdate"
+    static var skipAutoLoginAfterUpdate: Bool {
+        get {
+            UserDefaults.standard.bool(forKey: skipAutoLoginAfterUpdateKey)
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: skipAutoLoginAfterUpdateKey)
+        }
+    }
+
     private static let autoLoginKey = "AutoLogin"
     static var autoLogin: Bool {
         get {
