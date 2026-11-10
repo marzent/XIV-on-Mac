@@ -79,9 +79,8 @@ pkgs.stdenv.mkDerivation rec {
   pname = "ff-wine";
   version = "11.17.0";
 
-  src = builtins.fetchGit {
-    url = builtins.toString ./source;
-  };
+  # nix-build.sh builds directly from ./source for every build.
+  src = null;
 
   strictDeps = true;
 
@@ -92,6 +91,7 @@ pkgs.stdenv.mkDerivation rec {
     pkgs.flex
     pkgs.fontforge
     pkgs.pkg-config
+    pkgs.ccache
   ] ++ mingwGccs ++ [
     setupHookDarwin
   ];
@@ -164,14 +164,6 @@ pkgs.stdenv.mkDerivation rec {
     "--disable-dmsynth"
     "--disable-fluidsynth"
   ];
-
-  buildPhase = ''
-    make -j$NIX_BUILD_CORES
-  '';
-
-  installPhase = ''
-    make install-lib DESTDIR=${placeholder "out"} -j$NIX_BUILD_CORES
-  '';
 
   meta = {
     description = "ff-wine for macOS";

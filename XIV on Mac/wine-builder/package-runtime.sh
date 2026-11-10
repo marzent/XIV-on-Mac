@@ -23,16 +23,20 @@ if [[ ! -L "$nixResult" ]]; then
 fi
 
 nixResultTarget=$(readlink "$nixResult")
+packageId="$nixResultTarget"
+if [[ -f "$nixResult/.build-revision" ]]; then
+  packageId="$packageId:$(<"$nixResult/.build-revision")"
+fi
 
 if [[ -e "$receipt" && -d "$targetDir" ]]; then
   current_content=$(<"$receipt")
-  if [[ "$current_content" == "$nixResultTarget" ]]; then
+  if [[ "$current_content" == "$packageId" ]]; then
     echo "note: The last built wine package matches the current one. No changes made."
     exit 0
   fi
 fi
 
-echo "$nixResultTarget" > "$receipt"
+echo "$packageId" > "$receipt"
 echo "note: Updated receipt $receipt with Nix store result: $nixResultTarget"
 echo "note: Packaging wine..."
 

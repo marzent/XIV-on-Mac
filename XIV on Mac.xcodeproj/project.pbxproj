@@ -163,6 +163,7 @@
 		503C48162D15F76200141D3F /* winemetal.dll */ = {isa = PBXFileReference; lastKnownFileType = file; path = winemetal.dll; sourceTree = "<group>"; };
 		503C48192D15F76200141D3F /* libMoltenVK.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libMoltenVK.dylib; sourceTree = "<group>"; };
 		503C4BBF2D15F76200141D3F /* build.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = build.sh; sourceTree = "<group>"; };
+		503C4F5F2D16932A00141D3F /* build-wine.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "build-wine.sh"; sourceTree = "<group>"; };
 		503C4BC02D15F76200141D3F /* default.nix */ = {isa = PBXFileReference; lastKnownFileType = text; path = default.nix; sourceTree = "<group>"; };
 		503C4BC12D15F76200141D3F /* gnutls.nix */ = {isa = PBXFileReference; lastKnownFileType = text; path = gnutls.nix; sourceTree = "<group>"; };
 		503C4BC22D15F76200141D3F /* setup-hook-darwin.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "setup-hook-darwin.sh"; sourceTree = "<group>"; };
@@ -327,6 +328,7 @@
 			children = (
 				503C481B2D15F76200141D3F /* overrides */,
 				503C4BBF2D15F76200141D3F /* build.sh */,
+				503C4F5F2D16932A00141D3F /* build-wine.sh */,
 				503C4F5C2D168CEC00141D3F /* nix-build.sh */,
 				503C4F5D2D168D0400141D3F /* package-runtime.sh */,
 				503C4BC02D15F76200141D3F /* default.nix */,
