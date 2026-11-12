@@ -219,6 +219,7 @@ Do not enable this on non-retina displays, unless for screenshot purposes.";
 "SETTINGS_ADVANCED_ENCRYPT_ARGS" = "Encrypt Game Arguments";
 "SETTINGS_ADVANCED_AUTO_EXIT" = "Quit XIV on Mac upon game exit";
 "SETTINGS_ADVANCED_ERROR_EXIT" = "Warn if game exits with non-zero exit code";
+"SETTINGS_ADVANCED_GAME_CONTROLLER_FRAMEWORK" = "Use macOS GameController framework for controllers (fixes wired Xbox controllers)";
 "SETTINGS_ADVANCED_WINE_DEBUG" = "Wine Debug:";
 
 // First Aid/Troubleshooting Window

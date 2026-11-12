@@ -217,6 +217,7 @@ Ne l'activez pas sur les écrans autres que écrans Retina, sauf à des fins de 
 "SETTINGS_ADVANCED_ENCRYPT_ARGS" = "Chiffrer les arguments du jeu";
 "SETTINGS_ADVANCED_AUTO_EXIT" = "Quitter XIV on Mac à la sortie du jeu";
 "SETTINGS_ADVANCED_ERROR_EXIT" = "Avertir si le jeu se termine avec un code de sortie différent de zéro";
+"SETTINGS_ADVANCED_GAME_CONTROLLER_FRAMEWORK" = "Utiliser le framework GameController de macOS pour les manettes (corrige les manettes Xbox filaires)";
 "SETTINGS_ADVANCED_WINE_DEBUG" = "Débogage de Wine :";
 
 // First Aid/Troubleshooting Window

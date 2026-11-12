@@ -221,6 +221,7 @@
 "SETTINGS_ADVANCED_ENCRYPT_ARGS" = "ゲームの引数を暗号化する";
 "SETTINGS_ADVANCED_AUTO_EXIT" = "ゲームを終了時にXIV on Macも終了させる";
 "SETTINGS_ADVANCED_ERROR_EXIT" = "ゲーム本体が0以外の終了コードを返して終了した場合に警告する";
+"SETTINGS_ADVANCED_GAME_CONTROLLER_FRAMEWORK" = "コントローラーにmacOSのGameControllerフレームワークを使用する（有線Xboxコントローラーの問題を修正）";
 "SETTINGS_ADVANCED_WINE_DEBUG" = "Wineデバッグ:";
 
 // First Aid/Troubleshooting Window

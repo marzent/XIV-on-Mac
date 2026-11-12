@@ -209,6 +209,7 @@
 "SETTINGS_ADVANCED_ENCRYPT_ARGS" = "加密遊戲參數";
 "SETTINGS_ADVANCED_AUTO_EXIT" = "遊戲結束時自動關閉 XIV on Mac";
 "SETTINGS_ADVANCED_ERROR_EXIT" = "若遊戲以非零代碼結束時警告";
+"SETTINGS_ADVANCED_GAME_CONTROLLER_FRAMEWORK" = "使用 macOS GameController 框架處理控制器（修正有線 Xbox 控制器）";
 "SETTINGS_ADVANCED_WINE_DEBUG" = "Wine 除錯：";
 
 // First Aid/Troubleshooting Window

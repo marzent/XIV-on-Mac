@@ -22,6 +22,7 @@ enum Wine {
             FileManager.default.fileSystemRepresentation(
                 withPath: wineDllURL.path))
         addEnvironmentVariable("WINEMSYNC", msync ? "1" : "0")
+        applyControllerEnvironment()
         addEnvironmentVariable(
             "DXMT_CONFIG",
             "d3d11.metalSpatialUpscaleFactor=\(Settings.metalFxSpatialFactor);d3d11.preferredMaxFrameRate=\(Settings.maxFramerate);"
@@ -92,6 +93,31 @@ enum Wine {
             UserDefaults.standard.set(newValue, forKey: msyncSettingKey)
             addEnvironmentVariable("WINEMSYNC", msync ? "1" : "0")
         }
+    }
+
+    // Wired Xbox controllers only report input through the GameController
+    // framework, so optionally keep SDL away from its HIDAPI and IOKit drivers.
+    private static let gameControllerFrameworkSettingKey =
+        "GameControllerFrameworkSetting"
+    static var gameControllerFramework: Bool {
+        get {
+            Util.getSetting(
+                settingKey: gameControllerFrameworkSettingKey,
+                defaultValue: false)
+        }
+        set {
+            UserDefaults.standard.set(
+                newValue, forKey: gameControllerFrameworkSettingKey)
+            applyControllerEnvironment()
+        }
+    }
+
+    private static func applyControllerEnvironment() {
+        addEnvironmentVariable("SDL_JOYSTICK_MFI", "1")
+        addEnvironmentVariable(
+            "SDL_JOYSTICK_HIDAPI", gameControllerFramework ? "0" : "1")
+        addEnvironmentVariable(
+            "SDL_JOYSTICK_IOKIT", gameControllerFramework ? "0" : "1")
     }
 
     private static let wineDebugSettingKey = "WineDebugSetting"
