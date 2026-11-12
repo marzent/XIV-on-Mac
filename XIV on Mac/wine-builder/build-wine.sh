@@ -28,10 +28,11 @@ fi
 
 make -C "$buildDir" -j"$jobs"
 make -C "$buildDir" install-lib DESTDIR=install -j"$jobs"
+printf '%s\n' "$out" > "$installDir/.build-output"
 
 revision=$(
-    cd "$installDir"
-    find nix -type f -print0 | sort -z | xargs -0 shasum -a 256 | shasum -a 256 | awk '{print $1}'
+    cd "$installDir$out"
+    find . -type f -print0 | sort -z | xargs -0 shasum -a 256 | shasum -a 256 | awk '{print $1}'
 )
 printf '%s\n' "$revision" > "$installDir/.build-revision"
 ln -sfn "$installDir" "$root/result"

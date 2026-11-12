@@ -40,7 +40,15 @@ echo "$packageId" > "$receipt"
 echo "note: Updated receipt $receipt with Nix store result: $nixResultTarget"
 echo "note: Packaging wine..."
 
-subDir=$(find $sourceDir -type d -mindepth 1 -maxdepth 1 | head -n 1)
+if [[ ! -f "$nixResult/.build-output" ]]; then
+  echo "error: Wine build output is not recorded. Run build-wine.sh first."
+  exit 1
+fi
+subDir="$nixResult$(<"$nixResult/.build-output")"
+if [[ ! -d "$subDir" ]]; then
+  echo "error: Recorded Wine build output is missing: $subDir"
+  exit 1
+fi
 
 rm -rf $targetDir
 mkdir -p $targetDir

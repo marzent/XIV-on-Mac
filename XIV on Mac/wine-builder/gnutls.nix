@@ -4,7 +4,11 @@ let
   doCheck = false;
   libidn2 = pkgs.libidn2.overrideAttrs (oldAttrs: {
     buildInputs = builtins.filter (input: input != pkgs.libiconv) oldAttrs.buildInputs ++ [ libiconv ];
-    preConfigure =''export CFLAGS="-O3 -march=native -mno-avx"'';
+    preConfigure = ''
+      export CFLAGS="-O3 -march=native -mno-avx"
+      export CPPFLAGS="-I${libiconv}/include $CPPFLAGS"
+      export LDFLAGS="-L${libiconv}/lib -Wl,-rpath,${libiconv}/lib $LDFLAGS"
+    '';
   });
 in
 
